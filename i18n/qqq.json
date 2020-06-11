@@ -9,5 +9,7 @@
 	"globalwatchlist-summary": "Description at the top of [[Special:GlobalWatchlist]]",
 	"globalwatchlistsettings": "Title of [[Special:GlobalWatchlistSettings]]",
 	"globalwatchlistsettings-summary": "Description at the top of [[Special:GlobalWatchlistSettings]]",
+	"globalwatchlist-gotoglobal": "Link text for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
+	"globalwatchlist-gotoglobal-tooltip": "Tooltip for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
 	"globalwatchlist-javascript-required": "Message shown when Javascript is not enabled"
 }
