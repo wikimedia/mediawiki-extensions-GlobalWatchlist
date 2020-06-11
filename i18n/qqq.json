@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"DannyS712"
+		]
+	},
+	"globalwatchlist-desc": "{{desc|name=GlobalWatchlist|url=https://www.mediawiki.org/wiki/Extension:GlobalWatchlist}}",
+	"globalwatchlist": "Title of [[Special:GlobalWatchlist]]",
+	"globalwatchlist-summary": "Description at the top of [[Special:GlobalWatchlist]]",
+	"globalwatchlistsettings": "Title of [[Special:GlobalWatchlistSettings]]",
+	"globalwatchlistsettings-summary": "Description at the top of [[Special:GlobalWatchlistSettings]]",
+	"globalwatchlist-javascript-required": "Message shown when Javascript is not enabled"
+}

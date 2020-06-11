@@ -1,0 +1,42 @@
+{
+	"name": "GlobalWatchlist",
+	"author": [
+		"DannyS712"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:GlobalWatchlist",
+	"descriptionmsg": "globalwatchlist-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"SpecialPages": {
+		"GlobalWatchlist": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlist",
+		"GlobalWatchlistSettings": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\GlobalWatchlist\\": "includes/"
+	},
+	"MessagesDirs": {
+		"GlobalWatchlist": [
+			"i18n",
+			"i18n/script"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"GlobalWatchlistAliases": "GlobalWatchlist.alias.php"
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "GlobalWatchlist/modules"
+	},
+	"ResourceModules": {
+		"ext.globalwatchlist.specialglobalwatchlist": {
+			"scripts": "ext.globalwatchlist.specialglobalwatchlist.js"
+		},
+		"ext.globalwatchlist.specialglobalwatchlistsettings": {
+			"scripts": "ext.globalwatchlist.specialglobalwatchlistsettings.js"
+		}
+	},
+	"manifest_version": 2
+}
