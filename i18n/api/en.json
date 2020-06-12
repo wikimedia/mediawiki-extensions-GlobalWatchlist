@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"DannyS712"
+		]
+	},
+	"apihelp-globalwatchlistsettings-summary": "Manage global watchlist settings",
+	"apihelp-globalwatchlistsettings-param-sites": "Sites to show",
+	"apihelp-globalwatchlistsettings-param-anonfilter": "Filter edits by anonymous users",
+	"apihelp-globalwatchlistsettings-param-botfilter": "Filter edits by bots",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "Filter minor edits",
+	"apihelp-globalwatchlistsettings-param-confirmallsites": "Require confirmation to mark all sites as seen",
+	"apihelp-globalwatchlistsettings-param-fastmode": "Enable fast mode",
+	"apihelp-globalwatchlistsettings-param-grouppage": "Group results by page",
+	"apihelp-globalwatchlistsettings-param-showtypes": "Types of changes to show"
+}

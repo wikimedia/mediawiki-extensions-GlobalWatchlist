@@ -20,12 +20,25 @@
 	"MessagesDirs": {
 		"GlobalWatchlist": [
 			"i18n",
+			"i18n/api",
 			"i18n/script"
 		]
 	},
 	"ExtensionMessagesFiles": {
 		"GlobalWatchlistAliases": "GlobalWatchlist.alias.php"
 	},
+	"APIModules": {
+		"globalwatchlistsettings": {
+			"class": "MediaWiki\\Extension\\GlobalWatchlist\\ApiGlobalWatchlistSettings",
+			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\ApiGlobalWatchlistSettings::newFromGlobalState",
+			"services": [
+				"GlobalWatchlistSettingsManager"
+			]
+		}
+	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "GlobalWatchlist/modules"
