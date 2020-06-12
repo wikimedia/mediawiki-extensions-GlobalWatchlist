@@ -48,7 +48,52 @@
 			"scripts": "ext.globalwatchlist.specialglobalwatchlist.js"
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
-			"scripts": "ext.globalwatchlist.specialglobalwatchlistsettings.js"
+			"packageFiles": [
+				"ext.globalwatchlist.specialglobalwatchlistsettings.js",
+				"ext.globalwatchlist.debug.js",
+				"ext.globalwatchlist.getSettings.js",
+				"ext.globalwatchlist.saveSettings.js"
+			],
+			"styles": [
+				"ext.globalwatchlist.specialglobalwatchlistsettings.css"
+			],
+			"messages": [
+				"globalwatchlist-sitelist",
+				"globalwatchlist-add",
+				"globalwatchlist-save",
+				"globalwatchlist-resetchanges",
+				"globalwatchlist-globalwatchlistbacklink",
+				"globalwatchlist-remove",
+				"globalwatchlist-filters",
+				"globalwatchlist-filter-anon",
+				"globalwatchlist-filter-bot",
+				"globalwatchlist-filter-minor",
+				"globalwatchlist-filter-either",
+				"globalwatchlist-filter-only-anon",
+				"globalwatchlist-filter-not-anon",
+				"globalwatchlist-filter-only-bot",
+				"globalwatchlist-filter-not-bot",
+				"globalwatchlist-filter-only-minor",
+				"globalwatchlist-filter-not-minor",
+				"globalwatchlist-changetypes",
+				"globalwatchlist-show-edits",
+				"globalwatchlist-show-logentries",
+				"globalwatchlist-show-newpages",
+				"globalwatchlist-otheroptions",
+				"globalwatchlist-option-grouppage",
+				"globalwatchlist-option-confirmallsites",
+				"globalwatchlist-option-fastmode"
+			],
+			"dependencies": [
+				"oojs-ui-core",
+				"oojs-ui-widgets",
+				"oojs-ui-windows",
+				"oojs-ui.styles.icons-movement",
+				"oojs-ui.styles.icons-interactions",
+				"oojs-ui.styles.icons-content",
+				"oojs-ui.styles.icons-media",
+				"oojs-ui.styles.icons-moderation"
+			]
 		}
 	},
 	"manifest_version": 2

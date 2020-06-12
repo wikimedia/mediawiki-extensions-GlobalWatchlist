@@ -1,0 +1,59 @@
+/* stylelint-disable selector-max-id */
+
+.globalwatchlist-content hr {
+	height: 2px;
+	clear: both;
+}
+
+.oo-ui-labelWidget {
+	display: block;
+	padding-bottom: 5px;
+}
+
+#globalWatchlist-filters-label {
+	text-align: center;
+}
+
+.globalWatchlist-site-text {
+	width: 200px;
+}
+
+#globalWatchlist-sites,
+#globalWatchlist-filters {
+	vertical-align: top;
+	display: inline-block;
+	padding-right: 10px;
+	padding-left: 10px;
+	width: fit-content;
+}
+
+#globalWatchlist-sites-list > div,
+.oo-ui-fieldLayout {
+	margin-top: 0;
+}
+
+#globalWatchlist-filters-list {
+	column-count: 3;
+	column-gap: 15px;
+}
+
+#globalWatchlist-settings-other {
+	column-count: 2;
+	column-gap: 15px;
+}
+
+body:not( .skin-monobook ) .oo-ui-actionFieldLayout-input,
+body:not( .skin-monobook ) .oo-ui-actionFieldLayout-button {
+	display: inline-block;
+}
+
+body.skin-monobook .oo-ui-actionFieldLayout-input,
+body.skin-monobook .oo-ui-actionFieldLayout-button {
+	display: table-cell;
+	width: fit-content;
+}
+
+body.skin-cologneblue .tagline,
+body #siteSub {
+	display: none;
+}
