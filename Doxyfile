@@ -6,6 +6,7 @@ HTML_OUTPUT            = php
 JAVADOC_AUTOBRIEF      = YES
 QT_AUTOBRIEF           = YES
 WARN_NO_PARAMDOC       = YES
+INPUT                  = README.md ./
 EXCLUDE_PATTERNS       = */vendor/*
 EXCLUDE_PATTERNS      += */docs/*
 EXCLUDE_PATTERNS      += */node_modules/*
