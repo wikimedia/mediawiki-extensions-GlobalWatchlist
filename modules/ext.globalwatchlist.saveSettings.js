@@ -1,19 +1,37 @@
 /**
  * Save the user's settings
  *
- * Not implemented yet
- *
- * Will call the api
+ * @param {object} GlobalWatchlistDebug debugger
+ * @param {object} newSettings
+ * @return {jQuery.Promise} promise that either resolves successfully or rejects with the error
  */
-function GlobalWatchlistSaveSettings( newSettings ) {
-	/* eslint-disable-next-line no-console */
-	console.log( 'New settings:' );
-	/* eslint-disable-next-line no-console */
-	console.log( newSettings );
+function GlobalWatchlistSaveSettings( GlobalWatchlistDebug, newSettings ) {
+	var params = {
+		action: 'globalwatchlistsettings',
+		formatversion: 2,
+		sites: newSettings.sites,
+		anonfilter: newSettings.anonFilter,
+		botfilter: newSettings.botFilter,
+		minorfilter: newSettings.minorFilter,
+		confirmallsites: newSettings.confirmAllSites,
+		fastmode: newSettings.fastMode,
+		grouppage: newSettings.groupPage,
+		showtypes: []
+	};
 
-	/* eslint-disable-next-line no-alert */
-	alert( 'Actual saving is not implemented yet, but the inputs were logged to the console' );
-	// TODO ACTUALLY SAVE
+	if ( newSettings.showEdits ) {
+		params.showtypes.push( 'edit' );
+	}
+	if ( newSettings.showLogEntries ) {
+		params.showtypes.push( 'log' );
+	}
+	if ( newSettings.showNewPages ) {
+		params.showtypes.push( 'new' );
+	}
+
+	GlobalWatchlistDebug.info( 'SaveSettings - parameters', params, 1 );
+
+	return new mw.Api().postWithEditToken( params );
 }
 
 module.exports = GlobalWatchlistSaveSettings;

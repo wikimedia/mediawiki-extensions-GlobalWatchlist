@@ -52,7 +52,8 @@
 				"ext.globalwatchlist.specialglobalwatchlistsettings.js",
 				"ext.globalwatchlist.debug.js",
 				"ext.globalwatchlist.getSettings.js",
-				"ext.globalwatchlist.saveSettings.js"
+				"ext.globalwatchlist.saveSettings.js",
+				"ext.globalwatchlist.notifications.js"
 			],
 			"styles": [
 				"ext.globalwatchlist.specialglobalwatchlistsettings.css"
@@ -82,9 +83,12 @@
 				"globalwatchlist-otheroptions",
 				"globalwatchlist-option-grouppage",
 				"globalwatchlist-option-confirmallsites",
-				"globalwatchlist-option-fastmode"
+				"globalwatchlist-option-fastmode",
+				"globalwatchlist-notify-settingssaved",
+				"globalwatchlist-notify-savingfailed"
 			],
 			"dependencies": [
+				"mediawiki.api",
 				"oojs-ui-core",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",

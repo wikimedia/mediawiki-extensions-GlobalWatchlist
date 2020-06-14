@@ -7,6 +7,7 @@
 	var GlobalWatchlistDebug = require( './ext.globalwatchlist.debug.js' ),
 		GetSettings = require( './ext.globalwatchlist.getSettings.js' ),
 		SaveSettings = require( './ext.globalwatchlist.saveSettings.js' ),
+		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
 		SettingsElements = {},
 		SettingsManager = {};
 
@@ -189,9 +190,9 @@
 		SettingsElements[ 'bot' ].selectItemByData( config[ 'bot' ] );
 		SettingsElements[ 'minor' ].selectItemByData( config[ 'minor' ] );
 
-		SettingsElements[ 'edits' ].setSelected( config[ 'edits' ] );
-		SettingsElements[ 'logEntries' ].setSelected( config[ 'logEntries' ] );
-		SettingsElements[ 'newPages' ].setSelected( config[ 'newPages' ] );
+		SettingsElements[ 'edits' ].setSelected( config[ 'showEdits' ] );
+		SettingsElements[ 'logEntries' ].setSelected( config[ 'showLogEntries' ] );
+		SettingsElements[ 'newPages' ].setSelected( config[ 'showNewPages' ] );
 		SettingsElements[ 'groupPage' ].setSelected( config[ 'groupPage' ] );
 		SettingsElements[ 'confirmAllSites' ].setSelected( config[ 'confirmAllSites' ] );
 		SettingsElements[ 'fastMode' ].setSelected( config[ 'fastMode' ] );
@@ -211,33 +212,45 @@
 		$( '.globalWatchlist-site-text:last > input' )[0].value = '';
 	};
 	SettingsManager.saveChanges = function () {
-		var settings = {
-			anonFilter: SettingsElements.anon.findSelectedItem().data,
-			botFilter: SettingsElements.bot.findSelectedItem().data,
-			confirmAllSites: SettingsElements.confirmAllSites.isSelected(),
-			fastMode: SettingsElements.fastMode.isSelected(),
-			groupPage: SettingsElements.groupPage.isSelected(),
-			minorFilter: SettingsElements.minor.findSelectedItem().data,
-			showEdits: SettingsElements.edits.isSelected(),
-			showLogEntries: SettingsElements.logEntries.isSelected(),
-			showNewPages: SettingsElements.newPages.isSelected(),
+		var notifications = new NotificationManager( GlobalWatchlistDebug ),
+			settings = {
+				anonFilter: SettingsElements.anon.findSelectedItem().data,
+				botFilter: SettingsElements.bot.findSelectedItem().data,
+				confirmAllSites: SettingsElements.confirmAllSites.isSelected(),
+				fastMode: SettingsElements.fastMode.isSelected(),
+				groupPage: SettingsElements.groupPage.isSelected(),
+				minorFilter: SettingsElements.minor.findSelectedItem().data,
+				showEdits: SettingsElements.edits.isSelected(),
+				showLogEntries: SettingsElements.logEntries.isSelected(),
+				showNewPages: SettingsElements.newPages.isSelected(),
 
-			/* eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle */
-			sites: [ $( 'div.oo-ui-actionFieldLayout:visible .globalWatchlist-site-text > input' )
-				.filter(
-					function () {
-						return this.value && this.value !== '';
-					}
-				)
-				.map( function ( site, field ) {
-					return field.value
-				} )
-				.toArray()
-			],
-		};
+				/* eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle */
+				sites: $( 'div.oo-ui-actionFieldLayout:visible .globalWatchlist-site-text > input' )
+					.filter(
+						function () {
+							return this.value && this.value !== '';
+						}
+					)
+					.map( function ( site, field ) {
+						return field.value
+					} )
+					.toArray(),
+			};
 		GlobalWatchlistDebug.info( 'Settings.saveChanges', settings, 0 );
 
-		SaveSettings( settings );
+		// Preload the notification module for mw.notify, used in notifications
+		// not included as a dependency for this module because it isn't needed until
+		// the user wants to save their settings, and so shouldn't delay initial
+		// loading
+		mw.loader.load( 'mediawiki.notification' );
+
+		SaveSettings( GlobalWatchlistDebug, settings )
+			.done( function ( data ) {
+				notifications.onSettingsSaved( data );
+			} )
+			.fail( function ( data ) {
+				notifications.onSettingsFailed( data );
+			} );
 	};
 
 	mw.globalwatchlist = mw.globalwatchlist || {};
