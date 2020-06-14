@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use InvalidArgumentException;
 use JavaScriptContent;
 use JavaScriptContentHandler;
 use MediaWikiUnitTestCase;
@@ -19,6 +20,21 @@ use WikiPage;
  * @covers \MediaWiki\Extension\GlobalWatchlist\SettingsManager
  */
 class SettingsManagerTest extends MediaWikiUnitTestCase {
+
+	private function getManager(
+		$logger,
+		$javascriptContentHandler = null
+	) {
+		if ( $javascriptContentHandler === null ) {
+			$javascriptContentHandler = $this->createMock( JavascriptContentHandler::class );
+		}
+		$manager = new SettingsManager(
+			$logger,
+			$javascriptContentHandler
+		);
+		$accessManager = TestingAccessWrapper::newFromObject( $manager );
+		return $accessManager;
+	}
 
 	/**
 	 * @dataProvider proviteTestSaveOptionsInternal
@@ -67,13 +83,12 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 			)
 			->willReturn( Status::newGood() );
 
-		$manager = new SettingsManager(
+		$manager = $this->getManager(
 			$logger,
 			$javaScriptContentHandler
 		);
-		$accessManager = TestingAccessWrapper::newFromObject( $manager );
 
-		$accessManager->saveOptionsInternal( $user, $wikiPage, $newOptions );
+		$manager->saveOptionsInternal( $user, $wikiPage, $newOptions );
 
 		$this->assertSame( [
 			[ LogLevel::DEBUG, "Saving options for {username}: {userOptions}" ],
@@ -86,6 +101,125 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 			'has existing content' => [ true ],
 			'no existing content' => [ false ],
 		];
+	}
+
+	/**
+	 * @dataProvider provideTestValidateSettings
+	 * @param bool $emptySite
+	 * @param bool $noTypes
+	 * @param bool $anonBot
+	 * @param bool $anonMinor
+	 */
+	public function testValidateSettings(
+		bool $emptySite,
+		bool $noTypes,
+		bool $anonBot,
+		bool $anonMinor
+	) {
+		$logger = new TestLogger( true );
+		$manager = $this->getManager( $logger );
+
+		$invalidSettings = [
+			'sites' => [
+				$emptySite ? ' ' : 'en.wikipedia.org'
+			],
+			'showtypes' => $noTypes ? [] : [ 'edit' ],
+			'anonfilter' => 1,
+			'botfilter' => $anonBot ? 1 : 0,
+			'minorfilter' => $anonMinor ? 1 : 0,
+		];
+
+		$status = $manager->validateSettings( $invalidSettings );
+
+		$fatals = [];
+		$debugEntries = [ [ LogLevel::DEBUG, 'Validating user options' ] ];
+		if ( $emptySite ) {
+			$fatals[] = 'globalwatchlist-settings-empty-site';
+			$debugEntries[] = [ LogLevel::DEBUG, 'Empty site detected' ];
+		}
+		if ( $noTypes ) {
+			$fatals[] = 'globalwatchlist-settings-no-types';
+			$debugEntries[] = [ LogLevel::DEBUG, 'No types of changes chosen' ];
+		}
+		if ( $anonBot ) {
+			$fatals[] = 'globalwatchlist-settings-anon-bot';
+			$debugEntries[] = [ LogLevel::DEBUG, 'Invalid combination: anon-bot edits' ];
+		}
+		if ( $anonMinor ) {
+			$fatals[] = 'globalwatchlist-settings-anon-minor';
+			$debugEntries[] = [ LogLevel::DEBUG, 'Invalid combination: anon-minor edits' ];
+		}
+
+		$this->assertFalse( $status->isGood() );
+
+		$errors = $status->getErrors();
+		$errorMessages = array_map(
+			function ( $error ) {
+				return $error['message'];
+			},
+			$errors
+		);
+
+		$this->assertArrayEquals( $fatals, $errorMessages );
+
+		$this->assertSame( $debugEntries, $logger->getBuffer() );
+		$logger->clearBuffer();
+	}
+
+	public function provideTestValidateSettings() {
+		return [
+			'only empty site' => [ true, false, false, false ],
+			'only no types' => [ false, true, false, false ],
+			'only anon-bot' => [ false, false, true, false ],
+			'only anon-minor' => [ false, false, false, true ],
+			'everything' => [ true, true, true, true ],
+		];
+	}
+
+	public function testValidateSettings_good() {
+		$logger = new TestLogger( true );
+		$manager = $this->getManager( $logger );
+
+		$validSettings = [
+			'sites' => [
+				'en.wikipedia.org'
+			],
+			'showtypes' => 'edit|new|log',
+			'anonfilter' => 0,
+			'botfilter' => 0,
+			'minorfilter' => 0,
+		];
+		$status = $manager->validateSettings( $validSettings );
+
+		$this->assertTrue( $status->isGood() );
+
+		$this->assertSame( [
+			[ LogLevel::DEBUG, 'Validating user options' ],
+			[ LogLevel::DEBUG, 'No issues found' ],
+		], $logger->getBuffer() );
+		$logger->clearBuffer();
+	}
+
+	public function testValidateSettings_invalid() {
+		$logger = new TestLogger( true );
+		$manager = $this->getManager( $logger );
+
+		$invalidSettings = [
+			'sites' => [],
+		];
+
+		try {
+			$status = $manager->validateSettings( $invalidSettings );
+			$this->fail( 'Exception should have been shown' );
+		} catch ( InvalidArgumentException $e ) {
+			// Test continues
+		}
+
+		$this->assertSame( [
+			[ LogLevel::DEBUG, 'Validating user options' ],
+			[ LogLevel::DEBUG, 'Error - no sites provided' ],
+		], $logger->getBuffer() );
+		$logger->clearBuffer();
 	}
 
 }
