@@ -14,6 +14,7 @@ EXCLUDE_PATTERNS      += */tests/*
 FILE_PATTERNS          = *.php
 RECURSIVE              = YES
 # Requires doxygen 1.8.3+
+USE_MDFILE_AS_MAINPAGE = README.md
 HTML_DYNAMIC_SECTIONS  = YES
 GENERATE_TREEVIEW      = YES
 TREEVIEW_WIDTH         = 250
