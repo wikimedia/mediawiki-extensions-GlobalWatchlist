@@ -25,7 +25,7 @@ GlobalWatchlistNotificationManager.prototype.onSettingsSaved = function ( saveDa
 	mw.notify(
 		mw.msg( 'globalwatchlist-notify-settingssaved' ),
 		{
-			title: 'Global Watchlist',
+			title: mw.msg( 'globalwatchlist-notify-heading' ),
 			autoHide: false
 		}
 	);
@@ -43,7 +43,7 @@ GlobalWatchlistNotificationManager.prototype.onSettingsFailed = function ( failu
 	mw.notify(
 		mw.msg( 'globalwatchlist-notify-savingfailed' ),
 		{
-			title: 'Global Watchlist',
+			title: mw.msg( 'globalwatchlist-notify-heading' ),
 			autoHide: false
 		}
 	);

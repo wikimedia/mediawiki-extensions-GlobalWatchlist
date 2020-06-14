@@ -4,8 +4,8 @@
 			"DannyS712"
 		]
 	},
-	"globalwatchlist-desc": "Adds a global watchlist",
 	"globalwatchlist": "Global watchlist",
+	"globalwatchlist-desc": "Adds a global watchlist",
 	"globalwatchlist-summary": "Special page to view a global watchlist",
 	"globalwatchlistsettings": "Global watchlist settings",
 	"globalwatchlistsettings-summary": "Special page to manage a global watchlist",
