@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bugoslav"
+		]
+	},
+	"globalwatchlist-add": "Dodaj",
+	"globalwatchlist-changetypes": "Vrste promjene",
+	"globalwatchlist-editwatchlist": "Uredi praćene stranice",
+	"globalwatchlist-filters": "Filtri",
+	"globalwatchlist-filter-minor": "Manja uređivanja",
+	"globalwatchlist-filter-only-bot": "Samo uređivanja botova",
+	"globalwatchlist-globalwatchlistbacklink": "Natrag na globalne praćene stranice",
+	"globalwatchlist-globalwatchlistlink": "Globalne praćene stranice",
+	"globalwatchlist-globalwatchlistsettingslink": "Postavke",
+	"globalwatchlist-markseen": "Označi viđenim",
+	"globalwatchlist-notify-heading": "Globalne praćene stranice",
+	"globalwatchlist-notify-savingfailed": "Spremanje postavki nije uspjelo. Molimo Vas, pokušajte ponovo",
+	"globalwatchlist-notify-settingssaved": "Vaše su postavke spremljene",
+	"globalwatchlist-option-grouppage": "Grupiraj rezultate po stranici",
+	"globalwatchlist-option-live": "Ažuriranja uživo",
+	"globalwatchlist-remove": "Ukloni",
+	"globalwatchlist-save": "Pohrani postavke"
+}

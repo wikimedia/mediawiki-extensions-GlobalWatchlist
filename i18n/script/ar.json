@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"محمد أحمد عبد الفتاح"
+		]
+	},
+	"globalwatchlist-add": "أضف",
+	"globalwatchlist-changetypes": "نوع التغيير",
+	"globalwatchlist-editwatchlist": "عدل قائمة المراقبة",
+	"globalwatchlist-filters": "المرشحات",
+	"globalwatchlist-filter-anon": "تعديلات المجهولين",
+	"globalwatchlist-filter-bot": "تعديلات البوت",
+	"globalwatchlist-filter-minor": "تعديلات طفيفة",
+	"globalwatchlist-filter-only-minor": "التعديلات الطفيفة فقط",
+	"globalwatchlist-globalwatchlistsettingslink": "إعدادات",
+	"globalwatchlist-notify-heading": "قائمة المراقبة العالمية",
+	"globalwatchlist-notify-settingssaved": "حُفظت إعداداتك",
+	"globalwatchlist-otheroptions": "إعدادات أخرى",
+	"globalwatchlist-remove": "أزل",
+	"globalwatchlist-save": "احفظ الاعدادات"
+}

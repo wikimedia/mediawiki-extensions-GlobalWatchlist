@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"globalwatchlist-add": "Aggiungi",
+	"globalwatchlist-changesfeed": "Siti con modifiche",
+	"globalwatchlist-changetypes": "Tipo di modifica",
+	"globalwatchlist-editwatchlist": "Modifica osservati speciali",
+	"globalwatchlist-filters": "Filtri",
+	"globalwatchlist-filter-anon": "Modifiche anonime",
+	"globalwatchlist-filter-minor": "Modifiche minori",
+	"globalwatchlist-filter-only-minor": "Solo modifiche minori",
+	"globalwatchlist-globalwatchlistlink": "Osservati speciali globali",
+	"globalwatchlist-globalwatchlistsettingslink": "Impostazioni",
+	"globalwatchlist-notify-heading": "Osservati speciali globali",
+	"globalwatchlist-notify-settingssaved": "Le tue impostazioni sono state salvate",
+	"globalwatchlist-option-grouppage": "Raggruppa risultati per pagina",
+	"globalwatchlist-option-live": "Aggiornamenti in tempo reale",
+	"globalwatchlist-otheroptions": "Altre impostazioni",
+	"globalwatchlist-refresh": "Aggiorna",
+	"globalwatchlist-remove": "Rimuovi",
+	"globalwatchlist-save": "Salva impostazioni"
+}

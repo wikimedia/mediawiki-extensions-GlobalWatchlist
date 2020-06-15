@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"globalwatchlist": "Globale Beobachtungsliste",
+	"globalwatchlist-desc": "Ergänzt eine globale Beobachtungsliste",
+	"globalwatchlist-summary": "Spezialseite zur Anzeige der globalen Beobachtungsliste",
+	"globalwatchlistsettings": "Einstellungen der globalen Beobachungsliste",
+	"globalwatchlistsettings-summary": "Spezialseite zur Verwaltung der globalen Beobachtungsliste",
+	"globalwatchlist-javascript-required": "Die Spezialseiten der globalen Beobachungsliste benötigen JavasScript, um zu funktionieren"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"apihelp-globalwatchlistsettings-summary": "管理全域監視清單設定",
+	"apihelp-globalwatchlistsettings-param-sites": "要顯示出的網站",
+	"apihelp-globalwatchlistsettings-param-anonfilter": "按匿名使用者來篩選編輯",
+	"apihelp-globalwatchlistsettings-param-botfilter": "按機器人來篩選編輯",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "篩選小修改",
+	"apihelp-globalwatchlistsettings-param-confirmallsites": "標記所有網站為已看過之前，需要確認",
+	"apihelp-globalwatchlistsettings-param-fastmode": "啟用快速模式",
+	"apihelp-globalwatchlistsettings-param-grouppage": "按頁面區分結果",
+	"apihelp-globalwatchlistsettings-param-showtypes": "要顯示出的更改類型"
+}

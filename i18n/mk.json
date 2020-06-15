@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"globalwatchlist": "Глобално набљудувани",
+	"globalwatchlist-desc": "Додава глобален список на набљудувани",
+	"globalwatchlist-summary": "Службена страница за глобално набљудувани страници",
+	"globalwatchlistsettings": "Нагодувања за глобално набљудуваните",
+	"globalwatchlistsettings-summary": "Службена страница за раководење со глобално набљудуваните страници",
+	"globalwatchlist-javascript-required": "Службените страници на Глобално набљудувани бараат да работи JavasScript"
+}

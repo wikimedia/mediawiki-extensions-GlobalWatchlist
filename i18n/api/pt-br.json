@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"apihelp-globalwatchlistsettings-summary": "Gerenciar configurações de lista de páginas vigiadas globais",
+	"apihelp-globalwatchlistsettings-param-sites": "Sites para mostrar",
+	"apihelp-globalwatchlistsettings-param-anonfilter": "Filtrar edições por usuários anônimos",
+	"apihelp-globalwatchlistsettings-param-botfilter": "Filtrar edições por robôs",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "Filtrar edições menores",
+	"apihelp-globalwatchlistsettings-param-confirmallsites": "Requer confirmação para marcar todos os sites como vistos",
+	"apihelp-globalwatchlistsettings-param-fastmode": "Ativar modo rápido",
+	"apihelp-globalwatchlistsettings-param-grouppage": "Agrupar resultado por página",
+	"apihelp-globalwatchlistsettings-param-showtypes": "Tipos de alterações a serem exibidas"
+}

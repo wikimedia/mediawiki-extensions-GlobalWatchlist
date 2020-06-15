@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"globalwatchlist": "全域監視清單",
+	"globalwatchlist-desc": "新增全域監視清單",
+	"globalwatchlist-summary": "用來檢視全域監視清單的特殊頁面",
+	"globalwatchlistsettings": "全域監視清單設定",
+	"globalwatchlistsettings-summary": "用來管理全域監視清單的特殊頁面",
+	"globalwatchlist-javascript-required": "全域監視清單特殊頁面需要啟用 JavasScript"
+}

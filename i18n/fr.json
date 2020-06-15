@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pamputt",
+			"Wladek92"
+		]
+	},
+	"globalwatchlist": "Liste de suivi globale",
+	"globalwatchlist-desc": "Ajoute une liste de suivi globale",
+	"globalwatchlist-summary": "Page spéciale pour voir une liste de suivi globale",
+	"globalwatchlistsettings": "Paramètres de la liste de suivi globale",
+	"globalwatchlistsettings-summary": "Page spéciale pour gérer la liste de suivi globale",
+	"globalwatchlist-javascript-required": "Les pages spéciales concernant la liste de suivi globale nécessitent JavaScript pour fonctionner"
+}

@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tofeiku"
+		]
+	},
+	"globalwatchlist-add": "Tambah",
+	"globalwatchlist-asof": "Setakat $1",
+	"globalwatchlist-changesfeed": "Tapak dengan perubahan",
+	"globalwatchlist-changetypes": "Jenis perubahan",
+	"globalwatchlist-editwatchlist": "Sunting senarai pantau",
+	"globalwatchlist-emptyfeed": "Tapak dengan tiada perubahan",
+	"globalwatchlist-filters": "Penapis",
+	"globalwatchlist-filter-anon": "Suntingan awanama",
+	"globalwatchlist-filter-bot": "Suntingan bot",
+	"globalwatchlist-filter-minor": "Suntingan kecil",
+	"globalwatchlist-filter-either": "Sama ada",
+	"globalwatchlist-filter-not-anon": "Hanya suntingan yang dibuat oleh pengguna yang log masuk",
+	"globalwatchlist-filter-not-bot": "Hanya suntingan bukan bot",
+	"globalwatchlist-filter-not-minor": "Hanya suntingan bukan kecil",
+	"globalwatchlist-filter-only-bot": "Hanya suntingan bot",
+	"globalwatchlist-filter-only-minor": "Hanya suntingan kecil",
+	"globalwatchlist-globalwatchlistlink": "Senarai pantau sejagat",
+	"globalwatchlist-globalwatchlistsettingslink": "Tetapan",
+	"globalwatchlist-notify-settingssaved": "Tetapan anda telah disimpan",
+	"globalwatchlist-option-grouppage": "Kelompokkan hasil mengikut laman",
+	"globalwatchlist-option-live": "Perubahan langsung",
+	"globalwatchlist-otheroptions": "Tetapan lain",
+	"globalwatchlist-remove": "Buang",
+	"globalwatchlist-save": "Simpan tetapan",
+	"globalwatchlist-settings-error-anonbot": "Pengguna awanama tidak boleh membuat suntingan bot",
+	"globalwatchlist-settings-error-anonminor": "Pengguna awanama tidak boleh membuat suntingan kecil",
+	"globalwatchlist-settings-error-badsites": "Tapak tidak sah: $1",
+	"globalwatchlist-settings-error-nochanges": "Tiada jenis perubahan dipilih",
+	"globalwatchlist-show-edits": "Tunjuk suntingan laman",
+	"globalwatchlist-unwatch": "nyahpantau"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"apihelp-globalwatchlistsettings-param-sites": "Siti da mostrare",
+	"apihelp-globalwatchlistsettings-param-anonfilter": "Filtra modifiche per utenti anonimi",
+	"apihelp-globalwatchlistsettings-param-grouppage": "Raggruppa risultati per pagina",
+	"apihelp-globalwatchlistsettings-param-showtypes": "Tipi di modifiche da mostrare"
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"BadDog"
+		]
+	},
+	"globalwatchlist": "Глобални списак надгледања",
+	"globalwatchlist-desc": "Додаје глобални списак надгледања",
+	"globalwatchlist-summary": "На овој страници можете видети глобални списак надгледања.",
+	"globalwatchlistsettings": "Подешавања глобалног списка надгледања",
+	"globalwatchlistsettings-summary": "На овој страници можете управљати глобалним списком надгледања.",
+	"globalwatchlist-javascript-required": "Потребан је JavaScript"
+}

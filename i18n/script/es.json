@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"DannyS712"
+		]
+	},
+	"globalwatchlist-add": "Añadir más",
+	"globalwatchlist-asof": "Del $1",
+	"globalwatchlist-changesfeed": "Sitios con cambios",
+	"globalwatchlist-changetypes": "Tipo de cambio",
+	"globalwatchlist-emptyfeed": "Sitios sin cambios",
+	"globalwatchlist-filters": "Filtros",
+	"globalwatchlist-filter-minor": "Ediciones menores",
+	"globalwatchlist-globalwatchlistsettingslink": "Configuración",
+	"globalwatchlist-markseen": "Marcar como visto",
+	"globalwatchlist-markseen-all": "Marcar todos los sitios como vistos",
+	"globalwatchlist-notify-settingssaved": "Se han guardado tus cambios.",
+	"globalwatchlist-option-grouppage": "Agrupar resultados por página",
+	"globalwatchlist-option-live": "Actualizaciones en directo",
+	"globalwatchlist-remove": "Eliminar",
+	"globalwatchlist-save": "Guardar configuración",
+	"globalwatchlist-unwatch": "dejar de vigilar"
+}

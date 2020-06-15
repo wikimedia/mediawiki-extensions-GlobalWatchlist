@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"globalwatchlist": "Lista de páginas vigiadas globais",
+	"globalwatchlist-desc": "Adiciona uma lista de páginas vigiadas globais",
+	"globalwatchlist-summary": "Página especial para visualizar uma lista de páginas vigiadas globais",
+	"globalwatchlistsettings": "Configurações da lista de páginas vigiadas globais",
+	"globalwatchlistsettings-summary": "Página especial para gerenciar uma lista de páginas vigiadas globais",
+	"globalwatchlist-javascript-required": "As páginas especiais da lista de páginas vigiadas globais requerem Javascript para funcionar"
+}

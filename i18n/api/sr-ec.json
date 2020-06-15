@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"BadDog"
+		]
+	},
+	"apihelp-globalwatchlistsettings-summary": "Подешавања за управљање глобалним списком надгледања",
+	"apihelp-globalwatchlistsettings-param-sites": "Пројекти за приказ",
+	"apihelp-globalwatchlistsettings-param-anonfilter": "Филтрирање анонимних измена",
+	"apihelp-globalwatchlistsettings-param-botfilter": "Филтрирање ботовских измена",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "Филтрирање мањих измена",
+	"apihelp-globalwatchlistsettings-param-confirmallsites": "Захтевање потврде за означавање свих пројеката виђеним",
+	"apihelp-globalwatchlistsettings-param-fastmode": "Омогућавање брзог режима",
+	"apihelp-globalwatchlistsettings-param-grouppage": "Груписање резултата по страници",
+	"apihelp-globalwatchlistsettings-param-showtypes": "Тип измена за приказ"
+}
