@@ -1,15 +1,5 @@
 /* stylelint-disable selector-max-id */
 
-.globalwatchlist-content hr {
-	height: 2px;
-	clear: both;
-}
-
-.oo-ui-labelWidget {
-	display: block;
-	padding-bottom: 5px;
-}
-
 #globalWatchlist-filters-label {
 	text-align: center;
 }
@@ -51,9 +41,4 @@ body.skin-monobook .oo-ui-actionFieldLayout-input,
 body.skin-monobook .oo-ui-actionFieldLayout-button {
 	display: table-cell;
 	width: fit-content;
-}
-
-body.skin-cologneblue .tagline,
-body #siteSub {
-	display: none;
 }

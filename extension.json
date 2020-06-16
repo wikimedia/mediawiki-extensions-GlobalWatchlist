@@ -69,6 +69,7 @@
 				"ext.globalwatchlist.notifications.js"
 			],
 			"styles": [
+				"ext.globalwatchlist.common.css",
 				"ext.globalwatchlist.specialglobalwatchlistsettings.css"
 			],
 			"messages": [
