@@ -61,7 +61,53 @@
 	},
 	"ResourceModules": {
 		"ext.globalwatchlist.specialglobalwatchlist": {
-			"scripts": "ext.globalwatchlist.specialglobalwatchlist.js"
+			"packageFiles": [
+				"ext.globalwatchlist.specialglobalwatchlist.js",
+				"ext.globalwatchlist.debug.js",
+				"ext.globalwatchlist.linker.js",
+				"ext.globalwatchlist.getSettings.js",
+				"ext.globalwatchlist.site.js",
+				"ext.globalwatchlist.watchlistUtils.js"
+			],
+			"styles": [
+				"ext.globalwatchlist.common.css",
+				"ext.globalwatchlist.specialglobalwatchlist.css"
+			],
+			"messages": [
+				"globalwatchlist-asof",
+				"globalwatchlist-changesfeed",
+				"globalwatchlist-editwatchlist",
+				"globalwatchlist-emptyfeed",
+				"globalwatchlist-globalwatchlistsettingslink",
+				"globalwatchlist-markseen",
+				"globalwatchlist-markseen-all",
+				"globalwatchlist-option-grouppage",
+				"globalwatchlist-option-live",
+				"globalwatchlist-refresh",
+				"globalwatchlist-rewatch",
+				"globalwatchlist-unwatch",
+				"boteditletter",
+				"diff",
+				"history_small",
+				"minoreditletter",
+				"nchanges",
+				"ntimes",
+				"newpageletter",
+				"rev-deleted-user",
+				"sp-contributions-logs"
+			],
+			"dependencies": [
+				"mediawiki.ForeignApi",
+				"jquery.makeCollapsible",
+				"oojs-ui-core",
+				"oojs-ui-widgets",
+				"oojs-ui-windows",
+				"oojs-ui.styles.icons-movement",
+				"oojs-ui.styles.icons-interactions",
+				"oojs-ui.styles.icons-content",
+				"oojs-ui.styles.icons-media",
+				"oojs-ui.styles.icons-moderation"
+			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
 			"packageFiles": [
@@ -121,6 +167,14 @@
 				"oojs-ui.styles.icons-moderation"
 			]
 		}
+	},
+	"QUnitTestModule": {
+		"localBasePath": "",
+		"remoteExtPath": "GlobalWatchlist",
+		"packageFiles": [
+			"tests/qunit/ext.globalwatchlist.linker.tests.js",
+			"modules/ext.globalwatchlist.linker.js"
+		]
 	},
 	"manifest_version": 2
 }

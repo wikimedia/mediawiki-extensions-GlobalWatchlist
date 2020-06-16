@@ -1,0 +1,76 @@
+/* stylelint-disable selector-max-id */
+
+.globalWatchlist-col {
+	-moz-column-width: 45em;
+	-webkit-column-width: 45em;
+	column-width: 45em;
+}
+
+.globalWatchlist-emptyWatchlist {
+	font-size: 130%;
+}
+
+#globalWatchlist-watchlistsLoading {
+	margin: auto;
+	margin-top: 5px;
+}
+
+#globalWatchlist-asOf {
+	text-align: center;
+}
+
+/* Ensure that this applies to links, see T245104 */
+.globalWatchlist-strike,
+.globalWatchlist-strike a {
+	text-decoration: line-through;
+}
+
+#globalWatchlist-sites-list > div,
+.oo-ui-fieldLayout {
+	margin-top: 0;
+}
+
+#globalWatchlist-toolbar {
+	position: sticky;
+	top: 0;
+	background: #fff;
+	z-index: 1;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #0fd977;
+}
+
+#globalWatchlist-watchlistsFeed {
+	text-align: left;
+	direction: ltr;
+}
+
+/*
+TODO is this still needed, or does CSSJanus eliminate the need?
+div[ id^='globalWatchlist-feed-site-he_' ],
+div[ id^='globalWatchlist-feed-site-ar_' ],
+div[ id^='globalWatchlist-feed-site-azb_' ],
+div[ id^='globalWatchlist-feed-site-ckb_' ],
+div[ id^='globalWatchlist-feed-site-dv_' ],
+div[ id^='globalWatchlist-feed-site-fa_' ],
+div[ id^='globalWatchlist-feed-site-glk_' ],
+div[ id^='globalWatchlist-feed-site-ks_' ],
+div[ id^='globalWatchlist-feed-site-lrc_' ],
+div[ id^='globalWatchlist-feed-site-mzn_' ],
+div[ id^='globalWatchlist-feed-site-nqo_' ],
+div[ id^='globalWatchlist-feed-site-pnb_' ],
+div[ id^='globalWatchlist-feed-site-ps_' ],
+div[ id^='globalWatchlist-feed-site-sd_' ],
+div[ id^='globalWatchlist-feed-site-ug_' ],
+div[ id^='globalWatchlist-feed-site-ur_' ],
+div[ id^='globalWatchlist-feed-site-yi_' ] {
+	text-align: right;
+	direction: rtl;
+}
+*/
+
+.globalWatchlist-site a,
+li b {
+	unicode-bidi: isolate;
+	display: inline-block;
+}

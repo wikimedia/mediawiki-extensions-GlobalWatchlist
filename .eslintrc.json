@@ -7,10 +7,13 @@
 	],
 	"globals": {
 		"mw": false,
-		"OO": false
+		"OO": false,
+		"Promise": false
 	},
 	"rules": {
 		"no-implicit-globals": "off",
-		"valid-jsdoc": "off"
+		"valid-jsdoc": "off",
+		"vars-on-top": "off",
+		"one-var": "off"
 	}
 }
