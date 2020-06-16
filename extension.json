@@ -106,7 +106,6 @@
 				"globalwatchlist-sitelist"
 			],
 			"dependencies": [
-				"mediawiki.api",
 				"oojs-ui-core",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
