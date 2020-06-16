@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98"
+		]
+	},
+	"apihelp-globalwatchlistsettings-param-fastmode": "Snelle modus inschakelen",
+	"apihelp-globalwatchlistsettings-param-grouppage": "Resultaten per pagina groeperen"
+}
