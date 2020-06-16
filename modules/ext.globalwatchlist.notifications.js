@@ -11,7 +11,7 @@
  * @param {object} GlobalWatchlistDebug debugger
  */
 function GlobalWatchlistNotificationManager( GlobalWatchlistDebug ) {
-	this.debugger = GlobalWatchlistDebug;
+	this.debug = GlobalWatchlistDebug;
 }
 
 /**
@@ -20,7 +20,7 @@ function GlobalWatchlistNotificationManager( GlobalWatchlistDebug ) {
  * @param {object} saveData
  */
 GlobalWatchlistNotificationManager.prototype.onSettingsSaved = function ( saveData ) {
-	this.debugger.info( 'SettingsSaved - successful', saveData, 1 );
+	this.debug.info( 'SettingsSaved - successful', saveData, 1 );
 
 	mw.notify(
 		mw.msg( 'globalwatchlist-notify-settingssaved' ),
@@ -38,7 +38,7 @@ GlobalWatchlistNotificationManager.prototype.onSettingsSaved = function ( saveDa
  */
 GlobalWatchlistNotificationManager.prototype.onSettingsFailed = function ( failureData ) {
 	// TODO handle validation failures in failureData once validatio is added
-	this.debugger.info( 'SettingsFailed - error', failureData, 1 );
+	this.debug.info( 'SettingsFailed - error', failureData, 1 );
 
 	mw.notify(
 		mw.msg( 'globalwatchlist-notify-savingfailed' ),
