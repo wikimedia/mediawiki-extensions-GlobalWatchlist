@@ -69,6 +69,8 @@ class SettingsManager {
 
 		$optionsStr = FormatJson::encode( $options, true );
 		$this->saveOptionsInternal( $user, $wikiPage, $optionsStr );
+
+		$wikiPage->doPurge();
 	}
 
 	/**
