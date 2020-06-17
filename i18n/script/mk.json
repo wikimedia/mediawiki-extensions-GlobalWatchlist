@@ -27,6 +27,7 @@
 	"globalwatchlist-markseen": "Означи како видено",
 	"globalwatchlist-markseen-all": "Означи ги сите проекти како видени",
 	"globalwatchlist-markseen-allconfirm": "Дали сигурно сакате да ги означите сите проекти како видени?",
+	"globalwatchlist-notify-heading": "Глобално набљудувани",
 	"globalwatchlist-notify-savingfailed": "Не можев да ги зачувам нагодувањата. Обидете се повторно.",
 	"globalwatchlist-notify-settingssaved": "Вашите нагодувања се зачувани",
 	"globalwatchlist-option-confirmallsites": "Барај потврда пред означување на сите проекти како видени",

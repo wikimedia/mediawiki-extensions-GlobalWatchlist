@@ -9,5 +9,7 @@
 	"globalwatchlist-summary": "Strona specjalna umożliwiająca podgląd globalnej listy obserwowanych",
 	"globalwatchlistsettings": "Ustawienia globalnej listy obserwowanych",
 	"globalwatchlistsettings-summary": "Strona specjalna pozwalająca na zarządzanie globalną listą obserwowanych",
+	"globalwatchlist-gotoglobal": "Globalna lista obserwowanych",
+	"globalwatchlist-gotoglobal-tooltip": "Zobacz globalną listę obserwowanych",
 	"globalwatchlist-javascript-required": "Strona specjalna GlobalWatchlist wymaga do działania JavaScriptu"
 }

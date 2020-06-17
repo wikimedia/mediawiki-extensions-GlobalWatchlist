@@ -7,5 +7,7 @@
 	"globalwatchlist-summary": "Spezialseite zur Anzeige der globalen Beobachtungsliste",
 	"globalwatchlistsettings": "Einstellungen der globalen Beobachungsliste",
 	"globalwatchlistsettings-summary": "Spezialseite zur Verwaltung der globalen Beobachtungsliste",
+	"globalwatchlist-gotoglobal": "Globale Beobachtungsliste",
+	"globalwatchlist-gotoglobal-tooltip": "Beobachtungsliste ansehen",
 	"globalwatchlist-javascript-required": "Die Spezialseiten der globalen Beobachungsliste benötigen JavasScript, um zu funktionieren"
 }
