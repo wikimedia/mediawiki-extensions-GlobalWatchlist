@@ -8,7 +8,7 @@
 	"apihelp-globalwatchlistsettings-summary": "Gérer les préférences de la liste de suivi globale",
 	"apihelp-globalwatchlistsettings-param-sites": "Sites à afficher",
 	"apihelp-globalwatchlistsettings-param-anonfilter": "Filtrer les modifications faites par les utilisateurs anonymes",
-	"apihelp-globalwatchlistsettings-param-botfilter": "Filtrer les modifications faites par les bots",
+	"apihelp-globalwatchlistsettings-param-botfilter": "Filtrer les modifications faites par les robots",
 	"apihelp-globalwatchlistsettings-param-minorfilter": "Filtrer les modifications mineures",
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "Demander confirmation pour marquer tous les sites comme vus",
 	"apihelp-globalwatchlistsettings-param-fastmode": "Activer le mode rapide",

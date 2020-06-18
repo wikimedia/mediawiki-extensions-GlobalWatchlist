@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Pamputt",
 			"Wladek92"
 		]
@@ -10,5 +11,7 @@
 	"globalwatchlist-summary": "Page spéciale pour voir une liste de suivi globale",
 	"globalwatchlistsettings": "Paramètres de la liste de suivi globale",
 	"globalwatchlistsettings-summary": "Page spéciale pour gérer la liste de suivi globale",
-	"globalwatchlist-javascript-required": "Les pages spéciales concernant la liste de suivi globale nécessitent JavaScript pour fonctionner"
+	"globalwatchlist-gotoglobal": "Liste de suivi globale",
+	"globalwatchlist-gotoglobal-tooltip": "Afficher la liste de suivi globale",
+	"globalwatchlist-javascript-required": "Les pages spéciales de la liste de suivi globale nécessitent que JavaScript soit activé"
 }

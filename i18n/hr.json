@@ -9,5 +9,7 @@
 	"globalwatchlist-summary": "Posebna stranica za pregled popisa globalnih praćenih stranica",
 	"globalwatchlistsettings": "Postavke globalnih praćenih stranica",
 	"globalwatchlistsettings-summary": "Posebna stranica za upravljanje popisom globalnih praćenih stranica",
+	"globalwatchlist-gotoglobal": "Globalne praćene stranice",
+	"globalwatchlist-gotoglobal-tooltip": "Pregledanje popisa praćenih stranica",
 	"globalwatchlist-javascript-required": "Posebne stranice globalnih praćenih stranica zahtijevaju JavaScript kako bi funkcionirale"
 }

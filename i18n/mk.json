@@ -9,5 +9,7 @@
 	"globalwatchlist-summary": "Службена страница за глобално набљудувани страници",
 	"globalwatchlistsettings": "Нагодувања за глобално набљудуваните",
 	"globalwatchlistsettings-summary": "Службена страница за раководење со глобално набљудуваните страници",
+	"globalwatchlist-gotoglobal": "Глобално набљудувани",
+	"globalwatchlist-gotoglobal-tooltip": "Преглед на глобалните набљудувања",
 	"globalwatchlist-javascript-required": "Службените страници на Глобално набљудувани бараат да работи JavasScript"
 }
