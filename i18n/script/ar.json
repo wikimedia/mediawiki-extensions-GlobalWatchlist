@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tala Ali",
 			"محمد أحمد عبد الفتاح"
 		]
 	},
@@ -16,6 +17,7 @@
 	"globalwatchlist-globalwatchlistsettingslink": "إعدادات",
 	"globalwatchlist-notify-heading": "قائمة المراقبة العالمية",
 	"globalwatchlist-notify-settingssaved": "حُفظت إعداداتك",
+	"globalwatchlist-option-live": "التحديثات الحالية",
 	"globalwatchlist-otheroptions": "إعدادات أخرى",
 	"globalwatchlist-remove": "أزل",
 	"globalwatchlist-save": "احفظ الاعدادات"

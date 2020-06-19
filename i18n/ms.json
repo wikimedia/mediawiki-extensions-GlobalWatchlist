@@ -4,6 +4,9 @@
 			"Tofeiku"
 		]
 	},
+	"globalwatchlist-desc": "Menambah senarai pantau sejagat",
 	"globalwatchlistsettings": "Tetapan senarai pantau sejagat",
-	"globalwatchlistsettings-summary": "Laman khas untuk mengurus senarai pantau sejagat"
+	"globalwatchlistsettings-summary": "Laman khas untuk mengurus senarai pantau sejagat",
+	"globalwatchlist-gotoglobal": "Senarai pantau sejagat",
+	"globalwatchlist-gotoglobal-tooltip": "Lihat senarai pantau sejagat"
 }
