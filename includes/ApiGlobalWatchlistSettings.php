@@ -25,6 +25,7 @@ namespace MediaWiki\Extension\GlobalWatchlist;
 
 use ApiBase;
 use ApiMain;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * @author DannyS712
@@ -92,29 +93,29 @@ class ApiGlobalWatchlistSettings extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'sites' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_ISMULTI => true
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_ISMULTI => true
 			],
 			'anonfilter' => [
-				ApiBase::PARAM_TYPE => [ '0', '1', '2' ],
-				ApiBase::PARAM_REQUIRED => true
+				ParamValidator::PARAM_TYPE => [ '0', '1', '2' ],
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'botfilter' => [
-				ApiBase::PARAM_TYPE => [ '0', '1', '2' ],
-				ApiBase::PARAM_REQUIRED => true
+				ParamValidator::PARAM_TYPE => [ '0', '1', '2' ],
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'minorfilter' => [
-				ApiBase::PARAM_TYPE => [ '0', '1', '2' ],
-				ApiBase::PARAM_REQUIRED => true
+				ParamValidator::PARAM_TYPE => [ '0', '1', '2' ],
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'confirmallsites' => false,
 			'fastmode' => false,
 			'grouppage' => false,
 			'showtypes' => [
-				ApiBase::PARAM_TYPE => [ 'edit', 'new', 'log' ],
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'edit|new|log',
+				ParamValidator::PARAM_TYPE => [ 'edit', 'new', 'log' ],
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_DEFAULT => 'edit|new|log',
 			]
 		];
 	}
