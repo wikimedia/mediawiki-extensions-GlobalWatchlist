@@ -36,7 +36,7 @@ use SpecialPage;
 class SpecialGlobalWatchlistSettings extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'GlobalWatchlistSettings' );
+		parent::__construct( 'GlobalWatchlistSettings', 'editmyoptions' );
 	}
 
 	/**
@@ -46,6 +46,8 @@ class SpecialGlobalWatchlistSettings extends SpecialPage {
 		$this->setHeaders();
 
 		$this->addHelpLink( 'Extension:GlobalWatchlist' );
+
+		$this->requireLogin( 'globalwatchlist-must-login' );
 
 		$out = $this->getOutput();
 		$out->addModules( 'ext.globalwatchlist.specialglobalwatchlistsettings' );

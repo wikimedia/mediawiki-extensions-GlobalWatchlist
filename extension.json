@@ -23,6 +23,9 @@
 		}
 	},
 	"Hooks": {
+		"LoginFormValidErrorMessages": {
+			"handler": "GlobalWatchlistHooks"
+		},
 		"SkinBuildSidebar": {
 			"handler": "GlobalWatchlistHooks"
 		}

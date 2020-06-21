@@ -24,6 +24,7 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use Skin;
@@ -31,7 +32,7 @@ use Skin;
 /**
  * @author DannyS712
  */
-class GlobalWatchlistHooks implements SkinBuildSidebarHook {
+class GlobalWatchlistHooks implements LoginFormValidErrorMessagesHook, SkinBuildSidebarHook {
 
 	/** @var SpecialPageFactory */
 	private $specialPageFactory;
@@ -65,6 +66,17 @@ class GlobalWatchlistHooks implements SkinBuildSidebarHook {
 			'title' => $skin->msg( 'globalwatchlist-gotoglobal-tooltip' )->text(),
 		];
 		$bar['navigation'][] = $link;
+	}
+
+	/**
+	 * @param string[] &$messages
+	 * @return void
+	 */
+	public function onLoginFormValidErrorMessages( array &$messages ) {
+		$messages = array_merge(
+			$messages,
+			[ 'globalwatchlist-must-login' ]
+		);
 	}
 
 }

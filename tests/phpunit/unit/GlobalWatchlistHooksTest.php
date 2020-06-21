@@ -114,4 +114,17 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	public function testLoginMessageAdded() {
+		$specialPageFactory = $this->createMock( SpecialPageFactory::class );
+		$hookHandler = new GlobalWatchlistHooks( $specialPageFactory );
+
+		$messages = [ 'foo', 'bar' ];
+		$hookHandler->onLoginFormValidErrorMessages( $messages );
+
+		$this->assertArrayEquals(
+			[ 'foo', 'bar', 'globalwatchlist-must-login' ],
+			$messages
+		);
+	}
+
 }

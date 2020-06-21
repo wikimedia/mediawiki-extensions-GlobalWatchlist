@@ -11,5 +11,6 @@
 	"globalwatchlistsettings-summary": "Special page to manage a global watchlist",
 	"globalwatchlist-gotoglobal": "Global watchlist",
 	"globalwatchlist-gotoglobal-tooltip": "View global watchlist",
+	"globalwatchlist-must-login": "Please log in to use the GlobalWatchlist special pages",
 	"globalwatchlist-javascript-required": "The GlobalWatchlist special pages require JavaScript to work"
 }
