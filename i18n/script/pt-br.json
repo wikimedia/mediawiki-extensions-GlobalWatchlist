@@ -27,6 +27,7 @@
 	"globalwatchlist-markseen": "Marcar como visto",
 	"globalwatchlist-markseen-all": "Marcar todos os sites como vistos",
 	"globalwatchlist-markseen-allconfirm": "Tem certeza de que deseja marcar sites como vistos?",
+	"globalwatchlist-notify-heading": "Lista de páginas vigiadas globais",
 	"globalwatchlist-notify-savingfailed": "Falha ao salvar as configurações. Por favor, tente novamente",
 	"globalwatchlist-notify-settingssaved": "suas configurações foram salvas",
 	"globalwatchlist-option-confirmallsites": "Exigir confirmação antes de marcar todos os sites como visto",

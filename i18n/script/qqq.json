@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"DannyS712"
+			"DannyS712",
+			"Robby"
 		]
 	},
 	"globalwatchlist-add": "Label for button to add another row for a site",
@@ -23,7 +24,7 @@
 	"globalwatchlist-filter-only-minor": "Option to only show edits marked as minor",
 	"globalwatchlist-globalwatchlistbacklink": "Label for the link to the global watchlist from the settings page",
 	"globalwatchlist-globalwatchlistlink": "Label for the link to the global watchlist from the normal watchlist page",
-	"globalwatchlist-globalwatchlistsettingslink": "Label for the link to the settings page from the global watchlist",
+	"globalwatchlist-globalwatchlistsettingslink": "Label for the link to the settings page from the global watchlist\n{{identical|settings}}",
 	"globalwatchlist-markseen": "Button to mark a specific site as seen",
 	"globalwatchlist-markseen-all": "Button to mark all sites as seen",
 	"globalwatchlist-markseen-allconfirm": "Confirmation message for marking all sites as seen",

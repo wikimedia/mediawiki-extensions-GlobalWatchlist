@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"globalwatchlist-add": "Derbäisetzen",
+	"globalwatchlist-editwatchlist": "Iwwerwaachungslëscht änneren",
+	"globalwatchlist-filters": "Filteren",
+	"globalwatchlist-filter-anon": "Anonym Ännerungen",
+	"globalwatchlist-filter-minor": "Kleng Ännerungen",
+	"globalwatchlist-globalwatchlistbacklink": "Zréck op déi global Iwwerwaachungslëscht",
+	"globalwatchlist-globalwatchlistlink": "Global Iwwerwaachungslëscht",
+	"globalwatchlist-globalwatchlistsettingslink": "Astellungen",
+	"globalwatchlist-notify-heading": "Global Iwwerwaachungslëscht",
+	"globalwatchlist-notify-settingssaved": "Är Astellunge goufe gespäichert.",
+	"globalwatchlist-remove": "Ewechhuelen",
+	"globalwatchlist-save": "Astellunge späicheren"
+}

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hasley",
 			"Kly"
 		]
 	},
@@ -11,5 +12,5 @@
 	"globalwatchlistsettings-summary": "用來管理全域監視清單的特殊頁面",
 	"globalwatchlist-gotoglobal": "全域監視清單",
 	"globalwatchlist-gotoglobal-tooltip": "檢視全域監視清單",
-	"globalwatchlist-javascript-required": "全域監視清單特殊頁面需要啟用 JavasScript"
+	"globalwatchlist-javascript-required": "全域監視清單特殊頁面需要啟用 JavaScript"
 }

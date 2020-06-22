@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hasley"
+		]
+	},
+	"globalwatchlist": "Lista de seguimiento global",
+	"globalwatchlist-desc": "Añade una lista de seguimiento global",
+	"globalwatchlist-summary": "Página especial para ver una lista de seguimiento global",
+	"globalwatchlistsettings": "Configuración de la lista de seguimiento global",
+	"globalwatchlistsettings-summary": "Página especial para gestionar una lista de seguimiento global",
+	"globalwatchlist-gotoglobal": "Lista de seguimiento global",
+	"globalwatchlist-gotoglobal-tooltip": "Ver lista de seguimiento global",
+	"globalwatchlist-javascript-required": "Las páginas especiales de la lista de seguimiento global requieren JavaScript para funcionar"
+}

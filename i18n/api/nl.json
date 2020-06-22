@@ -4,6 +4,9 @@
 			"Mainframe98"
 		]
 	},
+	"apihelp-globalwatchlistsettings-param-sites": "Te tonen sites",
+	"apihelp-globalwatchlistsettings-param-anonfilter": "Filter bewerkingen door anonieme gebruikers",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "Kleine bewerkingen filteren",
 	"apihelp-globalwatchlistsettings-param-fastmode": "Snelle modus inschakelen",
 	"apihelp-globalwatchlistsettings-param-grouppage": "Resultaten per pagina groeperen"
 }

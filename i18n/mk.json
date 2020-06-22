@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Hasley"
 		]
 	},
 	"globalwatchlist": "Глобално набљудувани",
@@ -11,5 +12,5 @@
 	"globalwatchlistsettings-summary": "Службена страница за раководење со глобално набљудуваните страници",
 	"globalwatchlist-gotoglobal": "Глобално набљудувани",
 	"globalwatchlist-gotoglobal-tooltip": "Преглед на глобалните набљудувања",
-	"globalwatchlist-javascript-required": "Службените страници на Глобално набљудувани бараат да работи JavasScript"
+	"globalwatchlist-javascript-required": "Службените страници на Глобално набљудувани бараат да работи JavaScript"
 }

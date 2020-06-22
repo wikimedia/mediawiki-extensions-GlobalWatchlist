@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hasley",
+			"Ата"
+		]
+	},
+	"globalwatchlist": "Глобальний список спостереження",
+	"globalwatchlist-desc": "Додає глобальний список спостерження",
+	"globalwatchlist-summary": "Спеціальна сторінка для перегляду глобального списку спостереження",
+	"globalwatchlistsettings": "Налаштування глобального списку спостереження",
+	"globalwatchlistsettings-summary": "Спеціальна сторінка для керування глобальним списком спостереження",
+	"globalwatchlist-gotoglobal": "Глобальний список спостереження",
+	"globalwatchlist-gotoglobal-tooltip": "Перегляд глобального списку спостереження",
+	"globalwatchlist-javascript-required": "Для роботи спеціальних сторінок глобального списку спостереження потрібен JavaScript"
+}

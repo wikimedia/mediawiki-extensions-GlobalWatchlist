@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"DannyS712"
+			"DannyS712",
+			"Fitoschido"
 		]
 	},
-	"globalwatchlist-add": "Añadir más",
+	"globalwatchlist-add": "Añadir",
 	"globalwatchlist-asof": "Del $1",
 	"globalwatchlist-changesfeed": "Sitios con cambios",
 	"globalwatchlist-changetypes": "Tipo de cambio",

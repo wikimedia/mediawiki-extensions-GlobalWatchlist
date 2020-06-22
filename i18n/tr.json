@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"globalwatchlist": "Küresel izleme listesi",
+	"globalwatchlist-desc": "Küresel bir izleme listesi ekler",
+	"globalwatchlist-summary": "Küresel bir izleme listesini görüntülemek için özel sayfa",
+	"globalwatchlistsettings": "Küresel izleme listesi ayarları",
+	"globalwatchlistsettings-summary": "Küresel bir izleme listesini yönetmek için özel sayfa",
+	"globalwatchlist-gotoglobal": "Küresel izleme listesi",
+	"globalwatchlist-gotoglobal-tooltip": "Küresel izleme listesini görüntüle",
+	"globalwatchlist-javascript-required": "GlobalWatchlist özel sayfaları JavaScript'in çalışmasını gerektirir"
+}
