@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use ApiTestCase;
+use ApiUsageException;
 
 /**
  * Tests settings are saved via the api
@@ -55,6 +56,25 @@ class ApiGlobalWatchlistSettingsTest extends ApiTestCase {
 			"window.GlobalWatchlistSettings =",
 			$content,
 			'Settings were added to the user global.js page'
+		);
+	}
+
+	public function testInvalidSettings() {
+		$user = $this->getTestUser()->getUser();
+
+		$this->expectException( ApiUsageException::class );
+
+		// Trying to filter for anonymous bot edits
+		$this->doApiRequestWithToken(
+			[
+				'action' => 'globalwatchlistsettings',
+				'sites' => 'en.wikipedia.org',
+				'anonfilter' => '1',
+				'botfilter' => '1',
+				'minorfilter' => '0'
+			],
+			null,
+			$user
 		);
 	}
 

@@ -81,7 +81,11 @@ class ApiGlobalWatchlistSettings extends ApiBase {
 			'grouppage' => $params['grouppage'],
 			'showtypes' => $params['showtypes'],
 		];
-		$this->settingsManager->saveUserOptions( $this->getUser(), $settings );
+		$status = $this->settingsManager->saveUserOptions( $this->getUser(), $settings );
+
+		if ( !$status->isGood() ) {
+			$this->dieStatus( $status );
+		}
 
 		$result = [ 'result' => 'Success' ];
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );

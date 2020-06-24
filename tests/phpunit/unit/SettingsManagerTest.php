@@ -37,6 +37,75 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @dataProvider provideTestValidateSettings
+	 * @param bool $emptySite
+	 * @param bool $noTypes
+	 * @param bool $anonBot
+	 * @param bool $anonMinor
+	 */
+	public function testSaveOptions_invalid(
+		bool $emptySite,
+		bool $noTypes,
+		bool $anonBot,
+		bool $anonMinor
+	) {
+		// If a user tries to save invalid options, they should nevet get to the point
+		// of `getUserPage` being called
+		$user = $this->createMock( User::class );
+		$user->expects( $this->never() )
+			->method( 'getUserPage' );
+
+		$logger = new TestLogger( true );
+		$manager = $this->getManager( $logger );
+
+		$invalidSettings = [
+			'sites' => [
+				$emptySite ? ' ' : 'en.wikipedia.org'
+			],
+			'showtypes' => $noTypes ? [] : [ 'edit' ],
+			'anonfilter' => 1,
+			'botfilter' => $anonBot ? 1 : 0,
+			'minorfilter' => $anonMinor ? 1 : 0,
+		];
+
+		$status = $manager->saveUserOptions( $user, $invalidSettings );
+
+		$fatals = [];
+		$debugEntries = [ [ LogLevel::DEBUG, 'Validating user options' ] ];
+		if ( $emptySite ) {
+			$fatals[] = 'globalwatchlist-settings-empty-site';
+			$debugEntries[] = [ LogLevel::DEBUG, 'Empty site detected' ];
+		}
+		if ( $noTypes ) {
+			$fatals[] = 'globalwatchlist-settings-no-types';
+			$debugEntries[] = [ LogLevel::DEBUG, 'No types of changes chosen' ];
+		}
+		if ( $anonBot ) {
+			$fatals[] = 'globalwatchlist-settings-anon-bot';
+			$debugEntries[] = [ LogLevel::DEBUG, 'Invalid combination: anon-bot edits' ];
+		}
+		if ( $anonMinor ) {
+			$fatals[] = 'globalwatchlist-settings-anon-minor';
+			$debugEntries[] = [ LogLevel::DEBUG, 'Invalid combination: anon-minor edits' ];
+		}
+
+		$this->assertFalse( $status->isGood() );
+
+		$errors = $status->getErrors();
+		$errorMessages = array_map(
+			function ( $error ) {
+				return $error['message'];
+			},
+			$errors
+		);
+
+		$this->assertArrayEquals( $fatals, $errorMessages );
+
+		$this->assertSame( $debugEntries, $logger->getBuffer() );
+		$logger->clearBuffer();
+	}
+
+	/**
 	 * @dataProvider proviteTestSaveOptionsInternal
 	 * @param bool $hasContent
 	 */

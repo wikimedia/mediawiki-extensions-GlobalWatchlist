@@ -78,15 +78,24 @@ class SettingsManager {
 	 *
 	 * @param User $user
 	 * @param array $options
+	 *
+	 * @return Status
 	 */
-	public function saveUserOptions( User $user, array $options ) {
-		$userSubpage = $user->getUserPage()->getSubpage( 'global.js' );
-		$wikiPage = WikiPage::factory( $userSubpage );
+	public function saveUserOptions( User $user, array $options ) : Status {
+		$status = $this->validateSettings( $options );
 
-		$optionsStr = FormatJson::encode( $options, true );
-		$this->saveOptionsInternal( $user, $wikiPage, $optionsStr );
+		if ( $status->isGood() ) {
+			// Only save if settings are valid
+			$userSubpage = $user->getUserPage()->getSubpage( 'global.js' );
+			$wikiPage = WikiPage::factory( $userSubpage );
 
-		$wikiPage->doPurge();
+			$optionsStr = FormatJson::encode( $options, true );
+			$this->saveOptionsInternal( $user, $wikiPage, $optionsStr );
+
+			$wikiPage->doPurge();
+		}
+
+		return $status;
 	}
 
 	/**
