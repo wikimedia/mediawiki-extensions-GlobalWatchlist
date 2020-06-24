@@ -68,4 +68,13 @@ class SpecialGlobalWatchlist extends SpecialPage {
 		return 'changes';
 	}
 
+	/**
+	 * Only shown for logged in users
+	 *
+	 * @return bool
+	 */
+	public function isListed() {
+		return $this->getUser()->isLoggedIn();
+	}
+
 }
