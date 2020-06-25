@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dr. Mohammed",
 			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"globalwatchlist": "قائمة المراقبة العالمية",
 	"globalwatchlist-desc": "أضف قائمة مراقبة عالمية",
-	"globalwatchlistsettings": "إعدادات قائمة المراقبة العالمية"
+	"globalwatchlistsettings": "إعدادات قائمة المراقبة العالمية",
+	"globalwatchlist-must-login": "الرجاء تسجيل الدخول لاستخدام الصفحات الخاصة بقائمة المراقبة العالمية"
 }

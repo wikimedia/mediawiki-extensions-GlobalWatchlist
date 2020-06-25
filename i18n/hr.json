@@ -11,5 +11,6 @@
 	"globalwatchlistsettings-summary": "Posebna stranica za upravljanje popisom globalnih praćenih stranica",
 	"globalwatchlist-gotoglobal": "Globalne praćene stranice",
 	"globalwatchlist-gotoglobal-tooltip": "Pregledanje popisa praćenih stranica",
+	"globalwatchlist-must-login": "Molimo Vas, prijavite se kako bi rabili posebne stranice globalnih praćenih stranica",
 	"globalwatchlist-javascript-required": "Posebne stranice globalnih praćenih stranica zahtijevaju JavaScript kako bi funkcionirale"
 }

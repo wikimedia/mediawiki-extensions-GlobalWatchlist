@@ -11,5 +11,6 @@
 	"globalwatchlistsettings-summary": "Página especial para gerenciar uma lista de páginas vigiadas globais",
 	"globalwatchlist-gotoglobal": "Lista de páginas vigiadas globais",
 	"globalwatchlist-gotoglobal-tooltip": "Veja a lista de páginas vigiadas",
+	"globalwatchlist-must-login": "Por favor entre para usar as páginas especiais da lista de páginas vigiadas",
 	"globalwatchlist-javascript-required": "As páginas especiais da lista de páginas vigiadas globais requerem Javascript para funcionar"
 }

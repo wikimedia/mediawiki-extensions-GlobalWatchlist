@@ -11,5 +11,6 @@
 	"globalwatchlistsettings-summary": "Küresel bir izleme listesini yönetmek için özel sayfa",
 	"globalwatchlist-gotoglobal": "Küresel izleme listesi",
 	"globalwatchlist-gotoglobal-tooltip": "Küresel izleme listesini görüntüle",
+	"globalwatchlist-must-login": "GlobalWatchlist özel sayfalarını kullanmak için lütfen oturum açın",
 	"globalwatchlist-javascript-required": "GlobalWatchlist özel sayfaları JavaScript'in çalışmasını gerektirir"
 }
