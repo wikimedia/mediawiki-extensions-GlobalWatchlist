@@ -41,6 +41,7 @@
 	"globalwatchlist-resetchanges": "Restablecer los cambios realizados",
 	"globalwatchlist-rewatch": "volver a vigilar",
 	"globalwatchlist-save": "Guardar configuración",
+	"globalwatchlist-settings-error-anonbot": "Los usuarios anónimos no pueden realizar ediciones de bot.",
 	"globalwatchlist-settings-error-anonminor": "Los usuarios anónimos no pueden realizar ediciones menores.",
 	"globalwatchlist-settings-error-nosites": "No se ha seleccionado ningún sitio",
 	"globalwatchlist-show-edits": "Mostrar ediciones de páginas",
