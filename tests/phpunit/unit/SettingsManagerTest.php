@@ -37,7 +37,7 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @dataProvider provideTestValidateSettings
+	 * @dataProvider provideTestSaveOptions_invalid
 	 * @param bool $emptySite
 	 * @param bool $noTypes
 	 * @param bool $anonBot
@@ -70,39 +70,39 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 
 		$status = $manager->saveUserOptions( $user, $invalidSettings );
 
-		$fatals = [];
+		$errors = [];
 		$debugEntries = [ [ LogLevel::DEBUG, 'Validating user options' ] ];
 		if ( $emptySite ) {
-			$fatals[] = 'globalwatchlist-settings-empty-site';
+			$errors[] = 'empty-site';
 			$debugEntries[] = [ LogLevel::DEBUG, 'Empty site detected' ];
 		}
 		if ( $noTypes ) {
-			$fatals[] = 'globalwatchlist-settings-no-types';
+			$errors[] = 'no-types';
 			$debugEntries[] = [ LogLevel::DEBUG, 'No types of changes chosen' ];
 		}
 		if ( $anonBot ) {
-			$fatals[] = 'globalwatchlist-settings-anon-bot';
+			$errors[] = 'anon-bot';
 			$debugEntries[] = [ LogLevel::DEBUG, 'Invalid combination: anon-bot edits' ];
 		}
 		if ( $anonMinor ) {
-			$fatals[] = 'globalwatchlist-settings-anon-minor';
+			$errors[] = 'anon-minor';
 			$debugEntries[] = [ LogLevel::DEBUG, 'Invalid combination: anon-minor edits' ];
 		}
 
-		$this->assertFalse( $status->isGood() );
-
-		$errors = $status->getErrors();
-		$errorMessages = array_map(
-			function ( $error ) {
-				return $error['message'];
-			},
-			$errors
-		);
-
-		$this->assertArrayEquals( $fatals, $errorMessages );
+		$this->assertArrayEquals( $errors, $status );
 
 		$this->assertSame( $debugEntries, $logger->getBuffer() );
 		$logger->clearBuffer();
+	}
+
+	public function provideTestSaveOptions_invalid() {
+		return [
+			'only empty site' => [ true, false, false, false ],
+			'only no types' => [ false, true, false, false ],
+			'only anon-bot' => [ false, false, true, false ],
+			'only anon-minor' => [ false, false, false, true ],
+			'everything' => [ true, true, true, true ],
+		];
 	}
 
 	/**
@@ -200,36 +200,29 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 
 		$status = $manager->validateSettings( $invalidSettings );
 
-		$fatals = [];
+		$errors = [];
 		$debugEntries = [ [ LogLevel::DEBUG, 'Validating user options' ] ];
 		if ( $emptySite ) {
-			$fatals[] = 'globalwatchlist-settings-empty-site';
+			$errors[] = 'empty-site';
 			$debugEntries[] = [ LogLevel::DEBUG, 'Empty site detected' ];
 		}
 		if ( $noTypes ) {
-			$fatals[] = 'globalwatchlist-settings-no-types';
+			$errors[] = 'no-types';
 			$debugEntries[] = [ LogLevel::DEBUG, 'No types of changes chosen' ];
 		}
 		if ( $anonBot ) {
-			$fatals[] = 'globalwatchlist-settings-anon-bot';
+			$errors[] = 'anon-bot';
 			$debugEntries[] = [ LogLevel::DEBUG, 'Invalid combination: anon-bot edits' ];
 		}
 		if ( $anonMinor ) {
-			$fatals[] = 'globalwatchlist-settings-anon-minor';
+			$errors[] = 'anon-minor';
 			$debugEntries[] = [ LogLevel::DEBUG, 'Invalid combination: anon-minor edits' ];
 		}
+		if ( !( $emptySite || $noTypes || $anonBot || $anonMinor ) ) {
+			$debugEntries[] = [ LogLevel::DEBUG, 'No issues found' ];
+		}
 
-		$this->assertFalse( $status->isGood() );
-
-		$errors = $status->getErrors();
-		$errorMessages = array_map(
-			function ( $error ) {
-				return $error['message'];
-			},
-			$errors
-		);
-
-		$this->assertArrayEquals( $fatals, $errorMessages );
+		$this->assertArrayEquals( $errors, $status );
 
 		$this->assertSame( $debugEntries, $logger->getBuffer() );
 		$logger->clearBuffer();
@@ -237,36 +230,13 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 
 	public function provideTestValidateSettings() {
 		return [
+			'no errors' => [ false, false, false, false ],
 			'only empty site' => [ true, false, false, false ],
 			'only no types' => [ false, true, false, false ],
 			'only anon-bot' => [ false, false, true, false ],
 			'only anon-minor' => [ false, false, false, true ],
 			'everything' => [ true, true, true, true ],
 		];
-	}
-
-	public function testValidateSettings_good() {
-		$logger = new TestLogger( true );
-		$manager = $this->getManager( $logger );
-
-		$validSettings = [
-			'sites' => [
-				'en.wikipedia.org'
-			],
-			'showtypes' => 'edit|new|log',
-			'anonfilter' => 0,
-			'botfilter' => 0,
-			'minorfilter' => 0,
-		];
-		$status = $manager->validateSettings( $validSettings );
-
-		$this->assertTrue( $status->isGood() );
-
-		$this->assertSame( [
-			[ LogLevel::DEBUG, 'Validating user options' ],
-			[ LogLevel::DEBUG, 'No issues found' ],
-		], $logger->getBuffer() );
-		$logger->clearBuffer();
 	}
 
 	public function testValidateSettings_invalid() {

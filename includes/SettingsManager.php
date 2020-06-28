@@ -28,7 +28,6 @@ use InvalidArgumentException;
 use JavaScriptContent;
 use JavaScriptContentHandler;
 use Psr\Log\LoggerInterface;
-use Status;
 use User;
 use WikiPage;
 
@@ -79,12 +78,12 @@ class SettingsManager {
 	 * @param User $user
 	 * @param array $options
 	 *
-	 * @return Status
+	 * @return array
 	 */
-	public function saveUserOptions( User $user, array $options ) : Status {
-		$status = $this->validateSettings( $options );
+	public function saveUserOptions( User $user, array $options ) : array {
+		$errors = $this->validateSettings( $options );
 
-		if ( $status->isGood() ) {
+		if ( $errors === [] ) {
 			// Only save if settings are valid
 			$userSubpage = $user->getUserPage()->getSubpage( 'global.js' );
 			$wikiPage = WikiPage::factory( $userSubpage );
@@ -95,7 +94,7 @@ class SettingsManager {
 			$wikiPage->doPurge();
 		}
 
-		return $status;
+		return $errors;
 	}
 
 	/**
@@ -149,22 +148,22 @@ class SettingsManager {
 	/**
 	 * Check if settings chosen are valid
 	 *
-	 * Status includes the following possible fatals:
-	 *   - globalwatchlist-settings-empty-site
+	 * Array includes the following possible errors:
+	 *   - empty-site
 	 *       caused by trying to submit an empty or whitespace-only string
-	 *   - globalwatchlist-settings-no-types
+	 *   - no-types
 	 *       caused by trying to choose no types to show
-	 *   - globalwatchlist-settings-anon-bot
+	 *   - anon-bot
 	 *       caused by trying to filter for only anonymous bot edits
-	 *   - globalwatchlist-settings-anon-minor
+	 *   - anon-minor
 	 *       caused by trying to filter for only anonymous minor edits
 	 *
 	 * @param array $options
-	 * @return Status
+	 * @return array
 	 * @throws InvalidArgumentException
 	 */
-	private function validateSettings( array $options ) : Status {
-		$status = Status::newGood();
+	private function validateSettings( array $options ) : array {
+		$errors = [];
 
 		$this->logger->debug( 'Validating user options' );
 
@@ -177,33 +176,33 @@ class SettingsManager {
 
 		foreach ( $options['sites'] as $site ) {
 			if ( trim( $site ) === '' ) {
-				$status->fatal( 'globalwatchlist-settings-empty-site' );
+				$errors[] = 'empty-site';
 				$this->logger->debug( 'Empty site detected' );
 				break;
 			}
 		}
 
 		if ( $options['showtypes'] === [] ) {
-			$status->fatal( 'globalwatchlist-settings-no-types' );
+			$errors[] = 'no-types';
 			$this->logger->debug( 'No types of changes chosen' );
 		}
 
 		if ( $options['anonfilter'] === self::FILTER_REQUIRE ) {
 			if ( $options['botfilter'] === self::FILTER_REQUIRE ) {
-				$status->fatal( 'globalwatchlist-settings-anon-bot' );
+				$errors[] = 'anon-bot';
 				$this->logger->debug( 'Invalid combination: anon-bot edits' );
 			}
 			if ( $options['minorfilter'] === self::FILTER_REQUIRE ) {
-				$status->fatal( 'globalwatchlist-settings-anon-minor' );
+				$errors[] = 'anon-minor';
 				$this->logger->debug( 'Invalid combination: anon-minor edits' );
 			}
 		}
 
-		if ( $status->isGood() ) {
+		if ( $errors === [] ) {
 			$this->logger->debug( 'No issues found' );
 		}
 
-		return $status;
+		return $errors;
 	}
 
 }

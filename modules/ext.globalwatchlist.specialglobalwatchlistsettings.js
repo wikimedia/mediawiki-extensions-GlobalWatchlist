@@ -248,13 +248,14 @@
 			.done( function ( data ) {
 				notifications.onSettingsSaved( data );
 			} )
-			.fail( function ( data ) {
-				notifications.onSettingsFailed( data );
+			.fail( function ( response, data ) {
+				notifications.onSettingsFailed( response, data );
 			} );
 	};
 
 	mw.globalwatchlist = mw.globalwatchlist || {};
 	mw.globalwatchlist.settings = SettingsManager;
+	mw.globalwatchlist.debug = GlobalWatchlistDebug;
 
 	// On ready initialization
 	$( function () {

@@ -8,6 +8,7 @@
 function GlobalWatchlistSaveSettings( GlobalWatchlistDebug, newSettings ) {
 	var params = {
 		action: 'globalwatchlistsettings',
+		errorformat: 'raw',
 		formatversion: 2,
 		sites: newSettings.sites,
 		anonfilter: newSettings.anonFilter,

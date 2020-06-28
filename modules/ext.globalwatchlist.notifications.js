@@ -34,11 +34,12 @@ GlobalWatchlistNotificationManager.prototype.onSettingsSaved = function ( saveDa
 /**
  * Notify that settings were not saved
  *
+ * @param {object} failureCode
  * @param {object} failureData
  */
-GlobalWatchlistNotificationManager.prototype.onSettingsFailed = function ( failureData ) {
-	// TODO handle validation failures in failureData once validatio is added
-	this.debug.info( 'SettingsFailed - error', failureData, 1 );
+GlobalWatchlistNotificationManager.prototype.onSettingsFailed = function ( failureCode, failureData ) {
+	// TODO handle validation failures in failureData once validation is added
+	this.debug.info( 'SettingsFailed - error', [ failureCode, failureData ], 1 );
 
 	mw.notify(
 		mw.msg( 'globalwatchlist-notify-savingfailed' ),

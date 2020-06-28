@@ -81,10 +81,14 @@ class ApiGlobalWatchlistSettings extends ApiBase {
 			'grouppage' => $params['grouppage'],
 			'showtypes' => $params['showtypes'],
 		];
-		$status = $this->settingsManager->saveUserOptions( $this->getUser(), $settings );
+		$errors = $this->settingsManager->saveUserOptions( $this->getUser(), $settings );
 
-		if ( !$status->isGood() ) {
-			$this->dieStatus( $status );
+		if ( $errors !== [] ) {
+			$this->dieWithError(
+				'apierror-globalwatchlist-invalid-settings',
+				null,
+				$errors
+			);
 		}
 
 		$result = [ 'result' => 'Success' ];
