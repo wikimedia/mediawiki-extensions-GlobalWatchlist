@@ -76,6 +76,7 @@
 				"ext.globalwatchlist.specialglobalwatchlistsettings.css"
 			],
 			"messages": [
+				"apierror-globalwatchlist-invalid-settings",
 				"globalwatchlist-add",
 				"globalwatchlist-changetypes",
 				"globalwatchlist-filters",
@@ -100,6 +101,10 @@
 				"globalwatchlist-remove",
 				"globalwatchlist-resetchanges",
 				"globalwatchlist-save",
+				"globalwatchlist-settings-error-anon-bot",
+				"globalwatchlist-settings-error-anon-minor",
+				"globalwatchlist-settings-error-no-sites",
+				"globalwatchlist-settings-error-no-types",
 				"globalwatchlist-show-edits",
 				"globalwatchlist-show-logentries",
 				"globalwatchlist-show-newpages",

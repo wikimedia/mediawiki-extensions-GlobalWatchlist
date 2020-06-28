@@ -12,9 +12,5 @@
 	"globalwatchlist-gotoglobal": "Global watchlist",
 	"globalwatchlist-gotoglobal-tooltip": "View global watchlist",
 	"globalwatchlist-must-login": "Please log in to use the GlobalWatchlist special pages",
-	"globalwatchlist-javascript-required": "The GlobalWatchlist special pages require JavaScript to work",
-	"globalwatchlist-settings-empty-site": "An empty site was chosen",
-	"globalwatchlist-settings-no-types": "No types of changes were chosen",
-	"globalwatchlist-settings-anon-bot": "Problematic combination: anonymous users cannot make bot edits",
-	"globalwatchlist-settings-anon-minor": "Problematic combination: anonymous users cannot make minor edits"
+	"globalwatchlist-javascript-required": "The GlobalWatchlist special pages require JavaScript to work"
 }

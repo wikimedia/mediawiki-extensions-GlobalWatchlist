@@ -12,9 +12,5 @@
 	"globalwatchlist-gotoglobal": "Link text for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
 	"globalwatchlist-gotoglobal-tooltip": "Tooltip for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
 	"globalwatchlist-must-login": "Text shown to anonymous users trying to use [[Special:GlobalWatchlist]] and [[Special:GlobalWatchlistSettings]]",
-	"globalwatchlist-javascript-required": "Message shown when Javascript is not enabled",
-	"globalwatchlist-settings-empty-site": "Error message",
-	"globalwatchlist-settings-no-types": "Error message",
-	"globalwatchlist-settings-anon-bot": "Error message",
-	"globalwatchlist-settings-anon-minor": "Error message"
+	"globalwatchlist-javascript-required": "Message shown when Javascript is not enabled"
 }

@@ -12,5 +12,6 @@
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "{{doc-apihelp-param|globalwatchlistsettings|confirmallsites}}",
 	"apihelp-globalwatchlistsettings-param-fastmode": "{{doc-apihelp-param|globalwatchlistsettings|fastmode}}",
 	"apihelp-globalwatchlistsettings-param-grouppage": "{{doc-apihelp-param|globalwatchlistsettings|grouppage}}",
-	"apihelp-globalwatchlistsettings-param-showtypes": "{{doc-apihelp-param|globalwatchlistsettings|showtypes}}"
+	"apihelp-globalwatchlistsettings-param-showtypes": "{{doc-apihelp-param|globalwatchlistsettings|showtypes}}",
+	"apierror-globalwatchlist-invalid-settings": "{{doc-apierror}}"
 }

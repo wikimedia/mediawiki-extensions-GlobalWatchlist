@@ -38,16 +38,54 @@ GlobalWatchlistNotificationManager.prototype.onSettingsSaved = function ( saveDa
  * @param {object} failureData
  */
 GlobalWatchlistNotificationManager.prototype.onSettingsFailed = function ( failureCode, failureData ) {
-	// TODO handle validation failures in failureData once validation is added
 	this.debug.info( 'SettingsFailed - error', [ failureCode, failureData ], 1 );
 
-	mw.notify(
-		mw.msg( 'globalwatchlist-notify-savingfailed' ),
+	if ( failureCode === 'globalwatchlist-invalid-settings' ) {
+		this.onInvalidSettings( failureData );
+	} else {
+		// Something else happened
+		mw.notify(
+			mw.msg( 'globalwatchlist-notify-savingfailed' ),
+			{
+				title: mw.msg( 'globalwatchlist-notify-heading' ),
+				autoHide: false
+			}
+		);
+	}
+};
+
+/**
+ * Alert the user to issues with their selected settings
+ *
+ * @param {object} failureData
+ */
+GlobalWatchlistNotificationManager.prototype.onInvalidSettings = function ( failureData ) {
+	var errorCodes = failureData.errors[ 0 ].data,
+		errorList = [];
+
+	// Can't use Object.values, not available in internet explorer
+	Object.keys( errorCodes ).forEach( function ( index ) {
+		var msg, li,
+			code = errorCodes[ index ];
+		// Errors used:
+		// * globalwatchlist-settings-error-anon-bot
+		// * globalwatchlist-settings-error-anon-minor
+		// * globalwatchlist-settings-error-no-sites
+		// * globalwatchlist-settings-error-no-types
+		msg = mw.msg( 'globalwatchlist-settings-error-' + code );
+		li = '<li>' + msg + '</li>';
+		errorList.push( li );
+	} );
+
+	OO.ui.alert(
+		new OO.ui.HtmlSnippet(
+			'<ul>' + errorList.join( '' ) + '</ul>'
+		),
 		{
-			title: mw.msg( 'globalwatchlist-notify-heading' ),
-			autoHide: false
+			title: mw.msg( 'apierror-globalwatchlist-invalid-settings' ),
+			size: 'large'
 		}
 	);
-};
+}
 
 module.exports = GlobalWatchlistNotificationManager;

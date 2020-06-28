@@ -24,7 +24,6 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use FormatJson;
-use InvalidArgumentException;
 use JavaScriptContent;
 use JavaScriptContentHandler;
 use Psr\Log\LoggerInterface;
@@ -149,18 +148,17 @@ class SettingsManager {
 	 * Check if settings chosen are valid
 	 *
 	 * Array includes the following possible errors:
-	 *   - empty-site
-	 *       caused by trying to submit an empty or whitespace-only string
-	 *   - no-types
-	 *       caused by trying to choose no types to show
 	 *   - anon-bot
 	 *       caused by trying to filter for only anonymous bot edits
 	 *   - anon-minor
 	 *       caused by trying to filter for only anonymous minor edits
+	 *   - no-sites
+	 *       caused by trying to submit an empty list of sites
+	 *   - no-types
+	 *       caused by trying to choose no types to show
 	 *
 	 * @param array $options
 	 * @return array
-	 * @throws InvalidArgumentException
 	 */
 	private function validateSettings( array $options ) : array {
 		$errors = [];
@@ -168,18 +166,8 @@ class SettingsManager {
 		$this->logger->debug( 'Validating user options' );
 
 		if ( $options['sites'] === [] ) {
-			$this->logger->debug( 'Error - no sites provided' );
-			throw new InvalidArgumentException(
-				'Sites must be chosen, should have been enforced by API'
-			);
-		}
-
-		foreach ( $options['sites'] as $site ) {
-			if ( trim( $site ) === '' ) {
-				$errors[] = 'empty-site';
-				$this->logger->debug( 'Empty site detected' );
-				break;
-			}
+			$errors[] = 'no-sites';
+			$this->logger->debug( 'No sites provided' );
 		}
 
 		if ( $options['showtypes'] === [] ) {
