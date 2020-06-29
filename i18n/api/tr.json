@@ -12,5 +12,6 @@
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "Tüm siteleri göründüğü gibi işaretlemek için onay isteyin",
 	"apihelp-globalwatchlistsettings-param-fastmode": "Hızlı modu etkinleştir",
 	"apihelp-globalwatchlistsettings-param-grouppage": "Sayfalandırılmış grup sonuçları",
-	"apihelp-globalwatchlistsettings-param-showtypes": "Gösterilecek değişiklik türleri"
+	"apihelp-globalwatchlistsettings-param-showtypes": "Gösterilecek değişiklik türleri",
+	"apierror-globalwatchlist-invalid-settings": "Geçersiz ayarlar seçildi"
 }

@@ -12,5 +12,6 @@
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "Zahtijevaj potvrdu za označavanje svih mrežnih mjesta pregledanim",
 	"apihelp-globalwatchlistsettings-param-fastmode": "Omogući brzi modus",
 	"apihelp-globalwatchlistsettings-param-grouppage": "Grupiranje rezultata po stranici",
-	"apihelp-globalwatchlistsettings-param-showtypes": "Vrste promjena za prikaz"
+	"apihelp-globalwatchlistsettings-param-showtypes": "Vrste promjena za prikaz",
+	"apierror-globalwatchlist-invalid-settings": "Odabrane postavke nisu valjane"
 }

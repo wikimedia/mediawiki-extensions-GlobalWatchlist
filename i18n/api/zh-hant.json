@@ -12,5 +12,6 @@
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "標記所有網站為已看過之前，需要確認",
 	"apihelp-globalwatchlistsettings-param-fastmode": "啟用快速模式",
 	"apihelp-globalwatchlistsettings-param-grouppage": "按頁面區分結果",
-	"apihelp-globalwatchlistsettings-param-showtypes": "要顯示出的更改類型"
+	"apihelp-globalwatchlistsettings-param-showtypes": "要顯示出的更改類型",
+	"apierror-globalwatchlist-invalid-settings": "選擇的設定無效"
 }

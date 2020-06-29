@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Pamputt",
 			"Wladek92"
 		]
@@ -13,5 +14,6 @@
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "Demander confirmation pour marquer tous les sites comme vus",
 	"apihelp-globalwatchlistsettings-param-fastmode": "Activer le mode rapide",
 	"apihelp-globalwatchlistsettings-param-grouppage": "Grouper les résultats par page",
-	"apihelp-globalwatchlistsettings-param-showtypes": "Types de changements à afficher"
+	"apihelp-globalwatchlistsettings-param-showtypes": "Types de changements à afficher",
+	"apierror-globalwatchlist-invalid-settings": "Paramètres sélectionnés non valides"
 }

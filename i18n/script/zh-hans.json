@@ -29,6 +29,6 @@
 	"globalwatchlist-refresh": "刷新",
 	"globalwatchlist-remove": "删除",
 	"globalwatchlist-save": "提交设置",
-	"globalwatchlist-settings-error-nosites": "没有选定站点",
+	"globalwatchlist-settings-error-no-sites": "没有选定站点",
 	"globalwatchlist-unwatch": "取消监视"
 }

@@ -31,10 +31,10 @@
 	"globalwatchlist-refresh": "Segar semula",
 	"globalwatchlist-remove": "Buang",
 	"globalwatchlist-save": "Simpan tetapan",
-	"globalwatchlist-settings-error-anonbot": "Pengguna awanama tidak boleh membuat suntingan bot",
-	"globalwatchlist-settings-error-anonminor": "Pengguna awanama tidak boleh membuat suntingan kecil",
-	"globalwatchlist-settings-error-badsites": "Tapak tidak sah: $1",
-	"globalwatchlist-settings-error-nochanges": "Tiada jenis perubahan dipilih",
+	"globalwatchlist-settings-error-anon-bot": "Pengguna awanama tidak boleh membuat suntingan bot",
+	"globalwatchlist-settings-error-anon-minor": "Pengguna awanama tidak boleh membuat suntingan kecil",
+	"globalwatchlist-settings-error-bad-sites": "Tapak tidak sah: $1",
+	"globalwatchlist-settings-error-no-types": "Tiada jenis perubahan dipilih",
 	"globalwatchlist-show-edits": "Tunjuk suntingan laman",
 	"globalwatchlist-unwatch": "nyahpantau"
 }

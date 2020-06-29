@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"DannyS712"
+			"DannyS712",
+			"Umherirrender"
 		]
 	},
-	"apihelp-globalwatchlistsettings-summary": "Manage global watchlist settings",
+	"apihelp-globalwatchlistsettings-summary": "{{doc-apihelp-summary|globalwatchlistsettings}}\nManage global watchlist settings",
 	"apihelp-globalwatchlistsettings-param-sites": "{{doc-apihelp-param|globalwatchlistsettings|sites}}",
 	"apihelp-globalwatchlistsettings-param-anonfilter": "{{doc-apihelp-param|globalwatchlistsettings|anonfilter}}",
 	"apihelp-globalwatchlistsettings-param-botfilter": "{{doc-apihelp-param|globalwatchlistsettings|botfilter}}",
