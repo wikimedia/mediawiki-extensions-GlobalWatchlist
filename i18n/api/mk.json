@@ -12,5 +12,6 @@
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "Барај потврда за означување на сите проекти како видени",
 	"apihelp-globalwatchlistsettings-param-fastmode": "Овозможи брз режим",
 	"apihelp-globalwatchlistsettings-param-grouppage": "Групирај го исходот по страници",
-	"apihelp-globalwatchlistsettings-param-showtypes": "Видови промени за приказ"
+	"apihelp-globalwatchlistsettings-param-showtypes": "Видови промени за приказ",
+	"apierror-globalwatchlist-invalid-settings": "Избрани се неважечки поставки"
 }

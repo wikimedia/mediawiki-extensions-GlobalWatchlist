@@ -12,5 +12,6 @@
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "Requer confirmação para marcar todos os sites como vistos",
 	"apihelp-globalwatchlistsettings-param-fastmode": "Ativar modo rápido",
 	"apihelp-globalwatchlistsettings-param-grouppage": "Agrupar resultado por página",
-	"apihelp-globalwatchlistsettings-param-showtypes": "Tipos de alterações a serem exibidas"
+	"apihelp-globalwatchlistsettings-param-showtypes": "Tipos de alterações a serem exibidas",
+	"apierror-globalwatchlist-invalid-settings": "Configurações inválidas selecionadas"
 }
