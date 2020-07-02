@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"IKhitron"
+		]
+	},
+	"globalwatchlist": "רשימת מעקב גלובלית",
+	"globalwatchlist-desc": "הוספת רשימת מעקב גלובלית",
+	"globalwatchlist-summary": "דף מיוחד להצגת רשימת מעקב גלובלית",
+	"globalwatchlistsettings": "העדפות רשימת המעקב הגלובלית",
+	"globalwatchlistsettings-summary": "דף מיוחד לניהול רשימת המעקב הגלובלית",
+	"globalwatchlist-gotoglobal": "רשימת מעקב גלובלית",
+	"globalwatchlist-gotoglobal-tooltip": "הצגת רשימת המעקב הגלובלית",
+	"globalwatchlist-must-login": "אנא התחברו לשימוש בדפי רשימת המעקב הגלובלית",
+	"globalwatchlist-javascript-required": "דפי רשימת המעקב הגלובלית דורשים Javascript כדי לעבוד"
+}

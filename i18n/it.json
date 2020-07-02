@@ -4,5 +4,13 @@
 			"Beta16"
 		]
 	},
-	"globalwatchlist-gotoglobal": "Osservati speciali globali"
+	"globalwatchlist": "Osservati speciali globali",
+	"globalwatchlist-desc": "Aggiungi agli osservati speciali globali",
+	"globalwatchlist-summary": "Pagina speciale per vedere gli osservati speciali globali",
+	"globalwatchlistsettings": "Impostazioni osservati speciali globali",
+	"globalwatchlistsettings-summary": "Pagina speciale per gestire gli osservati speciali globali",
+	"globalwatchlist-gotoglobal": "Osservati speciali globali",
+	"globalwatchlist-gotoglobal-tooltip": "Vedi gli osservati speciali globali",
+	"globalwatchlist-must-login": "Accedi per utilizzare le pagine speciali sugli osservati speciali globali",
+	"globalwatchlist-javascript-required": "Le pagine speciali sugli osservati speciali globali richiedono JavaScript per funzionare"
 }
