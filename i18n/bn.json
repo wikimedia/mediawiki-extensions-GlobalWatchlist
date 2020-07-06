@@ -4,5 +4,13 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"globalwatchlist-gotoglobal": "বৈশ্বিক নজরতালিকা"
+	"globalwatchlist": "বৈশ্বিক নজরতালিকা",
+	"globalwatchlist-desc": "একটি বৈশ্বিক নজরতালিকা যোগ করে",
+	"globalwatchlist-summary": "বৈশ্বিক নজরতালিকা দেখার জন্য একটি বিশেষ পাতা",
+	"globalwatchlistsettings": "বৈশ্বিক নজরতালিকা সেটিং",
+	"globalwatchlistsettings-summary": "বৈশ্বিক নজরতালিকা পরিচালনা করার জন্য একটি বিশেষ পাতা",
+	"globalwatchlist-gotoglobal": "বৈশ্বিক নজরতালিকা",
+	"globalwatchlist-gotoglobal-tooltip": "বৈশ্বিক নজরতালিকা দেখুন",
+	"globalwatchlist-must-login": "বৈশ্বিক নজর তালিকার বিশেষ পাতা ব্যবহার করতে দয়া করে প্রবেশ করুন",
+	"globalwatchlist-javascript-required": "বৈশ্বিক নজরতালিকার বিশেষ পাতাগুলি কাজ করার জন্য জাভাস্ক্রিপ্টের প্রয়োজন"
 }
