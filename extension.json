@@ -23,6 +23,9 @@
 		}
 	},
 	"Hooks": {
+		"GetPreferences": {
+			"handler": "GlobalWatchlistHooks"
+		},
 		"LoginFormValidErrorMessages": {
 			"handler": "GlobalWatchlistHooks"
 		},
@@ -97,16 +100,17 @@
 				"sp-contributions-logs"
 			],
 			"dependencies": [
-				"mediawiki.ForeignApi",
 				"jquery.makeCollapsible",
+				"mediawiki.ForeignApi",
 				"oojs-ui-core",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"oojs-ui.styles.icons-movement",
-				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-content",
+				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-media",
-				"oojs-ui.styles.icons-moderation"
+				"oojs-ui.styles.icons-moderation",
+				"oojs-ui.styles.icons-movement",
+				"user.options"
 			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
@@ -160,11 +164,12 @@
 				"oojs-ui-core",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"oojs-ui.styles.icons-movement",
-				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-content",
+				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-media",
-				"oojs-ui.styles.icons-moderation"
+				"oojs-ui.styles.icons-moderation",
+				"oojs-ui.styles.icons-movement",
+				"user.options"
 			]
 		}
 	},

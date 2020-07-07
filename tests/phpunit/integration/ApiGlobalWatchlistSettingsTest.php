@@ -18,7 +18,6 @@ class ApiGlobalWatchlistSettingsTest extends ApiTestCase {
 
 	public function testApiGlobalWatchlistSettings() {
 		$user = $this->getTestUser()->getUser();
-		$userGlobalJS = $user->getUserPage()->getSubPage( 'global.js' );
 
 		$this->doApiRequestWithToken(
 			[
@@ -32,31 +31,24 @@ class ApiGlobalWatchlistSettingsTest extends ApiTestCase {
 			$user
 		);
 
-		// Test that it was created properly:
+		// Test that the option was saved
 		$result = $this->doApiRequest(
 			[
 				'action' => 'query',
-				'prop' => 'revisions',
-				'titles' => $userGlobalJS->getPrefixedText(),
-				'rvprop' => 'content',
-				'rvslots' => 'main'
-			]
+				'meta' => 'userinfo',
+				'uiprop' => 'options'
+			],
+			null,
+			$user
 		);
 
 		$this->assertArrayHasKey( 'query', $result[0] );
-		$this->assertArrayHasKey( 'pages', $result[0]['query'] );
-		$pages = array_values( $result[0]['query']['pages'] );
+		$this->assertArrayHasKey( 'userinfo', $result[0]['query'] );
+		$this->assertArrayHasKey( 'options', $result[0]['query']['userinfo'] );
 
-		$this->assertArrayHasKey( 'revisions', $pages[0] );
-		$slot = $pages[0]['revisions'][0]['slots']['main'];
+		$options = $result[0]['query']['userinfo']['options'];
 
-		$content = $slot['content'];
-
-		$this->assertStringContainsString(
-			"window.GlobalWatchlistSettings =",
-			$content,
-			'Settings were added to the user global.js page'
-		);
+		$this->assertArrayHasKey( SettingsManager::PREFERENCE_NAME, $options );
 	}
 
 	public function testInvalidSettings() {

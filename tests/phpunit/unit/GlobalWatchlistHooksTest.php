@@ -8,6 +8,7 @@ use Message;
 use Skin;
 use SpecialPage;
 use Title;
+use User;
 
 /**
  * Tests for the hook handler
@@ -124,6 +125,24 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals(
 			[ 'foo', 'bar', 'globalwatchlist-must-login' ],
 			$messages
+		);
+	}
+
+	public function testPreferencesAdded() {
+		$specialPageFactory = $this->createMock( SpecialPageFactory::class );
+		$hookHandler = new GlobalWatchlistHooks( $specialPageFactory );
+
+		$preferences = [];
+		$user = $this->createMock( User::class );
+		$hookHandler->onGetPreferences( $user, $preferences );
+
+		$this->assertArrayEquals(
+			[
+				SettingsManager::PREFERENCE_NAME => [
+					'type' => 'api'
+				]
+			],
+			$preferences
 		);
 	}
 

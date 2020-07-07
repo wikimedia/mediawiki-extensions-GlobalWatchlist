@@ -25,14 +25,15 @@ function getQueryFlag( setting, flag ) {
  * @return {object}
  */
 function GlobalWatchlistGetSettings() {
-	var userSettings = window.GlobalWatchlistSettings,
+	// Note: this must be the same key as is used in the settings manager
+	var userSettings = JSON.parse( mw.user.options.get( 'global-watchlist-options' ) ),
 		config = {};
 
-	if ( userSettings === undefined ) {
+	if ( userSettings === null ) {
 		// Defaults
 		userSettings = {
 			sites: [
-				mw.config.get( 'wgServerName' )
+				mw.config.get( 'wgServer' ).replace( /.*?\/\//, '' )
 			],
 			anonfilter: 0,
 			botfilter: 0,

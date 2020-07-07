@@ -26,13 +26,19 @@ namespace MediaWiki\Extension\GlobalWatchlist;
 
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use Skin;
+use User;
 
 /**
  * @author DannyS712
  */
-class GlobalWatchlistHooks implements LoginFormValidErrorMessagesHook, SkinBuildSidebarHook {
+class GlobalWatchlistHooks implements
+	GetPreferencesHook,
+	LoginFormValidErrorMessagesHook,
+	SkinBuildSidebarHook
+{
 
 	/** @var SpecialPageFactory */
 	private $specialPageFactory;
@@ -42,6 +48,28 @@ class GlobalWatchlistHooks implements LoginFormValidErrorMessagesHook, SkinBuild
 	 */
 	public function __construct( SpecialPageFactory $specialPageFactory ) {
 		$this->specialPageFactory = $specialPageFactory;
+	}
+
+	/**
+	 * @param User $user
+	 * @param array &$preferences
+	 * @return bool|void True or no return value to continue or false to abort
+	 */
+	public function onGetPreferences( $user, &$preferences ) {
+		$preferences[ SettingsManager::PREFERENCE_NAME ] = [
+			'type' => 'api'
+		];
+	}
+
+	/**
+	 * @param string[] &$messages
+	 * @return void
+	 */
+	public function onLoginFormValidErrorMessages( array &$messages ) {
+		$messages = array_merge(
+			$messages,
+			[ 'globalwatchlist-must-login' ]
+		);
 	}
 
 	/**
@@ -66,17 +94,6 @@ class GlobalWatchlistHooks implements LoginFormValidErrorMessagesHook, SkinBuild
 			'title' => $skin->msg( 'globalwatchlist-gotoglobal-tooltip' )->text(),
 		];
 		$bar['navigation'][] = $link;
-	}
-
-	/**
-	 * @param string[] &$messages
-	 * @return void
-	 */
-	public function onLoginFormValidErrorMessages( array &$messages ) {
-		$messages = array_merge(
-			$messages,
-			[ 'globalwatchlist-must-login' ]
-		);
 	}
 
 }

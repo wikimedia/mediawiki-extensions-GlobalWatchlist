@@ -2,15 +2,12 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
-use JavaScriptContent;
-use JavaScriptContentHandler;
+use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
 use Psr\Log\LogLevel;
-use Status;
 use TestLogger;
 use User;
 use Wikimedia\TestingAccessWrapper;
-use WikiPage;
 
 /**
  * Test internals of SettingsManager
@@ -22,14 +19,14 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 
 	private function getManager(
 		$logger,
-		$javascriptContentHandler = null
+		$userOptionsManager = null
 	) {
-		if ( $javascriptContentHandler === null ) {
-			$javascriptContentHandler = $this->createMock( JavascriptContentHandler::class );
+		if ( $userOptionsManager === null ) {
+			$userOptionsManager = $this->createMock( UserOptionsManager::class );
 		}
 		$manager = new SettingsManager(
 			$logger,
-			$javascriptContentHandler
+			$userOptionsManager
 		);
 		$accessManager = TestingAccessWrapper::newFromObject( $manager );
 		return $accessManager;
@@ -47,10 +44,8 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		bool $anonMinor
 	) {
 		// If a user tries to save invalid options, they should nevet get to the point
-		// of `getUserPage` being called
-		$user = $this->createMock( User::class );
-		$user->expects( $this->never() )
-			->method( 'getUserPage' );
+		// of options being saved
+		$userOptionsManager = $this->createNoOpMock( UserOptionsManager::class );
 
 		$logger = new TestLogger( true );
 		$manager = $this->getManager( $logger );
@@ -63,6 +58,7 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 			'minorfilter' => $anonMinor ? 1 : 0,
 		];
 
+		$user = $this->createMock( User::class );
 		$status = $manager->saveUserOptions( $user, $invalidSettings );
 
 		$errors = [];
@@ -95,71 +91,37 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	/**
-	 * @dataProvider proviteTestSaveOptionsInternal
-	 * @param bool $hasContent
-	 */
-	public function testSaveOptionsInternal( $hasContent ) {
+	public function testSaveOptionsInternal() {
 		$logger = new TestLogger( true );
 		$newOptions = 'NewOptionsGoHere';
 
-		$newContent = $this->createMock( JavaScriptContent::class );
-		$javaScriptContentHandler = $this->createMock( JavaScriptContentHandler::class );
-		$javaScriptContentHandler->expects( $this->once() )
-			->method( 'unserializeContent' )
-			->with( $this->equalTo(
-				"window.GlobalWatchlistSettings = $newOptions;\n"
-			) )
-			->willReturn( $newContent );
-
-		if ( $hasContent ) {
-			// Has existing content, but its an empty string
-			$currentContent = $this->createMock( JavaScriptContent::class );
-			$currentContent->expects( $this->once() )
-				->method( 'getText' )
-				->willReturn( '' );
-		} else {
-			$currentContent = null;
-		}
-
 		$user = $this->createMock( User::class );
-		$user->expects( $this->once() )
-			->method( 'getName' )
-			->willReturn( 'unused' );
 
-		$wikiPage = $this->createMock( WikiPage::class );
-		$wikiPage->expects( $this->once() )
-			->method( 'getContent' )
-			->willReturn( $currentContent );
-		$wikiPage->expects( $this->once() )
-			->method( 'doEditContent' )
+		$userOptionsManager = $this->createMock( UserOptionsManager::class );
+		$userOptionsManager->expects( $this->once() )
+			->method( 'setOption' )
 			->with(
-				$this->equalTo( $newContent ),
-				$this->equalTo( 'Automatically updating GlobalWatchlist settings' ),
-				$this->equalTo( 0 ),
-				$this->equalTo( false ),
+				$this->equalTo( $user ),
+				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
+				$this->equalTo( $newOptions )
+			);
+		$userOptionsManager->expects( $this->once() )
+			->method( 'saveOptions' )
+			->with(
 				$this->equalTo( $user )
-			)
-			->willReturn( Status::newGood() );
+			);
 
 		$manager = $this->getManager(
 			$logger,
-			$javaScriptContentHandler
+			$userOptionsManager
 		);
 
-		$manager->saveOptionsInternal( $user, $wikiPage, $newOptions );
+		$manager->saveOptionsInternal( $user, $newOptions );
 
 		$this->assertSame( [
 			[ LogLevel::DEBUG, "Saving options for {username}: {userOptions}" ],
 		], $logger->getBuffer() );
 		$logger->clearBuffer();
-	}
-
-	public function proviteTestSaveOptionsInternal() {
-		return [
-			'has existing content' => [ true ],
-			'no existing content' => [ false ],
-		];
 	}
 
 	/**

@@ -24,16 +24,28 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use FormatJson;
-use JavaScriptContent;
-use JavaScriptContentHandler;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsManager;
 use Psr\Log\LoggerInterface;
-use User;
-use WikiPage;
 
 /**
  * @author DannyS712
  */
 class SettingsManager {
+
+	/**
+	 * @var string
+	 *
+	 * Name for the user option in the database with the user's global watchlist settings
+	 * @note This must be the same as the options name used in getSettings.js
+	 */
+	public const PREFERENCE_NAME = 'global-watchlist-options';
+
+	/**
+	 * @var int
+	 * Latest version of the format the settings are in, in case it changes
+	 */
+	private const PREFERENCE_VERSION = 1;
 
 	/**
 	 * Make the code clearer by using constants instead of 0, 1, or 2 to represent the filter
@@ -49,99 +61,68 @@ class SettingsManager {
 	/** @var int Exclude edits that match the condition */
 	private const FILTER_EXCLUDE = 2;
 
-	/** @val LoggerInterface */
+	/** @var LoggerInterface */
 	private $logger;
 
-	/**
-	 * @var JavaScriptContentHandler
-	 *
-	 * Used for converting the options text to a Content object
-	 */
-	private $javaScriptContentHandler;
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
 
 	/**
 	 * @param LoggerInterface $logger
-	 * @param JavaScriptContentHandler $javaScriptContentHandler
+	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
 		LoggerInterface $logger,
-		JavaScriptContentHandler $javaScriptContentHandler
+		UserOptionsManager $userOptionsManager
 	) {
 		$this->logger = $logger;
-		$this->javaScriptContentHandler = $javaScriptContentHandler;
+		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/**
 	 * Save user settings
 	 *
-	 * @param User $user
+	 * @param UserIdentity $userIdentity
 	 * @param array $options
 	 *
 	 * @return array
 	 */
-	public function saveUserOptions( User $user, array $options ) : array {
+	public function saveUserOptions( UserIdentity $userIdentity, array $options ) : array {
 		$errors = $this->validateSettings( $options );
 
 		if ( $errors === [] ) {
 			// Only save if settings are valid
-			$userSubpage = $user->getUserPage()->getSubpage( 'global.js' );
-			$wikiPage = WikiPage::factory( $userSubpage );
+			$options['version'] = self::PREFERENCE_VERSION;
 
-			$optionsStr = FormatJson::encode( $options, true );
-			$this->saveOptionsInternal( $user, $wikiPage, $optionsStr );
-
-			$wikiPage->doPurge();
+			$optionsStr = FormatJson::encode( $options );
+			$this->saveOptionsInternal( $userIdentity, $optionsStr );
 		}
 
 		return $errors;
 	}
 
 	/**
-	 * Actually save user options
+	 * Actually save user options in the database
 	 *
-	 * Separate from the public interface to allow unit testing
-	 *
-	 * @param User $user
-	 * @param WikiPage $wikiPage
+	 * @param UserIdentity $userIdentity
 	 * @param string $options
 	 */
-	private function saveOptionsInternal( User $user, WikiPage $wikiPage, string $options ) {
+	private function saveOptionsInternal( UserIdentity $userIdentity, string $options ) {
 		$this->logger->debug(
 			"Saving options for {username}: {userOptions}",
 			[
-				'username' => $user->getName(),
+				'username' => $userIdentity->getName(),
 				'userOptions' => $options
 			]
 		);
 
-		$currentContent = $wikiPage->getContent();
-
-		if ( $currentContent ) {
-			/** @var JavaScriptContent $currentContent */
-			'@phan-var JavaScriptContent $currentContent';
-
-			$currentText = $currentContent->getText();
-			$startingText = preg_replace(
-				"/window\.GlobalWatchlistSettings\s*=\s*{[^}]*\};\n?/s",
-				'',
-				$currentText
-			);
-		} else {
-			$startingText = '';
-		}
-
-		$settingsStr = "window.GlobalWatchlistSettings = $options;\n";
-		$newText = $settingsStr . $startingText;
-
-		$newContent = $this->javaScriptContentHandler->unserializeContent( $newText );
-
-		$wikiPage->doEditContent(
-			$newContent,
-			'Automatically updating GlobalWatchlist settings',
-			0,
-			false,
-			$user
+		$this->userOptionsManager->setOption(
+			$userIdentity,
+			self::PREFERENCE_NAME,
+			$options
 		);
+
+		$this->userOptionsManager->saveOptions( $userIdentity );
 	}
 
 	/**
