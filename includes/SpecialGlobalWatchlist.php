@@ -52,6 +52,11 @@ class SpecialGlobalWatchlist extends SpecialPage {
 		$out = $this->getOutput();
 		$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist' );
 
+		$out->addJsConfigVars(
+			'wgGlobalWatchlistWikibaseSite',
+			$this->getConfig()->get( 'GlobalWatchlistWikibaseSite' )
+		);
+
 		// Class is for JS to detect and replace
 		$message = Html::rawElement(
 			'div',

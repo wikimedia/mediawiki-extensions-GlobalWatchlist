@@ -27,7 +27,8 @@ function getQueryFlag( setting, flag ) {
 function GlobalWatchlistGetSettings() {
 	// Note: this must be the same key as is used in the settings manager
 	var userSettings = JSON.parse( mw.user.options.get( 'global-watchlist-options' ) ),
-		config = {};
+		config = {},
+		namespaceIds = mw.config.get( 'wgNamespaceIds' );
 
 	if ( userSettings === null ) {
 		// Defaults
@@ -53,6 +54,7 @@ function GlobalWatchlistGetSettings() {
 		confirmAllSites: userSettings.confirmallsites,
 		fastMode: userSettings.fastmode,
 		groupPage: userSettings.grouppage,
+		lang: mw.config.get( 'wgUserLanguage' ),
 		showEdits: userSettings.showtypes.indexOf( 'edit' ) > -1,
 		showLogEntries: userSettings.showtypes.indexOf( 'log' ) > -1,
 		showNewPages: userSettings.showtypes.indexOf( 'new' ) > -1,
@@ -73,6 +75,12 @@ function GlobalWatchlistGetSettings() {
 		getQueryFlag( config['bot'], 'bot' ),
 		getQueryFlag( config['minor'], 'minor' )
 	].join( '' ).replace( /^\|+/, '' );
+
+	// Always includes item and property, conditionally include lexeme if it exists
+	config['wikibaseLabelNamespaces'] = [ 0, namespaceIds['property'] ];
+	if ( namespaceIds['lexeme'] !== undefined ) {
+		config['wikibaseLabelNamespaces'].push( namespaceIds['lexeme'] );
+	}
 
 	return config;
 }

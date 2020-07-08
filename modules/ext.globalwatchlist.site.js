@@ -432,7 +432,6 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 
 /**
  * Fetch and process wikidata labels when the watchlist is for wikidata
- * TODO re-add this once I have wikibase set up locally
  *
  * @param {object} summary
  * @return {jQuery.Promise}
@@ -440,13 +439,19 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 GlobalWatchlistSite.prototype.makeWikidataList = function (summary) {
 	var that = this;
 	return new Promise( function ( resolve ) {
-		// TODO set up local wikibase and check that this still works
-		/* eslint-disable-next-line no-constant-condition */
-		if ( that.site !== 'www.wikidata.org' || that.config.fastMode || true ) {
+		if ( that.config.fastMode ) {
+			that.debug( 'makeWikidataList', 'Skipping, fast mode is enabled', 1 );
+			resolve( summary );
+		} else if ( that.site !== mw.config.get( 'wgGlobalWatchlistWikibaseSite' ) ) {
+			that.debug(
+				'makeWikidataList',
+				'Skipping, current site (' + that.site + ') is not the correct site (' + mw.config.get( 'wgGlobalWatchlistWikibaseSite' ) + ')',
+				1
+			);
 			resolve( summary );
 		} else {
 			var ids = [],
-				wdns = [ 0, 120, 146 ];
+				wdns = that.config.wikibaseLabelNamespaces;
 			summary.forEach( function ( entry ) {
 				if ( wdns.indexOf( entry.ns ) > -1 ) {
 					entry.titleMsg = entry.title.replace(

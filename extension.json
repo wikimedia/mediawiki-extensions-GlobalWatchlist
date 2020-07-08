@@ -58,6 +58,12 @@
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
+	"config": {
+		"GlobalWatchlistWikibaseSite": {
+			"value": "www.wikidata.org",
+			"description": "Site for which labels should be fetched for items on the watchlist"
+		}
+	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "GlobalWatchlist/modules"
