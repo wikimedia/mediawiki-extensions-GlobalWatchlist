@@ -1,4 +1,58 @@
 /**
+ * Convert an array of two or more objects for specific edits to the same page to one object
+ * with the information grouped
+ *
+ * @param {array} edits
+ * @return {object}
+ */
+function mergePageEdits( edits ) {
+	var mergedEditInfo = {};
+
+	mergedEditInfo.bot = edits
+		.map( function ( edit ) {
+			return edit.bot;
+		} )
+		.reduce( function ( bot1, bot2 ) {
+			// The combined edits are only tagged as bot if all of the edits where bot edits
+			return bot1 && bot2;
+		} );
+
+	mergedEditInfo.editCount = edits.length;
+
+	mergedEditInfo.fromRev = edits
+		.map( function ( edit ) {
+			return edit.old_revid;
+		} )
+		.reduce( function ( edit1, edit2 ) {
+			// Get the lower rev id, corresponding to the older revision
+			return ( edit1 > edit2 ? edit2 : edit1 );
+		} );
+
+	mergedEditInfo.minor = edits
+		.map( function ( edit ) {
+			return edit.minor;
+		} )
+		.reduce( function ( minor1, minor2 ) {
+			// The combined edits are only tagged as minor if all of the edits where minor
+			return minor1 && minor2;
+		} );
+
+	// No tags
+	mergedEditInfo.tags = [];
+
+	mergedEditInfo.toRev = edits
+		.map( function ( edit ) {
+			return edit.revid;
+		} )
+		.reduce( function ( edit1, edit2 ) {
+			// Get the higher rev id, corresponding to the newer revision
+			return ( edit1 > edit2 ? edit1 : edit2 );
+		} );
+
+	return mergedEditInfo;
+}
+
+/**
  * Convert what the api returns to what we need
  *
  * @param {object} editInfo
@@ -61,39 +115,11 @@ function convertEdits( editInfo, site, groupPage ) {
 				}
 				userEntries.push( userLink + ( userEdits.length > 1 ? ( ' ' + mw.msg( 'ntimes', userEdits.length ) ) : '' ) );
 			} );
-			finalEdits.push( $.extend( {}, pagebase, {
-				bot: page.each
-					.map( function ( edit ) {
-						return edit.bot;
-					} )
-					.reduce( function ( bot1, bot2 ) {
-						return bot1 && bot2;
-					} ),
-				editCount: page.each.length,
-				editsbyuser: userEntries.join( ', ' ),
-				fromRev: page.each
-					.map( function ( edit ) {
-						return edit.old_revid;
-					} )
-					.reduce( function ( edit1, edit2 ) {
-						return ( edit1 > edit2 ? edit2 : edit1 );
-					} ),
-				minor: page.each
-					.map( function ( edit ) {
-						return edit.minor;
-					} )
-					.reduce( function ( minor1, minor2 ) {
-						return minor1 && minor2;
-					} ),
-				tags: [],
-				toRev: page.each
-					.map( function ( edit ) {
-						return edit.revid;
-					} )
-					.reduce( function ( edit1, edit2 ) {
-						return ( edit1 > edit2 ? edit1 : edit2 );
-					} )
-			} ) );
+
+			var mergedEditInfo = mergePageEdits( page.each );
+			mergedEditInfo.editsbyuser = userEntries.join( ', ' );
+
+			finalEdits.push( $.extend( {}, pagebase, mergedEditInfo ) );
 		}
 	} );
 	return finalEdits;
@@ -171,6 +197,7 @@ function rawToSummary( entries, site, groupPage ) {
 // Only convertEdits is needed, but the rest are exported for testability
 module.exports = {
 	convertEdits: convertEdits,
+	mergePageEdits: mergePageEdits,
 	normalizeEntries: normalizeEntries,
 	rawToSummary: rawToSummary
 };
