@@ -23,9 +23,9 @@ function convertEdits( editInfo, site, groupPage ) {
 		if ( !groupPage || page.each.length === 1 ) {
 			page.each.forEach( function ( entry ) {
 				finalEdits.push( $.extend( {}, pagebase, {
-					anon: entry.anon || false,
+					anon: entry.anon,
 					bot: entry.bot,
-					comment: entry.parsedcomment || '',
+					comment: entry.parsedcomment,
 					editCount: 1,
 					fromRev: entry.old_revid,
 					minor: entry.minor,
@@ -100,21 +100,39 @@ function convertEdits( editInfo, site, groupPage ) {
 }
 
 /**
+ * Normalize entries
+ * @param {array} entries
+ * @return {array}
+ */
+function normalizeEntries( entries ) {
+	entries.forEach( function ( entry ) {
+		if ( entry.userhidden ) {
+			entry.user = false;
+		}
+		if ( typeof entry.anon === 'undefined' ) {
+			entry.anon = false;
+		}
+		if ( typeof entry.parsedcomment === 'undefined' ) {
+			entry.parsedcomment = '';
+		}
+	} );
+	return entries;
+}
+
+/**
  * @param {array} entries
  * @param {string} site
  * @param {bool} groupPage
- * @return arary
+ * @return array
  */
 function rawToSummary( entries, site, groupPage ) {
 	var edits = {},
 		logEntries = [],
 		newPages = [],
-		everything = [];
+		everything = [],
+		cleanedEntries = normalizeEntries( entries );
 
-	entries.forEach( function ( entry ) {
-		if ( entry.userhidden ) {
-			entry.user = false;
-		}
+	cleanedEntries.forEach( function ( entry ) {
 		if ( entry.type === 'edit' ) {
 			if ( typeof edits[ entry.pageid ] === 'undefined' ) {
 				edits[ entry.pageid ] = {
@@ -127,8 +145,8 @@ function rawToSummary( entries, site, groupPage ) {
 			}
 		} else {
 			var entryBase = {
-				anon: entry.anon || false,
-				comment: entry.parsedcomment || '',
+				anon: entry.anon,
+				comment: entry.parsedcomment,
 				entryType: entry.type,
 				ns: entry.ns,
 				tags: entry.tags,
@@ -150,7 +168,9 @@ function rawToSummary( entries, site, groupPage ) {
 	return everything;
 }
 
+// Only convertEdits is needed, but the rest are exported for testability
 module.exports = {
 	convertEdits: convertEdits,
+	normalizeEntries: normalizeEntries,
 	rawToSummary: rawToSummary
 };
