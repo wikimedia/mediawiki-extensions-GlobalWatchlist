@@ -37,6 +37,17 @@ function mergePageEdits( edits ) {
 			return minor1 && minor2;
 		} );
 
+	mergedEditInfo.newPage = edits
+		.map( function ( edit ) {
+			return edit.newPage;
+		} )
+		.reduce( function ( newPage1, newPage2 ) {
+			// Page creation is stored as a flag on edit entries, instead of as
+			// its own type of entry. If any of the entries are creations, the
+			// overall group was a page creation
+			return newPage1 || newPage2;
+		} );
+
 	// No tags
 	mergedEditInfo.tags = [];
 
@@ -53,6 +64,32 @@ function mergePageEdits( edits ) {
 }
 
 /**
+ * Ensure page creations are shown before normal edits
+ *
+ * If edits are not grouped, and a new page has edits to it, it is confusing to see the page
+ * creation occur after the edits.
+ *
+ * @TODO should probably consistently enforce ordering by timestamp
+ *
+ * @param {array} allEdits
+ * @return {array}
+ */
+function putNewPagesFirst( allEdits ) {
+	var newPages = [],
+		realEdits = [];
+
+	allEdits.forEach( function ( edit ) {
+		if ( edit.newPage ) {
+			newPages.push( edit );
+		} else {
+			realEdits.push( edit );
+		}
+	} );
+
+	return newPages.concat( realEdits );
+}
+
+/**
  * Convert what the api returns to what we need
  *
  * @param {object} editInfo
@@ -61,7 +98,8 @@ function mergePageEdits( edits ) {
  * @return {array}
  */
 function convertEdits( editInfo, site, groupPage ) {
-	var finalEdits = [];
+	var finalEdits = [],
+		finalSorted = [];
 
 	var edits = [];
 	for ( var key in editInfo ) {
@@ -83,6 +121,7 @@ function convertEdits( editInfo, site, groupPage ) {
 					editCount: 1,
 					fromRev: entry.old_revid,
 					minor: entry.minor,
+					newPage: entry.newPage,
 					tags: entry.tags,
 					toRev: entry.revid,
 					user: entry.user
@@ -122,7 +161,9 @@ function convertEdits( editInfo, site, groupPage ) {
 			finalEdits.push( $.extend( {}, pagebase, mergedEditInfo ) );
 		}
 	} );
-	return finalEdits;
+
+	finalSorted = putNewPagesFirst( finalEdits );
+	return finalSorted;
 }
 
 /**
@@ -141,6 +182,22 @@ function normalizeEntries( entries ) {
 		if ( typeof entry.parsedcomment === 'undefined' ) {
 			entry.parsedcomment = '';
 		}
+		if ( typeof entry.tags === 'undefined' ) {
+			entry.tags = [];
+		}
+		if ( entry.type === 'new' ) {
+			// Treat page creations as edits with a flag, so that they can be
+			// grouped together when needed
+			entry.type = 'edit';
+			entry.newPage = true;
+
+			// need to be set for the mapping in mergePageEdits, but won't be used
+			// eslint-disable-next-line camelcase
+			entry.old_revid = 0;
+			entry.revid = 0;
+		} else {
+			entry.newPage = false;
+		}
 	} );
 	return entries;
 }
@@ -152,14 +209,15 @@ function normalizeEntries( entries ) {
  * @return array
  */
 function rawToSummary( entries, site, groupPage ) {
-	var edits = {},
+	var convertedEdits = [],
+		edits = {},
 		logEntries = [],
-		newPages = [],
 		everything = [],
 		cleanedEntries = normalizeEntries( entries );
 
 	cleanedEntries.forEach( function ( entry ) {
 		if ( entry.type === 'edit' ) {
+			// Also includes new pages
 			if ( typeof edits[ entry.pageid ] === 'undefined' ) {
 				edits[ entry.pageid ] = {
 					each: [ entry ],
@@ -169,28 +227,23 @@ function rawToSummary( entries, site, groupPage ) {
 			} else {
 				edits[ entry.pageid ].each.push( entry );
 			}
-		} else {
-			var entryBase = {
+		} else if ( entry.type === 'log' ) {
+			logEntries.push( {
 				anon: entry.anon,
 				comment: entry.parsedcomment,
 				entryType: entry.type,
 				ns: entry.ns,
 				tags: entry.tags,
 				title: entry.title,
-				user: entry.user
-			};
-			if ( entry.type === 'new' ) {
-				newPages.push( entryBase );
-			} else if ( entry.type === 'log' ) {
-				logEntries.push( $.extend( entryBase, {
-					logaction: entry.logaction,
-					logtype: entry.logtype
-				} ) );
-			}
+				user: entry.user,
+				logaction: entry.logaction,
+				logtype: entry.logtype
+			} );
 		}
 	} );
 
-	everything = newPages.concat( convertEdits( edits, site, groupPage ) ).concat( logEntries );
+	convertedEdits = convertEdits( edits, site, groupPage );
+	everything = convertedEdits.concat( logEntries );
 	return everything;
 }
 
@@ -199,5 +252,6 @@ module.exports = {
 	convertEdits: convertEdits,
 	mergePageEdits: mergePageEdits,
 	normalizeEntries: normalizeEntries,
+	putNewPagesFirst: putNewPagesFirst,
 	rawToSummary: rawToSummary
 };

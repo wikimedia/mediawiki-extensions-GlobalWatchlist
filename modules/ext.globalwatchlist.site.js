@@ -331,7 +331,7 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 		} );
 
 	if ( entry.editsbyuser || false ) {
-		$user = entry.editsbyuser.replace( '%SITE%', this.site );
+		$user = entry.editsbyuser;
 	} else if ( !this.config.fastMode ) {
 		if ( entry.user === false ) {
 			$user = $( '<span>' )
@@ -357,7 +357,7 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 		);
 	}
 
-	if ( entry.entryType === 'edit' ) {
+	if ( entry.entryType === 'edit' && entry.newPage === false ) {
 		$extraLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'diff=' + entry.toRev + '&oldid=' + entry.fromRev ) )
 			.attr( 'target', '_blank' )
@@ -375,9 +375,9 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 	if ( entry.entryType === 'log' ) {
 		$before = $( '<i>' )
 			.text( 'Log: ' + entry.logtype + '/' + entry.logaction + ': ' );
-	} else if ( entry.minor || entry.bot || entry.entryType === 'new' ) {
+	} else if ( entry.minor || entry.bot || entry.newPage === true ) {
 		var letters = '';
-		if ( entry.entryType === 'new' ) {
+		if ( entry.newPage === true ) {
 			letters += mw.msg( 'newpageletter' );
 		}
 		if ( entry.minor ) {
@@ -389,7 +389,7 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 		$before = $( '<b>' ).text( letters );
 	}
 
-	if ( entry.tags && entry.tags.length > 0 ) {
+	if ( entry.tags.length > 0 ) {
 		// Need to process links in the parsed description as raw HTML
 		var tagsDisplay = entry.tags.map(
 			function ( tag ) {
