@@ -16,11 +16,11 @@ var GlobalWatchlistDebug = {
 		}
 
 		GlobalWatchlistDebug.debugLog.push(
-			GlobalWatchlistDebug.debugLog.length
-			+ ': '
-			+ key
-			+ '\t'
-			+ JSON.stringify( msg )
+			GlobalWatchlistDebug.debugLog.length +
+			': ' +
+			key +
+			'\t' +
+			JSON.stringify( msg )
 		);
 	},
 	error: function ( info, error ) {

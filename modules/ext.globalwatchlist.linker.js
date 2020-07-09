@@ -21,7 +21,7 @@ GlobalWatchlistLinker.prototype.fixLocalLinks = function ( comment ) {
 		/<a href="(\/wiki\/|\/w\/index\.php\?)/g,
 		'<a href="//' + this.site + '$1'
 	);
-}
+};
 
 /**
  * Construct a link to a page with no extra query parameters (eg /wiki/$1)
@@ -31,7 +31,7 @@ GlobalWatchlistLinker.prototype.fixLocalLinks = function ( comment ) {
  */
 GlobalWatchlistLinker.prototype.linkPage = function ( page ) {
 	return '//' + this.site + mw.config.get( 'wgArticlePath' ).replace( '$1', page );
-}
+};
 
 /**
  * Construct a link to index.php with extra query parameters (eg /index.php?title=Foo&action=history
@@ -41,6 +41,6 @@ GlobalWatchlistLinker.prototype.linkPage = function ( page ) {
  */
 GlobalWatchlistLinker.prototype.linkQuery = function ( query ) {
 	return '//' + this.site + mw.config.get( 'wgScript' ) + '?' + query;
-}
+};
 
 module.exports = GlobalWatchlistLinker;

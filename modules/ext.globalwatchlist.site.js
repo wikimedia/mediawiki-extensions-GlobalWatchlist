@@ -112,7 +112,7 @@ GlobalWatchlistSite.prototype.actuallyGetWatchlist = function ( iteration, conti
 			wllimit: 'max',
 			wlprop: that.config.watchlistQueryProps,
 			wlshow: that.config.watchlistQueryShow,
-			wltype: that.config.watchlistQueryTypes,
+			wltype: that.config.watchlistQueryTypes
 		};
 		if ( iteration > 1 ) {
 			getter.wlcontinue = continueFrom;
@@ -133,8 +133,8 @@ GlobalWatchlistSite.prototype.actuallyGetWatchlist = function ( iteration, conti
 			} else {
 				resolve( wlraw );
 			}
-		});
-	});
+		} );
+	} );
 };
 
 /**
@@ -173,11 +173,11 @@ GlobalWatchlistSite.prototype.getAssociatedPageTitle = function ( pageTitle ) {
 			contentmodel: 'wikitext',
 			formatversion: 2,
 			onlypst: true,
-			text: '{{subst:TALKPAGENAME:' + pageTitle + '}}\n{{subst:SUBJECTPAGENAME:' + pageTitle + '}}',
+			text: '{{subst:TALKPAGENAME:' + pageTitle + '}}\n{{subst:SUBJECTPAGENAME:' + pageTitle + '}}'
 		};
 		that.api( 'get', getter, 'parseOnlyPST' ).then( function ( response ) {
 			var titles = response.parse.text.split( '\n' );
-			resolve( titles[1] === pageTitle ? titles[0] : titles[1] );
+			resolve( titles[ 1 ] === pageTitle ? titles[ 0 ] : titles[ 1 ] );
 		} );
 	} );
 };
@@ -199,14 +199,14 @@ GlobalWatchlistSite.prototype.getTagList = function () {
 				action: 'query',
 				list: 'tags',
 				tglimit: 'max',
-				tgprop: 'displayname',
+				tgprop: 'displayname'
 			};
 			that.api( 'get', getter, 'getTags' ).then( function ( response ) {
 				var asObject = {};
 				response.query.tags.forEach( function ( tag ) {
-					asObject[tag.name] = ( tag.displayname || false )
-						? that.linker.fixLocalLinks( tag.displayname )
-						: tag.name;
+					asObject[ tag.name ] = ( tag.displayname || false ) ?
+						that.linker.fixLocalLinks( tag.displayname ) :
+						tag.name;
 				} );
 				that.debug( 'getTagList', asObject, 3 );
 				that.tags = asObject;
@@ -227,7 +227,7 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 	var that = this;
 	return new Promise( function ( resolve ) {
 		that.actuallyGetWatchlist( 1, 0 ).then( function ( wlraw ) {
-			if ( !( wlraw && wlraw[0] ) ) {
+			if ( !( wlraw && wlraw[ 0 ] ) ) {
 				that.debug( 'getWatchlist', 'empty', 1 );
 				that.isEmpty = true;
 				resolve();
@@ -393,7 +393,7 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 		// Need to process links in the parsed description as raw HTML
 		var tagsDisplay = entry.tags.map(
 			function ( tag ) {
-				return that.tags[ tag ]
+				return that.tags[ tag ];
 			}
 		).join( ', ' );
 		$tags = $( '<i>' ).html( '(Tags: ' + tagsDisplay + ')' );
@@ -436,7 +436,7 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
  * @param {object} summary
  * @return {jQuery.Promise}
  */
-GlobalWatchlistSite.prototype.makeWikidataList = function (summary) {
+GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
 	var that = this;
 	return new Promise( function ( resolve ) {
 		if ( that.config.fastMode ) {
@@ -472,10 +472,10 @@ GlobalWatchlistSite.prototype.makeWikidataList = function (summary) {
 					entryWithLabel;
 				summary.forEach( function ( entry ) {
 					if ( wdns.indexOf( entry.ns ) > -1 && wdlabels[ entry.titleMsg ] ) {
-						that.debug( 'makeWikidataList - have entry', [ entry, wdlabels[entry.titleMsg] ], 3 );
-						entryWithLabel = wdlabels[entry.titleMsg][entry.ns === 146 ? 'lemmas' : 'labels'];
-						if ( entryWithLabel && entryWithLabel[lang] && entryWithLabel[lang].value ) {
-							entry.titleMsg += ' (' + entryWithLabel[lang].value + ')';
+						that.debug( 'makeWikidataList - have entry', [ entry, wdlabels[ entry.titleMsg ] ], 3 );
+						entryWithLabel = wdlabels[ entry.titleMsg ][ entry.ns === 146 ? 'lemmas' : 'labels' ];
+						if ( entryWithLabel && entryWithLabel[ lang ] && entryWithLabel[ lang ].value ) {
+							entry.titleMsg += ' (' + entryWithLabel[ lang ].value + ')';
 						}
 					}
 				} );
@@ -501,7 +501,7 @@ GlobalWatchlistSite.prototype.getWikidataLabels = function ( ids ) {
 				formatversion: 2,
 				ids: ids.slice( 0, 50 ),
 				languages: lang,
-				props: 'labels',
+				props: 'labels'
 			};
 		that.api( 'get', wdgetter, 'getWikidataLabels' ).then( function ( response ) {
 			var wdlabels = response.entities;
@@ -527,12 +527,12 @@ GlobalWatchlistSite.prototype.markAsSeen = function () {
 	var setter = {
 		action: 'setnotificationtimestamp',
 		entirewatchlist: true,
-		timestamp: this.config.time.toISOString(),
+		timestamp: this.config.time.toISOString()
 	};
 	this.api( 'postWithEditToken', setter, 'actuallyMarkSiteAsSeen' );
 
 	this.debug( 'markSiteAsSeen', 'hiding', 1 );
-	$( this.$feedDiv.children()[1] ).hide();
+	$( this.$feedDiv.children()[ 1 ] ).hide();
 
 	// FIXME
 	// GlobalWatchlist.watchlists.checkChangesShown( true );
@@ -558,7 +558,7 @@ GlobalWatchlistSite.prototype.processUpdateWatched = function ( pageTitle, unwat
 		$links = $( 'li[siteAndPage="' + this.siteID + '_' + encodedTitle + '"] > a.globalWatchlist-watchunwatch' );
 
 	var $entries = $( 'li[siteAndPage="' + this.siteID + '_' + encodedTitle + '"]' );
-	$entries[unwatched ? 'addClass' : 'removeClass']( 'globalWatchlist-strike' );
+	$entries[ unwatched ? 'addClass' : 'removeClass' ]( 'globalWatchlist-strike' );
 
 	$links.each( function () {
 		$( this ).off( 'click' );

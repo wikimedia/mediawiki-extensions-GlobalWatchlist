@@ -11,14 +11,14 @@ function convertEdits( editInfo, site, groupPage ) {
 
 	var edits = [];
 	for ( var key in editInfo ) {
-		edits.push( editInfo[key] );
+		edits.push( editInfo[ key ] );
 	}
 
 	edits.forEach( function ( page ) {
 		var pagebase = {
 			entryType: 'edit',
 			ns: page.ns,
-			title: page.title,
+			title: page.title
 		};
 		if ( !groupPage || page.each.length === 1 ) {
 			page.each.forEach( function ( entry ) {
@@ -31,7 +31,7 @@ function convertEdits( editInfo, site, groupPage ) {
 					minor: entry.minor,
 					tags: entry.tags,
 					toRev: entry.revid,
-					user: entry.user,
+					user: entry.user
 				} ) );
 			} );
 		} else {
@@ -49,13 +49,13 @@ function convertEdits( editInfo, site, groupPage ) {
 					return edit.user === user;
 				} );
 				var userLink;
-				if ( userEdits[0].user === false ) {
+				if ( userEdits[ 0 ].user === false ) {
 					userLink = '<span class="history-deleted">' + mw.msg( 'rev-deleted-user' ) + '</span>';
 				} else {
 					// TODO refactor/rewrite this, have a linker instead of duplicating
-					var userLinkBase = ( userEdits[0].anon || false )
-						? 'Special:Contributions/'
-						: 'User:';
+					var userLinkBase = ( userEdits[ 0 ].anon || false ) ?
+						'Special:Contributions/' :
+						'User:';
 					var href = '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', userLinkBase + user );
 					userLink = '<a href="' + href + '" target="_blank">' + user + '</a>';
 				}
@@ -70,7 +70,7 @@ function convertEdits( editInfo, site, groupPage ) {
 						return bot1 && bot2;
 					} ),
 				editCount: page.each.length,
-				editsbyuser: userEntries.join(', '),
+				editsbyuser: userEntries.join( ', ' ),
 				fromRev: page.each
 					.map( function ( edit ) {
 						return edit.old_revid;
@@ -92,10 +92,10 @@ function convertEdits( editInfo, site, groupPage ) {
 					} )
 					.reduce( function ( edit1, edit2 ) {
 						return ( edit1 > edit2 ? edit1 : edit2 );
-					} ),
+					} )
 			} ) );
 		}
-	});
+	} );
 	return finalEdits;
 }
 
@@ -116,14 +116,14 @@ function rawToSummary( entries, site, groupPage ) {
 			entry.user = false;
 		}
 		if ( entry.type === 'edit' ) {
-			if ( typeof edits[entry.pageid] === 'undefined' ) {
-				edits[entry.pageid] = {
+			if ( typeof edits[ entry.pageid ] === 'undefined' ) {
+				edits[ entry.pageid ] = {
 					each: [ entry ],
 					ns: entry.ns,
 					title: entry.title
 				};
 			} else {
-				edits[entry.pageid].each.push( entry );
+				edits[ entry.pageid ].each.push( entry );
 			}
 		} else {
 			var entryBase = {
@@ -133,14 +133,14 @@ function rawToSummary( entries, site, groupPage ) {
 				ns: entry.ns,
 				tags: entry.tags,
 				title: entry.title,
-				user: entry.user,
+				user: entry.user
 			};
 			if ( entry.type === 'new' ) {
 				newPages.push( entryBase );
 			} else if ( entry.type === 'log' ) {
 				logEntries.push( $.extend( entryBase, {
 					logaction: entry.logaction,
-					logtype: entry .logtype,
+					logtype: entry.logtype
 				} ) );
 			}
 		}

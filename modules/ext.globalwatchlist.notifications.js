@@ -86,6 +86,6 @@ GlobalWatchlistNotificationManager.prototype.onInvalidSettings = function ( fail
 			size: 'large'
 		}
 	);
-}
+};
 
 module.exports = GlobalWatchlistNotificationManager;

@@ -58,28 +58,28 @@ function GlobalWatchlistGetSettings() {
 		showEdits: userSettings.showtypes.indexOf( 'edit' ) > -1,
 		showLogEntries: userSettings.showtypes.indexOf( 'log' ) > -1,
 		showNewPages: userSettings.showtypes.indexOf( 'new' ) > -1,
-		watchlistQueryProps: userSettings.fastmode
-			? 'ids|title|flags|loginfo'
-			: 'ids|title|flags|loginfo|parsedcomment|user|tags',
+		watchlistQueryProps: userSettings.fastmode ?
+			'ids|title|flags|loginfo' :
+			'ids|title|flags|loginfo|parsedcomment|user|tags'
 	};
 
-	config['watchlistQueryTypes'] = (
-		( config['showEdits'] ? 'edit|' : '' ) +
-		( config['showNewPages'] ? 'new|' : '' ) +
-		( config['showLogEntries'] ? 'log|' : '' )
+	config.watchlistQueryTypes = (
+		( config.showEdits ? 'edit|' : '' ) +
+		( config.showNewPages ? 'new|' : '' ) +
+		( config.showLogEntries ? 'log|' : '' )
 	).replace( /\|+$/, '' );
 
 	// TODO add `unread` once ready
-	config['watchlistQueryShow'] = [
-		getQueryFlag( config['anon'], 'anon' ),
-		getQueryFlag( config['bot'], 'bot' ),
-		getQueryFlag( config['minor'], 'minor' )
+	config.watchlistQueryShow = [
+		getQueryFlag( config.anon, 'anon' ),
+		getQueryFlag( config.bot, 'bot' ),
+		getQueryFlag( config.minor, 'minor' )
 	].join( '' ).replace( /^\|+/, '' );
 
 	// Always includes item and property, conditionally include lexeme if it exists
-	config['wikibaseLabelNamespaces'] = [ 0, namespaceIds['property'] ];
-	if ( namespaceIds['lexeme'] !== undefined ) {
-		config['wikibaseLabelNamespaces'].push( namespaceIds['lexeme'] );
+	config.wikibaseLabelNamespaces = [ 0, namespaceIds.property ];
+	if ( namespaceIds.lexeme !== undefined ) {
+		config.wikibaseLabelNamespaces.push( namespaceIds.lexeme );
 	}
 
 	return config;

@@ -20,7 +20,7 @@
 	ViewElements.groupPage = new OO.ui.ToggleButtonWidget( {
 		disabled: Config.fastMode,
 		label: mw.msg( 'globalwatchlist-option-grouppage' ),
-		value: Config.groupPage && !Config.fastMode,
+		value: Config.groupPage && !Config.fastMode
 	} ).on( 'click', function () {
 		Config.groupPage = ViewElements.groupPage.value;
 		ViewManager.renderFeed();
@@ -28,7 +28,7 @@
 	ViewElements.liveToggle = new OO.ui.ToggleButtonWidget( {
 		disabled: Config.fastMode,
 		label: mw.msg( 'globalwatchlist-option-live' ),
-		value: false,
+		value: false
 	} ).on( 'click', function () {
 		ViewManager.setMode( ViewElements.liveToggle.value ? 13 : 11 );
 	} );
@@ -36,13 +36,13 @@
 		flags: [ 'progressive' ],
 		href: mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:GlobalWatchlistSettings' ),
 		icon: 'settings',
-		label: mw.msg( 'globalwatchlist-globalwatchlistsettingslink' ),
+		label: mw.msg( 'globalwatchlist-globalwatchlistsettingslink' )
 	} );
 	ViewElements.markAllSeen = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'destructive' ],
 		icon: 'checkAll',
 		id: 'globalWatchlist-markSeen-all',
-		label: mw.msg( 'globalwatchlist-markseen-all' ),
+		label: mw.msg( 'globalwatchlist-markseen-all' )
 	} ).on( 'click', function () {
 		WatchedSites.forEach( function ( site ) {
 			site.markAsSeen();
@@ -52,7 +52,7 @@
 		flags: [ 'primary', 'progressive' ],
 		icon: 'reload',
 		id: 'globalWatchlist-reflesh',
-		label: mw.msg( 'globalwatchlist-refresh' ),
+		label: mw.msg( 'globalwatchlist-refresh' )
 	} ).on( 'click', function () {
 		ViewManager.renderFeed();
 	} );
@@ -104,7 +104,7 @@
 			')'
 		);
 		return $li;
-	}
+	};
 	ViewManager.refresh = function () {
 		GlobalWatchlistDebug.info( 'watchlists.refresh', 'starting refresh', 1 );
 		Config.time = new Date();
@@ -136,11 +136,11 @@
 							label: mw.msg( 'globalwatchlist-changesfeed' )
 						} ).$element
 					)
-					.append( $( '<hr>' ) );
+						.append( $( '<hr>' ) );
 				}
 
-				if ( emptySites[0] ) {
-					var $ul = $('<ul>'),
+				if ( emptySites[ 0 ] ) {
+					var $ul = $( '<ul>' ),
 						emptyFeedLabel = new OO.ui.LabelWidget( {
 							label: mw.msg( 'globalwatchlist-emptyfeed' )
 						} );
@@ -151,7 +151,7 @@
 					} );
 					$div.append(
 						emptyFeedLabel.$element,
-						$('<div>')
+						$( '<div>' )
 							.addClass( 'globalWatchlist-emptySites' )
 							.addClass( 'mw-collapsed' )
 							.append(
@@ -178,7 +178,7 @@
 				resolve();
 			} );
 		} );
-	}
+	};
 	ViewManager.renderFeed = function () {
 		GlobalWatchlistDebug.info( 'renderFeed', 'called', 1 );
 		if ( Config.currentMode === 13 ) {
@@ -189,14 +189,14 @@
 		ViewManager.refresh().then( function () {
 			ViewManager.setMode( 11 );
 		} );
-	}
+	};
 
 	ViewManager.runLive = function () {
 		if ( Config.currentMode === 13 ) {
 			GlobalWatchlistDebug.info( 'watchlists.runLive - counter', Config.liveCounter++, 1 );
 			setTimeout( ViewManager.refresh, 7500 );
 		}
-	}
+	};
 
 	ViewManager.setMode = function ( newMode ) {
 		GlobalWatchlistDebug.info( 'mode', newMode, 1 );
@@ -239,7 +239,7 @@
 			default:
 				GlobalWatchlistDebug.error( 'Unsupported mode', newMode );
 		}
-	}
+	};
 
 	mw.globalwatchlist = {};
 	mw.globalwatchlist.elements = ViewElements;
