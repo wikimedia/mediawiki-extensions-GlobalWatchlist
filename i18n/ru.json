@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Iluvatar",
 			"Teretalexev"
 		]
 	},
+	"globalwatchlist": "Глобальный список наблюдения",
+	"globalwatchlist-desc": "Добавляет глобальный список наблюдения",
+	"globalwatchlist-summary": "Служебная страница для просмотра глобального списка наблюдения",
+	"globalwatchlistsettings": "Настройки глобального списка наблюдения",
+	"globalwatchlistsettings-summary": "Служебная страница для управления глобальным списком наблюдения",
+	"globalwatchlist-gotoglobal": "Глобальный список наблюдения",
+	"globalwatchlist-gotoglobal-tooltip": "Просмотр глобального списка наблюдения",
+	"globalwatchlist-must-login": "Пожалуйста, войдите в систему для просмотра служебных страниц глобального списка наблюдения",
 	"globalwatchlist-javascript-required": "Для работы специальных страниц GlobalWatchlist требуется JavaScript"
 }
