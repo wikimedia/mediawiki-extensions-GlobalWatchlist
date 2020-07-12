@@ -23,6 +23,7 @@
 	"globalwatchlist-filter-only-anon": "Option to only show edits made by anonymous users",
 	"globalwatchlist-filter-only-bot": "Option to only show edits made by bots",
 	"globalwatchlist-filter-only-minor": "Option to only show edits marked as minor",
+	"globalwatchlist-getoptions-error": "Explanation when an error is detected while fetching stored user options",
 	"globalwatchlist-globalwatchlistbacklink": "Label for the link to the global watchlist from the settings page",
 	"globalwatchlist-globalwatchlistlink": "Label for the link to the global watchlist from the normal watchlist page",
 	"globalwatchlist-globalwatchlistsettingslink": "Label for the link to the settings page from the global watchlist\n{{identical|settings}}",

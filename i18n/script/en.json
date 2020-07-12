@@ -21,6 +21,7 @@
 	"globalwatchlist-filter-only-anon": "Only edits made anonymously",
 	"globalwatchlist-filter-only-bot": "Only bot edits",
 	"globalwatchlist-filter-only-minor": "Only minor edits",
+	"globalwatchlist-getoptions-error": "An error was detected while fetching stored user options. The defaults will be used instead.",
 	"globalwatchlist-globalwatchlistbacklink": "Back to Global watchlist",
 	"globalwatchlist-globalwatchlistlink": "Global watchlist",
 	"globalwatchlist-globalwatchlistsettingslink": "Settings",

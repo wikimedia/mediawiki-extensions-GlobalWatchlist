@@ -7,13 +7,16 @@
 
 	var GlobalWatchlistDebug = require( './ext.globalwatchlist.debug.js' ),
 		GetSettings = require( './ext.globalwatchlist.getSettings.js' ),
-		Config = GetSettings(),
+		Config = {},
+		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
 		WatchedSite = require( './ext.globalwatchlist.site.js' ),
 		WatchlistUtils = require( './ext.globalwatchlist.watchlistUtils.js' ),
 		ViewElements = {},
 		ViewManager = {},
 		WatchedSites = [];
+	var notifications = new NotificationManager( GlobalWatchlistDebug );
 
+	Config = GetSettings( notifications );
 	Config.liveCounter = 0;
 	Config.currentMode = -1;
 

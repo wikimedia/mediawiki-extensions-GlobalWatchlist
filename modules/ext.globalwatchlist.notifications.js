@@ -88,4 +88,17 @@ GlobalWatchlistNotificationManager.prototype.onInvalidSettings = function ( fail
 	);
 };
 
+/**
+ * Alert the user with issues with their saved settings and that the defaults with be used
+ *
+ * @param {object} ex The exception
+ */
+GlobalWatchlistNotificationManager.prototype.onGetOptionsError = function ( e ) {
+	this.debug.info( 'GetOptions - error', e, 1 );
+
+	OO.ui.alert(
+		mw.msg( 'globalwatchlist-getoptions-error' )
+	);
+};
+
 module.exports = GlobalWatchlistNotificationManager;
