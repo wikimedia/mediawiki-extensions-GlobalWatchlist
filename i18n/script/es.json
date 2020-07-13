@@ -28,7 +28,7 @@
 	"globalwatchlist-globalwatchlistsettingslink": "Configuración",
 	"globalwatchlist-markseen": "Marcar como visto",
 	"globalwatchlist-markseen-all": "Marcar todos los sitios como vistos",
-	"globalwatchlist-markseen-allconfirm": "¿Confirmas que quieres marcar los sitios como vistos?",
+	"globalwatchlist-markseen-allconfirm": "¿Estás seguro que quieres marcar los sitios como vistos?",
 	"globalwatchlist-notify-heading": "Lista de seguimiento global",
 	"globalwatchlist-notify-savingfailed": "No se pudo guardar la configuración. Inténtalo de nuevo.",
 	"globalwatchlist-notify-settingssaved": "Se han guardado tus cambios.",
