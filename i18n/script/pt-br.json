@@ -21,6 +21,7 @@
 	"globalwatchlist-filter-only-anon": "Apenas edições feitas anonimamente",
 	"globalwatchlist-filter-only-bot": "Apenas edições de robô",
 	"globalwatchlist-filter-only-minor": "Apenas edições menores",
+	"globalwatchlist-getoptions-error": "Foi detectado um erro ao buscar opções de usuário armazenadas. Os padrões serão usados em seu lugar.",
 	"globalwatchlist-globalwatchlistbacklink": "Voltar à lista de páginas vigiadas globais",
 	"globalwatchlist-globalwatchlistlink": "Lista de páginas vigiadas globais",
 	"globalwatchlist-globalwatchlistsettingslink": "Configurações",

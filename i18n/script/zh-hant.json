@@ -21,6 +21,7 @@
 	"globalwatchlist-filter-only-anon": "僅顯示由匿名使用者做出的編輯",
 	"globalwatchlist-filter-only-bot": "僅顯示機器人編輯",
 	"globalwatchlist-filter-only-minor": "僅顯示小修改",
+	"globalwatchlist-getoptions-error": "取得已儲的使用者項目時發生錯誤。會改以預設內容取代。",
 	"globalwatchlist-globalwatchlistbacklink": "返回全域監視清單",
 	"globalwatchlist-globalwatchlistlink": "全域監視清單",
 	"globalwatchlist-globalwatchlistsettingslink": "設定",

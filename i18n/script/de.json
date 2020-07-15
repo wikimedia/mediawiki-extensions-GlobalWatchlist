@@ -19,6 +19,7 @@
 	"globalwatchlist-filter-only-anon": "Nur anonym vorgenommene Änderungen",
 	"globalwatchlist-filter-only-bot": "Nur Bot Änderungen",
 	"globalwatchlist-filter-only-minor": "Nur kleine Änderungen",
+	"globalwatchlist-getoptions-error": "Beim Abrufen gespeicherter Benutzeroptionen wurde ein Fehler entdeckt. Stattdessen werden die Standardeinstellungen verwendet.",
 	"globalwatchlist-globalwatchlistbacklink": "Zurück zur globalen Beobachtungsliste",
 	"globalwatchlist-globalwatchlistlink": "Globale Beobachtungsliste",
 	"globalwatchlist-globalwatchlistsettingslink": "Einstellungen",

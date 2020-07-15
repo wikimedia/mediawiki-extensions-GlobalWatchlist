@@ -21,6 +21,7 @@
 	"globalwatchlist-filter-only-anon": "Yalnızca anonim olarak yapılan değişiklikler",
 	"globalwatchlist-filter-only-bot": "Yalnızca bot değişiklikler",
 	"globalwatchlist-filter-only-minor": "Yalnızca küçük değişiklikler",
+	"globalwatchlist-getoptions-error": "Kullanıcı seçenekleri getirilirken bir hata tespit edildi. Bunun yerine varsayılanlar kullanılır.",
 	"globalwatchlist-globalwatchlistbacklink": "Küresel izleme listesine geri dön",
 	"globalwatchlist-globalwatchlistlink": "Küresel izleme listesi",
 	"globalwatchlist-globalwatchlistsettingslink": "Ayarlar",

@@ -21,6 +21,7 @@
 	"globalwatchlist-filter-only-anon": "Само анонимни уредувања",
 	"globalwatchlist-filter-only-bot": "Само ботовски уредувања",
 	"globalwatchlist-filter-only-minor": "Само ситни уредувања",
+	"globalwatchlist-getoptions-error": "Се јави грешка при добивањето на складираните кориснички можности. Ќе се користат основно зададените.",
 	"globalwatchlist-globalwatchlistbacklink": "Назад кон Глобално набљудуваните",
 	"globalwatchlist-globalwatchlistlink": "Глобално набљудувани",
 	"globalwatchlist-globalwatchlistsettingslink": "Нагодувања",
