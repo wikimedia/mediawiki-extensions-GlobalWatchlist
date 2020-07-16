@@ -8,7 +8,7 @@
  * TODO replace uses of debugger.error with notification manager
  * Used for both the settings page and Special:GlobalWatchlist
  *
- * @param {object} GlobalWatchlistDebug debugger
+ * @param {Object} GlobalWatchlistDebug debugger
  */
 function GlobalWatchlistNotificationManager( GlobalWatchlistDebug ) {
 	this.debug = GlobalWatchlistDebug;
@@ -17,7 +17,7 @@ function GlobalWatchlistNotificationManager( GlobalWatchlistDebug ) {
 /**
  * Notify that settings were saved successfully
  *
- * @param {object} saveData
+ * @param {Object} saveData
  */
 GlobalWatchlistNotificationManager.prototype.onSettingsSaved = function ( saveData ) {
 	this.debug.info( 'SettingsSaved - successful', saveData, 1 );
@@ -34,8 +34,8 @@ GlobalWatchlistNotificationManager.prototype.onSettingsSaved = function ( saveDa
 /**
  * Notify that settings were not saved
  *
- * @param {object} failureCode
- * @param {object} failureData
+ * @param {Object} failureCode
+ * @param {Object} failureData
  */
 GlobalWatchlistNotificationManager.prototype.onSettingsFailed = function ( failureCode, failureData ) {
 	this.debug.info( 'SettingsFailed - error', [ failureCode, failureData ], 1 );
@@ -57,7 +57,7 @@ GlobalWatchlistNotificationManager.prototype.onSettingsFailed = function ( failu
 /**
  * Alert the user to issues with their selected settings
  *
- * @param {object} failureData
+ * @param {Object} failureData
  */
 GlobalWatchlistNotificationManager.prototype.onInvalidSettings = function ( failureData ) {
 	var errorCodes = failureData.errors[ 0 ].data,
@@ -91,7 +91,7 @@ GlobalWatchlistNotificationManager.prototype.onInvalidSettings = function ( fail
 /**
  * Alert the user with issues with their saved settings and that the defaults with be used
  *
- * @param {object} ex The exception
+ * @param {Object} e The exception
  */
 GlobalWatchlistNotificationManager.prototype.onGetOptionsError = function ( e ) {
 	this.debug.info( 'GetOptions - error', e, 1 );

@@ -22,8 +22,8 @@ function getQueryFlag( setting, flag ) {
 }
 
 /**
- * @param {object} notificationManager instance of of GlobalWatchlistNotificationManager
- * @return {object}
+ * @param {Object} notificationManager instance of of GlobalWatchlistNotificationManager
+ * @return {Object}
  */
 function GlobalWatchlistGetSettings( notificationManager ) {
 	// Note: this must be the same key as is used in the settings manager
@@ -61,7 +61,7 @@ function GlobalWatchlistGetSettings( notificationManager ) {
 				groupPage: userSettings.grouppage,
 				showEdits: userSettings.showtypes.indexOf( 'edit' ) > -1,
 				showLogEntries: userSettings.showtypes.indexOf( 'log' ) > -1,
-				showNewPages: userSettings.showtypes.indexOf( 'new' ) > -1,
+				showNewPages: userSettings.showtypes.indexOf( 'new' ) > -1
 			};
 		} catch ( e ) {
 			notificationManager.onGetOptionsError( e );
@@ -76,7 +76,7 @@ function GlobalWatchlistGetSettings( notificationManager ) {
 
 	config.watchlistQueryProps = config.fastMode ?
 		'ids|title|flags|loginfo' :
-		'ids|title|flags|loginfo|parsedcomment|user|tags'
+		'ids|title|flags|loginfo|parsedcomment|user|tags';
 
 	config.watchlistQueryTypes = (
 		( config.showEdits ? 'edit|' : '' ) +

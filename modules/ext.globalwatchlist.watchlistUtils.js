@@ -2,8 +2,8 @@
  * Convert an array of two or more objects for specific edits to the same page to one object
  * with the information grouped
  *
- * @param {array} edits
- * @return {object}
+ * @param {Array} edits
+ * @return {Object}
  */
 function mergePageEdits( edits ) {
 	var mergedEditInfo = {};
@@ -71,8 +71,8 @@ function mergePageEdits( edits ) {
  *
  * @TODO should probably consistently enforce ordering by timestamp
  *
- * @param {array} allEdits
- * @return {array}
+ * @param {Array} allEdits
+ * @return {Array}
  */
 function putNewPagesFirst( allEdits ) {
 	var newPages = [],
@@ -92,10 +92,10 @@ function putNewPagesFirst( allEdits ) {
 /**
  * Convert what the api returns to what we need
  *
- * @param {object} editInfo
+ * @param {Object} editInfo
  * @param {string} site
  * @param {bool} groupPage
- * @return {array}
+ * @return {Array}
  */
 function convertEdits( editInfo, site, groupPage ) {
 	var finalEdits = [],
@@ -168,8 +168,9 @@ function convertEdits( editInfo, site, groupPage ) {
 
 /**
  * Normalize entries
- * @param {array} entries
- * @return {array}
+ *
+ * @param {Array} entries
+ * @return {Array}
  */
 function normalizeEntries( entries ) {
 	entries.forEach( function ( entry ) {
@@ -203,10 +204,10 @@ function normalizeEntries( entries ) {
 }
 
 /**
- * @param {array} entries
+ * @param {Array} entries
  * @param {string} site
  * @param {bool} groupPage
- * @return array
+ * @return {Array}
  */
 function rawToSummary( entries, site, groupPage ) {
 	var convertedEdits = [],

@@ -1,10 +1,10 @@
 /**
  * Represents a specific site
  *
- * @param {object} GlobalWatchlistDebug debugger
- * @param {object} config
- * @param {object} api
- * @param {object} WatchlistUtils
+ * @param {Object} GlobalWatchlistDebug debugger
+ * @param {Object} config
+ * @param {Object} api
+ * @param {Object} WatchlistUtils
  * @param {string} urlFragment
  */
 function GlobalWatchlistSite( GlobalWatchlistDebug, config, api, WatchlistUtils, urlFragment ) {
@@ -64,7 +64,7 @@ GlobalWatchlistSite.prototype.error = function ( key, msg ) {
  * API handler for debugging and avoiding actual important actions when testing client-side
  *
  * @param {string} func Function name
- * @param {object} content for api
+ * @param {Object} content for api
  * @param {string} name for logging
  * @return {jQuery.Promise}
  */
@@ -219,7 +219,7 @@ GlobalWatchlistSite.prototype.getTagList = function () {
 /**
  * Get the rendered changes for a user's watchlist
  *
- * @param {object} latestConfig config, can change
+ * @param {Object} latestConfig config, can change
  * @return {jQuery.Promise}
  */
 GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
@@ -255,7 +255,7 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 /**
  * Display the watchlist
  *
- * @param {object} summary
+ * @param {Object} summary
  */
 GlobalWatchlistSite.prototype.renderWatchlist = function ( summary ) {
 	var $ul = $( '<ul>' ),
@@ -304,8 +304,8 @@ GlobalWatchlistSite.prototype.renderWatchlist = function ( summary ) {
 /**
  * Make the links for a row in the watchlist
  *
- * @param {object} entry
- * @return {object}
+ * @param {Object} entry
+ * @return {Object}
  */
 GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 	var $before = false,
@@ -433,7 +433,7 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 /**
  * Fetch and process wikidata labels when the watchlist is for wikidata
  *
- * @param {object} summary
+ * @param {Object} summary
  * @return {jQuery.Promise}
  */
 GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
@@ -488,7 +488,7 @@ GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
 /**
  * Internal helper for makeWikidataList to get the labels for entries
  *
- * @param {array} ids
+ * @param {Array} ids
  * @return {jQuery.Promise}
  */
 GlobalWatchlistSite.prototype.getWikidataLabels = function ( ids ) {

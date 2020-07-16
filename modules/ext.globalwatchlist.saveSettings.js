@@ -1,8 +1,8 @@
 /**
  * Save the user's settings
  *
- * @param {object} GlobalWatchlistDebug debugger
- * @param {object} newSettings
+ * @param {Object} GlobalWatchlistDebug debugger
+ * @param {Object} newSettings
  * @return {jQuery.Promise} promise that either resolves successfully or rejects with the error
  */
 function GlobalWatchlistSaveSettings( GlobalWatchlistDebug, newSettings ) {
