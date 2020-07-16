@@ -82,7 +82,7 @@ class SpecialGlobalWatchlist extends SpecialPage {
 		);
 		$out->addHTML( $message );
 
-		$this->statsdDataFactory->increment( "globalwatchlist.load_special_page" );
+		$this->statsdDataFactory->increment( 'globalwatchlist.load_special_page' );
 	}
 
 	/**
