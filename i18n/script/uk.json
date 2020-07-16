@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Base",
 			"Ата"
 		]
 	},
@@ -21,6 +22,7 @@
 	"globalwatchlist-filter-only-anon": "Лише анонімні редагування",
 	"globalwatchlist-filter-only-bot": "Лише редагування ботів",
 	"globalwatchlist-filter-only-minor": "Лише незначні редагування",
+	"globalwatchlist-getoptions-error": "Виявлено помилку під час отримання збережених опцій користувача. Буде використано опції за замовчуванням.",
 	"globalwatchlist-globalwatchlistbacklink": "Назад до глобального списку спостереження",
 	"globalwatchlist-globalwatchlistlink": "Глобальний список спостереження",
 	"globalwatchlist-globalwatchlistsettingslink": "Налаштування",

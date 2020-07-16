@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"globalwatchlist": "Global overvåkningsliste",
+	"globalwatchlist-desc": "Legger til en global overvåkningsliste",
+	"globalwatchlist-summary": "Spesialside for å vise en global overvåkningsliste",
+	"globalwatchlistsettings": "Innstillinger for global overvåkningsliste",
+	"globalwatchlistsettings-summary": "Spesialside for å behandle en global overvåkningsliste",
+	"globalwatchlist-gotoglobal": "Global overvåkningsliste",
+	"globalwatchlist-gotoglobal-tooltip": "Vis global overvåkningsliste",
+	"globalwatchlist-must-login": "Logg inn for å bruke spesialsidene for global overvåkningsliste",
+	"globalwatchlist-javascript-required": "Spesialsidene for global overvåkningsliste trenger JavaScript for å virke"
+}

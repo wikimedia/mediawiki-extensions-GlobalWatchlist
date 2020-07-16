@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Pamputt",
 			"Wladek92"
 		]
@@ -22,6 +23,7 @@
 	"globalwatchlist-filter-only-anon": "Uniquement les modifications anonymes",
 	"globalwatchlist-filter-only-bot": "Uniquement les modifications faites par des robots",
 	"globalwatchlist-filter-only-minor": "Modifications mineures seulement",
+	"globalwatchlist-getoptions-error": "Une erreur a été détectée lors de la récupération des options utilisateur enregistrées. Les valeurs par défaut seront utilisées à la place.",
 	"globalwatchlist-globalwatchlistbacklink": "Retour à la liste de suivi globale",
 	"globalwatchlist-globalwatchlistlink": "Liste de suivi globale",
 	"globalwatchlist-globalwatchlistsettingslink": "Paramètres",

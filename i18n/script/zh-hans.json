@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Nadine Siak",
+			"Shuiwater",
 			"列维劳德"
 		]
 	},
@@ -16,6 +17,7 @@
 	"globalwatchlist-filter-minor": "小编辑",
 	"globalwatchlist-filter-not-minor": "仅显示非小编辑",
 	"globalwatchlist-filter-only-minor": "仅显示小编辑",
+	"globalwatchlist-getoptions-error": "在获取存储的用户选项时检测到错误。将使用默认值。",
 	"globalwatchlist-globalwatchlistlink": "全域监视列表",
 	"globalwatchlist-globalwatchlistsettingslink": "设置",
 	"globalwatchlist-markseen": "标为检查过",

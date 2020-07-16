@@ -12,5 +12,6 @@
 	"apihelp-globalwatchlistsettings-param-confirmallsites": "Вимагати підтвердження позначення усіх сайтів переглянутими",
 	"apihelp-globalwatchlistsettings-param-fastmode": "Увімкнути швидкий режим",
 	"apihelp-globalwatchlistsettings-param-grouppage": "Групувати результати за сторінкою",
-	"apihelp-globalwatchlistsettings-param-showtypes": "Типи змін для показу"
+	"apihelp-globalwatchlistsettings-param-showtypes": "Типи змін для показу",
+	"apierror-globalwatchlist-invalid-settings": "Вибрані недійсні налаштування"
 }
