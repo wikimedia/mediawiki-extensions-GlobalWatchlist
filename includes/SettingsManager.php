@@ -46,7 +46,7 @@ class SettingsManager {
 	 * @var int
 	 * Latest version of the format the settings are in, in case it changes
 	 */
-	private const PREFERENCE_VERSION = 1;
+	public const PREFERENCE_VERSION = 1;
 
 	/**
 	 * Make the code clearer by using constants instead of 0, 1, or 2 to represent the filter
@@ -54,13 +54,13 @@ class SettingsManager {
 	 */
 
 	/** @var int Don't care, not filtered */
-	private const FILTER_EITHER = 0;
+	public const FILTER_EITHER = 0;
 
 	/** @var int Require that the condition (anon/bot/minor) be matched */
-	private const FILTER_REQUIRE = 1;
+	public const FILTER_REQUIRE = 1;
 
 	/** @var int Exclude edits that match the condition */
-	private const FILTER_EXCLUDE = 2;
+	public const FILTER_EXCLUDE = 2;
 
 	/** @var LoggerInterface */
 	private $logger;

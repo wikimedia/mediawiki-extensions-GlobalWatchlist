@@ -48,12 +48,12 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$validSettings = [
 			'sites' => [ 'en.wikipedia.org' ],
 			'showtypes' => [ 'edit' ],
-			'anonfilter' => 0,
-			'botfilter' => 0,
-			'minorfilter' => 0,
+			'anonfilter' => SettingsManager::FILTER_EITHER,
+			'botfilter' => SettingsManager::FILTER_EITHER,
+			'minorfilter' => SettingsManager::FILTER_EITHER,
 		];
 		$strSettings = FormatJson::encode(
-			$validSettings + [ 'version' => 1 ]
+			$validSettings + [ 'version' => SettingsManager::PREFERENCE_VERSION ]
 		);
 
 		$userOptionsManager = $this->createMock( UserOptionsManager::class );
@@ -163,9 +163,13 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$invalidSettings = [
 			'sites' => [ 'en.wikipedia.org' ],
 			'showtypes' => $noTypes ? [] : [ 'edit' ],
-			'anonfilter' => 1,
-			'botfilter' => $anonBot ? 1 : 0,
-			'minorfilter' => $anonMinor ? 1 : 0,
+			'anonfilter' => SettingsManager::FILTER_REQUIRE,
+			'botfilter' => $anonBot ?
+				SettingsManager::FILTER_REQUIRE :
+				SettingsManager::FILTER_EITHER,
+			'minorfilter' => $anonMinor ?
+				SettingsManager::FILTER_REQUIRE :
+				SettingsManager::FILTER_EITHER,
 		];
 
 		$user = $this->createMock( User::class );
@@ -251,9 +255,13 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$invalidSettings = [
 			'sites' => [ 'en.wikipedia.org' ],
 			'showtypes' => $noTypes ? [] : [ 'edit' ],
-			'anonfilter' => 1,
-			'botfilter' => $anonBot ? 1 : 0,
-			'minorfilter' => $anonMinor ? 1 : 0,
+			'anonfilter' => SettingsManager::FILTER_REQUIRE,
+			'botfilter' => $anonBot ?
+				SettingsManager::FILTER_REQUIRE :
+				SettingsManager::FILTER_EITHER,
+			'minorfilter' => $anonMinor ?
+				SettingsManager::FILTER_REQUIRE :
+				SettingsManager::FILTER_EITHER,
 		];
 
 		$status = $manager->validateSettings( $invalidSettings );
@@ -299,9 +307,9 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$invalidSettings = [
 			'sites' => [],
 			'showtypes' => [ 'edit' ],
-			'anonfilter' => 1,
-			'botfilter' => 0,
-			'minorfilter' => 0,
+			'anonfilter' => SettingsManager::FILTER_REQUIRE,
+			'botfilter' => SettingsManager::FILTER_EITHER,
+			'minorfilter' => SettingsManager::FILTER_EXCLUDE,
 		];
 
 		$status = $manager->validateSettings( $invalidSettings );
