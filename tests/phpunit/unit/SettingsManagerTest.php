@@ -2,6 +2,8 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use FormatJson;
+use IBufferingStatsdDataFactory;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
 use Psr\Log\LogLevel;
@@ -19,17 +21,125 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 
 	private function getManager(
 		$logger,
-		$userOptionsManager = null
+		$userOptionsManager = null,
+		$statsdDataFactory = null
 	) {
 		if ( $userOptionsManager === null ) {
 			$userOptionsManager = $this->createMock( UserOptionsManager::class );
 		}
+		if ( $statsdDataFactory === null ) {
+			$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
+		}
 		$manager = new SettingsManager(
 			$logger,
-			$userOptionsManager
+			$userOptionsManager,
+			$statsdDataFactory
 		);
 		$accessManager = TestingAccessWrapper::newFromObject( $manager );
 		return $accessManager;
+	}
+
+	public function testSaveSettings() {
+		// Save settings, user does not have existing settings
+		$logger = new TestLogger( true );
+
+		$user = $this->createMock( User::class );
+
+		$validSettings = [
+			'sites' => [ 'en.wikipedia.org' ],
+			'showtypes' => [ 'edit' ],
+			'anonfilter' => 0,
+			'botfilter' => 0,
+			'minorfilter' => 0,
+		];
+		$strSettings = FormatJson::encode(
+			$validSettings + [ 'version' => 1 ]
+		);
+
+		$userOptionsManager = $this->createMock( UserOptionsManager::class );
+		$userOptionsManager->expects( $this->once() )
+			->method( 'getOption' )
+			->with(
+				$this->equalTo( $user ),
+				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
+				$this->equalTo( false )
+			)
+			->willReturn( false );
+		$userOptionsManager->expects( $this->once() )
+			->method( 'setOption' )
+			->with(
+				$this->equalTo( $user ),
+				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
+				$this->equalTo( $strSettings )
+			);
+		$userOptionsManager->expects( $this->once() )
+			->method( 'saveOptions' )
+			->with(
+				$this->equalTo( $user )
+			);
+
+		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
+		$statsdDataFactory->expects( $this->once() )
+			->method( 'increment' )
+			->with( 'globalwatchlist.settings.new' );
+
+		$manager = $this->getManager( $logger, $userOptionsManager, $statsdDataFactory );
+
+		$res = $manager->saveUserOptions( $user, $validSettings );
+
+		$this->assertArrayEquals(
+			[],
+			$res,
+			'No errors saving settings'
+		);
+
+		$debugEntries = [
+			[ LogLevel::DEBUG, 'Validating user options' ],
+			[ LogLevel::DEBUG, 'No issues found' ],
+			[ LogLevel::DEBUG, "Saving options for {username}: {userOptions}" ],
+		];
+		$this->assertArrayEquals( $debugEntries, $logger->getBuffer() );
+		$logger->clearBuffer();
+	}
+
+	/**
+	 * @dataProvider provideTestLogSettingsChange
+	 * @param bool $hasExistingSettings
+	 */
+	public function testLogSettingsChange( bool $hasExistingSettings ) {
+		$logger = new TestLogger();
+
+		$user = $this->createMock( User::class );
+
+		$userOptionsManager = $this->createMock( UserOptionsManager::class );
+		$userOptionsManager->expects( $this->once() )
+			->method( 'getOption' )
+			->with(
+				$this->equalTo( $user ),
+				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
+				$this->equalTo( false )
+			)
+			->willReturn( $hasExistingSettings );
+
+		$metric = $hasExistingSettings ?
+			'globalwatchlist.settings.change' :
+			'globalwatchlist.settings.new';
+
+		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
+		$statsdDataFactory->expects( $this->once() )
+			->method( 'increment' )
+			->with( $metric );
+
+		$manager = $this->getManager( $logger, $userOptionsManager, $statsdDataFactory );
+
+		$manager->logSettingsChange( $user );
+	}
+
+	public function provideTestLogSettingsChange() {
+		return [
+			'no existing settings' => [ false ],
+			'with existing settings' => [ true ]
+		];
 	}
 
 	/**

@@ -24,6 +24,7 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use FormatJson;
+use IBufferingStatsdDataFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsManager;
 use Psr\Log\LoggerInterface;
@@ -67,16 +68,22 @@ class SettingsManager {
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+
 	/**
 	 * @param LoggerInterface $logger
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
 	public function __construct(
 		LoggerInterface $logger,
-		UserOptionsManager $userOptionsManager
+		UserOptionsManager $userOptionsManager,
+		IBufferingStatsdDataFactory $statsdDataFactory
 	) {
 		$this->logger = $logger;
 		$this->userOptionsManager = $userOptionsManager;
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**
@@ -91,6 +98,8 @@ class SettingsManager {
 		$errors = $this->validateSettings( $options );
 
 		if ( $errors === [] ) {
+			$this->logSettingsChange( $userIdentity );
+
 			// Only save if settings are valid
 			$options['version'] = self::PREFERENCE_VERSION;
 
@@ -99,6 +108,30 @@ class SettingsManager {
 		}
 
 		return $errors;
+	}
+
+	/**
+	 * Log the user saving their settings
+	 *
+	 * Differentiate between users changing existing settings and users saving settings
+	 * for the first time
+	 *
+	 * @param UserIdentity $userIdentity
+	 */
+	private function logSettingsChange( UserIdentity $userIdentity ) {
+		$currentOptions = $this->userOptionsManager->getOption(
+			$userIdentity,
+			self::PREFERENCE_NAME,
+			false
+		);
+
+		// $currentOptions is `false` if the user is saving their settings for the
+		// first time, or a string with the user's option otherwise
+		if ( $currentOptions === false ) {
+			$this->statsdDataFactory->increment( 'globalwatchlist.settings.new' );
+		} else {
+			$this->statsdDataFactory->increment( 'globalwatchlist.settings.change' );
+		}
 	}
 
 	/**

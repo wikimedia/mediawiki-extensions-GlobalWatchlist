@@ -25,6 +25,7 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use Html;
+use IBufferingStatsdDataFactory;
 use SpecialPage;
 
 /**
@@ -35,8 +36,24 @@ use SpecialPage;
  */
 class SpecialGlobalWatchlist extends SpecialPage {
 
-	public function __construct() {
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+
+	/**
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 */
+	public function __construct( IBufferingStatsdDataFactory $statsdDataFactory ) {
 		parent::__construct( 'GlobalWatchlist', 'viewmywatchlist' );
+
+		$this->statsdDataFactory = $statsdDataFactory;
+	}
+
+	/**
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @return SpecialGlobalWatchlist
+	 */
+	public static function newFromGlobalState( IBufferingStatsdDataFactory $statsdDataFactory ) {
+		return new SpecialGlobalWatchlist( $statsdDataFactory );
 	}
 
 	/**
@@ -64,6 +81,8 @@ class SpecialGlobalWatchlist extends SpecialPage {
 			$this->msg( 'globalwatchlist-javascript-required' )
 		);
 		$out->addHTML( $message );
+
+		$this->statsdDataFactory->increment( "globalwatchlist.load_special_page" );
 	}
 
 	/**

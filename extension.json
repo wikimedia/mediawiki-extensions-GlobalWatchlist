@@ -11,7 +11,13 @@
 		"MediaWiki": ">= 1.35.0"
 	},
 	"SpecialPages": {
-		"GlobalWatchlist": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlist",
+		"GlobalWatchlist": {
+			"class": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlist",
+			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlist::newFromGlobalState",
+			"services": [
+				"StatsdDataFactory"
+			]
+		},
 		"GlobalWatchlistSettings": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings"
 	},
 	"HookHandlers": {
