@@ -2,8 +2,10 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use ApiMain;
 use ApiTestCase;
 use ApiUsageException;
+use RequestContext;
 
 /**
  * Tests settings are saved via the api
@@ -15,6 +17,20 @@ use ApiUsageException;
  * @group Database
  */
 class ApiGlobalWatchlistSettingsTest extends ApiTestCase {
+
+	public function testConstructor() {
+		$apiMain = $this->createMock( ApiMain::class );
+		$apiMain->method( 'getContext' )->willReturn( RequestContext::getMain() );
+		$settingsManager = $this->createMock( SettingsManager::class );
+		$api = new ApiGlobalWatchlistSettings(
+			$apiMain,
+			'globalwatchlistsettings',
+			$settingsManager
+		);
+
+		// Didn't fail
+		$this->addToAssertionCount( 1 );
+	}
 
 	public function testApiGlobalWatchlistSettings() {
 		$user = $this->getTestUser()->getUser();

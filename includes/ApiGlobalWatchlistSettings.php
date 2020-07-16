@@ -128,6 +128,7 @@ class ApiGlobalWatchlistSettings extends ApiBase {
 
 	/**
 	 * @inheritDoc
+	 * @codeCoverageIgnore
 	 */
 	public function isInternal() {
 		return true;
@@ -156,6 +157,7 @@ class ApiGlobalWatchlistSettings extends ApiBase {
 
 	/**
 	 * @inheritDoc
+	 * @codeCoverageIgnore
 	 */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Extension:GlobalWatchlist';
@@ -163,6 +165,7 @@ class ApiGlobalWatchlistSettings extends ApiBase {
 
 	/**
 	 * @inheritDoc
+	 * @codeCoverageIgnore
 	 */
 	protected function getExamplesMessages() {
 		return [];
