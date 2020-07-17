@@ -17,5 +17,5 @@ $specialPageAliases['en'] = [
 $specialPageAliases['de'] = [
 	'GlobalWatchlist' => [ 'Globale_Beobachtungsliste' ],
 	'GlobalWatchlistSettings' =>
-		[ 'Globale_Beobachtungsliste_Einstellungen', 'Einstellungen_Globale_Beobachtungslist' ],
+		[ 'Globale_Beobachtungsliste_Einstellungen', 'Einstellungen_Globale_Beobachtungsliste' ],
 ];
