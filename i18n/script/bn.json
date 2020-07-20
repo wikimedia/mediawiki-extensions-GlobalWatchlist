@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Sibabrata Banerjee",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -8,5 +9,6 @@
 	"globalwatchlist-asof": "$1 অনুযায়ী",
 	"globalwatchlist-filters": "ছাঁকনি",
 	"globalwatchlist-filter-minor": "অনুল্লেখ্য সম্পাদনা",
+	"globalwatchlist-getoptions-error": "ব্যবহারকারীর সঞ্চয়কৃত বিকল্পসমূহ আনার সময় একটি ত্রুটি ধরা পড়েছে। এর বদলে পূর্বনির্ধারিত বিকল্পগুলি ব্যবহার করা হবে।",
 	"globalwatchlist-remove": "সরান"
 }
