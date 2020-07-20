@@ -192,8 +192,11 @@
 		"localBasePath": "",
 		"remoteExtPath": "GlobalWatchlist",
 		"packageFiles": [
+			"tests/qunit/tests.js",
 			"tests/qunit/ext.globalwatchlist.linker.tests.js",
-			"modules/ext.globalwatchlist.linker.js"
+			"tests/qunit/ext.globalwatchlist.watchlistUtils.tests.js",
+			"modules/ext.globalwatchlist.linker.js",
+			"modules/ext.globalwatchlist.watchlistUtils.js"
 		]
 	},
 	"manifest_version": 2
