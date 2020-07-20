@@ -28,8 +28,6 @@ use Html;
 use SpecialPage;
 
 /**
- * Doesn't do anything other than show a message for now
- *
  * @ingroup SpecialPage
  * @author DannyS712
  */

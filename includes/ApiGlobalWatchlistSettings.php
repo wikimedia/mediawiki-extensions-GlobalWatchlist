@@ -65,8 +65,6 @@ class ApiGlobalWatchlistSettings extends ApiBase {
 
 	/**
 	 * Save the settings
-	 *
-	 * TODO add validation
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
