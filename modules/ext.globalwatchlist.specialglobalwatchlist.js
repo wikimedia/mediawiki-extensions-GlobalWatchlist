@@ -47,9 +47,12 @@
 		id: 'globalWatchlist-markSeen-all',
 		label: mw.msg( 'globalwatchlist-markseen-all' )
 	} ).on( 'click', function () {
-		WatchedSites.forEach( function ( site ) {
-			site.markAsSeen();
-		} );
+		if ( Config.confirmAllSites ) {
+			notifications.onMarkAllSitesSeen( ViewManager.reallyMarkAllSeen );
+		} else {
+			GlobalWatchlistDebug.info( 'MarkAllSitesSeen', 'Marking without confirmation', 1 );
+			ViewManager.reallyMarkAllSeen();
+		}
 	} );
 	ViewElements.refresh = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'progressive' ],
@@ -193,6 +196,13 @@
 			ViewManager.setMode( 11 );
 		} );
 	};
+	ViewManager.reallyMarkAllSeen = function () {
+		// Needs to be a separate function to be passed as a callback to the notification
+		// manager if the user prefers to require confirmation
+		WatchedSites.forEach( function ( site ) {
+			site.markAsSeen();
+		} );
+	}
 
 	ViewManager.runLive = function () {
 		if ( Config.currentMode === 13 ) {
@@ -250,6 +260,7 @@
 	mw.globalwatchlist.view = ViewManager;
 	mw.globalwatchlist.debug = GlobalWatchlistDebug;
 	mw.globalwatchlist.config = Config;
+	mw.globalwatchlist.notifications = notifications;
 
 	// On ready initialization
 	$( function () {
