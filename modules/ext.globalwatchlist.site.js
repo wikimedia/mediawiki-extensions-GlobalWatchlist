@@ -97,7 +97,7 @@ GlobalWatchlistSite.prototype.api = function ( func, content, name ) {
 /**
  * Get the changes on a user's watchlist
  *
- * @param {int} interation iteration count
+ * @param {int} iteration iteration count
  * @param {string} continueFrom
  * @return {jQuery.Promise}
  */
