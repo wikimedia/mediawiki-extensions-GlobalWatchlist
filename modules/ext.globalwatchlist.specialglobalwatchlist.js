@@ -69,6 +69,15 @@
 		.attr( 'id', 'globalWatchlist-asOf' );
 	viewElements.$sharedFeed = $( '<div>' )
 		.attr( 'id', 'globalWatchlist-watchlistsFeed' );
+	viewElements.$toolbar = $( '<div>' )
+		.attr( 'id', 'globalWatchlist-toolbar' )
+		.append(
+			viewElements.liveToggle.$element,
+			viewElements.groupPage.$element,
+			viewElements.refresh.$element,
+			viewElements.settingsLink.$element,
+			viewElements.markAllSeen.$element
+		);
 
 	watchedSites = config.siteList.map( function ( site ) {
 		return new WatchedSite(
@@ -80,22 +89,6 @@
 		);
 	} );
 
-	viewManager.create = function () {
-		return [
-			$( '<div>' )
-				.attr( 'id', 'globalWatchlist-toolbar' )
-				.append(
-					viewElements.liveToggle.$element,
-					viewElements.groupPage.$element,
-					viewElements.refresh.$element,
-					viewElements.settingsLink.$element,
-					viewElements.markAllSeen.$element
-				),
-			viewElements.$asOf,
-			viewElements.progressBar.$element,
-			viewElements.$sharedFeed
-		];
-	};
 	viewManager.newEmptySiteRow = function ( site ) {
 		var template = mw.template.get(
 			'ext.globalwatchlist.specialglobalwatchlist',
@@ -266,7 +259,12 @@
 
 		$( '.globalwatchlist-content' )
 			.empty()
-			.append( viewManager.create() );
+			.append(
+				viewElements.$toolbar,
+				viewElements.$asOf,
+				viewElements.progressBar.$element,
+				viewElements.$sharedFeed
+			);
 
 		viewManager.setMode( 10 );
 		viewManager.renderFeed();
