@@ -198,8 +198,10 @@
 		"packageFiles": [
 			"tests/qunit/tests.js",
 			"tests/qunit/ext.globalwatchlist.linker.tests.js",
+			"tests/qunit/ext.globalwatchlist.getSettings.tests.js",
 			"tests/qunit/ext.globalwatchlist.watchlistUtils.tests.js",
 			"modules/ext.globalwatchlist.linker.js",
+			"modules/ext.globalwatchlist.getSettings.js",
 			"modules/ext.globalwatchlist.watchlistUtils.js"
 		]
 	},

@@ -3,4 +3,5 @@
 // point, here. Individually `require` the different tests
 
 require( './ext.globalwatchlist.linker.tests.js' );
+require( './ext.globalwatchlist.getSettings.tests.js' );
 require( './ext.globalwatchlist.watchlistUtils.tests.js' );
