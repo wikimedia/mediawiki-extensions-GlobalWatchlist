@@ -97,19 +97,17 @@
 		];
 	};
 	ViewManager.newEmptySiteRow = function ( site ) {
-		var $li = $( '<li>' );
-		$li.addClass( 'globalWatchlist-emptyWatchlist' );
-		$li.append(
-			$( '<a>' )
-				.attr( 'href', '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:Watchlist' ) )
-				.text( site ),
-			' (',
-			$( '<a>' )
-				.attr( 'href', '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:EditWatchlist' ) )
-				.text( mw.msg( 'globalwatchlist-editwatchlist' ) ),
-			')'
+		var template = mw.template.get(
+			'ext.globalwatchlist.specialglobalwatchlist',
+			'templates/newEmptySiteRow.mustache'
 		);
-		return $li;
+		var params = {
+			'special-watchlist-url': '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:Watchlist' ),
+			'site-name': site,
+			'special-edit-watchlist-url': '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:EditWatchlist' ),
+			'edit-watchlist-msg': mw.msg( 'globalwatchlist-editwatchlist' )
+		};
+		return template.render( params );
 	};
 	ViewManager.refresh = function () {
 		GlobalWatchlistDebug.info( 'watchlists.refresh', 'starting refresh', 1 );

@@ -89,6 +89,9 @@
 				"ext.globalwatchlist.common.css",
 				"ext.globalwatchlist.specialglobalwatchlist.css"
 			],
+			"templates": [
+				"templates/newEmptySiteRow.mustache"
+			],
 			"messages": [
 				"globalwatchlist-asof",
 				"globalwatchlist-changesfeed",
