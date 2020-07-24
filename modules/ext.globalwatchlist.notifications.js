@@ -8,10 +8,10 @@
  * TODO replace uses of debugger.error with notification manager
  * Used for both the settings page and Special:GlobalWatchlist
  *
- * @param {Object} GlobalWatchlistDebug debugger
+ * @param {Object} globalWatchlistDebug debugger
  */
-function GlobalWatchlistNotificationManager( GlobalWatchlistDebug ) {
-	this.debug = GlobalWatchlistDebug;
+function GlobalWatchlistNotificationManager( globalWatchlistDebug ) {
+	this.debug = globalWatchlistDebug;
 }
 
 /**

@@ -3,11 +3,11 @@
  *
  * Used for both the settings page and Special:GlobalWatchlist
  */
-var GlobalWatchlistDebug = {
+var globalWatchlistDebug = {
 	debugLog: [],
 	debugLevel: 100,
 	info: function ( key, msg, level ) {
-		if ( GlobalWatchlistDebug.debugLevel >= level ) {
+		if ( globalWatchlistDebug.debugLevel >= level ) {
 			/* eslint-disable-next-line no-console */
 			console.log( 'GlobalWatchlist@' + key );
 
@@ -15,8 +15,8 @@ var GlobalWatchlistDebug = {
 			console.log( msg );
 		}
 
-		GlobalWatchlistDebug.debugLog.push(
-			GlobalWatchlistDebug.debugLog.length +
+		globalWatchlistDebug.debugLog.push(
+			globalWatchlistDebug.debugLog.length +
 			': ' +
 			key +
 			'\t' +
@@ -24,7 +24,7 @@ var GlobalWatchlistDebug = {
 		);
 	},
 	error: function ( info, error ) {
-		GlobalWatchlistDebug.info( 'ERROR: ' + info, error, 0 );
+		globalWatchlistDebug.info( 'ERROR: ' + info, error, 0 );
 
 		/* eslint-disable-next-line no-alert */
 		alert( 'GlobalWatchlist error, please check the console!' );
@@ -33,4 +33,4 @@ var GlobalWatchlistDebug = {
 	}
 };
 
-module.exports = GlobalWatchlistDebug;
+module.exports = globalWatchlistDebug;

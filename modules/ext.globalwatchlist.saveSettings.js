@@ -1,11 +1,11 @@
 /**
  * Save the user's settings
  *
- * @param {Object} GlobalWatchlistDebug debugger
+ * @param {Object} globalWatchlistDebug debugger
  * @param {Object} newSettings
  * @return {jQuery.Promise} promise that either resolves successfully or rejects with the error
  */
-function GlobalWatchlistSaveSettings( GlobalWatchlistDebug, newSettings ) {
+function globalWatchlistSaveSettings( globalWatchlistDebug, newSettings ) {
 	var params = {
 		action: 'globalwatchlistsettings',
 		errorformat: 'raw',
@@ -30,7 +30,7 @@ function GlobalWatchlistSaveSettings( GlobalWatchlistDebug, newSettings ) {
 		params.showtypes.push( 'new' );
 	}
 
-	GlobalWatchlistDebug.info( 'SaveSettings - parameters', params, 1 );
+	globalWatchlistDebug.info( 'SaveSettings - parameters', params, 1 );
 
 	// Not loaded as a dependency in extension.json because it isn't needed until the user
 	// wants to save settings, and shouldn't delay the initial startup
@@ -39,4 +39,4 @@ function GlobalWatchlistSaveSettings( GlobalWatchlistDebug, newSettings ) {
 	} );
 }
 
-module.exports = GlobalWatchlistSaveSettings;
+module.exports = globalWatchlistSaveSettings;

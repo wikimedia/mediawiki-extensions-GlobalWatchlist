@@ -4,16 +4,16 @@
 ( function () {
 	'use strict';
 
-	var GlobalWatchlistDebug = require( './ext.globalwatchlist.debug.js' ),
-		GetSettings = require( './ext.globalwatchlist.getSettings.js' ),
-		SaveSettings = require( './ext.globalwatchlist.saveSettings.js' ),
+	var globalWatchlistDebug = require( './ext.globalwatchlist.debug.js' ),
+		getSettings = require( './ext.globalwatchlist.getSettings.js' ),
+		saveSettings = require( './ext.globalwatchlist.saveSettings.js' ),
 		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
-		SettingsElements = {},
-		SettingsManager = {};
-	var notifications = new NotificationManager( GlobalWatchlistDebug );
-	var startingOptions = GetSettings( notifications );
+		settingsElements = {},
+		settingsManager = {};
+	var notifications = new NotificationManager( globalWatchlistDebug );
+	var startingOptions = getSettings( notifications );
 
-	SettingsElements.anon = new OO.ui.RadioSelectWidget( {
+	settingsElements.anon = new OO.ui.RadioSelectWidget( {
 		items: [
 			new OO.ui.RadioOptionWidget( {
 				data: 0,
@@ -30,7 +30,7 @@
 		],
 		text: mw.msg( 'globalwatchlist-filter-anon' )
 	} );
-	SettingsElements.bot = new OO.ui.RadioSelectWidget( {
+	settingsElements.bot = new OO.ui.RadioSelectWidget( {
 		items: [
 			new OO.ui.RadioOptionWidget( {
 				data: 0,
@@ -47,22 +47,22 @@
 		],
 		text: mw.msg( 'globalwatchlist-filter-bot' )
 	} );
-	SettingsElements.confirmAllSites = new OO.ui.CheckboxMultioptionWidget( {
+	settingsElements.confirmAllSites = new OO.ui.CheckboxMultioptionWidget( {
 		label: mw.msg( 'globalwatchlist-option-confirmallsites' )
 	} );
-	SettingsElements.edits = new OO.ui.CheckboxMultioptionWidget( {
+	settingsElements.edits = new OO.ui.CheckboxMultioptionWidget( {
 		label: mw.msg( 'globalwatchlist-show-edits' )
 	} );
-	SettingsElements.fastMode = new OO.ui.CheckboxMultioptionWidget( {
+	settingsElements.fastMode = new OO.ui.CheckboxMultioptionWidget( {
 		label: mw.msg( 'globalwatchlist-option-fastmode' )
 	} );
-	SettingsElements.groupPage = new OO.ui.CheckboxMultioptionWidget( {
+	settingsElements.groupPage = new OO.ui.CheckboxMultioptionWidget( {
 		label: mw.msg( 'globalwatchlist-option-grouppage' )
 	} );
-	SettingsElements.logEntries = new OO.ui.CheckboxMultioptionWidget( {
+	settingsElements.logEntries = new OO.ui.CheckboxMultioptionWidget( {
 		label: mw.msg( 'globalwatchlist-show-logentries' )
 	} );
-	SettingsElements.minor = new OO.ui.RadioSelectWidget( {
+	settingsElements.minor = new OO.ui.RadioSelectWidget( {
 		items: [
 			new OO.ui.RadioOptionWidget( {
 				data: 0,
@@ -79,14 +79,14 @@
 		],
 		text: mw.msg( 'globalwatchlist-filter-minor' )
 	} );
-	SettingsElements.newPages = new OO.ui.CheckboxMultioptionWidget( {
+	settingsElements.newPages = new OO.ui.CheckboxMultioptionWidget( {
 		label: mw.msg( 'globalwatchlist-show-newpages' )
 	} );
-	SettingsElements.sitelist = new OO.ui.FieldsetLayout();
-	SettingsElements.sites = [];
+	settingsElements.sitelist = new OO.ui.FieldsetLayout();
+	settingsElements.sites = [];
 
-	SettingsManager.addRow = function ( start ) {
-		var num = SettingsElements.sites.length,
+	settingsManager.addRow = function ( start ) {
+		var num = settingsElements.sites.length,
 			row = new OO.ui.ActionFieldLayout(
 				new OO.ui.TextInputWidget( {
 					classes: [ 'globalWatchlist-site-text' ],
@@ -96,20 +96,20 @@
 					flags: [ 'destructive' ],
 					label: mw.msg( 'globalwatchlist-remove' )
 				} ).on( 'click', function () {
-					SettingsElements.sites[ num ].toggle();
+					settingsElements.sites[ num ].toggle();
 				} )
 			);
-		SettingsElements.sitelist.addItems( [ row ] );
-		SettingsElements.sites.push( row );
+		settingsElements.sitelist.addItems( [ row ] );
+		settingsElements.sites.push( row );
 	};
-	SettingsManager.create = function () {
+	settingsManager.create = function () {
 		return [
 			new OO.ui.ButtonInputWidget( {
 				icon: 'history',
 				id: 'globalWatchlist-resetchanges',
 				label: mw.msg( 'globalwatchlist-resetchanges' )
 			} ).on( 'click', function () {
-				SettingsManager.prefill();
+				settingsManager.prefill();
 			} ).$element,
 			new OO.ui.ButtonWidget( {
 				flags: [ 'progressive' ],
@@ -127,17 +127,17 @@
 					} ).$element,
 					$( '<div>' )
 						.attr( 'id', 'globalWatchlist-sites-list' ),
-					SettingsElements.sitelist.$element,
+					settingsElements.sitelist.$element,
 					new OO.ui.ButtonInputWidget( {
 						icon: 'add',
 						id: 'globalWatchlist-add',
 						label: mw.msg( 'globalwatchlist-add' )
-					} ).on( 'click', SettingsManager.addRow ).$element,
+					} ).on( 'click', settingsManager.addRow ).$element,
 					new OO.ui.ButtonInputWidget( {
 						icon: 'bookmark',
 						id: 'globalWatchlist-save',
 						label: mw.msg( 'globalwatchlist-save' )
-					} ).on( 'click', SettingsManager.saveChanges ).$element
+					} ).on( 'click', settingsManager.saveChanges ).$element
 				),
 			$( '<div>' )
 				.attr( 'id', 'globalWatchlist-filters' )
@@ -153,9 +153,9 @@
 					$( '<div>' )
 						.attr( 'id', 'globalWatchlist-filters-list' )
 						.append(
-							SettingsElements.anon.$element,
-							SettingsElements.bot.$element,
-							SettingsElements.minor.$element
+							settingsElements.anon.$element,
+							settingsElements.bot.$element,
+							settingsElements.minor.$element
 						),
 					$( '<hr>' ),
 					$( '<div>' )
@@ -166,9 +166,9 @@
 							} ).$element,
 							new OO.ui.CheckboxMultiselectWidget( {
 								items: [
-									SettingsElements.edits,
-									SettingsElements.logEntries,
-									SettingsElements.newPages
+									settingsElements.edits,
+									settingsElements.logEntries,
+									settingsElements.newPages
 								]
 							} ).$element,
 							new OO.ui.LabelWidget( {
@@ -176,54 +176,54 @@
 							} ).$element,
 							new OO.ui.CheckboxMultiselectWidget( {
 								items: [
-									SettingsElements.groupPage,
-									SettingsElements.confirmAllSites,
-									SettingsElements.fastMode
+									settingsElements.groupPage,
+									settingsElements.confirmAllSites,
+									settingsElements.fastMode
 								]
 							} ).$element
 						)
 				)
 		];
 	};
-	SettingsManager.prefill = function () {
-		SettingsElements.anon.selectItemByData( startingOptions.anon );
-		SettingsElements.bot.selectItemByData( startingOptions.bot );
-		SettingsElements.minor.selectItemByData( startingOptions.minor );
+	settingsManager.prefill = function () {
+		settingsElements.anon.selectItemByData( startingOptions.anon );
+		settingsElements.bot.selectItemByData( startingOptions.bot );
+		settingsElements.minor.selectItemByData( startingOptions.minor );
 
-		SettingsElements.edits.setSelected( startingOptions.showEdits );
-		SettingsElements.logEntries.setSelected( startingOptions.showLogEntries );
-		SettingsElements.newPages.setSelected( startingOptions.showNewPages );
-		SettingsElements.groupPage.setSelected( startingOptions.groupPage );
-		SettingsElements.confirmAllSites.setSelected( startingOptions.confirmAllSites );
-		SettingsElements.fastMode.setSelected( startingOptions.fastMode );
+		settingsElements.edits.setSelected( startingOptions.showEdits );
+		settingsElements.logEntries.setSelected( startingOptions.showLogEntries );
+		settingsElements.newPages.setSelected( startingOptions.showNewPages );
+		settingsElements.groupPage.setSelected( startingOptions.groupPage );
+		settingsElements.confirmAllSites.setSelected( startingOptions.confirmAllSites );
+		settingsElements.fastMode.setSelected( startingOptions.fastMode );
 
-		SettingsElements.sitelist.clearItems();
+		settingsElements.sitelist.clearItems();
 		startingOptions.siteList.forEach( function ( site, index ) {
-			SettingsElements.sites[ index ].toggle( true );
-			SettingsElements.sitelist.addItems( [ SettingsElements.sites[ index ] ] );
+			settingsElements.sites[ index ].toggle( true );
+			settingsElements.sitelist.addItems( [ settingsElements.sites[ index ] ] );
 
 			/* eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle */
 			$( '.globalWatchlist-site-text:last > input' )[ 0 ].value = site;
 		} );
-		SettingsElements.sites[ startingOptions.siteList.length ].toggle( true );
-		SettingsElements.sitelist.addItems(
-			[ SettingsElements.sites[ startingOptions.siteList.length ] ]
+		settingsElements.sites[ startingOptions.siteList.length ].toggle( true );
+		settingsElements.sitelist.addItems(
+			[ settingsElements.sites[ startingOptions.siteList.length ] ]
 		);
 
 		/* eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle */
 		$( '.globalWatchlist-site-text:last > input' )[ 0 ].value = '';
 	};
-	SettingsManager.saveChanges = function () {
+	settingsManager.saveChanges = function () {
 		var settings = {
-			anonFilter: SettingsElements.anon.findSelectedItem().data,
-			botFilter: SettingsElements.bot.findSelectedItem().data,
-			confirmAllSites: SettingsElements.confirmAllSites.isSelected(),
-			fastMode: SettingsElements.fastMode.isSelected(),
-			groupPage: SettingsElements.groupPage.isSelected(),
-			minorFilter: SettingsElements.minor.findSelectedItem().data,
-			showEdits: SettingsElements.edits.isSelected(),
-			showLogEntries: SettingsElements.logEntries.isSelected(),
-			showNewPages: SettingsElements.newPages.isSelected(),
+			anonFilter: settingsElements.anon.findSelectedItem().data,
+			botFilter: settingsElements.bot.findSelectedItem().data,
+			confirmAllSites: settingsElements.confirmAllSites.isSelected(),
+			fastMode: settingsElements.fastMode.isSelected(),
+			groupPage: settingsElements.groupPage.isSelected(),
+			minorFilter: settingsElements.minor.findSelectedItem().data,
+			showEdits: settingsElements.edits.isSelected(),
+			showLogEntries: settingsElements.logEntries.isSelected(),
+			showNewPages: settingsElements.newPages.isSelected(),
 
 			/* eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle */
 			sites: $( 'div.oo-ui-actionFieldLayout:visible .globalWatchlist-site-text > input' )
@@ -237,7 +237,7 @@
 				} )
 				.toArray()
 		};
-		GlobalWatchlistDebug.info( 'Settings.saveChanges', settings, 0 );
+		globalWatchlistDebug.info( 'Settings.saveChanges', settings, 0 );
 
 		// Preload the notification module for mw.notify, used in notifications
 		// not included as a dependency for this module because it isn't needed until
@@ -245,7 +245,7 @@
 		// loading
 		mw.loader.load( 'mediawiki.notification' );
 
-		SaveSettings( GlobalWatchlistDebug, settings )
+		saveSettings( globalWatchlistDebug, settings )
 			.done( function ( data ) {
 				notifications.onSettingsSaved( data );
 			} )
@@ -255,21 +255,21 @@
 	};
 
 	mw.globalwatchlist = mw.globalwatchlist || {};
-	mw.globalwatchlist.settings = SettingsManager;
-	mw.globalwatchlist.debug = GlobalWatchlistDebug;
+	mw.globalwatchlist.settings = settingsManager;
+	mw.globalwatchlist.debug = globalWatchlistDebug;
 
 	// On ready initialization
 	$( function () {
-		GlobalWatchlistDebug.info( 'GlobalWatchlistSettings', 'javascript loaded!', 1 );
+		globalWatchlistDebug.info( 'GlobalWatchlistSettings', 'javascript loaded!', 1 );
 
 		/* eslint-disable-next-line no-jquery/no-global-selector */
 		$( '.globalwatchlist-content' )
 			.empty()
-			.append( SettingsManager.create() );
+			.append( settingsManager.create() );
 		startingOptions.siteList.forEach( function ( site ) {
-			SettingsManager.addRow( site );
+			settingsManager.addRow( site );
 		} );
-		SettingsManager.addRow();
-		SettingsManager.prefill();
+		settingsManager.addRow();
+		settingsManager.prefill();
 	} );
 }() );

@@ -5,98 +5,98 @@
 ( function () {
 	'use strict';
 
-	var GlobalWatchlistDebug = require( './ext.globalwatchlist.debug.js' ),
-		GetSettings = require( './ext.globalwatchlist.getSettings.js' ),
-		Config = {},
+	var globalWatchlistDebug = require( './ext.globalwatchlist.debug.js' ),
+		getSettings = require( './ext.globalwatchlist.getSettings.js' ),
+		config = {},
 		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
 		WatchedSite = require( './ext.globalwatchlist.site.js' ),
-		WatchlistUtils = require( './ext.globalwatchlist.watchlistUtils.js' ),
-		ViewElements = {},
-		ViewManager = {},
-		WatchedSites = [];
-	var notifications = new NotificationManager( GlobalWatchlistDebug );
+		watchlistUtils = require( './ext.globalwatchlist.watchlistUtils.js' ),
+		viewElements = {},
+		viewManager = {},
+		watchedSites = [];
+	var notifications = new NotificationManager( globalWatchlistDebug );
 
-	Config = GetSettings( notifications );
-	Config.liveCounter = 0;
-	Config.currentMode = -1;
+	config = getSettings( notifications );
+	config.liveCounter = 0;
+	config.currentMode = -1;
 
-	ViewElements.groupPage = new OO.ui.ToggleButtonWidget( {
-		disabled: Config.fastMode,
+	viewElements.groupPage = new OO.ui.ToggleButtonWidget( {
+		disabled: config.fastMode,
 		label: mw.msg( 'globalwatchlist-option-grouppage' ),
-		value: Config.groupPage && !Config.fastMode
+		value: config.groupPage && !config.fastMode
 	} ).on( 'click', function () {
-		Config.groupPage = ViewElements.groupPage.value;
-		ViewManager.renderFeed();
+		config.groupPage = viewElements.groupPage.value;
+		viewManager.renderFeed();
 	} );
-	ViewElements.liveToggle = new OO.ui.ToggleButtonWidget( {
-		disabled: Config.fastMode,
+	viewElements.liveToggle = new OO.ui.ToggleButtonWidget( {
+		disabled: config.fastMode,
 		label: mw.msg( 'globalwatchlist-option-live' ),
 		value: false
 	} ).on( 'click', function () {
-		ViewManager.setMode( ViewElements.liveToggle.value ? 13 : 11 );
+		viewManager.setMode( viewElements.liveToggle.value ? 13 : 11 );
 	} );
-	ViewElements.settingsLink = new OO.ui.ButtonWidget( {
+	viewElements.settingsLink = new OO.ui.ButtonWidget( {
 		flags: [ 'progressive' ],
 		href: mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:GlobalWatchlistSettings' ),
 		icon: 'settings',
 		label: mw.msg( 'globalwatchlist-globalwatchlistsettingslink' )
 	} );
-	ViewElements.markAllSeen = new OO.ui.ButtonInputWidget( {
+	viewElements.markAllSeen = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'destructive' ],
 		icon: 'checkAll',
 		id: 'globalWatchlist-markSeen-all',
 		label: mw.msg( 'globalwatchlist-markseen-all' )
 	} ).on( 'click', function () {
-		if ( Config.confirmAllSites ) {
-			notifications.onMarkAllSitesSeen( ViewManager.reallyMarkAllSeen );
+		if ( config.confirmAllSites ) {
+			notifications.onMarkAllSitesSeen( viewManager.reallyMarkAllSeen );
 		} else {
-			GlobalWatchlistDebug.info( 'MarkAllSitesSeen', 'Marking without confirmation', 1 );
-			ViewManager.reallyMarkAllSeen();
+			globalWatchlistDebug.info( 'MarkAllSitesSeen', 'Marking without confirmation', 1 );
+			viewManager.reallyMarkAllSeen();
 		}
 	} );
-	ViewElements.refresh = new OO.ui.ButtonInputWidget( {
+	viewElements.refresh = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'progressive' ],
 		icon: 'reload',
 		id: 'globalWatchlist-reflesh',
 		label: mw.msg( 'globalwatchlist-refresh' )
 	} ).on( 'click', function () {
-		ViewManager.renderFeed();
+		viewManager.renderFeed();
 	} );
-	ViewElements.progressBar = new OO.ui.ProgressBarWidget( {
+	viewElements.progressBar = new OO.ui.ProgressBarWidget( {
 		id: 'globalWatchlist-watchlistsLoading'
 	} );
-	ViewElements.$asOf = $( '<div>' )
+	viewElements.$asOf = $( '<div>' )
 		.attr( 'id', 'globalWatchlist-asOf' );
-	ViewElements.$sharedFeed = $( '<div>' )
+	viewElements.$sharedFeed = $( '<div>' )
 		.attr( 'id', 'globalWatchlist-watchlistsFeed' );
 
-	WatchedSites = Config.siteList.map( function ( site ) {
+	watchedSites = config.siteList.map( function ( site ) {
 		return new WatchedSite(
-			GlobalWatchlistDebug,
-			Config,
+			globalWatchlistDebug,
+			config,
 			new mw.ForeignApi( '//' + site + mw.util.wikiScript( 'api' ) ),
-			WatchlistUtils,
+			watchlistUtils,
 			site
 		);
 	} );
 
-	ViewManager.create = function () {
+	viewManager.create = function () {
 		return [
 			$( '<div>' )
 				.attr( 'id', 'globalWatchlist-toolbar' )
 				.append(
-					ViewElements.liveToggle.$element,
-					ViewElements.groupPage.$element,
-					ViewElements.refresh.$element,
-					ViewElements.settingsLink.$element,
-					ViewElements.markAllSeen.$element
+					viewElements.liveToggle.$element,
+					viewElements.groupPage.$element,
+					viewElements.refresh.$element,
+					viewElements.settingsLink.$element,
+					viewElements.markAllSeen.$element
 				),
-			ViewElements.$asOf,
-			ViewElements.progressBar.$element,
-			ViewElements.$sharedFeed
+			viewElements.$asOf,
+			viewElements.progressBar.$element,
+			viewElements.$sharedFeed
 		];
 	};
-	ViewManager.newEmptySiteRow = function ( site ) {
+	viewManager.newEmptySiteRow = function ( site ) {
 		var template = mw.template.get(
 			'ext.globalwatchlist.specialglobalwatchlist',
 			'templates/newEmptySiteRow.mustache'
@@ -109,19 +109,19 @@
 		};
 		return template.render( params );
 	};
-	ViewManager.refresh = function () {
-		GlobalWatchlistDebug.info( 'watchlists.refresh', 'starting refresh', 1 );
-		Config.time = new Date();
+	viewManager.refresh = function () {
+		globalWatchlistDebug.info( 'watchlists.refresh', 'starting refresh', 1 );
+		config.time = new Date();
 		return new Promise( function ( resolve ) {
-			Promise.all( WatchedSites.map( function ( site ) {
-				return site.getWatchlist( Config );
+			Promise.all( watchedSites.map( function ( site ) {
+				return site.getWatchlist( config );
 			} ) ).then( function () {
 				var $div = $( '<div>' ).attr( 'id', 'globalWatchlist-feedCollector' ),
 					emptySites = [],
 					showChangesLabel = false;
 
-				WatchedSites.forEach( function ( site ) {
-					GlobalWatchlistDebug.info(
+				watchedSites.forEach( function ( site ) {
+					globalWatchlistDebug.info(
 						'watchlists.refrsh site loop, a site',
 						site.site,
 						3
@@ -150,7 +150,7 @@
 						} );
 					emptySites.forEach( function ( site ) {
 						$ul.append(
-							ViewManager.newEmptySiteRow( site )
+							viewManager.newEmptySiteRow( site )
 						);
 					} );
 					$div.append(
@@ -167,68 +167,68 @@
 					);
 				}
 
-				ViewElements.$sharedFeed.empty()
+				viewElements.$sharedFeed.empty()
 					.append( $div );
-				ViewManager.runLive();
-				ViewElements.$asOf.innerText = mw.msg(
+				viewManager.runLive();
+				viewElements.$asOf.innerText = mw.msg(
 					'globalwatchlist-asof',
-					Config.time.toUTCString()
+					config.time.toUTCString()
 				);
 				resolve();
 			} ).catch( function ( error ) {
 				/* eslint-disable-next-line no-console */
 				console.log( error );
-				GlobalWatchlistDebug.info( 'watchlists.refresh ERROR', error, 1 );
+				globalWatchlistDebug.info( 'watchlists.refresh ERROR', error, 1 );
 				resolve();
 			} );
 		} );
 	};
-	ViewManager.renderFeed = function () {
-		GlobalWatchlistDebug.info( 'renderFeed', 'called', 1 );
-		if ( Config.currentMode === 13 ) {
+	viewManager.renderFeed = function () {
+		globalWatchlistDebug.info( 'renderFeed', 'called', 1 );
+		if ( config.currentMode === 13 ) {
 			return;
 		}
 
-		ViewManager.setMode( 10 );
-		ViewManager.refresh().then( function () {
-			ViewManager.setMode( 11 );
+		viewManager.setMode( 10 );
+		viewManager.refresh().then( function () {
+			viewManager.setMode( 11 );
 		} );
 	};
-	ViewManager.reallyMarkAllSeen = function () {
+	viewManager.reallyMarkAllSeen = function () {
 		// Needs to be a separate function to be passed as a callback to the notification
 		// manager if the user prefers to require confirmation
-		WatchedSites.forEach( function ( site ) {
+		watchedSites.forEach( function ( site ) {
 			site.markAsSeen();
 		} );
 	}
 
-	ViewManager.runLive = function () {
-		if ( Config.currentMode === 13 ) {
-			GlobalWatchlistDebug.info( 'watchlists.runLive - counter', Config.liveCounter++, 1 );
-			setTimeout( ViewManager.refresh, 7500 );
+	viewManager.runLive = function () {
+		if ( config.currentMode === 13 ) {
+			globalWatchlistDebug.info( 'watchlists.runLive - counter', config.liveCounter++, 1 );
+			setTimeout( viewManager.refresh, 7500 );
 		}
 	};
 
-	ViewManager.setMode = function ( newMode ) {
-		GlobalWatchlistDebug.info( 'mode', newMode, 1 );
-		Config.currentMode = newMode;
+	viewManager.setMode = function ( newMode ) {
+		globalWatchlistDebug.info( 'mode', newMode, 1 );
+		config.currentMode = newMode;
 		switch ( newMode ) {
 			// Loading global watchlist
 			case 10:
-				ViewElements.liveToggle.setDisabled( true );
-				ViewElements.progressBar.$element.show();
-				ViewElements.$sharedFeed.hide();
-				ViewElements.$asOf.innerText = '';
+				viewElements.liveToggle.setDisabled( true );
+				viewElements.progressBar.$element.show();
+				viewElements.$sharedFeed.hide();
+				viewElements.$asOf.innerText = '';
 				break;
 
 			// Showing global watchlist
 			case 11:
-				ViewElements.liveToggle.setDisabled( Config.fastMode );
-				ViewElements.refresh.setDisabled( false );
-				ViewElements.groupPage.setDisabled( Config.fastMode );
-				ViewElements.liveToggle.setIcon( 'play' );
-				ViewElements.progressBar.$element.hide();
-				ViewElements.$sharedFeed.show();
+				viewElements.liveToggle.setDisabled( config.fastMode );
+				viewElements.refresh.setDisabled( false );
+				viewElements.groupPage.setDisabled( config.fastMode );
+				viewElements.liveToggle.setIcon( 'play' );
+				viewElements.progressBar.$element.hide();
+				viewElements.$sharedFeed.show();
 				break;
 
 			// Marking all sites as seen, primarily used for status
@@ -240,35 +240,35 @@
 
 			// Live updates running
 			case 13:
-				ViewElements.refresh.setDisabled( true );
-				ViewElements.groupPage.setDisabled( true );
-				ViewElements.liveToggle.setIcon( 'pause' );
-				ViewManager.runLive();
+				viewElements.refresh.setDisabled( true );
+				viewElements.groupPage.setDisabled( true );
+				viewElements.liveToggle.setIcon( 'pause' );
+				viewManager.runLive();
 				break;
 
 			// Anything else (not supported)
 			default:
-				GlobalWatchlistDebug.error( 'Unsupported mode', newMode );
+				globalWatchlistDebug.error( 'Unsupported mode', newMode );
 		}
 	};
 
 	mw.globalwatchlist = {};
-	mw.globalwatchlist.elements = ViewElements;
-	mw.globalwatchlist.watchedSites = WatchedSites;
-	mw.globalwatchlist.view = ViewManager;
-	mw.globalwatchlist.debug = GlobalWatchlistDebug;
-	mw.globalwatchlist.config = Config;
+	mw.globalwatchlist.elements = viewElements;
+	mw.globalwatchlist.watchedSites = watchedSites;
+	mw.globalwatchlist.view = viewManager;
+	mw.globalwatchlist.debug = globalWatchlistDebug;
+	mw.globalwatchlist.config = config;
 	mw.globalwatchlist.notifications = notifications;
 
 	// On ready initialization
 	$( function () {
-		GlobalWatchlistDebug.info( 'GlobalWatchlist', 'javascript loaded!', 1 );
+		globalWatchlistDebug.info( 'GlobalWatchlist', 'javascript loaded!', 1 );
 
 		$( '.globalwatchlist-content' )
 			.empty()
-			.append( ViewManager.create() );
+			.append( viewManager.create() );
 
-		ViewManager.setMode( 10 );
-		ViewManager.renderFeed();
+		viewManager.setMode( 10 );
+		viewManager.renderFeed();
 	} );
 }() );

@@ -1,15 +1,15 @@
 /**
  * Represents a specific site
  *
- * @param {Object} GlobalWatchlistDebug debugger
+ * @param {Object} globalWatchlistDebug debugger
  * @param {Object} config
  * @param {Object} api
- * @param {Object} WatchlistUtils
+ * @param {Object} watchlistUtils
  * @param {string} urlFragment
  */
-function GlobalWatchlistSite( GlobalWatchlistDebug, config, api, WatchlistUtils, urlFragment ) {
+function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils, urlFragment ) {
 	// Logger to send debug info to
-	this.debugLogger = GlobalWatchlistDebug;
+	this.debugLogger = globalWatchlistDebug;
 
 	// User config, retrieved from getSettings
 	this.config = config;
@@ -18,7 +18,7 @@ function GlobalWatchlistSite( GlobalWatchlistDebug, config, api, WatchlistUtils,
 	this.apiObject = api;
 
 	// Utility methods
-	this.watchlistUtils = WatchlistUtils;
+	this.watchlistUtils = watchlistUtils;
 
 	// Site identifier in url format
 	this.site = urlFragment.replace( /_/g, '.' );

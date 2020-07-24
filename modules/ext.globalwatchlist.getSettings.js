@@ -25,7 +25,7 @@ function getQueryFlag( setting, flag ) {
  * @param {Object} notificationManager instance of of GlobalWatchlistNotificationManager
  * @return {Object}
  */
-function GlobalWatchlistGetSettings( notificationManager ) {
+function globalWatchlistGetSettings( notificationManager ) {
 	// Note: this must be the same key as is used in the settings manager
 	var userOptions = mw.user.options.get( 'global-watchlist-options' ),
 		userSettings = {},
@@ -102,4 +102,4 @@ function GlobalWatchlistGetSettings( notificationManager ) {
 	return config;
 }
 
-module.exports = GlobalWatchlistGetSettings;
+module.exports = globalWatchlistGetSettings;
