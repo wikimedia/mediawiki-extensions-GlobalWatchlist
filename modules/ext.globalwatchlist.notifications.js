@@ -26,10 +26,10 @@ GlobalWatchlistNotificationManager.prototype.onMarkAllSitesSeen = function ( cal
 	).done(
 		function ( confirmed ) {
 			if ( confirmed ) {
-				that.debug( 'MarkAllSitesSeen', 'Confirmed', 1 );
+				that.debug.info( 'MarkAllSitesSeen', 'Confirmed', 1 );
 				callback();
 			} else {
-				that.debug( 'MarkAllSitesSeen', 'not confirmed, cancelling', 1 );
+				that.debug.info( 'MarkAllSitesSeen', 'not confirmed, cancelling', 1 );
 			}
 		}
 	);
