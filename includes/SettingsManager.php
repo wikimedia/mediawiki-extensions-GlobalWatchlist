@@ -91,23 +91,14 @@ class SettingsManager {
 	 *
 	 * @param UserIdentity $userIdentity
 	 * @param array $options
-	 *
-	 * @return array
 	 */
-	public function saveUserOptions( UserIdentity $userIdentity, array $options ) : array {
-		$errors = $this->validateSettings( $options );
+	public function saveUserOptions( UserIdentity $userIdentity, array $options ) {
+		$this->logSettingsChange( $userIdentity );
 
-		if ( $errors === [] ) {
-			$this->logSettingsChange( $userIdentity );
+		$options['version'] = self::PREFERENCE_VERSION;
 
-			// Only save if settings are valid
-			$options['version'] = self::PREFERENCE_VERSION;
-
-			$optionsStr = FormatJson::encode( $options );
-			$this->saveOptionsInternal( $userIdentity, $optionsStr );
-		}
-
-		return $errors;
+		$optionsStr = FormatJson::encode( $options );
+		$this->saveOptionsInternal( $userIdentity, $optionsStr );
 	}
 
 	/**
@@ -156,55 +147,6 @@ class SettingsManager {
 		);
 
 		$this->userOptionsManager->saveOptions( $userIdentity );
-	}
-
-	/**
-	 * Check if settings chosen are valid
-	 *
-	 * Array includes the following possible errors:
-	 *   - anon-bot
-	 *       caused by trying to filter for only anonymous bot edits
-	 *   - anon-minor
-	 *       caused by trying to filter for only anonymous minor edits
-	 *   - no-sites
-	 *       caused by trying to submit an empty list of sites
-	 *   - no-types
-	 *       caused by trying to choose no types to show
-	 *
-	 * @param array $options
-	 * @return array
-	 */
-	private function validateSettings( array $options ) : array {
-		$errors = [];
-
-		$this->logger->debug( 'Validating user options' );
-
-		if ( $options['sites'] === [] ) {
-			$errors[] = 'no-sites';
-			$this->logger->debug( 'No sites provided' );
-		}
-
-		if ( $options['showtypes'] === [] ) {
-			$errors[] = 'no-types';
-			$this->logger->debug( 'No types of changes chosen' );
-		}
-
-		if ( $options['anonfilter'] === self::FILTER_REQUIRE ) {
-			if ( $options['botfilter'] === self::FILTER_REQUIRE ) {
-				$errors[] = 'anon-bot';
-				$this->logger->debug( 'Invalid combination: anon-bot edits' );
-			}
-			if ( $options['minorfilter'] === self::FILTER_REQUIRE ) {
-				$errors[] = 'anon-minor';
-				$this->logger->debug( 'Invalid combination: anon-minor edits' );
-			}
-		}
-
-		if ( $errors === [] ) {
-			$this->logger->debug( 'No issues found' );
-		}
-
-		return $errors;
 	}
 
 }

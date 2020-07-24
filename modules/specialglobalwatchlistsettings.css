@@ -1,0 +1,31 @@
+/* stylelint-disable selector-max-id */
+
+#mw-htmlform-filters > div {
+	break-after: column;
+}
+
+#mw-htmlform-cloner-list-mw-input-wpsites > li > div {
+	display: flex;
+}
+
+#mw-htmlform-cloner-list-mw-input-wpsites {
+	list-style: none;
+}
+
+.oo-ui-fieldLayout {
+	margin-top: 0;
+}
+
+.mw-htmlform .oo-ui-labelElement {
+	margin-top: 0;
+}
+
+#mw-htmlform-filters {
+	column-count: 3;
+	column-gap: 15px;
+}
+
+#mw-htmlform-otheroptions {
+	column-count: 2;
+	column-gap: 15px;
+}

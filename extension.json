@@ -18,7 +18,14 @@
 				"StatsdDataFactory"
 			]
 		},
-		"GlobalWatchlistSettings": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings"
+		"GlobalWatchlistSettings": {
+			"class": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings",
+			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings::newFromGlobalState",
+			"services": [
+				"GlobalWatchlistSettingsManager",
+				"UserOptionsManager"
+			]
+		}
 	},
 	"HookHandlers": {
 		"GlobalWatchlistHooks": {
@@ -51,15 +58,6 @@
 	},
 	"ExtensionMessagesFiles": {
 		"GlobalWatchlistAliases": "GlobalWatchlist.alias.php"
-	},
-	"APIModules": {
-		"globalwatchlistsettings": {
-			"class": "MediaWiki\\Extension\\GlobalWatchlist\\ApiGlobalWatchlistSettings",
-			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\ApiGlobalWatchlistSettings::newFromGlobalState",
-			"services": [
-				"GlobalWatchlistSettingsManager"
-			]
-		}
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
@@ -198,63 +196,25 @@
 			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
-			"packageFiles": [
-				"ext.globalwatchlist.specialglobalwatchlistsettings.js",
-				"ext.globalwatchlist.debug.js",
-				"ext.globalwatchlist.getSettings.js",
-				"ext.globalwatchlist.notifications.js",
-				"ext.globalwatchlist.saveSettings.js"
-			],
 			"styles": [
 				"ext.globalwatchlist.common.css",
-				"ext.globalwatchlist.specialglobalwatchlistsettings.css"
-			],
-			"messages": [
-				"apierror-globalwatchlist-invalid-settings",
-				"globalwatchlist-add",
-				"globalwatchlist-changetypes",
-				"globalwatchlist-filters",
-				"globalwatchlist-filter-anon",
-				"globalwatchlist-filter-bot",
-				"globalwatchlist-filter-either",
-				"globalwatchlist-filter-minor",
-				"globalwatchlist-filter-not-anon",
-				"globalwatchlist-filter-not-bot",
-				"globalwatchlist-filter-not-minor",
-				"globalwatchlist-filter-only-anon",
-				"globalwatchlist-filter-only-bot",
-				"globalwatchlist-filter-only-minor",
-				"globalwatchlist-getoptions-error",
-				"globalwatchlist-globalwatchlistbacklink",
-				"globalwatchlist-notify-heading",
-				"globalwatchlist-notify-savingfailed",
-				"globalwatchlist-notify-settingssaved",
-				"globalwatchlist-option-grouppage",
-				"globalwatchlist-option-confirmallsites",
-				"globalwatchlist-option-fastmode",
-				"globalwatchlist-otheroptions",
-				"globalwatchlist-remove",
-				"globalwatchlist-resetchanges",
-				"globalwatchlist-save",
-				"globalwatchlist-settings-error-anon-bot",
-				"globalwatchlist-settings-error-anon-minor",
-				"globalwatchlist-settings-error-no-sites",
-				"globalwatchlist-settings-error-no-types",
-				"globalwatchlist-show-edits",
-				"globalwatchlist-show-logentries",
-				"globalwatchlist-show-newpages",
-				"globalwatchlist-sitelist"
+				"specialglobalwatchlistsettings.css"
 			],
 			"dependencies": [
-				"oojs-ui-core",
-				"oojs-ui-widgets",
-				"oojs-ui-windows",
-				"oojs-ui.styles.icons-content",
-				"oojs-ui.styles.icons-interactions",
-				"oojs-ui.styles.icons-media",
-				"oojs-ui.styles.icons-moderation",
-				"oojs-ui.styles.icons-movement",
-				"user.options"
+				"mediawiki.htmlform.ooui"
+			]
+		},
+		"ext.globalwatchlist.specialglobalwatchlistsettings.error": {
+			"packageFiles": [
+				"specialglobalwatchlistsettings.error.js",
+				"ext.globalwatchlist.debug.js",
+				"ext.globalwatchlist.notifications.js"
+			],
+			"messages": [
+				"globalwatchlist-getoptions-error"
+			],
+			"dependencies": [
+				"oojs-ui-windows"
 			]
 		}
 	},
