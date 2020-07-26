@@ -289,23 +289,22 @@ GlobalWatchlistSite.prototype.renderWatchlist = function ( summary ) {
 		that.markAsSeen();
 	} );
 
+	var headerTemplate = mw.template.get(
+		'ext.globalwatchlist.specialglobalwatchlist',
+		'templates/siteRowHeader.mustache'
+	);
+	var headerParams = {
+		'special-watchlist-url': this.linker.linkPage( 'Special:Watchlist' ),
+		'site-name': this.site,
+		'special-edit-watchlist-url': this.linker.linkPage( 'Special:EditWatchlist' ),
+		'edit-watchlist-msg': mw.msg( 'globalwatchlist-editwatchlist' )
+	};
+
 	this.$feedDiv = $( '<div>' )
 		.attr( 'id', this.divID )
 		.addClass( 'globalWatchlist-feed-site' )
 		.append(
-			$( '<h3>' )
-				.append(
-					$( '<a>' )
-						.attr( 'href', this.linker.linkPage( 'Special:Watchlist' ) )
-						.attr( 'target', '_blank' )
-						.text( this.site ),
-					' (',
-					$( '<a>' )
-						.attr( 'href', this.linker.linkPage( 'Special:EditWatchlist' ) )
-						.attr( 'target', '_blank' )
-						.text( mw.msg( 'globalwatchlist-editwatchlist' ) ),
-					')'
-				),
+			headerTemplate.render( headerParams ),
 			$( '<div>' )
 				.addClass( 'globalWatchlist-site' )
 				.append(

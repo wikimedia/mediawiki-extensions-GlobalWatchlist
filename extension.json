@@ -91,6 +91,7 @@
 				"ext.globalwatchlist.specialglobalwatchlist.css"
 			],
 			"templates": [
+				"templates/siteRowHeader.mustache",
 				"templates/newEmptySiteRow.mustache"
 			],
 			"messages": [
