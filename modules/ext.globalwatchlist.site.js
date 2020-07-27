@@ -11,7 +11,7 @@ function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils,
 	// Logger to send debug info to
 	this.debugLogger = globalWatchlistDebug;
 
-	// User config, retrieved from getSettings
+	// User config and other settings, retrieved from getSettings
 	this.config = config;
 
 	// The api object to interact with
@@ -41,6 +41,17 @@ function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils,
 
 	// Cached information about the tags of a site
 	this.tags = {};
+
+	// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
+	// Don't create it if it will never be needed
+	if ( this.site === config.wikibaseSite ) {
+		var GlobalWatchlistWikibaseHandler = require( './ext.globalwatchlist.wikibase.js' );
+		this.wikibaseHandler = new GlobalWatchlistWikibaseHandler(
+			globalWatchlistDebug,
+			api,
+			config.lang
+		);
+	}
 }
 
 /**
@@ -435,9 +446,9 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 };
 
 /**
- * Fetch and process wikidata labels when the watchlist is for wikidata
+ * Fetch and process wikibase labels when the watchlist is for wikidata
  *
- * @param {Object} summary
+ * @param {Array} summary
  * @return {jQuery.Promise}
  */
 GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
@@ -446,80 +457,23 @@ GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
 		if ( that.config.fastMode ) {
 			that.debug( 'makeWikidataList', 'Skipping, fast mode is enabled', 1 );
 			resolve( summary );
-		} else if ( that.site !== mw.config.get( 'wgGlobalWatchlistWikibaseSite' ) ) {
+		} else if ( that.site !== that.config.wikibaseSite ) {
 			that.debug(
 				'makeWikidataList',
-				'Skipping, current site (' + that.site + ') is not the correct site (' + mw.config.get( 'wgGlobalWatchlistWikibaseSite' ) + ')',
+				'Skipping, wrong site (' + that.site + ')',
 				1
 			);
 			resolve( summary );
 		} else {
-			var ids = [],
-				wdns = that.config.wikibaseLabelNamespaces;
-			summary.forEach( function ( entry ) {
-				if ( wdns.indexOf( entry.ns ) > -1 ) {
-					entry.titleMsg = entry.title.replace(
-						/^(?:Property|Lexeme):/,
-						''
-					);
-					if ( ids.indexOf( entry.titleMsg ) === -1 ) {
-						ids.push( entry.titleMsg );
-					}
-				}
-			} );
-			that.debug( 'makeWikidataList - summary, ids', [ summary, ids ], 1 );
-			if ( ids.length === 0 ) {
-				resolve( summary );
-			}
-			that.getWikidataLabels( ids ).then( function ( wdlabels ) {
-				var lang = that.config.lang,
-					entryWithLabel;
-				summary.forEach( function ( entry ) {
-					if ( wdns.indexOf( entry.ns ) > -1 && wdlabels[ entry.titleMsg ] ) {
-						that.debug( 'makeWikidataList - have entry', [ entry, wdlabels[ entry.titleMsg ] ], 3 );
-						entryWithLabel = wdlabels[ entry.titleMsg ][ entry.ns === 146 ? 'lemmas' : 'labels' ];
-						if ( entryWithLabel && entryWithLabel[ lang ] && entryWithLabel[ lang ].value ) {
-							entry.titleMsg += ' (' + entryWithLabel[ lang ].value + ')';
-						}
-					}
-				} );
-				resolve( summary );
+			that.wikibaseHandler.addWikibaseLabels( summary ).then( function ( updatedSummary ) {
+				that.debug(
+					'makeWikidataList - updated summary',
+					updatedSummary,
+					1
+				);
+				resolve( updatedSummary );
 			} );
 		}
-	} );
-};
-
-/**
- * Internal helper for makeWikidataList to get the labels for entries
- *
- * @param {Array} ids
- * @return {jQuery.Promise}
- */
-GlobalWatchlistSite.prototype.getWikidataLabels = function ( ids ) {
-	var that = this;
-	return new Promise( function ( resolve ) {
-		that.debug( 'getWikidataLabels ids', ids, 1 );
-		var lang = that.config.lang,
-			wdgetter = {
-				action: 'wbgetentities',
-				formatversion: 2,
-				ids: ids.slice( 0, 50 ),
-				languages: lang,
-				props: 'labels'
-			};
-		that.api( 'get', wdgetter, 'getWikidataLabels' ).then( function ( response ) {
-			var wdlabels = response.entities;
-			that.debug( 'getWikidataLabels wdlabels', wdlabels, 1 );
-			if ( ids.length > 50 ) {
-				that.getWikidataLabels( ids.slice( 50 ) ).then( function ( extraLabels ) {
-					var bothLabels = $.extend( {}, wdlabels, extraLabels );
-					that.debug( 'getWikidataLabels bothLabels', bothLabels, 3 );
-					resolve( bothLabels );
-				} );
-			} else {
-				resolve( wdlabels );
-			}
-		} );
 	} );
 };
 

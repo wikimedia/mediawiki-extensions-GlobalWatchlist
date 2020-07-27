@@ -27,12 +27,12 @@
 		watchlistQueryProps: 'ids|title|flags|loginfo|parsedcomment|user|tags',
 		watchlistQueryTypes: 'edit|new|log',
 		watchlistQueryShow: '',
-		wikibaseLabelNamespaces: [ 0 ]
+		wikibaseSite: 'www.wikidata.org'
 	};
 
 	QUnit.module( 'ext.globalwatchlist.getSettings', QUnit.newMwEnvironment( {
 		config: {
-			wgNamespaceIds: {},
+			wgGlobalWatchlistWikibaseSite: 'www.wikidata.org',
 			wgServer: '//en.wikipedia.org',
 			wgUserLanguage: 'en'
 		}
@@ -82,7 +82,7 @@
 			watchlistQueryProps: 'ids|title|flags|loginfo',
 			watchlistQueryTypes: 'edit|log',
 			watchlistQueryShow: '!anon|!bot|!minor',
-			wikibaseLabelNamespaces: [ 0 ]
+			wikibaseSite: 'www.wikidata.org'
 		}
 
 		assert.deepEqual(

@@ -9,6 +9,7 @@
 					"GlobalWatchlistLinker",
 					"GlobalWatchlistNotificationManager",
 					"GlobalWatchlistSite",
+					"GlobalWatchlistWikibaseHandler",
 					"watchlistUtils"
 				]
 			}

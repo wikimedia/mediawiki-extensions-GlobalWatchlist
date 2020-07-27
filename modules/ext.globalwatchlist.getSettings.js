@@ -45,8 +45,7 @@ function globalWatchlistGetSettings( notificationManager ) {
 			showEdits: true,
 			showLogEntries: true,
 			showNewPages: true
-		},
-		namespaceIds = mw.config.get( 'wgNamespaceIds' );
+		};
 
 	if ( userOptions === null ) {
 		config = defaultConfig;
@@ -93,13 +92,7 @@ function globalWatchlistGetSettings( notificationManager ) {
 		getQueryFlag( config.minor, 'minor' )
 	].join( '' ).replace( /^\|+/, '' );
 
-	config.wikibaseLabelNamespaces = [ 0 ];
-	if ( namespaceIds.property !== undefined ) {
-		config.wikibaseLabelNamespaces.push( namespaceIds.property );
-	}
-	if ( namespaceIds.lexeme !== undefined ) {
-		config.wikibaseLabelNamespaces.push( namespaceIds.lexeme );
-	}
+	config.wikibaseSite = mw.config.get( 'wgGlobalWatchlistWikibaseSite' );
 
 	return config;
 }

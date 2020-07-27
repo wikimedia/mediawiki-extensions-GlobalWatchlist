@@ -83,7 +83,8 @@
 				"ext.globalwatchlist.linker.js",
 				"ext.globalwatchlist.notifications.js",
 				"ext.globalwatchlist.site.js",
-				"ext.globalwatchlist.watchlistUtils.js"
+				"ext.globalwatchlist.watchlistUtils.js",
+				"ext.globalwatchlist.wikibase.js"
 			],
 			"styles": [
 				"ext.globalwatchlist.common.css",
