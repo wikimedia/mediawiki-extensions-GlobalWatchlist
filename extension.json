@@ -96,8 +96,9 @@
 				"ext.globalwatchlist.specialglobalwatchlist.css"
 			],
 			"templates": [
-				"templates/siteRowHeader.mustache",
-				"templates/newEmptySiteRow.mustache"
+				"templates/allEmptySites.mustache",
+				"templates/newEmptySiteRow.mustache",
+				"templates/siteRowHeader.mustache"
 			],
 			"messages": [
 				"globalwatchlist-asof",

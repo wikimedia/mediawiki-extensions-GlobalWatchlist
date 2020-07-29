@@ -147,17 +147,17 @@
 							viewManager.newEmptySiteRow( site )
 						);
 					} );
+					var $emptySitesDiv = mw.template.get(
+							'ext.globalwatchlist.specialglobalwatchlist',
+							'templates/allEmptySites.mustache'
+						).render( {
+							'empty-sites': $ul
+						} )
+						.makeCollapsible();
+
 					$div.append(
 						emptyFeedLabel.$element,
-						$( '<div>' )
-							.addClass( 'globalWatchlist-emptySites' )
-							.addClass( 'mw-collapsed' )
-							.append(
-								$( '<div>' )
-									.addClass( 'globalWatchlist-col' )
-									.append( $ul )
-							)
-							.makeCollapsible()
+						$emptySitesDiv
 					);
 				}
 
