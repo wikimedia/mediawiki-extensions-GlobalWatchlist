@@ -224,6 +224,7 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 		if ( entityIds.length === 0 ) {
 			// Nothing to fetch
 			resolve( updatedEntries );
+			return;
 		}
 
 		that.getRawLabels( entityIds ).then( function ( rawLabels ) {

@@ -246,6 +246,7 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 				that.debug( 'getWatchlist', 'empty', 1 );
 				that.isEmpty = true;
 				resolve();
+				return;
 			}
 			that.debug( 'getWatchlist wlraw', wlraw, 1 );
 
