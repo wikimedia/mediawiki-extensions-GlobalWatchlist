@@ -3,7 +3,7 @@
  *
  * At least for now, we need client-side debugging. All messages sent here
  * are added to the debugLog, and those below the configured debugLevel are
- * also printed to the console. , so keep logging everything
+ * also printed to the console.
  *
  * When a message is sent to the debugger, a "level" is also specified. Lower numbers
  * correspond to more import messages (eg errors are always 0). If the level is below
