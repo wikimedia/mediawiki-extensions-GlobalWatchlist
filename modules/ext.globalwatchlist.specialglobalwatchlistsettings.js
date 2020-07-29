@@ -4,12 +4,13 @@
 ( function () {
 	'use strict';
 
-	var globalWatchlistDebug = require( './ext.globalwatchlist.debug.js' ),
+	var GlobalWatchlistDebugger = require( './ext.globalwatchlist.debug.js' ),
 		getSettings = require( './ext.globalwatchlist.getSettings.js' ),
 		saveSettings = require( './ext.globalwatchlist.saveSettings.js' ),
 		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
 		settingsElements = {},
 		settingsManager = {};
+	var globalWatchlistDebug = new GlobalWatchlistDebugger();
 	var notifications = new NotificationManager( globalWatchlistDebug );
 	var startingOptions = getSettings( notifications );
 

@@ -5,7 +5,7 @@
 ( function () {
 	'use strict';
 
-	var globalWatchlistDebug = require( './ext.globalwatchlist.debug.js' ),
+	var GlobalWatchlistDebugger = require( './ext.globalwatchlist.debug.js' ),
 		getSettings = require( './ext.globalwatchlist.getSettings.js' ),
 		config = {},
 		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
@@ -14,6 +14,7 @@
 		viewElements = {},
 		viewManager = {},
 		watchedSites = [];
+	var globalWatchlistDebug = new GlobalWatchlistDebugger();
 	var notifications = new NotificationManager( globalWatchlistDebug );
 
 	config = getSettings( notifications );
