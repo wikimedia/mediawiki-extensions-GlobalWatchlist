@@ -1,0 +1,13 @@
+{
+	"--title": "GlobalWatchlist  - Documentation",
+	"--builtin-classes": true,
+	"--processes": "0",
+	"--warnings-exit-nonzero": true,
+	"--external": "OO.*",
+	"--output": "docs",
+	"--warnings": ["-all"],
+	"--": [
+		"jsduck.external.js",
+		"modules"
+	]
+}

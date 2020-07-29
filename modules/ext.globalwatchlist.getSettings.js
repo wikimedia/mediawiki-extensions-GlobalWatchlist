@@ -1,4 +1,4 @@
-/**
+/*
  * Shared module to retrieve the current settings
  *
  * Currently uses window.GlobalWatchlistSettings,
@@ -7,7 +7,7 @@
  * Used for both the settings page and Special:GlobalWatchlist
  */
 /**
- * @param {int} setting Current stored level
+ * @param {number} setting Current stored level
  * @param {string} flag
  * @return {string}
  */

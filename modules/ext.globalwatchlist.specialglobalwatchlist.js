@@ -1,5 +1,5 @@
 /* eslint-disable no-jquery/no-global-selector */
-/**
+/*
  * Javascript for Special:GlobalWatchlist
  */
 ( function () {

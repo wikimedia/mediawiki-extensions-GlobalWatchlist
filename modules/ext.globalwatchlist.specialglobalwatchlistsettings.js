@@ -1,4 +1,4 @@
-/**
+/*
  * Javascript for Special:GlobalWatchlistSettings
  */
 ( function () {

@@ -46,7 +46,7 @@ function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils,
 /**
  * @param {string} key
  * @param {string} msg
- * @param {int} level
+ * @param {number} level
  */
 GlobalWatchlistSite.prototype.debug = function ( key, msg, level ) {
 	this.debugLogger.info( this.site + ':' + key, msg, level );
@@ -97,7 +97,7 @@ GlobalWatchlistSite.prototype.api = function ( func, content, name ) {
 /**
  * Get the changes on a user's watchlist
  *
- * @param {int} iteration iteration count
+ * @param {number} iteration iteration count
  * @param {string} continueFrom
  * @return {jQuery.Promise}
  */
@@ -542,7 +542,7 @@ GlobalWatchlistSite.prototype.markAsSeen = function () {
  * Update entry click handlers, text, and strikethrough for a specific title
  *
  * @param {string} pageTitle
- * @param {bool} unwatched
+ * @param {boolean} unwatched
  */
 GlobalWatchlistSite.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
 	this.debug(

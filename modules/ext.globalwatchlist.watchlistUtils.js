@@ -69,7 +69,7 @@ function mergePageEdits( edits ) {
  * If edits are not grouped, and a new page has edits to it, it is confusing to see the page
  * creation occur after the edits.
  *
- * @TODO should probably consistently enforce ordering by timestamp
+ * TODO should probably consistently enforce ordering by timestamp
  *
  * @param {Array} allEdits
  * @return {Array}
@@ -94,7 +94,7 @@ function putNewPagesFirst( allEdits ) {
  *
  * @param {Object} editInfo
  * @param {string} site
- * @param {bool} groupPage
+ * @param {boolean} groupPage
  * @return {Array}
  */
 function convertEdits( editInfo, site, groupPage ) {
@@ -206,7 +206,7 @@ function normalizeEntries( entries ) {
 /**
  * @param {Array} entries
  * @param {string} site
- * @param {bool} groupPage
+ * @param {boolean} groupPage
  * @return {Array}
  */
 function rawToSummary( entries, site, groupPage ) {
