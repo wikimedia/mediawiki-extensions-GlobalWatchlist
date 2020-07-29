@@ -1,6 +1,9 @@
 /**
  * Utility to create and update links to foreign wikis
  *
+ * @class GlobalWatchlistLinker
+ * @constructor
+ *
  * @param {string} site
  */
 function GlobalWatchlistLinker( site ) {

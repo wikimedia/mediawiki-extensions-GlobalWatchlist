@@ -1,11 +1,17 @@
 /**
+ * @class watchlistUtils
+ * @singleton
+ */
+var watchlistUtils = {};
+
+/**
  * Convert an array of two or more objects for specific edits to the same page to one object
  * with the information grouped
  *
  * @param {Array} edits
  * @return {Object}
  */
-function mergePageEdits( edits ) {
+watchlistUtils.mergePageEdits = function ( edits ) {
 	var mergedEditInfo = {};
 
 	mergedEditInfo.bot = edits
@@ -61,7 +67,7 @@ function mergePageEdits( edits ) {
 		} );
 
 	return mergedEditInfo;
-}
+};
 
 /**
  * Ensure page creations are shown before normal edits
@@ -74,7 +80,7 @@ function mergePageEdits( edits ) {
  * @param {Array} allEdits
  * @return {Array}
  */
-function putNewPagesFirst( allEdits ) {
+watchlistUtils.putNewPagesFirst = function ( allEdits ) {
 	var newPages = [],
 		realEdits = [];
 
@@ -87,7 +93,7 @@ function putNewPagesFirst( allEdits ) {
 	} );
 
 	return newPages.concat( realEdits );
-}
+};
 
 /**
  * Convert what the api returns to what we need
@@ -97,7 +103,7 @@ function putNewPagesFirst( allEdits ) {
  * @param {boolean} groupPage
  * @return {Array}
  */
-function convertEdits( editInfo, site, groupPage ) {
+watchlistUtils.convertEdits = function ( editInfo, site, groupPage ) {
 	var finalEdits = [],
 		finalSorted = [];
 
@@ -155,16 +161,16 @@ function convertEdits( editInfo, site, groupPage ) {
 				userEntries.push( userLink + ( userEdits.length > 1 ? ( ' ' + mw.msg( 'ntimes', userEdits.length ) ) : '' ) );
 			} );
 
-			var mergedEditInfo = mergePageEdits( page.each );
+			var mergedEditInfo = watchlistUtils.mergePageEdits( page.each );
 			mergedEditInfo.editsbyuser = userEntries.join( ', ' );
 
 			finalEdits.push( $.extend( {}, pagebase, mergedEditInfo ) );
 		}
 	} );
 
-	finalSorted = putNewPagesFirst( finalEdits );
+	finalSorted = watchlistUtils.putNewPagesFirst( finalEdits );
 	return finalSorted;
-}
+};
 
 /**
  * Normalize entries
@@ -172,7 +178,7 @@ function convertEdits( editInfo, site, groupPage ) {
  * @param {Array} entries
  * @return {Array}
  */
-function normalizeEntries( entries ) {
+watchlistUtils.normalizeEntries = function ( entries ) {
 	entries.forEach( function ( entry ) {
 		if ( entry.userhidden ) {
 			entry.user = false;
@@ -201,7 +207,7 @@ function normalizeEntries( entries ) {
 		}
 	} );
 	return entries;
-}
+};
 
 /**
  * @param {Array} entries
@@ -209,12 +215,12 @@ function normalizeEntries( entries ) {
  * @param {boolean} groupPage
  * @return {Array}
  */
-function rawToSummary( entries, site, groupPage ) {
+watchlistUtils.rawToSummary = function ( entries, site, groupPage ) {
 	var convertedEdits = [],
 		edits = {},
 		logEntries = [],
 		everything = [],
-		cleanedEntries = normalizeEntries( entries );
+		cleanedEntries = watchlistUtils.normalizeEntries( entries );
 
 	cleanedEntries.forEach( function ( entry ) {
 		if ( entry.type === 'edit' ) {
@@ -243,16 +249,10 @@ function rawToSummary( entries, site, groupPage ) {
 		}
 	} );
 
-	convertedEdits = convertEdits( edits, site, groupPage );
+	convertedEdits = watchlistUtils.convertEdits( edits, site, groupPage );
 	everything = convertedEdits.concat( logEntries );
 	return everything;
-}
+};
 
 // Only convertEdits is needed, but the rest are exported for testability
-module.exports = {
-	convertEdits: convertEdits,
-	mergePageEdits: mergePageEdits,
-	normalizeEntries: normalizeEntries,
-	putNewPagesFirst: putNewPagesFirst,
-	rawToSummary: rawToSummary
-};
+module.exports = watchlistUtils;

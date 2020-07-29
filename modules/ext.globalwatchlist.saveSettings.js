@@ -1,6 +1,8 @@
 /**
  * Save the user's settings
  *
+ * @private
+ *
  * @param {Object} globalWatchlistDebug debugger
  * @param {Object} newSettings
  * @return {jQuery.Promise} promise that either resolves successfully or rejects with the error

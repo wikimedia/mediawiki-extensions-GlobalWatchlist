@@ -1,0 +1,42 @@
+[
+	{
+		"name": "GlobalWatchlist",
+		"groups": [
+			{
+				"name": "Classes",
+				"classes": [
+					"GlobalWatchlistDebugger",
+					"GlobalWatchlistLinker",
+					"GlobalWatchlistNotificationManager",
+					"GlobalWatchlistSite",
+					"watchlistUtils"
+				]
+			}
+		]
+	},
+	{
+		"name": "External",
+		"groups": [
+			{
+				"name": "jQuery",
+				"classes": [
+					"jQuery",
+					"jQuery.Promise"
+				]
+			},
+			{
+				"name": "JavaScript natives",
+				"classes": [
+					"Array",
+					"Boolean",
+					"Date",
+					"Function",
+					"Number",
+					"Object",
+					"RegExp",
+					"String"
+				]
+			}
+		]
+	}
+]

@@ -7,6 +7,7 @@
  * Used for both the settings page and Special:GlobalWatchlist
  */
 /**
+ * @private
  * @param {number} setting Current stored level
  * @param {string} flag
  * @return {string}
@@ -22,6 +23,7 @@ function getQueryFlag( setting, flag ) {
 }
 
 /**
+ * @private
  * @param {Object} notificationManager instance of of GlobalWatchlistNotificationManager
  * @return {Object}
  */

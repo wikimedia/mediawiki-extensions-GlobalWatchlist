@@ -1,7 +1,7 @@
 /**
  * Represents a specific site
  *
- * @param {Object} globalWatchlistDebug debugger
+ * @param {GlobalWatchlistDebugger} globalWatchlistDebug
  * @param {Object} config
  * @param {Object} api
  * @param {Object} watchlistUtils
@@ -44,6 +44,8 @@ function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils,
 }
 
 /**
+ * Shortcut for sending information to the debug logger
+ *
  * @param {string} key
  * @param {string} msg
  * @param {number} level
@@ -53,6 +55,8 @@ GlobalWatchlistSite.prototype.debug = function ( key, msg, level ) {
 };
 
 /**
+ * Shortcut for sending errors to the debug logger
+ *
  * @param {string} key
  * @param {string} msg
  */

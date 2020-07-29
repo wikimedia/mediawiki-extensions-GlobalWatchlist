@@ -1,7 +1,6 @@
 /**
  * Used for the settings page to alert the result of an attempted save
  *
- * @private
  * @class GlobalWatchlistNotificationManager
  * @constructor
  *
