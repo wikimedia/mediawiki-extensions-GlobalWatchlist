@@ -28,7 +28,7 @@ function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils,
 	this.linker = new GlobalWatchlistLinker( this.site );
 
 	// Site identifier in format that can be used for elemnt attributes
-	this.siteID = urlFragment.replace( /\./g, '_' );
+	this.siteID = encodeURIComponent( urlFragment.replace( /\./g, '_' ) );
 
 	// Wrapper div for all of the output of this site
 	this.divID = 'globalwatchlist-feed-site-' + this.siteID;
@@ -160,12 +160,11 @@ GlobalWatchlistSite.prototype.actuallyGetWatchlist = function ( iteration, conti
  */
 GlobalWatchlistSite.prototype.changeWatched = function ( pageTitle, func ) {
 	this.debug( 'changeWatched', 'Going to ' + func + ': ' + pageTitle, 1 );
-	var that = this,
-		titleReal = pageTitle.replace( /DOUBLEQUOTE/g, '"' );
-	this.api( func, titleReal, 'updateWatched' );
+	var that = this;
+	this.api( func, pageTitle, 'updateWatched' );
 	this.processUpdateWatched( pageTitle, func === 'unwatch' );
 	if ( !this.config.fastMode ) {
-		this.getAssociatedPageTitle( titleReal ).then( function ( associatedTitle ) {
+		this.getAssociatedPageTitle( pageTitle ).then( function ( associatedTitle ) {
 			that.processUpdateWatched( associatedTitle, func === 'unwatch' );
 			// TODO re-add functionality for old checkChangesShown
 		} );
@@ -403,7 +402,9 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 	// Actually set up the $row to be returned
 	var $row = $( '<li>' );
 
-	$row.attr( 'siteAndPage', this.siteID + '_' + pageTitle );
+	$row.attr( 'data-site', encodeURIComponent( this.siteID ) );
+	$row.attr( 'data-title', encodeURIComponent( entry.title ) );
+
 	if ( $before !== false ) {
 		$row.append( $before )
 			.append( ' ' );
@@ -494,22 +495,22 @@ GlobalWatchlistSite.prototype.processUpdateWatched = function ( pageTitle, unwat
 		'Proccessing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle,
 		1
 	);
-	var encodedTitle = encodeURIComponent( pageTitle )
-			.replace( /'/g, '%27' )
-			.replace( /DOUBLEQUOTE/g, '%22' ),
-		msg = mw.msg( unwatched ? 'globalwatchlist-rewatch' : 'globalwatchlist-unwatch' ),
-		that = this,
-		$links = $( 'li[siteAndPage="' + this.siteID + '_' + encodedTitle + '"] > a.globalWatchlist-watchunwatch' );
 
-	var $entries = $( 'li[siteAndPage="' + this.siteID + '_' + encodedTitle + '"]' );
+	var encodedSite = encodeURIComponent( this.siteID );
+	var encodedTitle = encodeURIComponent( pageTitle );
+	var $entries = $( 'li[data-site="' + encodedSite + '"][data-title="' + encodedTitle + '"]' );
 	$entries[ unwatched ? 'addClass' : 'removeClass' ]( 'globalWatchlist-strike' );
+
+	var $links = $entries.children( 'a.globalWatchlist-watchunwatch' );
+	var newText = mw.msg( unwatched ? 'globalwatchlist-rewatch' : 'globalwatchlist-unwatch' );
+	var that = this;
 
 	$links.each( function () {
 		$( this ).off( 'click' );
 		$( this ).on( 'click', function () {
 			that.changeWatched( pageTitle, unwatched ? 'watch' : 'unwatch' );
 		} );
-		$( this ).text( msg );
+		$( this ).text( newText );
 	} );
 };
 
