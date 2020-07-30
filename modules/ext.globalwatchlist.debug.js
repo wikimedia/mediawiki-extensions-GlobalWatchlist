@@ -47,15 +47,27 @@ GlobalWatchlistDebugger.prototype.info = function ( key, msg, level ) {
 
 /**
  * @param {string} info
- * @param {Object} error
+ * @param {Object} error If an instanceof `Error`, it will be the error that is thrown, otherwise
+ *                 a new Error object will be constructed here
  */
 GlobalWatchlistDebugger.prototype.error = function ( info, error ) {
-	this.info( 'ERROR: ' + info, error, 0 );
+	var errorMessage,
+		errorToThrow;
+
+	if ( error instanceof Error ) {
+		errorMessage = error.toString();
+		errorToThrow = error; // Throw the original error so we get its stack trace, etc.
+	} else {
+		errorMessage = error; // use JSON.stringify in info()
+		errorToThrow = new Error( 'GlobalWatchlistError: ' + info + ' - ' + error );
+	}
+
+	this.info( 'ERROR: ' + info, errorMessage, 0 );
 
 	/* eslint-disable-next-line no-alert */
 	alert( 'GlobalWatchlist error, please check the console!' );
 
-	throw new Error( 'Error: ' + info + ' - ' + error );
+	throw errorToThrow;
 };
 
 module.exports = GlobalWatchlistDebugger;
