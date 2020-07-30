@@ -225,13 +225,6 @@
 				viewElements.$sharedFeed.show();
 				break;
 
-			// Marking all sites as seen, primarily used for status
-			case 12:
-				$( 'span.globalWatchlist-feed-markSeen > button > span.oo-ui-labelElement-label' ).each( function () {
-					this.click();
-				} );
-				break;
-
 			// Live updates running
 			case 13:
 				viewElements.refresh.setDisabled( true );
