@@ -75,8 +75,6 @@ watchlistUtils.mergePageEdits = function ( edits ) {
  * If edits are not grouped, and a new page has edits to it, it is confusing to see the page
  * creation occur after the edits.
  *
- * TODO should probably consistently enforce ordering by timestamp
- *
  * @param {Array} allEdits
  * @return {Array}
  */
