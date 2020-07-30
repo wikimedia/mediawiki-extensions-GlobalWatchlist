@@ -8,6 +8,10 @@
  */
 function GlobalWatchlistLinker( site ) {
 	this.site = site;
+
+	// Avoid checking with mw.config each time, shouldn't change
+	this.wgArticlePath = mw.config.get( 'wgArticlePath' );
+	this.wgScript = mw.config.get( 'wgScript' );
 }
 
 /**
@@ -33,7 +37,7 @@ GlobalWatchlistLinker.prototype.fixLocalLinks = function ( comment ) {
  * @return {string}
  */
 GlobalWatchlistLinker.prototype.linkPage = function ( page ) {
-	return '//' + this.site + mw.config.get( 'wgArticlePath' ).replace( '$1', page );
+	return '//' + this.site + this.wgArticlePath.replace( '$1', page );
 };
 
 /**
@@ -43,7 +47,7 @@ GlobalWatchlistLinker.prototype.linkPage = function ( page ) {
  * @return {string}
  */
 GlobalWatchlistLinker.prototype.linkQuery = function ( query ) {
-	return '//' + this.site + mw.config.get( 'wgScript' ) + '?' + query;
+	return '//' + this.site + this.wgScript + '?' + query;
 };
 
 module.exports = GlobalWatchlistLinker;
