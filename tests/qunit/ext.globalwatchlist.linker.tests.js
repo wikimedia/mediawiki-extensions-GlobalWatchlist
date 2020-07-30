@@ -8,6 +8,20 @@
 		}
 	} ) );
 
+	QUnit.test( 'linker.fixLocalLinks', function ( assert ) {
+		var linker = new GlobalWatchlistLinker( 'en.wikipedia.org' );
+
+		// [[PageName]]
+		var localLink = '<a href="/wiki/PageName" title="PageName">PageName</a>';
+		var foreignLink = '<a href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>';
+
+		assert.strictEqual(
+			linker.fixLocalLinks( localLink ),
+			foreignLink,
+			'Local links are converted to foreign links properly'
+		);
+	} );
+
 	QUnit.test( 'linker.linkPage', function ( assert ) {
 		var linker = new GlobalWatchlistLinker( 'en.wikipedia.org' );
 
