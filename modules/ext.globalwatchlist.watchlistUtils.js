@@ -94,14 +94,73 @@ watchlistUtils.putNewPagesFirst = function ( allEdits ) {
 };
 
 /**
+ * Create links based on one-or-more editors
+ *
+ * @param {Object} editsByUser
+ * @param {GlobalWatchlistLinker} linker
+ * @return {string}
+ */
+watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
+	var users = Object.keys( editsByUser );
+
+	var allLinks = [],
+		userLink = '',
+		userLinkBase = '',
+		userLinkURL = '';
+	users.forEach( function ( userMessage ) {
+		if ( userMessage === '##hidden##' ) {
+			// Edits by hidden user(s)
+			userLink = '<span class="history-deleted">' + mw.msg( 'rev-deleted-user' ) + '</span>';
+		} else {
+			userLinkBase = editsByUser[ userMessage ].anon ?
+				'Special:Contributions/' :
+				'User:';
+			userLinkURL = linker.linkPage( userLinkBase + userMessage );
+			userLink = '<a href="' + userLinkURL + '" target="_blank">' + userMessage + '</a>';
+		}
+		if ( editsByUser[ userMessage ].editCount > 1 ) {
+			userLink = userLink + ' ' + mw.msg( 'ntimes', editsByUser[ userMessage ].editCount );
+		}
+		allLinks.push( userLink );
+	} );
+
+	return allLinks.join( ', ' );
+};
+
+/**
+ * Shortcut for makeUserLinks when there is only one user (single edits, ungrouped edits,
+ * or log entries) and no need for showing a message for the edit count
+ *
+ * @param {string} userMessage either name or ip address
+ * @param {boolean} isAnon
+ * @param {GlobalWatchlistLinker} linker
+ * @return {string}
+ */
+watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
+	if ( userMessage === '' ) {
+		// Didn't fetch due to fast mode
+		return '';
+	}
+
+	var editsByUser = {};
+	editsByUser[ userMessage ] = {
+		editCount: 1,
+		anon: isAnon
+	};
+
+	return watchlistUtils.makeUserLinks( editsByUser, linker );
+}
+
+/**
  * Convert what the api returns to what we need
  *
  * @param {Object} editInfo
  * @param {string} site
  * @param {boolean} groupPage
+ * @param {GlobalWatchlistLinker} linker
  * @return {Array}
  */
-watchlistUtils.convertEdits = function ( editInfo, site, groupPage ) {
+watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 	var finalEdits = [],
 		finalSorted = [];
 
@@ -119,7 +178,6 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage ) {
 		if ( !groupPage || page.each.length === 1 ) {
 			page.each.forEach( function ( entry ) {
 				finalEdits.push( $.extend( {}, pagebase, {
-					anon: entry.anon,
 					bot: entry.bot,
 					comment: entry.parsedcomment,
 					editCount: 1,
@@ -128,39 +186,42 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage ) {
 					newPage: entry.newPage,
 					tags: entry.tags,
 					toRev: entry.revid,
-					user: entry.user
+					userDisplay: watchlistUtils.makeSingleUserLink(
+						entry.user,
+						entry.anon,
+						linker
+					)
 				} ) );
 			} );
 		} else {
-			var distinctUsers = [],
-				userEntries = [];
-
-			page.each.forEach( function ( entry ) {
-				if ( distinctUsers.indexOf( entry.user ) === -1 ) {
-					distinctUsers.push( entry.user );
-				}
-			} );
-
-			distinctUsers.forEach( function ( user ) {
-				var userEdits = page.each.filter( function ( edit ) {
-					return edit.user === user;
-				} );
-				var userLink;
-				if ( userEdits[ 0 ].user === false ) {
-					userLink = '<span class="history-deleted">' + mw.msg( 'rev-deleted-user' ) + '</span>';
-				} else {
-					// TODO refactor/rewrite this, have a linker instead of duplicating
-					var userLinkBase = ( userEdits[ 0 ].anon || false ) ?
-						'Special:Contributions/' :
-						'User:';
-					var href = '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', userLinkBase + user );
-					userLink = '<a href="' + href + '" target="_blank">' + user + '</a>';
-				}
-				userEntries.push( userLink + ( userEdits.length > 1 ? ( ' ' + mw.msg( 'ntimes', userEdits.length ) ) : '' ) );
-			} );
-
 			var mergedEditInfo = watchlistUtils.mergePageEdits( page.each );
-			mergedEditInfo.editsbyuser = userEntries.join( ', ' );
+
+			// Map of edit counts
+			// ⧼user name/ip address⧽
+			//     ->
+			// {
+			//     editCount: ⧼count⧽
+			//     anon: ⧼true/false⧽
+			// }
+			//
+			// For edits where the user was hidden, the key is: ##hidden##
+			var editsByUser = {};
+
+			page.each.forEach( function ( specificEdit ) {
+				if ( !( specificEdit.user in editsByUser ) ) {
+					editsByUser[ specificEdit.user ] = {
+						editCount: 0,
+						anon: specificEdit.anon
+				};
+				}
+				editsByUser[ specificEdit.user ].editCount =
+					editsByUser[ specificEdit.user ].editCount + 1;
+			} );
+
+			mergedEditInfo.userDisplay = watchlistUtils.makeUserLinks(
+				editsByUser,
+				linker
+			);
 
 			finalEdits.push( $.extend( {}, pagebase, mergedEditInfo ) );
 		}
@@ -171,16 +232,19 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage ) {
 };
 
 /**
- * Normalize entries
- *
  * @param {Array} entries
  * @return {Array}
  */
 watchlistUtils.normalizeEntries = function ( entries ) {
 	entries.forEach( function ( entry ) {
 		if ( entry.userhidden ) {
-			entry.user = false;
+			// # is in wgLegalTitleChars so no conflict
+			entry.user = '##hidden##';
+		} else if ( typeof entry.user === 'undefined' ) {
+			// Not fetching, fast mode
+			entry.user = '';
 		}
+
 		if ( typeof entry.anon === 'undefined' ) {
 			entry.anon = false;
 		}
@@ -208,12 +272,15 @@ watchlistUtils.normalizeEntries = function ( entries ) {
 };
 
 /**
+ * Normalize entries
+ *
  * @param {Array} entries
  * @param {string} site
  * @param {boolean} groupPage
+ * @param {GlobalWatchlistLinker} linker
  * @return {Array}
  */
-watchlistUtils.rawToSummary = function ( entries, site, groupPage ) {
+watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 	var convertedEdits = [],
 		edits = {},
 		logEntries = [],
@@ -234,20 +301,23 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage ) {
 			}
 		} else if ( entry.type === 'log' ) {
 			logEntries.push( {
-				anon: entry.anon,
 				comment: entry.parsedcomment,
 				entryType: entry.type,
 				ns: entry.ns,
 				tags: entry.tags,
 				title: entry.title,
-				user: entry.user,
 				logaction: entry.logaction,
-				logtype: entry.logtype
+				logtype: entry.logtype,
+				userDisplay: watchlistUtils.makeSingleUserLink(
+					entry.user,
+					entry.anon,
+					linker
+				)
 			} );
 		}
 	} );
 
-	convertedEdits = watchlistUtils.convertEdits( edits, site, groupPage );
+	convertedEdits = watchlistUtils.convertEdits( edits, site, groupPage, linker );
 	everything = convertedEdits.concat( logEntries );
 	return everything;
 };

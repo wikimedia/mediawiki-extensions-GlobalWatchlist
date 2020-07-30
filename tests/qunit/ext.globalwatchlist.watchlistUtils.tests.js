@@ -138,14 +138,16 @@
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
-			type: 'edit'
+			type: 'edit',
+			user: ''
 		};
 		var normalizedEdit = {
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
 			type: 'edit',
-			newPage: false
+			newPage: false,
+			user: ''
 		};
 		assert.deepEqual(
 			watchlistUtils.normalizeEntries( [ edit ] ),
@@ -163,7 +165,7 @@
 		var normalizedHiddenEditor = {
 			anon: false,
 			userhidden: true,
-			user: false,
+			user: '##hidden##',
 			parsedcomment: 'comment',
 			tags: [],
 			type: 'edit',
@@ -172,7 +174,7 @@
 		assert.deepEqual(
 			watchlistUtils.normalizeEntries( [ hiddenEditor ] ),
 			[ normalizedHiddenEditor ],
-			'Edits by hidden users are flagged as user=false'
+			'Edits by hidden users are flagged as user=##hidden##'
 		);
 
 		var userEdit = {
@@ -185,7 +187,8 @@
 			parsedcomment: 'comment',
 			tags: [],
 			type: 'edit',
-			newPage: false
+			newPage: false,
+			user: ''
 		};
 		assert.deepEqual(
 			watchlistUtils.normalizeEntries( [ userEdit ] ),
@@ -203,7 +206,8 @@
 			parsedcomment: '',
 			tags: [],
 			type: 'edit',
-			newPage: false
+			newPage: false,
+			user: ''
 		};
 		assert.deepEqual(
 			watchlistUtils.normalizeEntries( [ editWithNoSummary ] ),
@@ -221,7 +225,8 @@
 			parsedcomment: '',
 			tags: [],
 			type: 'edit',
-			newPage: false
+			newPage: false,
+			user: ''
 		};
 		assert.deepEqual(
 			watchlistUtils.normalizeEntries( [ editWithNoTags ] ),
@@ -242,7 +247,8 @@
 			type: 'edit',
 			newPage: true,
 			old_revid: 0,
-			revid: 0
+			revid: 0,
+			user: ''
 		};
 		assert.deepEqual(
 			watchlistUtils.normalizeEntries( [ newPage ] ),

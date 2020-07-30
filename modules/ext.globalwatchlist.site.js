@@ -252,7 +252,8 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 			var prelimSummary = that.watchlistUtils.rawToSummary(
 				wlraw,
 				that.site,
-				that.config.groupPage
+				that.config.groupPage,
+				that.linker
 			);
 			that.debug( 'getWatchlist prelimSummary', prelimSummary, 1 );
 
@@ -344,25 +345,10 @@ GlobalWatchlistSite.prototype.makePageLink = function ( entry ) {
 			that.changeWatched( entry.title, 'unwatch' );
 		} );
 
-	if ( entry.editsbyuser || false ) {
-		$user = entry.editsbyuser;
-	} else if ( !this.config.fastMode ) {
-		if ( entry.user === false ) {
-			$user = $( '<span>' )
-				.addClass( 'history-deleted' )
-				.text( mw.msg( 'rev-deleted-user' ) );
-		} else if ( entry.anon ) {
-			$user = $( '<a>' )
-				.attr( 'href', this.linker.linkPage( 'Special:Contributions/' + entry.user ) )
-				.attr( 'target', '_blank' )
-				.text( entry.user );
-		} else {
-			$user = $( '<a>' )
-				.attr( 'href', this.linker.linkPage( 'User:' + entry.user ) )
-				.attr( 'target', '_blank' )
-				.text( entry.user );
-		}
+	if ( !this.config.fastMode ) {
+		$user = entry.userDisplay;
 	}
+
 	if ( entry.comment && entry.comment !== '' ) {
 		// Need to process links in the parsed comments as raw HTML
 		$comment = $( '<span>' ).html(
