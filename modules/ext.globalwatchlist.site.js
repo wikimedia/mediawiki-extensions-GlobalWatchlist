@@ -21,7 +21,7 @@ function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils,
 	this.watchlistUtils = watchlistUtils;
 
 	// Site identifier in url format
-	this.site = urlFragment.replace( /_/g, '.' );
+	this.site = urlFragment;
 
 	// Linker utility (GlobalWatchlistLinker)
 	var GlobalWatchlistLinker = require( './ext.globalwatchlist.linker.js' );
