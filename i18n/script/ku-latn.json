@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bikarhêner"
+			"Bikarhêner",
+			"Guherto"
 		]
 	},
 	"globalwatchlist-add": "Tevlî bike",
@@ -22,7 +23,7 @@
 	"globalwatchlist-remove": "Jê bibe",
 	"globalwatchlist-save": "Mîhengan qeyd bike",
 	"globalwatchlist-settings-error-bad-sites": "Malpera/ên nederbasdar: $1",
-	"globalwatchlist-show-edits": "Guhertinên rûpelê nîşan bide",
+	"globalwatchlist-show-edits": "Guhertinên rûpela nîşan bide",
 	"globalwatchlist-sitelist": "Lîsteya malperan yê bikarhêner-diyarkirî",
 	"globalwatchlist-unwatch": "neşopîne"
 }

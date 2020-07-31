@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bikarhêner"
+			"Bikarhêner",
+			"Guherto"
 		]
 	},
+	"globalwatchlist": "Lîsteya şopandinê ya global",
 	"globalwatchlist-gotoglobal": "Lîsteya şopandinê ya global",
 	"globalwatchlist-gotoglobal-tooltip": "Lîsteya şopandinê ya global bibîne"
 }
