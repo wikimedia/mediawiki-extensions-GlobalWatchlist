@@ -271,6 +271,8 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 /**
  * Display the watchlist
  *
+ * TODO move this out of site.js
+ *
  * @param {Object} summary
  */
 GlobalWatchlistSite.prototype.renderWatchlist = function ( summary ) {
@@ -469,13 +471,30 @@ GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
  */
 GlobalWatchlistSite.prototype.markAsSeen = function () {
 	this.debug( 'markSiteAsSeen', 'marking', 1 );
-	var setter = {
-		action: 'setnotificationtimestamp',
-		entirewatchlist: true,
-		timestamp: this.config.time.toISOString()
-	};
-	this.api( 'postWithEditToken', setter, 'actuallyMarkSiteAsSeen' );
+	var that = this;
 
+	return new Promise( function ( resolve ) {
+		var setter = {
+			action: 'setnotificationtimestamp',
+			entirewatchlist: true,
+			timestamp: that.config.time.toISOString()
+		};
+		that.api( 'postWithEditToken', setter, 'actuallyMarkSiteAsSeen' );
+
+		that.afterMarkAsSeen();
+
+		// Done within a promise so that Vue can ensure re-rendering occurs after
+		// entries are updated
+		resolve();
+	} );
+};
+
+/**
+ * Update display after making a site as seen
+ *
+ * TODO move this out of site.js
+ */
+GlobalWatchlistSite.prototype.afterMarkAsSeen = function () {
 	this.debug( 'markSiteAsSeen', 'hiding', 1 );
 	$( this.$feedDiv.children()[ 1 ] ).hide();
 
@@ -485,6 +504,8 @@ GlobalWatchlistSite.prototype.markAsSeen = function () {
 
 /**
  * Update entry click handlers, text, and strikethrough for a specific title
+ *
+ * TODO move this out of site.js
  *
  * @param {string} pageTitle
  * @param {boolean} unwatched
