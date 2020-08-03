@@ -86,9 +86,10 @@
 				"ext.globalwatchlist.getSettings.js",
 				"ext.globalwatchlist.linker.js",
 				"ext.globalwatchlist.notifications.js",
-				"ext.globalwatchlist.site.js",
 				"ext.globalwatchlist.watchlistUtils.js",
-				"ext.globalwatchlist.wikibase.js"
+				"ext.globalwatchlist.wikibase.js",
+				"SiteBase.js",
+				"SiteDisplay.js"
 			],
 			"styles": [
 				"ext.globalwatchlist.common.css",

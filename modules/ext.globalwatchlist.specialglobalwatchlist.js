@@ -9,7 +9,7 @@
 		getSettings = require( './ext.globalwatchlist.getSettings.js' ),
 		config = {},
 		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
-		WatchedSite = require( './ext.globalwatchlist.site.js' ),
+		WatchedSite = require( './SiteDisplay.js' ),
 		watchlistUtils = require( './ext.globalwatchlist.watchlistUtils.js' ),
 		viewElements = {},
 		viewManager = {},
