@@ -59,42 +59,13 @@ var AsOf = require( './AsOf.vue' ),
 var GlobalWatchlistDebugger = require( './../ext.globalwatchlist.debug.js' ),
 	getSettings = require( './../ext.globalwatchlist.getSettings.js' ),
 	NotificationManager = require( './../ext.globalwatchlist.notifications.js' ),
-	WatchedSite = require( './../SiteBase.js' ),
+	WatchedSite = require( './../SiteVue.js' ),
 	watchlistUtils = require( './../ext.globalwatchlist.watchlistUtils.js' );
 
 var globalWatchlistDebug = new GlobalWatchlistDebugger();
 var notifications = new NotificationManager( globalWatchlistDebug );
 var config = getSettings( notifications );
 config.time = new Date();
-
-// TODO move these to a proper JavascriptFile (SiteVue.js)
-WatchedSite.prototype.renderWatchlist = function ( summary ) {
-	this.entries = summary;
-	this.entries.forEach( function ( entry ) {
-		entry.pageWatched = true;
-	} );
-};
-
-WatchedSite.prototype.afterMarkAsSeen = function () {
-	this.debug( 'afterMarkAsSeen', 'Finished for: ' + this.site, 1 );
-	this.entries = [];
-};
-
-WatchedSite.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
-	this.debug(
-		'processUpdateWatched',
-		'Proccessing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle,
-		1
-	);
-
-	var pageWatched = !unwatched;
-
-	this.entries.forEach( function ( entry ) {
-		if ( entry.title === pageTitle ) {
-			entry.pageWatched = pageWatched;
-		}
-	} );
-};
 
 var watchedSites = config.siteList.map( function ( site ) {
 	return new WatchedSite(

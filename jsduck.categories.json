@@ -10,6 +10,7 @@
 					"GlobalWatchlistNotificationManager",
 					"GlobalWatchlistSiteBase",
 					"GlobalWatchlistSiteDisplay",
+					"GlobalWatchlistSiteVue",
 					"GlobalWatchlistWikibaseHandler",
 					"watchlistUtils"
 				]

@@ -149,6 +149,7 @@
 				"ext.globalwatchlist.watchlistUtils.js",
 				"ext.globalwatchlist.wikibase.js",
 				"SiteBase.js",
+				"SiteVue.js",
 				"vue/AsOf.vue",
 				"vue/Button.vue",
 				"vue/CollapsibleWrapper.vue",
