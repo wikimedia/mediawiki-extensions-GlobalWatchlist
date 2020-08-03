@@ -52,7 +52,7 @@
 <script>
 var AsOf = require( './AsOf.vue' ),
 	Toolbar = require( './Toolbar.vue' ),
-	LoadingBar = require( './LoadingBar.vue' ),
+	LoadingBar = require( './base/LoadingBar.vue' ),
 	SitesWithoutChanges = require( './SitesWithoutChanges.vue' ),
 	Site = require( './Site.vue' );
 

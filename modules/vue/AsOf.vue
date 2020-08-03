@@ -5,6 +5,9 @@
 </template>
 
 <script>
+/**
+ * TODO convert this to a generic label component and move to /base
+ */
 module.exports = {
 	props: {
 		asof: {

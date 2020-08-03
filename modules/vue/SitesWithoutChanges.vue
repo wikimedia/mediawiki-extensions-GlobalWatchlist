@@ -17,7 +17,7 @@
 </template>
 
 <script>
-var CollapsibleWrapper = require( './CollapsibleWrapper.vue' );
+var CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' );
 /**
  * Component for the block of sites that have no changes
  *

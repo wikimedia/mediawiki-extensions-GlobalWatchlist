@@ -36,7 +36,7 @@
 <script>
 var GlobalWatchlistLinker = require( './../ext.globalwatchlist.linker.js' );
 
-var Button = require( './Button.vue' ),
+var Button = require( './base/Button.vue' ),
 	EntryRow = require( './EntryRow.vue' );
 
 module.exports = {

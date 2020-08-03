@@ -40,7 +40,7 @@
 </template>
 
 <script>
-var Button = require( './Button.vue' );
+var Button = require( './base/Button.vue' );
 
 module.exports = {
 	components: {
