@@ -35,9 +35,14 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 		$specialPage->execute( null );
 	}
 
-	public function testLoggedIn() {
+	/**
+	 * @dataProvider provideTestLoggedIn
+	 * @param bool $useVue
+	 */
+	public function testLoggedIn( $useVue ) {
 		$this->setMwGlobals( [
-			'wgGlobalWatchlistWikibaseSite' => 'GlobalWatchlistWikibaseSiteGoesHere'
+			'wgGlobalWatchlistWikibaseSite' => 'GlobalWatchlistWikibaseSiteGoesHere',
+			'wgGlobalWatchlistUseVue' => $useVue
 		] );
 
 		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
@@ -57,11 +62,14 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 		$user->method( 'isAnon' )->willReturn( false );
 		$testContext->setUser( $user );
 
+		$module = $useVue ?
+			'ext.globalwatchlist.specialglobalwatchlist.vue' :
+			'ext.globalwatchlist.specialglobalwatchlist';
 		$output = $this->createMock( OutputPage::class );
 		$output->expects( $this->atLeastOnce() )
 			->method( 'addModules' )
 			->with(
-				$this->equalTo( 'ext.globalwatchlist.specialglobalwatchlist' )
+				$this->equalTo( $module )
 			);
 		$output->expects( $this->atLeastOnce() )
 			->method( 'addJsConfigVars' )
@@ -76,6 +84,13 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 		$specialPage->setContext( $testContext );
 
 		$specialPage->execute( null );
+	}
+
+	public function provideTestLoggedIn() {
+		return [
+			'Not using Vue' => [ false ],
+			'Using Vue' => [ true ]
+		];
 	}
 
 	public function testInfo() {

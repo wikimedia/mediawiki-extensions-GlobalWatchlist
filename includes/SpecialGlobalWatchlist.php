@@ -65,7 +65,12 @@ class SpecialGlobalWatchlist extends SpecialPage {
 		$this->requireLogin( 'globalwatchlist-must-login' );
 
 		$out = $this->getOutput();
-		$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist' );
+
+		if ( $this->getConfig()->get( 'GlobalWatchlistUseVue' ) ) {
+			$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist.vue' );
+		} else {
+			$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist' );
+		}
 
 		$out->addJsConfigVars(
 			'wgGlobalWatchlistWikibaseSite',

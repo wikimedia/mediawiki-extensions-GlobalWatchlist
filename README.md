@@ -23,6 +23,12 @@ Set this to the base URL of the site for which Wikibase labels should be fetched
 
 By default, the value is `www.wikidata.org`.
 
+* `wgGlobalWatchlistUseVue`
+
+Set this to true to enable the Vue version of the JavaScript for Special:GlobalWatchlist.
+
+By default, the value is `false`.
+
 ## Use
 
 The extension provides two new [special pages](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Special_pages).

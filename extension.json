@@ -68,6 +68,10 @@
 		"GlobalWatchlistWikibaseSite": {
 			"value": "www.wikidata.org",
 			"description": "Site for which labels should be fetched for items on the watchlist"
+		},
+		"GlobalWatchlistUseVue": {
+			"value": false,
+			"description": "Whether to use the Vue version of the code for Special:GlobalWatchlist"
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -131,6 +135,11 @@
 				"oojs-ui.styles.icons-moderation",
 				"oojs-ui.styles.icons-movement",
 				"user.options"
+			]
+		},
+		"ext.globalwatchlist.specialglobalwatchlist.vue": {
+			"packageFiles": [
+				"ext.globalwatchlist.specialglobalwatchlist.vue.js"
 			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
