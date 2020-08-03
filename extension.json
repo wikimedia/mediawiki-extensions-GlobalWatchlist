@@ -140,7 +140,53 @@
 		},
 		"ext.globalwatchlist.specialglobalwatchlist.vue": {
 			"packageFiles": [
-				"ext.globalwatchlist.specialglobalwatchlist.vue.js"
+				"ext.globalwatchlist.specialglobalwatchlist.vue.js",
+				"ext.globalwatchlist.debug.js",
+				"ext.globalwatchlist.getSettings.js",
+				"ext.globalwatchlist.linker.js",
+				"ext.globalwatchlist.notifications.js",
+				"ext.globalwatchlist.watchlistUtils.js",
+				"ext.globalwatchlist.wikibase.js",
+				"SiteBase.js",
+				"vue/AsOf.vue",
+				"vue/Button.vue",
+				"vue/CollapsibleWrapper.vue",
+				"vue/EntryRow.vue",
+				"vue/LoadingBar.vue",
+				"vue/Site.vue",
+				"vue/SitesWithoutChanges.vue",
+				"vue/SpecialGlobalWatchlist.vue",
+				"vue/Toolbar.vue"
+			],
+			"messages": [
+				"globalwatchlist-asof",
+				"globalwatchlist-changesfeed",
+				"globalwatchlist-editwatchlist",
+				"globalwatchlist-emptyfeed",
+				"globalwatchlist-getoptions-error",
+				"globalwatchlist-globalwatchlistsettingslink",
+				"globalwatchlist-markseen",
+				"globalwatchlist-markseen-all",
+				"globalwatchlist-markseen-allconfirm",
+				"globalwatchlist-option-grouppage",
+				"globalwatchlist-option-live",
+				"globalwatchlist-refresh",
+				"globalwatchlist-rewatch",
+				"globalwatchlist-unwatch",
+				"boteditletter",
+				"diff",
+				"history_small",
+				"minoreditletter",
+				"nchanges",
+				"ntimes",
+				"newpageletter",
+				"rev-deleted-user",
+				"sp-contributions-logs"
+			],
+			"dependencies": [
+				"vue",
+				"mediawiki.ForeignApi",
+				"user.options"
 			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {

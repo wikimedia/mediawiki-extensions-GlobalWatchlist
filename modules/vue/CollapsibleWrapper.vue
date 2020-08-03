@@ -1,0 +1,63 @@
+<template>
+	<div
+		class="mw-globalwatchlist-vue-collapsible"
+	>
+		<global-watchlist-button
+			name="toggle-collapsible"
+			align="right"
+			v-bind:text="buttonText"
+			v-on:click="toggleCollapsible"
+		>
+		</global-watchlist-button>
+
+		<div
+			v-if="showContent"
+		>
+			<slot></slot>
+		</div>
+	</div>
+</template>
+
+<script>
+var Button = require( './Button.vue' );
+
+module.exports = {
+	components: {
+		'global-watchlist-button': Button
+	},
+
+	data: function () {
+		return {
+			isCollapsed: false // Always start expanded
+		};
+	},
+
+	props: {
+		startcollapsed: {
+			type: Boolean,
+			default: false
+		}
+	},
+
+	computed: {
+		buttonText: function () {
+			return this.isCollapsed ? 'Expand' : 'Collapse';
+		},
+		showContent: function () {
+			return !this.isCollapsed;
+		}
+	},
+
+	methods: {
+		toggleCollapsible: function () {
+			this.isCollapsed = !this.isCollapsed;
+		}
+	},
+
+	created: function () {
+		if ( this.startcollapsed ) {
+			this.isCollapsed = true;
+		}
+	}
+};
+</script>

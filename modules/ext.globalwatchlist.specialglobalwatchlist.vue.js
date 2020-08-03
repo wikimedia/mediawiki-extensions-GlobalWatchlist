@@ -1,8 +1,6 @@
 /* eslint-disable no-jquery/no-global-selector */
 /*
- * Javascript for (eventually) loading the Vue version of Special:GlobalWatchlist
- *
- * For now, just displays a note that it was loaded
+ * Javascript for loading the Vue version of Special:GlobalWatchlist
  */
 ( function () {
 	'use strict';
@@ -15,8 +13,19 @@
 		$( '.globalwatchlist-content' )
 			.empty()
 			.append(
-				$( '<p>' )
-					.text( 'GlobalWatchlist Vue code loaded' )
+				$( '<div>' )
+					.attr( 'id', 'mw-globalwatchlist-vue' )
 			);
+
+		var Vue = require( 'vue' ),
+			vuePage = require( './vue/SpecialGlobalWatchlist.vue' );
+
+		mw.globalwatchlist = {};
+		mw.globalwatchlist.vue = new Vue( {
+			el: '#mw-globalwatchlist-vue',
+			render: function ( createElement ) {
+				return createElement( vuePage );
+			}
+		} );
 	} );
 }() );
