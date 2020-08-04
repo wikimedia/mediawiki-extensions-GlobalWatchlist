@@ -83,6 +83,9 @@
 			viewElements.settingsLink.$element,
 			viewElements.markAllSeen.$element
 		);
+	viewElements.$feedHeader = new OO.ui.LabelWidget( {
+		label: mw.msg( 'globalwatchlist-changesfeed' )
+	} ).$element;
 
 	watchedSites = config.siteList.map( function ( site ) {
 		return new WatchedSite(
@@ -133,12 +136,10 @@
 				} );
 
 				if ( showChangesLabel ) {
-					$div.prepend(
-						new OO.ui.LabelWidget( {
-							label: mw.msg( 'globalwatchlist-changesfeed' )
-						} ).$element
-					)
-						.append( $( '<hr>' ) );
+					viewElements.$feedHeader.show();
+					$div.append( $( '<hr>' ) );
+				} else {
+					viewElements.$feedHeader.hide();
 				}
 
 				if ( emptySites[ 0 ] ) {
@@ -260,6 +261,7 @@
 				viewElements.$toolbar,
 				viewElements.$asOf,
 				viewElements.progressBar.$element,
+				viewElements.$feedHeader,
 				viewElements.$sharedFeed
 			);
 
