@@ -88,6 +88,7 @@
 				"ext.globalwatchlist.notifications.js",
 				"ext.globalwatchlist.watchlistUtils.js",
 				"ext.globalwatchlist.wikibase.js",
+				"MultiSiteWrapper.js",
 				"SiteBase.js",
 				"SiteDisplay.js"
 			],
@@ -148,6 +149,7 @@
 				"ext.globalwatchlist.notifications.js",
 				"ext.globalwatchlist.watchlistUtils.js",
 				"ext.globalwatchlist.wikibase.js",
+				"MultiSiteWrapper.js",
 				"SiteBase.js",
 				"SiteVue.js",
 				"vue/AsOf.vue",

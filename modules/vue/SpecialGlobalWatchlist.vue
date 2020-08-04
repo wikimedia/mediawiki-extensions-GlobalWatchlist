@@ -60,25 +60,21 @@ var GlobalWatchlistDebugger = require( './../ext.globalwatchlist.debug.js' ),
 	getSettings = require( './../ext.globalwatchlist.getSettings.js' ),
 	NotificationManager = require( './../ext.globalwatchlist.notifications.js' ),
 	WatchedSite = require( './../SiteVue.js' ),
-	watchlistUtils = require( './../ext.globalwatchlist.watchlistUtils.js' );
+	MultiSiteWrapper = require( './../MultiSiteWrapper.js' );
 
 var globalWatchlistDebug = new GlobalWatchlistDebugger();
 var notifications = new NotificationManager( globalWatchlistDebug );
 var config = getSettings( notifications );
 config.time = new Date();
 
-var watchedSites = config.siteList.map( function ( site ) {
-	return new WatchedSite(
-		globalWatchlistDebug,
-		config,
-		new mw.ForeignApi( '//' + site + mw.util.wikiScript( 'api' ) ),
-		watchlistUtils,
-		site
-	);
-} );
+var watchedSites = new MultiSiteWrapper(
+	WatchedSite,
+	config,
+	globalWatchlistDebug
+);
 
 var watchedSitesBySite = {};
-watchedSites.forEach( function ( watchedSite ) {
+watchedSites.siteList.forEach( function ( watchedSite ) {
 	watchedSitesBySite[ watchedSite.site ] = watchedSite;
 } );
 
@@ -138,10 +134,8 @@ module.exports = {
 			this.config.time = new Date();
 
 			var that = this;
-			Promise.all( watchedSites.map( function ( site ) {
-				return site.getWatchlist( that.config );
-			} ) ).then( function () {
-				watchedSites.forEach( function ( site ) {
+			watchedSites.getAllWatchlists( that.config ).then( function () {
+				watchedSites.siteList.forEach( function ( site ) {
 					if ( site.isEmpty ) {
 						that.sitesWithoutChangesList.push( site.site );
 					} else {
@@ -171,9 +165,7 @@ module.exports = {
 			console.log( 'Marking all sites as seen' );
 			var that = this;
 			// TODO restore confirmation
-			Promise.all( watchedSites.map( function ( site ) {
-				return site.markAsSeen();
-			} ) ).then( function () {
+			watchedSites.markAllSitesSeen().then( function () {
 				that.refreshSites();
 			} );
 		},

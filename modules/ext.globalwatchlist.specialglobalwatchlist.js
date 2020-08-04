@@ -9,17 +9,22 @@
 		getSettings = require( './ext.globalwatchlist.getSettings.js' ),
 		config = {},
 		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
+		MultiSiteWrapper = require( './MultiSiteWrapper.js' ),
 		WatchedSite = require( './SiteDisplay.js' ),
-		watchlistUtils = require( './ext.globalwatchlist.watchlistUtils.js' ),
 		viewElements = {},
-		viewManager = {},
-		watchedSites = [];
+		viewManager = {};
 	var globalWatchlistDebug = new GlobalWatchlistDebugger();
 	var notifications = new NotificationManager( globalWatchlistDebug );
 
 	config = getSettings( notifications );
 	config.liveCounter = 0;
 	config.inLive = false;
+
+	var watchedSites = new MultiSiteWrapper(
+		WatchedSite,
+		config,
+		globalWatchlistDebug
+	);
 
 	viewElements.groupPage = new OO.ui.ToggleButtonWidget( {
 		disabled: config.fastMode,
@@ -53,10 +58,12 @@
 		label: mw.msg( 'globalwatchlist-markseen-all' )
 	} ).on( 'click', function () {
 		if ( config.confirmAllSites ) {
-			notifications.onMarkAllSitesSeen( viewManager.reallyMarkAllSeen );
+			notifications.onMarkAllSitesSeen( function () {
+				watchedSites.markAllSitesSeen();
+			} );
 		} else {
 			globalWatchlistDebug.info( 'MarkAllSitesSeen', 'Marking without confirmation', 1 );
-			viewManager.reallyMarkAllSeen();
+			watchedSites.markAllSitesSeen();
 		}
 	} );
 	viewElements.refresh = new OO.ui.ButtonInputWidget( {
@@ -87,16 +94,6 @@
 		label: mw.msg( 'globalwatchlist-changesfeed' )
 	} ).$element;
 
-	watchedSites = config.siteList.map( function ( site ) {
-		return new WatchedSite(
-			globalWatchlistDebug,
-			config,
-			new mw.ForeignApi( '//' + site + mw.util.wikiScript( 'api' ) ),
-			watchlistUtils,
-			site
-		);
-	} );
-
 	viewManager.newEmptySiteRow = function ( site ) {
 		var template = mw.template.get(
 			'ext.globalwatchlist.specialglobalwatchlist',
@@ -114,14 +111,12 @@
 		globalWatchlistDebug.info( 'watchlists.refresh', 'starting refresh', 1 );
 		config.time = new Date();
 		return new Promise( function ( resolve ) {
-			Promise.all( watchedSites.map( function ( site ) {
-				return site.getWatchlist( config );
-			} ) ).then( function () {
+			watchedSites.getAllWatchlists( config ).then( function () {
 				var $div = $( '<div>' ).attr( 'id', 'globalWatchlist-feedCollector' ),
 					emptySites = [],
 					showChangesLabel = false;
 
-				watchedSites.forEach( function ( site ) {
+				watchedSites.siteList.forEach( function ( site ) {
 					globalWatchlistDebug.info(
 						'watchlists.refrsh site loop, a site',
 						site.site,
@@ -193,13 +188,6 @@
 			viewManager.showFeed();
 		} );
 	};
-	viewManager.reallyMarkAllSeen = function () {
-		// Needs to be a separate function to be passed as a callback to the notification
-		// manager if the user prefers to require confirmation
-		watchedSites.forEach( function ( site ) {
-			site.markAsSeen();
-		} );
-	}
 
 	viewManager.runLive = function () {
 		if ( config.inLive ) {
