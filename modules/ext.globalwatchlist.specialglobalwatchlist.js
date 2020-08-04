@@ -19,7 +19,7 @@
 
 	config = getSettings( notifications );
 	config.liveCounter = 0;
-	config.currentMode = -1;
+	config.inLive = false;
 
 	viewElements.groupPage = new OO.ui.ToggleButtonWidget( {
 		disabled: config.fastMode,
@@ -34,7 +34,11 @@
 		label: mw.msg( 'globalwatchlist-option-live' ),
 		value: false
 	} ).on( 'click', function () {
-		viewManager.setMode( viewElements.liveToggle.value ? 13 : 11 );
+		if ( viewElements.liveToggle.value ) {
+			viewManager.startLiveUpdates();
+		} else {
+			viewManager.showFeed();
+		}
 	} );
 	viewElements.settingsLink = new OO.ui.ButtonWidget( {
 		flags: [ 'progressive' ],
@@ -179,13 +183,13 @@
 	};
 	viewManager.renderFeed = function () {
 		globalWatchlistDebug.info( 'renderFeed', 'called', 1 );
-		if ( config.currentMode === 13 ) {
+		if ( config.inLive ) {
 			return;
 		}
 
-		viewManager.setMode( 10 );
+		viewManager.showLoading();
 		viewManager.refresh().then( function () {
-			viewManager.setMode( 11 );
+			viewManager.showFeed();
 		} );
 	};
 	viewManager.reallyMarkAllSeen = function () {
@@ -197,46 +201,45 @@
 	}
 
 	viewManager.runLive = function () {
-		if ( config.currentMode === 13 ) {
+		if ( config.inLive ) {
 			globalWatchlistDebug.info( 'watchlists.runLive - counter', config.liveCounter++, 1 );
 			setTimeout( viewManager.refresh, 7500 );
 		}
 	};
 
-	viewManager.setMode = function ( newMode ) {
-		globalWatchlistDebug.info( 'mode', newMode, 1 );
-		config.currentMode = newMode;
-		switch ( newMode ) {
-			// Loading global watchlist
-			case 10:
-				viewElements.liveToggle.setDisabled( true );
-				viewElements.progressBar.$element.show();
-				viewElements.$sharedFeed.hide();
-				viewElements.$asOf.innerText = '';
-				break;
+	// Loading the global watchlist
+	viewManager.showLoading = function () {
+		globalWatchlistDebug.info( 'mode', 'loading watchlist', 1 );
+		config.inLive = false;
 
-			// Showing global watchlist
-			case 11:
-				viewElements.liveToggle.setDisabled( config.fastMode );
-				viewElements.refresh.setDisabled( false );
-				viewElements.groupPage.setDisabled( config.fastMode );
-				viewElements.liveToggle.setIcon( 'play' );
-				viewElements.progressBar.$element.hide();
-				viewElements.$sharedFeed.show();
-				break;
+		viewElements.liveToggle.setDisabled( true );
+		viewElements.progressBar.$element.show();
+		viewElements.$sharedFeed.hide();
+		viewElements.$asOf.innerText = '';
+	};
 
-			// Live updates running
-			case 13:
-				viewElements.refresh.setDisabled( true );
-				viewElements.groupPage.setDisabled( true );
-				viewElements.liveToggle.setIcon( 'pause' );
-				viewManager.runLive();
-				break;
+	// Displaying the global watchlist
+	viewManager.showFeed = function () {
+		globalWatchlistDebug.info( 'mode', 'displaying watchlist', 1 );
+		config.inLive = false;
 
-			// Anything else (not supported)
-			default:
-				globalWatchlistDebug.error( 'Unsupported mode', newMode );
-		}
+		viewElements.liveToggle.setDisabled( config.fastMode );
+		viewElements.refresh.setDisabled( false );
+		viewElements.groupPage.setDisabled( config.fastMode );
+		viewElements.liveToggle.setIcon( 'play' );
+		viewElements.progressBar.$element.hide();
+		viewElements.$sharedFeed.show();
+	};
+
+	// Running in live updates mode
+	viewManager.startLiveUpdates = function () {
+		globalWatchlistDebug.info( 'mode', 'starting live updates', 1 );
+		config.inLive = true;
+
+		viewElements.refresh.setDisabled( true );
+		viewElements.groupPage.setDisabled( true );
+		viewElements.liveToggle.setIcon( 'pause' );
+		viewManager.runLive();
 	};
 
 	mw.globalwatchlist = {};
@@ -260,7 +263,6 @@
 				viewElements.$sharedFeed
 			);
 
-		viewManager.setMode( 10 );
 		viewManager.renderFeed();
 	} );
 }() );
