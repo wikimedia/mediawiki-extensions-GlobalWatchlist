@@ -14,21 +14,23 @@
 				Avoid a space
 			-->)
 		</h3>
-		<global-watchlist-button
-			text="Mark as seen"
-			v-on:click="markChangesSeen"
-		>
-		</global-watchlist-button>
-		<global-watchlist-entry-row
-			v-for="(rowInfo, index) in entries"
-			v-bind:key=index
-			v-bind:entry=rowInfo
-			v-bind:pagewatched=rowInfo.pageWatched
-			v-bind:site=site
-			v-on:unwatch-page="onUnwatchPage"
-			v-on:rewatch-page="onRewatchPage"
-		>
-		</global-watchlist-entry-row>
+		<global-watchlist-collapsible-wrapper>
+			<global-watchlist-button
+				text="Mark as seen"
+				v-on:click="markChangesSeen"
+			>
+			</global-watchlist-button>
+			<global-watchlist-entry-row
+				v-for="(rowInfo, index) in entries"
+				v-bind:key=index
+				v-bind:entry=rowInfo
+				v-bind:pagewatched=rowInfo.pageWatched
+				v-bind:site=site
+				v-on:unwatch-page="onUnwatchPage"
+				v-on:rewatch-page="onRewatchPage"
+			>
+			</global-watchlist-entry-row>
+		</global-watchlist-collapsible-wrapper>
 	</div>
 </template>
 
@@ -36,11 +38,13 @@
 var GlobalWatchlistLinker = require( './../ext.globalwatchlist.linker.js' );
 
 var Button = require( './base/Button.vue' ),
+	CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' ),
 	EntryRow = require( './EntryRow.vue' );
 
 module.exports = {
 	components: {
 		'global-watchlist-button': Button,
+		'global-watchlist-collapsible-wrapper': CollapsibleWrapper,
 		'global-watchlist-entry-row': EntryRow
 	},
 
