@@ -14,7 +14,7 @@
 	/**
 	 * Update this.entries for the latest entries to show
 	 *
-	 * @param {array} summary
+	 * @param {Array} summary
 	 */
 	GlobalWatchlistSiteVue.prototype.renderWatchlist = function ( summary ) {
 		this.entries = summary;

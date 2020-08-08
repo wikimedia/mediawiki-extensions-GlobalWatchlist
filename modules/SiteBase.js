@@ -272,7 +272,7 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
  *
  * Overriden in SiteDisplay.js and SiteVue.js
  *
- * @param {Object} summary
+ * @param {Array} summary
  */
 GlobalWatchlistSite.prototype.renderWatchlist = function ( summary ) {
 	// STUB

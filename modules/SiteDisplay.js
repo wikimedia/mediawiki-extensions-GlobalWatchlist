@@ -131,7 +131,7 @@
 	/**
 	 * Display the watchlist
 	 *
-	 * @param {Object} summary
+	 * @param {Array} summary
 	 */
 	GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary ) {
 		var $ul = $( '<ul>' ),
