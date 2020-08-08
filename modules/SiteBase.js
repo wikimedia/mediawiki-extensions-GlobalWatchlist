@@ -250,6 +250,9 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 				resolve();
 				return;
 			}
+			// In case it was previously set to true
+			that.isEmpty = false;
+
 			that.debug( 'getWatchlist wlraw', wlraw, 1 );
 
 			var prelimSummary = that.watchlistUtils.rawToSummary(
