@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * Represents a specific site
  *
@@ -277,7 +278,6 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
  *
  * @param {Object} summary
  */
-// eslint-disable-next-line no-unused-vars
 GlobalWatchlistSite.prototype.renderWatchlist = function ( summary ) {
 	// STUB
 };
@@ -354,7 +354,6 @@ GlobalWatchlistSite.prototype.afterMarkAsSeen = function () {
  * @param {string} pageTitle
  * @param {boolean} unwatched
  */
-// eslint-disable-next-line no-unused-vars
 GlobalWatchlistSite.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
 	// STUB
 };
