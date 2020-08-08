@@ -183,7 +183,13 @@
 			return;
 		}
 
-		viewManager.showLoading();
+		config.inLive = false;
+
+		viewElements.liveToggle.setDisabled( true );
+		viewElements.progressBar.$element.show();
+		viewElements.$sharedFeed.hide();
+		viewElements.$asOf.innerText = '';
+
 		viewManager.refresh().then( function () {
 			viewManager.showFeed();
 		} );
@@ -194,17 +200,6 @@
 			globalWatchlistDebug.info( 'watchlists.runLive - counter', config.liveCounter++, 1 );
 			setTimeout( viewManager.refresh, 7500 );
 		}
-	};
-
-	// Loading the global watchlist
-	viewManager.showLoading = function () {
-		globalWatchlistDebug.info( 'mode', 'loading watchlist', 1 );
-		config.inLive = false;
-
-		viewElements.liveToggle.setDisabled( true );
-		viewElements.progressBar.$element.show();
-		viewElements.$sharedFeed.hide();
-		viewElements.$asOf.innerText = '';
 	};
 
 	// Displaying the global watchlist
