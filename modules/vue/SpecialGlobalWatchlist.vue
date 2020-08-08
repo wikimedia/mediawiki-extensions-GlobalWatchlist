@@ -21,10 +21,10 @@
 			v-else
 			class="mw-globalwatchlist-sitelist"
 		>
-			<global-watchlist-as-of
-				v-bind:asof=refreshedTime
+			<global-watchlist-label
+				v-bind:text=asOfLabelText
 			>
-			</global-watchlist-as-of>
+			</global-watchlist-label>
 			<div v-if="haveChangesToShow">
 				<p>{{ $i18n( 'globalwatchlist-changesfeed' ) }}</p>
 				<global-watchlist-sites-with-changes
@@ -53,8 +53,8 @@
 <script>
 /* eslint-disable no-console */
 
-var AsOf = require( './AsOf.vue' ),
-	Toolbar = require( './Toolbar.vue' ),
+var Toolbar = require( './Toolbar.vue' ),
+	Label = require( './base/Label.vue' ),
 	LoadingBar = require( './base/LoadingBar.vue' ),
 	SitesWithoutChanges = require( './SitesWithoutChanges.vue' ),
 	Site = require( './Site.vue' );
@@ -84,7 +84,7 @@ watchedSites.siteList.forEach( function ( watchedSite ) {
 
 module.exports = {
 	components: {
-		'global-watchlist-as-of': AsOf,
+		'global-watchlist-label': Label,
 		'global-watchlist-toolbar': Toolbar,
 		'global-watchlist-loading-bar': LoadingBar,
 		'global-watchlist-sites-with-changes': Site,
@@ -112,8 +112,11 @@ module.exports = {
 		haveEmptySites: function () {
 			return this.sitesWithoutChangesList.length > 0;
 		},
-		refreshedTime: function () {
-			return this.config.time.toUTCString();
+		asOfLabelText: function () {
+			return this.$i18n(
+				'globalwatchlist-as-of',
+				this.config.time.toUTCString()
+			);
 		}
 	},
 
