@@ -26,8 +26,8 @@
 			v-bind:pagewatched=rowInfo.pageWatched
 			v-bind:site=site
 			v-bind:key=index
-			v-on:unwatch="onUnwatch( $event )"
-			v-on:rewatch="onRewatch( $event )"
+			v-on:unwatch-page="onUnwatchPage"
+			v-on:rewatch-page="onRewatchPage"
 		>
 		</global-watchlist-entry-row>
 	</div>
@@ -69,20 +69,17 @@ module.exports = {
 	},
 
 	methods: {
-		onUnwatch: function ( eventTitle ) {
-			console.log( 'unwatching a page: ' + eventTitle );
-			this.$emit( 'unwatch-page', [ this.site, eventTitle ] );
+		onUnwatchPage: function ( eventTitle ) {
+			this.$emit( 'unwatch-site-page', this.site, eventTitle );
 			this.entries.forEach( function ( entryInfo ) {
 				if ( entryInfo.title === eventTitle ) {
 					entryInfo.pageWatched = false;
 				}
 			} );
-			console.log( this.entries );
 			this.$forceUpdate();
 		},
-		onRewatch: function ( eventTitle ) {
-			console.log( 'rewatching a page:' + eventTitle );
-			this.$emit( 'rewatch-page', [ this.site, eventTitle ] );
+		onRewatchPage: function ( eventTitle ) {
+			this.$emit( 'rewatch-site-page', this.site, eventTitle );
 			this.entries.forEach( function ( entryInfo ) {
 				if ( entryInfo.title === eventTitle ) {
 					entryInfo.pageWatched = true;

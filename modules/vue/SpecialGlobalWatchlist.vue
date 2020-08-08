@@ -31,8 +31,8 @@
 					v-for="withChanges in sitesWithChangesList"
 					v-bind:site=withChanges['site']
 					v-bind:entries=withChanges['entries']
-					v-on:unwatch-page="onUnwatch"
-					v-on:rewatch-page="onRewatch"
+					v-on:unwatch-site-page="onUnwatchSitePage"
+					v-on:rewatch-site-page="onRewatchSitePage"
 					v-on:mark-site-seen="markSiteAsSeen"
 				>
 				</global-watchlist-sites-with-changes>
@@ -149,16 +149,10 @@ module.exports = {
 				that.inLoading = false;
 			} );
 		},
-		onUnwatch: function ( info ) {
-			var site = info[ 0 ];
-			var pageTitle = info[ 1 ];
-			console.log( 'Unwatching page (' + pageTitle + ') on site (' + site + ')' );
+		onUnwatchSitePage: function ( site, pageTitle ) {
 			watchedSitesBySite[ site ].changeWatched( pageTitle, 'unwatch' );
 		},
-		onRewatch: function ( info ) {
-			var site = info[ 0 ];
-			var pageTitle = info[ 1 ];
-			console.log( 'Rewatching page (' + pageTitle + ') on site (' + site + ')' );
+		onRewatchSitePage: function ( site, pageTitle ) {
 			watchedSitesBySite[ site ].changeWatched( pageTitle, 'watch' );
 		},
 		markAllSitesSeen: function () {

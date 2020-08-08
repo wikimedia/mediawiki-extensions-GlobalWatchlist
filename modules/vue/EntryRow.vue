@@ -164,11 +164,10 @@ module.exports = {
 
 	methods: {
 		unwatchPage: function () {
-			console.log( this );
-			this.$emit( 'unwatch', this.entry.title );
+			this.$emit( 'unwatch-page', this.entry.title );
 		},
 		rewatchPage: function () {
-			this.$emit( 'rewatch', this.entry.title );
+			this.$emit( 'rewatch-page', this.entry.title );
 		}
 	}
 };
