@@ -44,7 +44,10 @@ module.exports = {
 
 	computed: {
 		buttonText: function () {
-			return this.isCollapsed ? 'Expand' : 'Collapse';
+			if ( this.isCollapsed ) {
+				return this.$i18n( 'collapsible-expand' );
+			}
+			return this.$i18n( 'collapsible-collapse' );
 		},
 		showContent: function () {
 			return !this.isCollapsed;

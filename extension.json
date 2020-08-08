@@ -178,6 +178,8 @@
 				"globalwatchlist-rewatch",
 				"globalwatchlist-unwatch",
 				"boteditletter",
+				"collapsible-collapse",
+				"collapsible-expand",
 				"diff",
 				"history_small",
 				"minoreditletter",
