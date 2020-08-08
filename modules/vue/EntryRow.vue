@@ -158,12 +158,7 @@ module.exports = {
 		},
 		hasUserDisplay: function () {
 			// Not available in fast mode
-			// TODO fixme when userDisplay is used after https://gerrit.wikimedia.org/r/c/mediawiki/extensions/GlobalWatchlist/+/617316 merges
-			// return this.entry.userDisplay && this.entry.userDisplay !== '';
-			if ( !this.entry.userDisplay || this.entry.userDisplay === '' ) {
-				this.entry.userDisplay = '@@user display will go here@@';
-			}
-			return true;
+			return this.entry.userDisplay && this.entry.userDisplay !== '';
 		}
 	},
 
