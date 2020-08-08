@@ -190,3 +190,11 @@ module.exports = {
 	}
 };
 </script>
+
+<style>
+/* Ensure that this applies to links, see T245104 */
+.ext-globalwatchlist-strike,
+.ext-globalwatchlist-strike a {
+	text-decoration: line-through;
+}
+</style>

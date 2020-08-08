@@ -100,7 +100,7 @@ module.exports = {
 		},
 		rowClasses: function () {
 			if ( !this.pagewatched ) {
-				return 'globalWatchlist-strike';
+				return 'ext-globalwatchlist-strike';
 			}
 			return '';
 		},
