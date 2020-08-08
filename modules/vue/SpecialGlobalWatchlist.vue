@@ -114,7 +114,7 @@ module.exports = {
 		},
 		asOfLabelText: function () {
 			return this.$i18n(
-				'globalwatchlist-as-of',
+				'globalwatchlist-asof',
 				this.config.time.toUTCString()
 			);
 		}

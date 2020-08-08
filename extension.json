@@ -152,7 +152,7 @@
 				"MultiSiteWrapper.js",
 				"SiteBase.js",
 				"SiteVue.js",
-				"vue/AsOf.vue",
+				"vue/base/Label.vue",
 				"vue/base/Button.vue",
 				"vue/base/CollapsibleWrapper.vue",
 				"vue/EntryRow.vue",
