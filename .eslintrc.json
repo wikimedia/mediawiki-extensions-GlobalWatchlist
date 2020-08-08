@@ -15,5 +15,26 @@
 		"valid-jsdoc": "off",
 		"vars-on-top": "off",
 		"one-var": "off"
-	}
+	},
+	"overrides": [
+		{
+			"files": [ "**/*.vue" ],
+			"extends": "wikimedia/vue-es5",
+			"rules": {
+				"vue/html-self-closing": [ "error", {
+					"html": {
+						"void": "never",
+						"normal": "never",
+						"component": "never"
+					}
+				} ],
+				"vue/v-bind-style": [ "warn", "longform" ],
+				"vue/v-on-style": [ "warn", "longform" ],
+				"vue/v-slot-style": [ "warn", "longform" ],
+				"no-implicit-globals": "off",
+				"vars-on-top": "off",
+				"one-var": "off"
+			}
+		}
+	]
 }

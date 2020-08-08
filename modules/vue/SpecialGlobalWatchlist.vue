@@ -51,6 +51,8 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
+
 var AsOf = require( './AsOf.vue' ),
 	Toolbar = require( './Toolbar.vue' ),
 	LoadingBar = require( './base/LoadingBar.vue' ),
@@ -119,6 +121,8 @@ module.exports = {
 		toggleLiveUpdates: function () {
 			this.liveUpdatesActive = !( this.liveUpdatesActive );
 			console.log( this.liveUpdatesActive ? 'Now running live updates' : 'Done running live updates' );
+
+			/* eslint-disable-next-line no-alert */
 			alert( 'Live updates do not work in the Vue version yet' );
 		},
 		toggleGroupPage: function () {
