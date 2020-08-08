@@ -255,9 +255,10 @@
 			} );
 	};
 
-	mw.globalwatchlist = mw.globalwatchlist || {};
-	mw.globalwatchlist.settings = settingsManager;
-	mw.globalwatchlist.debug = globalWatchlistDebug;
+	mw.globalwatchlist = {
+		debug: globalWatchlistDebug,
+		settings: settingsManager
+	};
 
 	// On ready initialization
 	$( function () {

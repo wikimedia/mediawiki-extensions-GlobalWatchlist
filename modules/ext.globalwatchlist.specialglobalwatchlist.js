@@ -227,13 +227,14 @@
 		viewManager.runLive();
 	};
 
-	mw.globalwatchlist = {};
-	mw.globalwatchlist.elements = viewElements;
-	mw.globalwatchlist.watchedSites = watchedSites;
-	mw.globalwatchlist.view = viewManager;
-	mw.globalwatchlist.debug = globalWatchlistDebug;
-	mw.globalwatchlist.config = config;
-	mw.globalwatchlist.notifications = notifications;
+	mw.globalwatchlist = {
+		config: config,
+		debug: globalWatchlistDebug,
+		elements: viewElements,
+		notifications: notifications,
+		view: viewManager,
+		watchedSites: watchedSites
+	};
 
 	// On ready initialization
 	$( function () {
