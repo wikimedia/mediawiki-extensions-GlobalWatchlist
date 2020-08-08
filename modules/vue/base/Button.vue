@@ -18,10 +18,6 @@
  */
 module.exports = {
 	props: {
-		name: {
-			type: String,
-			default: ''
-		},
 		text: {
 			type: String,
 			default: 'ButtonTextGoesHere'
@@ -42,12 +38,6 @@ module.exports = {
 
 	methods: {
 		onButtonClick: function () {
-			if ( this.name === '' ) {
-				console.log( 'Some button clicked' );
-			} else {
-				console.log( this.name + ' button clicked' );
-			}
-
 			this.$emit( 'click' );
 		}
 	}

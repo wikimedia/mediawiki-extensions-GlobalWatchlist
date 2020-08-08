@@ -3,7 +3,6 @@
 		class="mw-globalwatchlist-vue-collapsible"
 	>
 		<global-watchlist-button
-			name="toggle-collapsible"
 			align="right"
 			v-bind:text="buttonText"
 			v-on:click="toggleCollapsible"

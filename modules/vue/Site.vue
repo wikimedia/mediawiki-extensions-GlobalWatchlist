@@ -15,7 +15,6 @@
 			-->)
 		</h3>
 		<global-watchlist-button
-			name="mark-site-seen"
 			text="Mark as seen"
 			v-on:click="markChangesSeen"
 		>

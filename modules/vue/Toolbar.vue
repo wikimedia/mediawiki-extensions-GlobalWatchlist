@@ -3,21 +3,18 @@
 		id="mw-globalwatchlist-vue-toolbar"
 	>
 		<global-watchlist-button
-			name="live-updates"
 			text="Live updates"
 			v-on:click="toggleLiveUpdates"
 		>
 		</global-watchlist-button>
 
 		<global-watchlist-button
-			name="group-results"
 			text="Group results by page"
 			v-on:click="toggleGroupPage"
 		>
 		</global-watchlist-button>
 
 		<global-watchlist-button
-			name="refresh-sites"
 			text="Refresh"
 			v-on:click="triggerRefresh"
 		>
@@ -31,7 +28,6 @@
 		</a>
 
 		<global-watchlist-button
-			name="mark-all-seen"
 			text="Mark all sites as seen"
 			v-on:click="triggerMarkAll"
 		>
