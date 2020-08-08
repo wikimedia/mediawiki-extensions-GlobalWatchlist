@@ -93,6 +93,7 @@
 	viewElements.$feedHeader = new OO.ui.LabelWidget( {
 		label: mw.msg( 'globalwatchlist-changesfeed' )
 	} ).$element;
+	viewElements.$feedHeader.hide();
 
 	viewManager.newEmptySiteRow = function ( site ) {
 		var template = mw.template.get(
