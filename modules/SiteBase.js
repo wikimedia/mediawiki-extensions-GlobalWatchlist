@@ -33,9 +33,6 @@ function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils,
 	// Site identifier in format that can be used for elemnt attributes
 	this.siteID = encodeURIComponent( urlFragment.replace( /\./g, '_' ) );
 
-	// Wrapper div for all of the output of this site
-	this.divID = 'globalwatchlist-feed-site-' + this.siteID;
-
 	// Actual output for this site
 	this.$feedDiv = '';
 

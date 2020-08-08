@@ -144,7 +144,6 @@
 			classes: [ 'globalWatchlist-feed-markSeen' ],
 			flags: [ 'destructive' ],
 			icon: 'check',
-			id: this.divID + '-seen',
 			label: mw.msg( 'globalwatchlist-markseen' )
 		} ).on( 'click', function () {
 			that.markAsSeen();
@@ -162,7 +161,7 @@
 		};
 
 		this.$feedDiv = $( '<div>' )
-			.attr( 'id', this.divID )
+			.attr( 'id', 'globalwatchlist-feed-site-' + this.siteID )
 			.addClass( 'globalWatchlist-feed-site' )
 			.append(
 				headerTemplate.render( headerParams ),
