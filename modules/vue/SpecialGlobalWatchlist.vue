@@ -29,6 +29,7 @@
 				<p>{{ $i18n( 'globalwatchlist-changesfeed' ) }}</p>
 				<global-watchlist-sites-with-changes
 					v-for="withChanges in sitesWithChangesList"
+					v-bind:key=withChanges['site']
 					v-bind:site=withChanges['site']
 					v-bind:entries=withChanges['entries']
 					v-on:unwatch-site-page="onUnwatchSitePage"
