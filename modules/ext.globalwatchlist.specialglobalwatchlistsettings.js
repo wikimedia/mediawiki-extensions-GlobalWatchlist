@@ -114,7 +114,7 @@
 			} ).$element,
 			new OO.ui.ButtonWidget( {
 				flags: [ 'progressive' ],
-				href: '/wiki/Special:GlobalWatchlist',
+				href: mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:GlobalWatchlist' ),
 				icon: 'previous',
 				label: mw.msg( 'globalwatchlist-globalwatchlistbacklink' )
 			} ).$element,
