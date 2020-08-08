@@ -87,28 +87,21 @@ GlobalWatchlistSite.prototype.error = function ( key, msg ) {
  * @return {jQuery.Promise}
  */
 GlobalWatchlistSite.prototype.api = function ( func, content, name ) {
-	var skippedWhenTesting = [ 'updateWatched', 'actuallyMarkSiteAsSeen' ],
-		shouldSkipInTests = skippedWhenTesting.indexOf( name ) > -1,
-		that = this;
+	var that = this;
 
 	return new Promise( function ( resolve, reject ) {
 		that.debug( 'API.' + name + ' (called), with func & content:', [ func, content ], 1 );
-		if ( shouldSkipInTests && that.config.testNoActions ) {
-			that.debug( 'API.' + name + 'skipping; func & content:', [ func, content ], 3 );
-			resolve();
-		} else {
-			that.apiObject[ func ]( content ).then( function ( response ) {
-				that.debug(
-					'API.' + name + ' (result); func, content, & response',
-					[ func, content, response ],
-					2
-				);
-				resolve( response );
-			} ).catch( function ( error ) {
-				that.error( 'API.' + name, error );
-				reject();
-			} );
-		}
+		that.apiObject[ func ]( content ).then( function ( response ) {
+			that.debug(
+				'API.' + name + ' (result); func, content, & response',
+				[ func, content, response ],
+				2
+			);
+			resolve( response );
+		} ).catch( function ( error ) {
+			that.error( 'API.' + name, error );
+			reject();
+		} );
 	} );
 };
 
