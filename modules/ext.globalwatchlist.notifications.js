@@ -68,7 +68,8 @@ GlobalWatchlistNotificationManager.prototype.onSettingsFailed = function ( failu
 			mw.msg( 'globalwatchlist-notify-savingfailed' ),
 			{
 				title: mw.msg( 'globalwatchlist-notify-heading' ),
-				autoHide: false
+				autoHide: false,
+				type: "error"
 			}
 		);
 	}
