@@ -33,7 +33,8 @@
 				"vue/v-slot-style": [ "warn", "longform" ],
 				"no-implicit-globals": "off",
 				"vars-on-top": "off",
-				"one-var": "off"
+				"one-var": "off",
+				"es/no-promise": "off"
 			}
 		}
 	]

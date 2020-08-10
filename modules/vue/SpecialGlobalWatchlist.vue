@@ -139,22 +139,41 @@ module.exports = {
 			this.inLoading = true;
 			this.sitesWithChangesList = [];
 			this.sitesWithoutChangesList = [];
-			this.config.time = new Date();
 
 			var that = this;
-			watchedSites.getAllWatchlists( that.config ).then( function () {
-				watchedSites.siteList.forEach( function ( site ) {
-					if ( site.isEmpty ) {
-						that.sitesWithoutChangesList.push( site.site );
-					} else {
-						that.sitesWithChangesList.push( {
-							site: site.site,
-							entries: site.entries
-						} );
-					}
-				} );
+			this.backgroundRefresh().then( function ( results ) {
+				that.sitesWithChangesList = results.withChanges;
+				that.sitesWithoutChangesList = results.withoutChanges;
 			} ).then( function () {
 				that.inLoading = false;
+			} );
+		},
+		backgroundRefresh: function () {
+			var that = this;
+			this.config.time = new Date();
+
+			return new Promise( function ( resolve ) {
+				watchedSites.getAllWatchlists( that.config ).then( function () {
+					var newSitesWithChanges = [];
+					var newSitesWithoutChanges = [];
+
+					watchedSites.siteList.forEach( function ( site ) {
+						if ( site.isEmpty ) {
+							newSitesWithoutChanges.push( site.site );
+						} else {
+							newSitesWithChanges.push( {
+								site: site.site,
+								entries: site.entries
+							} );
+						}
+					} );
+					var results = {
+						withChanges: newSitesWithChanges,
+						withoutChanges: newSitesWithoutChanges
+					};
+					resolve( results );
+					return;
+				} );
 			} );
 		},
 		onUnwatchSitePage: function ( site, pageTitle ) {
