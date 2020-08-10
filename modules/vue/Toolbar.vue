@@ -3,19 +3,19 @@
 		id="mw-globalwatchlist-vue-toolbar"
 	>
 		<global-watchlist-button
-			text="Live updates"
+			v-bind:text="$i18n( 'globalwatchlist-option-live' )"
 			v-on:click="toggleLiveUpdates"
 		>
 		</global-watchlist-button>
 
 		<global-watchlist-button
-			text="Group results by page"
+			v-bind:text="$i18n( 'globalwatchlist-option-grouppage' )"
 			v-on:click="toggleGroupPage"
 		>
 		</global-watchlist-button>
 
 		<global-watchlist-button
-			text="Refresh"
+			v-bind:text="$i18n( 'globalwatchlist-refresh' )"
 			v-on:click="triggerRefresh"
 		>
 		</global-watchlist-button>
@@ -28,7 +28,7 @@
 		</a>
 
 		<global-watchlist-button
-			text="Mark all sites as seen"
+			v-bind:text="$i18n( 'globalwatchlist-markseen-all' )"
 			v-on:click="triggerMarkAll"
 		>
 		</global-watchlist-button>
