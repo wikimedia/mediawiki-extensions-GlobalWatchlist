@@ -14,27 +14,6 @@ function GlobalWatchlistNotificationManager( globalWatchlistDebug ) {
 }
 
 /**
- * Confirm with the user that they want to mark all sites as seen
- *
- * @param {Object} callback if sites should all be marked as seen
- */
-GlobalWatchlistNotificationManager.prototype.onMarkAllSitesSeen = function ( callback ) {
-	var that = this;
-	OO.ui.confirm(
-		mw.msg( 'globalwatchlist-markseen-allconfirm' )
-	).done(
-		function ( confirmed ) {
-			if ( confirmed ) {
-				that.debug.info( 'MarkAllSitesSeen', 'Confirmed', 1 );
-				callback();
-			} else {
-				that.debug.info( 'MarkAllSitesSeen', 'not confirmed, cancelling', 1 );
-			}
-		}
-	);
-};
-
-/**
  * Notify that settings were saved successfully
  *
  * @param {Object} saveData

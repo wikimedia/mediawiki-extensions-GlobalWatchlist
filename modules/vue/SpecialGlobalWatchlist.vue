@@ -185,10 +185,17 @@ module.exports = {
 		markAllSitesSeen: function () {
 			console.log( 'Marking all sites as seen' );
 			var that = this;
-			// TODO restore confirmation
-			watchedSites.markAllSitesSeen().then( function () {
-				that.refreshSites();
-			} );
+
+			watchedSites.markAllSitesSeen( this.config.confirmAllSites ).then(
+				function () {
+					// Resolved, either confirmation wasn't needed or was given
+					that.refreshSites();
+				},
+				function () {
+					// Confirmation wasn't given
+					console.log( 'Not confirmed' );
+				}
+			);
 		},
 		markSiteAsSeen: function ( site ) {
 			console.log( 'Marking site as seen: ' + site );

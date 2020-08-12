@@ -57,14 +57,7 @@
 		id: 'globalWatchlist-markSeen-all',
 		label: mw.msg( 'globalwatchlist-markseen-all' )
 	} ).on( 'click', function () {
-		if ( config.confirmAllSites ) {
-			notifications.onMarkAllSitesSeen( function () {
-				watchedSites.markAllSitesSeen();
-			} );
-		} else {
-			globalWatchlistDebug.info( 'MarkAllSitesSeen', 'Marking without confirmation', 1 );
-			watchedSites.markAllSitesSeen();
-		}
+		watchedSites.markAllSitesSeen( config.confirmAllSites );
 	} );
 	viewElements.refresh = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'progressive' ],

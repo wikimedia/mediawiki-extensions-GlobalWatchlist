@@ -192,6 +192,7 @@
 			"dependencies": [
 				"vue",
 				"mediawiki.ForeignApi",
+				"oojs-ui-windows",
 				"user.options"
 			]
 		},
