@@ -1,7 +1,6 @@
 <template>
 	<button
-		id="mw-globalwatchlist-vue-button"
-		class="mw-button"
+		class="ext-globalwatchlist-button"
 		v-bind:style="buttonStyle"
 		v-on:click="onButtonClick"
 	>
