@@ -1,6 +1,7 @@
 <template>
 	<div id="mw-globalwatchlist-vue-specialpage">
 		<global-watchlist-toolbar
+			v-bind:startresultsgrouped="startWithResultsGrouped"
 			v-on:toggle-live-updates="toggleLiveUpdates"
 			v-on:toggle-group-page="toggleGroupPage"
 			v-on:click-refresh="refreshSites"
@@ -100,7 +101,6 @@ module.exports = {
 			sitesWithoutChangesList: [],
 			config: config,
 			globalWatchlistDebug: globalWatchlistDebug,
-			groupPageActive: false,
 			liveUpdatesActive: false
 		};
 	},
@@ -117,21 +117,25 @@ module.exports = {
 				'globalwatchlist-asof',
 				this.config.time.toUTCString()
 			);
+		},
+		startWithResultsGrouped: function () {
+			// It doesn't matter that the config changes, since this is only used
+			// when the toggle for grouping results by page is initially created
+			return this.config.groupPage;
 		}
 	},
 
 	methods: {
-		toggleLiveUpdates: function () {
-			this.liveUpdatesActive = !( this.liveUpdatesActive );
-			console.log( this.liveUpdatesActive ? 'Now running live updates' : 'Done running live updates' );
+		toggleLiveUpdates: function ( isActive ) {
+			this.liveUpdatesActive = isActive;
+			console.log( isActive ? 'Now running live updates' : 'Done running live updates' );
 
 			/* eslint-disable-next-line no-alert */
 			alert( 'Live updates do not work in the Vue version yet' );
 		},
-		toggleGroupPage: function () {
-			this.groupPageActive = !this.groupPageActive;
-			this.config.groupPage = this.groupPageActive; // To be passed in getWatchlist
-			console.log( this.groupPageActive ? 'Now grouping by page' : 'Done grouping by page' );
+		toggleGroupPage: function ( isActive ) {
+			this.config.groupPage = isActive; // To be passed in getWatchlist
+			console.log( isActive ? 'Now grouping by page' : 'Done grouping by page' );
 			this.refreshSites();
 		},
 		refreshSites: function () {
@@ -212,7 +216,6 @@ module.exports = {
 	},
 
 	mounted: function () {
-		this.groupPageActive = this.config.groupPage;
 		// Trigger initial refresh once mounted
 		this.refreshSites();
 	}

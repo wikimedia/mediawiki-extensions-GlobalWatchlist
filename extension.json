@@ -154,6 +154,7 @@
 				"SiteVue.js",
 				"vue/base/Label.vue",
 				"vue/base/Button.vue",
+				"vue/base/Toggle.vue",
 				"vue/base/CollapsibleWrapper.vue",
 				"vue/EntryRow.vue",
 				"vue/base/LoadingBar.vue",

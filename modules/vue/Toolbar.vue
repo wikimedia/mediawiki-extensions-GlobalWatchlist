@@ -2,17 +2,18 @@
 	<div
 		id="mw-globalwatchlist-vue-toolbar"
 	>
-		<global-watchlist-button
+		<global-watchlist-toggle
 			v-bind:text="$i18n( 'globalwatchlist-option-live' )"
-			v-on:click="toggleLiveUpdates"
+			v-on:toggle="toggleLiveUpdates"
 		>
-		</global-watchlist-button>
+		</global-watchlist-toggle>
 
-		<global-watchlist-button
+		<global-watchlist-toggle
 			v-bind:text="$i18n( 'globalwatchlist-option-grouppage' )"
-			v-on:click="toggleGroupPage"
+			v-bind:startactive="groupPageStartActive"
+			v-on:toggle="toggleGroupPage"
 		>
-		</global-watchlist-button>
+		</global-watchlist-toggle>
 
 		<global-watchlist-button
 			v-bind:text="$i18n( 'globalwatchlist-refresh' )"
@@ -36,25 +37,37 @@
 </template>
 
 <script>
-var Button = require( './base/Button.vue' );
+var Button = require( './base/Button.vue' ),
+	Toggle = require( './base/Toggle.vue' );
 
 module.exports = {
 	components: {
-		'global-watchlist-button': Button
+		'global-watchlist-button': Button,
+		'global-watchlist-toggle': Toggle
+	},
+
+	props: {
+		startresultsgrouped: {
+			type: Boolean,
+			default: false
+		}
 	},
 
 	computed: {
 		settingsUrl: function () {
 			return mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:GlobalWatchlistSettings' );
+		},
+		groupPageStartActive: function () {
+			return this.startresultsgrouped;
 		}
 	},
 
 	methods: {
-		toggleGroupPage: function () {
-			this.$emit( 'toggle-group-page' );
+		toggleGroupPage: function ( isActive ) {
+			this.$emit( 'toggle-group-page', isActive );
 		},
-		toggleLiveUpdates: function () {
-			this.$emit( 'toggle-live-updates' );
+		toggleLiveUpdates: function ( isActive ) {
+			this.$emit( 'toggle-live-updates', isActive );
 		},
 		triggerRefresh: function () {
 			this.$emit( 'click-refresh' );
