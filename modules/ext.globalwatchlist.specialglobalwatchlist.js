@@ -52,7 +52,7 @@
 	viewElements.markAllSeen = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'destructive' ],
 		icon: 'checkAll',
-		id: 'globalWatchlist-markSeen-all',
+		id: 'ext-globalwatchlist-markseen-all',
 		label: mw.msg( 'globalwatchlist-markseen-all' )
 	} ).on( 'click', function () {
 		watchedSites.markAllSitesSeen( config.confirmAllSites );
@@ -60,20 +60,20 @@
 	viewElements.refresh = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'progressive' ],
 		icon: 'reload',
-		id: 'globalWatchlist-reflesh',
+		id: 'ext-globalwatchlist-reflesh',
 		label: mw.msg( 'globalwatchlist-refresh' )
 	} ).on( 'click', function () {
 		viewManager.renderFeed();
 	} );
 	viewElements.progressBar = new OO.ui.ProgressBarWidget( {
-		id: 'globalWatchlist-watchlistsLoading'
+		id: 'ext-globalwatchlist-watchlistsloading'
 	} );
 	viewElements.$asOf = $( '<div>' )
-		.attr( 'id', 'globalWatchlist-asOf' );
+		.attr( 'id', 'ext-globalwatchlist-asof' );
 	viewElements.$sharedFeed = $( '<div>' )
-		.attr( 'id', 'globalWatchlist-watchlistsFeed' );
+		.attr( 'id', 'ext-globalwatchlist-watchlistsfeed' );
 	viewElements.$toolbar = $( '<div>' )
-		.attr( 'id', 'globalWatchlist-toolbar' )
+		.attr( 'id', 'ext-globalwatchlist-toolbar' )
 		.append(
 			viewElements.liveToggle.$element,
 			viewElements.groupPage.$element,
@@ -104,7 +104,7 @@
 		config.time = new Date();
 		return new Promise( function ( resolve ) {
 			watchedSites.getAllWatchlists( config ).then( function () {
-				var $div = $( '<div>' ).attr( 'id', 'globalWatchlist-feedCollector' ),
+				var $div = $( '<div>' ).attr( 'id', 'ext-globalwatchlist-feedcollector' ),
 					emptySites = [],
 					showChangesLabel = false;
 
@@ -229,7 +229,7 @@
 	$( function () {
 		globalWatchlistDebug.info( 'GlobalWatchlist - javascript loaded!' );
 
-		$( '.globalwatchlist-content' )
+		$( '.ext-globalwatchlist-content' )
 			.empty()
 			.append(
 				viewElements.$toolbar,

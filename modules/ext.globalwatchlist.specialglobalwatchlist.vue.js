@@ -7,11 +7,11 @@
 
 	// On ready initialization
 	$( function () {
-		$( '.globalwatchlist-content' )
+		$( '.ext-globalwatchlist-content' )
 			.empty()
 			.append(
 				$( '<div>' )
-					.attr( 'id', 'mw-globalwatchlist-vue' )
+					.attr( 'id', 'ext-globalwatchlist-vue' )
 			);
 
 		var Vue = require( 'vue' ),
@@ -19,7 +19,7 @@
 
 		mw.globalwatchlist = {};
 		mw.globalwatchlist.vue = new Vue( {
-			el: '#mw-globalwatchlist-vue',
+			el: '#ext-globalwatchlist-vue',
 			render: function ( createElement ) {
 				return createElement( vuePage );
 			}

@@ -58,7 +58,7 @@
 			.text( mw.msg( 'history_small' ) );
 		var that = this;
 		var $unwatchLink = $( '<a>' )
-			.addClass( 'globalWatchlist-watchunwatch' )
+			.addClass( 'ext-globalwatchlist-watchunwatch' )
 			.text( mw.msg( 'globalwatchlist-unwatch' ) )
 			.on( 'click', function () {
 				that.changeWatched( entry.title, 'unwatch' );
@@ -80,7 +80,7 @@
 			$extraLink = $( '<a>' )
 				.attr( 'href', this.linker.linkQuery( 'diff=' + entry.toRev + '&oldid=' + entry.fromRev ) )
 				.attr( 'target', '_blank' )
-				.addClass( 'globalWatchlist-diff' )
+				.addClass( 'ext-globalwatchlist-diff' )
 				.text(
 					entry.editCount === 1 ? mw.msg( 'diff' ) : mw.msg( 'nchanges', entry.editCount )
 				);
@@ -169,7 +169,7 @@
 		} );
 
 		var markSeenButton = new OO.ui.ButtonInputWidget( {
-			classes: [ 'globalWatchlist-feed-markSeen' ],
+			classes: [ 'ext-globalwatchlist-feed-markseen' ],
 			flags: [ 'destructive' ],
 			icon: 'check',
 			label: mw.msg( 'globalwatchlist-markseen' )
@@ -190,11 +190,11 @@
 
 		this.$feedDiv = $( '<div>' )
 			.attr( 'id', 'globalwatchlist-feed-site-' + this.siteID )
-			.addClass( 'globalWatchlist-feed-site' )
+			.addClass( 'ext-globalwatchlist-feed-site' )
 			.append(
 				headerTemplate.render( headerParams ),
 				$( '<div>' )
-					.addClass( 'globalWatchlist-site' )
+					.addClass( 'ext-globalwatchlist-site' )
 					.append(
 						markSeenButton.$element,
 						$ul
@@ -230,9 +230,9 @@
 		var encodedSite = encodeURIComponent( this.siteID );
 		var encodedTitle = encodeURIComponent( pageTitle );
 		var $entries = $( 'li[data-site="' + encodedSite + '"][data-title="' + encodedTitle + '"]' );
-		$entries[ unwatched ? 'addClass' : 'removeClass' ]( 'globalWatchlist-strike' );
+		$entries[ unwatched ? 'addClass' : 'removeClass' ]( 'ext-globalwatchlist-strike' );
 
-		var $links = $entries.children( 'a.globalWatchlist-watchunwatch' );
+		var $links = $entries.children( 'a.ext-globalwatchlist-watchunwatch' );
 		var newText = mw.msg( unwatched ? 'globalwatchlist-rewatch' : 'globalwatchlist-unwatch' );
 		var that = this;
 
