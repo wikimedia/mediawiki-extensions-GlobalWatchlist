@@ -1,12 +1,11 @@
 <template>
 	<button
 		class="ext-globalwatchlist-toggle"
+		v-bind:class="toggleClass"
 		v-bind:style="toggleStyle"
 		v-on:click="onToggle"
 	>
-		<span
-			v-bind:style="textStyle"
-		>
+		<span>
 			{{ text }}
 		</span>
 	</button>
@@ -40,21 +39,16 @@ module.exports = {
 	},
 
 	computed: {
+		toggleClass: function () {
+			if ( this.isActive ) {
+				return 'ext-globalwatchlist-toggle--active';
+			}
+			return '';
+		},
 		toggleStyle: function () {
-			var style = {
+			return {
 				float: this.align
 			};
-			if ( this.isActive ) {
-				style[ 'background-color' ] = '#2A4B8D';
-			}
-			return style;
-		},
-		textStyle: function () {
-			var style = {};
-			if ( this.isActive ) {
-				style[ 'color'] = '#FFFFFF';
-			}
-			return style;
 		}
 	},
 
@@ -73,3 +67,13 @@ module.exports = {
 	}
 };
 </script>
+
+<style>
+.ext-globalwatchlist-toggle--active {
+	background-color: #2a4b8d;
+}
+
+.ext-globalwatchlist-toggle--active span {
+	color: #fff;
+}
+</style>
