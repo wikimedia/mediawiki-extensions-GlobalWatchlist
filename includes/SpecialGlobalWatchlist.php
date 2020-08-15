@@ -74,10 +74,11 @@ class SpecialGlobalWatchlist extends SpecialPage {
 			$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist' );
 		}
 
-		$out->addJsConfigVars(
-			'wgGlobalWatchlistWikibaseSite',
-			$this->getConfig()->get( 'GlobalWatchlistWikibaseSite' )
-		);
+		$config = $this->getConfig();
+		$out->addJsConfigVars( [
+			'wgGlobalWatchlistWikibaseSite' => $config->get( 'GlobalWatchlistWikibaseSite' ),
+			'wgGlobalWatchlistDevMode' => $config->get( 'GlobalWatchlistDevMode' )
+		] );
 
 		// Until the JavaScript is loaded, show a message explaining that
 		// the page requires JavaScript. Once the JavaScript loads, the class is

@@ -84,17 +84,16 @@ GlobalWatchlistSite.prototype.api = function ( func, content, name ) {
 	var that = this;
 
 	return new Promise( function ( resolve, reject ) {
-		that.debug( 'API.' + name + ' (called), with func & content:', [ func, content ], 1 );
+		that.debug( 'API.' + name + ' (called), with func & content:', [ func, content ] );
 		that.apiObject[ func ]( content ).then( function ( response ) {
 			that.debug(
 				'API.' + name + ' (result); func, content, & response',
-				[ func, content, response ],
-				2
+				[ func, content, response ]
 			);
 			resolve( response );
 		} ).catch( function ( error ) {
 			that.error( 'API.' + name, error );
-			reject();
+			reject( error );
 		} );
 	} );
 };
@@ -159,7 +158,7 @@ GlobalWatchlistSite.prototype.actuallyGetWatchlist = function ( iteration, conti
  * @param {string} func Either 'watch' or 'unwatch'
  */
 GlobalWatchlistSite.prototype.changeWatched = function ( pageTitle, func ) {
-	this.debug( 'changeWatched', 'Going to ' + func + ': ' + pageTitle, 1 );
+	this.debug( 'changeWatched - Going to ' + func + ': ' + pageTitle );
 	var that = this;
 	this.api( func, pageTitle, 'updateWatched' );
 	this.processUpdateWatched( pageTitle, func === 'unwatch' );
@@ -223,7 +222,7 @@ GlobalWatchlistSite.prototype.getTagList = function () {
 						that.linker.fixLocalLinks( tag.displayname ) :
 						tag.name;
 				} );
-				that.debug( 'getTagList', asObject, 3 );
+				that.debug( 'getTagList', asObject );
 				that.tags = asObject;
 				resolve();
 			} );
@@ -243,7 +242,7 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 	return new Promise( function ( resolve ) {
 		that.actuallyGetWatchlist( 1, 0 ).then( function ( wlraw ) {
 			if ( !( wlraw && wlraw[ 0 ] ) ) {
-				that.debug( 'getWatchlist', 'empty', 1 );
+				that.debug( 'getWatchlist - empty' );
 				that.isEmpty = true;
 				resolve();
 				return;
@@ -251,7 +250,7 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 			// In case it was previously set to true
 			that.isEmpty = false;
 
-			that.debug( 'getWatchlist wlraw', wlraw, 1 );
+			that.debug( 'getWatchlist wlraw', wlraw );
 
 			var prelimSummary = that.watchlistUtils.rawToSummary(
 				wlraw,
@@ -259,10 +258,10 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 				that.config.groupPage,
 				that.linker
 			);
-			that.debug( 'getWatchlist prelimSummary', prelimSummary, 1 );
+			that.debug( 'getWatchlist prelimSummary', prelimSummary );
 
 			that.makeWikidataList( prelimSummary ).then( function ( summary ) {
-				that.debug( 'getWatchlist summary', summary, 1 );
+				that.debug( 'getWatchlist summary', summary );
 				that.getTagList().then( function () {
 					that.renderWatchlist( summary );
 					resolve();
@@ -292,23 +291,10 @@ GlobalWatchlistSite.prototype.renderWatchlist = function ( summary ) {
 GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
 	var that = this;
 	return new Promise( function ( resolve ) {
-		if ( that.config.fastMode ) {
-			that.debug( 'makeWikidataList', 'Skipping, fast mode is enabled', 1 );
-			resolve( summary );
-		} else if ( that.site !== that.config.wikibaseSite ) {
-			that.debug(
-				'makeWikidataList',
-				'Skipping, wrong site (' + that.site + ')',
-				1
-			);
+		if ( that.site !== that.config.wikibaseSite || that.config.fastMode ) {
 			resolve( summary );
 		} else {
 			that.wikibaseHandler.addWikibaseLabels( summary ).then( function ( updatedSummary ) {
-				that.debug(
-					'makeWikidataList - updated summary',
-					updatedSummary,
-					1
-				);
 				resolve( updatedSummary );
 			} );
 		}
@@ -319,7 +305,7 @@ GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
  * Mark a site as seen
  */
 GlobalWatchlistSite.prototype.markAsSeen = function () {
-	this.debug( 'markSiteAsSeen', 'marking', 1 );
+	this.debug( 'markSiteAsSeen - marking' );
 	var that = this;
 
 	return new Promise( function ( resolve ) {

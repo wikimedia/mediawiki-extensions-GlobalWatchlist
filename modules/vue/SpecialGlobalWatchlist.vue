@@ -66,13 +66,11 @@ var Toolbar = require( './Toolbar.vue' ),
 
 var GlobalWatchlistDebugger = require( './../ext.globalwatchlist.debug.js' ),
 	getSettings = require( './../ext.globalwatchlist.getSettings.js' ),
-	NotificationManager = require( './../ext.globalwatchlist.notifications.js' ),
 	WatchedSite = require( './../SiteVue.js' ),
 	MultiSiteWrapper = require( './../MultiSiteWrapper.js' );
 
 var globalWatchlistDebug = new GlobalWatchlistDebugger();
-var notifications = new NotificationManager( globalWatchlistDebug );
-var config = getSettings( notifications );
+var config = getSettings( globalWatchlistDebug );
 config.time = new Date();
 
 var watchedSites = new MultiSiteWrapper(

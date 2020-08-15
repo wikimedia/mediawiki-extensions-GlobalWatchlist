@@ -7,7 +7,6 @@
 				"classes": [
 					"GlobalWatchlistDebugger",
 					"GlobalWatchlistLinker",
-					"GlobalWatchlistNotificationManager",
 					"GlobalWatchlistSiteBase",
 					"GlobalWatchlistSiteDisplay",
 					"GlobalWatchlistSiteVue",

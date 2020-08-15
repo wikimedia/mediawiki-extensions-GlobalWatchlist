@@ -69,6 +69,10 @@
 		"GlobalWatchlistUseVue": {
 			"value": false,
 			"description": "Whether to use the Vue version of the code for Special:GlobalWatchlist"
+		},
+		"GlobalWatchlistDevMode": {
+			"value": true,
+			"description": "Whether to send debug entries to the console"
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -82,7 +86,6 @@
 				"ext.globalwatchlist.debug.js",
 				"ext.globalwatchlist.getSettings.js",
 				"ext.globalwatchlist.linker.js",
-				"ext.globalwatchlist.notifications.js",
 				"ext.globalwatchlist.watchlistUtils.js",
 				"ext.globalwatchlist.wikibase.js",
 				"MultiSiteWrapper.js",
@@ -103,7 +106,6 @@
 				"globalwatchlist-changesfeed",
 				"globalwatchlist-editwatchlist",
 				"globalwatchlist-emptyfeed",
-				"globalwatchlist-getoptions-error",
 				"globalwatchlist-globalwatchlistsettingslink",
 				"globalwatchlist-markseen",
 				"globalwatchlist-markseen-all",
@@ -144,7 +146,6 @@
 				"ext.globalwatchlist.debug.js",
 				"ext.globalwatchlist.getSettings.js",
 				"ext.globalwatchlist.linker.js",
-				"ext.globalwatchlist.notifications.js",
 				"ext.globalwatchlist.watchlistUtils.js",
 				"ext.globalwatchlist.wikibase.js",
 				"MultiSiteWrapper.js",
@@ -166,7 +167,6 @@
 				"globalwatchlist-changesfeed",
 				"globalwatchlist-editwatchlist",
 				"globalwatchlist-emptyfeed",
-				"globalwatchlist-getoptions-error",
 				"globalwatchlist-globalwatchlistsettingslink",
 				"globalwatchlist-markseen",
 				"globalwatchlist-markseen-all",
@@ -205,11 +205,9 @@
 				"mediawiki.htmlform.ooui"
 			]
 		},
-		"ext.globalwatchlist.specialglobalwatchlistsettings.error": {
+		"ext.globalwatchlist.getsettingserror": {
 			"packageFiles": [
-				"specialglobalwatchlistsettings.error.js",
-				"ext.globalwatchlist.debug.js",
-				"ext.globalwatchlist.notifications.js"
+				"getsettings.error.js"
 			],
 			"messages": [
 				"globalwatchlist-getoptions-error"

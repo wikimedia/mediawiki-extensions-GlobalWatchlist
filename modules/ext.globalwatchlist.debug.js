@@ -11,38 +11,36 @@
  *
  * @class GlobalWatchlistDebugger
  * @constructor
- *
- * @param {number} [debugLevel] level below which messages should be sent to the console.
  */
-function GlobalWatchlistDebugger( debugLevel ) {
+function GlobalWatchlistDebugger() {
 	// Log of all messages
 	this.debugLog = [];
 
-	// Level below which to send to console
-	this.debugLevel = debugLevel || 100;
+	this.sendToConsole = mw.config.get( 'wgGlobalWatchlistDevMode' );
 }
 
 /**
- * @param {string} key
- * @param {Object} msg
- * @param {number} level
+ * @param {string} msg
+ * @param {Object} [extraInfo]
  */
-GlobalWatchlistDebugger.prototype.info = function ( key, msg, level ) {
-	if ( this.debugLevel > level ) {
+GlobalWatchlistDebugger.prototype.info = function ( msg, extraInfo ) {
+	if ( this.sendToConsole ) {
 		/* eslint-disable-next-line no-console */
-		console.log( 'GlobalWatchlist@' + key );
+		console.log( 'GlobalWatchlist@' + msg );
 
-		/* eslint-disable-next-line no-console */
-		console.log( msg );
+		if ( extraInfo ) {
+			/* eslint-disable-next-line no-console */
+			console.log( extraInfo );
+		}
 	}
 
-	this.debugLog.push(
-		this.debugLog.length +
-		': ' +
-		key +
-		'\t' +
-		JSON.stringify( msg )
-	);
+	var entry = this.debugLog.length + ': ' + msg;
+
+	if ( extraInfo ) {
+		entry += '\t' + JSON.stringify( extraInfo );
+	}
+
+	this.debugLog.push( entry );
 };
 
 /**
@@ -62,7 +60,7 @@ GlobalWatchlistDebugger.prototype.error = function ( info, error ) {
 		errorToThrow = new Error( 'GlobalWatchlistError: ' + info + ' - ' + error );
 	}
 
-	this.info( 'ERROR: ' + info, errorMessage, 0 );
+	this.info( 'ERROR: ' + info, errorMessage );
 
 	/* eslint-disable-next-line no-alert */
 	alert( 'GlobalWatchlist error, please check the console!' );

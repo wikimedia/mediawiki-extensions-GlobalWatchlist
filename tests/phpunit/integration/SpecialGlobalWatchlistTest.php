@@ -42,6 +42,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 	public function testLoggedIn( $useVue ) {
 		$this->setMwGlobals( [
 			'wgGlobalWatchlistWikibaseSite' => 'GlobalWatchlistWikibaseSiteGoesHere',
+			'wgGlobalWatchlistDevMode' => true,
 			'wgGlobalWatchlistUseVue' => $useVue
 		] );
 
@@ -74,8 +75,10 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 		$output->expects( $this->atLeastOnce() )
 			->method( 'addJsConfigVars' )
 			->with(
-				$this->equalTo( 'wgGlobalWatchlistWikibaseSite' ),
-				$this->equalTo( 'GlobalWatchlistWikibaseSiteGoesHere' )
+				$this->equalTo( [
+					'wgGlobalWatchlistWikibaseSite' => 'GlobalWatchlistWikibaseSiteGoesHere',
+					'wgGlobalWatchlistDevMode' => true
+				] )
 			);
 		$output->expects( $this->atLeastOnce() )
 			->method( 'addHTML' );

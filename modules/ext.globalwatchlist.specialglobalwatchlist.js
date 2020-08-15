@@ -8,15 +8,13 @@
 	var GlobalWatchlistDebugger = require( './ext.globalwatchlist.debug.js' ),
 		getSettings = require( './ext.globalwatchlist.getSettings.js' ),
 		config = {},
-		NotificationManager = require( './ext.globalwatchlist.notifications.js' ),
 		MultiSiteWrapper = require( './MultiSiteWrapper.js' ),
 		WatchedSite = require( './SiteDisplay.js' ),
 		viewElements = {},
 		viewManager = {};
 	var globalWatchlistDebug = new GlobalWatchlistDebugger();
-	var notifications = new NotificationManager( globalWatchlistDebug );
 
-	config = getSettings( notifications );
+	config = getSettings( globalWatchlistDebug );
 	config.liveCounter = 0;
 	config.inLive = false;
 
@@ -102,7 +100,7 @@
 		return template.render( params );
 	};
 	viewManager.refresh = function () {
-		globalWatchlistDebug.info( 'watchlists.refresh', 'starting refresh', 1 );
+		globalWatchlistDebug.info( 'watchlists.refresh - starting' );
 		config.time = new Date();
 		return new Promise( function ( resolve ) {
 			watchedSites.getAllWatchlists( config ).then( function () {
@@ -112,9 +110,7 @@
 
 				watchedSites.siteList.forEach( function ( site ) {
 					globalWatchlistDebug.info(
-						'watchlists.refrsh site loop, a site',
-						site.site,
-						3
+						'watchlists.refrsh site loop, handling site: ' + site.site
 					);
 					if ( site.isEmpty ) {
 						emptySites.push( site.site );
@@ -166,13 +162,13 @@
 			} ).catch( function ( error ) {
 				/* eslint-disable-next-line no-console */
 				console.log( error );
-				globalWatchlistDebug.info( 'watchlists.refresh ERROR', error, 1 );
+				globalWatchlistDebug.info( 'watchlists.refresh ERROR', error );
 				resolve();
 			} );
 		} );
 	};
 	viewManager.renderFeed = function () {
-		globalWatchlistDebug.info( 'renderFeed', 'called', 1 );
+		globalWatchlistDebug.info( 'renderFeed - called' );
 		if ( config.inLive ) {
 			return;
 		}
@@ -191,14 +187,15 @@
 
 	viewManager.runLive = function () {
 		if ( config.inLive ) {
-			globalWatchlistDebug.info( 'watchlists.runLive - counter', config.liveCounter++, 1 );
+			config.liveCounter++;
+			globalWatchlistDebug.info( 'watchlists.runLive - counter: ' + config.liveCounter );
 			setTimeout( viewManager.refresh, 7500 );
 		}
 	};
 
 	// Displaying the global watchlist
 	viewManager.showFeed = function () {
-		globalWatchlistDebug.info( 'mode', 'displaying watchlist', 1 );
+		globalWatchlistDebug.info( 'mode - displaying watchlist' );
 		config.inLive = false;
 
 		viewElements.liveToggle.setDisabled( config.fastMode );
@@ -211,7 +208,7 @@
 
 	// Running in live updates mode
 	viewManager.startLiveUpdates = function () {
-		globalWatchlistDebug.info( 'mode', 'starting live updates', 1 );
+		globalWatchlistDebug.info( 'mode - starting live updates' );
 		config.inLive = true;
 
 		viewElements.refresh.setDisabled( true );
@@ -224,14 +221,13 @@
 		config: config,
 		debug: globalWatchlistDebug,
 		elements: viewElements,
-		notifications: notifications,
 		view: viewManager,
 		watchedSites: watchedSites
 	};
 
 	// On ready initialization
 	$( function () {
-		globalWatchlistDebug.info( 'GlobalWatchlist', 'javascript loaded!', 1 );
+		globalWatchlistDebug.info( 'GlobalWatchlist - javascript loaded!' );
 
 		$( '.globalwatchlist-content' )
 			.empty()

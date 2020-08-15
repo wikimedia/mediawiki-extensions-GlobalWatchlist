@@ -24,10 +24,10 @@ function getQueryFlag( setting, flag ) {
 
 /**
  * @private
- * @param {Object} notificationManager instance of of GlobalWatchlistNotificationManager
+ * @param {GlobalWatchlistDebugger} globalWatchlistDebug
  * @return {Object}
  */
-function globalWatchlistGetSettings( notificationManager ) {
+function globalWatchlistGetSettings( globalWatchlistDebug ) {
 	// Note: this must be the same key as is used in the settings manager
 	var userOptions = mw.user.options.get( 'global-watchlist-options' ),
 		userSettings = {},
@@ -65,7 +65,12 @@ function globalWatchlistGetSettings( notificationManager ) {
 				showNewPages: userSettings.showtypes.indexOf( 'new' ) > -1
 			};
 		} catch ( e ) {
-			notificationManager.onGetOptionsError( e );
+			// Not using .error since it can be recovered from, and the user notice
+			// should be the one in getsettingserror rather than a plain `alert` call
+			globalWatchlistDebug.info( 'GetSettings - error', e );
+
+			// Alert the user
+			mw.loader.load( 'ext.globalwatchlist.getsettingserror' );
 
 			config = defaultConfig;
 		}

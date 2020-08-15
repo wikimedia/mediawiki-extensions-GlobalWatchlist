@@ -131,7 +131,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			} else {
 				// Alert the user that their settings couldn't be used
 				$this->getOutput()->addModules(
-					'ext.globalwatchlist.specialglobalwatchlistsettings.error'
+					'ext.globalwatchlist.getsettingserror'
 				);
 
 				$userOptions = $defaultOptions;

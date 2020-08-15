@@ -1,12 +1,12 @@
 ( function () {
 	var getSettings = require( '../../../modules/ext.globalwatchlist.getSettings.js' );
 
-	function FakeNotificationManager() {
-		this.onGetOptionsErrorCalled = false;
+	function FakeDebugger() {
+		this.infoCalled = false;
 
 		// eslint-disable-next-line no-unused-vars
-		this.onGetOptionsError = function ( unused ) {
-			this.onGetOptionsErrorCalled = true;
+		this.info = function ( unused, alsoUnused ) {
+			this.infoCalled = true;
 		};
 	};
 
@@ -40,9 +40,9 @@
 
 	QUnit.test( 'getSettings.noSettings', function ( assert ) {
 		mw.user.options.set( 'global-watchlist-options', null );
-		var notificationManager = new FakeNotificationManager();
+		var fakeDebugInstance = new FakeDebugger();
 
-		var settings = getSettings( notificationManager );
+		var settings = getSettings( fakeDebugInstance );
 
 		assert.deepEqual(
 			settings,
@@ -50,7 +50,7 @@
 			'When the user has no settings set, the defaults are used'
 		);
 		assert.strictEqual(
-			notificationManager.onGetOptionsErrorCalled,
+			fakeDebugInstance.infoCalled,
 			false,
 			'No errors occurred fetching user options'
 		);
@@ -61,9 +61,9 @@
 			'global-watchlist-options',
 			'{"sites":["foo.bar.org","baz.qux.org"],"anonfilter":2,"botfilter":2,"minorfilter":2,"confirmallsites":false,"fastmode":true,"grouppage":true,"showtypes":["edit","log"],"version":1}'
 		);
-		var notificationManager = new FakeNotificationManager();
+		var fakeDebugInstance = new FakeDebugger();
 
-		var settings = getSettings( notificationManager );
+		var settings = getSettings( fakeDebugInstance );
 
 		var expectedSettings = {
 			siteList: [ 'foo.bar.org', 'baz.qux.org' ],
@@ -91,7 +91,7 @@
 			'When the user has valid settings set, they are used'
 		);
 		assert.strictEqual(
-			notificationManager.onGetOptionsErrorCalled,
+			fakeDebugInstance.infoCalled,
 			false,
 			'No errors occurred fetching user options'
 		);
@@ -99,17 +99,21 @@
 
 	QUnit.test( 'getSettings.invalidSettings', function ( assert ) {
 		mw.user.options.set( 'global-watchlist-options', 'notValidJson' );
-		var notificationManager = new FakeNotificationManager();
+		var fakeDebugInstance = new FakeDebugger();
 
-		var settings = getSettings( notificationManager );
+		var settings = getSettings( fakeDebugInstance );
 
 		assert.deepEqual(
 			settings,
 			defaultSettings,
 			'When the user has invalid settings set, the defaults are used'
 		);
+
+		// Technically, the warning is the result of the mw.loader.load call, but
+		// if globalWatchlistDebug.info was called then mw.loader.load should also have
+		// been called
 		assert.strictEqual(
-			notificationManager.onGetOptionsErrorCalled,
+			fakeDebugInstance.infoCalled,
 			true,
 			'User is warned of errors in their settings'
 		);

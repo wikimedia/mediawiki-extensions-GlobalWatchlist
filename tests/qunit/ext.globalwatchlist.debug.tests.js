@@ -1,23 +1,19 @@
 ( function () {
 	var GlobalWatchlistDebugger = require( '../../../modules/ext.globalwatchlist.debug.js' );
 
-	QUnit.module( 'ext.globalwatchlist.debug', QUnit.newMwEnvironment() );
+	QUnit.module( 'ext.globalwatchlist.debug', QUnit.newMwEnvironment( {
+		config: {
+			wgGlobalWatchlistDevMode: true
+		}
+	} ) );
 
-	QUnit.test( 'debug.debugLevel', function ( assert ) {
+	QUnit.test( 'debug.console', function ( assert ) {
 		var globalWatchlistDebug = new GlobalWatchlistDebugger();
 
 		assert.strictEqual(
-			globalWatchlistDebug.debugLevel,
-			100,
-			'debugLevel has a default (100)'
-		);
-
-		globalWatchlistDebug = new GlobalWatchlistDebugger( 1 );
-
-		assert.strictEqual(
-			globalWatchlistDebug.debugLevel,
-			1,
-			'When constructing a new GlobalWatchlistDebugger the debugLevel can be set'
+			globalWatchlistDebug.sendToConsole,
+			true,
+			'sendToConsole is based on wgGlobalWatchlistDevMode'
 		);
 
 	} );
@@ -25,8 +21,8 @@
 	QUnit.test( 'debug.info', function ( assert ) {
 		var globalWatchlistDebug = new GlobalWatchlistDebugger();
 
-		globalWatchlistDebug.info( 'keyGoesHere', 'messageGoesHere', 1 );
-		var expectedMessage = '0: keyGoesHere\t"messageGoesHere"';
+		globalWatchlistDebug.info( 'messageGoesHere', 'extraInfoGoesHere' );
+		var expectedMessage = '0: messageGoesHere\t"extraInfoGoesHere"';
 
 		assert.deepEqual(
 			globalWatchlistDebug.debugLog,

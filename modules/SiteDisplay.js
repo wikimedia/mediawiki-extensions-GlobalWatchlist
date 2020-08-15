@@ -147,7 +147,7 @@
 				.append( $tags );
 		}
 
-		this.debug( 'makePageLink for entry', [ entry, $row ], 3 );
+		this.debug( 'makePageLink for entry', [ entry, $row ] );
 		return $row;
 	};
 	/* end GlobalWatchlistSiteDisplay.prototype.makePageLink */
@@ -204,7 +204,7 @@
 	 * Update display after marking a site as seen
 	 */
 	GlobalWatchlistSiteDisplay.prototype.afterMarkAsSeen = function () {
-		this.debug( 'markSiteAsSeen', 'hiding', 1 );
+		this.debug( 'markSiteAsSeen - hiding site' );
 		$( this.$feedDiv.children()[ 1 ] ).hide();
 
 		// FIXME
@@ -220,9 +220,7 @@
 	 */
 	GlobalWatchlistSiteDisplay.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
 		this.debug(
-			'processUpdateWatched',
-			'Proccessing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle,
-			1
+			'Proccessing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
 		);
 
 		var encodedSite = encodeURIComponent( this.siteID );

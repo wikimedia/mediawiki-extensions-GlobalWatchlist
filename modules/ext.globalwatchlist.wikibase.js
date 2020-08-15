@@ -24,12 +24,11 @@ function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang ) {
 /**
  * Shortcut for sending information to the debug logger
  *
- * @param {string} key
  * @param {string} msg
- * @param {int} level
+ * @param {string} [extraInfo]
  */
-GlobalWatchlistWikibaseHandler.prototype.debug = function ( key, msg, level ) {
-	this.debugLogger.info( 'wikibase:' + key, msg, level );
+GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
+	this.debugLogger.info( 'wikibase:' + msg, extraInfo );
 };
 
 
@@ -96,7 +95,6 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 	var that = this;
 
 	return new Promise( function ( resolve ) {
-		that.debug( 'getRawLabels - ids', entityIds, 1 );
 		var getter = {
 			action: 'wbgetentities',
 			formatversion: 2,
@@ -105,19 +103,19 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 			props: 'labels'
 		};
 		that.api.get( getter ).then( function ( response ) {
-			that.debug( 'getRawLabels - api response', response, 2 );
+			that.debug( 'getRawLabels - api response', response );
 			var labels = response.entities;
 			if ( entityIds.length > 50 ) {
 				// Recursive processing
 				that.getRawLabels( entityIds.slice( 50 ) ).then( function ( extraLabels ) {
 					var bothLabels = $.extend( {}, labels, extraLabels );
-					that.debug( 'getRawLabels - bothLabels', bothLabels, 3 );
+					that.debug( 'getRawLabels - bothLabels', bothLabels );
 					resolve( bothLabels );
 				} );
 			} else {
 				// No need for further processing, either had less than 50 to
 				// begin with or this was the final recursive call
-				that.debug( 'getRawLabels - last', labels, 3 );
+				that.debug( 'getRawLabels - last', labels );
 				resolve( labels );
 			}
 		} );
@@ -139,7 +137,7 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
  * @return {Object}
  */
 GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels ) {
-	this.debug( 'cleanupRawLabels - starting (raw)', rawLabels, 1 );
+	this.debug( 'cleanupRawLabels - starting (raw)', rawLabels );
 
 	var cleanedLabels = {};
 	var entityIds = Object.keys( rawLabels );
@@ -165,7 +163,7 @@ GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels
 			cleanedLabels[ entityId ] = entityInfo[ labelKey ][ that.userLang ][ 'value' ];
 		}
 	} );
-	this.debug( 'cleanupRawLabels - ending (clean)', cleanedLabels, 1 );
+	this.debug( 'cleanupRawLabels - ending (clean)', cleanedLabels );
 
 	return cleanedLabels;
 }
@@ -216,7 +214,7 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 
 	return new Promise( function ( resolve ) {
 		var extractedInfo = that.getEntityIds( summaryEntries );
-		that.debug( 'addLabels - extractedInfo', extractedInfo, 2 );
+		that.debug( 'addLabels - extractedInfo', extractedInfo );
 
 		var updatedEntries = extractedInfo['entries'];
 		var entityIds = extractedInfo['ids'];
@@ -232,12 +230,6 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 
 			updatedEntries.forEach( function ( entry ) {
 				if ( cleanedLabels[ entry.titleMsg ] ) {
-					that.debug(
-						'addLabels - have entry',
-						[ entry, cleanedLabels[ entry.titleMsg ] ],
-						3
-					);
-
 					entry.titleMsg += ' (' + cleanedLabels[ entry.titleMsg ] + ')';
 				}
 			} );
