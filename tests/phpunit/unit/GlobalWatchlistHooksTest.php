@@ -140,6 +140,11 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 			[
 				SettingsManager::PREFERENCE_NAME => [
 					'type' => 'api'
+				],
+				"globalwatchlist-prefs" => [
+					'class' => 'HTMLInfoField',
+					'section' => 'watchlist/globalwatchlist',
+					'label-message' => 'globalwatchlist-prefs-settings'
 				]
 			],
 			$preferences

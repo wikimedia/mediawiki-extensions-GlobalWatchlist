@@ -12,5 +12,7 @@
 	"globalwatchlist-gotoglobal": "Link text for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
 	"globalwatchlist-gotoglobal-tooltip": "Tooltip for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
 	"globalwatchlist-must-login": "Text shown to anonymous users trying to use [[Special:GlobalWatchlist]] and [[Special:GlobalWatchlistSettings]]",
-	"globalwatchlist-javascript-required": "Message shown when Javascript is not enabled"
+	"globalwatchlist-javascript-required": "Message shown when Javascript is not enabled",
+	"globalwatchlist-prefs-settings": "Text shown to users in [[Special:Preferences]] indicating where to change global watchlist settings",
+	"prefs-globalwatchlist": "Section heading text under watchlist tab in [[Special:Preferences]] for global watchlist settings"
 }

@@ -59,6 +59,12 @@ class GlobalWatchlistHooks implements
 		$preferences[ SettingsManager::PREFERENCE_NAME ] = [
 			'type' => 'api'
 		];
+
+		$preferences[ 'globalwatchlist-prefs' ] = [
+			'class' => 'HTMLInfoField',
+			'section' => 'watchlist/globalwatchlist',
+			'label-message' => 'globalwatchlist-prefs-settings'
+		];
 	}
 
 	/**
