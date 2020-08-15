@@ -1,6 +1,7 @@
 <template>
 	<button
 		class="ext-globalwatchlist-button"
+		v-bind:class="buttonClass"
 		v-bind:style="buttonStyle"
 		v-on:click="onButtonClick"
 	>
@@ -24,10 +25,20 @@ module.exports = {
 		align: {
 			type: String,
 			default: 'none'
+		},
+		disabled: {
+			type: Boolean,
+			default: false
 		}
 	},
 
 	computed: {
+		buttonClass: function () {
+			if ( this.disabled ) {
+				return 'ext-globalwatchlist-button--disabled';
+			}
+			return '';
+		},
 		buttonStyle: function () {
 			return {
 				float: this.align
@@ -37,8 +48,21 @@ module.exports = {
 
 	methods: {
 		onButtonClick: function () {
-			this.$emit( 'click' );
+			if ( !this.disabled ) {
+				this.$emit( 'click' );
+			}
 		}
 	}
 };
 </script>
+
+<style>
+.ext-globalwatchlist-button--disabled {
+	background-color: #c8ccd1;
+	border-color: #c8ccd1;
+}
+
+.ext-globalwatchlist-button--disabled span {
+	color: #fff;
+}
+</style>

@@ -35,15 +35,19 @@ module.exports = {
 		startactive: {
 			type: Boolean,
 			default: false
+		},
+		disabled: {
+			type: Boolean,
+			default: false
 		}
 	},
 
 	computed: {
 		toggleClass: function () {
-			if ( this.isActive ) {
-				return 'ext-globalwatchlist-toggle--active';
-			}
-			return '';
+			return {
+				'ext-globalwatchlist-toggle--active': this.isActive,
+				'ext-globalwatchlist-toggle--disabled': this.disabled
+			};
 		},
 		toggleStyle: function () {
 			return {
@@ -54,9 +58,11 @@ module.exports = {
 
 	methods: {
 		onToggle: function () {
-			this.isActive = !this.isActive;
+			if ( !this.disabled ) {
+				this.isActive = !this.isActive;
 
-			this.$emit( 'toggle', this.isActive );
+				this.$emit( 'toggle', this.isActive );
+			}
 		}
 	},
 
@@ -69,11 +75,26 @@ module.exports = {
 </script>
 
 <style>
-.ext-globalwatchlist-toggle--active {
+/* Active and disabled */
+.ext-globalwatchlist-toggle--active.ext-globalwatchlist-toggle--disabled {
+	background-color: #919fb9;
+	border-color: #c8ccd1;
+}
+
+/* Active, not disabled */
+.ext-globalwatchlist-toggle--active:not( .ext-globalwatchlist-toggle--disabled ) {
 	background-color: #2a4b8d;
 }
 
-.ext-globalwatchlist-toggle--active span {
+/* Disabled, not active */
+.ext-globalwatchlist-toggle--disabled:not( .ext-globalwatchlist-toggle--active ) {
+	background-color: #c8ccd1;
+	border-color: #c8ccd1;
+}
+
+/* Toggle text for active, disabled, or both */
+.ext-globalwatchlist-toggle--active span,
+.ext-globalwatchlist-toggle--disabled span {
 	color: #fff;
 }
 </style>

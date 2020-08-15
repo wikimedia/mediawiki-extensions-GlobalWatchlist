@@ -1,6 +1,10 @@
 <template>
 	<div id="mw-globalwatchlist-vue-specialpage">
 		<global-watchlist-toolbar
+			v-bind:liveupdatesdisabled="disableLiveUpdates"
+			v-bind:grouppagedisabled="disableGroupPage"
+			v-bind:refreshdisabled="disableRefresh"
+			v-bind:markalldisabled="disableMarkAll"
 			v-bind:startresultsgrouped="startWithResultsGrouped"
 			v-on:toggle-live-updates="toggleLiveUpdates"
 			v-on:toggle-group-page="toggleGroupPage"
@@ -122,6 +126,18 @@ module.exports = {
 			// It doesn't matter that the config changes, since this is only used
 			// when the toggle for grouping results by page is initially created
 			return this.config.groupPage;
+		},
+		disableLiveUpdates: function () {
+			return this.inLoading;
+		},
+		disableGroupPage: function () {
+			return this.liveUpdatesActive || this.inLoading;
+		},
+		disableRefresh: function () {
+			return this.liveUpdatesActive || this.inLoading;
+		},
+		disableMarkAll: function () {
+			return this.liveUpdatesActive || this.inLoading;
 		}
 	},
 
@@ -130,13 +146,31 @@ module.exports = {
 			this.liveUpdatesActive = isActive;
 			console.log( isActive ? 'Now running live updates' : 'Done running live updates' );
 
-			/* eslint-disable-next-line no-alert */
-			alert( 'Live updates do not work in the Vue version yet' );
+			// updateLive will only do anything if liveUpdatesActive is true
+			this.updateLive();
 		},
 		toggleGroupPage: function ( isActive ) {
 			this.config.groupPage = isActive; // To be passed in getWatchlist
 			console.log( isActive ? 'Now grouping by page' : 'Done grouping by page' );
 			this.refreshSites();
+		},
+		updateLive: function () {
+			if ( this.liveUpdatesActive ) {
+				console.log( 'Rendering live updates, called: ' + new Date().toISOString() );
+
+				var that = this;
+				this.backgroundRefresh().then( function ( results ) {
+					if ( that.liveUpdatesActive ) {
+						// Might have been turned off while the update
+						// was being prepared
+						that.sitesWithChangesList = results.withChanges;
+						that.sitesWithoutChangesList = results.withoutChanges;
+
+						// Call again in 7.5 seconds
+						setTimeout( that.updateLive, 7500 );
+					}
+				} );
+			}
 		},
 		refreshSites: function () {
 			console.log( 'Refreshing sites' );

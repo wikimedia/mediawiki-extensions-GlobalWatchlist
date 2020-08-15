@@ -4,6 +4,7 @@
 	>
 		<global-watchlist-toggle
 			v-bind:text="$i18n( 'globalwatchlist-option-live' )"
+			v-bind:disabled="disableLiveUpdates"
 			v-on:toggle="toggleLiveUpdates"
 		>
 		</global-watchlist-toggle>
@@ -11,12 +12,14 @@
 		<global-watchlist-toggle
 			v-bind:text="$i18n( 'globalwatchlist-option-grouppage' )"
 			v-bind:startactive="groupPageStartActive"
+			v-bind:disabled="disableGroupPage"
 			v-on:toggle="toggleGroupPage"
 		>
 		</global-watchlist-toggle>
 
 		<global-watchlist-button
 			v-bind:text="$i18n( 'globalwatchlist-refresh' )"
+			v-bind:disabled="disableRefresh"
 			v-on:click="triggerRefresh"
 		>
 		</global-watchlist-button>
@@ -30,6 +33,7 @@
 
 		<global-watchlist-button
 			v-bind:text="$i18n( 'globalwatchlist-markseen-all' )"
+			v-bind:disabled="disableMarkAll"
 			v-on:click="triggerMarkAll"
 		>
 		</global-watchlist-button>
@@ -50,6 +54,22 @@ module.exports = {
 		startresultsgrouped: {
 			type: Boolean,
 			default: false
+		},
+		liveupdatesdisabled: {
+			type: Boolean,
+			default: false
+		},
+		grouppagedisabled: {
+			type: Boolean,
+			default: false
+		},
+		refreshdisabled: {
+			type: Boolean,
+			default: false
+		},
+		markalldisabled: {
+			type: Boolean,
+			default: false
 		}
 	},
 
@@ -59,6 +79,18 @@ module.exports = {
 		},
 		groupPageStartActive: function () {
 			return this.startresultsgrouped;
+		},
+		disableLiveUpdates: function () {
+			return this.liveupdatesdisabled;
+		},
+		disableGroupPage: function () {
+			return this.grouppagedisabled;
+		},
+		disableRefresh: function () {
+			return this.refreshdisabled;
+		},
+		disableMarkAll: function () {
+			return this.markalldisabled;
 		}
 	},
 
