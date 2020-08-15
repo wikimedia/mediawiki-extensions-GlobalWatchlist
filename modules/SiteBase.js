@@ -105,6 +105,9 @@ GlobalWatchlistSite.prototype.api = function ( func, content, name ) {
 /**
  * Get the changes on a user's watchlist
  *
+ * This method calls itself recursively until there are no remaining changes to retrieve,
+ * using the `continue` functionality.
+ *
  * @param {number} iteration iteration count
  * @param {string} continueFrom
  * @return {jQuery.Promise}
@@ -148,6 +151,13 @@ GlobalWatchlistSite.prototype.actuallyGetWatchlist = function ( iteration, conti
 /**
  * Update the strikethrough and text for entries being watched/unwatched
  *
+ * Calls the API to actually unwatch/rewatch a page
+ * Calls `processUpdateWatched` to update the display (either add or remove the strikethrough,
+ *   and update the text shown)
+ * If fast mode is not enabled, calls `getAssociatedTalkPage` to determine the talk/subject page
+ *   associated with the one that was unwatched/rewatched, and then uses `processUpdateWatched`
+ *   to update the display of any entries for the associated page
+ *
  * @param {string} pageTitle
  * @param {string} func Either 'watch' or 'unwatch'
  */
@@ -165,9 +175,10 @@ GlobalWatchlistSite.prototype.changeWatched = function ( pageTitle, func ) {
 };
 
 /**
- * Note: this should be a part of the core info api, see T257014
  * Returns the talk/subject page associated with a given page, since entries for the associated page
- *    also need to have their text and strikethrough updated on unwatching/rewatching
+ *   also need to have their text and strikethrough updated on unwatching/rewatching
+ *
+ * Note: this should be a part of the core info api, see T257014
  *
  * @param {string} pageTitle
  * @return {jQuery.Promise}

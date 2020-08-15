@@ -37,16 +37,9 @@ The extension provides two new [special pages](https://www.mediawiki.org/wiki/Sp
 
 Visiting Special:GlobalWatchlist with this extension enabled shows the user a basic view of their watchlists on multiple wikis.
 Users can choose which wikis to show, as well as apply filters to the changes shown, in Special:GlobalWatchlistSettings.
+Further documentation is available at [docs/GlobalWatchlist.md](./docs/GlobalWatchlist.md).
 
 #### Special:GlobalWatchlistSettings
 
 Visiting Special:GlobalWatchlistSettings with this extension enabled allows users to configure their global watchlist, including which sites to include.
-A couple of filter options are available as well:
-
-* Showing only edits made by anonymous users, or excluding such edits
-* Showing only edits marked as bot edits, or excluding such edits
-* Showing only edits marked as minor edits, or excluding such edits
-
-Not all of the filters available at the normal watchlist ([Special:Watchlist](https://www.mediawiki.org/wiki/Manual:Watchlist)) are implemented in the global watchlist.
-
-User settings are stored in the [`user_properties` database table](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:User_properties_table) with the preference name `global-watchlist-options`.
+Further documentation is available at [docs/Settings.md](./docs/Settings.md).

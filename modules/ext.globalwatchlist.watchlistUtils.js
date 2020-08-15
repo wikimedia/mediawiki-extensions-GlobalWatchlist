@@ -96,9 +96,33 @@ watchlistUtils.putNewPagesFirst = function ( allEdits ) {
 /**
  * Create links based on one-or-more editors
  *
+ * editsByUser has the information for the links to create. It is a map in the following format:
+ *
+ *   ⧼user name/ip address⧽
+ *       ->
+ *   {
+ *       editCount: ⧼count⧽
+ *       anon: ⧼true/false⧽
+ *   }
+ *
+ * For edits where the user was hidden, the key is: ##hidden##
+ *
+ * WARNING: This method returns RAW HTML that is the displayed. jQuery isn't used because we need
+ *          to handle creating multiple links and returning the same was a single link does, since
+ *          the caller doesn't know if the entry row is for a single action or multiple edits grouped
+ * For each entry in editsByUser:
+ *  - if the user was hidden, the output is hard-coded as the core message `rev-deleted-user` wrapped
+ *    in a span for styling
+ *  - if the user wasn't hidden, a link is shown. The text for the link is the username, and
+ *      the target is the user page (for users) or the contributions page (for anonymous editors),
+ *      just like at Special:Watchlist. See RCCacheEntryFactory::getUserLink and Linker::userLink.
+ *  - if the user made multiple edits, or multiple edits were made by hidden users, the number of edits
+ *      is appended after the link, using the `ntimes` core message. This is only the case when grouping
+ *      results by page. See EnhancedChangesList::recentChangesBlockGroup
+ *
  * @param {Object} editsByUser
  * @param {GlobalWatchlistLinker} linker
- * @return {string}
+ * @return {string} the raw HTML to display
  */
 watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
 	var users = Object.keys( editsByUser );
@@ -152,7 +176,8 @@ watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
 }
 
 /**
- * Convert what the api returns to what we need
+ * Convert edit info, including adding links to user pages / anonymous users' contributions and
+ * grouping results by page when called for
  *
  * @param {Object} editInfo
  * @param {string} site
@@ -246,6 +271,11 @@ watchlistUtils.normalizeEntries = function ( entries ) {
 		}
 
 		if ( typeof entry.anon === 'undefined' ) {
+			// Prior to MediaWiki 1.36, `anon` was only included if it was true
+			// In MediaWiki 1.36+, when using `formatversion=2`, but removing these
+			// few lines of code isn't important enough to bump the extension's required
+			// version of MediaWiki to 1.36. Once it is raised, this can be removed.
+			// See T259929
 			entry.anon = false;
 		}
 		if ( typeof entry.parsedcomment === 'undefined' ) {
@@ -272,7 +302,10 @@ watchlistUtils.normalizeEntries = function ( entries ) {
 };
 
 /**
- * Normalize entries
+ * Convert result from the API to format used by this extension
+ *
+ * This is the entry point for the JavaScript controlling Special:GlobalWatchlist and the
+ * display of each site's changes
  *
  * @param {Array} entries
  * @param {string} site
@@ -322,5 +355,5 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 	return everything;
 };
 
-// Only convertEdits is needed, but the rest are exported for testability
+// Only rawToSummary is needed, but the rest are exported for testability
 module.exports = watchlistUtils;

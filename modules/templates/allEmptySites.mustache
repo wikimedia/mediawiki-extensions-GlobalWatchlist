@@ -1,5 +1,11 @@
 <div class="globalWatchlist-emptySites mw-collapsed">
 	<div class="globalWatchlist-col">
+		{{!
+			The `empty-sites` parameter is a jQuery object representing an unordered
+			list (ul) of entries, each entry noting that a specific site has no changes.
+			It should NOT be escaped, and so {{{triple brackets}}} are used. See
+			viewManager.refresh in specialglobalwatchlist.js for where this is called from.
+		}}
 		{{{empty-sites}}}
 	</div>
 </div>

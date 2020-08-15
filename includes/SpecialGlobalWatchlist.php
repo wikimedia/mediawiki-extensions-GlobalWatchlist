@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Implements Special:GlobalWatchlist
+ * Special:GlobalWatchlist is implemented in JavaScript; load the relevant ResourceLoader module.
+ *
+ * See docs/GlobalWatchlist.md for details of how the JavaScript works.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -77,7 +79,9 @@ class SpecialGlobalWatchlist extends SpecialPage {
 			$this->getConfig()->get( 'GlobalWatchlistWikibaseSite' )
 		);
 
-		// Class is for JS to detect and replace
+		// Until the JavaScript is loaded, show a message explaining that
+		// the page requires JavaScript. Once the JavaScript loads, the class is
+		// detected and the content is replaced by the actual global watchlist
 		$message = Html::rawElement(
 			'div',
 			[ 'class' => 'globalwatchlist-content' ],

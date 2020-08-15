@@ -52,6 +52,7 @@ GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function ( needConf
 
 	return new Promise( function ( resolve, reject ) {
 		var getConfirmation;
+
 		if ( needConfirmation ) {
 			getConfirmation = OO.ui.confirm(
 				mw.msg( 'globalwatchlist-markseen-allconfirm' )
@@ -60,6 +61,15 @@ GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function ( needConf
 			getConfirmation = Promise.resolve( true );
 		}
 
+		/**
+		 * If the user opted to require confirmation, getConfirmation is the Promise
+		 * returned by OO.ui.confirm that resolves to the user's decision (boolean value,
+		 * true means that the user confirmed the intention to mark all sites as seen,
+		 * false means user cancelled). If the user didn't opt to require confirmation,
+		 * we didn't check, but to avoid code duplication we just pretend we checked and
+		 * that the answer was confirming the decision to mark all sites as seen, and so
+		 * getConfirmatios in a Promise that just always resolves to true.
+		 */
 		getConfirmation.then(
 			function ( confirmed ) {
 				if ( confirmed ) {

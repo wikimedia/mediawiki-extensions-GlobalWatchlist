@@ -62,6 +62,10 @@ class GlobalWatchlistHooks implements
 	}
 
 	/**
+	 * Only logged-in users can use Special:GlobalWatchlist and Special:GlobalWatchlistSettings.
+	 * Ensure that when anonymous users are redirected to Special:UserLogin, there is a note
+	 * explaining why
+	 *
 	 * @param string[] &$messages
 	 * @return void
 	 */
@@ -73,6 +77,8 @@ class GlobalWatchlistHooks implements
 	}
 
 	/**
+	 * Add a link to Special:GlobalWatchlist when on Special:Watchlist
+	 *
 	 * @param Skin $skin
 	 * @param array &$bar Sidebar contents. Modify $bar to add or modify sidebar portlets.
 	 * @return bool|void True or no return value to continue or false to abort
