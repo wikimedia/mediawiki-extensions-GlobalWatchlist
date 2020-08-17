@@ -126,6 +126,7 @@
 			"dependencies": [
 				"jquery.makeCollapsible",
 				"mediawiki.ForeignApi",
+				"oojs",
 				"oojs-ui-core",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
@@ -190,6 +191,7 @@
 			"dependencies": [
 				"vue",
 				"mediawiki.ForeignApi",
+				"oojs",
 				"oojs-ui-windows",
 				"user.options"
 			]

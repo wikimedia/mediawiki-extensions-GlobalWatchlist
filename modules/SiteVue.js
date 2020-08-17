@@ -4,12 +4,36 @@
 ( function () {
 	'use strict';
 
-	var GlobalWatchlistSiteVue = require( './SiteBase.js' );
+	var GlobalWatchlistSiteBase = require( './SiteBase.js' );
 
 	/**
+	 * Represents a specific site, excluding the display (used in Vue display)
+	 *
 	 * @class GlobalWatchlistSiteVue
 	 * @extends GlobalWatchlistSiteBase
+	 *
+	 * @constructor
+	 * @param {GlobalWatchlistDebugger} globalWatchlistDebug
+	 * @param {Object} config
+	 * @param {Object} api
+	 * @param {Object} watchlistUtils
+	 * @param {string} urlFragment
 	 */
+	function GlobalWatchlistSiteVue( globalWatchlistDebug, config, api, watchlistUtils, urlFragment ) {
+		GlobalWatchlistSiteVue.super.call(
+			this,
+			globalWatchlistDebug,
+			config,
+			api,
+			watchlistUtils,
+			urlFragment
+		);
+
+		// Entries to be used for EntryRow.vue
+		this.entries = [];
+	}
+
+	OO.inheritClass( GlobalWatchlistSiteVue, GlobalWatchlistSiteBase );
 
 	/**
 	 * Update this.entries for the latest entries to show

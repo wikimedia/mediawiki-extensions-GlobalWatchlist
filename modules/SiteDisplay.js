@@ -4,12 +4,36 @@
 ( function () {
 	'use strict';
 
-	var GlobalWatchlistSiteDisplay = require( './SiteBase.js' );
+	var GlobalWatchlistSiteBase = require( './SiteBase.js' );
 
 	/**
+	 * Represents a specific site, including the display (used in jQuery / non-Vue display)
+	 *
 	 * @class GlobalWatchlistSiteDisplay
 	 * @extends GlobalWatchlistSiteBase
+	 *
+	 * @constructor
+	 * @param {GlobalWatchlistDebugger} globalWatchlistDebug
+	 * @param {Object} config
+	 * @param {Object} api
+	 * @param {Object} watchlistUtils
+	 * @param {string} urlFragment
 	 */
+	function GlobalWatchlistSiteDisplay( globalWatchlistDebug, config, api, watchlistUtils, urlFragment ) {
+		GlobalWatchlistSiteDisplay.super.call(
+			this,
+			globalWatchlistDebug,
+			config,
+			api,
+			watchlistUtils,
+			urlFragment
+		);
+
+		// Actual output for this site
+		this.$feedDiv = '';
+	}
+
+	OO.inheritClass( GlobalWatchlistSiteDisplay, GlobalWatchlistSiteBase );
 
 	/**
 	 * Make the links for a row in the watchlist
