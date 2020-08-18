@@ -271,11 +271,11 @@ watchlistUtils.normalizeEntries = function ( entries ) {
 		}
 
 		if ( typeof entry.anon === 'undefined' ) {
-			// Prior to MediaWiki 1.36, `anon` was only included if it was true
-			// In MediaWiki 1.36+, when using `formatversion=2`, but removing these
-			// few lines of code isn't important enough to bump the extension's required
-			// version of MediaWiki to 1.36. Once it is raised, this can be removed.
-			// See T259929
+			// Prior to MediaWiki 1.36, `anon` was only included if it was true.
+			// In MediaWiki 1.36+, when using `formatversion=2`, it is always included,
+			// but removing these few lines of code isn't important enough to bump the
+			// extension's required version of MediaWiki to 1.36. Once it is raised,
+			// this can be removed. See T259929
 			entry.anon = false;
 		}
 		if ( typeof entry.parsedcomment === 'undefined' ) {
