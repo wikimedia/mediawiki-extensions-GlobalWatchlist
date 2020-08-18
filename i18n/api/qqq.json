@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Umherirrender"
+		]
+	},
+	"apihelp-globalwatchlistsettings-summary": "{{doc-apihelp-summary|globalwatchlistsettings}}\nManage global watchlist settings",
+	"apihelp-globalwatchlistsettings-param-sites": "{{doc-apihelp-param|globalwatchlistsettings|sites}}",
+	"apihelp-globalwatchlistsettings-param-anonfilter": "{{doc-apihelp-param|globalwatchlistsettings|anonfilter}}",
+	"apihelp-globalwatchlistsettings-param-botfilter": "{{doc-apihelp-param|globalwatchlistsettings|botfilter}}",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "{{doc-apihelp-param|globalwatchlistsettings|minorfilter}}",
+	"apihelp-globalwatchlistsettings-param-confirmallsites": "{{doc-apihelp-param|globalwatchlistsettings|confirmallsites}}",
+	"apihelp-globalwatchlistsettings-param-fastmode": "{{doc-apihelp-param|globalwatchlistsettings|fastmode}}",
+	"apihelp-globalwatchlistsettings-param-grouppage": "{{doc-apihelp-param|globalwatchlistsettings|grouppage}}",
+	"apihelp-globalwatchlistsettings-param-showtypes": "{{doc-apihelp-param|globalwatchlistsettings|showtypes}}",
+	"apierror-globalwatchlist-invalid-settings": "{{doc-apierror}}"
+}

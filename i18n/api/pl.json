@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rail"
+		]
+	},
+	"apihelp-globalwatchlistsettings-param-botfilter": "Filtruj edycje botów",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "Filtruj drobne zmiany",
+	"apihelp-globalwatchlistsettings-param-showtypes": "Typ zmian do pokazania"
+}

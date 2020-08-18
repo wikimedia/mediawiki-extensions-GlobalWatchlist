@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Hasley"
+		]
+	},
+	"apihelp-globalwatchlistsettings-summary": "Gestionar la configuración de la lista de seguimiento global.",
+	"apihelp-globalwatchlistsettings-param-sites": "Sitios para mostrar",
+	"apihelp-globalwatchlistsettings-param-botfilter": "Filtrar ediciones de bots",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "Filtrar ediciones menores",
+	"apihelp-globalwatchlistsettings-param-fastmode": "Activar modo rápido",
+	"apihelp-globalwatchlistsettings-param-grouppage": "Agrupar resultados por página"
+}

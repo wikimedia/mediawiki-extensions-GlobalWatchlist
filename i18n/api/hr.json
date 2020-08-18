@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bugoslav"
+		]
+	},
+	"apihelp-globalwatchlistsettings-summary": "Upravljanje postavkama globalnih praćenih stranica",
+	"apihelp-globalwatchlistsettings-param-sites": "Mrežna mjesta za prikaz",
+	"apihelp-globalwatchlistsettings-param-anonfilter": "Filtriranje uređivanja anonimnih suradnika",
+	"apihelp-globalwatchlistsettings-param-botfilter": "Filtriranje uređivanja botovima",
+	"apihelp-globalwatchlistsettings-param-minorfilter": "Filtriraj manja uređivanja",
+	"apihelp-globalwatchlistsettings-param-confirmallsites": "Zahtijevaj potvrdu za označavanje svih mrežnih mjesta pregledanim",
+	"apihelp-globalwatchlistsettings-param-fastmode": "Omogući brzi modus",
+	"apihelp-globalwatchlistsettings-param-grouppage": "Grupiranje rezultata po stranici",
+	"apihelp-globalwatchlistsettings-param-showtypes": "Vrste promjena za prikaz",
+	"apierror-globalwatchlist-invalid-settings": "Odabrane postavke nisu valjane"
+}
