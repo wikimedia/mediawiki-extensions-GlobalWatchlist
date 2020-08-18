@@ -342,6 +342,13 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function doesWrites() {
+		return true;
+	}
+
+	/**
 	 * @return string
 	 */
 	protected function getGroupName() {
