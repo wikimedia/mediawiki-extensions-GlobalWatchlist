@@ -52,7 +52,6 @@
 	"MessagesDirs": {
 		"GlobalWatchlist": [
 			"i18n",
-			"i18n/api",
 			"i18n/script"
 		]
 	},
