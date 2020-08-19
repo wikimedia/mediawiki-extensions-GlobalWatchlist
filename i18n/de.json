@@ -12,7 +12,5 @@
 	"globalwatchlist-gotoglobal": "Globale Beobachtungsliste",
 	"globalwatchlist-gotoglobal-tooltip": "Beobachtungsliste ansehen",
 	"globalwatchlist-must-login": "Bitte logge dich ein, um die Spezialseite der globalen Beobachungsliste zu nutzen",
-	"globalwatchlist-javascript-required": "Die Spezialseiten der globalen Beobachungsliste benötigen JavaScript, um zu funktionieren",
-	"globalwatchlist-prefs-settings": "Um die Einstellungen für die globale Beobachtungsliste festzulegen, rufe bitte [[Special:GlobalWatchlistSettings]] auf.",
-	"prefs-globalwatchlist": "Globale Beobachtungsliste"
+	"globalwatchlist-javascript-required": "Die Spezialseiten der globalen Beobachungsliste benötigen JavaScript, um zu funktionieren"
 }
