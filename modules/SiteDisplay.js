@@ -220,7 +220,7 @@
 	 */
 	GlobalWatchlistSiteDisplay.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
 		this.debug(
-			'Proccessing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
+			'Processing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
 		);
 
 		var encodedSite = encodeURIComponent( this.siteID );

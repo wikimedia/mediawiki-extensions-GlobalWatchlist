@@ -63,7 +63,7 @@
 	 */
 	GlobalWatchlistSiteVue.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
 		this.debug(
-			'Proccessing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
+			'Processing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
 		);
 
 		var pageWatched = !unwatched;

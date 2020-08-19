@@ -50,7 +50,6 @@ module.exports = {
 					'edit-watchlist-msg': that.$i18n( 'globalwatchlist-editwatchlist' )
 				};
 			} );
-			// console.log( rows );
 			return rows;
 		}
 	}

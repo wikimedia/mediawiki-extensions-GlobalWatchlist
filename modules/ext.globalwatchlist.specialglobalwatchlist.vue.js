@@ -7,9 +7,6 @@
 
 	// On ready initialization
 	$( function () {
-		/* eslint-disable-next-line no-console */
-		console.log( 'GlobalWatchlist Vue code loaded' );
-
 		$( '.globalwatchlist-content' )
 			.empty()
 			.append(

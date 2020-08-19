@@ -56,8 +56,6 @@
 </template>
 
 <script>
-/* eslint-disable no-console */
-
 var Toolbar = require( './Toolbar.vue' ),
 	Label = require( './base/Label.vue' ),
 	LoadingBar = require( './base/LoadingBar.vue' ),
@@ -142,20 +140,19 @@ module.exports = {
 	methods: {
 		toggleLiveUpdates: function ( isActive ) {
 			this.liveUpdatesActive = isActive;
-			console.log( isActive ? 'Now running live updates' : 'Done running live updates' );
+			this.globalWatchlistDebug.info( isActive ? 'Now running live updates' : 'Done running live updates' );
 
 			// updateLive will only do anything if liveUpdatesActive is true
 			this.updateLive();
 		},
 		toggleGroupPage: function ( isActive ) {
 			this.config.groupPage = isActive; // To be passed in getWatchlist
-			console.log( isActive ? 'Now grouping by page' : 'Done grouping by page' );
+			this.globalWatchlistDebug.info( isActive ? 'Now grouping by page' : 'Done grouping by page' );
+
 			this.refreshSites();
 		},
 		updateLive: function () {
 			if ( this.liveUpdatesActive ) {
-				console.log( 'Rendering live updates, called: ' + new Date().toISOString() );
-
 				var that = this;
 				this.backgroundRefresh().then( function ( results ) {
 					if ( that.liveUpdatesActive ) {
@@ -171,7 +168,7 @@ module.exports = {
 			}
 		},
 		refreshSites: function () {
-			console.log( 'Refreshing sites' );
+			this.globalWatchlistDebug.info( 'Refreshing sites' );
 			this.inLoading = true;
 			this.sitesWithChangesList = [];
 			this.sitesWithoutChangesList = [];
@@ -219,7 +216,7 @@ module.exports = {
 			watchedSitesBySite[ site ].changeWatched( pageTitle, 'watch' );
 		},
 		markAllSitesSeen: function () {
-			console.log( 'Marking all sites as seen' );
+			this.globalWatchlistDebug.info( 'Marking all sites as seen' );
 			var that = this;
 
 			watchedSites.markAllSitesSeen( this.config.confirmAllSites ).then(
@@ -229,12 +226,12 @@ module.exports = {
 				},
 				function () {
 					// Confirmation wasn't given
-					console.log( 'Not confirmed' );
+					that.globalWatchlistDebug.info( 'Not confirmed' );
 				}
 			);
 		},
 		markSiteAsSeen: function ( site ) {
-			console.log( 'Marking site as seen: ' + site );
+			this.globalWatchlistDebug.info( 'Marking site as seen: ' + site );
 			var that = this;
 
 			watchedSitesBySite[ site ].markAsSeen().then( function () {
