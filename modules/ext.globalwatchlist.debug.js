@@ -1,13 +1,9 @@
 /**
  * Debug interface to avoid using console.log directly everywhere
  *
- * At least for now, we need client-side debugging. All messages sent here
- * are added to the debugLog, and those below the configured debugLevel are
+ * At least for now, we need client-side debugging. Messages sent here
+ * are added to the debugLog. If wgGlobalWatchlistDevMode is true, they are
  * also printed to the console.
- *
- * When a message is sent to the debugger, a "level" is also specified. Lower numbers
- * correspond to more import messages (eg errors are always 0). If the level is below
- * the debugLevel set, it is also logged to the console.
  *
  * @class GlobalWatchlistDebugger
  * @constructor
