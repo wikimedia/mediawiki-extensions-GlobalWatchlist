@@ -137,10 +137,14 @@
 				.append( ', ' );
 		}
 		$row.append( $unwatchLink )
-			.append( ') (' )
-			.append( $user )
-			.append( $comment )
 			.append( ')' );
+
+		if ( $user !== '' || $comment !== '' ) {
+			$row.append( ' (' )
+				.append( $user )
+				.append( $comment )
+				.append( ')' );
+		}
 
 		if ( $tags !== false ) {
 			$row.append( ' ' )
