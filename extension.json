@@ -13,7 +13,6 @@
 	"SpecialPages": {
 		"GlobalWatchlist": {
 			"class": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlist",
-			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlist::newFromGlobalState",
 			"services": [
 				"StatsdDataFactory"
 			]
@@ -63,8 +62,8 @@
 	],
 	"config": {
 		"GlobalWatchlistWikibaseSite": {
-			"value": "www.wikidata.org",
-			"description": "Site for which labels should be fetched for items on the watchlist"
+			"value": false,
+			"description": "Site for which labels should be fetched for items on the watchlist, or false for none"
 		},
 		"GlobalWatchlistUseVue": {
 			"value": false,

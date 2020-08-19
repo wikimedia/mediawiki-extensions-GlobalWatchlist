@@ -12,7 +12,7 @@
 	"globalwatchlist-gotoglobal": "Global watchlist",
 	"globalwatchlist-gotoglobal-tooltip": "View global watchlist",
 	"globalwatchlist-must-login": "Please log in to use the GlobalWatchlist special pages",
-	"globalwatchlist-javascript-required": "The GlobalWatchlist special pages require JavaScript to work",
+	"globalwatchlist-javascript-required": "This special page requires JavaScript to work",
 	"globalwatchlist-prefs-settings": "To set the preferences for the global watchlist, please visit [[Special:GlobalWatchlistSettings]].",
 	"prefs-globalwatchlist": "Global watchlist"
 }

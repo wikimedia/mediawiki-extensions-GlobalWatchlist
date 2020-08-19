@@ -41,6 +41,21 @@ var Button = require( './base/Button.vue' ),
 	CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' ),
 	EntryRow = require( './EntryRow.vue' );
 
+/**
+ * Output for a specific site
+ *
+ * Inputs:
+ *  - entries, array of objects for EntryRow
+ *  - site, string (url) for the site in question
+ *
+ * Emits:
+ *  - `unwatch-site-page` when unwatching a page.
+ *     Parameters: site (url), title
+ *  - `rewatch-site-page` when rewatching a page.
+ *     Parameters: site (url), title
+ *  - `mark-site-seen` when marking a site as seen.
+ *     Parameters: site (url)
+ */
 module.exports = {
 	components: {
 		'global-watchlist-button': Button,

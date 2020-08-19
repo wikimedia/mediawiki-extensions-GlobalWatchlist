@@ -49,14 +49,6 @@ class SpecialGlobalWatchlist extends SpecialPage {
 	}
 
 	/**
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 * @return SpecialGlobalWatchlist
-	 */
-	public static function newFromGlobalState( IBufferingStatsdDataFactory $statsdDataFactory ) {
-		return new SpecialGlobalWatchlist( $statsdDataFactory );
-	}
-
-	/**
 	 * @param string|null $par
 	 */
 	public function execute( $par ) {

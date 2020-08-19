@@ -95,9 +95,15 @@ class SettingsManager {
 	public function saveUserOptions( UserIdentity $userIdentity, array $options ) {
 		$this->logSettingsChange( $userIdentity );
 
-		$options['version'] = self::PREFERENCE_VERSION;
+		// When saving the options, make sure that `version` is at the start of the
+		// serialized JSON. In case we ever need to make a breaking change to the
+		// preferences and use a maintenance script to migrate existing settings,
+		// we will need to be able to search for users that have the old version
+		// number. Its a lot quicker to search for a substring at the start of
+		// the blob than in the middle or at the end.
+		$dbOptions = [ 'version' => self::PREFERENCE_VERSION ] + $options;
 
-		$optionsStr = FormatJson::encode( $options );
+		$optionsStr = FormatJson::encode( $dbOptions );
 		$this->saveOptionsInternal( $userIdentity, $optionsStr );
 	}
 

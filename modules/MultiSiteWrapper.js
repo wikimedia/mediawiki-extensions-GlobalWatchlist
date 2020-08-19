@@ -5,7 +5,7 @@
  * @class GlobalWatchlistMultiSiteWrapper
  * @constructor
  *
- * @param {Function} SiteClass
+ * @param {Function} SiteClass either SiteDisplay or SiteVue
  * @param {Object} config
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug
  */

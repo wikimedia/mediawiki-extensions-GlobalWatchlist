@@ -76,7 +76,14 @@ var GlobalWatchlistLinker = require( './../ext.globalwatchlist.linker.js' );
  *
  * Inputs:
  *  - entry, object with the data
+ *  - pagewatched, boolean
  *  - site, string (url) for the site in question
+ *
+ * Emits:
+ *  - `rewatch-page` when rewatching
+ *     Parameters: title
+ *  - `unwatch-page` when unwatching
+ *     Parameters: title
  */
 module.exports = {
 	props: {

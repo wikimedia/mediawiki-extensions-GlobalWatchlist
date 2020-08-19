@@ -53,7 +53,7 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 			'minorfilter' => SettingsManager::FILTER_EITHER,
 		];
 		$strSettings = FormatJson::encode(
-			$validSettings + [ 'version' => SettingsManager::PREFERENCE_VERSION ]
+			[ 'version' => SettingsManager::PREFERENCE_VERSION ] + $validSettings
 		);
 
 		$userOptionsManager = $this->createMock( UserOptionsManager::class );

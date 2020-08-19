@@ -44,6 +44,24 @@
 var Button = require( './base/Button.vue' ),
 	Toggle = require( './base/Toggle.vue' );
 
+/**
+ * Toolbar at the top of the page
+ *
+ * Inputs:
+ *  - startresultsgrouped, boolean for whether to starting with results grouped by page
+ *  - liveupdatesdisabled, boolean for whether to disable the live updates toggle
+ *  - grouppagedisabled, boolean for whether to disable the group results by page toggle
+ *  - refreshdisabled, boolean for whether to disable the refresh button
+ *  - markalldisabled, boolean for whether to disable the button to mark all sites as seen
+ *
+ * Emits:
+ *  - `toggle-group-page` when toggling grouping results by page
+ *     Parameters: boolean for whether the toggle is now active
+ *  - `toggle-live-updates` when toggling grouping live updates
+ *     Parameters: boolean for whether the toggle is now active
+ *  - `click-refresh` when the refresh button is clicked
+ *  - `mark-all-sites-seen` when the button to mark all sites as seen is clicked
+ */
 module.exports = {
 	components: {
 		'global-watchlist-button': Button,

@@ -1,10 +1,7 @@
 /*
- * Shared module to retrieve the current settings
+ * Retrieve current user settings to use, or the defaults
  *
- * Currently uses window.GlobalWatchlistSettings,
- * will eventually use user options
- *
- * Used for both the settings page and Special:GlobalWatchlist
+ * Used for both versions of Special:GlobalWatchlist
  */
 /**
  * @private
@@ -28,7 +25,7 @@ function getQueryFlag( setting, flag ) {
  * @return {Object}
  */
 function globalWatchlistGetSettings( globalWatchlistDebug ) {
-	// Note: this must be the same key as is used in the settings manager
+	// Note: this must be the same key as SettingsManager::PREFERENCE_NAME
 	var userOptions = mw.user.options.get( 'global-watchlist-options' ),
 		userSettings = {},
 		config = {},
@@ -90,7 +87,8 @@ function globalWatchlistGetSettings( globalWatchlistDebug ) {
 		( config.showLogEntries ? 'log|' : '' )
 	).replace( /\|+$/, '' );
 
-	// TODO add `unread` once ready
+	// Note: For now, the `unread` flag is not included, to make testing easier.
+	// It will be added here before deployment.
 	config.watchlistQueryShow = [
 		getQueryFlag( config.anon, 'anon' ),
 		getQueryFlag( config.bot, 'bot' ),

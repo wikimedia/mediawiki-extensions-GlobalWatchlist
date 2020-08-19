@@ -19,9 +19,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 	public function testUserNotLoggedIn() {
 		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
 
-		$specialPage = SpecialGlobalWatchlist::newFromGlobalState(
-			$statsdDataFactory
-		);
+		$specialPage = new SpecialGlobalWatchlist( $statsdDataFactory );
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
 
@@ -53,9 +51,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 				$this->equalTo( 'globalwatchlist.load_special_page' )
 			);
 
-		$specialPage = SpecialGlobalWatchlist::newFromGlobalState(
-			$statsdDataFactory
-		);
+		$specialPage = new SpecialGlobalWatchlist( $statsdDataFactory );
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
 

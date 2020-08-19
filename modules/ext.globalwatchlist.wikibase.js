@@ -1,5 +1,5 @@
 /**
- * Handle getting labels, etc. for wikibase items
+ * Handle getting labels for wikibase items
  *
  * Caller is responsible for determining if this should be used
  *

@@ -19,9 +19,9 @@ The extension currently defines the following configuration values:
 
 * `wgGlobalWatchlistWikibaseSite`
 
-Set this to the base URL of the site for which Wikibase labels should be fetched.
+Set this to the base URL of the site for which Wikibase labels should be fetched, or false for not trying to fetch Wikibase labels from any site.
 
-By default, the value is `www.wikidata.org`.
+By default, the value is `false`.
 
 * `wgGlobalWatchlistUseVue`
 
