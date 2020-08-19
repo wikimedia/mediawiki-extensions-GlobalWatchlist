@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"YahyA",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -12,5 +13,6 @@
 	"globalwatchlist-gotoglobal": "বৈশ্বিক নজরতালিকা",
 	"globalwatchlist-gotoglobal-tooltip": "বৈশ্বিক নজরতালিকা দেখুন",
 	"globalwatchlist-must-login": "বৈশ্বিক নজর তালিকার বিশেষ পাতা ব্যবহার করতে দয়া করে প্রবেশ করুন",
-	"globalwatchlist-javascript-required": "বৈশ্বিক নজরতালিকার বিশেষ পাতাগুলি কাজ করার জন্য জাভাস্ক্রিপ্টের প্রয়োজন"
+	"globalwatchlist-javascript-required": "বৈশ্বিক নজরতালিকার বিশেষ পাতাগুলি কাজ করার জন্য জাভাস্ক্রিপ্টের প্রয়োজন",
+	"prefs-globalwatchlist": "বৈশ্বিক নজরতালিকা"
 }

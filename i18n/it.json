@@ -12,5 +12,6 @@
 	"globalwatchlist-gotoglobal": "Osservati speciali globali",
 	"globalwatchlist-gotoglobal-tooltip": "Vedi gli osservati speciali globali",
 	"globalwatchlist-must-login": "Accedi per utilizzare le pagine speciali sugli osservati speciali globali",
-	"globalwatchlist-javascript-required": "Le pagine speciali sugli osservati speciali globali richiedono JavaScript per funzionare"
+	"globalwatchlist-javascript-required": "Le pagine speciali sugli osservati speciali globali richiedono JavaScript per funzionare",
+	"prefs-globalwatchlist": "Osservati speciali globali"
 }

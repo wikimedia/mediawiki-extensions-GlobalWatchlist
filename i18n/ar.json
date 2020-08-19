@@ -9,5 +9,6 @@
 	"globalwatchlist-desc": "أضف قائمة مراقبة عالمية",
 	"globalwatchlistsettings": "إعدادات قائمة المراقبة العالمية",
 	"globalwatchlist-gotoglobal": "قائمة المراقبة العالمية",
-	"globalwatchlist-must-login": "الرجاء تسجيل الدخول لاستخدام الصفحات الخاصة بقائمة المراقبة العالمية"
+	"globalwatchlist-must-login": "الرجاء تسجيل الدخول لاستخدام الصفحات الخاصة بقائمة المراقبة العالمية",
+	"prefs-globalwatchlist": "قائمة المراقبة العالمية"
 }

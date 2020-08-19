@@ -7,5 +7,7 @@
 	"globalwatchlist": "Global Iwwerwaachungslëscht",
 	"globalwatchlistsettings": "Astellunge vun der globaler Iwwerwaachungslëscht",
 	"globalwatchlist-gotoglobal": "Global Iwwerwaachungslëscht",
-	"globalwatchlist-gotoglobal-tooltip": "Global Iwwerwaachungslëscht weisen"
+	"globalwatchlist-gotoglobal-tooltip": "Global Iwwerwaachungslëscht weisen",
+	"globalwatchlist-prefs-settings": "Fir d'Astellunge fir déi global Iwwerwaachungslëscht fest ze leeën, gitt wgl. op  [[Special:GlobalWatchlistSettings]].",
+	"prefs-globalwatchlist": "Global Iwwerwaachungslëscht"
 }
