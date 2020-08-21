@@ -11,7 +11,7 @@
 	"globalwatchlistsettings-summary": "Strona specjalna pozwalająca na zarządzanie globalną listą obserwowanych",
 	"globalwatchlist-gotoglobal": "Globalna lista obserwowanych",
 	"globalwatchlist-gotoglobal-tooltip": "Zobacz globalną listę obserwowanych",
-	"globalwatchlist-javascript-required": "Strona specjalna GlobalWatchlist wymaga do działania JavaScriptu",
+	"globalwatchlist-javascript-required": "Ta strona specjalna wymaga do działania włączonego JavaScriptu",
 	"globalwatchlist-prefs-settings": "Odwiedź stronę [[Special:GlobalWatchlistSettings|Specjalna:GlobalWatchlistSettings]], aby ustawić preferencje globalnej listy obserwowanych.",
 	"prefs-globalwatchlist": "Globalna lista obserwowanych"
 }

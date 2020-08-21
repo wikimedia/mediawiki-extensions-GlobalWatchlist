@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luklos"
+			"Luklos",
+			"Matěj Suchánek"
 		]
 	},
-	"globalwatchlist-javascript-required": "Tato speciální stránka potřebuje JavaSvript, aby fungovala.",
+	"globalwatchlist-javascript-required": "Tato speciální stránka potřebuje JavaScript, aby fungovala.",
 	"prefs-globalwatchlist": "Globální seznam sledovaných"
 }

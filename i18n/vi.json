@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nguyễn Mạnh An"
+		]
+	},
+	"globalwatchlist-javascript-required": "Trang đặc biệt này yêu cầu JavaScript để hoạt động",
+	"globalwatchlist-prefs-settings": "Để đặt các tùy chọn cho danh sách theo dõi toàn cầu, vui lòng truy cập [[Special:GlobalWatchlistSettings]].",
+	"prefs-globalwatchlist": "Danh sách theo dõi toàn cầu"
+}
