@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"SomeyaMako",
-			"列维劳德"
+			"列维劳德",
+			"沈澄心"
 		]
 	},
 	"globalwatchlist": "全域监视列表",
 	"globalwatchlist-gotoglobal": "全域监视列表",
 	"globalwatchlist-gotoglobal-tooltip": "查看全域监视列表",
-	"globalwatchlist-javascript-required": "特殊页面“全域监视列表”需要JavaScript才能工作"
+	"globalwatchlist-javascript-required": "此特殊页面需要JavaScript才能工作",
+	"prefs-globalwatchlist": "全域监视列表"
 }

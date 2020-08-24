@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"MuratTheTurkish"
 		]
 	},
 	"globalwatchlist": "Küresel izleme listesi",
@@ -12,5 +13,7 @@
 	"globalwatchlist-gotoglobal": "Küresel izleme listesi",
 	"globalwatchlist-gotoglobal-tooltip": "Küresel izleme listesini görüntüle",
 	"globalwatchlist-must-login": "GlobalWatchlist özel sayfalarını kullanmak için lütfen oturum açın",
-	"globalwatchlist-javascript-required": "GlobalWatchlist özel sayfaları JavaScript'in çalışmasını gerektirir"
+	"globalwatchlist-javascript-required": "Bu özel sayfanın çalışması için JavaScript gereklidir",
+	"globalwatchlist-prefs-settings": "Küresel izleme listesi tercihlerini belirlemek için lütfen [[Special:GlobalWatchlistSettings]] sayfasına ziyaret edin.",
+	"prefs-globalwatchlist": "Küresel izleme listesi"
 }

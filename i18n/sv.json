@@ -5,6 +5,7 @@
 			"WikiPhoenix"
 		]
 	},
+	"globalwatchlist-javascript-required": "Denna specialsida kräver JavaScript för att fungera",
 	"globalwatchlist-prefs-settings": "För att ställa in den globala bevakningslistan, gå till [[Special:GlobalWatchlistSettings]].",
 	"prefs-globalwatchlist": "Global bevakningslista"
 }

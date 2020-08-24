@@ -9,5 +9,10 @@
 	"globalwatchlist-summary": "На овој страници можете видети глобални списак надгледања.",
 	"globalwatchlistsettings": "Подешавања глобалног списка надгледања",
 	"globalwatchlistsettings-summary": "На овој страници можете управљати глобалним списком надгледања.",
-	"globalwatchlist-javascript-required": "Потребан је JavaScript"
+	"globalwatchlist-gotoglobal": "Глобални списак",
+	"globalwatchlist-gotoglobal-tooltip": "Погледајте глобални списак надгледања",
+	"globalwatchlist-must-login": "Пријавите се да бисте се служили глобалним списком надгледања.",
+	"globalwatchlist-javascript-required": "Потребан је JavaScript",
+	"globalwatchlist-prefs-settings": "Да бисте променили подешавања глобалног списка надгледања, посетите [[Special:GlobalWatchlistSettings]].",
+	"prefs-globalwatchlist": "Глобални списак надгледања"
 }
