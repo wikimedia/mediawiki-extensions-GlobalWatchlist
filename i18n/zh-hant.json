@@ -14,5 +14,7 @@
 	"globalwatchlist-gotoglobal": "全域監視清單",
 	"globalwatchlist-gotoglobal-tooltip": "檢視全域監視清單",
 	"globalwatchlist-must-login": "登入後才可使用GlobalWatchlist特殊頁面",
-	"globalwatchlist-javascript-required": "全域監視清單特殊頁面需要啟用 JavaScript"
+	"globalwatchlist-javascript-required": "此特殊頁面需要 JavaScript 來運作",
+	"globalwatchlist-prefs-settings": "要設定用於全域監視清單的偏好選項，請參訪 [[Special:GlobalWatchlistSettings]]。",
+	"prefs-globalwatchlist": "全域監視清單"
 }
