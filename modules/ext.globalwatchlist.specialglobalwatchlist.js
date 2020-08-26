@@ -141,7 +141,7 @@
 							'ext.globalwatchlist.specialglobalwatchlist',
 							'templates/allEmptySites.mustache'
 						).render( {
-							'empty-sites': $ul
+							'empty-sites': $ul[0].outerHTML
 						} )
 						.makeCollapsible();
 
