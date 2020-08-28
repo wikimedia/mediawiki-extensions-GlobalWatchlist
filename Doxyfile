@@ -8,10 +8,9 @@ QT_AUTOBRIEF           = YES
 WARN_NO_PARAMDOC       = YES
 INPUT                  = README.md ./
 EXCLUDE_PATTERNS       = */vendor/*
-EXCLUDE_PATTERNS      += */docs/*
 EXCLUDE_PATTERNS      += */node_modules/*
 EXCLUDE_PATTERNS      += */tests/*
-FILE_PATTERNS          = *.php
+FILE_PATTERNS          = *.php *.md
 RECURSIVE              = YES
 # Requires doxygen 1.8.3+
 USE_MDFILE_AS_MAINPAGE = README.md
