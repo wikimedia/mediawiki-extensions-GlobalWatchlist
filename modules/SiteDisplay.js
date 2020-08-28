@@ -14,15 +14,17 @@
 	 *
 	 * @constructor
 	 * @param {GlobalWatchlistDebugger} globalWatchlistDebug
+	 * @param {GlobalWatchlistLinker} linker
 	 * @param {Object} config
 	 * @param {Object} api
 	 * @param {Object} watchlistUtils
 	 * @param {string} urlFragment
 	 */
-	function GlobalWatchlistSiteDisplay( globalWatchlistDebug, config, api, watchlistUtils, urlFragment ) {
+	function GlobalWatchlistSiteDisplay( globalWatchlistDebug, linker, config, api, watchlistUtils, urlFragment ) {
 		GlobalWatchlistSiteDisplay.super.call(
 			this,
 			globalWatchlistDebug,
+			linker,
 			config,
 			api,
 			watchlistUtils,

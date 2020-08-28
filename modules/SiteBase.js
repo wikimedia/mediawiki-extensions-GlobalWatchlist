@@ -5,12 +5,13 @@
  * @class GlobalWatchlistSiteBase
  *
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug
+ * @param {GlobalWatchlistLinker} linker
  * @param {Object} config
  * @param {Object} api
  * @param {Object} watchlistUtils
  * @param {string} urlFragment
  */
-function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils, urlFragment ) {
+function GlobalWatchlistSite( globalWatchlistDebug, linker, config, api, watchlistUtils, urlFragment ) {
 	// Logger to send debug info to
 	this.debugLogger = globalWatchlistDebug;
 
@@ -27,8 +28,7 @@ function GlobalWatchlistSite( globalWatchlistDebug, config, api, watchlistUtils,
 	this.site = urlFragment;
 
 	// Linker utility (GlobalWatchlistLinker)
-	var GlobalWatchlistLinker = require( './ext.globalwatchlist.linker.js' );
-	this.linker = new GlobalWatchlistLinker( this.site );
+	this.linker = linker;
 
 	// Site identifier in format that can be used for elemnt attributes
 	this.siteID = encodeURIComponent( urlFragment.replace( /\./g, '_' ) );

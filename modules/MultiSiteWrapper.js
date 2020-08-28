@@ -10,6 +10,7 @@
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug
  */
 function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebug ) {
+	var GlobalWatchlistLinker = require( './ext.globalwatchlist.linker.js' );
 	var watchlistUtils = require( './ext.globalwatchlist.watchlistUtils.js' );
 
 	/**
@@ -19,6 +20,7 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 	this.siteList = config.siteList.map( function ( site ) {
 		return new SiteClass(
 			globalWatchlistDebug,
+			new GlobalWatchlistLinker( site ),
 			config,
 			new mw.ForeignApi( '//' + site + mw.util.wikiScript( 'api' ) ),
 			watchlistUtils,
