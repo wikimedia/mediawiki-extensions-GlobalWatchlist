@@ -14,7 +14,10 @@
 				Avoid a space
 			-->)
 		</h3>
-		<global-watchlist-collapsible-wrapper>
+		<p v-if="hasApiError">
+			{{ $i18n( 'globalwatchlist-fetch-site-failure' ) }}
+		</p>
+		<global-watchlist-collapsible-wrapper v-else>
 			<global-watchlist-button
 				text="Mark as seen"
 				v-on:click="markChangesSeen"
@@ -75,6 +78,10 @@ module.exports = {
 	},
 
 	computed: {
+		hasApiError: function () {
+			// If this is created but has no entries, its because something went wrong
+			return this.entries.length === 0;
+		},
 		linker: function () {
 			return new GlobalWatchlistLinker( this.site );
 		},

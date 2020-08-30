@@ -47,6 +47,9 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config ) {
 	return Promise.all(
 		this.siteList.map( function ( site ) {
+			// Reset in case it failed earlier
+			site.apiError = false;
+
 			return site.getWatchlist( config );
 		} )
 	);

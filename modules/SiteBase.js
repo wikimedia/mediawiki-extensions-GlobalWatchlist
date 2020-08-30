@@ -39,6 +39,11 @@ function GlobalWatchlistSite( globalWatchlistDebug, linker, config, api, watchli
 	// Cached information about the tags of a site
 	this.tags = {};
 
+	// Whether there was an error when trying to use the API. To be able to use Promise.all,
+	// API failures still resolve the Promise rather than rejecting it. If and Promise.allSettled
+	// becomes available for use, this should no longer be needed
+	this.apiError = false;
+
 	// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
 	// Don't create it if it will never be needed
 	if ( this.site === config.wikibaseSite ) {
@@ -93,7 +98,12 @@ GlobalWatchlistSite.prototype.api = function ( func, content, name ) {
 			resolve( response );
 		} ).catch( function ( error ) {
 			that.error( 'API.' + name, error );
-			reject( error );
+			that.apiError = true;
+
+			// See above on apiError for why this resolves instead of rejecting
+			// since we don't know what exactly the caller was expected, just
+			// resolve "error" and leave the handling for the caller
+			resolve( 'ERROR' );
 		} );
 	} );
 };
@@ -129,12 +139,19 @@ GlobalWatchlistSite.prototype.actuallyGetWatchlist = function ( iteration, conti
 		}
 
 		that.api( 'get', getter, 'actuallyGetWatchlist #' + iteration ).then( function ( response ) {
+			if ( response === 'ERROR' ) {
+				resolve( [] );
+				return;
+			}
 			var wlraw = response.query.watchlist;
 			if ( response.continue && response.continue.wlcontinue ) {
 				that.actuallyGetWatchlist(
 					iteration + 1,
 					response.continue.wlcontinue
 				).then( function ( innerResponse ) {
+					// If there was an error in the recursive call, this just
+					// adds an empty array. getWatchlist checks this.apiError
+					// before assuming that an empty response means nothing to show
 					resolve( wlraw.concat( innerResponse ) );
 				} );
 			} else {
@@ -242,8 +259,18 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 	return new Promise( function ( resolve ) {
 		that.actuallyGetWatchlist( 1, 0 ).then( function ( wlraw ) {
 			if ( !( wlraw && wlraw[ 0 ] ) ) {
-				that.debug( 'getWatchlist - empty' );
-				that.isEmpty = true;
+				if ( that.apiError ) {
+					that.debug( 'getWatchlist - error' );
+
+					// Include in the normal display section
+					that.isEmpty = false;
+
+					that.renderApiFailure();
+				} else {
+					that.debug( 'getWatchlist - empty' );
+					that.isEmpty = true;
+				}
+
 				resolve();
 				return;
 			}
@@ -342,6 +369,13 @@ GlobalWatchlistSite.prototype.afterMarkAsSeen = function () {
  * @param {boolean} unwatched
  */
 GlobalWatchlistSite.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
+	// STUB
+};
+
+/**
+ * Used by SiteDisplay to still include an output for api failures
+ */
+GlobalWatchlistSite.prototype.renderApiFailure = function () {
 	// STUB
 };
 

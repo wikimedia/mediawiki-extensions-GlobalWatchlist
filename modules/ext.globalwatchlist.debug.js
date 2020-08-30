@@ -61,7 +61,8 @@ GlobalWatchlistDebugger.prototype.error = function ( info, error ) {
 	/* eslint-disable-next-line no-alert */
 	alert( 'GlobalWatchlist error, please check the console!' );
 
-	throw errorToThrow;
+	/* eslint-disable-next-line no-console */
+	console.error( errorToThrow );
 };
 
 module.exports = GlobalWatchlistDebugger;

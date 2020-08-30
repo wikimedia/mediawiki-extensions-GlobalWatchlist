@@ -159,6 +159,44 @@
 	/* end GlobalWatchlistSiteDisplay.prototype.makePageLink */
 
 	/**
+	 * Create the output for this.$feedDiv, either for success (via renderWatchlist) or
+	 * failure (via renderApiFailure)
+	 *
+	 * @param {object} $content
+	 */
+	GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $content ) {
+		var headerTemplate = mw.template.get(
+			'ext.globalwatchlist.specialglobalwatchlist',
+			'templates/siteRowHeader.mustache'
+		);
+		var headerParams = {
+			'special-watchlist-url': this.linker.linkPage( 'Special:Watchlist' ),
+			'site-name': this.site,
+			'special-edit-watchlist-url': this.linker.linkPage( 'Special:EditWatchlist' ),
+			'edit-watchlist-msg': mw.msg( 'globalwatchlist-editwatchlist' )
+		};
+
+		this.$feedDiv = $( '<div>' )
+			.attr( 'id', 'globalwatchlist-feed-site-' + this.siteID )
+			.addClass( 'ext-globalwatchlist-feed-site' )
+			.append(
+				headerTemplate.render( headerParams ),
+				$content
+			);
+	}
+
+	/**
+	 * Alert on API failures
+	 */
+	GlobalWatchlistSiteDisplay.prototype.renderApiFailure = function () {
+		var $siteContent = $( '<p>' ).text(
+			mw.msg( 'globalwatchlist-fetch-site-failure' )
+		);
+
+		this.actuallyRenderWatchlist( $siteContent );
+	}
+
+	/**
 	 * Display the watchlist
 	 *
 	 * @param {Array} summary
@@ -179,30 +217,14 @@
 			that.markAsSeen();
 		} );
 
-		var headerTemplate = mw.template.get(
-			'ext.globalwatchlist.specialglobalwatchlist',
-			'templates/siteRowHeader.mustache'
-		);
-		var headerParams = {
-			'special-watchlist-url': this.linker.linkPage( 'Special:Watchlist' ),
-			'site-name': this.site,
-			'special-edit-watchlist-url': this.linker.linkPage( 'Special:EditWatchlist' ),
-			'edit-watchlist-msg': mw.msg( 'globalwatchlist-editwatchlist' )
-		};
-
-		this.$feedDiv = $( '<div>' )
-			.attr( 'id', 'globalwatchlist-feed-site-' + this.siteID )
-			.addClass( 'ext-globalwatchlist-feed-site' )
+		var $outputContent = $( '<div>' )
+			.addClass( 'ext-globalwatchlist-site' )
 			.append(
-				headerTemplate.render( headerParams ),
-				$( '<div>' )
-					.addClass( 'ext-globalwatchlist-site' )
-					.append(
-						markSeenButton.$element,
-						$ul
-					)
-					.makeCollapsible()
-			);
+				markSeenButton.$element,
+				$ul
+			)
+			.makeCollapsible()
+		this.actuallyRenderWatchlist( $outputContent );
 	};
 	/* end GlobalWatchlistSiteDisplay.prototype.renderWatchlist */
 

@@ -12,6 +12,7 @@
 	"globalwatchlist-changetypes": "Label for options for different change types",
 	"globalwatchlist-editwatchlist": "Label for link to [[Special:EditWatchlist]]",
 	"globalwatchlist-emptyfeed": "Label for list of sites with no changes to show",
+	"globalwatchlist-fetch-site-failure": "Error message shown to user when API failures prevent fetching the changes to show for a site",
 	"globalwatchlist-filters": "Label for all filter options",
 	"globalwatchlist-filter-anon": "Label for the anonymous edits filter",
 	"globalwatchlist-filter-bot": "Label for the bot edits filter",

@@ -35,28 +35,15 @@
 		var globalWatchlistDebug = new GlobalWatchlistDebugger();
 		var originalError = new Error( 'ErrorStuffGoesHere' );
 
-		assert.throws(
-			function () {
-				globalWatchlistDebug.error(
-					'errorInfoGoesHere',
-					originalError
-				);
-			},
-			function ( err ) {
-				return err.toString() === originalError.toString();
-			},
-			'Errors sent to the GlobalWatchlistDebugger should be thrown'
-		);
+		var consoleError = this.sandbox.stub( console, 'error' );
 
-		assert.throws(
-			function () {
-				globalWatchlistDebug.error(
-					'errorInfoGoesHere',
-					'theThingThatWentWrong'
-				);
-			},
-			/GlobalWatchlistError/,
-			'GlobalWatchlistDebugger creates an error if called without one'
+		globalWatchlistDebug.error( 'errorInfoGoesHere', originalError );
+		globalWatchlistDebug.error( 'errorInfoGoesHere', 'theThingThatWentWrong' );
+
+		assert.strictEqual(
+			consoleError.callCount,
+			2,
+			'GlobalWatchlistDebugger sends to console.error'
 		);
 
 		assert.strictEqual(

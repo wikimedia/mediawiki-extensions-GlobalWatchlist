@@ -10,6 +10,7 @@
 	"globalwatchlist-changetypes": "Type of change",
 	"globalwatchlist-editwatchlist": "Edit watchlist",
 	"globalwatchlist-emptyfeed": "Sites with no changes",
+	"globalwatchlist-fetch-site-failure": "Failed to fetch changes",
 	"globalwatchlist-filters": "Filters",
 	"globalwatchlist-filter-anon": "Anonymous edits",
 	"globalwatchlist-filter-bot": "Bot edits",
