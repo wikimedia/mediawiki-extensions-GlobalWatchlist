@@ -25,7 +25,7 @@
 		</global-watchlist-button>
 
 		<a
-			v-bind:href=settingsUrl
+			v-bind:href="settingsUrl"
 			target="_blank"
 		>
 			{{ $i18n( 'globalwatchlist-globalwatchlistsettingslink' ) }}

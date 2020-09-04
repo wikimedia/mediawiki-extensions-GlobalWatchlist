@@ -14,7 +14,6 @@
 		</global-watchlist-toolbar>
 		<hr>
 
-
 		<div
 			v-if="inLoading"
 			class="mw-globalwatchlist-vue-loading"
@@ -27,16 +26,16 @@
 			class="mw-globalwatchlist-sitelist"
 		>
 			<global-watchlist-label
-				v-bind:text=asOfLabelText
+				v-bind:text="asOfLabelText"
 			>
 			</global-watchlist-label>
 			<div v-if="haveChangesToShow">
 				<p>{{ $i18n( 'globalwatchlist-changesfeed' ) }}</p>
 				<global-watchlist-sites-with-changes
 					v-for="withChanges in sitesWithChangesList"
-					v-bind:key=withChanges['site']
-					v-bind:site=withChanges['site']
-					v-bind:entries=withChanges['entries']
+					v-bind:key="withChanges['site']"
+					v-bind:site="withChanges['site']"
+					v-bind:entries="withChanges['entries']"
 					v-on:unwatch-site-page="onUnwatchSitePage"
 					v-on:rewatch-site-page="onRewatchSitePage"
 					v-on:mark-site-seen="markSiteAsSeen"
@@ -81,7 +80,6 @@ var watchedSitesBySite = {};
 watchedSites.siteList.forEach( function ( watchedSite ) {
 	watchedSitesBySite[ watchedSite.site ] = watchedSite;
 } );
-
 
 module.exports = {
 	components: {

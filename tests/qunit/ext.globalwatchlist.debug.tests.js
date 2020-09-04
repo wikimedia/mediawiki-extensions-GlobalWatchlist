@@ -43,7 +43,7 @@
 				);
 			},
 			function ( err ) {
-				return err.toString() === originalError.toString()
+				return err.toString() === originalError.toString();
 			},
 			'Errors sent to the GlobalWatchlistDebugger should be thrown'
 		);

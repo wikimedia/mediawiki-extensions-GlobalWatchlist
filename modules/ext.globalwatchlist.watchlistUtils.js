@@ -173,7 +173,7 @@ watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
 	};
 
 	return watchlistUtils.makeUserLinks( editsByUser, linker );
-}
+};
 
 /**
  * Convert edit info, including adding links to user pages / anonymous users' contributions and
@@ -237,7 +237,7 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 					editsByUser[ specificEdit.user ] = {
 						editCount: 0,
 						anon: specificEdit.anon
-				};
+					};
 				}
 				editsByUser[ specificEdit.user ].editCount =
 					editsByUser[ specificEdit.user ].editCount + 1;

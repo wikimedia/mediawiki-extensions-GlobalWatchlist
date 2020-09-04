@@ -2,13 +2,13 @@
 	<div class="mw-globalwatchlist-vue-site">
 		<h3>
 			<a
-				v-bind:href=specialWatchlistUrl
+				v-bind:href="specialWatchlistUrl"
 				target="_blank"
 			>{{ site }}</a>
 			(<!--
 				Avoid a space
 			--><a
-				v-bind:href=specialEditWatchlistUrl
+				v-bind:href="specialEditWatchlistUrl"
 				target="_blank"
 			>{{ $i18n( 'globalwatchlist-editwatchlist' ) }}</a><!--
 				Avoid a space
@@ -22,10 +22,10 @@
 			</global-watchlist-button>
 			<global-watchlist-entry-row
 				v-for="(rowInfo, index) in entries"
-				v-bind:key=index
-				v-bind:entry=rowInfo
-				v-bind:pagewatched=rowInfo.pageWatched
-				v-bind:site=site
+				v-bind:key="index"
+				v-bind:entry="rowInfo"
+				v-bind:pagewatched="rowInfo.pageWatched"
+				v-bind:site="site"
 				v-on:unwatch-page="onUnwatchPage"
 				v-on:rewatch-page="onRewatchPage"
 			>

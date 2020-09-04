@@ -8,7 +8,7 @@
 		this.info = function ( unused, alsoUnused ) {
 			this.infoCalled = true;
 		};
-	};
+	}
 
 	var defaultSettings = {
 		siteList: [ 'en.wikipedia.org' ],
@@ -83,7 +83,7 @@
 			watchlistQueryTypes: 'edit|log',
 			watchlistQueryShow: '!anon|!bot|!minor',
 			wikibaseSite: 'www.wikidata.org'
-		}
+		};
 
 		assert.deepEqual(
 			settings,

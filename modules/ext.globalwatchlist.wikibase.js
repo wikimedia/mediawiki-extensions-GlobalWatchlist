@@ -31,7 +31,6 @@ GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
 	this.debugLogger.info( 'wikibase:' + msg, extraInfo );
 };
 
-
 /**
  * Fetch the labels for all of the ids given
  *
@@ -158,15 +157,15 @@ GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels
 
 		if ( entityInfo[ labelKey ] &&
 			entityInfo[ labelKey ][ that.userLang ] &&
-			entityInfo[ labelKey ][ that.userLang ][ 'value' ]
+			entityInfo[ labelKey ][ that.userLang ].value
 		) {
-			cleanedLabels[ entityId ] = entityInfo[ labelKey ][ that.userLang ][ 'value' ];
+			cleanedLabels[ entityId ] = entityInfo[ labelKey ][ that.userLang ].value;
 		}
 	} );
 	this.debug( 'cleanupRawLabels - ending (clean)', cleanedLabels );
 
 	return cleanedLabels;
-}
+};
 
 /**
  * Set entities' titleMsg (title without the `Property:` or `Lexeme:` prefix) and
@@ -196,8 +195,8 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
 	} );
 
 	return {
-		'entries': entries,
-		'ids': ids
+		entries: entries,
+		ids: ids
 	};
 };
 
@@ -216,8 +215,8 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 		var extractedInfo = that.getEntityIds( summaryEntries );
 		that.debug( 'addLabels - extractedInfo', extractedInfo );
 
-		var updatedEntries = extractedInfo['entries'];
-		var entityIds = extractedInfo['ids'];
+		var updatedEntries = extractedInfo.entries;
+		var entityIds = extractedInfo.ids;
 
 		if ( entityIds.length === 0 ) {
 			// Nothing to fetch
@@ -237,7 +236,6 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 			resolve( updatedEntries );
 		} );
 	} );
-}
-
+};
 
 module.exports = GlobalWatchlistWikibaseHandler;

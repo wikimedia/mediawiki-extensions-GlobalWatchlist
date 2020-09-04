@@ -4,7 +4,7 @@
 	>
 		<!-- Bot/minor/new page -->
 		<strong v-if="hasFlags">
-			{{entryFlags}}
+			{{ entryFlags }}
 		</strong>
 
 		<em v-if="isLogEntry">
@@ -12,13 +12,13 @@
 		</em>
 
 		<a
-			v-bind:href=pageLink
+			v-bind:href="pageLink"
 			target="_blank"
 		>{{ entry.titleMsg || entry.title }}</a>
 		(<!--
 			Avoid a space in the middle
 		--><a
-			v-bind:href=historyLink
+			v-bind:href="historyLink"
 			target="_blank"
 		>{{ $i18n( "history_small" ) }}</a><!--
 			Avoid a space in the middle
@@ -28,7 +28,7 @@
 			<!--Wrap in a span to ensure comma is only rendered when needed-->
 			<a
 				v-if="isPureEdit"
-				v-bind:href=diffLink
+				v-bind:href="diffLink"
 				target="_blank"
 			>
 				{{ diffMessage }}
@@ -38,7 +38,7 @@
 		<span v-if="isLogEntry">
 			<!--Wrap in a span to ensure comma is only rendered when needed-->
 			<a
-				v-bind:href=logsLink
+				v-bind:href="logsLink"
 				target="_blank"
 			>
 				{{ $i18n( 'sp-contributions-logs' ) }}

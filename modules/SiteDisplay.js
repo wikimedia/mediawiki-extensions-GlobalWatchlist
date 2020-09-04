@@ -213,7 +213,7 @@
 
 		// FIXME
 		// GlobalWatchlist.watchlists.checkChangesShown( true );
-	}
+	};
 	/* end GlobalWatchlistSiteDisplay.prototype.afterMarkAsSeen */
 
 	/**

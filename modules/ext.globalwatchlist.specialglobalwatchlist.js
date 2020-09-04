@@ -138,11 +138,11 @@
 						);
 					} );
 					var $emptySitesDiv = mw.template.get(
-							'ext.globalwatchlist.specialglobalwatchlist',
-							'templates/allEmptySites.mustache'
-						).render( {
-							'empty-sites': $ul[0].outerHTML
-						} )
+						'ext.globalwatchlist.specialglobalwatchlist',
+						'templates/allEmptySites.mustache'
+					).render( {
+						'empty-sites': $ul[ 0 ].outerHTML
+					} )
 						.makeCollapsible();
 
 					$div.append(
