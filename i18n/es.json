@@ -12,5 +12,7 @@
 	"globalwatchlist-gotoglobal": "Lista de seguimiento global",
 	"globalwatchlist-gotoglobal-tooltip": "Ver lista de seguimiento global",
 	"globalwatchlist-must-login": "Accede a tu cuenta para utilizar las páginas especiales de la lista de seguimiento global",
-	"globalwatchlist-javascript-required": "Las páginas especiales de la lista de seguimiento global requieren JavaScript para funcionar"
+	"globalwatchlist-javascript-required": "Esta página especial requiere JavaScript para funcionar",
+	"globalwatchlist-prefs-settings": "Para configurar las preferencias de la lista de seguimiento global, visita [[Special:GlobalWatchlistSettings]].",
+	"prefs-globalwatchlist": "Lista de seguimiento global"
 }
