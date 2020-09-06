@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use DerivativeContext;
+use ExtensionRegistry;
 use HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsManager;
@@ -24,6 +25,8 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 	private function getSpecialPage( $options = [] ) {
 		$logger = $options['logger'] ??
 			LoggerFactory::getInstance( 'GlobalWatchlist' );
+		$extensionRegistry = $options['extensionRegistry'] ??
+			$this->createMock( ExtensionRegistry::class );
 		$settingsManager = $options['settingsManager'] ??
 			$this->createMock( SettingsManager::class );
 		$userOptionsManager = $options['userOptionsManager'] ??
@@ -31,6 +34,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 		$specialPage = new SpecialGlobalWatchlistSettings(
 			$logger,
+			$extensionRegistry,
 			$settingsManager,
 			$userOptionsManager
 		);
@@ -98,9 +102,19 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$user = $this->getTestUser()->getUser();
 
 		// ::execute results in creating the form, need to have the UserOptionsManager available
-		// return false for user settings because we aren't testing that right now
+		// return false for user settings, because we aren't testing that right now,
+		// and expect that the tour is loaded, because the user settings are false
+		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$extensionRegistry->expects( $this->once() )
+			->method( 'isLoaded' )
+			->with(
+				$this->equalTo( 'GuidedTour' )
+			)
+			->willReturn( true );
+
 		$userOptionsManager = $this->getOptionsManager( $user, false );
 		$specialPage = $this->getSpecialPage( [
+			'extensionRegistry' => $extensionRegistry,
 			'userOptionsManager' => $userOptionsManager
 		] );
 
@@ -108,9 +122,9 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$testContext->setUser( $user );
 
 		// Can't easily mock OutputPage to ensure that `addModules` is called //at some point//
-		// with the right module (ext.globalwatchlist.specialglobalwatchlistsettings)
-		// so instead test at the end that it was added. Call ::setOutput to ensure that the
-		// reference we have remains the correct one
+		// with the right modules (ext.globalwatchlist.specialglobalwatchlistsettings and
+		// ext.guidedTour.globalWatchlistSettings) so instead test at the end that they were added.
+		// Call ::setOutput to ensure that the reference we have remains the correct one
 		$output = $testContext->getOutput();
 		$testContext->setOutput( $output );
 
@@ -125,6 +139,10 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$modules = $output->getModules();
 		$this->assertContains(
 			'ext.globalwatchlist.specialglobalwatchlistsettings',
+			$modules
+		);
+		$this->assertContains(
+			'ext.guidedTour.globalWatchlistSettings',
 			$modules
 		);
 	}

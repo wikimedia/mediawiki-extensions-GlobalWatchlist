@@ -24,6 +24,7 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use ExtensionRegistry;
 use FormatJson;
 use FormSpecialPage;
 use HTMLForm;
@@ -41,6 +42,9 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	/** @var LoggerInterface */
 	private $logger;
 
+	/** @var ExtensionRegistry */
+	private $extensionRegistry;
+
 	/** @var SettingsManager */
 	private $settingsManager;
 
@@ -49,22 +53,28 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 	/**
 	 * @param LoggerInterface $logger
+	 * @param ExtensionRegistry $extensionRegistry
 	 * @param SettingsManager $settingsManager
 	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
 		LoggerInterface $logger,
+		ExtensionRegistry $extensionRegistry,
 		SettingsManager $settingsManager,
 		UserOptionsManager $userOptionsManager
 	) {
 		parent::__construct( 'GlobalWatchlistSettings', 'editmyoptions' );
 
 		$this->logger = $logger;
+		$this->extensionRegistry = $extensionRegistry;
 		$this->settingsManager = $settingsManager;
 		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/**
+	 * Need a factory method to inject LoggerInstance and ExtensionRegistry,
+	 * which are not available from the service container
+	 *
 	 * @param SettingsManager $settingsManager
 	 * @param UserOptionsManager $userOptionsManager
 	 * @return SpecialGlobalWatchlistSettings
@@ -75,6 +85,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	) {
 		return new SpecialGlobalWatchlistSettings(
 			LoggerFactory::getInstance( 'GlobalWatchlist' ),
+			ExtensionRegistry::getInstance(),
 			$settingsManager,
 			$userOptionsManager
 		);
@@ -123,6 +134,8 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 		if ( $currentOptions === false ) {
 			$userOptions = $defaultOptions;
+
+			$this->maybeLoadTour();
 		} else {
 			// User has options, try to handle them
 			$parsedOptions = FormatJson::parse( $currentOptions );
@@ -142,6 +155,19 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$formFields = $this->getActualFormFields( $formValidator, $userOptions );
 
 		return $formFields;
+	}
+
+	/**
+	 * If the GuidedTour extension is available, load the tour for the settings page
+	 *
+	 * Only called if the user does not currently have any settings saved (i.e. is a new user)
+	 */
+	private function maybeLoadTour() {
+		if ( $this->extensionRegistry->isLoaded( 'GuidedTour' ) ) {
+			$this->getOutput()->addModules(
+				'ext.guidedTour.globalWatchlistSettings'
+			);
+		}
 	}
 
 	/**

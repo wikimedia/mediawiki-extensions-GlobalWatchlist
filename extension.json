@@ -29,6 +29,7 @@
 	"HookHandlers": {
 		"GlobalWatchlistHooks": {
 			"class": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistHooks",
+			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistHooks::newFromGlobalState",
 			"services": [
 				"SpecialPageFactory"
 			]
@@ -39,6 +40,9 @@
 			"handler": "GlobalWatchlistHooks"
 		},
 		"LoginFormValidErrorMessages": {
+			"handler": "GlobalWatchlistHooks"
+		},
+		"ResourceLoaderRegisterModules": {
 			"handler": "GlobalWatchlistHooks"
 		},
 		"SkinBuildSidebar": {

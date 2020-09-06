@@ -2,9 +2,11 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWikiUnitTestCase;
 use Message;
+use ResourceLoader;
 use Skin;
 use SpecialPage;
 use Title;
@@ -18,9 +20,30 @@ use User;
  */
 class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 
+	private function getHookHandler( $options = [] ) {
+		$extensionRegistry = $options['extensionRegistry'] ??
+			$this->createMock( ExtensionRegistry::class );
+		$specialPageFactory = $options['specialPageFactory'] ??
+			$this->createNoOpMock( SpecialPageFactory::class );
+
+		return new GlobalWatchlistHooks(
+			$extensionRegistry,
+			$specialPageFactory
+		);
+	}
+
+	public function testNewFromGlobalState() {
+		$hookHandler = GlobalWatchlistHooks::newFromGlobalState(
+			$this->createMock( SpecialPageFactory::class )
+		);
+		$this->assertInstanceOf(
+			GlobalWatchlistHooks::class,
+			$hookHandler
+		);
+	}
+
 	public function testLinkNotAdded() {
-		$specialPageFactory = $this->createNoOpMock( SpecialPageFactory::class );
-		$hookHandler = new GlobalWatchlistHooks( $specialPageFactory );
+		$hookHandler = $this->getHookHandler();
 
 		$title = $this->createMock( Title::class );
 		$title->expects( $this->once() )
@@ -59,7 +82,9 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 			->with( $this->equalTo( 'GlobalWatchlist' ) )
 			->willReturn( $specialGlobalWatchlist );
 
-		$hookHandler = new GlobalWatchlistHooks( $specialPageFactory );
+		$hookHandler = $this->getHookHandler( [
+			'specialPageFactory' => $specialPageFactory
+		] );
 
 		$title = $this->createMock( Title::class );
 		$title->expects( $this->once() )
@@ -116,8 +141,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testLoginMessageAdded() {
-		$specialPageFactory = $this->createMock( SpecialPageFactory::class );
-		$hookHandler = new GlobalWatchlistHooks( $specialPageFactory );
+		$hookHandler = $this->getHookHandler();
 
 		$messages = [ 'foo', 'bar' ];
 		$hookHandler->onLoginFormValidErrorMessages( $messages );
@@ -129,8 +153,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testPreferencesAdded() {
-		$specialPageFactory = $this->createMock( SpecialPageFactory::class );
-		$hookHandler = new GlobalWatchlistHooks( $specialPageFactory );
+		$hookHandler = $this->getHookHandler();
 
 		$preferences = [];
 		$user = $this->createMock( User::class );
@@ -149,6 +172,38 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 			],
 			$preferences
 		);
+	}
+
+	public function testModuleRegistration() {
+		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$extensionRegistry->expects( $this->exactly( 2 ) )
+			->method( 'isLoaded' )
+			->withConsecutive(
+				[ $this->equalTo( 'GuidedTour' ) ],
+				[ $this->equalTo( 'GuidedTour' ) ]
+			)
+			->will(
+				$this->onConsecutiveCalls(
+					false,
+					true
+				)
+			);
+
+		$hookHandler = $this->getHookHandler( [
+			'extensionRegistry' => $extensionRegistry
+		] );
+
+		// First extension registry call returns false, module should not be added
+		$resourceLoader = $this->createMock( ResourceLoader::class );
+		$resourceLoader->expects( $this->never() )
+			->method( 'register' );
+		$hookHandler->onResourceLoaderRegisterModules( $resourceLoader );
+
+		// Secord extension registry call returns true, module should be added
+		$resourceLoader = $this->createMock( ResourceLoader::class );
+		$resourceLoader->expects( $this->once() )
+			->method( 'register' );
+		$hookHandler->onResourceLoaderRegisterModules( $resourceLoader );
 	}
 
 }
