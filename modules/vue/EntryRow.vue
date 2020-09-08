@@ -2,6 +2,13 @@
 	<li
 		v-bind:class="rowClasses"
 	>
+		<span
+			v-if="hasTimestamp"
+			v-bind:title="timestampTitle"
+		>
+			{{ entryTimestamp }}
+		</span>
+
 		<!-- Bot/minor/new page -->
 		<strong v-if="hasFlags">
 			{{ entryFlags }}
@@ -108,6 +115,20 @@ module.exports = {
 		rowClasses: function () {
 			if ( !this.pagewatched ) {
 				return 'ext-globalwatchlist-strike';
+			}
+			return '';
+		},
+
+		entryTimestamp: function () {
+			return this.entry.timestamp;
+		},
+		hasTimestamp: function () {
+			return this.entryTimestamp !== false;
+		},
+		timestampTitle: function () {
+			// For grouping results, the timestamp is the latest one
+			if ( this.entry.editCount && this.entry.editCount !== 1 ) {
+				return this.$i18n( 'globalwatchlist-grouped-timestamp' );
 			}
 			return '';
 		},

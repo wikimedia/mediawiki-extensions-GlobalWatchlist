@@ -48,6 +48,7 @@
 			$comment = '',
 			$extraLink = false,
 			$tags = false,
+			$timestamp = false,
 			$user = '';
 		var pageTitle = encodeURIComponent( entry.title ).replace( /'/g, '%27' );
 		var $pageLink = $( '<a>' )
@@ -93,6 +94,14 @@
 				.text( mw.msg( 'sp-contributions-logs' ) );
 		}
 
+		if ( entry.timestamp ) {
+			$timestamp = $( '<span>' )
+				.text( entry.timestamp );
+			if ( entry.editCount && entry.editCount !== 1 ) {
+				$timestamp.attr( 'title', mw.msg( 'globalwatchlist-grouped-timestamp' ) );
+			}
+		}
+
 		if ( entry.entryType === 'log' ) {
 			$before = $( '<i>' )
 				.text( 'Log: ' + entry.logtype + '/' + entry.logaction + ': ' );
@@ -126,6 +135,10 @@
 		$row.attr( 'data-site', encodeURIComponent( this.siteID ) );
 		$row.attr( 'data-title', encodeURIComponent( entry.title ) );
 
+		if ( $timestamp !== false ) {
+			$row.append( $timestamp )
+				.append( ' ' );
+		}
 		if ( $before !== false ) {
 			$row.append( $before )
 				.append( ' ' );

@@ -57,6 +57,15 @@ watchlistUtils.mergePageEdits = function ( edits ) {
 	// No tags
 	mergedEditInfo.tags = [];
 
+	// Per T262176, and like the core watchlist, use the latest timestamp
+	mergedEditInfo.timestamp = edits
+		.map( function ( edit ) {
+			return edit.timestamp;
+		} )
+		.reduce( function ( time1, time2 ) {
+			return ( ( new Date( time1 ) ) > ( new Date( time2 ) ) ? time1 : time2 );
+		} );
+
 	mergedEditInfo.toRev = edits
 		.map( function ( edit ) {
 			return edit.revid;
@@ -67,30 +76,6 @@ watchlistUtils.mergePageEdits = function ( edits ) {
 		} );
 
 	return mergedEditInfo;
-};
-
-/**
- * Ensure page creations are shown before normal edits
- *
- * If edits are not grouped, and a new page has edits to it, it is confusing to see the page
- * creation occur after the edits.
- *
- * @param {Array} allEdits
- * @return {Array}
- */
-watchlistUtils.putNewPagesFirst = function ( allEdits ) {
-	var newPages = [],
-		realEdits = [];
-
-	allEdits.forEach( function ( edit ) {
-		if ( edit.newPage ) {
-			newPages.push( edit );
-		} else {
-			realEdits.push( edit );
-		}
-	} );
-
-	return newPages.concat( realEdits );
 };
 
 /**
@@ -186,8 +171,7 @@ watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
  * @return {Array}
  */
 watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
-	var finalEdits = [],
-		finalSorted = [];
+	var finalEdits = [];
 
 	var edits = [];
 	for ( var key in editInfo ) {
@@ -210,6 +194,7 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 					minor: entry.minor,
 					newPage: entry.newPage,
 					tags: entry.tags,
+					timestamp: entry.timestamp,
 					toRev: entry.revid,
 					userDisplay: watchlistUtils.makeSingleUserLink(
 						entry.user,
@@ -252,8 +237,7 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 		}
 	} );
 
-	finalSorted = watchlistUtils.putNewPagesFirst( finalEdits );
-	return finalSorted;
+	return finalEdits;
 };
 
 /**
@@ -297,6 +281,15 @@ watchlistUtils.normalizeEntries = function ( entries ) {
 		} else {
 			entry.newPage = false;
 		}
+
+		if ( typeof entry.timestamp === 'undefined' ) {
+			// Not fetched in fast
+			entry.timestamp = false;
+		} else {
+			// Per T262176, display as
+			// YYYY-MM-DD HH:MM
+			entry.timestamp = entry.timestamp.replace( /T(\d+:\d+):\d+Z/, ' $1' );
+		}
 	} );
 	return entries;
 };
@@ -338,6 +331,7 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 				entryType: entry.type,
 				ns: entry.ns,
 				tags: entry.tags,
+				timestamp: entry.timestamp,
 				title: entry.title,
 				logaction: entry.logaction,
 				logtype: entry.logtype,

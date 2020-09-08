@@ -11,6 +11,7 @@
 	"globalwatchlistsettings-summary": "Special page to manage a global watchlist",
 	"globalwatchlist-gotoglobal": "Global watchlist",
 	"globalwatchlist-gotoglobal-tooltip": "View global watchlist",
+	"globalwatchlist-grouped-timestamp": "The timestamp of the latest change is shown for grouped changes",
 	"globalwatchlist-must-login": "Please log in to use the GlobalWatchlist special pages",
 	"globalwatchlist-javascript-required": "This special page requires JavaScript to work",
 	"globalwatchlist-prefs-settings": "To set the preferences for the global watchlist, please visit [[Special:GlobalWatchlistSettings]].",

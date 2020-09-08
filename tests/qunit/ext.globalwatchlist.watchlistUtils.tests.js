@@ -5,12 +5,15 @@
 
 	/* eslint-disable camelcase */
 	QUnit.test( 'watchlistUtils.mergePageEdits', function ( assert ) {
+		// Not testing timestamps as part of this, all edits set to the same timestamp
+		// of 2020-08-31 12:00
 		var edit1 = {
 			// Bot edit, minor edit, not a new page
 			bot: true,
 			old_revid: 1,
 			minor: true,
 			newPage: false,
+			timestamp: '2020-08-31 12:00',
 			revid: 2
 		};
 		var edit2_a = {
@@ -19,6 +22,7 @@
 			old_revid: 2,
 			minor: true,
 			newPage: false,
+			timestamp: '2020-08-31 12:00',
 			revid: 3
 		};
 		var edit2_b = {
@@ -27,6 +31,7 @@
 			old_revid: 2,
 			minor: false,
 			newPage: false,
+			timestamp: '2020-08-31 12:00',
 			revid: 3
 		};
 		var edit2_c = {
@@ -35,6 +40,7 @@
 			old_revid: 2,
 			minor: true,
 			newPage: false,
+			timestamp: '2020-08-31 12:00',
 			revid: 3
 		};
 		var edit2_d = {
@@ -43,6 +49,7 @@
 			old_revid: 2,
 			minor: false,
 			newPage: false,
+			timestamp: '2020-08-31 12:00',
 			revid: 3
 		};
 		var edit2_e = {
@@ -51,6 +58,7 @@
 			old_revid: 0,
 			minor: false,
 			newPage: true,
+			timestamp: '2020-08-31 12:00',
 			revid: 0
 		};
 
@@ -62,6 +70,7 @@
 			minor: true,
 			newPage: false,
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			toRev: 3
 		};
 		var mergedEdits_b = {
@@ -72,6 +81,7 @@
 			minor: false,
 			newPage: false,
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			toRev: 3
 		};
 		var mergedEdits_c = {
@@ -82,6 +92,7 @@
 			minor: true,
 			newPage: false,
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			toRev: 3
 		};
 		var mergedEdits_d = {
@@ -92,6 +103,7 @@
 			minor: false,
 			newPage: false,
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			toRev: 3
 		};
 		var mergedEdits_e = {
@@ -102,6 +114,7 @@
 			minor: false,
 			newPage: true,
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			toRev: 2
 		};
 
@@ -138,6 +151,7 @@
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit',
 			user: ''
 		};
@@ -145,6 +159,7 @@
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit',
 			newPage: false,
 			user: ''
@@ -160,6 +175,7 @@
 			userhidden: true,
 			parsedcomment: 'comment',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
 		var normalizedHiddenEditor = {
@@ -168,6 +184,7 @@
 			user: '##hidden##',
 			parsedcomment: 'comment',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit',
 			newPage: false
 		};
@@ -180,12 +197,14 @@
 		var userEdit = {
 			parsedcomment: 'comment',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
 		var normalizedUserEdit = {
 			anon: false,
 			parsedcomment: 'comment',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit',
 			newPage: false,
 			user: ''
@@ -199,12 +218,14 @@
 		var editWithNoSummary = {
 			anon: false,
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
 		var normalizedEditWithNoSummary = {
 			anon: false,
 			parsedcomment: '',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit',
 			newPage: false,
 			user: ''
@@ -218,12 +239,14 @@
 		var editWithNoTags = {
 			anon: false,
 			parsedcomment: '',
+			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
 		var normalizedEditWithNoTags = {
 			anon: false,
 			parsedcomment: '',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit',
 			newPage: false,
 			user: ''
@@ -238,12 +261,14 @@
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'new'
 		};
 		var normalizedNewPage = {
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
+			timestamp: '2020-08-31 12:00',
 			type: 'edit',
 			newPage: true,
 			old_revid: 0,
@@ -254,36 +279,6 @@
 			watchlistUtils.normalizeEntries( [ newPage ] ),
 			[ normalizedNewPage ],
 			'New pages are normalized to entries with a flag'
-		);
-	} );
-
-	QUnit.test( 'watchlistUtils.putNewPagesFirst', function ( assert ) {
-		var edit1 = { newPage: false },
-			edit2 = { newPage: false },
-			edit3 = { newPage: false },
-			newPage1 = { newPage: true },
-			newPage2 = { newPage: true },
-			newPage3 = { newPage: true };
-
-		assert.deepEqual(
-			watchlistUtils.putNewPagesFirst( [ edit1, edit2, edit3 ] ),
-			[ edit1, edit2, edit3 ],
-			'Does not change the relative order of edits'
-		);
-		assert.deepEqual(
-			watchlistUtils.putNewPagesFirst( [ newPage1, newPage2, edit1, edit2 ] ),
-			[ newPage1, newPage2, edit1, edit2 ],
-			'Correct order of entries is unchanged'
-		);
-		assert.deepEqual(
-			watchlistUtils.putNewPagesFirst( [ newPage3, newPage2, newPage1 ] ),
-			[ newPage3, newPage2, newPage1 ],
-			'Does not change the relative order of new pages'
-		);
-		assert.deepEqual(
-			watchlistUtils.putNewPagesFirst( [ edit1, newPage1, newPage2, edit2, edit3, newPage3 ] ),
-			[ newPage1, newPage2, newPage3, edit1, edit2, edit3 ],
-			'Puts new pages first, then edits, respecting relative order of each'
 		);
 	} );
 

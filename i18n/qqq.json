@@ -11,6 +11,7 @@
 	"globalwatchlistsettings-summary": "Description at the top of [[Special:GlobalWatchlistSettings]]",
 	"globalwatchlist-gotoglobal": "Link text for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
 	"globalwatchlist-gotoglobal-tooltip": "Tooltip for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
+	"globalwatchlist-grouped-timestamp": "Tooltip for timestamp for grouped changes",
 	"globalwatchlist-must-login": "Text shown to anonymous users trying to use [[Special:GlobalWatchlist]] and [[Special:GlobalWatchlistSettings]]",
 	"globalwatchlist-javascript-required": "Message shown at [[Special:GlobalWatchlist]] when Javascript is not enabled",
 	"globalwatchlist-prefs-settings": "Text shown to users in [[Special:Preferences]] indicating where to change global watchlist settings",
