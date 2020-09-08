@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use ApiOptions;
 use ExtensionRegistry;
+use IBufferingStatsdDataFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWikiUnitTestCase;
 use Message;
@@ -25,21 +27,46 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 			$this->createMock( ExtensionRegistry::class );
 		$specialPageFactory = $options['specialPageFactory'] ??
 			$this->createNoOpMock( SpecialPageFactory::class );
+		$statsdDataFactory = $options['statsdDataFactory'] ??
+			$this->createMock( IBufferingStatsdDataFactory::class );
 
 		return new GlobalWatchlistHooks(
 			$extensionRegistry,
-			$specialPageFactory
+			$specialPageFactory,
+			$statsdDataFactory
 		);
 	}
 
 	public function testNewFromGlobalState() {
 		$hookHandler = GlobalWatchlistHooks::newFromGlobalState(
-			$this->createMock( SpecialPageFactory::class )
+			$this->createMock( SpecialPageFactory::class ),
+			$this->createMock( IBufferingStatsdDataFactory::class )
 		);
 		$this->assertInstanceOf(
 			GlobalWatchlistHooks::class,
 			$hookHandler
 		);
+	}
+
+	public function testApiOptions() {
+		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
+		$statsdDataFactory->expects( $this->once() )
+			->method( 'increment' )
+			->with(
+				$this->equalTo( 'globalwatchlist.settings.manualchange' )
+			);
+		$hookHandler = $this->getHookHandler( [
+			'statsdDataFactory' => $statsdDataFactory
+		] );
+
+		$apiModule = $this->createMock( ApiOptions::class );
+		$user = $this->createMock( User::class );
+		$changes = [
+			SettingsManager::PREFERENCE_NAME => 'Value does not matter'
+		];
+		$resetKinds = [];
+
+		$hookHandler->onApiOptions( $apiModule, $user, $changes, $resetKinds );
 	}
 
 	public function testLinkNotAdded() {

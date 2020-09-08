@@ -31,11 +31,15 @@
 			"class": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistHooks",
 			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistHooks::newFromGlobalState",
 			"services": [
-				"SpecialPageFactory"
+				"SpecialPageFactory",
+				"StatsdDataFactory"
 			]
 		}
 	},
 	"Hooks": {
+		"ApiOptions": {
+			"handler": "GlobalWatchlistHooks"
+		},
 		"GetPreferences": {
 			"handler": "GlobalWatchlistHooks"
 		},

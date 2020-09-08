@@ -24,7 +24,10 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use ApiOptions;
 use ExtensionRegistry;
+use IBufferingStatsdDataFactory;
+use MediaWiki\Api\Hook\ApiOptionsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
@@ -38,6 +41,7 @@ use User;
  * @author DannyS712
  */
 class GlobalWatchlistHooks implements
+	ApiOptionsHook,
 	GetPreferencesHook,
 	LoginFormValidErrorMessagesHook,
 	ResourceLoaderRegisterModulesHook,
@@ -50,16 +54,22 @@ class GlobalWatchlistHooks implements
 	/** @var SpecialPageFactory */
 	private $specialPageFactory;
 
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+
 	/**
 	 * @param ExtensionRegistry $extensionRegistry
 	 * @param SpecialPageFactory $specialPageFactory
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
 	public function __construct(
 		ExtensionRegistry $extensionRegistry,
-		SpecialPageFactory $specialPageFactory
+		SpecialPageFactory $specialPageFactory,
+		IBufferingStatsdDataFactory $statsdDataFactory
 	) {
 		$this->extensionRegistry = $extensionRegistry;
 		$this->specialPageFactory = $specialPageFactory;
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**
@@ -67,13 +77,31 @@ class GlobalWatchlistHooks implements
 	 * the service container
 	 *
 	 * @param SpecialPageFactory $specialPageFactory
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @return GlobalWatchlistHooks
 	 */
-	public static function newFromGlobalState( SpecialPageFactory $specialPageFactory ) {
+	public static function newFromGlobalState(
+		SpecialPageFactory $specialPageFactory,
+		IBufferingStatsdDataFactory $statsdDataFactory
+	) {
 		return new GlobalWatchlistHooks(
 			ExtensionRegistry::getInstance(),
-			$specialPageFactory
+			$specialPageFactory,
+			$statsdDataFactory
 		);
+	}
+
+	/**
+	 * @param ApiOptions $apiModule
+	 * @param User $user
+	 * @param array $changes Associative array of preference name => value
+	 * @param string[] $resetKinds
+	 * @return bool|void True or no return value to continue or false to abort
+	 */
+	public function onApiOptions( $apiModule, $user, $changes, $resetKinds ) {
+		if ( array_key_exists( SettingsManager::PREFERENCE_NAME, $changes ) ) {
+			$this->statsdDataFactory->increment( 'globalwatchlist.settings.manualchange' );
+		}
 	}
 
 	/**
