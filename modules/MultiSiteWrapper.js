@@ -13,6 +13,15 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 	var GlobalWatchlistLinker = require( './ext.globalwatchlist.linker.js' );
 	var watchlistUtils = require( './ext.globalwatchlist.watchlistUtils.js' );
 
+	// Set the Api-User-Agent header - T262177
+	var apiConfig = {
+		ajax: {
+			headers: {
+				'Api-User-Agent': 'GlobalWatchlist-MediaWiki/' + mw.config.get( 'wgVersion' )
+			}
+		}
+	};
+
 	/**
 	 * @property {Array}
 	 * The individual sites
@@ -22,7 +31,7 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 			globalWatchlistDebug,
 			new GlobalWatchlistLinker( site ),
 			config,
-			new mw.ForeignApi( '//' + site + mw.util.wikiScript( 'api' ) ),
+			new mw.ForeignApi( '//' + site + mw.util.wikiScript( 'api' ), apiConfig ),
 			watchlistUtils,
 			site
 		);
