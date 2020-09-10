@@ -5,9 +5,9 @@
  * @class GlobalWatchlistMultiSiteWrapper
  * @constructor
  *
- * @param {Function} SiteClass either SiteDisplay or SiteVue
- * @param {Object} config
- * @param {GlobalWatchlistDebugger} globalWatchlistDebug
+ * @param {Function} SiteClass either {@link GlobalWatchlistSiteDisplay} or {@link GlobalWatchlistSiteVue}
+ * @param {Object} config User configuration to use
+ * @param {GlobalWatchlistDebugger} globalWatchlistDebug Shared debugger instance
  */
 function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebug ) {
 	var GlobalWatchlistLinker = require( './ext.globalwatchlist.linker.js' );
@@ -41,8 +41,8 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 /**
  * Promise that all of the sites have retrieved their watchlists
  *
- * @param {Object} config
- * @return {jQuery.Promise}
+ * @param {Object} config User configuration to use
+ * @return {jQuery.Promise} Promise that all watchlists were retrieved
  */
 GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config ) {
 	return Promise.all(
@@ -58,8 +58,8 @@ GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config )
 /**
  * Promise that all of the sites have called markAsSeen
  *
- * @param {boolean} needConfirmation
- * @return {jQuery.Promise}
+ * @param {boolean} needConfirmation Whether to ask the user to confirm their decision
+ * @return {jQuery.Promise} Promise that all sites were marked as seen
  */
 GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function ( needConfirmation ) {
 	var that = this;

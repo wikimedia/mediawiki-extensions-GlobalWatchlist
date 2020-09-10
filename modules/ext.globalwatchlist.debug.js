@@ -2,7 +2,7 @@
  * Debug interface to avoid using console.log directly everywhere
  *
  * At least for now, we need client-side debugging. Messages sent here
- * are added to the debugLog. If wgGlobalWatchlistDevMode is true, they are
+ * are added to the debugLog. If `wgGlobalWatchlistDevMode` is true, they are
  * also printed to the console.
  *
  * @class GlobalWatchlistDebugger
@@ -16,8 +16,8 @@ function GlobalWatchlistDebugger() {
 }
 
 /**
- * @param {string} msg
- * @param {Object} [extraInfo]
+ * @param {string} msg The debug message
+ * @param {Object} [extraInfo] Any additional information
  */
 GlobalWatchlistDebugger.prototype.info = function ( msg, extraInfo ) {
 	if ( this.sendToConsole ) {
@@ -40,7 +40,7 @@ GlobalWatchlistDebugger.prototype.info = function ( msg, extraInfo ) {
 };
 
 /**
- * @param {string} info
+ * @param {string} info The error information
  * @param {Object} error If an instanceof `Error`, it will be the error that is thrown, otherwise
  *                 a new Error object will be constructed here
  */

@@ -1,6 +1,6 @@
 /**
  * @class watchlistUtils
- * @singleton
+ * @hideconstructor
  */
 var watchlistUtils = {};
 
@@ -8,8 +8,8 @@ var watchlistUtils = {};
  * Convert an array of two or more objects for specific edits to the same page to one object
  * with the information grouped
  *
- * @param {Array} edits
- * @return {Object}
+ * @param {Array} edits Edits to merge
+ * @return {Object} Merged information
  */
 watchlistUtils.mergePageEdits = function ( edits ) {
 	var mergedEditInfo = {};
@@ -105,8 +105,8 @@ watchlistUtils.mergePageEdits = function ( edits ) {
  *      is appended after the link, using the `ntimes` core message. This is only the case when grouping
  *      results by page. See EnhancedChangesList::recentChangesBlockGroup
  *
- * @param {Object} editsByUser
- * @param {GlobalWatchlistLinker} linker
+ * @param {Object} editsByUser Edit information
+ * @param {GlobalWatchlistLinker} linker Linker to create the links
  * @return {string} the raw HTML to display
  */
 watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
@@ -141,8 +141,8 @@ watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
  * or log entries) and no need for showing a message for the edit count
  *
  * @param {string} userMessage either name or ip address
- * @param {boolean} isAnon
- * @param {GlobalWatchlistLinker} linker
+ * @param {boolean} isAnon Whether the link is for an anonymous user
+ * @param {GlobalWatchlistLinker} linker Linker to create the link
  * @return {string}
  */
 watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
@@ -165,10 +165,10 @@ watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
  * grouping results by page when called for
  *
  * @param {Object} editInfo
- * @param {string} site
- * @param {boolean} groupPage
- * @param {GlobalWatchlistLinker} linker
- * @return {Array}
+ * @param {string} site Which site this is for
+ * @param {boolean} groupPage Whether to group results by page
+ * @param {GlobalWatchlistLinker} linker Linker to use
+ * @return {Array} Converted edits
  */
 watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 	var finalEdits = [];
@@ -241,8 +241,8 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 };
 
 /**
- * @param {Array} entries
- * @return {Array}
+ * @param {Array} entries Entries in the format returned by the api
+ * @return {Array} Entries in a "normalized" format
  */
 watchlistUtils.normalizeEntries = function ( entries ) {
 	entries.forEach( function ( entry ) {
@@ -298,13 +298,13 @@ watchlistUtils.normalizeEntries = function ( entries ) {
  * Convert result from the API to format used by this extension
  *
  * This is the entry point for the JavaScript controlling Special:GlobalWatchlist and the
- * display of each site's changes
+ * display of each site's changes.
  *
- * @param {Array} entries
- * @param {string} site
- * @param {boolean} groupPage
- * @param {GlobalWatchlistLinker} linker
- * @return {Array}
+ * @param {Array} entries Entries to convert
+ * @param {string} site Which site this is foor
+ * @param {boolean} groupPage Whether to group results by page
+ * @param {GlobalWatchlistLinker} linker Linker for user pages, anonymous user contribution pages, and converting edit summaries
+ * @return {Array} summary of changes
  */
 watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 	var convertedEdits = [],

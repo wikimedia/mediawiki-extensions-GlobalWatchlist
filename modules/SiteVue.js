@@ -1,82 +1,78 @@
 /*
  * Extended version of SiteBase.js for use in Vue version of Special:GlobalWatchlist
  */
-( function () {
-	'use strict';
 
-	var GlobalWatchlistSiteBase = require( './SiteBase.js' );
+var GlobalWatchlistSiteBase = require( './SiteBase.js' );
 
-	/**
-	 * Represents a specific site, excluding the display (used in Vue display)
-	 *
-	 * @class GlobalWatchlistSiteVue
-	 * @extends GlobalWatchlistSiteBase
-	 *
-	 * @constructor
-	 * @param {GlobalWatchlistDebugger} globalWatchlistDebug
-	 * @param {GlobalWatchlistLinker} linker
-	 * @param {Object} config
-	 * @param {Object} api
-	 * @param {Object} watchlistUtils
-	 * @param {string} urlFragment
-	 */
-	function GlobalWatchlistSiteVue( globalWatchlistDebug, linker, config, api, watchlistUtils, urlFragment ) {
-		GlobalWatchlistSiteVue.super.call(
-			this,
-			globalWatchlistDebug,
-			linker,
-			config,
-			api,
-			watchlistUtils,
-			urlFragment
-		);
+/**
+ * Represents a specific site, excluding the display (used in Vue display)
+ *
+ * @class GlobalWatchlistSiteVue
+ * @extends GlobalWatchlistSiteBase
+ *
+ * @constructor
+ * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
+ * @param {GlobalWatchlistLinker} linker Linker instance to use
+ * @param {Object} config User configuration
+ * @param {Object} api Instance of mw.ForeignApi to use
+ * @param {Object} watchlistUtils Reference to {@link watchlistUtils}
+ * @param {string} urlFragment string for which site this represents
+ */
+function GlobalWatchlistSiteVue( globalWatchlistDebug, linker, config, api, watchlistUtils, urlFragment ) {
+	GlobalWatchlistSiteVue.super.call(
+		this,
+		globalWatchlistDebug,
+		linker,
+		config,
+		api,
+		watchlistUtils,
+		urlFragment
+	);
 
-		// Entries to be used for EntryRow.vue
-		this.entries = [];
-	}
+	// Entries to be used for EntryRow.vue
+	this.entries = [];
+}
 
-	OO.inheritClass( GlobalWatchlistSiteVue, GlobalWatchlistSiteBase );
+OO.inheritClass( GlobalWatchlistSiteVue, GlobalWatchlistSiteBase );
 
-	/**
-	 * Update this.entries for the latest entries to show
-	 *
-	 * @param {Array} summary
-	 */
-	GlobalWatchlistSiteVue.prototype.renderWatchlist = function ( summary ) {
-		this.entries = summary;
-		this.entries.forEach( function ( entry ) {
-			entry.pageWatched = true;
-		} );
-	};
+/**
+ * Update this.entries for the latest entries to show
+ *
+ * @param {Array} summary What should be rendered
+ */
+GlobalWatchlistSiteVue.prototype.renderWatchlist = function ( summary ) {
+	this.entries = summary;
+	this.entries.forEach( function ( entry ) {
+		entry.pageWatched = true;
+	} );
+};
 
-	/**
-	 * Update display after marking a site as seen
-	 */
-	GlobalWatchlistSiteVue.prototype.afterMarkAsSeen = function () {
-		this.debug( 'afterMarkAsSeen - Finished for: ' + this.site );
-		this.entries = [];
-	};
+/**
+ * Update display after marking a site as seen
+ */
+GlobalWatchlistSiteVue.prototype.afterMarkAsSeen = function () {
+	this.debug( 'afterMarkAsSeen - Finished for: ' + this.site );
+	this.entries = [];
+};
 
-	/**
-	 * Update entry.pageWatched specific title
-	 *
-	 * @param {string} pageTitle
-	 * @param {boolean} unwatched
-	 */
-	GlobalWatchlistSiteVue.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
-		this.debug(
-			'Processing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
-		);
+/**
+ * Update entry.pageWatched specific title
+ *
+ * @param {string} pageTitle Title of the page that was unwatched/rewatched.
+ * @param {boolean} unwatched Whether the page was unwatched
+ */
+GlobalWatchlistSiteVue.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
+	this.debug(
+		'Processing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
+	);
 
-		var pageWatched = !unwatched;
+	var pageWatched = !unwatched;
 
-		this.entries.forEach( function ( entry ) {
-			if ( entry.title === pageTitle ) {
-				entry.pageWatched = pageWatched;
-			}
-		} );
-	};
+	this.entries.forEach( function ( entry ) {
+		if ( entry.title === pageTitle ) {
+			entry.pageWatched = pageWatched;
+		}
+	} );
+};
 
-	module.exports = GlobalWatchlistSiteVue;
-
-}() );
+module.exports = GlobalWatchlistSiteVue;

@@ -4,7 +4,7 @@
  * @class GlobalWatchlistLinker
  * @constructor
  *
- * @param {string} site
+ * @param {string} site The url for the foreign wiki
  */
 function GlobalWatchlistLinker( site ) {
 	this.site = site;
@@ -16,10 +16,10 @@ function GlobalWatchlistLinker( site ) {
 
 /**
  * Watchlist api returns parsed comments, but the links in those comments reflect the site environment,
- * and can be local. Ensure that they work as foreign links by adding the site
+ * and can be local. Ensure that they work as foreign links by adding the site.
  *
- * @param {string} comment
- * @return {string}
+ * @param {string} comment The original comment with local links
+ * @return {string} Updated comment with foreign links
  */
 GlobalWatchlistLinker.prototype.fixLocalLinks = function ( comment ) {
 	// Only recognizes links in the edit summary if that wiki's settings are set to
@@ -33,18 +33,18 @@ GlobalWatchlistLinker.prototype.fixLocalLinks = function ( comment ) {
 /**
  * Construct a link to a page with no extra query parameters (eg /wiki/$1)
  *
- * @param {string} page
- * @return {string}
+ * @param {string} page The title of the page to link to
+ * @return {string} Url for the link
  */
 GlobalWatchlistLinker.prototype.linkPage = function ( page ) {
 	return '//' + this.site + this.wgArticlePath.replace( '$1', page );
 };
 
 /**
- * Construct a link to index.php with extra query parameters (eg /index.php?title=Foo&action=history
+ * Construct a link to index.php with extra query parameters (eg /index.php?title=Foo&action=history)
  *
- * @param {string} query
- * @return {string}
+ * @param {string} query Query parameters to append to the base link
+ * @return {string} Url for the link
  */
 GlobalWatchlistLinker.prototype.linkQuery = function ( query ) {
 	return '//' + this.site + this.wgScript + '?' + query;

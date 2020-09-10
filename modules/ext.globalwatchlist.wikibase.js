@@ -6,7 +6,7 @@
  * @class GlobalWatchlistWikibaseHandler
  * @constructor
  *
- * @param {GlobalWatchlistDebugger} globalWatchlistDebug
+ * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
  * @param {Object} api instance of mw.ForeignApi to use (no custom debugging link in site.js)
  * @param {string} userLang language to fetch labels in
  */
@@ -24,8 +24,8 @@ function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang ) {
 /**
  * Shortcut for sending information to the debug logger
  *
- * @param {string} msg
- * @param {string} [extraInfo]
+ * @param {string} msg Message for debug entry
+ * @param {string} [extraInfo] Extra information for the debug entry
  */
 GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
 	this.debugLogger.info( 'wikibase:' + msg, extraInfo );
@@ -43,6 +43,7 @@ GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
  * wbgetentities query[1] performed on wikidata for Q5, P10, and L2, with the exception
  * that the `forms` and `senses` for L2 are not included.
  *
+ * ```json
  *    {
  *        "Q5": {
  *            "type": "item",
@@ -80,15 +81,16 @@ GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
  *            "senses": [ ... ]
  *        }
  *    }
+ * ```
  *
  *
  * [1] See:
  * https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q5|P10|L2&languages=en&props=labels&formatversion=2
  *
- * @see cleanupRawLabels for converting to a more usable form
+ * @see {@link GlobalWatchlistWikibaseHandler#cleanupRawLabels #cleanupRawLabels} for converting to a more usable form
  *
- * @param {Array} entityIds
- * @return {jQuery.Promise}
+ * @param {Array} entityIds The ids to get labels for
+ * @return {jQuery.Promise} Promise of api result
  */
 GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 	var that = this;
@@ -124,16 +126,18 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 /**
  * Convert the messy object returned from getRawLabels to something clearer
  *
- * Resulting object has the following form (see documentation in getRawLabels for the original)
+ * Resulting object has the following form (see documentation in {@link GlobalWatchlistWikibaseHandler#getRawLabels #getRawLabels} for the original)
  *
+ *```json
  *    {
  *        "Q5": "human",
  *        "P10": "video",
  *        "L2": "first"
  *    }
+ *```
  *
- * @param {Object} rawLabels
- * @return {Object}
+ * @param {Object} rawLabels Labels in the format returns from the api
+ * @return {Object} Labels in a more usable format
  */
 GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels ) {
 	this.debug( 'cleanupRawLabels - starting (raw)', rawLabels );
@@ -171,7 +175,7 @@ GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels
  * Set entities' titleMsg (title without the `Property:` or `Lexeme:` prefix) and
  * get a list of the ids to fetch in the form of Q1/P2/L3
  *
- * @param {Array} entries
+ * @param {Array} entries Original summary entries
  * @return {Object} updated entries and ids
  */
 GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
@@ -205,8 +209,8 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
  *
  * Promise resolves to the summary entries with updated info
  *
- * @param {Array} summaryEntries
- * @return {jQuery.Promise}
+ * @param {Array} summaryEntries Original summary, with page titles (Q1, P2, L3, etc.)
+ * @return {jQuery.Promise} Promise of updated summary, with labels
  */
 GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryEntries ) {
 	var that = this;

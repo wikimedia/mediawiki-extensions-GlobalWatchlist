@@ -2,7 +2,7 @@
 	"private": true,
 	"scripts": {
 		"test": "grunt test",
-		"doc": "jsduck"
+		"doc": "jsdoc -c jsdoc.json"
 	},
 	"devDependencies": {
 		"eslint-config-wikimedia": "0.17.0",
@@ -10,6 +10,8 @@
 		"grunt-banana-checker": "0.9.0",
 		"grunt-eslint": "23.0.0",
 		"grunt-stylelint": "0.15.0",
+		"jsdoc": "3.6.5",
+		"jsdoc-wmf-theme": "0.0.3",
 		"stylelint-config-wikimedia": "0.10.1"
 	},
 	"eslintIgnore": [

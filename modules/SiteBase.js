@@ -4,14 +4,14 @@
  *
  * @class GlobalWatchlistSiteBase
  *
- * @param {GlobalWatchlistDebugger} globalWatchlistDebug
- * @param {GlobalWatchlistLinker} linker
- * @param {Object} config
- * @param {Object} api
- * @param {Object} watchlistUtils
- * @param {string} urlFragment
+ * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
+ * @param {GlobalWatchlistLinker} linker Linker instance to use
+ * @param {Object} config User configuration
+ * @param {Object} api Instance of mw.ForeignApi to use
+ * @param {Object} watchlistUtils Reference to {@link watchlistUtils}
+ * @param {string} urlFragment string for which site this represents
  */
-function GlobalWatchlistSite( globalWatchlistDebug, linker, config, api, watchlistUtils, urlFragment ) {
+function GlobalWatchlistSiteBase( globalWatchlistDebug, linker, config, api, watchlistUtils, urlFragment ) {
 	// Logger to send debug info to
 	this.debugLogger = globalWatchlistDebug;
 
@@ -59,33 +59,32 @@ function GlobalWatchlistSite( globalWatchlistDebug, linker, config, api, watchli
 /**
  * Shortcut for sending information to the debug logger
  *
- * @param {string} key
- * @param {string} msg
- * @param {number} level
+ * @param {string} msg Message for debug entry
+ * @param {string} [extraInfo] Extra information for debug entry
  */
-GlobalWatchlistSite.prototype.debug = function ( key, msg, level ) {
-	this.debugLogger.info( this.site + ':' + key, msg, level );
+GlobalWatchlistSiteBase.prototype.debug = function ( msg, extraInfo ) {
+	this.debugLogger.info( this.site + ':' + msg, extraInfo );
 };
 
 /**
  * Shortcut for sending errors to the debug logger
  *
- * @param {string} key
- * @param {string} msg
+ * @param {string} msg Message for error entry
+ * @param {string} [extraInfo] Extra information for error entry
  */
-GlobalWatchlistSite.prototype.error = function ( key, msg ) {
-	this.debugLogger.error( this.site + ':' + key, msg );
+GlobalWatchlistSiteBase.prototype.error = function ( msg, extraInfo ) {
+	this.debugLogger.error( this.site + ':' + msg, extraInfo );
 };
 
 /**
  * API handler for debugging and avoiding actual important actions when testing client-side
  *
  * @param {string} func Function name
- * @param {Object} content for api
- * @param {string} name for logging
- * @return {jQuery.Promise}
+ * @param {Object} content Content to send to the api
+ * @param {string} name Name, for logging purposes
+ * @return {jQuery.Promise} Result of the api call
  */
-GlobalWatchlistSite.prototype.api = function ( func, content, name ) {
+GlobalWatchlistSiteBase.prototype.api = function ( func, content, name ) {
 	var that = this;
 
 	return new Promise( function ( resolve, reject ) {
@@ -115,10 +114,10 @@ GlobalWatchlistSite.prototype.api = function ( func, content, name ) {
  * using the `continue` functionality.
  *
  * @param {number} iteration iteration count
- * @param {string} continueFrom
- * @return {jQuery.Promise}
+ * @param {string} continueFrom value of wlcontinue in the previous call
+ * @return {jQuery.Promise} Promise of api result
  */
-GlobalWatchlistSite.prototype.actuallyGetWatchlist = function ( iteration, continueFrom ) {
+GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, continueFrom ) {
 	var that = this;
 
 	return new Promise( function ( resolve ) {
@@ -165,16 +164,18 @@ GlobalWatchlistSite.prototype.actuallyGetWatchlist = function ( iteration, conti
  * Update the strikethrough and text for entries being watched/unwatched
  *
  * Calls the API to actually unwatch/rewatch a page
+ *
  * Calls `processUpdateWatched` to update the display (either add or remove the strikethrough,
  *   and update the text shown)
+ *
  * If fast mode is not enabled, calls `getAssociatedTalkPage` to determine the talk/subject page
  *   associated with the one that was unwatched/rewatched, and then uses `processUpdateWatched`
  *   to update the display of any entries for the associated page
  *
- * @param {string} pageTitle
+ * @param {string} pageTitle Title of the page to watch or unwatch
  * @param {string} func Either 'watch' or 'unwatch'
  */
-GlobalWatchlistSite.prototype.changeWatched = function ( pageTitle, func ) {
+GlobalWatchlistSiteBase.prototype.changeWatched = function ( pageTitle, func ) {
 	this.debug( 'changeWatched - Going to ' + func + ': ' + pageTitle );
 	var that = this;
 	this.api( func, pageTitle, 'updateWatched' );
@@ -193,10 +194,10 @@ GlobalWatchlistSite.prototype.changeWatched = function ( pageTitle, func ) {
  *
  * Note: this should be a part of the core info api, see T257014
  *
- * @param {string} pageTitle
- * @return {jQuery.Promise}
+ * @param {string} pageTitle Title of the page for which to retrieve the associated page
+ * @return {jQuery.Promise} Promise of api result
  */
-GlobalWatchlistSite.prototype.getAssociatedPageTitle = function ( pageTitle ) {
+GlobalWatchlistSiteBase.prototype.getAssociatedPageTitle = function ( pageTitle ) {
 	var that = this;
 	return new Promise( function ( resolve ) {
 		var getter = {
@@ -220,7 +221,7 @@ GlobalWatchlistSite.prototype.getAssociatedPageTitle = function ( pageTitle ) {
  *
  * @return {jQuery.Promise} a promise that the tags where retrieved, not the tags themselves
  */
-GlobalWatchlistSite.prototype.getTagList = function () {
+GlobalWatchlistSiteBase.prototype.getTagList = function () {
 	var that = this;
 	return new Promise( function ( resolve ) {
 		if ( that.config.fastMode || Object.keys( that.tags ).length > 0 ) {
@@ -251,9 +252,9 @@ GlobalWatchlistSite.prototype.getTagList = function () {
  * Get the rendered changes for a user's watchlist
  *
  * @param {Object} latestConfig config, can change
- * @return {jQuery.Promise}
+ * @return {jQuery.Promise} Promise that the watchlist was retrieved
  */
-GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
+GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 	this.config = latestConfig;
 	var that = this;
 	return new Promise( function ( resolve ) {
@@ -301,21 +302,21 @@ GlobalWatchlistSite.prototype.getWatchlist = function ( latestConfig ) {
 /**
  * Display the watchlist
  *
- * Overriden in SiteDisplay.js and SiteVue.js
+ * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}
  *
- * @param {Array} summary
+ * @param {Array} summary What should be rendered
  */
-GlobalWatchlistSite.prototype.renderWatchlist = function ( summary ) {
+GlobalWatchlistSiteBase.prototype.renderWatchlist = function ( summary ) {
 	// STUB
 };
 
 /**
  * Fetch and process wikibase labels when the watchlist is for wikidata
  *
- * @param {Array} summary
- * @return {jQuery.Promise}
+ * @param {Array} summary Original summary, with page titles (Q1, P2, L3, etc.)
+ * @return {jQuery.Promise} Updated summary, with labels
  */
-GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
+GlobalWatchlistSiteBase.prototype.makeWikidataList = function ( summary ) {
 	var that = this;
 	return new Promise( function ( resolve ) {
 		if ( that.site !== that.config.wikibaseSite || that.config.fastMode ) {
@@ -331,7 +332,7 @@ GlobalWatchlistSite.prototype.makeWikidataList = function ( summary ) {
 /**
  * Mark a site as seen
  */
-GlobalWatchlistSite.prototype.markAsSeen = function () {
+GlobalWatchlistSiteBase.prototype.markAsSeen = function () {
 	this.debug( 'markSiteAsSeen - marking' );
 	var that = this;
 
@@ -354,29 +355,29 @@ GlobalWatchlistSite.prototype.markAsSeen = function () {
 /**
  * Update display after making a site as seen
  *
- * Overriden in SiteDisplay.js and SiteVue.js
+ * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}
  */
-GlobalWatchlistSite.prototype.afterMarkAsSeen = function () {
+GlobalWatchlistSiteBase.prototype.afterMarkAsSeen = function () {
 	// STUB
 };
 
 /**
  * Update entry click handlers, text, and strikethrough for a specific title
  *
- * Overriden in SiteDisplay.js and SiteVue.js
+ * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}
  *
- * @param {string} pageTitle
- * @param {boolean} unwatched
+ * @param {string} pageTitle Title of the page that was unwatched/rewatched.
+ * @param {boolean} unwatched Whether the page was unwatched
  */
-GlobalWatchlistSite.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
+GlobalWatchlistSiteBase.prototype.processUpdateWatched = function ( pageTitle, unwatched ) {
 	// STUB
 };
 
 /**
- * Used by SiteDisplay to still include an output for api failures
+ * Used by {@link GlobalWatchlistSiteDisplay} to still include an output for api failures
  */
-GlobalWatchlistSite.prototype.renderApiFailure = function () {
+GlobalWatchlistSiteBase.prototype.renderApiFailure = function () {
 	// STUB
 };
 
-module.exports = GlobalWatchlistSite;
+module.exports = GlobalWatchlistSiteBase;
