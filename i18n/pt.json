@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"globalwatchlist": "Lista global de páginas vigiadas",
+	"globalwatchlist-desc": "Adiciona uma lista global de páginas vigiadas",
+	"globalwatchlist-summary": "Página especial para ver uma lista global de páginas vigiadas",
+	"globalwatchlistsettings": "Definições da lista global de páginas vigiadas",
+	"globalwatchlistsettings-summary": "Página especial para gerir uma lista global de páginas vigiadas",
+	"globalwatchlist-gotoglobal": "Lista global de páginas vigiadas",
+	"globalwatchlist-gotoglobal-tooltip": "Ver lista global de páginas vigiadas",
+	"globalwatchlist-must-login": "Inicie uma sessão, por favor, para usar as páginas especiais da lista global de páginas vigiadas",
+	"globalwatchlist-javascript-required": "Esta página especial requer JavaScript para funcionar",
+	"globalwatchlist-prefs-settings": "Para definir as preferências da lista global de páginas vigiadas visite [[Special:GlobalWatchlistSettings|Definições da lista global de páginas vigiadas]], por favor.",
+	"prefs-globalwatchlist": "Lista global de páginas vigiadas"
+}
