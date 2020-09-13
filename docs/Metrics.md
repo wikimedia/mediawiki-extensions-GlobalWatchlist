@@ -1,4 +1,4 @@
-# Metrics collects
+# Metrics collection
 
 The GlobalWatchlist extension currently tracks four metrics using the `StatsdDataFactory` service:
 
