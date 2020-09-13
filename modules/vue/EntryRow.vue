@@ -74,7 +74,7 @@
 </template>
 
 <script>
-var GlobalWatchlistLinker = require( './../ext.globalwatchlist.linker.js' );
+var GlobalWatchlistLinker = require( './../Linker.js' );
 
 /**
  * Replacement for makePageLink

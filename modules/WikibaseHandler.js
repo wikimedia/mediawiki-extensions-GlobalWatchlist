@@ -7,7 +7,7 @@
  * @constructor
  *
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
- * @param {Object} api instance of mw.ForeignApi to use (no custom debugging link in site.js)
+ * @param {Object} api instance of mw.ForeignApi to use (no custom debugging like in site.js)
  * @param {string} userLang language to fetch labels in
  */
 function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang ) {

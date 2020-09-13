@@ -1,5 +1,5 @@
 <template>
-	<div class="mw-globalwatchlist-vue-site">
+	<div class="ext-globalwatchlist-vue-site">
 		<h3>
 			<a
 				v-bind:href="specialWatchlistUrl"
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-var GlobalWatchlistLinker = require( './../ext.globalwatchlist.linker.js' );
+var GlobalWatchlistLinker = require( './../Linker.js' );
 
 var Button = require( './base/Button.vue' ),
 	CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' ),

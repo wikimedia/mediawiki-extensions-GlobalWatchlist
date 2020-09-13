@@ -1,6 +1,6 @@
 <template>
 	<div
-		id="mw-globalwatchlist-vue-toolbar"
+		id="ext-globalwatchlist-vue-toolbar"
 	>
 		<global-watchlist-toggle
 			v-bind:text="$i18n( 'globalwatchlist-option-live' )"

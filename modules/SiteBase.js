@@ -47,7 +47,7 @@ function GlobalWatchlistSiteBase( globalWatchlistDebug, linker, config, api, wat
 	// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
 	// Don't create it if it will never be needed
 	if ( this.site === config.wikibaseSite ) {
-		var GlobalWatchlistWikibaseHandler = require( './ext.globalwatchlist.wikibase.js' );
+		var GlobalWatchlistWikibaseHandler = require( './WikibaseHandler.js' );
 		this.wikibaseHandler = new GlobalWatchlistWikibaseHandler(
 			globalWatchlistDebug,
 			api,

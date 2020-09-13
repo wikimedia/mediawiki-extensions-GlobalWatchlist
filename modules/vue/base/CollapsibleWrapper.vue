@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="mw-globalwatchlist-vue-collapsible"
+		class="ext-globalwatchlist-vue-collapsible"
 	>
 		<global-watchlist-button
 			align="right"

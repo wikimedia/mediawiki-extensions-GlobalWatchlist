@@ -10,6 +10,16 @@
 	font-size: 130%;
 }
 
+.ext-globalwatchlist-content hr {
+	height: 2px;
+	clear: both;
+}
+
+.oo-ui-labelWidget {
+	display: block;
+	padding-bottom: 5px;
+}
+
 #ext-globalwatchlist-watchlistsloading {
 	margin: auto;
 	margin-top: 5px;

@@ -1,5 +1,5 @@
 ( function () {
-	var getSettings = require( '../../../modules/ext.globalwatchlist.getSettings.js' );
+	var getSettings = require( '../../../modules/getSettings.js' );
 
 	function FakeDebugger() {
 		this.infoCalled = false;

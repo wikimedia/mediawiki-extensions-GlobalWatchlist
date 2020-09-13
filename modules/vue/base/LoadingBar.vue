@@ -1,6 +1,6 @@
 <template>
 	<center
-		id="mw-globalwatchlist-vue-loading-bar"
+		id="ext-globalwatchlist-vue-loading-bar"
 	>
 		<big>LOADING</big>
 	</center>

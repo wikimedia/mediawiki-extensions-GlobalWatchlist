@@ -5,8 +5,8 @@
 ( function () {
 	'use strict';
 
-	var GlobalWatchlistDebugger = require( './ext.globalwatchlist.debug.js' ),
-		getSettings = require( './ext.globalwatchlist.getSettings.js' ),
+	var GlobalWatchlistDebugger = require( './Debug.js' ),
+		getSettings = require( './getSettings.js' ),
 		config = {},
 		MultiSiteWrapper = require( './MultiSiteWrapper.js' ),
 		WatchedSite = require( './SiteDisplay.js' ),

@@ -89,19 +89,18 @@
 	"ResourceModules": {
 		"ext.globalwatchlist.specialglobalwatchlist": {
 			"packageFiles": [
-				"ext.globalwatchlist.specialglobalwatchlist.js",
-				"ext.globalwatchlist.debug.js",
-				"ext.globalwatchlist.getSettings.js",
-				"ext.globalwatchlist.linker.js",
-				"ext.globalwatchlist.watchlistUtils.js",
-				"ext.globalwatchlist.wikibase.js",
+				"SpecialGlobalWatchlist.display.js",
+				"getSettings.js",
+				"Debug.js",
+				"Linker.js",
 				"MultiSiteWrapper.js",
 				"SiteBase.js",
-				"SiteDisplay.js"
+				"SiteDisplay.js",
+				"watchlistUtils.js",
+				"WikibaseHandler.js"
 			],
 			"styles": [
-				"ext.globalwatchlist.common.css",
-				"ext.globalwatchlist.specialglobalwatchlist.css"
+				"SpecialGlobalWatchlist.display.css"
 			],
 			"templates": [
 				"templates/allEmptySites.mustache",
@@ -151,15 +150,15 @@
 		},
 		"ext.globalwatchlist.specialglobalwatchlist.vue": {
 			"packageFiles": [
-				"ext.globalwatchlist.specialglobalwatchlist.vue.js",
-				"ext.globalwatchlist.debug.js",
-				"ext.globalwatchlist.getSettings.js",
-				"ext.globalwatchlist.linker.js",
-				"ext.globalwatchlist.watchlistUtils.js",
-				"ext.globalwatchlist.wikibase.js",
+				"SpecialGlobalWatchlist.vue.js",
+				"getSettings.js",
+				"Debug.js",
+				"Linker.js",
 				"MultiSiteWrapper.js",
 				"SiteBase.js",
 				"SiteVue.js",
+				"watchlistUtils.js",
+				"WikibaseHandler.js",
 				"vue/base/Label.vue",
 				"vue/base/Button.vue",
 				"vue/base/Toggle.vue",
@@ -209,8 +208,7 @@
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
 			"styles": [
-				"ext.globalwatchlist.common.css",
-				"specialglobalwatchlistsettings.css"
+				"SpecialGlobalWatchlistSettings.css"
 			],
 			"dependencies": [
 				"mediawiki.htmlform.ooui"
@@ -218,7 +216,7 @@
 		},
 		"ext.globalwatchlist.getsettingserror": {
 			"packageFiles": [
-				"getsettings.error.js"
+				"getSettings.error.js"
 			],
 			"messages": [
 				"globalwatchlist-getoptions-error"
@@ -233,14 +231,14 @@
 		"remoteExtPath": "GlobalWatchlist",
 		"packageFiles": [
 			"tests/qunit/tests.js",
-			"tests/qunit/ext.globalwatchlist.debug.tests.js",
-			"tests/qunit/ext.globalwatchlist.linker.tests.js",
-			"tests/qunit/ext.globalwatchlist.getSettings.tests.js",
-			"tests/qunit/ext.globalwatchlist.watchlistUtils.tests.js",
-			"modules/ext.globalwatchlist.debug.js",
-			"modules/ext.globalwatchlist.linker.js",
-			"modules/ext.globalwatchlist.getSettings.js",
-			"modules/ext.globalwatchlist.watchlistUtils.js"
+			"tests/qunit/Debug.tests.js",
+			"tests/qunit/Linker.tests.js",
+			"tests/qunit/getSettings.tests.js",
+			"tests/qunit/watchlistUtils.tests.js",
+			"modules/Debug.js",
+			"modules/Linker.js",
+			"modules/getSettings.js",
+			"modules/watchlistUtils.js"
 		]
 	},
 	"manifest_version": 2

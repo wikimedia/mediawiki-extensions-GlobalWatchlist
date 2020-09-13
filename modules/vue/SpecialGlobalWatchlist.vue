@@ -1,5 +1,5 @@
 <template>
-	<div id="mw-globalwatchlist-vue-specialpage">
+	<div id="ext-globalwatchlist-vue-specialpage">
 		<global-watchlist-toolbar
 			v-bind:liveupdatesdisabled="disableLiveUpdates"
 			v-bind:grouppagedisabled="disableGroupPage"
@@ -16,14 +16,14 @@
 
 		<div
 			v-if="inLoading"
-			class="mw-globalwatchlist-vue-loading"
+			class="ext-globalwatchlist-vue-loading"
 		>
 			<global-watchlist-loading-bar></global-watchlist-loading-bar>
 		</div>
 
 		<div
 			v-else
-			class="mw-globalwatchlist-sitelist"
+			class="ext-globalwatchlist-sitelist"
 		>
 			<global-watchlist-label
 				v-bind:text="asOfLabelText"
@@ -61,8 +61,8 @@ var Toolbar = require( './Toolbar.vue' ),
 	SitesWithoutChanges = require( './SitesWithoutChanges.vue' ),
 	Site = require( './Site.vue' );
 
-var GlobalWatchlistDebugger = require( './../ext.globalwatchlist.debug.js' ),
-	getSettings = require( './../ext.globalwatchlist.getSettings.js' ),
+var GlobalWatchlistDebugger = require( './../Debug.js' ),
+	getSettings = require( './../getSettings.js' ),
 	WatchedSite = require( './../SiteVue.js' ),
 	MultiSiteWrapper = require( './../MultiSiteWrapper.js' );
 
@@ -254,5 +254,10 @@ module.exports = {
 .ext-globalwatchlist-strike,
 .ext-globalwatchlist-strike a {
 	text-decoration: line-through;
+}
+
+.ext-globalwatchlist-content hr {
+	height: 2px;
+	clear: both;
 }
 </style>

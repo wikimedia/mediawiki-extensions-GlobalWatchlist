@@ -1,5 +1,5 @@
 ( function () {
-	var watchlistUtils = require( '../../../modules/ext.globalwatchlist.watchlistUtils.js' );
+	var watchlistUtils = require( '../../../modules/watchlistUtils.js' );
 
 	QUnit.module( 'ext.globalwatchlist.watchlistUtils', QUnit.newMwEnvironment() );
 

@@ -1,12 +1,12 @@
 <template>
-	<div id="mw-globalwatchlist-vue-sites-without-changes">
+	<div id="ext-globalwatchlist-vue-sites-without-changes">
 		<hr>
 		<!-- Maybe implement a label component at some point? -->
 		<p>{{ $i18n( 'globalwatchlist-emptyfeed' ) }}</p>
 		<global-watchlist-collapsible-wrapper
 			startcollapsed="true"
 		>
-			<ul id="mw-globalwatchlist-vue-sites-without-changes-list">
+			<ul id="ext-globalwatchlist-vue-sites-without-changes-list">
 				<li
 					v-for="site in emptysiterows"
 					v-bind:key="site['site-name']"

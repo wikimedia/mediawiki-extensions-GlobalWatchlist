@@ -10,8 +10,8 @@
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Shared debugger instance
  */
 function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebug ) {
-	var GlobalWatchlistLinker = require( './ext.globalwatchlist.linker.js' );
-	var watchlistUtils = require( './ext.globalwatchlist.watchlistUtils.js' );
+	var GlobalWatchlistLinker = require( './Linker.js' );
+	var watchlistUtils = require( './watchlistUtils.js' );
 
 	// Set the Api-User-Agent header - T262177
 	var apiConfig = {
