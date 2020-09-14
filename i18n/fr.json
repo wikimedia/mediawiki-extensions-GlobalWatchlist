@@ -13,8 +13,10 @@
 	"globalwatchlistsettings-summary": "Page spéciale pour gérer la liste de suivi globale",
 	"globalwatchlist-gotoglobal": "Liste de suivi globale",
 	"globalwatchlist-gotoglobal-tooltip": "Afficher la liste de suivi globale",
+	"globalwatchlist-grouped-timestamp": "L’horodatage de la modification la plus récente est affiché pour les modifications groupées",
 	"globalwatchlist-must-login": "Veuillez vous connecter pour utiliser les pages spéciales GlobalWatchlist",
 	"globalwatchlist-javascript-required": "Cette page spéciale nécessite que JavaScript fonctionne",
 	"globalwatchlist-prefs-settings": "Pour définir les préférences pour la liste de suivi globale, veuillez visiter [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-tour-addsite": "Ajouter un site",
 	"prefs-globalwatchlist": "Liste de suivi globale"
 }
