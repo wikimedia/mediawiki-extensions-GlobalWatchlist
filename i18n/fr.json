@@ -18,5 +18,18 @@
 	"globalwatchlist-javascript-required": "Cette page spéciale nécessite que JavaScript fonctionne",
 	"globalwatchlist-prefs-settings": "Pour définir les préférences pour la liste de suivi globale, veuillez visiter [[Special:GlobalWatchlistSettings]].",
 	"globalwatchlist-tour-addsite": "Ajouter un site",
+	"globalwatchlist-tour-addsite-description": "Cliquer ci-dessus pour ajouter une autre ligne pour un site.",
+	"globalwatchlist-tour-fastmode": "Mode rapide",
+	"globalwatchlist-tour-fastmode-description": "Le mode rapide donne un rendu plus rapide, mais au prix de moins de détails. Les libellés Wikibase ne sont pas récupérés, et une simple liste de pages avec les modifications est affichée, sans détails sur les éditeurs ou les modifications elles-mêmes.",
+	"globalwatchlist-tour-filters": "Options de filtrage",
+	"globalwatchlist-tour-filters-description": "La liste de suivi globale n’a pas toutes les options de filtrage disponibles pour la liste de suivi normale. Les filtres disponibles concernent les modifications anonymes vs celles d’utilisateurs connectés, ainsi que les filtres pour les modifications marquées comme mineures ou de robot.",
+	"globalwatchlist-tour-help": "Plus de documentation",
+	"globalwatchlist-tour-help-description": "Davantage de documentation est disponible sur mediawiki.org",
+	"globalwatchlist-tour-intro": "Paramètres de GlobalWatchlist",
+	"globalwatchlist-tour-intro-description": "L’extension GlobalWatchlist ajoute une page spéciale, [[Special:GlobalWatchlist]], pour afficher des listes de suivi multiples en une seule fois. Cette page est utilisée pour définir les préférences utilisateur pour la liste de suivi globale.",
+	"globalwatchlist-tour-sitelist": "Liste de sites",
+	"globalwatchlist-tour-sitelist-description": "Ceci est la liste des sites qui seront inclus dans la liste de suivi globale. Utiliser l’URL de base pour le site, par ex. <code>en.wikipedia.org</code>.",
+	"globalwatchlist-tour-types": "Types de modification",
+	"globalwatchlist-tour-types-description": "Les utilisateurs peuvent contrôler quels types de modifications doivent être affichés.",
 	"prefs-globalwatchlist": "Liste de suivi globale"
 }

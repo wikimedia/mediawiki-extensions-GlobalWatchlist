@@ -12,8 +12,13 @@
 	"globalwatchlistsettings-summary": "Службена страница за раководење со глобално набљудуваните страници",
 	"globalwatchlist-gotoglobal": "Глобално набљудувани",
 	"globalwatchlist-gotoglobal-tooltip": "Преглед на глобалните набљудувања",
+	"globalwatchlist-grouped-timestamp": "Датумот и времето на последната промена се прикажува за групираните промени",
 	"globalwatchlist-must-login": "Најавете се за да ги користите службените страници за глобално набљудувани",
 	"globalwatchlist-javascript-required": "Оваа службена страница бара JavaScript за да работи",
 	"globalwatchlist-prefs-settings": "За да ги псотавите нагодувањата за глобалните набљудувања, појдете на [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-tour-addsite": "Додај мреж. место",
+	"globalwatchlist-tour-addsite-description": "Стиснете погоре за да додадете друг ред за мреж. место.",
+	"globalwatchlist-tour-fastmode": "Брз режим",
+	"globalwatchlist-tour-sitelist": "Список на мреж. места",
 	"prefs-globalwatchlist": "Глобално набљудувани"
 }

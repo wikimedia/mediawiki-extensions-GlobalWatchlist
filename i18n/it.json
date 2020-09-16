@@ -13,5 +13,11 @@
 	"globalwatchlist-gotoglobal-tooltip": "Vedi gli osservati speciali globali",
 	"globalwatchlist-must-login": "Accedi per utilizzare le pagine speciali sugli osservati speciali globali",
 	"globalwatchlist-javascript-required": "Questa pagina speciale richiede JavaScript per funzionare",
+	"globalwatchlist-tour-addsite": "Aggiungi un sito",
+	"globalwatchlist-tour-fastmode": "Modalità veloce",
+	"globalwatchlist-tour-help-description": "Ulteriore documentazione è disponibile su mediawiki.org",
+	"globalwatchlist-tour-intro": "Impostazioni osservati speciali globali",
+	"globalwatchlist-tour-sitelist": "Elenco di siti",
+	"globalwatchlist-tour-types": "Tipi di modifiche",
 	"prefs-globalwatchlist": "Osservati speciali globali"
 }

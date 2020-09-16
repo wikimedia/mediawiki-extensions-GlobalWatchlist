@@ -10,6 +10,7 @@
 	"globalwatchlist-changetypes": "Вид промена",
 	"globalwatchlist-editwatchlist": "Уреди набљудувани",
 	"globalwatchlist-emptyfeed": "Проекти без промени",
+	"globalwatchlist-fetch-site-failure": "Не успеав да ги добијам промените",
 	"globalwatchlist-filters": "Филтри",
 	"globalwatchlist-filter-anon": "Анонимни уредувања",
 	"globalwatchlist-filter-bot": "Ботовски уредувања",

@@ -14,5 +14,7 @@
 	"globalwatchlist-must-login": "Molimo Vas, prijavite se kako biste rabili posebne stranice globalnih praćenih stranica",
 	"globalwatchlist-javascript-required": "Posebne stranice globalnih praćenih stranica zahtijevaju JavaScript kako bi funkcionirale",
 	"globalwatchlist-prefs-settings": "Za odabir postavki globalnog popisa praćenih stranica, molimo Vas, posjetite [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-tour-help-description": "Više dokumentacije dostupno je na mediawiki.org",
+	"globalwatchlist-tour-intro": "Postavke globalnih praćenih stranica",
 	"prefs-globalwatchlist": "Globalne praćene stranice"
 }

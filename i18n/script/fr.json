@@ -12,6 +12,7 @@
 	"globalwatchlist-changetypes": "Type de modification",
 	"globalwatchlist-editwatchlist": "Modifier la liste de suivi",
 	"globalwatchlist-emptyfeed": "Sites sans modification",
+	"globalwatchlist-fetch-site-failure": "Échec dans la récupération des pages",
 	"globalwatchlist-filters": "Filtres",
 	"globalwatchlist-filter-anon": "Modifications anonymes",
 	"globalwatchlist-filter-bot": "Modifications de robot",

@@ -10,6 +10,7 @@
 	"globalwatchlist-changetypes": "Tipo de mudança",
 	"globalwatchlist-editwatchlist": "Editar lista de páginas vigiadas",
 	"globalwatchlist-emptyfeed": "Sites sem alterações",
+	"globalwatchlist-fetch-site-failure": "Falha ao buscar alterações",
 	"globalwatchlist-filters": "Filtros",
 	"globalwatchlist-filter-anon": "Edições anônimas",
 	"globalwatchlist-filter-bot": "Edições de robô",

@@ -8,6 +8,7 @@
 	"globalwatchlist-changetypes": "Typ der Änderung",
 	"globalwatchlist-editwatchlist": "Beobachtungsliste bearbeiten",
 	"globalwatchlist-emptyfeed": "Projekte ohne Änderungen",
+	"globalwatchlist-fetch-site-failure": "Änderungen nicht abgerufen",
 	"globalwatchlist-filters": "Filter",
 	"globalwatchlist-filter-anon": "Anonyme Bearbeitungen",
 	"globalwatchlist-filter-bot": "Botbearbeitungen",

@@ -10,6 +10,7 @@
 	"globalwatchlist-changetypes": "更改類型",
 	"globalwatchlist-editwatchlist": "編輯監視清單",
 	"globalwatchlist-emptyfeed": "沒有變動的網站",
+	"globalwatchlist-fetch-site-failure": "取得變動失敗",
 	"globalwatchlist-filters": "篩選",
 	"globalwatchlist-filter-anon": "匿名編輯",
 	"globalwatchlist-filter-bot": "機器人編輯",
