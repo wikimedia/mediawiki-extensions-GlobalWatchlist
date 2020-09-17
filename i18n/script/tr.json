@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"MuratTheTurkish"
 		]
 	},
 	"globalwatchlist-add": "Ekle",
@@ -10,6 +11,7 @@
 	"globalwatchlist-changetypes": "Değişiklik türü",
 	"globalwatchlist-editwatchlist": "İzleme listesini düzenle",
 	"globalwatchlist-emptyfeed": "Değişiklik yapmayan siteler",
+	"globalwatchlist-fetch-site-failure": "Değişiklikler alınamadı",
 	"globalwatchlist-filters": "Filtreler",
 	"globalwatchlist-filter-anon": "Anonim düzenlemeler",
 	"globalwatchlist-filter-bot": "Bot değişiklikleri",

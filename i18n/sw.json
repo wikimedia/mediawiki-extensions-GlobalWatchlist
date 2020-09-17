@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Edwingudfriend"
+		]
+	},
+	"globalwatchlist-grouped-timestamp": "Muhuri wa muda wa mabadiliko ya hivi karibuni umeonyeshwa kwa mabadiliko ya vikundi",
+	"globalwatchlist-tour-addsite": "Ongeza tovuti",
+	"globalwatchlist-tour-addsite-description": "Bonyeza hapo juu ili kuongeza safu nyingine ya tovuti.",
+	"globalwatchlist-tour-fastmode": "Hali ya haraka",
+	"globalwatchlist-tour-fastmode-description": "Hali ya haraka inasababisha utoaji wa haraka, lakini kwa gharama ya maelezo kidogo. Lebo za Wikibase hazichukuliwi, na orodha rahisi ya kurasa zilizo na mabadiliko zinaonyeshwa, bila maelezo juu ya wahariri au marekebisho yenyewe",
+	"globalwatchlist-tour-filters": "Chaguzi za chujio",
+	"globalwatchlist-tour-filters-description": "Orodha ya kutazama ya ulimwengu haina chaguo zote za vichungi zinazopatikana kwa orodha ya kawaida ya kutazama. Vichungi vinavyopatikana ni vya mabadiliko yasiyotambulika dhidi ya mabadiliko ya watumiaji, pamoja na vichungi vya mabadiliko yaliyowekwa alama kama mabadiliko madogo au mabadiliko ya bot.",
+	"globalwatchlist-tour-help": "Nyaraka zaidi",
+	"globalwatchlist-tour-help-description": "Nyaraka zaidi zinapatikana kwenye mediawiki.org",
+	"globalwatchlist-tour-intro": "Mipangilio ya GlobalWatchlist",
+	"globalwatchlist-tour-intro-description": "Kiendelezi cha GlobalWatchlist kinaongeza ukurasa maalum, [[Maalum: GlobalWatchlist]], kwa kutazama orodha nyingi za kutazama mara moja. Ukurasa huu unatumiwa kuweka mapendeleo ya mtumiaji kwa orodha ya kutazama ya ulimwengu.",
+	"globalwatchlist-tour-sitelist": "Orodha ya tovuti",
+	"globalwatchlist-tour-sitelist-description": "Hii ndio orodha ya tovuti ambazo zitajumuishwa kwenye orodha ya kutazama ya ulimwengu. Tumia URL ya msingi kwa wavuti, k.m. <code> en.wikipedia.org </code>.",
+	"globalwatchlist-tour-types": "Badilisha aina",
+	"globalwatchlist-tour-types-description": "Watumiaji wanaweza kudhibiti ni aina gani za mabadiliko zinapaswa kuonyeshwa."
+}
