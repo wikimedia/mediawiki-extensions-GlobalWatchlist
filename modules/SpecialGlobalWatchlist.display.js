@@ -239,6 +239,22 @@
 				viewElements.$sharedFeed
 			);
 
-		viewManager.renderFeed();
+		// Based on viewManager.renderFeed but with timing
+		var loadStartTime = mw.now();
+		viewElements.liveToggle.setDisabled( true );
+		viewElements.progressBar.$element.show();
+		viewElements.$sharedFeed.hide();
+		viewElements.$asOf.innerText = '';
+
+		viewManager.refresh().then( function () {
+			viewManager.showFeed();
+
+			var metricName = config.fastMode ?
+				'timing.MediaWiki.GlobalWatchlist.firstload.display.fastmode' :
+				'timing.MediaWiki.GlobalWatchlist.firstload.display.normal';
+			var loadEndTime = mw.now();
+			var loadElapsedTime = loadEndTime - loadStartTime;
+			mw.track( metricName, loadElapsedTime );
+		} );
 	} );
 }() );

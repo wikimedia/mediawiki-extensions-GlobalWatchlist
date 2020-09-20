@@ -244,7 +244,27 @@ module.exports = {
 
 	mounted: function () {
 		// Trigger initial refresh once mounted
-		this.refreshSites();
+		// Based on this.refreshSites() but with timing
+
+		var loadStartTime = mw.now();
+		this.inLoading = true;
+		this.sitesWithChangesList = [];
+		this.sitesWithoutChangesList = [];
+
+		var that = this;
+		this.backgroundRefresh().then( function ( results ) {
+			that.sitesWithChangesList = results.withChanges;
+			that.sitesWithoutChangesList = results.withoutChanges;
+		} ).then( function () {
+			that.inLoading = false;
+
+			var metricName = that.config.fastMode ?
+				'timing.MediaWiki.GlobalWatchlist.firstload.vue.fastmode' :
+				'timing.MediaWiki.GlobalWatchlist.firstload.vue.normal';
+			var loadEndTime = mw.now();
+			var loadElapsedTime = loadEndTime - loadStartTime;
+			mw.track( metricName, loadElapsedTime );
+		} );
 	}
 };
 </script>
