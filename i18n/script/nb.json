@@ -10,6 +10,7 @@
 	"globalwatchlist-changetypes": "Type endring",
 	"globalwatchlist-editwatchlist": "Rediger overvåkningsliste",
 	"globalwatchlist-emptyfeed": "Nettsteder uten endringer",
+	"globalwatchlist-fetch-site-failure": "Kunne ikke hente endringer",
 	"globalwatchlist-filters": "Filtre",
 	"globalwatchlist-filter-anon": "Anonyme redigeringer",
 	"globalwatchlist-filter-bot": "Botredigeringer",
