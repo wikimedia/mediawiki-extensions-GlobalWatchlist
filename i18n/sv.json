@@ -9,5 +9,8 @@
 	"globalwatchlist-gotoglobal-tooltip": "Visa global bevakningslista",
 	"globalwatchlist-javascript-required": "Denna specialsida kräver JavaScript för att fungera",
 	"globalwatchlist-prefs-settings": "För att ställa in den globala bevakningslistan, gå till [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-tour-help": "Mer dokumentation",
+	"globalwatchlist-tour-help-description": "Det finns mer dokumentation på mediawiki.org",
+	"globalwatchlist-tour-intro": "Inställningar för global bevakningslista",
 	"prefs-globalwatchlist": "Global bevakningslista"
 }
