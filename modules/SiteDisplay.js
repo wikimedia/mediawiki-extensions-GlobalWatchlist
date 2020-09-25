@@ -173,7 +173,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
  * Create the output for this.$feedDiv, either for success (via renderWatchlist) or
  * failure (via renderApiFailure)
  *
- * @param {object} $content Content to show
+ * @param {Object} $content Content to show
  */
 GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $content ) {
 	var headerTemplate = mw.template.get(

@@ -14,7 +14,7 @@
 		isSinglePage: true,
 
 		// Log events for the tour
-		shouldLog: true,
+		shouldLog: true
 	} );
 	mw.globalwatchlist.tour = tour;
 
