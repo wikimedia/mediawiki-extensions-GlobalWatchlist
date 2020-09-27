@@ -23,8 +23,7 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 	};
 
 	/**
-	 * @property {Array}
-	 * The individual sites
+	 * @property {Array} siteList The individual sites
 	 */
 	this.siteList = config.siteList.map( function ( site ) {
 		return new SiteClass(
