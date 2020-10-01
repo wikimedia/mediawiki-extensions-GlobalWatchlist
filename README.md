@@ -36,6 +36,13 @@ no existing settings saved and the GuidedTour extension is enabled.
 
 By default, the value is `false`.
 
+* `wgGlobalWatchlistSiteLimit`
+
+This is used to limit the number of different sites that a user can include in their global watchlist.
+If set to 0, no limit is imposed. Limits are imposed at the time of submitting the form at Special:GlobalWatchlistSettings.
+
+By default, the value is `5`.
+
 ## Use
 
 The extension provides two new [special pages](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Special_pages).

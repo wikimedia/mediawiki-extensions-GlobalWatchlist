@@ -15,6 +15,7 @@
 	"globalwatchlist-must-login": "Text shown to anonymous users trying to use [[Special:GlobalWatchlist]] and [[Special:GlobalWatchlistSettings]]",
 	"globalwatchlist-javascript-required": "Message shown at [[Special:GlobalWatchlist]] when Javascript is not enabled",
 	"globalwatchlist-prefs-settings": "Text shown to users in [[Special:Preferences]] indicating where to change global watchlist settings",
+	"globalwatchlist-settings-error-too-many-sites": "Error message for invalid settings.\n\nParamaters:\n* $1 - the number of sites the user chose\n* $2 - the maximum number of sites allowed",
 	"globalwatchlist-tour-addsite": "Title for GuidedTour step describing adding more sites to the list the user includes",
 	"globalwatchlist-tour-addsite-description": "Description text for GuidedTour step describing adding more sites to the list the user includes",
 	"globalwatchlist-tour-fastmode": "Title for GuidedTour step describing the fast mode option",

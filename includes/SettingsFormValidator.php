@@ -39,10 +39,22 @@ class SettingsFormValidator {
 	private $messageLocalizer;
 
 	/**
-	 * @param MessageLocalizer $messageLocalizer
+	 * Reference to $wgGlobalWatchlistSiteLimit, limiting the number of sites a user can include
+	 *
+	 * @var int
 	 */
-	public function __construct( MessageLocalizer $messageLocalizer ) {
+	private $maxSites;
+
+	/**
+	 * @param MessageLocalizer $messageLocalizer
+	 * @param int $maxSites
+	 */
+	public function __construct(
+		MessageLocalizer $messageLocalizer,
+		int $maxSites
+	) {
 		$this->messageLocalizer = $messageLocalizer;
+		$this->maxSites = $maxSites;
 	}
 
 	/**
@@ -90,7 +102,8 @@ class SettingsFormValidator {
 	/**
 	 * Validation callback called from HTMLFormField::validate.
 	 *
-	 * Ensure that at least one site is chosen
+	 * Ensure that at least one site is chosen, and that the maximum number of sites is not
+	 * exceeded.
 	 *
 	 * @see HTMLFormField::validate
 	 *
@@ -99,14 +112,30 @@ class SettingsFormValidator {
 	 * @return bool|string|Message True on success, or string/Message error to display, or
 	 *   false to fail validation without displaying an error.
 	 */
-	public function requireAtLeastOneSite( $value, $allData ) {
+	public function validateSitesChosen( $value, $allData ) {
+		$sitesChosen = 0;
 		foreach ( $value as $row ) {
 			if ( trim( $row['site'] ) !== '' ) {
-				return true;
+				$sitesChosen++;
 			}
 		}
 
-		return $this->messageLocalizer->msg( 'globalwatchlist-settings-error-no-sites' );
+		if ( $sitesChosen === 0 ) {
+			return $this->messageLocalizer->msg(
+				'globalwatchlist-settings-error-no-sites'
+			);
+		}
+
+		if ( $this->maxSites !== 0 ) {
+			// There is a limit, ensure it is not exceeded
+			if ( $sitesChosen > $this->maxSites ) {
+				return $this->messageLocalizer
+					->msg( 'globalwatchlist-settings-error-too-many-sites' )
+					->numParams( $sitesChosen, $this->maxSites );
+			}
+		}
+
+		return true;
 	}
 
 	/**

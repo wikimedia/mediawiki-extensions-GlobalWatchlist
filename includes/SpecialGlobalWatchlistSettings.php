@@ -151,7 +151,10 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			}
 		}
 
-		$formValidator = new SettingsFormValidator( $this->getContext() );
+		$formValidator = new SettingsFormValidator(
+			$this->getContext(),
+			$this->getConfig()->get( 'GlobalWatchlistSiteLimit' )
+		);
 		$formFields = $this->getActualFormFields( $formValidator, $userOptions );
 
 		return $formFields;
@@ -237,7 +240,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			'type' => 'cloner',
 			'fields' => $siteFields,
 			'section' => 'sitelist',
-			'validation-callback' => [ $formValidator, 'requireAtLeastOneSite' ],
+			'validation-callback' => [ $formValidator, 'validateSitesChosen' ],
 			'default' => $sitesDefault,
 			'create-button-message' => 'globalwatchlist-add',
 		];

@@ -32,7 +32,7 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 
 	public function testAnonBot() {
 		$messageLocalizer = $this->getMessageLocalizer( 'globalwatchlist-settings-error-anon-bot' );
-		$validator = new SettingsFormValidator( $messageLocalizer );
+		$validator = new SettingsFormValidator( $messageLocalizer, 0 );
 
 		$res = $validator->validateAnonBot(
 			SettingsManager::FILTER_REQUIRE,
@@ -46,7 +46,7 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 
 	public function testAnonMinor() {
 		$messageLocalizer = $this->getMessageLocalizer( 'globalwatchlist-settings-error-anon-minor' );
-		$validator = new SettingsFormValidator( $messageLocalizer );
+		$validator = new SettingsFormValidator( $messageLocalizer, 0 );
 
 		$res = $validator->validateAnonMinor(
 			SettingsManager::FILTER_REQUIRE,
@@ -60,16 +60,52 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 
 	public function testAtLeastOneSite() {
 		$messageLocalizer = $this->getMessageLocalizer( 'globalwatchlist-settings-error-no-sites' );
-		$validator = new SettingsFormValidator( $messageLocalizer );
+		$validator = new SettingsFormValidator( $messageLocalizer, 0 );
 
-		$res = $validator->requireAtLeastOneSite(
+		$res = $validator->validateSitesChosen(
 			[ [ 'site' => 'text' ] ],
 			[]
 		);
 		$this->assertTrue( $res );
 
-		$res = $validator->requireAtLeastOneSite(
+		$res = $validator->validateSitesChosen(
 			[ [ 'site' => '' ] ],
+			[]
+		);
+		$this->assertInstanceOf( Message::class, $res );
+	}
+
+	public function testTooManySites() {
+		// Trying with 2 sites, maximum allowed is 1
+
+		$message = $this->createMock( Message::class );
+		$message->expects( $this->once() )
+			->method( 'numParams' )
+			->with(
+				$this->equalTo( 2 ),
+				$this->equalTo( 1 )
+			)
+			->will( $this->returnSelf() );
+
+		$messageLocalizer = $this->createMock( MessageLocalizer::class );
+		$messageLocalizer->expects( $this->once() )
+			->method( 'msg' )
+			->with( $this->equalTo( 'globalwatchlist-settings-error-too-many-sites' ) )
+			->willReturn( $message );
+
+		$validator = new SettingsFormValidator( $messageLocalizer, 1 );
+
+		$res = $validator->validateSitesChosen(
+			[ [ 'site' => 'only one site, everything is okay' ] ],
+			[]
+		);
+		$this->assertTrue( $res );
+
+		$res = $validator->validateSitesChosen(
+			[
+				[ 'site' => 'first site, which would be okay' ],
+				[ 'site' => 'second site, which causes problems' ]
+			],
 			[]
 		);
 		$this->assertInstanceOf( Message::class, $res );
@@ -77,7 +113,7 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 
 	public function testShowingOneType() {
 		$messageLocalizer = $this->getMessageLocalizer( 'globalwatchlist-settings-error-no-types' );
-		$validator = new SettingsFormValidator( $messageLocalizer );
+		$validator = new SettingsFormValidator( $messageLocalizer, 0 );
 
 		$res = $validator->requireShowingOneType( [], [] );
 		$this->assertInstanceOf( Message::class, $res );

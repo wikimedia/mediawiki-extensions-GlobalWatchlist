@@ -87,6 +87,10 @@
 		"GlobalWatchlistEnableGuidedTour": {
 			"value": false,
 			"description": "Whether to enabled the GuidedTour for Special:GlobalWatchlistSettings"
+		},
+		"GlobalWatchlistSiteLimit": {
+			"value": 5,
+			"description": "The maximum number of sites that a user can save to their watchlist. Set to 0 to disable the limit"
 		}
 	},
 	"ResourceFileModulePaths": {

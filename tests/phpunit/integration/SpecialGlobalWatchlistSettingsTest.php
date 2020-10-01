@@ -256,7 +256,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$specialPage = $this->getSpecialPage();
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
-		$validator = new SettingsFormValidator( $testContext );
+		$validator = new SettingsFormValidator( $testContext, 0 );
 
 		$userOptions = [
 			'sites' => [ 'en.wikipedia.org' ],
