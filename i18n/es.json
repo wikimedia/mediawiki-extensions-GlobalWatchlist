@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fitoschido",
 			"Hasley"
 		]
 	},
@@ -14,5 +15,11 @@
 	"globalwatchlist-must-login": "Accede a tu cuenta para utilizar las páginas especiales de la lista de seguimiento global",
 	"globalwatchlist-javascript-required": "Esta página especial requiere JavaScript para funcionar",
 	"globalwatchlist-prefs-settings": "Para configurar las preferencias de la lista de seguimiento global, visita [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-tour-addsite": "Añadir un sitio",
+	"globalwatchlist-tour-fastmode": "Modo rápido",
+	"globalwatchlist-tour-help": "Más documentación",
+	"globalwatchlist-tour-help-description": "Hay más documentación disponible en mediawiki.org",
+	"globalwatchlist-tour-sitelist": "Lista de sitios",
+	"globalwatchlist-tour-types": "Cambiar tipos",
 	"prefs-globalwatchlist": "Lista de seguimiento global"
 }

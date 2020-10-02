@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Patsagorn Y."
+		]
+	},
+	"globalwatchlist": "รายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlist-desc": "เพิ่มรายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlist-summary": "หน้าพิเศษสำหรับดูรายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlistsettings": "การตั้งค่ารายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlistsettings-summary": "หน้าพิเศษสำหรับการตั้งค่ารายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlist-gotoglobal": "รายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlist-gotoglobal-tooltip": "ดูรายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlist-grouped-timestamp": "ตราเวลาของรุ่นล่าสุดจะแสดงในกรณีการดูเปลี่ยนแปลงแบบรวมเป็นกลุ่ม",
+	"globalwatchlist-must-login": "กรุณาเข้าสู่ระบบเพื่อใช้รายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlist-javascript-required": "หน้าพิเศษนี้จำเป็นต้องใช้จาวาสคริปต์เพื่อทำงาน",
+	"globalwatchlist-prefs-settings": "สำหรับการตั้งค่ารายการเฝ้าดูข้ามโครงการ กรุณาไปที่[[Special:GlobalWatchlistSettings]]",
+	"globalwatchlist-tour-addsite": "เพิ่มไซต์",
+	"globalwatchlist-tour-addsite-description": "กดที่ด้านบนเพื่อเพิ่มเว็บไซต์อื่นมายังรายการเฝ้าดู",
+	"globalwatchlist-tour-fastmode": "โหมดรวดเร็ว",
+	"globalwatchlist-tour-fastmode-description": "โหมดรวดเร็วจะทำให้แสดงผลเร็วขึ้น แต่ข้อมูลที่ได้จะมีรายละเอียดน้อยลง ลาเบลในวิกิเบสจะไม่ถูกเรียก และจะแสดงรายการแบบง่าย ๆ ของหน้าที่มีการเปลี่ยนแปลง โดยไม่แสดงข้อมูลของผู้แก้ไขและการแก้ไขของพวกเขา",
+	"globalwatchlist-tour-filters": "ตัวเลือกตัวกรอง",
+	"globalwatchlist-tour-filters-description": "รายการเฝ้าดูข้ามโครงการไม่ได้มีตัวกรองทุกตัวอย่างที่รายการเฝ้าดูปกติมี ตัวกรองที่มีอยู่ในปัจจุบันได้แก่การกรองผู้ใช้ว่าเป็นผูั้ใช้ที่เข้าสู่ระบบหรือไม่ เป็นการแก้ไขเล็กน้อยหรือไม่ และเป็นบอตหรือไม่ เท่านั้น",
+	"globalwatchlist-tour-help": "คำอธิบายการใช้งานเพิ่มเติม",
+	"globalwatchlist-tour-help-description": "เอกสารกำกับการใช้งานเพิ่มเติมสามารถดูได้บน MediaWiki.org",
+	"globalwatchlist-tour-intro": "การตั้งค่ารายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlist-tour-intro-description": "ส่วนขยายรายการเฝ้าดูข้ามโครงการจะเพิ่มหน้าพิเศษ [[Special:GlobalWatchlist]] สำหรับการตรวจตราการแก้ไขในรายการเฝ้าดูในครั้งเดียว สำหรับหน้านี้ใช้สำหรับการตั้งค่าในรายการเฝ้าดูข้ามโครงการ",
+	"globalwatchlist-tour-sitelist": "รายการไซต์",
+	"globalwatchlist-tour-sitelist-description": "นี่คือรายการเว็บไซต์ที่จะถูกรวมอยู่ในรายการเฝ้าดูข้ามโครงการ ใช้ยูอาร์เอลฐานของเว็บไซต์ เช่น <code>th.wikisource.org</code>",
+	"globalwatchlist-tour-types": "เปลี่ยนชนิด",
+	"globalwatchlist-tour-types-description": "ผู้ใช้สามารถเลือกได้ว่ารายชนิดของการเปลี่ยนแปลงแบบใดที่ควรนำมาแสดง",
+	"prefs-globalwatchlist": "รายการเฝ้าดูข้ามโครงการ"
+}

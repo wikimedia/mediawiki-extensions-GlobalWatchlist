@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Patsagorn Y."
+		]
+	},
+	"globalwatchlist-add": "เพิ่ม",
+	"globalwatchlist-asof": "ข้อมูลเวลา $1",
+	"globalwatchlist-changesfeed": "ไซต์ที่มีการเปลี่ยนแปลง",
+	"globalwatchlist-changetypes": "ชนิดของการเปลี่ยนแปลง",
+	"globalwatchlist-editwatchlist": "แก้ไขรายการเฝ้าดู",
+	"globalwatchlist-emptyfeed": "ไซต์ที่ไม่มีการเปลี่ยนแปลง",
+	"globalwatchlist-fetch-site-failure": "เกิดข้อผิดพลาดขณะโหลดการเปลี่ยนแปลง",
+	"globalwatchlist-filters": "ตัวกรอง",
+	"globalwatchlist-filter-anon": "การแก้ไขโดยผู้ใช้นิรนาม",
+	"globalwatchlist-filter-bot": "การแก้ไขโดยบอท"
+}
