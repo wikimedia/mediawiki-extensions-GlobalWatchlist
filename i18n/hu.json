@@ -5,5 +5,17 @@
 		]
 	},
 	"globalwatchlist-tour-addsite": "Oldal hozzáadása",
-	"globalwatchlist-tour-sitelist": "Oldalak listája"
+	"globalwatchlist-tour-addsite-description": "A fenti kattintással újabb sort adsz az oldalhoz.",
+	"globalwatchlist-tour-fastmode": "Gyors mód",
+	"globalwatchlist-tour-fastmode-description": "A gyors mód gyorsabb renderelést, viszont kevésbé részletes változatot eredményez. A Wikibase címkéket nem hívja elő, és leegyszerűsített listát közöl a változtatásokról a szerkesztő és a szerkesztések megjelölése nélkül.",
+	"globalwatchlist-tour-filters": "Szűrési feltételek",
+	"globalwatchlist-tour-filters-description": "A Globális Figyelőlista nem rendelkezik az általános figyelőlista összes szűrőjével. A névtelen és bejelentkezett felhasználók szerkesztéseit, illetve az apró és bot által eszközölt változtatásokat képes szűrni.",
+	"globalwatchlist-tour-help": "További dokumentáció",
+	"globalwatchlist-tour-help-description": "A mediawiki.org-on találsz további dokumentációt",
+	"globalwatchlist-tour-intro": "Globális Figyelőlista beállításai",
+	"globalwatchlist-tour-intro-description": "A Globális Figyelőlista bővítmény egy speciális lappal szolgál [[Special:GlobalWatchlist]], melyen több figyelőlistát is megtekinthetsz egyidőben. Ezen az oldalon eszközölheted a Globális Figyelőlista személyes beállításait.",
+	"globalwatchlist-tour-sitelist": "Oldalak listája",
+	"globalwatchlist-tour-sitelist-description": "Ezek az oldalak fognak szerepelni a globális figyelőlistán. Alap URL-t használj, pl.: <code>en.wikipedia.org</code>.",
+	"globalwatchlist-tour-types": "Típusváltás",
+	"globalwatchlist-tour-types-description": "A felhasználók be tudják állítani, hogy milyen változások jelenlenek meg."
 }
