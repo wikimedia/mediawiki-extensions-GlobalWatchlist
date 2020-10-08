@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\GlobalWatchlist;
 
 use DerivativeContext;
 use ExtensionRegistry;
+use HashConfig;
 use HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserOptionsManager;
@@ -98,12 +99,17 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testExecute() {
+		$this->setMwGlobals( [
+			'wgGlobalWatchlistEnableGuidedTour' => true,
+		] );
+
 		// Execute validates user settings, manually mocking the User is complicated
 		$user = $this->getTestUser()->getUser();
 
 		// ::execute results in creating the form, need to have the UserOptionsManager available
 		// return false for user settings, because we aren't testing that right now,
-		// and expect that the tour is loaded, because the user settings are false
+		// and expect that the tour is loaded, because the user settings are false and
+		// the tour is enabled
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->expects( $this->once() )
 			->method( 'isLoaded' )
@@ -364,5 +370,57 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $specialPage->doesWrites() );
 		$this->assertSame( $specialPage->getGroupName(), 'changes' );
 		$this->assertTrue( $specialPage->isListed() );
+	}
+
+	/**
+	 * @dataProvider provideTestMaybeLoadTour
+	 * @param bool $configEnabled
+	 * @param bool $extensionEnabled
+	 * @param bool $expectLoad
+	 */
+	public function testMaybeLoadTour( $configEnabled, $extensionEnabled, $expectLoad ) {
+		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$extensionRegistry->method( 'isLoaded' )
+			->with(
+				$this->equalTo( 'GuidedTour' )
+			)
+			->willReturn( $extensionEnabled );
+
+		$specialPage = $this->getSpecialPage( [
+			'extensionRegistry' => $extensionRegistry,
+		] );
+
+		$user = $this->createMock( User::class );
+		$user->method( 'isLoggedIn' )->willReturn( true );
+
+		$testContext = new DerivativeContext( $specialPage->getContext() );
+		$testContext->setUser( $user );
+
+		$config = new HashConfig( [
+			'GlobalWatchlistEnableGuidedTour' => $configEnabled,
+		] );
+		$testContext->setConfig( $config );
+
+		$output = $this->createMock( OutputPage::class );
+		$outputExpectation = $expectLoad ? $this->once() : $this->never();
+		$output->expects( $outputExpectation )
+			->method( 'addModules' )
+			->with(
+				$this->equalTo( 'ext.guidedTour.globalWatchlistSettings' )
+			);
+		$testContext->setOutput( $output );
+
+		$specialPage->setContext( $testContext );
+
+		$specialPage->maybeLoadTour();
+	}
+
+	public function provideTestMaybeLoadTour() {
+		return [
+			'Disabled, no extension' => [ false, false, false ],
+			'Disabled, yes extension' => [ false, true, false ],
+			'Enabled, no extension' => [ true, false, false ],
+			'Enabled, yes extension' => [ true, true, true ],
+		];
 	}
 }

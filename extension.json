@@ -29,11 +29,14 @@
 	"HookHandlers": {
 		"GlobalWatchlistHooks": {
 			"class": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistHooks",
-			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistHooks::newFromGlobalState",
 			"services": [
 				"SpecialPageFactory",
 				"StatsdDataFactory"
 			]
+		},
+		"GlobalWatchlistGuidedTourHooks": {
+			"class": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistGuidedTourHooks",
+			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistGuidedTourHooks::newFromGlobalState"
 		}
 	},
 	"Hooks": {
@@ -47,7 +50,7 @@
 			"handler": "GlobalWatchlistHooks"
 		},
 		"ResourceLoaderRegisterModules": {
-			"handler": "GlobalWatchlistHooks"
+			"handler": "GlobalWatchlistGuidedTourHooks"
 		},
 		"SkinBuildSidebar": {
 			"handler": "GlobalWatchlistHooks"
@@ -80,6 +83,10 @@
 		"GlobalWatchlistDevMode": {
 			"value": true,
 			"description": "Whether to send debug entries to the console"
+		},
+		"GlobalWatchlistEnableGuidedTour": {
+			"value": false,
+			"description": "Whether to enabled the GuidedTour for Special:GlobalWatchlistSettings"
 		}
 	},
 	"ResourceFileModulePaths": {

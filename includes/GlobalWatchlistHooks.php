@@ -25,15 +25,12 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use ApiOptions;
-use ExtensionRegistry;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Api\Hook\ApiOptionsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
-use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use ResourceLoader;
 use Skin;
 use User;
 
@@ -44,12 +41,8 @@ class GlobalWatchlistHooks implements
 	ApiOptionsHook,
 	GetPreferencesHook,
 	LoginFormValidErrorMessagesHook,
-	ResourceLoaderRegisterModulesHook,
 	SkinBuildSidebarHook
 {
-
-	/** @var ExtensionRegistry */
-	private $extensionRegistry;
 
 	/** @var SpecialPageFactory */
 	private $specialPageFactory;
@@ -58,37 +51,15 @@ class GlobalWatchlistHooks implements
 	private $statsdDataFactory;
 
 	/**
-	 * @param ExtensionRegistry $extensionRegistry
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
 	public function __construct(
-		ExtensionRegistry $extensionRegistry,
 		SpecialPageFactory $specialPageFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory
 	) {
-		$this->extensionRegistry = $extensionRegistry;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
-	}
-
-	/**
-	 * Need a factory method to inject ExtensionRegistry, which is not available from
-	 * the service container
-	 *
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 * @return GlobalWatchlistHooks
-	 */
-	public static function newFromGlobalState(
-		SpecialPageFactory $specialPageFactory,
-		IBufferingStatsdDataFactory $statsdDataFactory
-	) {
-		return new GlobalWatchlistHooks(
-			ExtensionRegistry::getInstance(),
-			$specialPageFactory,
-			$statsdDataFactory
-		);
 	}
 
 	/**
@@ -133,52 +104,6 @@ class GlobalWatchlistHooks implements
 		$messages = array_merge(
 			$messages,
 			[ 'globalwatchlist-must-login' ]
-		);
-	}
-
-	/**
-	 * Register ResourceLoader modules with dynamic dependencies.
-	 *
-	 * @param ResourceLoader $resourceLoader
-	 * @return void
-	 */
-	public function onResourceLoaderRegisterModules( ResourceLoader $resourceLoader ) : void {
-		if ( !$this->extensionRegistry->isLoaded( 'GuidedTour' ) ) {
-			return;
-		}
-
-		// Conditionally registered: only register the GuidedTour for
-		// Special:GlobalWatchlistSettings if the GuidedTour extension
-		// is available to rely upon
-		$resourceLoaderModule = [
-			'localBasePath' => __DIR__ . '/../modules',
-			'remoteExtPath' => 'GlobalWatchlist/modules',
-			'packageFiles' => [
-				'SettingsTour.js'
-			],
-			'dependencies' => [
-				'ext.guidedTour'
-			],
-			'messages' => [
-				'globalwatchlist-tour-addsite',
-				'globalwatchlist-tour-addsite-description',
-				'globalwatchlist-tour-fastmode',
-				'globalwatchlist-tour-fastmode-description',
-				'globalwatchlist-tour-filters',
-				'globalwatchlist-tour-filters-description',
-				'globalwatchlist-tour-help',
-				'globalwatchlist-tour-help-description',
-				'globalwatchlist-tour-intro',
-				'globalwatchlist-tour-intro-description',
-				'globalwatchlist-tour-sitelist',
-				'globalwatchlist-tour-sitelist-description',
-				'globalwatchlist-tour-types',
-				'globalwatchlist-tour-types-description',
-			]
-		];
-		$resourceLoader->register(
-			'ext.guidedTour.globalWatchlistSettings',
-			$resourceLoaderModule
 		);
 	}
 

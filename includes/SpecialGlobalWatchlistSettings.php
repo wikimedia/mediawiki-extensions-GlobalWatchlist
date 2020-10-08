@@ -158,12 +158,16 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	}
 
 	/**
-	 * If the GuidedTour extension is available, load the tour for the settings page
+	 * If $wgGlobalWatchlistEnableGuidedTour is true, and the GuidedTour extension is available,
+	 * load the tour for the settings page
 	 *
 	 * Only called if the user does not currently have any settings saved (i.e. is a new user)
 	 */
 	private function maybeLoadTour() {
-		if ( $this->extensionRegistry->isLoaded( 'GuidedTour' ) ) {
+		if (
+			$this->getConfig()->get( 'GlobalWatchlistEnableGuidedTour' ) &&
+			$this->extensionRegistry->isLoaded( 'GuidedTour' )
+		) {
 			$this->getOutput()->addModules(
 				'ext.guidedTour.globalWatchlistSettings'
 			);

@@ -3,12 +3,10 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use ApiOptions;
-use ExtensionRegistry;
 use IBufferingStatsdDataFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWikiUnitTestCase;
 use Message;
-use ResourceLoader;
 use Skin;
 use SpecialPage;
 use Title;
@@ -23,28 +21,14 @@ use User;
 class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 
 	private function getHookHandler( $options = [] ) {
-		$extensionRegistry = $options['extensionRegistry'] ??
-			$this->createMock( ExtensionRegistry::class );
 		$specialPageFactory = $options['specialPageFactory'] ??
 			$this->createNoOpMock( SpecialPageFactory::class );
 		$statsdDataFactory = $options['statsdDataFactory'] ??
 			$this->createMock( IBufferingStatsdDataFactory::class );
 
 		return new GlobalWatchlistHooks(
-			$extensionRegistry,
 			$specialPageFactory,
 			$statsdDataFactory
-		);
-	}
-
-	public function testNewFromGlobalState() {
-		$hookHandler = GlobalWatchlistHooks::newFromGlobalState(
-			$this->createMock( SpecialPageFactory::class ),
-			$this->createMock( IBufferingStatsdDataFactory::class )
-		);
-		$this->assertInstanceOf(
-			GlobalWatchlistHooks::class,
-			$hookHandler
 		);
 	}
 
@@ -199,38 +183,6 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 			],
 			$preferences
 		);
-	}
-
-	public function testModuleRegistration() {
-		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
-		$extensionRegistry->expects( $this->exactly( 2 ) )
-			->method( 'isLoaded' )
-			->withConsecutive(
-				[ $this->equalTo( 'GuidedTour' ) ],
-				[ $this->equalTo( 'GuidedTour' ) ]
-			)
-			->will(
-				$this->onConsecutiveCalls(
-					false,
-					true
-				)
-			);
-
-		$hookHandler = $this->getHookHandler( [
-			'extensionRegistry' => $extensionRegistry
-		] );
-
-		// First extension registry call returns false, module should not be added
-		$resourceLoader = $this->createMock( ResourceLoader::class );
-		$resourceLoader->expects( $this->never() )
-			->method( 'register' );
-		$hookHandler->onResourceLoaderRegisterModules( $resourceLoader );
-
-		// Secord extension registry call returns true, module should be added
-		$resourceLoader = $this->createMock( ResourceLoader::class );
-		$resourceLoader->expects( $this->once() )
-			->method( 'register' );
-		$hookHandler->onResourceLoaderRegisterModules( $resourceLoader );
 	}
 
 }
