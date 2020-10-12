@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hanna Tardos"
+			"Hanna Tardos",
+			"Misibacsi"
 		]
 	},
 	"globalwatchlist-tour-addsite": "Oldal hozzáadása",
@@ -17,5 +18,5 @@
 	"globalwatchlist-tour-sitelist": "Oldalak listája",
 	"globalwatchlist-tour-sitelist-description": "Ezek az oldalak fognak szerepelni a globális figyelőlistán. Alap URL-t használj, pl.: <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Típusváltás",
-	"globalwatchlist-tour-types-description": "A felhasználók be tudják állítani, hogy milyen változások jelenlenek meg."
+	"globalwatchlist-tour-types-description": "A felhasználók be tudják állítani, hogy milyen változások jelenjenek meg."
 }
