@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Iluvatar",
+			"Megakott",
 			"Teretalexev"
 		]
 	},
@@ -13,5 +14,5 @@
 	"globalwatchlist-gotoglobal": "Глобальный список наблюдения",
 	"globalwatchlist-gotoglobal-tooltip": "Просмотр глобального списка наблюдения",
 	"globalwatchlist-must-login": "Пожалуйста, войдите в систему для просмотра служебных страниц глобального списка наблюдения",
-	"globalwatchlist-javascript-required": "Для работы специальных страниц GlobalWatchlist требуется JavaScript"
+	"globalwatchlist-javascript-required": "Для работы этой специальной страницы требуется JavaScript"
 }
