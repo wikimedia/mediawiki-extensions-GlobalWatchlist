@@ -19,6 +19,16 @@
 	"globalwatchlist-tour-addsite": "Додај мреж. место",
 	"globalwatchlist-tour-addsite-description": "Стиснете погоре за да додадете друг ред за мреж. место.",
 	"globalwatchlist-tour-fastmode": "Брз режим",
+	"globalwatchlist-tour-fastmode-description": "Исход во брз режим за брз испис, но за сметка на подробноста. Не се прикажуваат натписи од Викибазата, а се прикажува прост список на промени без поединости за уредниците или самите уредувања",
+	"globalwatchlist-tour-filters": "Можности за филтрирање",
+	"globalwatchlist-tour-filters-description": "Глобално набљудуваните ги немата сите можности за филтрирање како кај нормалните набљудувани. Расположивите филтри се за анонимни уредувања наспроти оние од најавени корисници, како и филтри за уредувања означени како ситни или ботовски.",
+	"globalwatchlist-tour-help": "Повеќе документација",
+	"globalwatchlist-tour-help-description": "Повеќе документација ќе најдете на mediawiki.org",
+	"globalwatchlist-tour-intro": "Нагодувања за глобално набљудуваните",
+	"globalwatchlist-tour-intro-description": "Додатокот „Глобално набљудувани“ додава служена страница, [[Special:GlobalWatchlist]], за преглед на повеќе набљудувања (списоци) наеднаш. Оваа страница служи за задавање на корисничките нагодувања за глобално набљудуваните.",
 	"globalwatchlist-tour-sitelist": "Список на мреж. места",
+	"globalwatchlist-tour-sitelist-description": "Ова е список на мрежни места кои ќе се водат во глобално набљудуваните. Користете ја основната URL за викито, како на пр. <code>mk.wikipedia.org</code>.",
+	"globalwatchlist-tour-types": "Видови измени",
+	"globalwatchlist-tour-types-description": "Корисниците можат да избираат кои видови измени да им се прикажуваат.",
 	"prefs-globalwatchlist": "Глобално набљудувани"
 }
