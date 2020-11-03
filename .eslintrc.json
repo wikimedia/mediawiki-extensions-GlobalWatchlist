@@ -6,8 +6,6 @@
 		"wikimedia/mediawiki"
 	],
 	"globals": {
-		"mw": false,
-		"OO": false,
 		"Promise": false
 	},
 	"rules": {
@@ -18,19 +16,33 @@
 	},
 	"overrides": [
 		{
-			"files": [ "**/*.vue" ],
+			"files": [
+				"**/*.vue"
+			],
 			"extends": "wikimedia/vue-es5",
 			"rules": {
-				"vue/html-self-closing": [ "error", {
-					"html": {
-						"void": "never",
-						"normal": "never",
-						"component": "never"
+				"vue/html-self-closing": [
+					"error",
+					{
+						"html": {
+							"void": "never",
+							"normal": "never",
+							"component": "never"
+						}
 					}
-				} ],
-				"vue/v-bind-style": [ "warn", "longform" ],
-				"vue/v-on-style": [ "warn", "longform" ],
-				"vue/v-slot-style": [ "warn", "longform" ],
+				],
+				"vue/v-bind-style": [
+					"warn",
+					"longform"
+				],
+				"vue/v-on-style": [
+					"warn",
+					"longform"
+				],
+				"vue/v-slot-style": [
+					"warn",
+					"longform"
+				],
 				"no-implicit-globals": "off",
 				"vars-on-top": "off",
 				"one-var": "off",
