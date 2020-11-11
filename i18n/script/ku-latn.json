@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Balyozxane",
 			"Bikarhêner",
 			"Guherto"
 		]
 	},
 	"globalwatchlist-add": "Tevlî bike",
+	"globalwatchlist-changetypes": "Cureyê guhertinê",
 	"globalwatchlist-editwatchlist": "Lîsteya şopandinê biguherîne",
 	"globalwatchlist-filters": "Fîltre",
 	"globalwatchlist-filter-anon": "Guhertinên anonîm",
