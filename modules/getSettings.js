@@ -87,9 +87,8 @@ function globalWatchlistGetSettings( globalWatchlistDebug ) {
 		( config.showLogEntries ? 'log|' : '' )
 	).replace( /\|+$/, '' );
 
-	// Note: For now, the `unread` flag is not included, to make testing easier.
-	// It will be added here before deployment.
 	config.watchlistQueryShow = [
+		'unread',
 		getQueryFlag( config.anon, 'anon' ),
 		getQueryFlag( config.bot, 'bot' ),
 		getQueryFlag( config.minor, 'minor' )

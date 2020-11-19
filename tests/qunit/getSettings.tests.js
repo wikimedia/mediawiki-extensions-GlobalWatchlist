@@ -26,7 +26,7 @@
 		lang: 'en',
 		watchlistQueryProps: 'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags',
 		watchlistQueryTypes: 'edit|new|log',
-		watchlistQueryShow: '',
+		watchlistQueryShow: 'unread',
 		wikibaseSite: 'www.wikidata.org'
 	};
 
@@ -81,7 +81,7 @@
 			lang: 'en',
 			watchlistQueryProps: 'ids|title|flags|loginfo',
 			watchlistQueryTypes: 'edit|log',
-			watchlistQueryShow: '!anon|!bot|!minor',
+			watchlistQueryShow: 'unread|!anon|!bot|!minor',
 			wikibaseSite: 'www.wikidata.org'
 		};
 
