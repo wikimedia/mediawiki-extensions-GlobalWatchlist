@@ -137,12 +137,13 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		// and expect that the tour is loaded, because the user settings are false and
 		// the tour is enabled
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
-		$extensionRegistry->expects( $this->once() )
-			->method( 'isLoaded' )
-			->with(
-				$this->equalTo( 'GuidedTour' )
-			)
-			->willReturn( true );
+		$extensionRegistry->method( 'isLoaded' )
+			->will( $this->returnCallback(
+				// Only GuidedTour
+				function ( $extensionName ) {
+					return $extensionName === 'GuidedTour';
+				}
+			) );
 
 		$specialPageFactory = $this->getSpecialPageFactory( true );
 		$userOptionsManager = $this->getOptionsManager( $user, false );
@@ -290,7 +291,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$specialPage = $this->getSpecialPage();
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
-		$validator = new SettingsFormValidator( $testContext, 0 );
+		$validator = new SettingsFormValidator( $testContext, 0, null );
 
 		$userOptions = [
 			'sites' => [ 'en.wikipedia.org' ],

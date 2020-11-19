@@ -47,15 +47,26 @@ class SettingsFormValidator {
 	private $maxSites;
 
 	/**
+	 * Array of url forms of sites the user has attached accounts on (from CentralAuth),
+	 * to check against, or null if CentralAuth is not available
+	 *
+	 * @var string[]|null
+	 */
+	private $validSites;
+
+	/**
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param int $maxSites
+	 * @param string[]|null $validSites
 	 */
 	public function __construct(
 		MessageLocalizer $messageLocalizer,
-		int $maxSites
+		int $maxSites,
+		?array $validSites
 	) {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->maxSites = $maxSites;
+		$this->validSites = $validSites;
 	}
 
 	/**
@@ -116,7 +127,15 @@ class SettingsFormValidator {
 	public function validateSitesChosen( $value, $allData ) {
 		$sitesChosen = 0;
 		foreach ( $value as $row ) {
-			if ( trim( $row['site'] ) !== '' ) {
+			$site = trim( $row['site'] );
+			if ( $site !== '' ) {
+				if ( $this->validSites !== null &&
+					!in_array( $site, $this->validSites )
+				) {
+					return $this->messageLocalizer
+						->msg( 'globalwatchlist-settings-error-invalid-site' )
+						->params( $site );
+				}
 				$sitesChosen++;
 			}
 		}

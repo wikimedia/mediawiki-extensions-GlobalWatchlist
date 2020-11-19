@@ -24,6 +24,7 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use CentralAuthUser;
 use ExtensionRegistry;
 use FormatJson;
 use FormSpecialPage;
@@ -33,6 +34,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsManager;
 use Psr\Log\LoggerInterface;
 use Status;
+use WikiMap;
 
 /**
  * @ingroup SpecialPage
@@ -163,7 +165,8 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 		$formValidator = new SettingsFormValidator(
 			$this->getContext(),
-			$this->getConfig()->get( 'GlobalWatchlistSiteLimit' )
+			$this->getConfig()->get( 'GlobalWatchlistSiteLimit' ),
+			$this->maybeGetValidSites()
 		);
 		$formFields = $this->getActualFormFields( $formValidator, $userOptions );
 
@@ -185,6 +188,30 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 				'ext.guidedTour.globalWatchlistSettings'
 			);
 		}
+	}
+
+	/**
+	 * Used to validate the site list provided against the wikis a user has an attached
+	 * account on, if CentralAuth is available. If not, there is no validation.
+	 *
+	 * @codeCoverageIgnore
+	 * @return ?array either an array of the sites that are okay, or null for no validation
+	 */
+	private function maybeGetValidSites() : ?array {
+		if ( !$this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {
+			$this->logger->debug( 'CentralAuth is not installed, no site validation' );
+			return null;
+		}
+		$this->logger->debug( 'CentralAuth is installed, validating against attached wikis' );
+		$attachedWikis = CentralAuthUser::getInstance( $this->getUser() )->listAttached();
+		$urlForms = array_map(
+			function ( $dbName ) {
+				$wiki = WikiMap::getWiki( $dbName );
+				return $wiki ? $wiki->getDisplayName() : '';
+			},
+			$attachedWikis
+		);
+		return $attachedWikis;
 	}
 
 	/**

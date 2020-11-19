@@ -16,6 +16,7 @@
 	"globalwatchlist-javascript-required": "This special page requires JavaScript to work",
 	"globalwatchlist-prefs-settings": "To set the preferences for the global watchlist, please visit [[Special:GlobalWatchlistSettings]].",
 	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1 site was|$1 sites were}} chosen, which exceeds $2, the maximum number of allowed sites.",
+	"globalwatchlist-settings-error-invalid-site": "The site \"$1\" does not match a wiki where you have an attached CentralAuth account.",
 	"globalwatchlist-tour-addsite": "Add a site",
 	"globalwatchlist-tour-addsite-description": "Click above to add another row for a site.",
 	"globalwatchlist-tour-fastmode": "Fast mode",
