@@ -28,6 +28,7 @@ use MessageLocalizer;
 
 /**
  * @author DannyS712
+ * @internal
  */
 class SettingsFormValidator {
 

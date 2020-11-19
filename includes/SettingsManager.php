@@ -31,6 +31,7 @@ use Psr\Log\LoggerInterface;
 
 /**
  * @author DannyS712
+ * @internal
  */
 class SettingsManager {
 
