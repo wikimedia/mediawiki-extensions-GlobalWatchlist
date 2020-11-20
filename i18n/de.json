@@ -15,6 +15,7 @@
 	"globalwatchlist-must-login": "Bitte logge dich ein, um die Spezialseite der globalen Beobachungsliste zu nutzen",
 	"globalwatchlist-javascript-required": "Diese Spezielseite erfordert JavaScript, um zu funktionieren",
 	"globalwatchlist-prefs-settings": "Um die Einstellungen für die globale Beobachtungsliste festzulegen, rufe bitte [[Special:GlobalWatchlistSettings]] auf.",
+	"globalwatchlist-settings-error-too-many-sites": "Es {{PLURAL:$1|wurde 1 Projekt|wurden $1 Projekte}} ausgewählt, was die maximale Anzahl ($2) der erlaubten Projekte übersteigt.",
 	"globalwatchlist-tour-addsite": "Webseite ergänzen",
 	"globalwatchlist-tour-addsite-description": "Oben klicken, um eine weitere Zeile für eine Website hinzuzufügen.",
 	"globalwatchlist-tour-fastmode": "Schneller Modus",
