@@ -70,10 +70,10 @@ GlobalWatchlistSiteBase.prototype.debug = function ( msg, extraInfo ) {
  * Shortcut for sending errors to the debug logger
  *
  * @param {string} msg Message for error entry
- * @param {string} [extraInfo] Extra information for error entry
+ * @param {Object} data Extra information for error entry
  */
-GlobalWatchlistSiteBase.prototype.error = function ( msg, extraInfo ) {
-	this.debugLogger.error( this.site + ':' + msg, extraInfo );
+GlobalWatchlistSiteBase.prototype.error = function ( msg, data ) {
+	this.debugLogger.error( this.site + ':' + msg, data );
 };
 
 /**
@@ -95,9 +95,23 @@ GlobalWatchlistSiteBase.prototype.api = function ( func, content, name ) {
 				[ func, content, response ]
 			);
 			resolve( response );
-		} ).catch( function ( error ) {
-			that.error( 'API.' + name, error );
+		} ).catch( function ( code, data ) {
+			that.error( 'API.' + name + ' ' + code, data );
 			that.apiError = true;
+
+			var $userNotification = $( '<div>' )
+				.append(
+					mw.msg( 'globalwatchlist-api-error', that.site ),
+					that.apiObject.getErrorMessage( data )
+				);
+
+			mw.notify(
+				$userNotification,
+				{
+					type: 'error',
+					autoHide: false
+				}
+			);
 
 			// See above on apiError for why this resolves instead of rejecting
 			// since we don't know what exactly the caller was expected, just

@@ -119,6 +119,7 @@
 				"templates/siteRowHeader.mustache"
 			],
 			"messages": [
+				"globalwatchlist-api-error",
 				"globalwatchlist-asof",
 				"globalwatchlist-changesfeed",
 				"globalwatchlist-editwatchlist",
@@ -182,6 +183,7 @@
 				"vue/Toolbar.vue"
 			],
 			"messages": [
+				"globalwatchlist-api-error",
 				"globalwatchlist-asof",
 				"globalwatchlist-changesfeed",
 				"globalwatchlist-editwatchlist",

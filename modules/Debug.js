@@ -53,13 +53,10 @@ GlobalWatchlistDebugger.prototype.error = function ( info, error ) {
 		errorToThrow = error; // Throw the original error so we get its stack trace, etc.
 	} else {
 		errorMessage = error; // use JSON.stringify in info()
-		errorToThrow = new Error( 'GlobalWatchlistError: ' + info + ' - ' + error );
+		errorToThrow = new Error( 'GlobalWatchlistError: ' + info );
 	}
 
 	this.info( 'ERROR: ' + info, errorMessage );
-
-	/* eslint-disable-next-line no-alert */
-	alert( 'GlobalWatchlist error, please check the console!' );
 
 	/* eslint-disable-next-line no-console */
 	console.error( errorToThrow );

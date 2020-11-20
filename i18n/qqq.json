@@ -31,5 +31,6 @@
 	"globalwatchlist-tour-sitelist-description": "Description text for GuidedTour step describing the list of sites",
 	"globalwatchlist-tour-types": "Title for GuidedTour step describing change types to show",
 	"globalwatchlist-tour-types-description": "Description text for GuidedTour step describing change types to show",
+	"globalwatchlist-api-error": "Explanation that an error occurred, which is followed by a description of the error.\n\nParameters:\n* $1 - the site that had the error",
 	"prefs-globalwatchlist": "Section heading text under watchlist tab in [[Special:Preferences]] for global watchlist settings"
 }
