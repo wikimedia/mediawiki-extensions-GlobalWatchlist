@@ -185,11 +185,20 @@
 		} );
 	};
 
+	viewManager.maybeLiveRefresh = function () {
+		// In case the live updates were disabled between when the refresh
+		// was queued and when it was called, double check current config
+		// before proceeding to refresh()
+		if ( config.inLive ) {
+			viewManager.refresh();
+		}
+	};
+
 	viewManager.runLive = function () {
 		if ( config.inLive ) {
 			config.liveCounter++;
 			globalWatchlistDebug.info( 'watchlists.runLive - counter: ' + config.liveCounter );
-			setTimeout( viewManager.refresh, 7500 );
+			setTimeout( viewManager.maybeLiveRefresh, 7500 );
 		}
 	};
 
