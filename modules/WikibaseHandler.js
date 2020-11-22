@@ -233,7 +233,7 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 
 			updatedEntries.forEach( function ( entry ) {
 				if ( cleanedLabels[ entry.titleMsg ] ) {
-					entry.titleMsg += ' (' + cleanedLabels[ entry.titleMsg ] + ')';
+					entry.titleMsg += ' ' + mw.msg( 'parentheses', cleanedLabels[ entry.titleMsg ] );
 				}
 			} );
 

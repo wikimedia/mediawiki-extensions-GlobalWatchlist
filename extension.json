@@ -142,6 +142,7 @@
 				"nchanges",
 				"ntimes",
 				"newpageletter",
+				"parentheses",
 				"rev-deleted-user",
 				"sp-contributions-logs"
 			],
@@ -208,6 +209,7 @@
 				"nchanges",
 				"ntimes",
 				"newpageletter",
+				"parentheses",
 				"rev-deleted-user",
 				"sp-contributions-logs"
 			],
