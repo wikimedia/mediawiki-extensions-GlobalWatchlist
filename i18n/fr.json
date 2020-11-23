@@ -17,6 +17,7 @@
 	"globalwatchlist-must-login": "Veuillez vous connecter pour utiliser les pages spéciales GlobalWatchlist",
 	"globalwatchlist-javascript-required": "Cette page spéciale nécessite que JavaScript fonctionne",
 	"globalwatchlist-prefs-settings": "Pour définir les préférences pour la liste de suivi globale, veuillez visiter [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1 site a été choisi|$1 ont été choisis}}, ce qui dépasse $2, le nombre maximal de sites autorisés.",
 	"globalwatchlist-tour-addsite": "Ajouter un site",
 	"globalwatchlist-tour-addsite-description": "Cliquer ci-dessus pour ajouter une autre ligne pour un site.",
 	"globalwatchlist-tour-fastmode": "Mode rapide",

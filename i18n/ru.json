@@ -3,6 +3,7 @@
 		"authors": [
 			"Iluvatar",
 			"Megakott",
+			"Rubin16",
 			"Teretalexev"
 		]
 	},
@@ -14,5 +15,6 @@
 	"globalwatchlist-gotoglobal": "Глобальный список наблюдения",
 	"globalwatchlist-gotoglobal-tooltip": "Просмотр глобального списка наблюдения",
 	"globalwatchlist-must-login": "Пожалуйста, войдите в систему для просмотра служебных страниц глобального списка наблюдения",
-	"globalwatchlist-javascript-required": "Для работы этой специальной страницы требуется JavaScript"
+	"globalwatchlist-javascript-required": "Для работы этой специальной страницы требуется JavaScript",
+	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1 сайт был|$1 сайта было|$1 сайтов было}} выбрано, что превышает $2, максимально допустимое число сайтов."
 }

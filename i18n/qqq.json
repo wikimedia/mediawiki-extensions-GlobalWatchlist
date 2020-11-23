@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"DannyS712"
 		]
 	},
@@ -14,7 +15,7 @@
 	"globalwatchlist-grouped-timestamp": "Tooltip for timestamp for grouped changes",
 	"globalwatchlist-must-login": "Text shown to anonymous users trying to use [[Special:GlobalWatchlist]] and [[Special:GlobalWatchlistSettings]]",
 	"globalwatchlist-javascript-required": "Message shown at [[Special:GlobalWatchlist]] when Javascript is not enabled",
-	"globalwatchlist-prefs-settings": "Text shown to users in [[Special:Preferences]] indicating where to change global watchlist settings",
+	"globalwatchlist-prefs-settings": "Text shown to users in [[Special:Preferences]] indicating where to change global watchlist settings.\n\nThe localized names for this page are being added in the file [https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/extensions/GlobalWatchlist/+/refs/heads/master/GlobalWatchlist.alias.php GlobalWatchlist.alias.php]. If your language is not yet there, submit a patch.",
 	"globalwatchlist-settings-error-too-many-sites": "Error message for invalid settings.\n\nParamaters:\n* $1 - the number of sites the user chose\n* $2 - the maximum number of sites allowed",
 	"globalwatchlist-tour-addsite": "Title for GuidedTour step describing adding more sites to the list the user includes",
 	"globalwatchlist-tour-addsite-description": "Description text for GuidedTour step describing adding more sites to the list the user includes",

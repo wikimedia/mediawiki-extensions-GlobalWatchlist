@@ -16,6 +16,7 @@
 	"globalwatchlist-must-login": "GlobalWatchlist özel sayfalarını kullanmak için lütfen oturum açın",
 	"globalwatchlist-javascript-required": "Bu özel sayfanın çalışması için JavaScript gereklidir",
 	"globalwatchlist-prefs-settings": "Küresel izleme listesi tercihlerini belirlemek için lütfen [[Special:GlobalWatchlistSettings]] sayfasına ziyaret edin.",
+	"globalwatchlist-settings-error-too-many-sites": "İzin verilen maksimum site sayısı olan $2 aşan $1 site seçildi.",
 	"globalwatchlist-tour-addsite": "Bir site ekle",
 	"globalwatchlist-tour-addsite-description": "Bir siteye başka bir satır eklemek için yukarıya tıklayın.",
 	"globalwatchlist-tour-fastmode": "Hızlı mod",

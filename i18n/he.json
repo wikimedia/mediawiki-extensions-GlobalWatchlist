@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"IKhitron"
 		]
 	},
@@ -11,6 +12,24 @@
 	"globalwatchlistsettings-summary": "דף מיוחד לניהול רשימת המעקב הגלובלית",
 	"globalwatchlist-gotoglobal": "רשימת מעקב גלובלית",
 	"globalwatchlist-gotoglobal-tooltip": "הצגת רשימת המעקב הגלובלית",
+	"globalwatchlist-grouped-timestamp": "חותם־הזמן של השינוי האחרון מוצג לשינויים מקובצים",
 	"globalwatchlist-must-login": "אנא התחברו לשימוש בדפי רשימת המעקב הגלובלית",
-	"globalwatchlist-javascript-required": "דפי רשימת המעקב הגלובלית דורשים Javascript כדי לעבוד"
+	"globalwatchlist-javascript-required": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
+	"globalwatchlist-prefs-settings": "כדי להגדיר את ההגדרות עבור רשימת המעקב הגלובלית נא לבקר בדף [[Special:GlobalWatchlistSettings|הגדרות רשימת מעקב גלובלית]].",
+	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|נבחר אתר אחד|נבחרו $1 אתרים}}, וזה גדול מ־$2, המספר המרבי של אתרים מורשים.",
+	"globalwatchlist-tour-addsite": "הוספת אתר",
+	"globalwatchlist-tour-addsite-description": "נא ללחוץ למעלה כדי להוסיף עוד שורה לאתר.",
+	"globalwatchlist-tour-fastmode": "מצב מהיר",
+	"globalwatchlist-tour-fastmode-description": "המצב המהיר מאפשר תיצוג מהיר יותר, במחיר של פחות פירוט. תוויות ויקיבייס אינן מאוחזרות, ומוצגת רשימה פשוטה של דפים שיש בהם שינויים, ללא פרטים על העורכים או על העריכות עצמן.",
+	"globalwatchlist-tour-filters": "אפשרויות סינון",
+	"globalwatchlist-tour-filters-description": "ברשימת המעקב הגלובלית לא קיימות לא כל אפשרויות הסינון שקיימות ברשימת המעקב הרגילה. המסננים הזמינים הם עבור עריכות אלמוניות בניגוד לעריכות של משתמשים שנכנסו לחשבון, ועריכות שסומנו בתור משניות או עריכות בוט.",
+	"globalwatchlist-tour-help": "תיעוד נוסף",
+	"globalwatchlist-tour-help-description": "תיעוד נוסף זמין באתר mediawiki.org",
+	"globalwatchlist-tour-intro": "הגדרות רשימת המעקב הגלובלית",
+	"globalwatchlist-tour-intro-description": "ההרחבה GlobalWatchlist מוסיפה דף מיוחד, [[Special:GlobalWatchlist|מיוחד:רשימת מעקב גלובלית]], להצגת מספר רשימות מעקב בו־זמנית. הדף הזה משמש להגדרת העדפות משתמש עבור רשימת המעקב הגלובלית.",
+	"globalwatchlist-tour-sitelist": "קשימת אתרים",
+	"globalwatchlist-tour-sitelist-description": "זוהי רשימת האתרים שייכללו ברשימת המעקב הגלובלית. יש להשתמש ב־URL הבסיסי של האתר, למשל <code>en.wikipedia.org</code>.",
+	"globalwatchlist-tour-types": "שינוי סוגים",
+	"globalwatchlist-tour-types-description": "משתמשים יכולים לשלוט בסוגי השינויים שצריך להציג.",
+	"prefs-globalwatchlist": "רשימת מעקב גלובלית"
 }
