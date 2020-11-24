@@ -125,13 +125,13 @@ module.exports = {
 			return this.inLoading;
 		},
 		disableGroupPage: function () {
-			return this.liveUpdatesActive || this.inLoading;
+			return ( this.liveUpdatesActive === true ) || this.inLoading;
 		},
 		disableRefresh: function () {
-			return this.liveUpdatesActive || this.inLoading;
+			return ( this.liveUpdatesActive === true ) || this.inLoading;
 		},
 		disableMarkAll: function () {
-			return this.liveUpdatesActive || this.inLoading;
+			return ( this.liveUpdatesActive === true ) || this.inLoading;
 		}
 	},
 
@@ -150,10 +150,10 @@ module.exports = {
 			this.refreshSites();
 		},
 		updateLive: function () {
-			if ( this.liveUpdatesActive ) {
+			if ( this.liveUpdatesActive === true ) {
 				var that = this;
 				this.backgroundRefresh().then( function ( results ) {
-					if ( that.liveUpdatesActive ) {
+					if ( that.liveUpdatesActive === true ) {
 						// Might have been turned off while the update
 						// was being prepared
 						that.sitesWithChangesList = results.withChanges;
@@ -264,6 +264,25 @@ module.exports = {
 			var loadEndTime = mw.now();
 			var loadElapsedTime = loadEndTime - loadStartTime;
 			mw.track( metricName, loadElapsedTime );
+		} );
+
+		// Only run live updates when the special page is being displayed
+		// Note: the page visibility api isn't available for some of the
+		// older versions of mobile browsers that MediaWiki still provides
+		// Grade A support for, but its better than nothing. See T268266
+		document.addEventListener( 'visibilitychange', function () {
+			if ( document.visibilityState === 'hidden' ) {
+				// Pause live updates
+				if ( that.liveUpdatesActive === true ) {
+					that.liveUpdatesActive = 'paused';
+				}
+			} else if ( document.visibilityState === 'visible' ) {
+				// Unpause
+				if ( that.liveUpdatesActive === 'paused' ) {
+					that.liveUpdatesActive = true;
+					that.updateLive();
+				}
+			}
 		} );
 	}
 };

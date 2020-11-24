@@ -170,7 +170,7 @@
 	};
 	viewManager.renderFeed = function () {
 		globalWatchlistDebug.info( 'renderFeed - called' );
-		if ( config.inLive ) {
+		if ( config.inLive === true ) {
 			return;
 		}
 
@@ -196,7 +196,7 @@
 	};
 
 	viewManager.runLive = function () {
-		if ( config.inLive ) {
+		if ( config.inLive === true ) {
 			config.liveCounter++;
 			globalWatchlistDebug.info( 'watchlists.runLive - counter: ' + config.liveCounter );
 			setTimeout( viewManager.maybeLiveRefresh, 7500 );
@@ -274,6 +274,26 @@
 			var loadEndTime = mw.now();
 			var loadElapsedTime = loadEndTime - loadStartTime;
 			mw.track( metricName, loadElapsedTime );
+		} );
+
+		// Only run live updates when the special page is being displayed
+		// Note: the page visibility api isn't available for some of the
+		// older versions of mobile browsers that MediaWiki still provides
+		// Grade A support for, but its better than nothing. See T268266
+		document.addEventListener( 'visibilitychange', function () {
+			if ( document.visibilityState === 'hidden' ) {
+				// Pause live updates
+				if ( config.inLive === true ) {
+					config.inLive = 'paused';
+				}
+			} else if ( document.visibilityState === 'visible' ) {
+				// Unpause
+				if ( config.inLive === 'paused' ) {
+					// Set back to true in the method, as well as requeueing
+					// the actual updates
+					viewManager.startLiveUpdates();
+				}
+			}
 		} );
 	} );
 }() );
