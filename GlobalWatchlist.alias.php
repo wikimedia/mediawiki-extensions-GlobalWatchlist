@@ -13,6 +13,12 @@ $specialPageAliases['en'] = [
 	'GlobalWatchlistSettings' => [ 'GlobalWatchlistSettings' ],
 ];
 
+/** Czech (čeština) */
+$specialPageAliases['cs'] = [
+	'GlobalWatchlist' => [ 'Globální_sledované_stránky' ],
+	'GlobalWatchlistSettings' => [ 'Nastavení_globálních_sledovaných_stránek' ],
+];
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = [
 	'GlobalWatchlist' => [ 'Globale_Beobachtungsliste' ],
