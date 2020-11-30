@@ -17,6 +17,7 @@
 	"globalwatchlist-must-login": "登入後才可使用GlobalWatchlist特殊頁面",
 	"globalwatchlist-javascript-required": "此特殊頁面需要 JavaScript 來運作",
 	"globalwatchlist-prefs-settings": "要設定用於全域監視清單的偏好選項，請參訪 [[Special:GlobalWatchlistSettings]]。",
+	"globalwatchlist-settings-error-too-many-sites": "已挑選 {{PLURAL:$1|$1}} 個站台，超出了最大允許站台數量 $2。",
 	"globalwatchlist-tour-addsite": "新增站台",
 	"globalwatchlist-tour-addsite-description": "在上方點擊來為站台新增一行。",
 	"globalwatchlist-tour-fastmode": "快速模式",
