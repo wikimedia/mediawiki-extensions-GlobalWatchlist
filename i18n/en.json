@@ -30,6 +30,6 @@
 	"globalwatchlist-tour-sitelist-description": "This is the list of sites that will be included in the global watchlist. Use the base URL for the site, e.g. <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Change types",
 	"globalwatchlist-tour-types-description": "Users can control what types of changes should be shown.",
-	"globalwatchlist-api-error": "An api error occurred while interacting with \"$1\":",
+	"globalwatchlist-api-error": "An API error occurred while interacting with \"$1\":",
 	"prefs-globalwatchlist": "Global watchlist"
 }
