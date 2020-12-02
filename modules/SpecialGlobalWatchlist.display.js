@@ -251,11 +251,20 @@
 		// Based on viewManager.renderFeed but with timing
 		var loadStartTime = mw.now();
 		viewElements.liveToggle.setDisabled( true );
-		viewElements.progressBar.$element.show();
 		viewElements.$sharedFeed.hide();
 		viewElements.$asOf.innerText = '';
 
+		// Wait a bit before showing the progress bar, hopefully if the user's
+		// internet is fast enough clearTimeout will be called before the loading bar
+		// is ever shown. See T268268
+		var timer = setTimeout( function () {
+			viewElements.progressBar.$element.show();
+		}, 1500 );
+
 		viewManager.refresh().then( function () {
+			// If the progress bar wasn't shown, prevent timer from finishing
+			clearTimeout( timer );
+
 			viewManager.showFeed();
 
 			var metricName = config.fastMode ?
