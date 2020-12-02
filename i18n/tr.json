@@ -31,5 +31,6 @@
 	"globalwatchlist-tour-sitelist-description": "Bu, küresel izleme listesine dahil edilecek sitelerin listesidir. Site için temel URL'yi kullanın, ör. <code>tr.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Türleri değiştir",
 	"globalwatchlist-tour-types-description": "Kullanıcılar, ne tür değişikliklerin gösterilmesi gerektiğini kontrol edebilir.",
+	"globalwatchlist-api-error": "\"$1\" ile etkileşim sırasında bir api hatası oluştu:",
 	"prefs-globalwatchlist": "Küresel izleme listesi"
 }
