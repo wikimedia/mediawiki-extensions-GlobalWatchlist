@@ -31,5 +31,6 @@
 	"globalwatchlist-tour-sitelist-description": "זוהי רשימת האתרים שייכללו ברשימת המעקב הגלובלית. יש להשתמש ב־URL הבסיסי של האתר, למשל <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "שינוי סוגים",
 	"globalwatchlist-tour-types-description": "משתמשים יכולים לשלוט בסוגי השינויים שצריך להציג.",
+	"globalwatchlist-api-error": "אירעה שגיאת API בעת תקשורת עם \"$1\"‏:",
 	"prefs-globalwatchlist": "רשימת מעקב גלובלית"
 }

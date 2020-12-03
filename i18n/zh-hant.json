@@ -32,5 +32,6 @@
 	"globalwatchlist-tour-sitelist-description": "此為會包含在全域監視清單裡的站台清單。使用站台的根網址，例如：<code>zh.wikipedia.org</code>。",
 	"globalwatchlist-tour-types": "更改類型",
 	"globalwatchlist-tour-types-description": "使用者能控制應顯示出哪些更改類型。",
+	"globalwatchlist-api-error": "與「$1」互動時出現 API 錯誤：",
 	"prefs-globalwatchlist": "全域監視清單"
 }
