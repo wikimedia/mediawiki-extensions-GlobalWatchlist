@@ -31,7 +31,7 @@
 	"globalwatchlist-markseen-allconfirm": "Are you sure you want to mark sites as seen?",
 	"globalwatchlist-notify-heading": "Global Watchlist",
 	"globalwatchlist-notify-savingfailed": "Failed to save settings. Please try again",
-	"globalwatchlist-notify-settingssaved": "Your settings have been saved",
+	"globalwatchlist-notify-settingssaved": "Your settings have been saved. [[Special:GlobalWatchlist|Return to global watchlist]].",
 	"globalwatchlist-option-confirmallsites": "Require confirmation before marking all sites as seen",
 	"globalwatchlist-option-fastmode": "Load faster, at the expense of less detail",
 	"globalwatchlist-option-grouppage": "Group results by page",
