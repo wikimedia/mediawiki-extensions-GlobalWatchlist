@@ -30,5 +30,6 @@
 	"globalwatchlist-tour-sitelist-description": "Esta é a lista de sites que serão incluídos na lista de páginas vigiadas globais. Use o URL base do site, por exemplo <code>pt.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Tipo de alteração",
 	"globalwatchlist-tour-types-description": "Os usuários podem controlar quais tipos de alterações devem ser mostrados.",
+	"globalwatchlist-api-error": "Ocorreu um erro de API ao interagir com \"$1\":",
 	"prefs-globalwatchlist": "Lista de páginas vigiadas globais"
 }

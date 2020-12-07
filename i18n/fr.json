@@ -3,6 +3,7 @@
 		"authors": [
 			"Gomoko",
 			"Pamputt",
+			"Verdy p",
 			"Wladek92"
 		]
 	},
@@ -32,6 +33,6 @@
 	"globalwatchlist-tour-sitelist-description": "Ceci est la liste des sites qui seront inclus dans la liste de suivi globale. Utiliser l’URL de base pour le site, par ex. <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Types de modification",
 	"globalwatchlist-tour-types-description": "Les utilisateurs peuvent contrôler quels types de modifications doivent être affichés.",
-	"globalwatchlist-api-error": "Une erreur de l’API est survenue lors de l’interaction avec « $1 » :",
+	"globalwatchlist-api-error": "Une erreur de l’API est survenue lors de l’interaction avec « $1 » :",
 	"prefs-globalwatchlist": "Liste de suivi globale"
 }
