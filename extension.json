@@ -22,6 +22,7 @@
 			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings::newFromGlobalState",
 			"services": [
 				"GlobalWatchlistSettingsManager",
+				"SpecialPageFactory",
 				"UserOptionsManager"
 			]
 		}

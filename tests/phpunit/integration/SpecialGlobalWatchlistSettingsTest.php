@@ -7,12 +7,14 @@ use ExtensionRegistry;
 use HashConfig;
 use HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiIntegrationTestCase;
 use OutputPage;
 use Psr\Log\LogLevel;
 use SpecialPage;
 use TestLogger;
+use Title;
 use User;
 use UserNotLoggedIn;
 use Wikimedia\TestingAccessWrapper;
@@ -30,6 +32,8 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( ExtensionRegistry::class );
 		$settingsManager = $options['settingsManager'] ??
 			$this->createMock( SettingsManager::class );
+		$specialPageFactory = $options['specialPageFactory'] ??
+			$this->getSpecialPageFactory( false );
 		$userOptionsManager = $options['userOptionsManager'] ??
 			$this->createMock( UserOptionsManager::class );
 
@@ -37,6 +41,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			$logger,
 			$extensionRegistry,
 			$settingsManager,
+			$specialPageFactory,
 			$userOptionsManager
 		);
 
@@ -54,6 +59,26 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			)
 			->willReturn( $result );
 		return $userOptionsManager;
+	}
+
+	private function getSpecialPageFactory( bool $called ) {
+		$mockFactory = $this->createMock( SpecialPageFactory::class );
+		if ( $called === false ) {
+			$mockFactory->expects( $this->never() )
+				->method( 'getPage' );
+			return $mockFactory;
+		}
+
+		$mockSpecial = $this->createMock( SpecialPage::class );
+		$mockTitle = $this->createMock( Title::class );
+		$mockSpecial->expects( $this->once() )
+			->method( 'getPageTitle' )
+			->willReturn( $mockTitle );
+		$mockFactory->expects( $this->once() )
+			->method( 'getPage' )
+			->with( $this->equalTo( 'GlobalWatchlist' ) )
+			->willReturn( $mockSpecial );
+		return $mockFactory;
 	}
 
 	private function assertDefaultSite( $fields, $defaultSite ) {
@@ -74,6 +99,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 	public function testNewFromGlobalState() {
 		$specialPage = SpecialGlobalWatchlistSettings::newFromGlobalState(
 			$this->createMock( SettingsManager::class ),
+			$this->createMock( SpecialPageFactory::class ),
 			$this->createMock( UserOptionsManager::class )
 		);
 
@@ -118,9 +144,11 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			)
 			->willReturn( true );
 
+		$specialPageFactory = $this->getSpecialPageFactory( true );
 		$userOptionsManager = $this->getOptionsManager( $user, false );
 		$specialPage = $this->getSpecialPage( [
 			'extensionRegistry' => $extensionRegistry,
+			'specialPageFactory' => $specialPageFactory,
 			'userOptionsManager' => $userOptionsManager
 		] );
 
@@ -243,11 +271,17 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testAlterForm() {
-		$specialPage = $this->getSpecialPage();
+		$specialPage = $this->getSpecialPage( [
+			'specialPageFactory' => $this->getSpecialPageFactory( true )
+		] );
 
 		$form = $this->createMock( HTMLForm::class );
 		$form->expects( $this->once() )
 			->method( 'setSubmitText' );
+		$form->expects( $this->once() )
+			->method( 'showCancel' );
+		$form->expects( $this->once() )
+			->method( 'setCancelTarget' );
 
 		$specialPage->alterForm( $form );
 	}

@@ -29,6 +29,7 @@ use FormatJson;
 use FormSpecialPage;
 use HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsManager;
 use Psr\Log\LoggerInterface;
 use Status;
@@ -48,6 +49,9 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	/** @var SettingsManager */
 	private $settingsManager;
 
+	/** @var SpecialPageFactory */
+	private $specialPageFactory;
+
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
@@ -55,12 +59,14 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * @param LoggerInterface $logger
 	 * @param ExtensionRegistry $extensionRegistry
 	 * @param SettingsManager $settingsManager
+	 * @param SpecialPageFactory $specialPageFactory
 	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
 		LoggerInterface $logger,
 		ExtensionRegistry $extensionRegistry,
 		SettingsManager $settingsManager,
+		SpecialPageFactory $specialPageFactory,
 		UserOptionsManager $userOptionsManager
 	) {
 		parent::__construct( 'GlobalWatchlistSettings', 'editmyoptions' );
@@ -68,6 +74,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$this->logger = $logger;
 		$this->extensionRegistry = $extensionRegistry;
 		$this->settingsManager = $settingsManager;
+		$this->specialPageFactory = $specialPageFactory;
 		$this->userOptionsManager = $userOptionsManager;
 	}
 
@@ -76,17 +83,20 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * which are not available from the service container
 	 *
 	 * @param SettingsManager $settingsManager
+	 * @param SpecialPageFactory $specialPageFactory
 	 * @param UserOptionsManager $userOptionsManager
 	 * @return SpecialGlobalWatchlistSettings
 	 */
 	public static function newFromGlobalState(
 		SettingsManager $settingsManager,
+		SpecialPageFactory $specialPageFactory,
 		UserOptionsManager $userOptionsManager
 	) {
 		return new SpecialGlobalWatchlistSettings(
 			LoggerFactory::getInstance( 'GlobalWatchlist' ),
 			ExtensionRegistry::getInstance(),
 			$settingsManager,
+			$specialPageFactory,
 			$userOptionsManager
 		);
 	}
@@ -204,6 +214,12 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$form->setSubmitText(
 			$this->msg( 'globalwatchlist-save' )->escaped()
 		);
+
+		// Enable cancel button, target is Special:GlobalWatchlist
+		// See T268259
+		$globalWatchlistSpecial = $this->specialPageFactory->getPage( 'GlobalWatchlist' );
+		$form->showCancel();
+		$form->setCancelTarget( $globalWatchlistSpecial->getPageTitle() );
 	}
 
 	/**
