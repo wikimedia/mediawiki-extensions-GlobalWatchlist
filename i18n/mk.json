@@ -16,6 +16,7 @@
 	"globalwatchlist-must-login": "Најавете се за да ги користите службените страници за глобално набљудувани",
 	"globalwatchlist-javascript-required": "Оваа службена страница бара JavaScript за да работи",
 	"globalwatchlist-prefs-settings": "За да ги псотавите нагодувањата за глобалните набљудувања, појдете на [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|Избран е $1 проект|Избрани се $1 проекти}}, што го надминува дозволениот број ($2).",
 	"globalwatchlist-tour-addsite": "Додај мреж. место",
 	"globalwatchlist-tour-addsite-description": "Стиснете погоре за да додадете друг ред за мреж. место.",
 	"globalwatchlist-tour-fastmode": "Брз режим",
@@ -30,5 +31,6 @@
 	"globalwatchlist-tour-sitelist-description": "Ова е список на мрежни места кои ќе се водат во глобално набљудуваните. Користете ја основната URL за викито, како на пр. <code>mk.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Видови измени",
 	"globalwatchlist-tour-types-description": "Корисниците можат да избираат кои видови измени да им се прикажуваат.",
+	"globalwatchlist-api-error": "Се јави грешка во приложникот при содејство со „$1“:",
 	"prefs-globalwatchlist": "Глобално набљудувани"
 }
