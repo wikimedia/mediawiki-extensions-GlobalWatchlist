@@ -29,7 +29,7 @@
 	"globalwatchlist-markseen-allconfirm": "Bist du sicher, dass du alle Projekte als gesehen markieren willst?",
 	"globalwatchlist-notify-heading": "Globale Beobachtungsliste",
 	"globalwatchlist-notify-savingfailed": "Einstellungen konnte nicht gespeichert werden. Bitte erneut versuchen.",
-	"globalwatchlist-notify-settingssaved": "Deine Änderungen wurden gespeichert",
+	"globalwatchlist-notify-settingssaved": "Deine Änderungen wurden gespeichert. [[Special:GlobalWatchlist|Zurück zur globalen Beobachtungsliste]].",
 	"globalwatchlist-option-confirmallsites": "Verlange eine Bestätigung, bevor du alle Projekte als gesehen markierst",
 	"globalwatchlist-option-fastmode": "Schnelleres Laden auf Kosten von weniger Details",
 	"globalwatchlist-option-grouppage": "Ergebnisse nach Seite gruppieren",

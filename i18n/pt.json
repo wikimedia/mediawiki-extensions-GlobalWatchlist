@@ -15,6 +15,7 @@
 	"globalwatchlist-must-login": "Inicie uma sessão, por favor, para usar as páginas especiais da lista global de páginas vigiadas",
 	"globalwatchlist-javascript-required": "Esta página especial requer JavaScript para funcionar",
 	"globalwatchlist-prefs-settings": "Para definir as preferências da lista global de páginas vigiadas visite [[Special:GlobalWatchlistSettings|Definições da lista global de páginas vigiadas]], por favor.",
+	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|Foi escolhido $1 ''site''|Foram escolhidos $1 ''sites''}}, o que excede o número máximo de ''sites'' permitidos, $2.",
 	"globalwatchlist-tour-addsite": "Adicionar um site",
 	"globalwatchlist-tour-addsite-description": "Clicar acima para adicionar outra linha para um site.",
 	"globalwatchlist-tour-fastmode": "Modo rápido",
@@ -29,5 +30,6 @@
 	"globalwatchlist-tour-sitelist-description": "Esta é a lista de sítios na internet que serão incluídos na lista global de páginas vigiadas. Usar o URL base do sítio; por exemplo, <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Tipos de mudanças",
 	"globalwatchlist-tour-types-description": "Os utilizadores podem controlar que tipos de mudanças devem ser mostrados.",
+	"globalwatchlist-api-error": "Ocorreu um erro da API ao interagir com \"$1\":",
 	"prefs-globalwatchlist": "Lista global de páginas vigiadas"
 }
