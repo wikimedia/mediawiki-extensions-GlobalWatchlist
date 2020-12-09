@@ -68,6 +68,7 @@
 	viewElements.progressBar = new OO.ui.ProgressBarWidget( {
 		id: 'ext-globalwatchlist-watchlistsloading'
 	} );
+	viewElements.progressBar.$element.hide();
 	viewElements.$asOf = $( '<div>' )
 		.attr( 'id', 'ext-globalwatchlist-asof' );
 	viewElements.$sharedFeed = $( '<div>' )
