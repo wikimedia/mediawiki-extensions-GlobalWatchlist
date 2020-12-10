@@ -33,7 +33,7 @@
 	"globalwatchlist-markseen-allconfirm": "Êtes-vous sûr(e) de vouloir marquer tous les sites comme vus ?",
 	"globalwatchlist-notify-heading": "Liste de suivi globale",
 	"globalwatchlist-notify-savingfailed": "Échec d’enregistrement des paramètres. Veuillez réessayer.",
-	"globalwatchlist-notify-settingssaved": "Vos paramètres ont été enregistrés.",
+	"globalwatchlist-notify-settingssaved": "Vos paramètres ont été enregistrés. [[Special:GlobalWatchlist|Retour à la liste de suivi globale]].",
 	"globalwatchlist-option-confirmallsites": "Demander confirmation avant de marquer tous les sites comme vus",
 	"globalwatchlist-option-fastmode": "Charger plus rapidement, au détriment de moins de détails",
 	"globalwatchlist-option-grouppage": "Grouper les résultats par page",

@@ -31,7 +31,7 @@
 	"globalwatchlist-markseen-allconfirm": "Tem certeza de que deseja marcar sites como vistos?",
 	"globalwatchlist-notify-heading": "Lista de páginas vigiadas globais",
 	"globalwatchlist-notify-savingfailed": "Falha ao salvar as configurações. Por favor, tente novamente",
-	"globalwatchlist-notify-settingssaved": "suas configurações foram salvas",
+	"globalwatchlist-notify-settingssaved": "suas configurações foram salvas. [[Special:GlobalWatchlist|Retornar à lista de páginas vigiadas globais]].",
 	"globalwatchlist-option-confirmallsites": "Exigir confirmação antes de marcar todos os sites como visto",
 	"globalwatchlist-option-fastmode": "Carregar mais rápido, à custa de menos detalhes",
 	"globalwatchlist-option-grouppage": "Agrupar resultado por página",

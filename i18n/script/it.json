@@ -27,7 +27,7 @@
 	"globalwatchlist-markseen-all": "Segna tutti i siti come già visti",
 	"globalwatchlist-markseen-allconfirm": "Sei sicuro che vuoi contrassegnare tutti i siti come già visti?",
 	"globalwatchlist-notify-heading": "Osservati speciali globali",
-	"globalwatchlist-notify-settingssaved": "Le tue impostazioni sono state salvate",
+	"globalwatchlist-notify-settingssaved": "Le tue impostazioni sono state salvate. [[Special:GlobalWatchlist|Ritorna agli osservati speciali globali]].",
 	"globalwatchlist-option-grouppage": "Raggruppa risultati per pagina",
 	"globalwatchlist-option-live": "Aggiornamenti in tempo reale",
 	"globalwatchlist-otheroptions": "Altre impostazioni",
