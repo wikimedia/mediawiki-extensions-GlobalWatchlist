@@ -93,7 +93,7 @@ watchlistUtils.mergePageEdits = function ( edits ) {
  * For edits where the user was hidden, the key is: ##hidden##
  *
  * WARNING: This method returns RAW HTML that is the displayed. jQuery isn't used because we need
- *          to handle creating multiple links and returning the same was a single link does, since
+ *          to handle creating multiple links and returning the same way a single link does, since
  *          the caller doesn't know if the entry row is for a single action or multiple edits grouped
  * For each entry in editsByUser:
  *  - if the user was hidden, the output is hard-coded as the core message `rev-deleted-user` wrapped
