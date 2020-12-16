@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Atmark-chan"
+		]
+	},
+	"globalwatchlist": "グローバルウォッチリスト",
+	"globalwatchlist-desc": "グローバルなウォッチリストを追加する",
+	"globalwatchlist-summary": "グローバルウォッチリストを閲覧するためのページ",
+	"globalwatchlistsettings": "グローバルウォッチリストの設定",
+	"globalwatchlistsettings-summary": "グローバルウォッチリストを管理するためのページ",
+	"globalwatchlist-gotoglobal": "グローバルウォッチリスト",
+	"globalwatchlist-gotoglobal-tooltip": "グローバルウォッチリストを閲覧",
+	"globalwatchlist-grouped-timestamp": "グループ化された変更については、最新の変更のタイムスタンプが表示されます",
+	"globalwatchlist-must-login": "GlobalWatchlist特別ページを使用するには、ログインしてください",
+	"globalwatchlist-javascript-required": "この特別ページの動作にはJavaScriptが必要です",
+	"globalwatchlist-prefs-settings": "グローバルウォッチリストに関する設定を行うには、[[Special:GlobalWatchlistSettings]]を使用してください。",
+	"globalwatchlist-settings-error-too-many-sites": "許可されたサイトの最大数である$2を超える$1個のサイトが選択されました。",
+	"globalwatchlist-tour-addsite": "サイトを追加",
+	"globalwatchlist-tour-addsite-description": "新しい行にサイトを追加するには、上をクリックします。",
+	"globalwatchlist-tour-fastmode": "高速モード",
+	"globalwatchlist-tour-fastmode-description": "高速モードではレンダリングが速くなりますが、詳細が少なくなります。ウィキベースであるラベルは読み込まれず、編集者や編集についての詳細なしで変更されたページのシンプルな一覧が表示されます",
+	"globalwatchlist-tour-filters": "フィルターオプション"
+}
