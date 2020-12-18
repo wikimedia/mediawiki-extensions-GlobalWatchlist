@@ -394,7 +394,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$testContext = new DerivativeContext( $specialPage->getContext() );
 
 		$user = $this->createMock( User::class );
-		$user->method( 'isLoggedIn' )->willReturn( true );
+		$user->method( 'isRegistered' )->willReturn( true );
 
 		$testContext->setUser( $user );
 		$specialPage->setContext( $testContext );
@@ -425,7 +425,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		] );
 
 		$user = $this->createMock( User::class );
-		$user->method( 'isLoggedIn' )->willReturn( true );
+		$user->method( 'isRegistered' )->willReturn( true );
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
 		$testContext->setUser( $user );

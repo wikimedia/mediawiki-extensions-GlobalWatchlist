@@ -410,7 +410,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * @return bool
 	 */
 	public function isListed() {
-		return $this->getUser()->isLoggedIn();
+		return $this->getUser()->isRegistered();
 	}
 
 }
