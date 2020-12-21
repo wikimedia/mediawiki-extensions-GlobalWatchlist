@@ -17,6 +17,7 @@
 	"globalwatchlist-javascript-required": "הדף המיוחד הזה דורש JavaScript כדי לעבוד",
 	"globalwatchlist-prefs-settings": "כדי להגדיר את ההגדרות עבור רשימת המעקב הגלובלית נא לבקר בדף [[Special:GlobalWatchlistSettings|הגדרות רשימת מעקב גלובלית]].",
 	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|נבחר אתר אחד|נבחרו $1 אתרים}}, וזה גדול מ־$2, המספר המרבי של אתרים מורשים.",
+	"globalwatchlist-settings-error-invalid-site": "האתר \"$1\" אינו מתאים לוויקי שבו יש לך חשבון CentralAuth מאוחד.",
 	"globalwatchlist-tour-addsite": "הוספת אתר",
 	"globalwatchlist-tour-addsite-description": "נא ללחוץ למעלה כדי להוסיף עוד שורה לאתר.",
 	"globalwatchlist-tour-fastmode": "מצב מהיר",

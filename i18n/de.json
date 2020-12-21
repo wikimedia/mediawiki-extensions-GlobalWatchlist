@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hasley"
+			"Hasley",
+			"Umherirrender"
 		]
 	},
 	"globalwatchlist": "Globale Beobachtungsliste",
@@ -16,6 +17,7 @@
 	"globalwatchlist-javascript-required": "Diese Spezielseite erfordert JavaScript, um zu funktionieren",
 	"globalwatchlist-prefs-settings": "Um die Einstellungen für die globale Beobachtungsliste festzulegen, rufe bitte [[Special:GlobalWatchlistSettings]] auf.",
 	"globalwatchlist-settings-error-too-many-sites": "Es {{PLURAL:$1|wurde 1 Projekt|wurden $1 Projekte}} ausgewählt, was die maximale Anzahl ($2) der erlaubten Projekte übersteigt.",
+	"globalwatchlist-settings-error-invalid-site": "Die Seite „$1“ stimmt mit keinem Wiki überein, an das dein CentralAuth-Konto angeschlossen ist.",
 	"globalwatchlist-tour-addsite": "Webseite ergänzen",
 	"globalwatchlist-tour-addsite-description": "Oben klicken, um eine weitere Zeile für eine Website hinzuzufügen.",
 	"globalwatchlist-tour-fastmode": "Schneller Modus",
@@ -30,6 +32,6 @@
 	"globalwatchlist-tour-sitelist-description": "Dies ist die Liste der Webseiten, die in die globale Beobachtungsliste aufgenommen werden. Verwende die Basis-URL für die Website, z.B. <code>de.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Änderungsarten",
 	"globalwatchlist-tour-types-description": "Benutzer können steuern, welche Arten von Änderungen angezeigt werden sollen.",
-	"globalwatchlist-api-error": "Bei der Interaktion mit \"$1\" ist ein API-Fehler aufgetreten:",
+	"globalwatchlist-api-error": "Bei der Interaktion mit „$1“ ist ein API-Fehler aufgetreten:",
 	"prefs-globalwatchlist": "Globale Beobachtungsliste"
 }
