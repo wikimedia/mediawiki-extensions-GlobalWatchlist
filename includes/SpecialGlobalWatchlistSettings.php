@@ -211,7 +211,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			},
 			$attachedWikis
 		);
-		return $attachedWikis;
+		return $urlForms;
 	}
 
 	/**
