@@ -204,6 +204,11 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		}
 		$this->logger->debug( 'CentralAuth is installed, validating against attached wikis' );
 		$attachedWikis = CentralAuthUser::getInstance( $this->getUser() )->listAttached();
+
+		// Named $urlForms because the display name of a wiki is like the url that
+		// the user provides - in the form en.wikipedia.org
+		// the array should not include any empty strings, since WikiMap::getWiki should
+		// always return a WikiReference for sites where the user has an attached account
 		$urlForms = array_map(
 			function ( $dbName ) {
 				$wiki = WikiMap::getWiki( $dbName );

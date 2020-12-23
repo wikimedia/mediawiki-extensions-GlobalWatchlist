@@ -120,6 +120,7 @@ class SettingsFormValidator {
 	 * @see HTMLFormField::validate
 	 *
 	 * @param string|array $value for the specific field (the cloned site fields)
+	 *   should always be a multidimensional array since this is for an HTMLFormFieldCloner field
 	 * @param array $allData values for all of the form fields
 	 * @return bool|string|Message True on success, or string/Message error to display, or
 	 *   false to fail validation without displaying an error.
@@ -128,6 +129,9 @@ class SettingsFormValidator {
 		$sitesChosen = 0;
 		foreach ( $value as $row ) {
 			$site = trim( $row['site'] );
+			// Since there isn't an easy way to reorder sites other than just deleting
+			// the rows and adding them to the bottom manually, sometimes a field might
+			// be blank - thats okay, skip it
 			if ( $site !== '' ) {
 				if ( $this->validSites !== null &&
 					!in_array( $site, $this->validSites )
