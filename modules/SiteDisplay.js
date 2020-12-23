@@ -42,12 +42,6 @@ OO.inheritClass( GlobalWatchlistSiteDisplay, GlobalWatchlistSiteBase );
  * @return {Object} jQuery list item
  */
 GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
-	var $before = false,
-		$comment = '',
-		$extraLink = false,
-		$tags = false,
-		$timestamp = false,
-		$user = '';
 	var pageTitle = encodeURIComponent( entry.title ).replace( /'/g, '%27' );
 	var $pageLink = $( '<a>' )
 		.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&redirect=no' ) )
@@ -58,52 +52,32 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		.attr( 'target', '_blank' )
 		.text( mw.msg( 'history_small' ) );
 	var that = this;
-	var $unwatchLink = $( '<a>' )
-		.addClass( 'ext-globalwatchlist-watchunwatch' )
-		.text( mw.msg( 'globalwatchlist-unwatch' ) )
-		.on( 'click', function () {
-			that.changeWatched( entry.title, 'unwatch' );
-		} );
 
-	if ( !this.config.fastMode ) {
-		$user = entry.userDisplay;
-	}
+	// Actually set up the $row to be returned
+	var $row = $( '<li>' );
 
-	if ( entry.comment && entry.comment !== '' ) {
-		// Need to process links in the parsed comments as raw HTML
-		$comment = $( '<span>' ).html(
-			': ' +
-			this.linker.fixLocalLinks( entry.comment )
-		);
-	}
-
-	if ( entry.entryType === 'edit' && entry.newPage === false ) {
-		$extraLink = $( '<a>' )
-			.attr( 'href', this.linker.linkQuery( 'diff=' + entry.toRev + '&oldid=' + entry.fromRev ) )
-			.attr( 'target', '_blank' )
-			.addClass( 'ext-globalwatchlist-diff' )
-			.text(
-				entry.editCount === 1 ? mw.msg( 'diff' ) : mw.msg( 'nchanges', entry.editCount )
-			);
-	} else if ( entry.entryType === 'log' ) {
-		$extraLink = $( '<a>' )
-			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&page=' + pageTitle ) )
-			.attr( 'target', '_blank' )
-			.text( mw.msg( 'sp-contributions-logs' ) );
-	}
+	$row.attr( 'data-site', encodeURIComponent( this.siteID ) );
+	$row.attr( 'data-title', encodeURIComponent( entry.title ) );
 
 	if ( entry.timestamp ) {
-		$timestamp = $( '<span>' )
+		var $timestamp = $( '<span>' )
 			.text( entry.timestamp );
 		if ( entry.editCount && entry.editCount !== 1 ) {
 			$timestamp.attr( 'title', mw.msg( 'globalwatchlist-grouped-timestamp' ) );
 		}
+		$row.append( $timestamp )
+			.append( ' ' );
 	}
-
-	if ( entry.entryType === 'log' ) {
-		$before = $( '<i>' )
-			.text( 'Log: ' + entry.logtype + '/' + entry.logaction + ': ' );
-	} else if ( entry.minor || entry.bot || entry.newPage === true ) {
+	if ( entry.expiry ) {
+		var clockIcon = new OO.ui.IconWidget( {
+			classes: [ 'ext-globalwatchlist-expiry-icon' ],
+			icon: 'clock',
+			title: entry.expiry
+		} );
+		$row.append( clockIcon.$element )
+			.append( ' ' );
+	}
+	if ( entry.minor || entry.bot || entry.newPage === true ) {
 		var letters = '';
 		if ( entry.newPage === true ) {
 			letters += mw.msg( 'newpageletter' );
@@ -114,7 +88,62 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		if ( entry.bot ) {
 			letters += mw.msg( 'boteditletter' );
 		}
-		$before = $( '<b>' ).text( letters );
+		$row.append( $( '<b>' ).text( letters ) )
+			.append( ' ' );
+	}
+	if ( entry.entryType === 'log' ) {
+		var logText = 'Log: ' + entry.logtype + '/' + entry.logaction + ': ';
+		$row.append( $( '<i>' ).text( logText ) )
+			.append( ' ');
+	}
+
+	$row.append( $pageLink )
+		.append( ' (' )
+		.append( $historyLink )
+		.append( ', ' );
+
+	if ( entry.entryType === 'edit' && entry.newPage === false ) {
+		var $diffLink = $( '<a>' )
+			.attr( 'href', this.linker.linkQuery( 'diff=' + entry.toRev + '&oldid=' + entry.fromRev ) )
+			.attr( 'target', '_blank' )
+			.addClass( 'ext-globalwatchlist-diff' )
+			.text(
+				entry.editCount === 1 ? mw.msg( 'diff' ) : mw.msg( 'nchanges', entry.editCount )
+			);
+		$row.append( $diffLink )
+			.append( ', ' );
+	} else if ( entry.entryType === 'log' ) {
+		var $logPageLink = $( '<a>' )
+			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&page=' + pageTitle ) )
+			.attr( 'target', '_blank' )
+			.text( mw.msg( 'sp-contributions-logs' ) );
+		$row.append( $logPageLink )
+			.append( ', ' );
+	}
+
+	var $unwatchLink = $( '<a>' )
+		.addClass( 'ext-globalwatchlist-watchunwatch' )
+		.text( mw.msg( 'globalwatchlist-unwatch' ) )
+		.on( 'click', function () {
+			that.changeWatched( entry.title, 'unwatch' );
+		} );
+	$row.append( $unwatchLink )
+		.append( ')' );
+
+	var $user = ( this.config.fastMode ? '' : entry.userDisplay );
+	var $comment = '';
+	if ( entry.comment && entry.comment !== '' ) {
+		// Need to process links in the parsed comments as raw HTML
+		$comment = $( '<span>' ).html(
+			': ' +
+			this.linker.fixLocalLinks( entry.comment )
+		);
+	}
+	if ( $user !== '' || $comment !== '' ) {
+		$row.append( ' (' )
+			.append( $user )
+			.append( $comment )
+			.append( ')' );
 	}
 
 	if ( entry.tags.length > 0 ) {
@@ -124,42 +153,8 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 				return that.tags[ tag ];
 			}
 		).join( ', ' );
-		$tags = $( '<i>' ).html( '(Tags: ' + tagsDisplay + ')' );
-	}
+		var $tags = $( '<i>' ).html( '(Tags: ' + tagsDisplay + ')' );
 
-	// Actually set up the $row to be returned
-	var $row = $( '<li>' );
-
-	$row.attr( 'data-site', encodeURIComponent( this.siteID ) );
-	$row.attr( 'data-title', encodeURIComponent( entry.title ) );
-
-	if ( $timestamp !== false ) {
-		$row.append( $timestamp )
-			.append( ' ' );
-	}
-	if ( $before !== false ) {
-		$row.append( $before )
-			.append( ' ' );
-	}
-	$row.append( $pageLink )
-		.append( ' (' )
-		.append( $historyLink )
-		.append( ', ' );
-	if ( $extraLink !== false ) {
-		$row.append( $extraLink )
-			.append( ', ' );
-	}
-	$row.append( $unwatchLink )
-		.append( ')' );
-
-	if ( $user !== '' || $comment !== '' ) {
-		$row.append( ' (' )
-			.append( $user )
-			.append( $comment )
-			.append( ')' );
-	}
-
-	if ( $tags !== false ) {
 		$row.append( ' ' )
 			.append( $tags );
 	}
@@ -266,6 +261,8 @@ GlobalWatchlistSiteDisplay.prototype.processUpdateWatched = function ( pageTitle
 	var encodedTitle = encodeURIComponent( pageTitle );
 	var $entries = $( 'li[data-site="' + encodedSite + '"][data-title="' + encodedTitle + '"]' );
 	$entries[ unwatched ? 'addClass' : 'removeClass' ]( 'ext-globalwatchlist-strike' );
+
+	$entries.children( '.ext-globalwatchlist-expiry-icon' ).remove();
 
 	var $links = $entries.children( 'a.ext-globalwatchlist-watchunwatch' );
 	var newText = mw.msg( unwatched ? 'globalwatchlist-rewatch' : 'globalwatchlist-unwatch' );

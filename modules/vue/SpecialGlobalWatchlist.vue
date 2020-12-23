@@ -299,4 +299,13 @@ module.exports = {
 	height: 2px;
 	clear: both;
 }
+
+.ext-globalwatchlist-expiry-icon {
+	/* Copied from core watchlistexpiry.less */
+	min-height: 13px;
+	height: 13px;
+	position: relative;
+	top: -1px;
+	opacity: 0.51; /* To match @opacity-base--disabled */
+}
 </style>

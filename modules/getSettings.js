@@ -79,7 +79,7 @@ function globalWatchlistGetSettings( globalWatchlistDebug ) {
 
 	config.watchlistQueryProps = config.fastMode ?
 		'ids|title|flags|loginfo' :
-		'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags';
+		'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags|expiry';
 
 	config.watchlistQueryTypes = (
 		( config.showEdits ? 'edit|' : '' ) +

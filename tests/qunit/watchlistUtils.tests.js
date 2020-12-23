@@ -6,10 +6,11 @@
 	/* eslint-disable camelcase */
 	QUnit.test( 'watchlistUtils.mergePageEdits', function ( assert ) {
 		// Not testing timestamps as part of this, all edits set to the same timestamp
-		// of 2020-08-31 12:00
+		// of 2020-08-31 12:00.
 		var edit1 = {
 			// Bot edit, minor edit, not a new page
 			bot: true,
+			expiry: false,
 			old_revid: 1,
 			minor: true,
 			newPage: false,
@@ -19,6 +20,7 @@
 		var edit2_a = {
 			// Bot edit, minor edit, not a new page
 			bot: true,
+			expiry: false,
 			old_revid: 2,
 			minor: true,
 			newPage: false,
@@ -28,6 +30,7 @@
 		var edit2_b = {
 			// Bot edit, not a minor edit, not a new page
 			bot: true,
+			expiry: false,
 			old_revid: 2,
 			minor: false,
 			newPage: false,
@@ -37,6 +40,7 @@
 		var edit2_c = {
 			// Not a bot edit, minor edit, not a new page
 			bot: false,
+			expiry: false,
 			old_revid: 2,
 			minor: true,
 			newPage: false,
@@ -46,6 +50,7 @@
 		var edit2_d = {
 			// Not a bot edit, not a minor edit, not a new page
 			bot: false,
+			expiry: false,
 			old_revid: 2,
 			minor: false,
 			newPage: false,
@@ -55,6 +60,7 @@
 		var edit2_e = {
 			// Not a bot edit, not a minor edit, new page
 			bot: false,
+			expiry: false,
 			old_revid: 0,
 			minor: false,
 			newPage: true,
@@ -66,6 +72,7 @@
 			// Both bot edits, both minor edits, neither new page
 			bot: true,
 			editCount: 2,
+			expiry: false,
 			fromRev: 1,
 			minor: true,
 			newPage: false,
@@ -77,6 +84,7 @@
 			// Both bot edits, only one minor edit, neither new page
 			bot: true,
 			editCount: 2,
+			expiry: false,
 			fromRev: 1,
 			minor: false,
 			newPage: false,
@@ -88,6 +96,7 @@
 			// Only one bot edit, both minor edits, neither new page
 			bot: false,
 			editCount: 2,
+			expiry: false,
 			fromRev: 1,
 			minor: true,
 			newPage: false,
@@ -99,6 +108,7 @@
 			// Only one bot edit, only one minor edit, neither new page
 			bot: false,
 			editCount: 2,
+			expiry: false,
 			fromRev: 1,
 			minor: false,
 			newPage: false,
@@ -110,6 +120,7 @@
 			// Only one bot edit, only one minor edit, one new page
 			bot: false,
 			editCount: 2,
+			expiry: false,
 			fromRev: 0,
 			minor: false,
 			newPage: true,

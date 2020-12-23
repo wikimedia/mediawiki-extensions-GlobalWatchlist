@@ -99,6 +99,8 @@ module.exports = {
 			this.entries.forEach( function ( entryInfo ) {
 				if ( entryInfo.title === eventTitle ) {
 					entryInfo.pageWatched = false;
+					// To remove the clock
+					entryInfo.expiry = false;
 				}
 			} );
 			this.$forceUpdate();

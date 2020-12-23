@@ -9,6 +9,11 @@
 			{{ entryTimestamp }}
 		</span>
 
+		<!-- Watchlist expiration clock -->
+		<span v-if="hasExpiration">
+			<span v-html="expirationClock"></span>
+		</span>
+
 		<!-- Bot/minor/new page -->
 		<strong v-if="hasFlags">
 			{{ entryFlags }}
@@ -133,6 +138,19 @@ module.exports = {
 			return '';
 		},
 
+		hasExpiration: function () {
+			return this.entry.expiry !== false;
+		},
+		expirationClock: function () {
+			// UGLY there should be a Vue version
+			var clockIcon = new OO.ui.IconWidget( {
+				classes: [ 'ext-globalwatchlist-expiry-icon' ],
+				icon: 'clock',
+				title: this.entry.expiry
+			} );
+			// Can't provide the jQuery element - need to use the actual raw HTML
+			return clockIcon.$element[0].outerHTML;
+		},
 		entryFlags: function () {
 			var letters = '';
 			if ( this.entry.newPage === true ) {

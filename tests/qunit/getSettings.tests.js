@@ -24,7 +24,7 @@
 
 		// Based on the others or the config
 		lang: 'en',
-		watchlistQueryProps: 'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags',
+		watchlistQueryProps: 'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags|expiry',
 		watchlistQueryTypes: 'edit|new|log',
 		watchlistQueryShow: 'unread',
 		wikibaseSite: 'www.wikidata.org'

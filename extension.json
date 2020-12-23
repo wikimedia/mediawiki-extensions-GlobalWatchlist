@@ -145,7 +145,9 @@
 				"newpageletter",
 				"parentheses",
 				"rev-deleted-user",
-				"sp-contributions-logs"
+				"sp-contributions-logs",
+				"watchlist-expiring-days-full-text",
+				"watchlist-expiring-hours-full-text"
 			],
 			"dependencies": [
 				"jquery.makeCollapsible",
@@ -212,13 +214,16 @@
 				"newpageletter",
 				"parentheses",
 				"rev-deleted-user",
-				"sp-contributions-logs"
+				"sp-contributions-logs",
+				"watchlist-expiring-days-full-text",
+				"watchlist-expiring-hours-full-text"
 			],
 			"dependencies": [
 				"vue",
 				"mediawiki.ForeignApi",
 				"oojs",
-				"oojs-ui-windows",
+				"oojs-ui-core",
+				"oojs-ui.styles.icons-interactions",
 				"user.options"
 			]
 		},

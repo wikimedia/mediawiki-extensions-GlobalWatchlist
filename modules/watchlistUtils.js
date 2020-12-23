@@ -25,6 +25,9 @@ watchlistUtils.mergePageEdits = function ( edits ) {
 
 	mergedEditInfo.editCount = edits.length;
 
+	// Should all be the same
+	mergedEditInfo.expiry = edits[ 0 ].expiry;
+
 	mergedEditInfo.fromRev = edits
 		.map( function ( edit ) {
 			return edit.old_revid;
@@ -190,6 +193,7 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 					bot: entry.bot,
 					comment: entry.parsedcomment,
 					editCount: 1,
+					expiry: entry.expiry,
 					fromRev: entry.old_revid,
 					minor: entry.minor,
 					newPage: entry.newPage,
@@ -287,6 +291,28 @@ watchlistUtils.normalizeEntries = function ( entries ) {
 };
 
 /**
+ * Convert raw expiration strings into the tooltip to be shown
+ *
+ * @param {Array} entries
+ * @return {Array}
+ */
+watchlistUtils.addExpirationMessages = function ( entries ) {
+	var expirationDate, daysLeft;
+	entries.forEach( function ( entry ) {
+		if ( entry.expiry ) {
+			expirationDate = new Date( entry.expiry );
+			daysLeft = Math.ceil( ( expirationDate - Date.now() ) / 1000 / 86400 ) + 0;
+			if ( daysLeft === 0 ) {
+				entry.expiry = mw.msg( 'watchlist-expiring-hours-full-text' );
+			} else {
+				entry.expiry = mw.msg( 'watchlist-expiring-days-full-text', daysLeft );
+			}
+		}
+	} );
+	return entries;
+};
+
+/**
  * Convert result from the API to format used by this extension
  *
  * This is the entry point for the JavaScript controlling Special:GlobalWatchlist and the
@@ -338,6 +364,7 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 
 	convertedEdits = watchlistUtils.convertEdits( edits, site, groupPage, linker );
 	everything = convertedEdits.concat( logEntries );
+	everything = watchlistUtils.addExpirationMessages( everything );
 	return everything;
 };
 
