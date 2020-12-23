@@ -13,10 +13,12 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 	var GlobalWatchlistLinker = require( './Linker.js' );
 	var watchlistUtils = require( './watchlistUtils.js' );
 
+	// Set the Access-Control-Max-Age header - T268267
 	// Set the Api-User-Agent header - T262177
 	var apiConfig = {
 		ajax: {
 			headers: {
+				'Access-Control-Max-Age': 300,
 				'Api-User-Agent': 'GlobalWatchlist-MediaWiki/' + mw.config.get( 'wgVersion' )
 			}
 		}
