@@ -194,27 +194,6 @@
 			'Edits by hidden users are flagged as user=##hidden##'
 		);
 
-		var userEdit = {
-			parsedcomment: 'comment',
-			tags: [],
-			timestamp: '2020-08-31 12:00',
-			type: 'edit'
-		};
-		var normalizedUserEdit = {
-			anon: false,
-			parsedcomment: 'comment',
-			tags: [],
-			timestamp: '2020-08-31 12:00',
-			type: 'edit',
-			newPage: false,
-			user: ''
-		};
-		assert.deepEqual(
-			watchlistUtils.normalizeEntries( [ userEdit ] ),
-			[ normalizedUserEdit ],
-			'Edits by users flagged as anon=false'
-		);
-
 		var editWithNoSummary = {
 			anon: false,
 			tags: [],
