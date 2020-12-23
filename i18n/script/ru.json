@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Iluvatar"
+			"Iluvatar",
+			"Rubin16"
 		]
 	},
 	"globalwatchlist-add": "Добавить",
@@ -29,7 +30,7 @@
 	"globalwatchlist-markseen-allconfirm": "Вы уверены, что хотите отметить проекты как просмотренные?",
 	"globalwatchlist-notify-heading": "Глобальный список наблюдения",
 	"globalwatchlist-notify-savingfailed": "Не удалось сохранить настройки. Пожалуйста, попробуйте снова.",
-	"globalwatchlist-notify-settingssaved": "Ваши настройки были сохранены",
+	"globalwatchlist-notify-settingssaved": "Ваши настройки были сохранены. [[Special:GlobalWatchlist|Назад к глобальному списку наблюдения]].",
 	"globalwatchlist-option-confirmallsites": "Запрашивать подтверждение при отметке всех проектов как просмотренных",
 	"globalwatchlist-option-fastmode": "Более быстрая загрузка с меньшими подробностями",
 	"globalwatchlist-option-grouppage": "Группировать результаты по странице",
