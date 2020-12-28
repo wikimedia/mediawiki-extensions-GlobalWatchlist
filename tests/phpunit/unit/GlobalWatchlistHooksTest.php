@@ -19,7 +19,7 @@ use User;
  * Tests for the hook handler
  *
  * @author DannyS712
- * @covers MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks
+ * @covers \MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks
  */
 class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 

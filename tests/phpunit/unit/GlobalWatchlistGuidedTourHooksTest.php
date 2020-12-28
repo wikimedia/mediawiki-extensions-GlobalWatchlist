@@ -12,7 +12,7 @@ use ResourceLoader;
  * Tests for the hook handler
  *
  * @author DannyS712
- * @covers MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistGuidedTourHooks
+ * @covers \MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistGuidedTourHooks
  */
 class GlobalWatchlistGuidedTourHooksTest extends MediaWikiUnitTestCase {
 

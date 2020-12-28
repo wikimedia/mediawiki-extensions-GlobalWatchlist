@@ -70,13 +70,13 @@ class SettingsFormValidator {
 	}
 
 	/**
-	 * Validation callback called from HTMLFormField::validate.
+	 * Validation callback called from HTMLRadioField::validate.
 	 *
 	 * Ensure that user doesn't try to filter for anonymous bot edits
 	 *
-	 * @see HTMLFormField::validate
+	 * @see HTMLRadioField::validate
 	 *
-	 * @param string|array $value for the specific field (bot edit filter)
+	 * @param string $value for the specific field (bot edit filter)
 	 * @param array $allData values for all of the form fields
 	 * @return bool|string|Message True on success, or string/Message error to display, or
 	 *   false to fail validation without displaying an error.
@@ -91,13 +91,13 @@ class SettingsFormValidator {
 	}
 
 	/**
-	 * Validation callback called from HTMLFormField::validate.
+	 * Validation callback called from HTMLRadioField::validate.
 	 *
 	 * Ensure that user doesn't try to filter for anonymous minor edits
 	 *
-	 * @see HTMLFormField::validate
+	 * @see HTMLRadioField::validate
 	 *
-	 * @param string|array $value for the specific field (minor edit filter)
+	 * @param string $value for the specific field (minor edit filter)
 	 * @param array $allData values for all of the form fields
 	 * @return bool|string|Message True on success, or string/Message error to display, or
 	 *   false to fail validation without displaying an error.
@@ -112,14 +112,14 @@ class SettingsFormValidator {
 	}
 
 	/**
-	 * Validation callback called from HTMLFormField::validate.
+	 * Validation callback called from HTMLFormFieldCloner::validate.
 	 *
 	 * Ensure that at least one site is chosen, that no site is chosen multiple times, and that
 	 * the maximum number of sites is not exceeded.
 	 *
-	 * @see HTMLFormField::validate
+	 * @see HTMLFormFieldCloner::validate
 	 *
-	 * @param string|array $value for the specific field (the cloned site fields)
+	 * @param array $value for the specific field (the cloned site fields)
 	 *   should always be a multidimensional array since this is for an HTMLFormFieldCloner field
 	 * @param array $allData values for all of the form fields
 	 * @return bool|string|Message True on success, or string/Message error to display, or
@@ -166,26 +166,23 @@ class SettingsFormValidator {
 			);
 		}
 
-		if ( $this->maxSites !== 0 ) {
-			// There is a limit, ensure it is not exceeded
-			if ( $siteCount > $this->maxSites ) {
-				return $this->messageLocalizer
-					->msg( 'globalwatchlist-settings-error-too-many-sites' )
-					->numParams( $siteCount, $this->maxSites );
-			}
+		if ( $this->maxSites && $siteCount > $this->maxSites ) {
+			return $this->messageLocalizer
+				->msg( 'globalwatchlist-settings-error-too-many-sites' )
+				->numParams( $siteCount, $this->maxSites );
 		}
 
 		return true;
 	}
 
 	/**
-	 * Validation callback called from HTMLFormField::validate.
+	 * Validation callback called from HTMLMultiSelectField::validate.
 	 *
 	 * Ensure that at least one type of change is shown
 	 *
-	 * @see HTMLFormField::validate
+	 * @see HTMLMultiSelectField::validate
 	 *
-	 * @param string|array $value for the specific field (the checkboxes)
+	 * @param array $value for the specific field (the checkboxes)
 	 * @param array $allData values for all of the form fields
 	 * @return bool|string|Message True on success, or string/Message error to display, or
 	 *   false to fail validation without displaying an error.

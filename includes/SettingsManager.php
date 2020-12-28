@@ -36,15 +36,12 @@ use Psr\Log\LoggerInterface;
 class SettingsManager {
 
 	/**
-	 * @var string
-	 *
 	 * Name for the user option in the database with the user's global watchlist settings
 	 * @note This must be the same as the options name used in getSettings.js
 	 */
 	public const PREFERENCE_NAME = 'global-watchlist-options';
 
 	/**
-	 * @var int
 	 * Latest version of the format the settings are in, in case it changes
 	 */
 	public const PREFERENCE_VERSION = 1;
@@ -54,13 +51,11 @@ class SettingsManager {
 	 * statuses. Used for anon filter, bot filter, and minor filter
 	 */
 
-	/** @var int Don't care, not filtered */
+	/** Don't care, not filtered */
 	public const FILTER_EITHER = 0;
-
-	/** @var int Require that the condition (anon/bot/minor) be matched */
+	/** Require that the condition (anon/bot/minor) be matched */
 	public const FILTER_REQUIRE = 1;
-
-	/** @var int Exclude edits that match the condition */
+	/** Exclude edits that match the condition */
 	public const FILTER_EXCLUDE = 2;
 
 	/** @var LoggerInterface */
@@ -104,8 +99,7 @@ class SettingsManager {
 		// the blob than in the middle or at the end.
 		$dbOptions = [ 'version' => self::PREFERENCE_VERSION ] + $options;
 
-		$optionsStr = FormatJson::encode( $dbOptions );
-		$this->saveOptionsInternal( $userIdentity, $optionsStr );
+		$this->saveOptionsInternal( $userIdentity, FormatJson::encode( $dbOptions ) );
 	}
 
 	/**

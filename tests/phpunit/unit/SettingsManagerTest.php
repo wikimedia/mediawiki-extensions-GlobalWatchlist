@@ -36,8 +36,8 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 			$userOptionsManager,
 			$statsdDataFactory
 		);
-		$accessManager = TestingAccessWrapper::newFromObject( $manager );
-		return $accessManager;
+
+		return TestingAccessWrapper::newFromObject( $manager );
 	}
 
 	public function testSaveSettings() {

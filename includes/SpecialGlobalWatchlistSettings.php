@@ -147,7 +147,6 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 		if ( $currentOptions === false ) {
 			$userOptions = $defaultOptions;
-
 			$this->maybeLoadTour();
 		} else {
 			// User has options, try to handle them
@@ -169,9 +168,8 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			$this->getConfig()->get( 'GlobalWatchlistSiteLimit' ),
 			$this->maybeGetValidSites()
 		);
-		$formFields = $this->getActualFormFields( $formValidator, $userOptions );
 
-		return $formFields;
+		return $this->getActualFormFields( $formValidator, $userOptions );
 	}
 
 	/**
@@ -206,11 +204,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$this->logger->debug( 'CentralAuth is installed, validating against attached wikis' );
 		$attachedWikis = CentralAuthUser::getInstance( $this->getUser() )->listAttached();
 
-		// Named $urlForms because the display name of a wiki is like the url that
-		// the user provides - in the form en.wikipedia.org or dev.wiki.local.wmftest.net:8080
-		// the array should not include any empty strings, since WikiMap::getWiki should
-		// always return a WikiReference for sites where the user has an attached account
-		$urlForms = array_map(
+		return array_map(
 			static function ( $dbName ) {
 				$wiki = WikiMap::getWiki( $dbName );
 				if ( !$wiki ) {
@@ -235,7 +229,6 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			},
 			$attachedWikis
 		);
-		return $urlForms;
 	}
 
 	/**
@@ -427,11 +420,10 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			},
 			$data['sites']
 		);
-		$userOptions = [];
 
 		// Use array_values to ensure we don't save the keys if there are empty sites,
 		// keys don't matter and take up space in the database
-		$userOptions['sites'] = array_values(
+		$sites = array_values(
 			array_filter(
 				$sites,
 				static function ( $site ) {
@@ -439,13 +431,17 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 				}
 			)
 		);
-		$userOptions['anonfilter'] = (int)$data['anon'];
-		$userOptions['botfilter'] = (int)$data['bot'];
-		$userOptions['minorfilter'] = (int)$data['minor'];
-		$userOptions['confirmallsites'] = in_array( 'confirmallsites', $data['otheroptions'] );
-		$userOptions['fastmode'] = in_array( 'fastmode', $data['otheroptions'] );
-		$userOptions['grouppage'] = in_array( 'grouppage', $data['otheroptions'] );
-		$userOptions['showtypes'] = $data['types'];
+
+		$userOptions = [
+			'sites' => $sites,
+			'anonfilter' => (int)$data['anon'],
+			'botfilter' => (int)$data['bot'],
+			'minorfilter' => (int)$data['minor'],
+			'confirmallsites' => in_array( 'confirmallsites', $data['otheroptions'] ),
+			'fastmode' => in_array( 'fastmode', $data['otheroptions'] ),
+			'grouppage' => in_array( 'grouppage', $data['otheroptions'] ),
+			'showtypes' => $data['types'],
+		];
 
 		$this->settingsManager->saveUserOptions(
 			$this->getUser(),

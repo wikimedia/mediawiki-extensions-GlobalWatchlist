@@ -68,7 +68,6 @@ class GlobalWatchlistHooks implements
 	 * @param User $user
 	 * @param array $changes Associative array of preference name => value
 	 * @param string[] $resetKinds
-	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onApiOptions( $apiModule, $user, $changes, $resetKinds ) {
 		if ( array_key_exists( SettingsManager::PREFERENCE_NAME, $changes ) ) {
@@ -79,7 +78,6 @@ class GlobalWatchlistHooks implements
 	/**
 	 * @param User $user
 	 * @param array &$preferences
-	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
 		$preferences[ SettingsManager::PREFERENCE_NAME ] = [
@@ -99,13 +97,9 @@ class GlobalWatchlistHooks implements
 	 * explaining why
 	 *
 	 * @param string[] &$messages
-	 * @return void
 	 */
 	public function onLoginFormValidErrorMessages( array &$messages ) {
-		$messages = array_merge(
-			$messages,
-			[ 'globalwatchlist-must-login' ]
-		);
+		$messages[] = 'globalwatchlist-must-login';
 	}
 
 	/**
@@ -113,12 +107,9 @@ class GlobalWatchlistHooks implements
 	 *
 	 * @param Skin $skin
 	 * @param array &$sidebar Sidebar content. Modify $sidebar to add or modify sidebar portlets.
-	 * @return void This hook must not abort; it must not return value.
 	 */
 	public function onSidebarBeforeOutput( $skin, &$sidebar ): void {
-		$title = $skin->getTitle();
-		$onWatchlist = $title->isSpecial( 'Watchlist' );
-		if ( !$onWatchlist ) {
+		if ( !$skin->getTitle()->isSpecial( 'Watchlist' ) ) {
 			return;
 		}
 

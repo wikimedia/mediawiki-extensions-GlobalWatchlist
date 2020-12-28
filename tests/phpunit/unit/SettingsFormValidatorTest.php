@@ -7,6 +7,7 @@ use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWikiUnitTestCase;
 use Message;
 use MessageLocalizer;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @author DannyS712
