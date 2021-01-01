@@ -87,7 +87,7 @@
 		},
 		"GlobalWatchlistEnableGuidedTour": {
 			"value": false,
-			"description": "Whether to enabled the GuidedTour for Special:GlobalWatchlistSettings"
+			"description": "Whether to enable the GuidedTour for Special:GlobalWatchlistSettings"
 		},
 		"GlobalWatchlistSiteLimit": {
 			"value": 5,
