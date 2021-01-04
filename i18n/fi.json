@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Majavah"
+			"Majavah",
+			"Pyscowicz"
 		]
 	},
 	"globalwatchlist": "Järjestelmänlaajuinen tarkkailulista",
@@ -9,5 +10,5 @@
 	"globalwatchlist-summary": "Toimintosivu, joka näyttää järjestelmänlaajuisen tarkkailulistan",
 	"globalwatchlistsettings": "Järjestelmänlaajuisen tarkkailulistan asetukset",
 	"globalwatchlistsettings-summary": "Toimintosivu järjestelmänlaajuisen tarkkailulistan hallitsemiseen",
-	"globalwatchlist-javascript-required": "Järjestelmänlaajuisen tarkkailulistan toimintosivut vaativat JavaScriptin toimiakseen"
+	"globalwatchlist-javascript-required": "Tämä toimintosivu vaatii JavaScriptin toimiakseen"
 }
