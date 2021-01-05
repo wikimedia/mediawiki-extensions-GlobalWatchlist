@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Base",
+			"Renamerr",
 			"Ата"
 		]
 	},
@@ -31,7 +32,7 @@
 	"globalwatchlist-markseen-allconfirm": "Ви впевнені, що хочете позначити сайти як бачені?",
 	"globalwatchlist-notify-heading": "Глобальний список спостереження",
 	"globalwatchlist-notify-savingfailed": "Не вдалося зберегти налаштування. Спробуйте ще раз, будь ласка.",
-	"globalwatchlist-notify-settingssaved": "Ваші налаштування збережено",
+	"globalwatchlist-notify-settingssaved": "Ваші налаштування збережено. [[Special:GlobalWatchlist|Повернутися до глобального списку спостереження]].",
 	"globalwatchlist-option-confirmallsites": "Вимагати підтвердження, перш ніж позначити усі сайти переглянутими",
 	"globalwatchlist-option-fastmode": "Завантажувати швидше за рахунок меншої деталізації",
 	"globalwatchlist-option-grouppage": "Групувати результати за сторінкою",
