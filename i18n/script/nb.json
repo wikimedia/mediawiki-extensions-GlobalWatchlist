@@ -31,7 +31,7 @@
 	"globalwatchlist-markseen-allconfirm": "Er du sikker på at du vil merke alle nettsteder som sett?",
 	"globalwatchlist-notify-heading": "Global overvåkningsliste",
 	"globalwatchlist-notify-savingfailed": "Kunne ikke lagre innstillinger. Prøv igjen",
-	"globalwatchlist-notify-settingssaved": "Innstillingene dine har blitt lagret",
+	"globalwatchlist-notify-settingssaved": "Innstillingene dine har blitt lagret. [[Special:GlobalWatchlist|Tilbake til den globale overvåkningslisten]].",
 	"globalwatchlist-option-confirmallsites": "Krev bekreftelse før alle nettsteder markeres som sett",
 	"globalwatchlist-option-fastmode": "Last raskere, på bekostning av detaljnivå",
 	"globalwatchlist-option-grouppage": "Grupper resultater etter side",
