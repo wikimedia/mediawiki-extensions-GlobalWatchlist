@@ -347,6 +347,7 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 			logEntries.push( {
 				comment: entry.parsedcomment,
 				entryType: entry.type,
+				expiry: entry.expiry,
 				ns: entry.ns,
 				tags: entry.tags,
 				timestamp: entry.timestamp,
