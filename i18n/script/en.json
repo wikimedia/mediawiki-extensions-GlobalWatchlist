@@ -28,7 +28,7 @@
 	"globalwatchlist-globalwatchlistsettingslink": "Settings",
 	"globalwatchlist-markseen": "Mark as seen",
 	"globalwatchlist-markseen-all": "Mark all sites as seen",
-	"globalwatchlist-markseen-allconfirm": "Are you sure you want to mark sites as seen?",
+	"globalwatchlist-markseen-allconfirm": "Are you sure you want to mark all sites as seen?",
 	"globalwatchlist-notify-heading": "Global Watchlist",
 	"globalwatchlist-notify-savingfailed": "Failed to save settings. Please try again",
 	"globalwatchlist-notify-settingssaved": "Your settings have been saved. [[Special:GlobalWatchlist|Return to global watchlist]].",
