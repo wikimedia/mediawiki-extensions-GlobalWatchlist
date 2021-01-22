@@ -4,7 +4,8 @@
 			"DannyS712",
 			"Fitoschido",
 			"Hasley",
-			"MarcoAurelio"
+			"MarcoAurelio",
+			"WikiiiTranslator"
 		]
 	},
 	"globalwatchlist-add": "Añadir",
@@ -29,7 +30,7 @@
 	"globalwatchlist-globalwatchlistsettingslink": "Configuración",
 	"globalwatchlist-markseen": "Marcar como visto",
 	"globalwatchlist-markseen-all": "Marcar todos los sitios como vistos",
-	"globalwatchlist-markseen-allconfirm": "¿Confirmas que quieres marcar los sitios como vistos?",
+	"globalwatchlist-markseen-allconfirm": "Mensaje de confirmacion para marcar todos los sitios como vistos",
 	"globalwatchlist-notify-heading": "Lista de seguimiento global",
 	"globalwatchlist-notify-savingfailed": "No se pudo guardar la configuración. Inténtalo de nuevo.",
 	"globalwatchlist-notify-settingssaved": "Se han guardado tus cambios. [[Special:GlobalWatchlist|Volver a la lista de seguimiento global]].",
