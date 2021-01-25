@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Colathewikian",
 			"Nadine Siak",
 			"Shuiwater",
 			"列维劳德"
@@ -22,6 +23,7 @@
 	"globalwatchlist-globalwatchlistsettingslink": "设置",
 	"globalwatchlist-markseen": "标为检查过",
 	"globalwatchlist-markseen-all": "标记所有站点为已查看",
+	"globalwatchlist-markseen-allconfirm": "您确定要将所有页面列为已读吗？",
 	"globalwatchlist-notify-heading": "全域监视列表",
 	"globalwatchlist-notify-savingfailed": "保存设置失败，请重试。",
 	"globalwatchlist-notify-settingssaved": "您的设置已保存。",

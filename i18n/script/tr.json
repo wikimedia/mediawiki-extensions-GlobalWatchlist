@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"SaldırganSincap"
 		]
 	},
 	"globalwatchlist-add": "Ekle",
@@ -29,7 +30,7 @@
 	"globalwatchlist-globalwatchlistsettingslink": "Ayarlar",
 	"globalwatchlist-markseen": "Görüldü olarak işaretle",
 	"globalwatchlist-markseen-all": "Tüm siteleri göründü olarak işaretle",
-	"globalwatchlist-markseen-allconfirm": "Siteleri göründüğü gibi işaretlemek istediğinizden emin misiniz?",
+	"globalwatchlist-markseen-allconfirm": "Tüm siteleri görüldüğü gibi işaretlemek istediğinizden emin misiniz?",
 	"globalwatchlist-notify-heading": "Küresel İzleme Listesi",
 	"globalwatchlist-notify-savingfailed": "Ayarlar kaydedilemedi. Lütfen tekrar deneyin",
 	"globalwatchlist-notify-settingssaved": "Ayarlarınız kaydedildi. [[Special:GlobalWatchlist|Küresel izleme listesine geri dön]].",

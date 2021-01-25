@@ -30,7 +30,7 @@
 	"globalwatchlist-globalwatchlistsettingslink": "Paramètres",
 	"globalwatchlist-markseen": "Marquer comme vu",
 	"globalwatchlist-markseen-all": "Marquer tous les sites comme vus",
-	"globalwatchlist-markseen-allconfirm": "Êtes-vous sûr(e) de vouloir marquer tous les sites comme vus ?",
+	"globalwatchlist-markseen-allconfirm": "Êtes-vous sûr(e) de vouloir marquer tous les sites comme vus ?",
 	"globalwatchlist-notify-heading": "Liste de suivi globale",
 	"globalwatchlist-notify-savingfailed": "Échec d’enregistrement des paramètres. Veuillez réessayer.",
 	"globalwatchlist-notify-settingssaved": "Vos paramètres ont été enregistrés. [[Special:GlobalWatchlist|Retour à la liste de suivi globale]].",
