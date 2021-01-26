@@ -94,7 +94,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	if ( entry.entryType === 'log' ) {
 		var logText = 'Log: ' + entry.logtype + '/' + entry.logaction + ': ';
 		$row.append( $( '<i>' ).text( logText ) )
-			.append( ' ');
+			.append( ' ' );
 	}
 
 	$row.append( $pageLink )

@@ -149,7 +149,7 @@ module.exports = {
 				title: this.entry.expiry
 			} );
 			// Can't provide the jQuery element - need to use the actual raw HTML
-			return clockIcon.$element[0].outerHTML;
+			return clockIcon.$element[ 0 ].outerHTML;
 		},
 		entryFlags: function () {
 			var letters = '';
