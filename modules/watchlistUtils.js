@@ -353,6 +353,7 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 				timestamp: entry.timestamp,
 				title: entry.title,
 				logaction: entry.logaction,
+				logid: entry.logid,
 				logtype: entry.logtype,
 				userDisplay: watchlistUtils.makeSingleUserLink(
 					entry.user,

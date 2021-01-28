@@ -116,8 +116,15 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		var $logPageLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&page=' + pageTitle ) )
 			.attr( 'target', '_blank' )
-			.text( mw.msg( 'sp-contributions-logs' ) );
+			.text( mw.msg( 'globalwatchlist-log-page' ) );
 		$row.append( $logPageLink )
+			.append( ', ' );
+
+		var $logEntryLink = $( '<a>' )
+			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&logid=' + entry.logid ) )
+			.attr( 'target', '_blank' )
+			.text( mw.msg( 'globalwatchlist-log-entry' ) );
+		$row.append( $logEntryLink )
 			.append( ', ' );
 	}
 

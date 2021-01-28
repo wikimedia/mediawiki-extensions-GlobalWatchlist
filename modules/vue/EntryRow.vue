@@ -48,12 +48,18 @@
 		</span>
 
 		<span v-if="isLogEntry">
-			<!--Wrap in a span to ensure comma is only rendered when needed-->
+			<!--Wrap in a span to ensure commas are only rendered when needed-->
 			<a
-				v-bind:href="logsLink"
+				v-bind:href="logPageLink"
 				target="_blank"
 			>
-				{{ $i18n( 'sp-contributions-logs' ) }}
+				{{ $i18n( 'globalwatchlist-log-page' ) }}
+			</a>,
+			<a
+				v-bind:href="logEntryLink"
+				target="_blank"
+			>
+				{{ $i18n( 'globalwatchlist-log-entry' ) }}
 			</a>,
 		</span>
 
@@ -189,8 +195,11 @@ module.exports = {
 				this.$i18n( 'diff' ) :
 				this.$i18n( 'nchanges', this.entry.editCount );
 		},
-		logsLink: function () {
+		logPageLink: function () {
 			return this.linker.linkQuery( 'title=Special:Log&page=' + encodeURIComponent( this.entry.title ) );
+		},
+		logEntryLink: function () {
+			return this.linker.linkQuery( 'title=Special:Log&logid=' + this.entry.logid );
 		},
 
 		entryComment: function () {

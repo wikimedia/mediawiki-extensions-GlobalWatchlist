@@ -128,6 +128,8 @@
 				"globalwatchlist-fetch-site-failure",
 				"globalwatchlist-globalwatchlistsettingslink",
 				"globalwatchlist-grouped-timestamp",
+				"globalwatchlist-log-entry",
+				"globalwatchlist-log-page",
 				"globalwatchlist-markseen",
 				"globalwatchlist-markseen-all",
 				"globalwatchlist-markseen-allconfirm",
@@ -145,7 +147,6 @@
 				"newpageletter",
 				"parentheses",
 				"rev-deleted-user",
-				"sp-contributions-logs",
 				"watchlist-expiring-days-full-text",
 				"watchlist-expiring-hours-full-text"
 			],
@@ -195,6 +196,8 @@
 				"globalwatchlist-fetch-site-failure",
 				"globalwatchlist-globalwatchlistsettingslink",
 				"globalwatchlist-grouped-timestamp",
+				"globalwatchlist-log-entry",
+				"globalwatchlist-log-page",
 				"globalwatchlist-markseen",
 				"globalwatchlist-markseen-all",
 				"globalwatchlist-markseen-allconfirm",
@@ -214,7 +217,6 @@
 				"newpageletter",
 				"parentheses",
 				"rev-deleted-user",
-				"sp-contributions-logs",
 				"watchlist-expiring-days-full-text",
 				"watchlist-expiring-hours-full-text"
 			],
