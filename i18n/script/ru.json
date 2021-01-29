@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Iluvatar",
-			"Rubin16"
+			"Rubin16",
+			"Wileyfoxyx"
 		]
 	},
 	"globalwatchlist-add": "Добавить",
@@ -27,7 +28,7 @@
 	"globalwatchlist-globalwatchlistsettingslink": "Настройки",
 	"globalwatchlist-markseen": "Отметить как просмотренный",
 	"globalwatchlist-markseen-all": "Отметить все проекты как просмотренные",
-	"globalwatchlist-markseen-allconfirm": "Вы уверены, что хотите отметить проекты как просмотренные?",
+	"globalwatchlist-markseen-allconfirm": "Вы уверены, что хотите отметить все проекты как просмотренные?",
 	"globalwatchlist-notify-heading": "Глобальный список наблюдения",
 	"globalwatchlist-notify-savingfailed": "Не удалось сохранить настройки. Пожалуйста, попробуйте снова.",
 	"globalwatchlist-notify-settingssaved": "Ваши настройки были сохранены. [[Special:GlobalWatchlist|Назад к глобальному списку наблюдения]].",
