@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Colathewikian",
+			"Lakejason0",
 			"Nadine Siak",
 			"Shuiwater",
 			"列维劳德"
@@ -26,7 +27,7 @@
 	"globalwatchlist-markseen-allconfirm": "您确定要将所有页面列为已读吗？",
 	"globalwatchlist-notify-heading": "全域监视列表",
 	"globalwatchlist-notify-savingfailed": "保存设置失败，请重试。",
-	"globalwatchlist-notify-settingssaved": "您的设置已保存。",
+	"globalwatchlist-notify-settingssaved": "您的设置已保存。[[Special:GlobalWatchlist|返回全域监视列表]]。",
 	"globalwatchlist-option-grouppage": "按页面分组结果",
 	"globalwatchlist-option-live": "动态更新",
 	"globalwatchlist-otheroptions": "其他设置",
