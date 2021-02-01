@@ -82,7 +82,7 @@
 			"description": "Whether to use the Vue version of the code for Special:GlobalWatchlist"
 		},
 		"GlobalWatchlistDevMode": {
-			"value": true,
+			"value": false,
 			"description": "Whether to send debug entries to the console"
 		},
 		"GlobalWatchlistEnableGuidedTour": {
