@@ -102,7 +102,8 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		.append( $historyLink )
 		.append( ', ' );
 
-	if ( entry.entryType === 'edit' && entry.newPage === false ) {
+	// No diff links in fast mode, see T269728
+	if ( entry.entryType === 'edit' && entry.newPage === false && this.config.fastMode === false ) {
 		var $diffLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'diff=' + entry.toRev + '&oldid=' + entry.fromRev ) )
 			.attr( 'target', '_blank' )

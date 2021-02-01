@@ -36,10 +36,10 @@
 			Avoid a space in the middle
 		-->,
 
-		<span v-if="isPureEdit">
+		<span v-if="hasDiffLink">
 			<!--Wrap in a span to ensure comma is only rendered when needed-->
 			<a
-				v-if="isPureEdit"
+				v-if="hasDiffLink"
 				v-bind:href="diffLink"
 				target="_blank"
 			>
@@ -184,8 +184,12 @@ module.exports = {
 		historyLink: function () {
 			return this.linker.linkQuery( 'title=' + this.entry.title + '&action=history' );
 		},
-		isPureEdit: function () {
-			return this.entry.entryType === 'edit' && !this.entry.newPage;
+		hasDiffLink: function () {
+			// We don't have access to the config to know if this is fast mode or not,
+			// but we can infer based on the userDisplay since there should always be
+			// something to display in non-fast mode. No diff links are shown in fast
+			// mode, see T269728
+			return this.entry.entryType === 'edit' && !this.entry.newPage && this.hasUserDisplay();
 		},
 		diffLink: function () {
 			return this.linker.linkQuery( 'diff=' + this.entry.toRev + '&oldid=' + this.entry.fromRev );
