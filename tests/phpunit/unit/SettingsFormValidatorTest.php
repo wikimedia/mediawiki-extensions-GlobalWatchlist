@@ -111,6 +111,37 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf( Message::class, $res );
 	}
 
+	public function testDuplicateSites() {
+		// Also double check the normalization logic - the duplicates are only
+		// duplicates after being normalized
+		$message = $this->createMock( Message::class );
+		$message->expects( $this->once() )
+			->method( 'params' )
+			->with( $this->equalTo( 'baz.net' ) )
+			->will( $this->returnSelf() );
+		$messageLocalizer = $this->getMessageLocalizer(
+			'globalwatchlist-settings-error-duplicate-site',
+			$message
+		);
+
+		$validator = new SettingsFormValidator( $messageLocalizer, 0, null );
+
+		$res = $validator->validateSitesChosen(
+			[ [ 'site' => 'baz.net' ] ],
+			[]
+		);
+		$this->assertTrue( $res );
+
+		$res = $validator->validateSitesChosen(
+			[
+				[ 'site' => 'baz.net' ],
+				[ 'site' => 'https://baz.net' ]
+			],
+			[]
+		);
+		$this->assertInstanceOf( Message::class, $res );
+	}
+
 	public function testInvalidSite() {
 		// Trying with 'foo.com' and 'bar.org', only the first is okay
 		$message = $this->createMock( Message::class );

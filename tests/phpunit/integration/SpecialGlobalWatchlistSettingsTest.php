@@ -320,7 +320,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 		$submitted = [
 			'sites' => [
-				[ 'site' => 'siteGoesHere' ],
+				[ 'site' => 'https://www.example.com' ],
 				[ 'site' => '' ],
 			],
 			'anon' => 9,
@@ -333,7 +333,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			'types' => [ 'edit' ],
 		];
 		$expectedOptions = [
-			'sites' => [ 'siteGoesHere' ],
+			'sites' => [ 'www.example.com' ],
 			'anonfilter' => 9,
 			'botfilter' => 8,
 			'minorfilter' => 7,

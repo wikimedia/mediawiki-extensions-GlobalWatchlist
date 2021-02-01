@@ -114,8 +114,8 @@ class SettingsFormValidator {
 	/**
 	 * Validation callback called from HTMLFormField::validate.
 	 *
-	 * Ensure that at least one site is chosen, and that the maximum number of sites is not
-	 * exceeded.
+	 * Ensure that at least one site is chosen, that no site is chosen multiple times, and that
+	 * the maximum number of sites is not exceeded.
 	 *
 	 * @see HTMLFormField::validate
 	 *
@@ -126,25 +126,41 @@ class SettingsFormValidator {
 	 *   false to fail validation without displaying an error.
 	 */
 	public function validateSitesChosen( $value, $allData ) {
-		$sitesChosen = 0;
+		$sitesChosen = [];
 		foreach ( $value as $row ) {
 			$site = trim( $row['site'] );
 			// Since there isn't an easy way to reorder sites other than just deleting
 			// the rows and adding them to the bottom manually, sometimes a field might
 			// be blank - thats okay, skip it
-			if ( $site !== '' ) {
-				if ( $this->validSites !== null &&
-					!in_array( $site, $this->validSites )
-				) {
-					return $this->messageLocalizer
-						->msg( 'globalwatchlist-settings-error-invalid-site' )
-						->params( $site );
-				}
-				$sitesChosen++;
+			if ( $site === '' ) {
+				continue;
 			}
+
+			// Accept and handle sites with a protocol, see T262762
+			// normalize before checking for duplicates and invalid sites
+			$site = preg_replace( '/^(?:https?:)?\/\//', '', $site );
+
+			// Avoid duplicate sites, T273532
+			if ( isset( $sitesChosen[$site] ) ) {
+				return $this->messageLocalizer
+					->msg( 'globalwatchlist-settings-error-duplicate-site' )
+					->params( $site );
+			}
+
+			// Validate against CentralAuth, if available, T268210
+			if ( $this->validSites !== null &&
+				!in_array( $site, $this->validSites )
+			) {
+				return $this->messageLocalizer
+					->msg( 'globalwatchlist-settings-error-invalid-site' )
+					->params( $site );
+			}
+
+			$sitesChosen[$site] = true;
 		}
 
-		if ( $sitesChosen === 0 ) {
+		$siteCount = count( $sitesChosen );
+		if ( $siteCount === 0 ) {
 			return $this->messageLocalizer->msg(
 				'globalwatchlist-settings-error-no-sites'
 			);
@@ -152,10 +168,10 @@ class SettingsFormValidator {
 
 		if ( $this->maxSites !== 0 ) {
 			// There is a limit, ensure it is not exceeded
-			if ( $sitesChosen > $this->maxSites ) {
+			if ( $siteCount > $this->maxSites ) {
 				return $this->messageLocalizer
 					->msg( 'globalwatchlist-settings-error-too-many-sites' )
-					->numParams( $sitesChosen, $this->maxSites );
+					->numParams( $siteCount, $this->maxSites );
 			}
 		}
 

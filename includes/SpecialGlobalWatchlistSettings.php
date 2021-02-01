@@ -384,7 +384,8 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 		$sites = array_map(
 			function ( $row ) {
-				return $row['site'];
+				// Accept and handle sites with a protocol, see T262762
+				return preg_replace( '/^(?:https?:)?\/\//', '', trim( $row['site'] ) );
 			},
 			$data['sites']
 		);
@@ -396,7 +397,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			array_filter(
 				$sites,
 				function ( $site ) {
-					return ( trim( $site ) !== '' );
+					return ( $site !== '' );
 				}
 			)
 		);
