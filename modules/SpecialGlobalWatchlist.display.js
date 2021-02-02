@@ -155,7 +155,7 @@
 				viewElements.$sharedFeed.empty()
 					.append( $div );
 				viewManager.runLive();
-				viewElements.$asOf.innerText = mw.msg(
+				viewElements.$asOf[0].innerText = mw.msg(
 					'globalwatchlist-asof',
 					config.time.toUTCString()
 				);
@@ -179,7 +179,7 @@
 		viewElements.liveToggle.setDisabled( true );
 		viewElements.progressBar.$element.show();
 		viewElements.$sharedFeed.hide();
-		viewElements.$asOf.innerText = '';
+		viewElements.$asOf[0].innerText = '';
 
 		viewManager.refresh().then( function () {
 			viewManager.showFeed();
@@ -253,7 +253,7 @@
 		var loadStartTime = mw.now();
 		viewElements.liveToggle.setDisabled( true );
 		viewElements.$sharedFeed.hide();
-		viewElements.$asOf.innerText = '';
+		viewElements.$asOf[0].innerText = '';
 
 		// Wait a bit before showing the progress bar, hopefully if the user's
 		// internet is fast enough clearTimeout will be called before the loading bar
