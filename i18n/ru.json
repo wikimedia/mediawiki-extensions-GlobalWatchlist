@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Iluvatar",
+			"Le Loi",
 			"Megakott",
 			"Rubin16",
 			"Teretalexev"
@@ -14,7 +15,26 @@
 	"globalwatchlistsettings-summary": "Служебная страница для управления глобальным списком наблюдения",
 	"globalwatchlist-gotoglobal": "Глобальный список наблюдения",
 	"globalwatchlist-gotoglobal-tooltip": "Просмотр глобального списка наблюдения",
+	"globalwatchlist-grouped-timestamp": "Временна́я метка показывается для сгруппированных изменений",
 	"globalwatchlist-must-login": "Пожалуйста, войдите в систему для просмотра служебных страниц глобального списка наблюдения",
-	"globalwatchlist-javascript-required": "Для работы этой специальной страницы требуется JavaScript",
-	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1 сайт был|$1 сайта было|$1 сайтов было}} выбрано, что превышает $2, максимально допустимое число сайтов."
+	"globalwatchlist-javascript-required": "Для работы этой служебной страницы требуется JavaScript",
+	"globalwatchlist-prefs-settings": "Настройки глобального списка наблюдения можно установить на странице [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|выбран $1 сайт|выбрано $1 сайта|выбрано $1 сайтов}}, что превышает максимально допустимое количество ($2).",
+	"globalwatchlist-settings-error-invalid-site": "У сайта «$1» нет соответствующего вики-проекта, где у вас есть аккаунт, связанный с CentralAuth.",
+	"globalwatchlist-tour-addsite": "Добавить сайт",
+	"globalwatchlist-tour-addsite-description": "Кликните на кнопку сверху, чтобы добавить ещё одну строку для сайта.",
+	"globalwatchlist-tour-fastmode": "Быстрый режим",
+	"globalwatchlist-tour-fastmode-description": "В быстром режиме ускоряется рендеринг ценой меньшей детализации. Метки Wikibase не загружаются, показывается простой список страниц с изменениями, без данных о пользователях и самих правках.",
+	"globalwatchlist-tour-filters": "Настройки фильтра",
+	"globalwatchlist-tour-filters-description": "У глобального списка наблюдения пока нет всех фильтров обычного списка наблюдения. Доступны только фильтры, отличающие залогиненных и незалогиненных пользователей, а также правки, помеченные как малые или как правки ботов.",
+	"globalwatchlist-tour-help": "Подробная документация",
+	"globalwatchlist-tour-help-description": "Более подробная документация находится на mediawiki.org",
+	"globalwatchlist-tour-intro": "Настройки глобального списка наблюдения",
+	"globalwatchlist-tour-intro-description": "Расширение глобального списка наблюдения добавляет служебную страницу [[Special:GlobalWatchlist]], которая позволяет просматривать сразу несколько списков наблюдения. На этой странице можно настраивать глобальный список наблюдения.",
+	"globalwatchlist-tour-sitelist": "Список сайтов",
+	"globalwatchlist-tour-sitelist-description": "Здесь перечислены сайты, включённые в глобальный список наблюдения. Используйте URL сайта, например, <code>ru.wikipedia.org</code>.",
+	"globalwatchlist-tour-types": "Типы изменений",
+	"globalwatchlist-tour-types-description": "Здесь можно указать, какие типы изменений будут отображаться.",
+	"globalwatchlist-api-error": "При взаимодействии с «$1» возникла ошибка API:",
+	"prefs-globalwatchlist": "Глобальный список наблюдения"
 }
