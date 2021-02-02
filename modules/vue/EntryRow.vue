@@ -189,7 +189,7 @@ module.exports = {
 			// but we can infer based on the userDisplay since there should always be
 			// something to display in non-fast mode. No diff links are shown in fast
 			// mode, see T269728
-			return this.entry.entryType === 'edit' && !this.entry.newPage && this.hasUserDisplay();
+			return this.entry.entryType === 'edit' && !this.entry.newPage && this.hasUserDisplay;
 		},
 		diffLink: function () {
 			return this.linker.linkQuery( 'diff=' + this.entry.toRev + '&oldid=' + this.entry.fromRev );
