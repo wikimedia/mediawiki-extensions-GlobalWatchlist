@@ -34,25 +34,7 @@
 		>{{ entry.titleMsg || entry.title }}</a>
 		(<!--
 			Avoid a space in the middle
-		--><a
-			v-bind:href="historyLink"
-			target="_blank"
-		>{{ $i18n( "history_small" ).text() }}</a><!--
-			Avoid a space in the middle
-		-->,
-
-		<span v-if="hasDiffLink">
-			<!--Wrap in a span to ensure comma is only rendered when needed-->
-			<a
-				v-if="hasDiffLink"
-				v-bind:href="diffLink"
-				target="_blank"
-			>
-				{{ diffMessage }}
-			</a>,
-		</span>
-
-		<span v-if="isLogEntry">
+		--><span v-if="isLogEntry">
 			<!--Wrap in a span to ensure commas are only rendered when needed-->
 			<a
 				v-bind:href="logPageLink"
@@ -65,6 +47,29 @@
 				target="_blank"
 			>
 				{{ $i18n( 'globalwatchlist-log-entry' ).text() }}
+			</a>,
+		</span><!--
+			Avoid potential space
+		--><span v-else>
+			<!--Wrap in a span to ensure comma is only rendered when needed-->
+			<!--Span is v-else so there is no history link for log entries, see T273691-->
+			<a
+				v-bind:href="historyLink"
+				target="_blank"
+			>
+				{{ $i18n( "globalwatchlist-history" ).text() }}
+			</a>,
+		</span>
+
+		<!-- There will always be either a history link or log links, so there should be a space -->
+		<span v-if="hasDiffLink">
+			<!--Wrap in a span to ensure comma is only rendered when needed-->
+			<a
+				v-if="hasDiffLink"
+				v-bind:href="diffLink"
+				target="_blank"
+			>
+				{{ diffMessage }}
 			</a>,
 		</span>
 

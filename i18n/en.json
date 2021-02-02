@@ -35,6 +35,7 @@
 	"globalwatchlist-gotoglobal": "Global watchlist",
 	"globalwatchlist-gotoglobal-tooltip": "View global watchlist",
 	"globalwatchlist-grouped-timestamp": "The timestamp of the latest change is shown for grouped changes",
+	"globalwatchlist-history": "history",
 	"globalwatchlist-javascript-required": "This special page requires JavaScript to work",
 	"globalwatchlist-log-entry": "log entry",
 	"globalwatchlist-log-page": "page logs",

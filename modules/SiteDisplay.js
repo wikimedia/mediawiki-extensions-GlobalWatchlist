@@ -47,10 +47,6 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&redirect=no' ) )
 		.attr( 'target', '_blank' )
 		.text( entry.titleMsg || entry.title );
-	var $historyLink = $( '<a>' )
-		.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&action=history' ) )
-		.attr( 'target', '_blank' )
-		.text( mw.msg( 'history_small' ) );
 	var that = this;
 
 	// Actually set up the $row to be returned
@@ -98,9 +94,17 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	}
 
 	$row.append( $pageLink )
-		.append( ' (' )
-		.append( $historyLink )
-		.append( ', ' );
+		.append( ' (' );
+
+	if ( entry.entryType !== 'log' ) {
+		// No history link for log entries, T273691
+		var $historyLink = $( '<a>' )
+			.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&action=history' ) )
+			.attr( 'target', '_blank' )
+			.text( mw.msg( 'globalwatchlist-history' ) );
+		$row.append( $historyLink )
+			.append( ', ' );
+	}
 
 	// No diff links in fast mode, see T269728
 	if ( entry.entryType === 'edit' && entry.newPage === false && this.config.fastMode === false ) {

@@ -38,6 +38,7 @@
 	"globalwatchlist-gotoglobal": "Link text for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
 	"globalwatchlist-gotoglobal-tooltip": "Tooltip for the link from [[Special:Watchlist]] to [[Special:GlobalWatchlist]]",
 	"globalwatchlist-grouped-timestamp": "Tooltip for timestamp for grouped changes",
+	"globalwatchlist-history": "Link text for links to page history",
 	"globalwatchlist-javascript-required": "Message shown at [[Special:GlobalWatchlist]] when Javascript is not enabled",
 	"globalwatchlist-log-entry": "Link text for links to individual log entries",
 	"globalwatchlist-log-page": "Link text for links to log entries for a page",
