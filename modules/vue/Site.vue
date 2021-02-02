@@ -19,9 +19,9 @@
 		</p>
 		<global-watchlist-collapsible-wrapper v-else>
 			<global-watchlist-button
-				text="Mark as seen"
 				v-on:click="markChangesSeen"
 			>
+				{{ $i18n( 'globalwatchlist-markseen' ).text() }}
 			</global-watchlist-button>
 			<global-watchlist-entry-row
 				v-for="(rowInfo, index) in entries"

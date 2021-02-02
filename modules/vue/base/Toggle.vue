@@ -6,7 +6,7 @@
 		v-on:click="onToggle"
 	>
 		<span>
-			{{ text }}
+			<slot></slot>
 		</span>
 	</button>
 </template>
@@ -24,10 +24,6 @@ module.exports = {
 	},
 
 	props: {
-		text: {
-			type: String,
-			default: 'ToggleTextGoesHere'
-		},
 		align: {
 			type: String,
 			default: 'none'

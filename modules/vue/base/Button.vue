@@ -6,7 +6,7 @@
 		v-on:click="onButtonClick"
 	>
 		<span>
-			{{ text }}
+			<slot></slot>
 		</span>
 	</button>
 </template>
@@ -18,10 +18,6 @@
  */
 module.exports = {
 	props: {
-		text: {
-			type: String,
-			default: 'ButtonTextGoesHere'
-		},
 		align: {
 			type: String,
 			default: 'none'

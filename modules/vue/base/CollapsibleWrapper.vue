@@ -4,9 +4,9 @@
 	>
 		<global-watchlist-button
 			align="right"
-			v-bind:text="buttonText"
 			v-on:click="toggleCollapsible"
 		>
+			{{ buttonText }}
 		</global-watchlist-button>
 
 		<div
