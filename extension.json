@@ -62,8 +62,7 @@
 	},
 	"MessagesDirs": {
 		"GlobalWatchlist": [
-			"i18n",
-			"i18n/script"
+			"i18n"
 		]
 	},
 	"ExtensionMessagesFiles": {
