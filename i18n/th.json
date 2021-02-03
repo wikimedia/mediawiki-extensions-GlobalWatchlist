@@ -12,9 +12,11 @@
 	"globalwatchlist-gotoglobal": "รายการเฝ้าดูข้ามโครงการ",
 	"globalwatchlist-gotoglobal-tooltip": "ดูรายการเฝ้าดูข้ามโครงการ",
 	"globalwatchlist-grouped-timestamp": "ตราเวลาของรุ่นล่าสุดจะแสดงในกรณีการดูเปลี่ยนแปลงแบบรวมเป็นกลุ่ม",
-	"globalwatchlist-must-login": "กรุณาเข้าสู่ระบบเพื่อใช้รายการเฝ้าดูข้ามโครงการ",
 	"globalwatchlist-javascript-required": "หน้าพิเศษนี้จำเป็นต้องใช้จาวาสคริปต์เพื่อทำงาน",
+	"globalwatchlist-must-login": "กรุณาเข้าสู่ระบบเพื่อใช้รายการเฝ้าดูข้ามโครงการ",
 	"globalwatchlist-prefs-settings": "สำหรับการตั้งค่ารายการเฝ้าดูข้ามโครงการ กรุณาไปที่[[Special:GlobalWatchlistSettings]]",
+	"globalwatchlist-settings-error-invalid-site": "ไซต์ \"$1\" ไม่ตรงกับหนึ่งในวิกิใด ๆ ที่คุณได้แนบบัญชีสารสนเทศบัญชีกลาง",
+	"globalwatchlist-settings-error-too-many-sites": "มี {{PLURAL:$1|$1 ไซต์}}ถูกเลือกไว้ ซึ่งเกินขีดจำกัดไซต์ที่รับได้ที่จำนวน $2",
 	"globalwatchlist-tour-addsite": "เพิ่มไซต์",
 	"globalwatchlist-tour-addsite-description": "กดที่ด้านบนเพื่อเพิ่มเว็บไซต์อื่นมายังรายการเฝ้าดู",
 	"globalwatchlist-tour-fastmode": "โหมดรวดเร็ว",
@@ -29,5 +31,6 @@
 	"globalwatchlist-tour-sitelist-description": "นี่คือรายการเว็บไซต์ที่จะถูกรวมอยู่ในรายการเฝ้าดูข้ามโครงการ ใช้ยูอาร์เอลฐานของเว็บไซต์ เช่น <code>th.wikisource.org</code>",
 	"globalwatchlist-tour-types": "เปลี่ยนชนิด",
 	"globalwatchlist-tour-types-description": "ผู้ใช้สามารถเลือกได้ว่ารายชนิดของการเปลี่ยนแปลงแบบใดที่ควรนำมาแสดง",
+	"globalwatchlist-api-error": "พบข้อผิดพลาดขณะปฏิสัมพันธ์กับ \"$1\":",
 	"prefs-globalwatchlist": "รายการเฝ้าดูข้ามโครงการ"
 }

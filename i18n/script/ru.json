@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Iluvatar",
+			"Le Loi",
 			"Rubin16",
 			"Wileyfoxyx"
 		]
@@ -12,6 +13,7 @@
 	"globalwatchlist-changetypes": "Тип изменения",
 	"globalwatchlist-editwatchlist": "Изменение списка наблюдения",
 	"globalwatchlist-emptyfeed": "Проекты без изменений",
+	"globalwatchlist-fetch-site-failure": "Не удалось загрузить изменения",
 	"globalwatchlist-filters": "Фильтры",
 	"globalwatchlist-filter-anon": "Анонимные правки",
 	"globalwatchlist-filter-bot": "Правки ботов",
@@ -23,6 +25,7 @@
 	"globalwatchlist-filter-only-anon": "Только анонимные правки",
 	"globalwatchlist-filter-only-bot": "Только правки ботов",
 	"globalwatchlist-filter-only-minor": "Только малые правки",
+	"globalwatchlist-getoptions-error": "При попытке загрузить пользовательские настройки обнаружена ошибка. Будут использованы настройки по умолчанию.",
 	"globalwatchlist-globalwatchlistbacklink": "Назад к глобальному списку наблюдения",
 	"globalwatchlist-globalwatchlistlink": "Глобальный список наблюдения",
 	"globalwatchlist-globalwatchlistsettingslink": "Настройки",

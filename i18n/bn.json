@@ -8,12 +8,15 @@
 	"globalwatchlist": "বৈশ্বিক নজরতালিকা",
 	"globalwatchlist-desc": "একটি বৈশ্বিক নজরতালিকা যোগ করে",
 	"globalwatchlist-summary": "বৈশ্বিক নজরতালিকা দেখার জন্য একটি বিশেষ পাতা",
-	"globalwatchlistsettings": "বৈশ্বিক নজরতালিকা সেটিং",
+	"globalwatchlistsettings": "বৈশ্বিক নজরতালিকার সেটিং",
 	"globalwatchlistsettings-summary": "বৈশ্বিক নজরতালিকা পরিচালনা করার জন্য একটি বিশেষ পাতা",
 	"globalwatchlist-gotoglobal": "বৈশ্বিক নজরতালিকা",
 	"globalwatchlist-gotoglobal-tooltip": "বৈশ্বিক নজরতালিকা দেখুন",
-	"globalwatchlist-must-login": "বৈশ্বিক নজর তালিকার বিশেষ পাতা ব্যবহার করতে দয়া করে প্রবেশ করুন",
 	"globalwatchlist-javascript-required": "এই বিশেষ পাতাটি কাজ করার জন্য জাভাস্ক্রিপ্টের প্রয়োজন",
+	"globalwatchlist-must-login": "বৈশ্বিক নজর তালিকার বিশেষ পাতা ব্যবহার করতে দয়া করে প্রবেশ করুন",
 	"globalwatchlist-prefs-settings": "বৈশ্বিক নজরতালিকার জন্য পছন্দ নির্ধারণ করতে, দয়া করে [[Special:GlobalWatchlistSettings]]-এ যান।",
+	"globalwatchlist-tour-addsite": "একটি সাইট যোগ করুন",
+	"globalwatchlist-tour-fastmode": "দ্রুত মোড",
+	"globalwatchlist-tour-help": "আরও নথিপত্র",
 	"prefs-globalwatchlist": "বৈশ্বিক নজরতালিকা"
 }

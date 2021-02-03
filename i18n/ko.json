@@ -4,8 +4,8 @@
 			"Ykhwong"
 		]
 	},
-	"globalwatchlist-must-login": "GlobalWatchlist 특수 문서를 사용하려면 로그인해 주십시오",
 	"globalwatchlist-javascript-required": "GlobalWatchlist 특수 문서는 자바스크립트가 있어야 동작합니다",
+	"globalwatchlist-must-login": "GlobalWatchlist 특수 문서를 사용하려면 로그인해 주십시오",
 	"globalwatchlist-tour-addsite": "사이트 추가",
 	"globalwatchlist-tour-filters": "필터 옵션",
 	"globalwatchlist-tour-help": "추가 설명문서",
