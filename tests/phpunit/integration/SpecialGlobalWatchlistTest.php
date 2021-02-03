@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use DerivativeContext;
+use FauxRequest;
 use IBufferingStatsdDataFactory;
 use MediaWikiIntegrationTestCase;
 use OutputPage;
@@ -34,14 +35,16 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @dataProvider provideTestLoggedIn
-	 * @param bool $useVue
+	 * @dataProvider provideExecute
+	 * @param bool $useVueConfig
+	 * @param string|null $displayVersionRequestParam
+	 * @param bool $expectVueLoad
 	 */
-	public function testLoggedIn( $useVue ) {
+	public function testExecute( $useVueConfig, $displayVersionRequestParam, $expectVueLoad ) {
 		$this->setMwGlobals( [
 			'wgGlobalWatchlistWikibaseSite' => 'GlobalWatchlistWikibaseSiteGoesHere',
 			'wgGlobalWatchlistDevMode' => true,
-			'wgGlobalWatchlistUseVue' => $useVue
+			'wgGlobalWatchlistUseVue' => $useVueConfig
 		] );
 
 		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
@@ -59,7 +62,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 		$user->method( 'isAnon' )->willReturn( false );
 		$testContext->setUser( $user );
 
-		$module = $useVue ?
+		$module = $expectVueLoad ?
 			'ext.globalwatchlist.specialglobalwatchlist.vue' :
 			'ext.globalwatchlist.specialglobalwatchlist';
 		$output = $this->createMock( OutputPage::class );
@@ -80,15 +83,27 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 			->method( 'addHTML' );
 		$testContext->setOutput( $output );
 
+		$requestParams = [];
+		if ( $displayVersionRequestParam !== null ) {
+			$requestParams['displayversion'] = $displayVersionRequestParam;
+		}
+		$request = new FauxRequest( $requestParams );
+		$testContext->setRequest( $request );
+
 		$specialPage->setContext( $testContext );
 
 		$specialPage->execute( null );
 	}
 
-	public function provideTestLoggedIn() {
+	public function provideExecute() {
+		// configuration value, displayversion request parameter, vue expected or not
 		return [
-			'Not using Vue' => [ false ],
-			'Using Vue' => [ true ]
+			'Config is normal, no request param' => [ false, null, false ],
+			'Config is normal, normal requested' => [ false, 'normal', false ],
+			'Config is normal, vue requested' => [ false, 'vue', true ],
+			'Config is vue, no request param' => [ true, null, true ],
+			'Config is vue, normal requested' => [ true, 'normal', false ],
+			'Config is vue, vue requested' => [ true, 'vue', true ],
 		];
 	}
 

@@ -58,15 +58,27 @@ class SpecialGlobalWatchlist extends SpecialPage {
 
 		$this->requireLogin( 'globalwatchlist-must-login' );
 
-		$out = $this->getOutput();
+		$config = $this->getConfig();
 
-		if ( $this->getConfig()->get( 'GlobalWatchlistUseVue' ) ) {
-			$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist.vue' );
+		// Allow users to override the $wgGlobalWatchlistUseVue setting on a per-view
+		// basis by setting the `displayversion` parameter. This will make testing and QA easier.
+		// The parameter is considered internal and should not be relied upon by end users.
+		$displayVersion = $this->getRequest()->getVal( 'displayversion' );
+		if ( $displayVersion === 'vue' ) {
+			$loadVueDisplay = true;
+		} elseif ( $displayVersion === 'normal' ) {
+			$loadVueDisplay = false;
 		} else {
-			$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist' );
+			$loadVueDisplay = $config->get( 'GlobalWatchlistUseVue' );
 		}
 
-		$config = $this->getConfig();
+		$out = $this->getOutput();
+		$out->addModules(
+			$loadVueDisplay ?
+				'ext.globalwatchlist.specialglobalwatchlist.vue' :
+				'ext.globalwatchlist.specialglobalwatchlist'
+		);
+
 		$out->addJsConfigVars( [
 			'wgGlobalWatchlistWikibaseSite' => $config->get( 'GlobalWatchlistWikibaseSite' ),
 			'wgGlobalWatchlistDevMode' => $config->get( 'GlobalWatchlistDevMode' )
