@@ -2,13 +2,33 @@
 	"@metadata": {
 		"authors": [
 			"Dr. Mohammed",
+			"Tala Ali",
 			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"globalwatchlist": "قائمة المراقبة العالمية",
 	"globalwatchlist-desc": "أضف قائمة مراقبة عالمية",
 	"globalwatchlistsettings": "إعدادات قائمة المراقبة العالمية",
+	"globalwatchlist-add": "أضف",
+	"globalwatchlist-changetypes": "نوع التغيير",
+	"globalwatchlist-editwatchlist": "عدل قائمة المراقبة",
+	"globalwatchlist-filters": "المرشحات",
+	"globalwatchlist-filter-anon": "تعديلات المجهولين",
+	"globalwatchlist-filter-bot": "تعديلات البوت",
+	"globalwatchlist-filter-minor": "تعديلات طفيفة",
+	"globalwatchlist-filter-only-minor": "التعديلات الطفيفة فقط",
+	"globalwatchlist-globalwatchlistlink": "قائمة المراقبة العالمية",
+	"globalwatchlist-globalwatchlistsettingslink": "إعدادات",
 	"globalwatchlist-gotoglobal": "قائمة المراقبة العالمية",
 	"globalwatchlist-must-login": "الرجاء تسجيل الدخول لاستخدام الصفحات الخاصة بقائمة المراقبة العالمية",
+	"globalwatchlist-notify-heading": "قائمة المراقبة العالمية",
+	"globalwatchlist-notify-settingssaved": "حُفظت إعداداتك",
+	"globalwatchlist-option-live": "التحديثات الحالية",
+	"globalwatchlist-otheroptions": "إعدادات أخرى",
+	"globalwatchlist-remove": "أزل",
+	"globalwatchlist-save": "احفظ الاعدادات",
+	"globalwatchlist-show-edits": "أظهر تعديلات الصفحة",
+	"globalwatchlist-show-logentries": "أظهر مدخلات السجل",
+	"globalwatchlist-show-newpages": "أظهر إنشاءات الصفحات الجديدة",
 	"prefs-globalwatchlist": "قائمة المراقبة العالمية"
 }

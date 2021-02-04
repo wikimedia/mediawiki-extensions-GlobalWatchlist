@@ -9,6 +9,7 @@
 	"globalwatchlist-summary": "Página especial para ver uma lista global de páginas vigiadas",
 	"globalwatchlistsettings": "Definições da lista global de páginas vigiadas",
 	"globalwatchlistsettings-summary": "Página especial para gerir uma lista global de páginas vigiadas",
+	"globalwatchlist-api-error": "Ocorreu um erro da API ao interagir com \"$1\":",
 	"globalwatchlist-gotoglobal": "Lista global de páginas vigiadas",
 	"globalwatchlist-gotoglobal-tooltip": "Ver lista global de páginas vigiadas",
 	"globalwatchlist-grouped-timestamp": "A data e hora da última modificação são mostradas nas modificações agrupadas",
@@ -31,6 +32,5 @@
 	"globalwatchlist-tour-sitelist-description": "Esta é a lista de sítios na internet que serão incluídos na lista global de páginas vigiadas. Usar o URL base do sítio; por exemplo, <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Tipos de mudanças",
 	"globalwatchlist-tour-types-description": "Os utilizadores podem controlar que tipos de mudanças devem ser mostrados.",
-	"globalwatchlist-api-error": "Ocorreu um erro da API ao interagir com \"$1\":",
 	"prefs-globalwatchlist": "Lista global de páginas vigiadas"
 }

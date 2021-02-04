@@ -5,7 +5,10 @@
 		]
 	},
 	"globalwatchlist-javascript-required": "GlobalWatchlist 특수 문서는 자바스크립트가 있어야 동작합니다",
+	"globalwatchlist-log-page": "문서 기록",
+	"globalwatchlist-markseen-allconfirm": "모든 사이트를 본 것으로 표시하시겠습니까?",
 	"globalwatchlist-must-login": "GlobalWatchlist 특수 문서를 사용하려면 로그인해 주십시오",
+	"globalwatchlist-notify-settingssaved": "설정이 저장되었습니다. [[Special:GlobalWatchlist|통합 계정 주시문서 목록으로 돌아갑니다]].",
 	"globalwatchlist-tour-addsite": "사이트 추가",
 	"globalwatchlist-tour-filters": "필터 옵션",
 	"globalwatchlist-tour-help": "추가 설명문서",

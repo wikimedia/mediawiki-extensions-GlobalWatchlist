@@ -4,5 +4,6 @@
 			"Javiero"
 		]
 	},
-	"globalwatchlist-api-error": "API-eraro okazis interagante kun \"$1\":"
+	"globalwatchlist-api-error": "API-eraro okazis interagante kun \"$1\":",
+	"globalwatchlist-notify-settingssaved": "Viaj agordoj estas konservitaj. [[Special:GlobalWatchlist|Return to global watchlist]]."
 }

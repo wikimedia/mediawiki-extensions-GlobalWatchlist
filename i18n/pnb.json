@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abbas dhothar"
+		]
+	},
+	"globalwatchlist-filter-minor": "نکیاں تبدیلیاں",
+	"globalwatchlist-filter-not-minor": "صرف غیر معمولی ترمیماں",
+	"globalwatchlist-filter-only-minor": "صرف معمولی ترمیماں",
+	"globalwatchlist-option-grouppage": "گروہ نتیجے بلحاظ صفحہ",
+	"globalwatchlist-settings-error-anon-minor": "گمنام ورتنوالے معمولی ترمیماں نئیں کرسکدے نیں"
+}

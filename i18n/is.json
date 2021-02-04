@@ -5,6 +5,9 @@
 		]
 	},
 	"globalwatchlist": "Almennur vaktlisti",
+	"globalwatchlist-editwatchlist": "Breyta vaktlista",
+	"globalwatchlist-globalwatchlistbacklink": "Til baka í almennan vaktlista",
 	"globalwatchlist-gotoglobal-tooltip": "Skoða almennan vaktlista",
+	"globalwatchlist-notify-heading": "Almennur vaktlisti",
 	"prefs-globalwatchlist": "Almennur vaktlisti"
 }
