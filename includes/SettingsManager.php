@@ -139,7 +139,7 @@ class SettingsManager {
 	 * @param string $options
 	 */
 	private function saveOptionsInternal( UserIdentity $userIdentity, string $options ) {
-		$this->logger->debug(
+		$this->logger->info(
 			"Saving options for {username}: {userOptions}",
 			[
 				'username' => $userIdentity->getName(),

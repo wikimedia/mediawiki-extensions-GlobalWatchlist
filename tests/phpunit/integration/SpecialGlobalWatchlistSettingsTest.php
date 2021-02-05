@@ -365,7 +365,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $res );
 
 		$debugEntries = [
-			[ LogLevel::DEBUG, "Settings form submitted with {options}" ],
+			[ LogLevel::INFO, "Settings form submitted with {options}" ],
 		];
 		$this->assertArrayEquals( $debugEntries, $logger->getBuffer() );
 		$logger->clearBuffer();

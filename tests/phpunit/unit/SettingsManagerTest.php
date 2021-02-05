@@ -88,7 +88,7 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$manager->saveUserOptions( $user, $validSettings );
 
 		$debugEntries = [
-			[ LogLevel::DEBUG, "Saving options for {username}: {userOptions}" ],
+			[ LogLevel::INFO, "Saving options for {username}: {userOptions}" ],
 		];
 		$this->assertArrayEquals( $debugEntries, $logger->getBuffer() );
 		$logger->clearBuffer();
@@ -162,7 +162,7 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$manager->saveOptionsInternal( $user, $newOptions );
 
 		$this->assertSame( [
-			[ LogLevel::DEBUG, "Saving options for {username}: {userOptions}" ],
+			[ LogLevel::INFO, "Saving options for {username}: {userOptions}" ],
 		], $logger->getBuffer() );
 		$logger->clearBuffer();
 	}

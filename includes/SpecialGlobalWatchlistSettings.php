@@ -375,7 +375,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * @return bool|string|array|Status
 	 */
 	public function onSubmit( array $data, HTMLForm $form = null ) {
-		$this->logger->debug(
+		$this->logger->info(
 			"Settings form submitted with {options}",
 			[
 				'options' => FormatJson::encode( $data )
