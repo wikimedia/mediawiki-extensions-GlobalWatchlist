@@ -3,6 +3,7 @@
 		"authors": [
 			"Gomoko",
 			"Pamputt",
+			"Thibaut120094",
 			"Verdy p",
 			"Wladek92"
 		]
@@ -62,7 +63,7 @@
 	"globalwatchlist-settings-error-anon-bot": "Les utilisateurs anonymes ne peuvent pas effectuer de modifications par robot",
 	"globalwatchlist-settings-error-anon-minor": "Les utilisateurs anonymes ne peuvent pas effectuer de modifications mineures",
 	"globalwatchlist-settings-error-bad-sites": "Site(s) non valide(s) : $1",
-	"globalwatchlist-settings-error-duplicate-site": "Le site « $1 » est inclus plusieurs fois.",
+	"globalwatchlist-settings-error-duplicate-site": "Le site « $1 » est inclus plusieurs fois.",
 	"globalwatchlist-settings-error-invalid-site": "Le site « $1 » ne correspond à aucun wiki où vous avez un compte CentralAuth attaché.",
 	"globalwatchlist-settings-error-no-sites": "Aucun site sélectionné",
 	"globalwatchlist-settings-error-no-types": "Aucun type de changement sélectionné",

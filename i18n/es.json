@@ -4,7 +4,8 @@
 			"DannyS712",
 			"Fitoschido",
 			"Hasley",
-			"MarcoAurelio"
+			"MarcoAurelio",
+			"Rodney Araujo"
 		]
 	},
 	"globalwatchlist": "Lista de seguimiento global",
@@ -35,6 +36,7 @@
 	"globalwatchlist-gotoglobal": "Lista de seguimiento global",
 	"globalwatchlist-gotoglobal-tooltip": "Ver lista de seguimiento global",
 	"globalwatchlist-javascript-required": "Esta página especial requiere JavaScript para funcionar",
+	"globalwatchlist-log-page": "registros de página",
 	"globalwatchlist-markseen": "Marcar como visto",
 	"globalwatchlist-markseen-all": "Marcar todos los sitios como vistos",
 	"globalwatchlist-markseen-allconfirm": "¿Confirmas que quieres marcar los sitios como vistos?",
