@@ -2,7 +2,7 @@
 	<div id="ext-globalwatchlist-vue-sites-without-changes">
 		<hr>
 		<!-- Maybe implement a label component at some point? -->
-		<p>{{ $i18n( 'globalwatchlist-emptyfeed' ) }}</p>
+		<p>{{ $i18n( 'globalwatchlist-emptyfeed' ).text() }}</p>
 		<global-watchlist-collapsible-wrapper
 			startcollapsed="true"
 		>
@@ -47,7 +47,7 @@ module.exports = {
 					'special-watchlist-url': '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:Watchlist' ),
 					'site-name': site,
 					'special-edit-watchlist-url': '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:EditWatchlist' ),
-					'edit-watchlist-msg': that.$i18n( 'globalwatchlist-editwatchlist' )
+					'edit-watchlist-msg': that.$i18n( 'globalwatchlist-editwatchlist' ).text()
 				};
 			} );
 			return rows;

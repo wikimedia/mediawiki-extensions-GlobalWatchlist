@@ -30,7 +30,7 @@
 			>
 			</global-watchlist-label>
 			<div v-if="haveChangesToShow">
-				<p>{{ $i18n( 'globalwatchlist-changesfeed' ) }}</p>
+				<p>{{ $i18n( 'globalwatchlist-changesfeed' ).text() }}</p>
 				<global-watchlist-sites-with-changes
 					v-for="withChanges in sitesWithChangesList"
 					v-bind:key="withChanges['site']"
@@ -114,7 +114,7 @@ module.exports = {
 			return this.$i18n(
 				'globalwatchlist-asof',
 				this.config.time.toUTCString()
-			);
+			).text();
 		},
 		startWithResultsGrouped: function () {
 			// It doesn't matter that the config changes, since this is only used

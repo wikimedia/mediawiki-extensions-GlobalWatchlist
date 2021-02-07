@@ -10,12 +10,12 @@
 			--><a
 				v-bind:href="specialEditWatchlistUrl"
 				target="_blank"
-			>{{ $i18n( 'globalwatchlist-editwatchlist' ) }}</a><!--
+			>{{ $i18n( 'globalwatchlist-editwatchlist' ).text() }}</a><!--
 				Avoid a space
 			-->)
 		</h3>
 		<p v-if="hasApiError">
-			{{ $i18n( 'globalwatchlist-fetch-site-failure' ) }}
+			{{ $i18n( 'globalwatchlist-fetch-site-failure' ).text() }}
 		</p>
 		<global-watchlist-collapsible-wrapper v-else>
 			<global-watchlist-button

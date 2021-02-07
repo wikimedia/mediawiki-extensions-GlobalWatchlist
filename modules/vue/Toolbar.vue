@@ -3,14 +3,14 @@
 		id="ext-globalwatchlist-vue-toolbar"
 	>
 		<global-watchlist-toggle
-			v-bind:text="$i18n( 'globalwatchlist-option-live' )"
+			v-bind:text="$i18n( 'globalwatchlist-option-live' ).text()"
 			v-bind:disabled="disableLiveUpdates"
 			v-on:toggle="toggleLiveUpdates"
 		>
 		</global-watchlist-toggle>
 
 		<global-watchlist-toggle
-			v-bind:text="$i18n( 'globalwatchlist-option-grouppage' )"
+			v-bind:text="$i18n( 'globalwatchlist-option-grouppage' ).text()"
 			v-bind:startactive="groupPageStartActive"
 			v-bind:disabled="disableGroupPage"
 			v-on:toggle="toggleGroupPage"
@@ -18,7 +18,7 @@
 		</global-watchlist-toggle>
 
 		<global-watchlist-button
-			v-bind:text="$i18n( 'globalwatchlist-refresh' )"
+			v-bind:text="$i18n( 'globalwatchlist-refresh' ).text()"
 			v-bind:disabled="disableRefresh"
 			v-on:click="triggerRefresh"
 		>
@@ -28,11 +28,11 @@
 			v-bind:href="settingsUrl"
 			target="_blank"
 		>
-			{{ $i18n( 'globalwatchlist-globalwatchlistsettingslink' ) }}
+			{{ $i18n( 'globalwatchlist-globalwatchlistsettingslink' ).text() }}
 		</a>
 
 		<global-watchlist-button
-			v-bind:text="$i18n( 'globalwatchlist-markseen-all' )"
+			v-bind:text="$i18n( 'globalwatchlist-markseen-all' ).text()"
 			v-bind:disabled="disableMarkAll"
 			v-on:click="triggerMarkAll"
 		>

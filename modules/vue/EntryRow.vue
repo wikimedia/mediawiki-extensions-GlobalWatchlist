@@ -32,7 +32,7 @@
 		--><a
 			v-bind:href="historyLink"
 			target="_blank"
-		>{{ $i18n( "history_small" ) }}</a><!--
+		>{{ $i18n( "history_small" ).text() }}</a><!--
 			Avoid a space in the middle
 		-->,
 
@@ -53,21 +53,21 @@
 				v-bind:href="logPageLink"
 				target="_blank"
 			>
-				{{ $i18n( 'globalwatchlist-log-page' ) }}
+				{{ $i18n( 'globalwatchlist-log-page' ).text() }}
 			</a>,
 			<a
 				v-bind:href="logEntryLink"
 				target="_blank"
 			>
-				{{ $i18n( 'globalwatchlist-log-entry' ) }}
+				{{ $i18n( 'globalwatchlist-log-entry' ).text() }}
 			</a>,
 		</span>
 
 		<a v-if="pagewatched" v-on:click="unwatchPage">
-			{{ $i18n( 'globalwatchlist-unwatch' ) }}
+			{{ $i18n( 'globalwatchlist-unwatch' ).text() }}
 		</a>
 		<a v-else v-on:click="rewatchPage">
-			{{ $i18n( 'globalwatchlist-rewatch' ) }}
+			{{ $i18n( 'globalwatchlist-rewatch' ).text() }}
 		</a><!--
 			Avoid a space in the middle
 		-->)
@@ -139,7 +139,7 @@ module.exports = {
 		timestampTitle: function () {
 			// For grouping results, the timestamp is the latest one
 			if ( this.entry.editCount && this.entry.editCount !== 1 ) {
-				return this.$i18n( 'globalwatchlist-grouped-timestamp' );
+				return this.$i18n( 'globalwatchlist-grouped-timestamp' ).text();
 			}
 			return '';
 		},
@@ -160,13 +160,13 @@ module.exports = {
 		entryFlags: function () {
 			var letters = '';
 			if ( this.entry.newPage === true ) {
-				letters += this.$i18n( 'newpageletter' );
+				letters += this.$i18n( 'newpageletter' ).text();
 			}
 			if ( this.entry.minor ) {
-				letters += this.$i18n( 'minoreditletter' );
+				letters += this.$i18n( 'minoreditletter' ).text();
 			}
 			if ( this.entry.bot ) {
-				letters += this.$i18n( 'boteditletter' );
+				letters += this.$i18n( 'boteditletter' ).text();
 			}
 			return letters;
 		},
@@ -196,8 +196,8 @@ module.exports = {
 		},
 		diffMessage: function () {
 			return this.entry.editCount === 1 ?
-				this.$i18n( 'diff' ) :
-				this.$i18n( 'nchanges', this.entry.editCount );
+				this.$i18n( 'diff' ).text() :
+				this.$i18n( 'nchanges', this.entry.editCount ).text();
 		},
 		logPageLink: function () {
 			return this.linker.linkQuery( 'title=Special:Log&page=' + encodeURIComponent( this.entry.title ) );
