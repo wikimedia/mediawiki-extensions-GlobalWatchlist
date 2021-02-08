@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BadDog"
+			"BadDog",
+			"Kizule"
 		]
 	},
 	"globalwatchlist": "Глобални списак надгледања",
@@ -38,7 +39,7 @@
 	"globalwatchlist-must-login": "Пријавите се да бисте се служили глобалним списком надгледања.",
 	"globalwatchlist-notify-heading": "Глобални списак надгледања",
 	"globalwatchlist-notify-savingfailed": "Није могуће сачувати подешавања. Покушајте поново.",
-	"globalwatchlist-notify-settingssaved": "Подешавања су сачувана.",
+	"globalwatchlist-notify-settingssaved": "Подешавања су сачувана. [[Special:GlobalWatchlist|Вратите се на глобалан списак надгледања]].",
 	"globalwatchlist-option-confirmallsites": "Захтевај потврду за означавање свих пројеката виђеним",
 	"globalwatchlist-option-fastmode": "Учитавај брже, али с мање детаља",
 	"globalwatchlist-option-grouppage": "Групиши резултате по страницама",

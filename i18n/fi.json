@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Majavah",
+			"Nike",
 			"Pyscowicz"
 		]
 	},
@@ -10,5 +11,8 @@
 	"globalwatchlist-summary": "Toimintosivu, joka näyttää järjestelmänlaajuisen tarkkailulistan",
 	"globalwatchlistsettings": "Järjestelmänlaajuisen tarkkailulistan asetukset",
 	"globalwatchlistsettings-summary": "Toimintosivu järjestelmänlaajuisen tarkkailulistan hallitsemiseen",
-	"globalwatchlist-javascript-required": "Tämä toimintosivu vaatii JavaScriptin toimiakseen"
+	"globalwatchlist-javascript-required": "Tämä toimintosivu vaatii JavaScriptin toimiakseen",
+	"globalwatchlist-log-entry": "lokimerkintä",
+	"globalwatchlist-log-page": "sivun lokit",
+	"globalwatchlist-settings-error-duplicate-site": "Sivusto ”$1” esiintyy useamman kerran."
 }
