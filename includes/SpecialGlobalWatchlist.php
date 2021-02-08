@@ -63,13 +63,17 @@ class SpecialGlobalWatchlist extends SpecialPage {
 		// Allow users to override the $wgGlobalWatchlistUseVue setting on a per-view
 		// basis by setting the `displayversion` parameter. This will make testing and QA easier.
 		// The parameter is considered internal and should not be relied upon by end users.
-		$displayVersion = $this->getRequest()->getVal( 'displayversion' );
-		if ( $displayVersion === 'vue' ) {
-			$loadVueDisplay = true;
-		} elseif ( $displayVersion === 'normal' ) {
-			$loadVueDisplay = false;
-		} else {
-			$loadVueDisplay = $config->get( 'GlobalWatchlistUseVue' );
+		// It is only allowed when $wgGlobalWatchlistDevMode is enabled
+		$loadVueDisplay = $config->get( 'GlobalWatchlistUseVue' );
+		if ( $config->get( 'GlobalWatchlistDevMode' ) ) {
+			$displayVersion = $this->getRequest()->getVal( 'displayversion' );
+			if ( $displayVersion === 'vue' ) {
+				$loadVueDisplay = true;
+			} elseif ( $displayVersion === 'normal' ) {
+				$loadVueDisplay = false;
+			} else {
+				// no change, use whatever $wgGlobalWatchlistUseVue says
+			}
 		}
 
 		$out = $this->getOutput();

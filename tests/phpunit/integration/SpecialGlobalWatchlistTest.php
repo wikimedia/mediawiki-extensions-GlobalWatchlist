@@ -41,6 +41,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 	 * @param bool $expectVueLoad
 	 */
 	public function testExecute( $useVueConfig, $displayVersionRequestParam, $expectVueLoad ) {
+		// $wgGlobalWatchlistDevMode is true so we can test handling of displayversion
 		$this->setMwGlobals( [
 			'wgGlobalWatchlistWikibaseSite' => 'GlobalWatchlistWikibaseSiteGoesHere',
 			'wgGlobalWatchlistDevMode' => true,
