@@ -59,13 +59,12 @@
 	border-bottom: 1px solid #0fd977;
 }
 
-#ext-globalwatchlist-watchlistsfeed {
+.ext-globalwatchlist-feed-site {
 	text-align: left;
 	direction: ltr;
 }
 
-/*
-TODO is this still needed, or does CSSJanus eliminate the need?
+/* Handling of rtl wikis */
 div[ id^='ext-globalwatchlist-feed-site-he_' ],
 div[ id^='ext-globalwatchlist-feed-site-ar_' ],
 div[ id^='ext-globalwatchlist-feed-site-azb_' ],
@@ -86,7 +85,6 @@ div[ id^='ext-globalwatchlist-feed-site-yi_' ] {
 	text-align: right;
 	direction: rtl;
 }
-*/
 
 .ext-globalwatchlist-site a,
 li b {
