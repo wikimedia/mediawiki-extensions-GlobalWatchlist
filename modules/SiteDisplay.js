@@ -191,7 +191,7 @@ GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $conte
 	};
 
 	this.$feedDiv = $( '<div>' )
-		.attr( 'id', 'globalwatchlist-feed-site-' + this.siteID )
+		.attr( 'id', 'ext-globalwatchlist-feed-site-' + this.siteID )
 		.addClass( 'ext-globalwatchlist-feed-site' )
 		.append(
 			headerTemplate.render( headerParams ),
