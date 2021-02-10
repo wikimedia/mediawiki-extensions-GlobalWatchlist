@@ -53,7 +53,7 @@
 		"ResourceLoaderRegisterModules": {
 			"handler": "GlobalWatchlistGuidedTourHooks"
 		},
-		"SkinBuildSidebar": {
+		"SidebarBeforeOutput": {
 			"handler": "GlobalWatchlistHooks"
 		}
 	},

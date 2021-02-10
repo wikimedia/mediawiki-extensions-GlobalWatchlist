@@ -28,7 +28,7 @@ use ApiOptions;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Api\Hook\ApiOptionsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
-use MediaWiki\Hook\SkinBuildSidebarHook;
+use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use Skin;
@@ -41,7 +41,7 @@ class GlobalWatchlistHooks implements
 	ApiOptionsHook,
 	GetPreferencesHook,
 	LoginFormValidErrorMessagesHook,
-	SkinBuildSidebarHook
+	SidebarBeforeOutputHook
 {
 
 	/** @var SpecialPageFactory */
@@ -111,10 +111,10 @@ class GlobalWatchlistHooks implements
 	 * Add a link to Special:GlobalWatchlist when on Special:Watchlist
 	 *
 	 * @param Skin $skin
-	 * @param array &$bar Sidebar contents. Modify $bar to add or modify sidebar portlets.
-	 * @return bool|void True or no return value to continue or false to abort
+	 * @param array &$sidebar Sidebar content. Modify $sidebar to add or modify sidebar portlets.
+	 * @return void This hook must not abort; it must not return value.
 	 */
-	public function onSkinBuildSidebar( $skin, &$bar ) {
+	public function onSidebarBeforeOutput( $skin, &$sidebar ) : void {
 		$title = $skin->getTitle();
 		$onWatchlist = $title->isSpecial( 'Watchlist' );
 		if ( !$onWatchlist ) {
@@ -130,7 +130,7 @@ class GlobalWatchlistHooks implements
 			'href' => $globalWatchlistTitle->getLinkURL(),
 			'title' => $skin->msg( 'globalwatchlist-gotoglobal-tooltip' )->text(),
 		];
-		$bar['navigation'][] = $link;
+		$sidebar['navigation'][] = $link;
 	}
 
 }
