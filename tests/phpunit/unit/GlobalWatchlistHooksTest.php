@@ -68,7 +68,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 			->willReturn( $title );
 
 		$sidebar = [];
-		$hookHandler->onSkinBuildSidebar( $skin, $sidebar );
+		$hookHandler->onSidebarBeforeOutput( $skin, $sidebar );
 		$this->assertArrayEquals(
 			[],
 			$sidebar,
@@ -132,7 +132,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 		$sidebar = [];
 		$sidebar['navigation'] = [];
 
-		$hookHandler->onSkinBuildSidebar( $skin, $sidebar );
+		$hookHandler->onSidebarBeforeOutput( $skin, $sidebar );
 
 		$expectedSidebar = [
 			'navigation' => [
