@@ -60,7 +60,9 @@
 }
 
 .ext-globalwatchlist-feed-site {
+	/* @noflip */
 	text-align: left;
+	/* @noflip */
 	direction: ltr;
 }
 
@@ -82,7 +84,9 @@ div[ id^='ext-globalwatchlist-feed-site-sd_' ],
 div[ id^='ext-globalwatchlist-feed-site-ug_' ],
 div[ id^='ext-globalwatchlist-feed-site-ur_' ],
 div[ id^='ext-globalwatchlist-feed-site-yi_' ] {
+	/* @noflip */
 	text-align: right;
+	/* @noflip */
 	direction: rtl;
 }
 
