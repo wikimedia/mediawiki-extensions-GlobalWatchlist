@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Joseph",
 			"MuratTheTurkish",
 			"SaldırganSincap"
 		]
@@ -38,6 +39,8 @@
 	"globalwatchlist-gotoglobal-tooltip": "Küresel izleme listesini görüntüle",
 	"globalwatchlist-grouped-timestamp": "Gruplanmış değişiklikler için en son değişikliğin zaman damgası gösterilir",
 	"globalwatchlist-javascript-required": "Bu özel sayfanın çalışması için JavaScript gereklidir",
+	"globalwatchlist-log-entry": "günlük girdisi",
+	"globalwatchlist-log-page": "sayfa günlükleri",
 	"globalwatchlist-markseen": "Görüldü olarak işaretle",
 	"globalwatchlist-markseen-all": "Tüm siteleri göründü olarak işaretle",
 	"globalwatchlist-markseen-allconfirm": "Tüm siteleri görüldüğü gibi işaretlemek istediğinizden emin misiniz?",
@@ -59,6 +62,7 @@
 	"globalwatchlist-settings-error-anon-bot": "Anonim kullanıcılar bot düzenlemeleri yapamaz",
 	"globalwatchlist-settings-error-anon-minor": "Anonim kullanıcılar küçük düzenlemeleri yapamaz",
 	"globalwatchlist-settings-error-bad-sites": "Geçersiz site(ler): $1",
+	"globalwatchlist-settings-error-duplicate-site": "\"$1\" sitesi birden fazla dahil edilmiş.",
 	"globalwatchlist-settings-error-invalid-site": "\"$1\" sitesi, ekli CentralAuth hesabınızın olduğu bir viki ile eşleşmiyor.",
 	"globalwatchlist-settings-error-no-sites": "Hiçbir site seçilmedi",
 	"globalwatchlist-settings-error-no-types": "Hiçbir değişiklik türü seçilmedi",
