@@ -177,7 +177,6 @@
 				"watchlistUtils.js",
 				"WikibaseHandler.js",
 				"vue/base/Label.vue",
-				"vue/base/Button.vue",
 				"vue/base/Toggle.vue",
 				"vue/base/CollapsibleWrapper.vue",
 				"vue/EntryRow.vue",
@@ -185,7 +184,8 @@
 				"vue/Site.vue",
 				"vue/SitesWithoutChanges.vue",
 				"vue/SpecialGlobalWatchlist.vue",
-				"vue/Toolbar.vue"
+				"vue/Toolbar.vue",
+				"vue/icons.json"
 			],
 			"messages": [
 				"globalwatchlist-api-error",
@@ -222,10 +222,11 @@
 			],
 			"dependencies": [
 				"vue",
+				"wvui",
 				"mediawiki.ForeignApi",
 				"oojs",
 				"oojs-ui-core",
-				"oojs-ui.styles.icons-interactions",
+				"oojs-ui-windows",
 				"user.options"
 			],
 			"targets": [ "desktop", "mobile" ]

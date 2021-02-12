@@ -298,12 +298,15 @@ module.exports = {
 	clear: both;
 }
 
-.ext-globalwatchlist-expiry-icon {
-	/* Copied from core watchlistexpiry.less */
+.ext-globalwatchlist-expiry-icon svg {
+	/* Based on core watchlistexpiry.less */
 	min-height: 13px;
 	height: 13px;
 	position: relative;
-	top: -1px;
-	opacity: 0.51; /* To match @opacity-base--disabled */
+}
+
+/* Make sure the icon color is the same as the text */
+.ext-globalwatchlist-button-icon path {
+	fill: currentColor;
 }
 </style>

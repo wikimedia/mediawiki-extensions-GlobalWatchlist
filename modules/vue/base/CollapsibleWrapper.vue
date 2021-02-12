@@ -2,12 +2,14 @@
 	<div
 		class="ext-globalwatchlist-vue-collapsible"
 	>
-		<global-watchlist-button
-			align="right"
+
+		<!-- No support for an `align` parameter yet -->
+		<wvui-button
+			class="ext-globalwatchlist-float-right"
 			v-on:click="toggleCollapsible"
 		>
 			{{ buttonText }}
-		</global-watchlist-button>
+		</wvui-button>
 
 		<div
 			v-if="showContent"
@@ -22,11 +24,11 @@
  * This component should eventually be replaced by a standard version shared across
  * multiple mediawiki repositories. See T249840 for more.
  */
-var Button = require( './Button.vue' );
+var WvuiButton = require( 'wvui' ).WvuiButton;
 
 module.exports = {
 	components: {
-		'global-watchlist-button': Button
+		'wvui-button': WvuiButton
 	},
 
 	data: function () {
@@ -67,3 +69,9 @@ module.exports = {
 	}
 };
 </script>
+
+<style>
+.ext-globalwatchlist-float-right {
+	float: right;
+}
+</style>

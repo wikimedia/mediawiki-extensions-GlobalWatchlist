@@ -18,11 +18,19 @@
 			{{ $i18n( 'globalwatchlist-fetch-site-failure' ).text() }}
 		</p>
 		<global-watchlist-collapsible-wrapper v-else>
-			<global-watchlist-button
+			<wvui-button
+				action="destructive"
 				v-on:click="markChangesSeen"
 			>
-				{{ $i18n( 'globalwatchlist-markseen' ).text() }}
-			</global-watchlist-button>
+				<span>
+					<wvui-icon
+						class="ext-globalwatchlist-button-icon"
+						v-bind:icon="checkIcon"
+					>
+					</wvui-icon>
+					{{ $i18n( 'globalwatchlist-markseen' ).text() }}
+				</span>
+			</wvui-button>
 			<global-watchlist-entry-row
 				v-for="(rowInfo, index) in entries"
 				v-bind:key="index"
@@ -40,9 +48,11 @@
 <script>
 var GlobalWatchlistLinker = require( './../Linker.js' );
 
-var Button = require( './base/Button.vue' ),
-	CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' ),
+var CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' ),
 	EntryRow = require( './EntryRow.vue' );
+
+var WvuiButton = require( 'wvui' ).WvuiButton;
+var WvuiIcon = require( 'wvui' ).WvuiIcon;
 
 /**
  * Output for a specific site
@@ -61,9 +71,16 @@ var Button = require( './base/Button.vue' ),
  */
 module.exports = {
 	components: {
-		'global-watchlist-button': Button,
 		'global-watchlist-collapsible-wrapper': CollapsibleWrapper,
-		'global-watchlist-entry-row': EntryRow
+		'global-watchlist-entry-row': EntryRow,
+		'wvui-button': WvuiButton,
+		'wvui-icon': WvuiIcon
+	},
+
+	data: function () {
+		return {
+			hasApiError: false
+		};
 	},
 
 	props: {
@@ -78,10 +95,6 @@ module.exports = {
 	},
 
 	computed: {
-		hasApiError: function () {
-			// If this is created but has no entries, its because something went wrong
-			return this.entries.length === 0;
-		},
 		linker: function () {
 			return new GlobalWatchlistLinker( this.site );
 		},
@@ -90,7 +103,10 @@ module.exports = {
 		},
 		specialEditWatchlistUrl: function () {
 			return this.linker.linkPage( 'Special:EditWatchlist' );
-		}
+		},
+		checkIcon: function () {
+			return require( './icons.json' ).check;
+		},
 	},
 
 	methods: {
@@ -116,6 +132,13 @@ module.exports = {
 		},
 		markChangesSeen: function () {
 			this.$emit( 'mark-site-seen', this.site );
+		}
+	},
+
+	created: function () {
+		// If this is created but has no entries, its because something went wrong
+		if ( this.entries.length === 0 ) {
+			this.hasApiError = true;
 		}
 	}
 };

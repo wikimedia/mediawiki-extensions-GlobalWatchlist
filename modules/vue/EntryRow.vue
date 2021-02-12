@@ -11,7 +11,12 @@
 
 		<!-- Watchlist expiration clock -->
 		<span v-if="hasExpiration">
-			<span v-html="expirationClock"></span>
+			<wvui-icon
+				v-bind:icon="clockIcon"
+				v-bind:title="expirationTooltip"
+				class="ext-globalwatchlist-expiry-icon"
+			>
+			</wvui-icon>
 		</span>
 
 		<!-- Bot/minor/new page -->
@@ -20,7 +25,7 @@
 		</strong>
 
 		<em v-if="isLogEntry">
-			Log: {{ this.entry.logtype }}/{{ this.entry.logaction }}:
+			Log: {{ entry.logtype }}/{{ entry.logaction }}:
 		</em>
 
 		<a
@@ -87,6 +92,8 @@
 <script>
 var GlobalWatchlistLinker = require( './../Linker.js' );
 
+var WvuiIcon = require( 'wvui' ).WvuiIcon;
+
 /**
  * Replacement for makePageLink
  *
@@ -104,6 +111,10 @@ var GlobalWatchlistLinker = require( './../Linker.js' );
  *     Parameters: title
  */
 module.exports = {
+	components: {
+		'wvui-icon': WvuiIcon
+	},
+
 	props: {
 		entry: {
 			type: Object,
@@ -147,15 +158,11 @@ module.exports = {
 		hasExpiration: function () {
 			return this.entry.expiry !== false;
 		},
-		expirationClock: function () {
-			// UGLY there should be a Vue version
-			var clockIcon = new OO.ui.IconWidget( {
-				classes: [ 'ext-globalwatchlist-expiry-icon' ],
-				icon: 'clock',
-				title: this.entry.expiry
-			} );
-			// Can't provide the jQuery element - need to use the actual raw HTML
-			return clockIcon.$element[ 0 ].outerHTML;
+		clockIcon: function () {
+			return require( './icons.json' ).clock;
+		},
+		expirationTooltip: function () {
+			return this.entry.expiry;
 		},
 		entryFlags: function () {
 			var letters = '';

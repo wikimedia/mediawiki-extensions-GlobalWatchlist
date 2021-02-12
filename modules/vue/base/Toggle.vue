@@ -1,14 +1,13 @@
 <template>
-	<button
-		class="ext-globalwatchlist-toggle"
+	<wvui-button
 		v-bind:class="toggleClass"
-		v-bind:style="toggleStyle"
+		v-bind:disabled="toggleDisabled"
 		v-on:click="onToggle"
 	>
 		<span>
 			<slot></slot>
 		</span>
-	</button>
+	</wvui-button>
 </template>
 
 <script>
@@ -16,7 +15,13 @@
  * This component should eventually be replaced by a standard version shared across
  * multiple mediawiki repositories. See T249840 for more.
  */
+var WvuiButton = require( 'wvui' ).WvuiButton;
+
 module.exports = {
+	components: {
+		'wvui-button': WvuiButton
+	},
+
 	data: function () {
 		return {
 			isActive: false // Always start inactive
@@ -24,10 +29,6 @@ module.exports = {
 	},
 
 	props: {
-		align: {
-			type: String,
-			default: 'none'
-		},
 		startactive: {
 			type: Boolean,
 			default: false
@@ -45,20 +46,15 @@ module.exports = {
 				'ext-globalwatchlist-toggle--disabled': this.disabled
 			};
 		},
-		toggleStyle: function () {
-			return {
-				float: this.align
-			};
+		toggleDisabled: function () {
+			return this.disabled;
 		}
 	},
 
 	methods: {
 		onToggle: function () {
-			if ( !this.disabled ) {
-				this.isActive = !this.isActive;
-
-				this.$emit( 'toggle', this.isActive );
-			}
+			this.isActive = !this.isActive;
+			this.$emit( 'toggle', this.isActive );
 		}
 	},
 

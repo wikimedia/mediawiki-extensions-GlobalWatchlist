@@ -6,6 +6,11 @@
 			v-bind:disabled="disableLiveUpdates"
 			v-on:toggle="toggleLiveUpdates"
 		>
+			<wvui-icon
+				class="ext-globalwatchlist-button-icon"
+				v-bind:icon="iconLiveUpdates"
+			>
+			</wvui-icon>
 			{{ $i18n( 'globalwatchlist-option-live' ).text() }}
 		</global-watchlist-toggle>
 
@@ -17,32 +22,59 @@
 			{{ $i18n( 'globalwatchlist-option-grouppage' ).text() }}
 		</global-watchlist-toggle>
 
-		<global-watchlist-button
+		<wvui-button
+			action="progressive"
 			v-bind:disabled="disableRefresh"
 			v-on:click="triggerRefresh"
 		>
-			{{ $i18n( 'globalwatchlist-refresh' ).text() }}
-		</global-watchlist-button>
+			<span>
+				<!-- TODO once T273493 is resolved, use `startIcon` instead of needing to specify one manually, here and below -->
+				<wvui-icon
+					class="ext-globalwatchlist-button-icon"
+					v-bind:icon="icons.reload"
+				>
+				</wvui-icon>
+				{{ $i18n( 'globalwatchlist-refresh' ).text() }}
+			</span>
+		</wvui-button>
 
-		<a
-			v-bind:href="settingsUrl"
-			target="_blank"
-		>
-			{{ $i18n( 'globalwatchlist-globalwatchlistsettingslink' ).text() }}
-		</a>
+		<wvui-button>
+			<a
+				v-bind:href="settingsUrl"
+				target="_blank"
+			>
+				<!-- Icon is part of the link -->
+				<wvui-icon
+					class="ext-globalwatchlist-button-icon"
+					v-bind:icon="icons.settings"
+				>
+				</wvui-icon>
+				{{ $i18n( 'globalwatchlist-globalwatchlistsettingslink' ).text() }}
+			</a>
+		</wvui-button>
 
-		<global-watchlist-button
+		<wvui-button
+			action="destructive"
 			v-bind:disabled="disableMarkAll"
 			v-on:click="triggerMarkAll"
 		>
-			{{ $i18n( 'globalwatchlist-markseen-all' ).text() }}
-		</global-watchlist-button>
+			<span>
+				<wvui-icon
+					class="ext-globalwatchlist-button-icon"
+					v-bind:icon="icons.checkAll"
+				>
+				</wvui-icon>
+				{{ $i18n( 'globalwatchlist-markseen-all' ).text() }}
+			</span>
+		</wvui-button>
 	</div>
 </template>
 
 <script>
-var Button = require( './base/Button.vue' ),
-	Toggle = require( './base/Toggle.vue' );
+var Toggle = require( './base/Toggle.vue' );
+
+var WvuiButton = require( 'wvui' ).WvuiButton;
+var WvuiIcon = require( 'wvui' ).WvuiIcon;
 
 /**
  * Toolbar at the top of the page
@@ -64,8 +96,16 @@ var Button = require( './base/Button.vue' ),
  */
 module.exports = {
 	components: {
-		'global-watchlist-button': Button,
-		'global-watchlist-toggle': Toggle
+		'global-watchlist-toggle': Toggle,
+		'wvui-button': WvuiButton,
+		'wvui-icon': WvuiIcon
+	},
+
+	data: function () {
+		// Need a local copy of liveUpdatesActive to control the displayed icon
+		return {
+			liveUpdatesActive: false
+		};
 	},
 
 	props: {
@@ -109,6 +149,17 @@ module.exports = {
 		},
 		disableMarkAll: function () {
 			return this.markalldisabled;
+		},
+
+		icons: function () {
+			return require( './icons.json' );
+		},
+		iconLiveUpdates: function () {
+			// Icon that is shown changes depending of if live updates are running
+			if ( this.liveUpdatesActive ) {
+				return this.icons.pause;
+			}
+			return this.icons.play;
 		}
 	},
 
@@ -117,6 +168,7 @@ module.exports = {
 			this.$emit( 'toggle-group-page', isActive );
 		},
 		toggleLiveUpdates: function ( isActive ) {
+			this.liveUpdatesActive = isActive;
 			this.$emit( 'toggle-live-updates', isActive );
 		},
 		triggerRefresh: function () {
