@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Superpes15"
 		]
 	},
 	"globalwatchlist": "Osservati speciali globali",
@@ -45,8 +46,12 @@
 	"globalwatchlist-refresh": "Aggiorna",
 	"globalwatchlist-remove": "Rimuovi",
 	"globalwatchlist-save": "Salva impostazioni",
+	"globalwatchlist-show-edits": "Mostra le modifiche alle pagine",
+	"globalwatchlist-show-logentries": "Mostra le voci di registro",
+	"globalwatchlist-show-newpages": "Mostra le creazioni di nuove pagine",
 	"globalwatchlist-tour-addsite": "Aggiungi un sito",
 	"globalwatchlist-tour-fastmode": "Modalità veloce",
+	"globalwatchlist-tour-help": "Ulteriore documentazione",
 	"globalwatchlist-tour-help-description": "Ulteriore documentazione è disponibile su mediawiki.org",
 	"globalwatchlist-tour-intro": "Impostazioni osservati speciali globali",
 	"globalwatchlist-tour-sitelist": "Elenco di siti",
