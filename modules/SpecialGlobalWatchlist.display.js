@@ -82,6 +82,7 @@
 			viewElements.settingsLink.$element,
 			viewElements.markAllSeen.$element
 		);
+	// The "Sites with changes" label
 	viewElements.$feedHeader = new OO.ui.LabelWidget( {
 		label: mw.msg( 'globalwatchlist-changesfeed' )
 	} ).$element;
@@ -107,7 +108,7 @@
 			watchedSites.getAllWatchlists( config ).then( function () {
 				var $div = $( '<div>' ).attr( 'id', 'ext-globalwatchlist-feedcollector' ),
 					emptySites = [],
-					showChangesLabel = false;
+					haveChangesToShow = false;
 
 				watchedSites.siteList.forEach( function ( site ) {
 					globalWatchlistDebug.info(
@@ -116,12 +117,15 @@
 					if ( site.isEmpty ) {
 						emptySites.push( site.site );
 					} else {
-						showChangesLabel = true;
+						haveChangesToShow = true;
 						$div.append( site.$feedDiv );
 					}
 				} );
 
-				if ( showChangesLabel ) {
+				// Only show the "Sites with changes" message if there
+				// are any sites without changes, otherwise its not helpful
+				// See T274720
+				if ( haveChangesToShow && emptySites[ 0 ] ) {
 					viewElements.$feedHeader.show();
 					$div.append( $( '<hr>' ) );
 				} else {
@@ -138,13 +142,7 @@
 							viewManager.newEmptySiteRow( site )
 						);
 					} );
-					var $emptySitesDiv = mw.template.get(
-						'ext.globalwatchlist.specialglobalwatchlist',
-						'templates/allEmptySites.mustache'
-					).render( {
-						'empty-sites': $ul[ 0 ].outerHTML
-					} )
-						.makeCollapsible();
+					var $emptySitesDiv = $( '<div>' ).append( $ul );
 
 					$div.append(
 						emptyFeedLabel.$element,
@@ -178,6 +176,7 @@
 
 		viewElements.liveToggle.setDisabled( true );
 		viewElements.progressBar.$element.show();
+		viewElements.$feedHeader.hide();
 		viewElements.$sharedFeed.hide();
 		viewElements.$asOf[0].innerText = '';
 
