@@ -96,7 +96,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	}
 	if ( entry.entryType === 'log' ) {
 		var logText = 'Log: ' + entry.logtype + '/' + entry.logaction + ': ';
-		$row.append( $( '<i>' ).text( logText ) )
+		$row.append( $( '<em>' ).text( logText ) )
 			.append( ' ' );
 	}
 
@@ -167,12 +167,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 
 	if ( entry.tags.length > 0 ) {
 		// Need to process links in the parsed description as raw HTML
-		var tagsDisplay = entry.tags.map(
-			function ( tag ) {
-				return that.tags[ tag ];
-			}
-		).join( ', ' );
-		var $tags = $( '<i>' ).html( '(Tags: ' + tagsDisplay + ')' );
+		var $tags = $( '<em>' ).html( this.getTagsDisplay( entry.tags ) );
 
 		$row.append( ' ' )
 			.append( $tags );

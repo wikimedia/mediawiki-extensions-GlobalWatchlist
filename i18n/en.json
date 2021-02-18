@@ -69,6 +69,7 @@
 	"globalwatchlist-show-logentries": "Show log entries",
 	"globalwatchlist-show-newpages": "Show new page creations",
 	"globalwatchlist-sitelist": "User defined site list",
+	"globalwatchlist-tags": "{{PLURAL:$1|Tag|Tags}}: $2",
 	"globalwatchlist-tour-addsite": "Add a site",
 	"globalwatchlist-tour-addsite-description": "Click above to add another row for a site.",
 	"globalwatchlist-tour-fastmode": "Fast mode",

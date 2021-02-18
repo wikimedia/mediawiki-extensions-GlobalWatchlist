@@ -322,6 +322,23 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 };
 
 /**
+ * Get the HTML string to use for the tags display
+ *
+ * @param {Array} tagNames
+ * @return {string} the tag descriptions, joined together, as raw HTML
+ */
+GlobalWatchlistSiteBase.prototype.getTagsDisplay = function ( tagNames ) {
+	var that = this;
+	var tagDescriptions = tagNames.map(
+		function ( tagName ) {
+			return that.tags[ tagName ];
+		}
+	).join( ', ' );
+	var withLabel = mw.msg( 'globalwatchlist-tags', tagNames.length, tagDescriptions );
+	return mw.msg( 'parentheses', withLabel );
+};
+
+/**
  * Display the watchlist
  *
  * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}

@@ -82,8 +82,8 @@
 			Avoid a space in the middle
 		-->)
 
+		<!-- eslint-disable vue/no-v-html -->
 		<span v-if="hasUserDisplay">
-			<!-- eslint-disable vue/no-v-html -->
 			(<!--
 				Avoid a space in the middle
 			--><span v-html="entry.userDisplay"></span><!--
@@ -91,8 +91,10 @@
 			--><span v-if="hasComment" v-html="entryComment"></span><!--
 				Avoid a space in the middle
 			-->)
-			<!-- eslint-enable vue/no-v-html -->
 		</span>
+
+		<em v-if="hasTags" v-html="tagsDisplay"></em>
+		<!-- eslint-enable vue/no-v-html -->
 	</li>
 </template>
 
@@ -232,6 +234,16 @@ module.exports = {
 		hasUserDisplay: function () {
 			// Not available in fast mode
 			return this.entry.userDisplay && this.entry.userDisplay !== '';
+		},
+
+		hasTags: function () {
+			return this.tagsDisplay !== false;
+		},
+		tagsDisplay: function () {
+			// processed in SiteVue.renderWatchlist, either the raw HTML to include
+			// or false for no tags. If its raw HTML, it is already properly safe
+			// to use.
+			return this.entry.tagsDisplay;
 		}
 	},
 

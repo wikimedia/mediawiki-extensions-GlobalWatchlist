@@ -72,6 +72,7 @@
 	"globalwatchlist-show-logentries": "Label for the option to show log entries",
 	"globalwatchlist-show-newpages": "Label for the option to show new pages",
 	"globalwatchlist-sitelist": "Label for user defined site list",
+	"globalwatchlist-tags": "Tags shown at the end of an entry.\n\nParameters:\n* $1 - the number of tags, for PLURAL\n* $2 - raw HTML for the tags",
 	"globalwatchlist-tour-addsite": "Title for GuidedTour step describing adding more sites to the list the user includes",
 	"globalwatchlist-tour-addsite-description": "Description text for GuidedTour step describing adding more sites to the list the user includes",
 	"globalwatchlist-tour-fastmode": "Title for GuidedTour step describing the fast mode option",

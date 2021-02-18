@@ -48,9 +48,19 @@ OO.inheritClass( GlobalWatchlistSiteVue, GlobalWatchlistSiteBase );
  * @param {Array} summary What should be rendered
  */
 GlobalWatchlistSiteVue.prototype.renderWatchlist = function ( summary ) {
+	var that = this;
+
 	this.entries = summary;
 	this.entries.forEach( function ( entry ) {
 		entry.pageWatched = true;
+
+		// EntryRow does not have access to SiteBase.getTagsDisplay, so we have
+		// to set the display here.
+		if ( entry.tags.length === 0 ) {
+			entry.tagsDisplay = false;
+		} else {
+			entry.tagsDisplay = that.getTagsDisplay( entry.tags );
+		}
 	} );
 };
 
