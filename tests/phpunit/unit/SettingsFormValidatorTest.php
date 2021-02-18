@@ -16,7 +16,7 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 	 * MessageLocalizer mock that expects to be called a single time
 	 *
 	 * @param string $key
-	 * @param ?MockObject|Message $message Message object to use, or null for a mock to be created here
+	 * @param MockObject|Message|null $message Message object to use, or null for a mock to be created here
 	 * @return MockObject|MessageLocalizer
 	 */
 	private function getMessageLocalizer( string $key, $message = null ) {
