@@ -190,9 +190,19 @@ GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $conte
 		'edit-watchlist-msg': mw.msg( 'globalwatchlist-editwatchlist' )
 	};
 
+	// Get RTL/LTR direction for the site. We can't use String.prototype.startsWith, since
+	// that is unavailable in IE11, and doesn't take multiple values anyway. Use
+	// String.prototype.match with a list of the language codes that should be RTL
+	// this.siteID is based on the URL form of the wiki, and we assume that wikis that are
+	// meant to be RTL are in the form `⧼rtl language code⧽.*`, and any URL that does not
+	// match this is for an LTR wiki. See T274602 and T274313
+	var isRTL = this.siteID.match(
+		/^(ar|azb|ckb|dv|fa|glk|he|ks|lrc|mzn|nqo|pnb|ps|sd|ug|ur|yi)_/
+	);
 	this.$feedDiv = $( '<div>' )
 		.attr( 'id', 'ext-globalwatchlist-feed-site-' + this.siteID )
 		.addClass( 'ext-globalwatchlist-feed-site' )
+		.addClass( isRTL ? 'mw-content-rtl' : 'mw-content-ltr' )
 		.append(
 			headerTemplate.render( headerParams ),
 			$content

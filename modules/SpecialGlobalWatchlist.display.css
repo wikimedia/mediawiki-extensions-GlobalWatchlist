@@ -59,37 +59,6 @@
 	border-bottom: 1px solid #0fd977;
 }
 
-.ext-globalwatchlist-feed-site {
-	/* @noflip */
-	text-align: left;
-	/* @noflip */
-	direction: ltr;
-}
-
-/* Handling of rtl wikis */
-div[ id^='ext-globalwatchlist-feed-site-he_' ],
-div[ id^='ext-globalwatchlist-feed-site-ar_' ],
-div[ id^='ext-globalwatchlist-feed-site-azb_' ],
-div[ id^='ext-globalwatchlist-feed-site-ckb_' ],
-div[ id^='ext-globalwatchlist-feed-site-dv_' ],
-div[ id^='ext-globalwatchlist-feed-site-fa_' ],
-div[ id^='ext-globalwatchlist-feed-site-glk_' ],
-div[ id^='ext-globalwatchlist-feed-site-ks_' ],
-div[ id^='ext-globalwatchlist-feed-site-lrc_' ],
-div[ id^='ext-globalwatchlist-feed-site-mzn_' ],
-div[ id^='ext-globalwatchlist-feed-site-nqo_' ],
-div[ id^='ext-globalwatchlist-feed-site-pnb_' ],
-div[ id^='ext-globalwatchlist-feed-site-ps_' ],
-div[ id^='ext-globalwatchlist-feed-site-sd_' ],
-div[ id^='ext-globalwatchlist-feed-site-ug_' ],
-div[ id^='ext-globalwatchlist-feed-site-ur_' ],
-div[ id^='ext-globalwatchlist-feed-site-yi_' ] {
-	/* @noflip */
-	text-align: right;
-	/* @noflip */
-	direction: rtl;
-}
-
 .ext-globalwatchlist-site a,
 li b {
 	unicode-bidi: isolate;
