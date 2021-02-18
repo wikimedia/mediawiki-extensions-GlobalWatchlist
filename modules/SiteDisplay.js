@@ -247,7 +247,10 @@ GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary ) {
  */
 GlobalWatchlistSiteDisplay.prototype.afterMarkAsSeen = function () {
 	this.debug( 'markSiteAsSeen - hiding site' );
-	$( this.$feedDiv.children()[ 1 ] ).hide();
+	if ( this.$feedDiv ) {
+		// Don't call .children() on the default empty string, T275078
+		$( this.$feedDiv.children()[ 1 ] ).hide();
+	}
 
 	// FIXME
 	// GlobalWatchlist.watchlists.checkChangesShown( true );
