@@ -4,7 +4,7 @@
 		<!-- Maybe implement a label component at some point? -->
 		<p>{{ $i18n( 'globalwatchlist-emptyfeed' ).text() }}</p>
 		<global-watchlist-collapsible-wrapper
-			startcollapsed="true"
+			v-bind:startcollapsed="true"
 		>
 			<ul id="ext-globalwatchlist-vue-sites-without-changes-list">
 				<li

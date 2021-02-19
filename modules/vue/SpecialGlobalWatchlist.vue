@@ -43,12 +43,10 @@
 				</global-watchlist-sites-with-changes>
 			</div>
 			<div v-if="haveEmptySites">
-				<global-watchlist-collapsible-wrapper>
-					<global-watchlist-sites-without-changes
-						v-bind:emptysitelist="sitesWithoutChangesList"
-					>
-					</global-watchlist-sites-without-changes>
-				</global-watchlist-collapsible-wrapper>
+				<global-watchlist-sites-without-changes
+					v-bind:emptysitelist="sitesWithoutChangesList"
+				>
+				</global-watchlist-sites-without-changes>
 			</div>
 		</div>
 	</div>
