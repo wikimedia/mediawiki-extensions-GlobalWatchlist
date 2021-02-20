@@ -162,7 +162,8 @@
 				"oojs-ui.styles.icons-moderation",
 				"oojs-ui.styles.icons-movement",
 				"user.options"
-			]
+			],
+			"targets": [ "desktop", "mobile" ]
 		},
 		"ext.globalwatchlist.specialglobalwatchlist.vue": {
 			"packageFiles": [
@@ -226,7 +227,8 @@
 				"oojs-ui-core",
 				"oojs-ui.styles.icons-interactions",
 				"user.options"
-			]
+			],
+			"targets": [ "desktop", "mobile" ]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
 			"styles": [
@@ -234,7 +236,8 @@
 			],
 			"dependencies": [
 				"mediawiki.htmlform.ooui"
-			]
+			],
+			"targets": [ "desktop", "mobile" ]
 		},
 		"ext.globalwatchlist.getsettingserror": {
 			"packageFiles": [
@@ -245,7 +248,8 @@
 			],
 			"dependencies": [
 				"oojs-ui-windows"
-			]
+			],
+			"targets": [ "desktop", "mobile" ]
 		}
 	},
 	"QUnitTestModule": {
