@@ -345,6 +345,7 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 			}
 		} else if ( entry.type === 'log' ) {
 			logEntries.push( {
+				bot: entry.bot,
 				comment: entry.parsedcomment,
 				entryType: entry.type,
 				expiry: entry.expiry,
