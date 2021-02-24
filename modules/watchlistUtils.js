@@ -328,7 +328,6 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 	var convertedEdits = [],
 		edits = {},
 		logEntries = [],
-		everything = [],
 		cleanedEntries = watchlistUtils.normalizeEntries( entries );
 
 	cleanedEntries.forEach( function ( entry ) {
@@ -366,7 +365,39 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 	} );
 
 	convertedEdits = watchlistUtils.convertEdits( edits, site, groupPage, linker );
-	everything = convertedEdits.concat( logEntries );
+
+	// Sorting: we want the newest edits and log entries at the top. But, the api
+	// only tells us what minute the edit/log entry was made. So, if the timestamps
+	// are the same, go by the revid and logid - we assume that newer edits have higher
+	// revision ids, and newer log entries have higher log ids. Sort functions should
+	// return negative if the order should not change, and positive if they should.
+	// See T275303
+	convertedEdits.sort(
+		function ( editA, editB ) {
+			if ( editA.timestamp !== editB.timestamp ) {
+				return ( ( new Date( editA.timestamp ) ) > ( new Date( editB.timestamp ) )
+					? -1
+					: 1
+				);
+			}
+			// fallback to revision ids
+			return ( ( editA.toRev > editB.toRev ) ? -1 : 1 );
+		}
+	);
+	logEntries.sort(
+		function ( logA, logB ) {
+			if ( logA.timestamp !== logB.timestamp ) {
+				return ( ( new Date( logA.timestamp ) ) > ( new Date( logB.timestamp ) )
+					? -1
+					: 1
+				);
+			}
+			// fallback to log ids
+			return ( ( logA.logid > logB.logid ) ? -1 : 1 );
+		}
+	);
+
+	var everything = convertedEdits.concat( logEntries );
 	everything = watchlistUtils.addExpirationMessages( everything );
 	return everything;
 };
