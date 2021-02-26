@@ -69,7 +69,7 @@
 		id: 'ext-globalwatchlist-watchlistsloading'
 	} );
 	viewElements.progressBar.$element.hide();
-	viewElements.$asOf = $( '<div>' )
+	viewElements.$asOf = $( '<label>' )
 		.attr( 'id', 'ext-globalwatchlist-asof' );
 	viewElements.$sharedFeed = $( '<div>' )
 		.attr( 'id', 'ext-globalwatchlist-watchlistsfeed' );
@@ -83,9 +83,8 @@
 			viewElements.markAllSeen.$element
 		);
 	// The "Sites with changes" label
-	viewElements.$feedHeader = new OO.ui.LabelWidget( {
-		label: mw.msg( 'globalwatchlist-changesfeed' )
-	} ).$element;
+	viewElements.$feedHeader = $( '<label>' )
+		.text( mw.msg( 'globalwatchlist-changesfeed' ) );
 	viewElements.$feedHeader.hide();
 
 	viewManager.newEmptySiteRow = function ( site ) {
@@ -133,10 +132,7 @@
 				}
 
 				if ( emptySites[ 0 ] ) {
-					var $ul = $( '<ul>' ),
-						emptyFeedLabel = new OO.ui.LabelWidget( {
-							label: mw.msg( 'globalwatchlist-emptyfeed' )
-						} );
+					var $ul = $( '<ul>' );
 					emptySites.forEach( function ( site ) {
 						$ul.append(
 							viewManager.newEmptySiteRow( site )
@@ -151,7 +147,7 @@
 						.makeCollapsible();
 
 					$div.append(
-						emptyFeedLabel.$element,
+						$( '<label>' ).text( mw.msg( 'globalwatchlist-emptyfeed' ) ),
 						$emptySitesDiv
 					);
 				}

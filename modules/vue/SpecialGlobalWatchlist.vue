@@ -25,15 +25,12 @@
 			v-else
 			class="ext-globalwatchlist-sitelist"
 		>
-			<global-watchlist-label
-				v-bind:text="asOfLabelText"
-			>
-			</global-watchlist-label>
+			<label id="ext-globalwatchlist-vue-asof">{{ asOfLabelText }}</label>
 			<div v-if="haveChangesToShow">
 				<!-- Only show label if there are empty sites, T274720 -->
-				<p v-if="haveEmptySites">
+				<label v-if="haveEmptySites">
 					{{ $i18n( 'globalwatchlist-changesfeed' ).text() }}
-				</p>
+				</label>
 				<global-watchlist-sites-with-changes
 					v-for="withChanges in sitesWithChangesList"
 					v-bind:key="withChanges['site']"
@@ -57,7 +54,6 @@
 
 <script>
 var Toolbar = require( './Toolbar.vue' ),
-	Label = require( './base/Label.vue' ),
 	LoadingBar = require( './base/LoadingBar.vue' ),
 	SitesWithoutChanges = require( './SitesWithoutChanges.vue' ),
 	Site = require( './Site.vue' );
@@ -84,7 +80,6 @@ watchedSites.siteList.forEach( function ( watchedSite ) {
 
 module.exports = {
 	components: {
-		'global-watchlist-label': Label,
 		'global-watchlist-toolbar': Toolbar,
 		'global-watchlist-loading-bar': LoadingBar,
 		'global-watchlist-sites-with-changes': Site,
@@ -294,6 +289,10 @@ module.exports = {
 .ext-globalwatchlist-strike,
 .ext-globalwatchlist-strike a {
 	text-decoration: line-through;
+}
+
+#ext-globalwatchlist-vue-asof {
+	text-align: center;
 }
 
 .ext-globalwatchlist-content hr {

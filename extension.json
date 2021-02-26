@@ -176,7 +176,6 @@
 				"SiteVue.js",
 				"watchlistUtils.js",
 				"WikibaseHandler.js",
-				"vue/base/Label.vue",
 				"vue/base/Toggle.vue",
 				"vue/base/CollapsibleWrapper.vue",
 				"vue/EntryRow.vue",

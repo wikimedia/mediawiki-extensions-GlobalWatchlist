@@ -1,8 +1,7 @@
 <template>
 	<div id="ext-globalwatchlist-vue-sites-without-changes">
 		<hr>
-		<!-- Maybe implement a label component at some point? -->
-		<p>{{ $i18n( 'globalwatchlist-emptyfeed' ).text() }}</p>
+		<label>{{ $i18n( 'globalwatchlist-emptyfeed' ).text() }}</label>
 		<global-watchlist-collapsible-wrapper
 			v-bind:startcollapsed="true"
 		>

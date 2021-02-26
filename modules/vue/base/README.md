@@ -7,7 +7,6 @@ See [T249840](https://phabricator.wikimedia.org/T249840) for more information.
 These components are:
 
 * [CollapsibleWrapper.vue](./CollapsibleWrapper.vue)
-* [Label.vue](./Label.vue)
 * [LoadingBar.vue](./LoadingBar.vue)
 * [Toggle.vue](./Toggle.vue)
 
