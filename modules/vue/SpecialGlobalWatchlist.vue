@@ -303,6 +303,7 @@ module.exports = {
 	min-height: 13px;
 	height: 13px;
 	position: relative;
+	opacity: 0.51;
 }
 
 /* Make sure the icon color is the same as the text */
