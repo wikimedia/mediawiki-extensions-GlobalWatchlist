@@ -73,8 +73,9 @@ module.exports = {
 	border-color: #c8ccd1;
 }
 
-/* Active, not disabled */
-.ext-globalwatchlist-toggle--active:not( .ext-globalwatchlist-toggle--disabled ) {
+/* Active, not disabled. Specify :hover too to override wvui */
+.ext-globalwatchlist-toggle--active:not( .ext-globalwatchlist-toggle--disabled ),
+.ext-globalwatchlist-toggle--active:not( .ext-globalwatchlist-toggle--disabled ):hover {
 	background-color: #2a4b8d;
 }
 
