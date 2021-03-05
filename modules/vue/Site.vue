@@ -106,7 +106,7 @@ module.exports = {
 		},
 		checkIcon: function () {
 			return require( './icons.json' ).check;
-		},
+		}
 	},
 
 	methods: {

@@ -31,7 +31,9 @@
 			</global-watchlist-label>
 			<div v-if="haveChangesToShow">
 				<!-- Only show label if there are empty sites, T274720 -->
-				<p v-if="haveEmptySites">{{ $i18n( 'globalwatchlist-changesfeed' ).text() }}</p>
+				<p v-if="haveEmptySites">
+					{{ $i18n( 'globalwatchlist-changesfeed' ).text() }}
+				</p>
 				<global-watchlist-sites-with-changes
 					v-for="withChanges in sitesWithChangesList"
 					v-bind:key="withChanges['site']"

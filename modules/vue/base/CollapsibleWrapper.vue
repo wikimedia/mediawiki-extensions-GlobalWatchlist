@@ -2,7 +2,6 @@
 	<div
 		class="ext-globalwatchlist-vue-collapsible"
 	>
-
 		<!-- No support for an `align` parameter yet -->
 		<wvui-button
 			class="ext-globalwatchlist-float-right"
