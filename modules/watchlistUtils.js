@@ -375,9 +375,9 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 	convertedEdits.sort(
 		function ( editA, editB ) {
 			if ( editA.timestamp !== editB.timestamp ) {
-				return ( ( new Date( editA.timestamp ) ) > ( new Date( editB.timestamp ) )
-					? -1
-					: 1
+				return ( ( new Date( editA.timestamp ) ) > ( new Date( editB.timestamp ) ) ?
+					-1 :
+					1
 				);
 			}
 			// fallback to revision ids
@@ -387,9 +387,9 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 	logEntries.sort(
 		function ( logA, logB ) {
 			if ( logA.timestamp !== logB.timestamp ) {
-				return ( ( new Date( logA.timestamp ) ) > ( new Date( logB.timestamp ) )
-					? -1
-					: 1
+				return ( ( new Date( logA.timestamp ) ) > ( new Date( logB.timestamp ) ) ?
+					-1 :
+					1
 				);
 			}
 			// fallback to log ids
