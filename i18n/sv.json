@@ -65,7 +65,7 @@
 	"globalwatchlist-settings-error-invalid-site": "Webbplatsen \"$1\" stämmer inte överens med någon wiki där du har ett anslutet CentralAuth-konto.",
 	"globalwatchlist-settings-error-no-sites": "Inga webbplatser valdes",
 	"globalwatchlist-settings-error-no-types": "Inga ändringssorter valdes",
-	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|Webbplatsen $1|Webbplatserna $1}} valdes, vilket överskred $2, det högsta antalet tillåtna webbplatser.",
+	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1 webbplats|$1 webbplatser}} valdes, vilket överskred $2, det högsta antalet tillåtna webbplatser.",
 	"globalwatchlist-show-edits": "Visa sidredigeringar",
 	"globalwatchlist-show-logentries": "Visa loggposter",
 	"globalwatchlist-show-newpages": "Visa nya sidor",
