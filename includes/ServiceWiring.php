@@ -12,7 +12,7 @@ use MediaWiki\MediaWikiServices;
  * @codeCoverageIgnore
  */
 return [
-	'GlobalWatchlistSettingsManager' => function (
+	'GlobalWatchlistSettingsManager' => static function (
 		MediaWikiServices $services
 	) : SettingsManager {
 		return new SettingsManager(
