@@ -114,6 +114,7 @@
 				"SpecialGlobalWatchlist.display.css"
 			],
 			"templates": [
+				"templates/allEmptySites.mustache",
 				"templates/newEmptySiteRow.mustache",
 				"templates/siteRowHeader.mustache"
 			],
