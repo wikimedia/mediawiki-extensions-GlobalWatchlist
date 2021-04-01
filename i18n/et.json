@@ -27,6 +27,8 @@
 	"globalwatchlist-globalwatchlistsettingslink": "Eelistused",
 	"globalwatchlist-grouped-timestamp": "Rühmitatud muudatuste korral näidatakse viimase muudatuse ajatemplit",
 	"globalwatchlist-javascript-required": "See erilehekülg töötab ainult JavaScriptiga.",
+	"globalwatchlist-log-entry": "logisissekanne",
+	"globalwatchlist-log-page": "lehekülg logides",
 	"globalwatchlist-markseen": "Märgi nähtuks",
 	"globalwatchlist-markseen-all": "Märgi kõik saidid nähtuks",
 	"globalwatchlist-markseen-allconfirm": "Kas oled kindel, soovid märkida kõik saidid nähtuks?",
