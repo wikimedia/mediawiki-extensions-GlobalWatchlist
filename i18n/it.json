@@ -19,6 +19,7 @@
 	"globalwatchlist-filters": "Filtri",
 	"globalwatchlist-filter-anon": "Modifiche anonime",
 	"globalwatchlist-filter-bot": "Modifiche dei bot",
+	"globalwatchlist-filter-either": "Entrambi",
 	"globalwatchlist-filter-minor": "Modifiche minori",
 	"globalwatchlist-filter-not-anon": "Solo modifiche di utenti registrati",
 	"globalwatchlist-filter-not-bot": "Solo modifiche non dei bot",
