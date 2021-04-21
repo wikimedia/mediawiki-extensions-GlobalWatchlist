@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Iluvatar",
+			"Kareyac",
 			"Le Loi",
 			"Megakott",
 			"Rubin16",
@@ -40,6 +41,7 @@
 	"globalwatchlist-gotoglobal": "Глобальный список наблюдения",
 	"globalwatchlist-gotoglobal-tooltip": "Просмотр глобального списка наблюдения",
 	"globalwatchlist-grouped-timestamp": "Временна́я метка показывается для сгруппированных изменений",
+	"globalwatchlist-history": "история",
 	"globalwatchlist-javascript-required": "Для работы этой служебной страницы требуется JavaScript",
 	"globalwatchlist-markseen": "Отметить как просмотренный",
 	"globalwatchlist-markseen-all": "Отметить все проекты как просмотренные",

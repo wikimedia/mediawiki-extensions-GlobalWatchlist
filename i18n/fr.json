@@ -41,6 +41,7 @@
 	"globalwatchlist-gotoglobal": "Liste de suivi globale",
 	"globalwatchlist-gotoglobal-tooltip": "Afficher la liste de suivi globale",
 	"globalwatchlist-grouped-timestamp": "L’horodatage de la modification la plus récente est affiché pour les modifications groupées",
+	"globalwatchlist-history": "historique",
 	"globalwatchlist-javascript-required": "Cette page spéciale nécessite que JavaScript fonctionne",
 	"globalwatchlist-log-entry": "entrée de journal",
 	"globalwatchlist-log-page": "journaux des pages",
