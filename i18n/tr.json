@@ -38,6 +38,7 @@
 	"globalwatchlist-gotoglobal": "Küresel izleme listesi",
 	"globalwatchlist-gotoglobal-tooltip": "Küresel izleme listesini görüntüle",
 	"globalwatchlist-grouped-timestamp": "Gruplanmış değişiklikler için en son değişikliğin zaman damgası gösterilir",
+	"globalwatchlist-history": "geçmiş",
 	"globalwatchlist-javascript-required": "Bu özel sayfanın çalışması için JavaScript gereklidir",
 	"globalwatchlist-log-entry": "günlük girdisi",
 	"globalwatchlist-log-page": "sayfa günlükleri",
