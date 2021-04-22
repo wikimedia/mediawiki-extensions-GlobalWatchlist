@@ -1,9 +1,11 @@
 <?php
 
-namespace MediaWiki\Extension\GlobalWatchlist;
+namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
 use ApiOptions;
 use IBufferingStatsdDataFactory;
+use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks;
+use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWikiUnitTestCase;
 use Message;

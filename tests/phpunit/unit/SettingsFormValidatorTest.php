@@ -1,7 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\GlobalWatchlist;
+namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
+use MediaWiki\Extension\GlobalWatchlist\SettingsFormValidator;
+use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWikiUnitTestCase;
 use Message;
 use MessageLocalizer;

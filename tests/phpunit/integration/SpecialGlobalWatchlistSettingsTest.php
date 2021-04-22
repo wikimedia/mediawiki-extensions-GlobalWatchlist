@@ -1,11 +1,14 @@
 <?php
 
-namespace MediaWiki\Extension\GlobalWatchlist;
+namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
 use DerivativeContext;
 use ExtensionRegistry;
 use HashConfig;
 use HTMLForm;
+use MediaWiki\Extension\GlobalWatchlist\SettingsFormValidator;
+use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
+use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlistSettings;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsManager;

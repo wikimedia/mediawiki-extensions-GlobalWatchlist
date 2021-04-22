@@ -1,9 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\GlobalWatchlist;
+namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
 use FormatJson;
 use IBufferingStatsdDataFactory;
+use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
 use Psr\Log\LogLevel;

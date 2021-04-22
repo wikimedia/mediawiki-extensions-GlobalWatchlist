@@ -1,9 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\GlobalWatchlist;
+namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
 use ExtensionRegistry;
 use HashConfig;
+use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistGuidedTourHooks;
 use MediaWikiUnitTestCase;
 use ResourceLoader;
 

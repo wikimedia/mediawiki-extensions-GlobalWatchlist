@@ -1,10 +1,11 @@
 <?php
 
-namespace MediaWiki\Extension\GlobalWatchlist;
+namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
 use DerivativeContext;
 use FauxRequest;
 use IBufferingStatsdDataFactory;
+use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlist;
 use MediaWikiIntegrationTestCase;
 use OutputPage;
 use User;

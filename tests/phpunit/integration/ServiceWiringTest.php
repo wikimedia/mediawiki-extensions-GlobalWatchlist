@@ -1,7 +1,8 @@
 <?php
 
-namespace MediaWiki\Extension\GlobalWatchlist;
+namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
+use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
