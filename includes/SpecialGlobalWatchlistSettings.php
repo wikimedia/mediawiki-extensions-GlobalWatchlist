@@ -210,7 +210,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		// the array should not include any empty strings, since WikiMap::getWiki should
 		// always return a WikiReference for sites where the user has an attached account
 		$urlForms = array_map(
-			function ( $dbName ) {
+			static function ( $dbName ) {
 				$wiki = WikiMap::getWiki( $dbName );
 				return $wiki ? $wiki->getDisplayName() : '';
 			},
@@ -383,7 +383,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		);
 
 		$sites = array_map(
-			function ( $row ) {
+			static function ( $row ) {
 				// Accept and handle sites with a protocol, see T262762
 				return preg_replace( '/^(?:https?:)?\/\//', '', trim( $row['site'] ) );
 			},
@@ -396,7 +396,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$userOptions['sites'] = array_values(
 			array_filter(
 				$sites,
-				function ( $site ) {
+				static function ( $site ) {
 					return ( $site !== '' );
 				}
 			)

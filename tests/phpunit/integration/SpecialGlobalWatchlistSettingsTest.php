@@ -143,7 +143,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$extensionRegistry->method( 'isLoaded' )
 			->will( $this->returnCallback(
 				// Only GuidedTour
-				function ( $extensionName ) {
+				static function ( $extensionName ) {
 					return $extensionName === 'GuidedTour';
 				}
 			) );
