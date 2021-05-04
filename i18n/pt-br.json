@@ -36,6 +36,7 @@
 	"globalwatchlist-gotoglobal": "Lista de páginas vigiadas globais",
 	"globalwatchlist-gotoglobal-tooltip": "Veja a lista de páginas vigiadas",
 	"globalwatchlist-grouped-timestamp": "Esta é a lista de sites que serão incluídos na lista de observação global. O carimbo de data/hora da última alteração é mostrado para alterações agrupadas. Use o URL base do site, por exemplo",
+	"globalwatchlist-history": "histórico",
 	"globalwatchlist-javascript-required": "Esta página especial requer JavaScript para funcionar",
 	"globalwatchlist-log-entry": "entrada no registro",
 	"globalwatchlist-log-page": "registos da página",
