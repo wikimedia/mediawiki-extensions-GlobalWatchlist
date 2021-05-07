@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
 use ApiOptions;
+use HTMLInfoField;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
@@ -178,7 +179,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 					'type' => 'api'
 				],
 				"globalwatchlist-prefs" => [
-					'class' => 'HTMLInfoField',
+					'class' => HTMLInfoField::class,
 					'section' => 'watchlist/globalwatchlist',
 					'label-message' => 'globalwatchlist-prefs-settings'
 				]

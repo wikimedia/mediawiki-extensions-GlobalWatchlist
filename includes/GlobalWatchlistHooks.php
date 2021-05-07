@@ -25,6 +25,7 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use ApiOptions;
+use HTMLInfoField;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Api\Hook\ApiOptionsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
@@ -86,7 +87,7 @@ class GlobalWatchlistHooks implements
 		];
 
 		$preferences[ 'globalwatchlist-prefs' ] = [
-			'class' => 'HTMLInfoField',
+			'class' => HTMLInfoField::class,
 			'section' => 'watchlist/globalwatchlist',
 			'label-message' => 'globalwatchlist-prefs-settings'
 		];
