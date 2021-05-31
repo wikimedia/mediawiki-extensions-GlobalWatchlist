@@ -61,6 +61,7 @@
 	"globalwatchlist-settings-error-anon-minor": "I utent anominim i poden minga marcà i modifiche come piscinine",
 	"globalwatchlist-settings-error-bad-sites": "Sit minga bon: $1",
 	"globalwatchlist-settings-error-duplicate-site": "El sit \"$1\" l'è stad inclus diverse voeulte.",
+	"globalwatchlist-settings-error-invalid-site": "El sit \"$1\" el corispond minga a 'na wiki indove te gh'heet un cunt de autenticazzion central conligad.",
 	"globalwatchlist-settings-error-no-sites": "Nissun sit scernid foeura",
 	"globalwatchlist-settings-error-no-types": "Nissun tipo de modifega scernid foeura",
 	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL: $1 |$1 sit l'è stad |$1 sit a inn stad}} catad foeura, che l'è al de là de $2, el numer massim de sit permetud.",
