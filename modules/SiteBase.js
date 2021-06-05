@@ -40,7 +40,7 @@ function GlobalWatchlistSiteBase( globalWatchlistDebug, linker, config, api, wat
 	this.tags = {};
 
 	// Whether there was an error when trying to use the API. To be able to use Promise.all,
-	// API failures still resolve the Promise rather than rejecting it. If and Promise.allSettled
+	// API failures still resolve the Promise rather than rejecting it. If Promise.allSettled
 	// becomes available for use, this should no longer be needed
 	this.apiError = false;
 
