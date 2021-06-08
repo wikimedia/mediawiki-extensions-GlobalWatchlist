@@ -176,12 +176,19 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 		$modules = $output->getModules();
 		$this->assertContains(
-			'ext.globalwatchlist.specialglobalwatchlistsettings',
+			'mediawiki.htmlform.ooui',
 			$modules
 		);
 		$this->assertContains(
 			'ext.guidedTour.globalWatchlistSettings',
 			$modules
+		);
+		// ext.globalwatchlist.specialglobalwatchlistsettings should be available even
+		// if the viewer doesn't have JavaScript, for T275588
+		$this->assertContains(
+			'ext.globalwatchlist.specialglobalwatchlistsettings',
+			$output->getModuleStyles(),
+			'specialglobalwatchlistsettings is loaded as a style module'
 		);
 	}
 

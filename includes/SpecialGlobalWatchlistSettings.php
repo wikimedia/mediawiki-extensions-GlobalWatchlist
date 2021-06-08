@@ -111,7 +111,8 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 		$this->requireLogin( 'globalwatchlist-must-login' );
 
-		$this->getOutput()->addModules(
+		$this->getOutput()->addModules( 'mediawiki.htmlform.ooui' );
+		$this->getOutput()->addModuleStyles(
 			'ext.globalwatchlist.specialglobalwatchlistsettings'
 		);
 
@@ -266,6 +267,25 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		array $userOptions
 	) : array {
 		$fields = [];
+
+		// Due to the "implicit submission" feature of html forms, hitting enter
+		// triggers the first submit button in the form - add an extra button at
+		// the start, so that the button that is triggered is not the button
+		// to remove the first site row from HTMLFormFieldCloner. Put that button
+		// in the "sitelist" section so that it goes on top, and disable it so that
+		// the "implicit submission" attempt doesn't actually submit the form.
+		// We hide the button from the viewer via the css class, see styles in
+		// the SpecialGlobalWatchlistSettings.css file. See T275588 for more
+		// Known issue: only fixes the "implicit submission" from hitting enter
+		// if the user is focused on one of the site rows, elsewhere in the form
+		// enter still triggers the removal of the top site row (or the addition
+		// of a new row if there are no existing rows).
+		$fields['fake-submit'] = [
+			'type' => 'submit',
+			'disabled' => true,
+			'section' => 'sitelist',
+			'cssclass' => 'ext-globalwatchlist-settings-fakesubmit',
+		];
 
 		// ******** Site rows *******
 		$siteFields = [

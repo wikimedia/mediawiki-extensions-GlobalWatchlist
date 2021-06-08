@@ -234,10 +234,7 @@
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
 			"styles": [
-				"SpecialGlobalWatchlistSettings.css"
-			],
-			"dependencies": [
-				"mediawiki.htmlform.ooui"
+				"SpecialGlobalWatchlistSettings.less"
 			],
 			"targets": [ "desktop", "mobile" ]
 		},
