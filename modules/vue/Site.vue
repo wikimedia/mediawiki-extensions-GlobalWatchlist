@@ -31,16 +31,18 @@
 					{{ $i18n( 'globalwatchlist-markseen' ).text() }}
 				</span>
 			</wvui-button>
-			<global-watchlist-entry-row
-				v-for="(rowInfo, index) in entries"
-				v-bind:key="index"
-				v-bind:entry="rowInfo"
-				v-bind:pagewatched="rowInfo.pageWatched"
-				v-bind:site="site"
-				v-on:unwatch-page="onUnwatchPage"
-				v-on:rewatch-page="onRewatchPage"
-			>
-			</global-watchlist-entry-row>
+			<ul>
+				<global-watchlist-entry-row
+					v-for="(rowInfo, index) in entries"
+					v-bind:key="index"
+					v-bind:entry="rowInfo"
+					v-bind:pagewatched="rowInfo.pageWatched"
+					v-bind:site="site"
+					v-on:unwatch-page="onUnwatchPage"
+					v-on:rewatch-page="onRewatchPage"
+				>
+				</global-watchlist-entry-row>
+			</ul>
 		</global-watchlist-collapsible-wrapper>
 	</div>
 </template>
