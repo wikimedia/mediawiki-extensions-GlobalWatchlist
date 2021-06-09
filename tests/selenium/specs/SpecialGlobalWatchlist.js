@@ -7,17 +7,21 @@ const assert = require( 'assert' ),
 	Util = require( 'wdio-mediawiki/Util' );
 
 describe( 'Special:GlobalWatchlist', function () {
+	let pageTitle;
 
-	it( 'works with normal display', function () {
+	before( () => {
 		LoginPage.loginAdmin();
 
-		const pageTitle = Util.getTestString( 'GlobalWatchlist-page-' );
+		pageTitle = Util.getTestString( 'GlobalWatchlist-page-' );
 
 		// We are using the same user (the default admin) for both the edit and the
 		// viewing of Special:GlobalWatchlist, to avoid needing to create a new account.
 		// So, after the edit is made we need to reset the notification timestamp to
 		// beforehand, so that the edit is shown on Special:GlobalWatchlist, which
 		// only shows unseen changes (unlike the default for Special:GlobalWatchlist).
+		// We need to use browser.call with the async function instead of making this
+		// entire before handler async because that would break the LoginPage.loginAdmin()
+		// call due to Selenium's asyncronous execution model.
 		browser.call( async () => {
 			const bot = await Api.bot();
 			await bot.edit(
@@ -32,7 +36,9 @@ describe( 'Special:GlobalWatchlist', function () {
 				token: bot.editToken
 			} );
 		} );
+	} );
 
+	it( 'works with normal display', function () {
 		GlobalWatchlist.openDisplay( 'normal' );
 
 		const content = GlobalWatchlist.content;
