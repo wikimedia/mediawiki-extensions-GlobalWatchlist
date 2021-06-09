@@ -65,4 +65,31 @@ describe( 'Special:GlobalWatchlist', function () {
 
 	} );
 
+	it( 'works with vue display', function () {
+		GlobalWatchlist.openDisplay( 'vue' );
+
+		const content = GlobalWatchlist.content;
+
+		// WVUI button should be loaded
+		assert(
+			content.$( '#ext-globalwatchlist-vue-toolbar button' )
+				.getAttribute( 'class' )
+				.includes( 'wvui-button' )
+		);
+
+		// Watchlist should be shown, and include the relevant pageTitle (might not
+		// happen immediately, needs to load)
+		assert(
+			content.$( '.ext-globalwatchlist-vue-site' ).waitForExist(),
+			'Watchlist entries load'
+		);
+		// In the first site, in the first entry, the first link is to the page
+		assert.strictEqual(
+			content.$( '.ext-globalwatchlist-vue-site li a' ).getText(),
+			pageTitle,
+			'Edited title should be shown'
+		);
+
+	} );
+
 } );
