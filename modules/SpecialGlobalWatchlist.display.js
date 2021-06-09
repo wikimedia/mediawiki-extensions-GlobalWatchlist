@@ -60,7 +60,7 @@
 	viewElements.refresh = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'progressive' ],
 		icon: 'reload',
-		id: 'ext-globalwatchlist-reflesh',
+		id: 'ext-globalwatchlist-refresh',
 		label: mw.msg( 'globalwatchlist-refresh' )
 	} ).on( 'click', function () {
 		viewManager.renderFeed();
