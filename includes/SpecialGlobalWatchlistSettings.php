@@ -31,7 +31,7 @@ use FormSpecialPage;
 use HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use MediaWiki\User\UserOptionsManager;
+use MediaWiki\User\UserOptionsLookup;
 use Psr\Log\LoggerInterface;
 use Status;
 use WikiMap;
@@ -54,22 +54,22 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	/** @var SpecialPageFactory */
 	private $specialPageFactory;
 
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
 
 	/**
 	 * @param LoggerInterface $logger
 	 * @param ExtensionRegistry $extensionRegistry
 	 * @param SettingsManager $settingsManager
 	 * @param SpecialPageFactory $specialPageFactory
-	 * @param UserOptionsManager $userOptionsManager
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
 		LoggerInterface $logger,
 		ExtensionRegistry $extensionRegistry,
 		SettingsManager $settingsManager,
 		SpecialPageFactory $specialPageFactory,
-		UserOptionsManager $userOptionsManager
+		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( 'GlobalWatchlistSettings', 'editmyoptions' );
 
@@ -77,7 +77,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$this->extensionRegistry = $extensionRegistry;
 		$this->settingsManager = $settingsManager;
 		$this->specialPageFactory = $specialPageFactory;
-		$this->userOptionsManager = $userOptionsManager;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -86,20 +86,20 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 *
 	 * @param SettingsManager $settingsManager
 	 * @param SpecialPageFactory $specialPageFactory
-	 * @param UserOptionsManager $userOptionsManager
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @return SpecialGlobalWatchlistSettings
 	 */
 	public static function newFromGlobalState(
 		SettingsManager $settingsManager,
 		SpecialPageFactory $specialPageFactory,
-		UserOptionsManager $userOptionsManager
+		UserOptionsLookup $userOptionsLookup
 	) {
 		return new SpecialGlobalWatchlistSettings(
 			LoggerFactory::getInstance( 'GlobalWatchlist' ),
 			ExtensionRegistry::getInstance(),
 			$settingsManager,
 			$specialPageFactory,
-			$userOptionsManager
+			$userOptionsLookup
 		);
 	}
 
@@ -123,7 +123,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * @return array
 	 */
 	protected function getFormFields() {
-		$currentOptions = $this->userOptionsManager->getOption(
+		$currentOptions = $this->userOptionsLookup->getOption(
 			$this->getUser(),
 			SettingsManager::PREFERENCE_NAME,
 			false

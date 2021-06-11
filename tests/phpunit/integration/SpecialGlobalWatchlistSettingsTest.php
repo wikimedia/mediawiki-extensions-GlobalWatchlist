@@ -11,7 +11,7 @@ use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlistSettings;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use MediaWiki\User\UserOptionsManager;
+use MediaWiki\User\UserOptionsLookup;
 use MediaWikiIntegrationTestCase;
 use OutputPage;
 use Psr\Log\LogLevel;
@@ -37,23 +37,23 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( SettingsManager::class );
 		$specialPageFactory = $options['specialPageFactory'] ??
 			$this->getSpecialPageFactory( false );
-		$userOptionsManager = $options['userOptionsManager'] ??
-			$this->createMock( UserOptionsManager::class );
+		$userOptionsLookup = $options['userOptionsLookup'] ??
+			$this->createMock( UserOptionsLookup::class );
 
 		$specialPage = new SpecialGlobalWatchlistSettings(
 			$logger,
 			$extensionRegistry,
 			$settingsManager,
 			$specialPageFactory,
-			$userOptionsManager
+			$userOptionsLookup
 		);
 
 		return TestingAccessWrapper::newFromObject( $specialPage );
 	}
 
-	private function getOptionsManager( $user, $result ) {
-		$userOptionsManager = $this->createMock( UserOptionsManager::class );
-		$userOptionsManager->expects( $this->once() )
+	private function getOptionsLookup( $user, $result ) {
+		$userOptionsLookup = $this->createMock( UserOptionsLookup::class );
+		$userOptionsLookup->expects( $this->once() )
 			->method( 'getOption' )
 			->with(
 				$this->equalTo( $user ),
@@ -61,7 +61,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 				$this->equalTo( false )
 			)
 			->willReturn( $result );
-		return $userOptionsManager;
+		return $userOptionsLookup;
 	}
 
 	private function getSpecialPageFactory( bool $called ) {
@@ -103,7 +103,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$specialPage = SpecialGlobalWatchlistSettings::newFromGlobalState(
 			$this->createMock( SettingsManager::class ),
 			$this->createMock( SpecialPageFactory::class ),
-			$this->createMock( UserOptionsManager::class )
+			$this->createMock( UserOptionsLookup::class )
 		);
 
 		$this->assertInstanceOf(
@@ -135,7 +135,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		// Execute validates user settings, manually mocking the User is complicated
 		$user = $this->getTestUser()->getUser();
 
-		// ::execute results in creating the form, need to have the UserOptionsManager available
+		// ::execute results in creating the form, need to have the UserOptionsLookup available
 		// return false for user settings, because we aren't testing that right now,
 		// and expect that the tour is loaded, because the user settings are false and
 		// the tour is enabled
@@ -149,11 +149,11 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			) );
 
 		$specialPageFactory = $this->getSpecialPageFactory( true );
-		$userOptionsManager = $this->getOptionsManager( $user, false );
+		$userOptionsLookup = $this->getOptionsLookup( $user, false );
 		$specialPage = $this->getSpecialPage( [
 			'extensionRegistry' => $extensionRegistry,
 			'specialPageFactory' => $specialPageFactory,
-			'userOptionsManager' => $userOptionsManager
+			'userOptionsLookup' => $userOptionsLookup,
 		] );
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
@@ -193,9 +193,9 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 		$user = $this->createMock( User::class );
 
-		$userOptionsManager = $this->getOptionsManager( $user, false );
+		$userOptionsLookup = $this->getOptionsLookup( $user, false );
 		$specialPage = $this->getSpecialPage( [
-			'userOptionsManager' => $userOptionsManager
+			'userOptionsLookup' => $userOptionsLookup,
 		] );
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
@@ -220,10 +220,10 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		$validJson = '{"sites":["en.wikipedia.org"],"anonfilter":0,"botfilter":0,"minorfilter":0,"confirmallsites":true,"fastmode":false,"grouppage":true,"showtypes":["edit","log","new"],"version":1}';
-		$userOptionsManager = $this->getOptionsManager( $user, $validJson );
+		$userOptionsLookup = $this->getOptionsLookup( $user, $validJson );
 
 		$specialPage = $this->getSpecialPage( [
-			'userOptionsManager' => $userOptionsManager
+			'userOptionsLookup' => $userOptionsLookup,
 		] );
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
@@ -248,10 +248,10 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		$invalidJson = '{"sites":"en.wikipedia.org"],"anonfilter":0,"botfilter":0,"minorfilter":0,"confirmallsites":true,"fastmode":false,"grouppage":true,"showtypes":["edit","log","new"],"version":1}';
-		$userOptionsManager = $this->getOptionsManager( $user, $invalidJson );
+		$userOptionsLookup = $this->getOptionsLookup( $user, $invalidJson );
 
 		$specialPage = $this->getSpecialPage( [
-			'userOptionsManager' => $userOptionsManager
+			'userOptionsLookup' => $userOptionsLookup,
 		] );
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
