@@ -83,7 +83,7 @@ GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function ( needConf
 		 * false means user cancelled). If the user didn't opt to require confirmation,
 		 * we didn't check, but to avoid code duplication we just pretend we checked and
 		 * that the answer was confirming the decision to mark all sites as seen, and so
-		 * getConfirmation in a Promise that just always resolves to true.
+		 * getConfirmation is a Promise that just always resolves to true.
 		 */
 		getConfirmation.then(
 			function ( confirmed ) {
