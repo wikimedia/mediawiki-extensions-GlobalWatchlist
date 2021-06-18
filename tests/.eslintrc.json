@@ -5,9 +5,5 @@
 	],
 	"env": {
 		"qunit": true
-	},
-	"rules": {
-		"vars-on-top": "off",
-		"one-var": "off"
 	}
 }

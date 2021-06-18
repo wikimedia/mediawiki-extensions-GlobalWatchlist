@@ -11,8 +11,6 @@
 	"rules": {
 		"no-implicit-globals": "off",
 		"valid-jsdoc": "off",
-		"vars-on-top": "off",
-		"one-var": "off",
 		"compat/compat": "warn"
 	},
 	"overrides": [
@@ -45,8 +43,6 @@
 					"longform"
 				],
 				"no-implicit-globals": "off",
-				"vars-on-top": "off",
-				"one-var": "off",
 				"es/no-promise": "off"
 			}
 		}
