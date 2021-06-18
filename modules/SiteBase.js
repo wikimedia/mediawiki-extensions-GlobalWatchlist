@@ -30,7 +30,7 @@ function GlobalWatchlistSiteBase( globalWatchlistDebug, linker, config, api, wat
 	// Linker utility (GlobalWatchlistLinker)
 	this.linker = linker;
 
-	// Site identifier in format that can be used for elemnt attributes
+	// Site identifier in format that can be used for element attributes
 	this.siteID = encodeURIComponent( urlFragment.replace( /\./g, '_' ) );
 
 	// Whether this site had any changes to show
