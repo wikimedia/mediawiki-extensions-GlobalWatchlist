@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Colathewikian",
+			"GuoPC",
 			"Lakejason0",
 			"Nadine Siak",
 			"Shizhao",
@@ -18,6 +19,7 @@
 	"globalwatchlistsettings-summary": "管理全域监视列表的特殊页面",
 	"globalwatchlist-add": "添加",
 	"globalwatchlist-api-error": "与“$1”交互时发生API错误：",
+	"globalwatchlist-asof": "截至$1",
 	"globalwatchlist-changesfeed": "有变化站点",
 	"globalwatchlist-changetypes": "更改类型",
 	"globalwatchlist-editwatchlist": "编辑监视列表",
