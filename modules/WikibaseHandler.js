@@ -87,7 +87,8 @@ GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
  * [1] See:
  * https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q5|P10|L2&languages=en&props=labels&formatversion=2
  *
- * @see {@link GlobalWatchlistWikibaseHandler#cleanupRawLabels #cleanupRawLabels} for converting to a more usable form
+ * @see {@link GlobalWatchlistWikibaseHandler#cleanupRawLabels #cleanupRawLabels} for converting
+ * to a more usable form
  *
  * @param {Array} entityIds The ids to get labels for
  * @return {jQuery.Promise} Promise of api result
@@ -126,7 +127,8 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 /**
  * Convert the messy object returned from getRawLabels to something clearer
  *
- * Resulting object has the following form (see documentation in {@link GlobalWatchlistWikibaseHandler#getRawLabels #getRawLabels} for the original)
+ * Resulting object has the following form (see documentation in
+ * {@link GlobalWatchlistWikibaseHandler#getRawLabels #getRawLabels} for the original)
  *
  *```json
  *    {

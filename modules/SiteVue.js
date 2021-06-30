@@ -18,7 +18,14 @@ var GlobalWatchlistSiteBase = require( './SiteBase.js' );
  * @param {Object} watchlistUtils Reference to {@link watchlistUtils}
  * @param {string} urlFragment string for which site this represents
  */
-function GlobalWatchlistSiteVue( globalWatchlistDebug, linker, config, api, watchlistUtils, urlFragment ) {
+function GlobalWatchlistSiteVue(
+	globalWatchlistDebug,
+	linker,
+	config,
+	api,
+	watchlistUtils,
+	urlFragment
+) {
 	GlobalWatchlistSiteVue.super.call(
 		this,
 		globalWatchlistDebug,

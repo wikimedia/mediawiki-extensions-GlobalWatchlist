@@ -15,8 +15,8 @@ function GlobalWatchlistLinker( site ) {
 }
 
 /**
- * Watchlist api returns parsed comments, but the links in those comments reflect the site environment,
- * and can be local. Ensure that they work as foreign links by adding the site.
+ * Watchlist api returns parsed comments, but the links in those comments reflect the site
+ * environment, and can be local. Ensure that they work as foreign links by adding the site.
  *
  * @param {string} comment The original comment with local links
  * @return {string} Updated comment with foreign links
@@ -41,7 +41,7 @@ GlobalWatchlistLinker.prototype.linkPage = function ( page ) {
 };
 
 /**
- * Construct a link to index.php with extra query parameters (eg /index.php?title=Foo&action=history)
+ * Construct a link to index.php with query parameters (eg /index.php?title=Foo&action=history)
  *
  * @param {string} query Query parameters to append to the base link
  * @return {string} Url for the link

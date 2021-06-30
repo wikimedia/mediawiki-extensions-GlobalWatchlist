@@ -97,16 +97,16 @@ watchlistUtils.mergePageEdits = function ( edits ) {
  *
  * WARNING: This method returns RAW HTML that is the displayed. jQuery isn't used because we need
  *          to handle creating multiple links and returning the same way a single link does, since
- *          the caller doesn't know if the entry row is for a single action or multiple edits grouped
+ *          the caller doesn't know if the entry row is for a single edit or multiple edits grouped
  * For each entry in editsByUser:
- *  - if the user was hidden, the output is hard-coded as the core message `rev-deleted-user` wrapped
- *    in a span for styling
+ *  - if the user was hidden, the output is hard-coded as the core message `rev-deleted-user`
+ *      wrapped in a span for styling
  *  - if the user wasn't hidden, a link is shown. The text for the link is the username, and
  *      the target is the user page (for users) or the contributions page (for anonymous editors),
  *      just like at Special:Watchlist. See RCCacheEntryFactory::getUserLink and Linker::userLink.
- *  - if the user made multiple edits, or multiple edits were made by hidden users, the number of edits
- *      is appended after the link, using the `ntimes` core message. This is only the case when grouping
- *      results by page. See EnhancedChangesList::recentChangesBlockGroup
+ *  - if the user made multiple edits, or multiple edits were made by hidden users, the number of
+ *      edits is appended after the link, using the `ntimes` core message. This is only the case
+ *      when grouping results by page. See EnhancedChangesList::recentChangesBlockGroup
  *
  * @param {Object} editsByUser Edit information
  * @param {GlobalWatchlistLinker} linker Linker to create the links
@@ -321,7 +321,10 @@ watchlistUtils.addExpirationMessages = function ( entries ) {
  * @param {Array} entries Entries to convert
  * @param {string} site Which site this is foor
  * @param {boolean} groupPage Whether to group results by page
- * @param {GlobalWatchlistLinker} linker Linker for user pages, anonymous user contribution pages, and converting edit summaries
+ * @param {GlobalWatchlistLinker} linker Linker for the relevant site, used for
+ *    Links to user pages for registered users
+ *    Links to contributions pages for anonymous users
+ *    Converting links in edit summaries to not be relative to the current site
  * @return {Array} summary of changes
  */
 watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {

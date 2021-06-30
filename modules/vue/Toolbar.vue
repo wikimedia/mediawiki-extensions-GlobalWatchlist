@@ -28,7 +28,8 @@
 			v-on:click="triggerRefresh"
 		>
 			<span>
-				<!-- TODO once T273493 is resolved, use `startIcon` instead of needing to specify one manually, here and below -->
+				<!-- TODO once T273493 is resolved, use `startIcon` instead of
+					needing to specify one manually, here and below -->
 				<wvui-icon
 					class="ext-globalwatchlist-button-icon"
 					v-bind:icon="icons.reload"

@@ -83,6 +83,7 @@
 		-->)
 
 		<span v-if="hasUserDisplay">
+			<!-- eslint-disable vue/no-v-html -->
 			(<!--
 				Avoid a space in the middle
 			--><span v-html="entry.userDisplay"></span><!--
@@ -90,6 +91,7 @@
 			--><span v-if="hasComment" v-html="entryComment"></span><!--
 				Avoid a space in the middle
 			-->)
+			<!-- eslint-enable vue/no-v-html -->
 		</span>
 	</li>
 </template>

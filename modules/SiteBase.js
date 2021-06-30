@@ -11,7 +11,14 @@
  * @param {Object} watchlistUtils Reference to {@link watchlistUtils}
  * @param {string} urlFragment string for which site this represents
  */
-function GlobalWatchlistSiteBase( globalWatchlistDebug, linker, config, api, watchlistUtils, urlFragment ) {
+function GlobalWatchlistSiteBase(
+	globalWatchlistDebug,
+	linker,
+	config,
+	api,
+	watchlistUtils,
+	urlFragment
+) {
 	// Logger to send debug info to
 	this.debugLogger = globalWatchlistDebug;
 

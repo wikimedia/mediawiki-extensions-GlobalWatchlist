@@ -10,8 +10,10 @@
 					v-for="site in emptysiterows"
 					v-bind:key="site['site-name']"
 				>
+					<!-- eslint-disable max-len -->
 					<a v-bind:href="site['special-watchlist-url']" target="_blank">{{ site['site-name'] }}</a>
 					(<a v-bind:href="site['special-edit-watchlist-url']" target="_blank">{{ site['edit-watchlist-msg'] }}</a>)
+					<!-- eslint-enable max-len -->
 				</li>
 			</ul>
 		</global-watchlist-collapsible-wrapper>

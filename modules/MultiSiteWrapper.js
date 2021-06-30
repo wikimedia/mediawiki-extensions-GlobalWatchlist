@@ -5,7 +5,8 @@
  * @class GlobalWatchlistMultiSiteWrapper
  * @constructor
  *
- * @param {Function} SiteClass either {@link GlobalWatchlistSiteDisplay} or {@link GlobalWatchlistSiteVue}
+ * @param {Function} SiteClass either {@link GlobalWatchlistSiteDisplay} or
+ *    {@link GlobalWatchlistSiteVue}, used to create the individual site objects
  * @param {Object} config User configuration to use
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Shared debugger instance
  */
