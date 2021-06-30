@@ -10,8 +10,7 @@
 	},
 	"rules": {
 		"no-implicit-globals": "off",
-		"valid-jsdoc": "off",
-		"compat/compat": "warn"
+		"valid-jsdoc": "off"
 	},
 	"overrides": [
 		{
@@ -46,5 +45,10 @@
 				"es/no-promise": "off"
 			}
 		}
-	]
+	],
+	"settings": {
+		"polyfills": [
+			"Promise"
+		]
+	}
 }
