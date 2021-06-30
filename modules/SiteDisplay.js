@@ -14,7 +14,7 @@ var GlobalWatchlistSiteBase = require( './SiteBase.js' );
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
  * @param {GlobalWatchlistLinker} linker Linker instance to use
  * @param {Object} config User configuration
- * @param {Object} api Instance of mw.ForeignApi to use
+ * @param {mw.ForeignApi} api Instance of mw.ForeignApi for this site
  * @param {Object} watchlistUtils Reference to {@link watchlistUtils}
  * @param {string} urlFragment string for which site this represents
  */
@@ -46,7 +46,7 @@ OO.inheritClass( GlobalWatchlistSiteDisplay, GlobalWatchlistSiteBase );
  * Make the links for a row in the watchlist
  *
  * @param {Object} entry Details of the list entry to create
- * @return {Object} jQuery list item
+ * @return {jQuery} list item
  */
 GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	var pageTitle = encodeURIComponent( entry.title ).replace( /'/g, '%27' );

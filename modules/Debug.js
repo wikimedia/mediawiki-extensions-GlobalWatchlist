@@ -41,8 +41,8 @@ GlobalWatchlistDebugger.prototype.info = function ( msg, extraInfo ) {
 
 /**
  * @param {string} info The error information
- * @param {Object} error If an instanceof `Error`, it will be the error that is thrown, otherwise
- *                 a new Error object will be constructed here
+ * @param {Object} error If an instanceof {@link Error}, it will be the error that is thrown,
+ *                 otherwise a new Error object will be constructed here
  */
 GlobalWatchlistDebugger.prototype.error = function ( info, error ) {
 	var errorMessage,

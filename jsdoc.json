@@ -20,6 +20,14 @@
 		"cleverLinks": true,
 		"default": {
 			"useLongnameInNav": true
+		},
+		"wmf": {
+			"linkMap": {
+				"Error": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+				"jQuery": "https://api.jquery.com/Types/#jQuery",
+				"mw.ForeignApi": "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.ForeignApi",
+				"Promise": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+			}
 		}
 	}
 }

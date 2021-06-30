@@ -7,7 +7,7 @@
  * @constructor
  *
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
- * @param {Object} api instance of mw.ForeignApi to use (no custom debugging like in site.js)
+ * @param {mw.ForeignApi} api Instance of mw.ForeignApi to use
  * @param {string} userLang language to fetch labels in
  */
 function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang ) {
@@ -91,7 +91,7 @@ GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
  * to a more usable form
  *
  * @param {Array} entityIds The ids to get labels for
- * @return {jQuery.Promise} Promise of api result
+ * @return {Promise} Promise of api result
  */
 GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 	var that = this;
@@ -212,7 +212,7 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
  * Promise resolves to the summary entries with updated info
  *
  * @param {Array} summaryEntries Original summary, with page titles (Q1, P2, L3, etc.)
- * @return {jQuery.Promise} Promise of updated summary, with labels
+ * @return {Promise} Promise of updated summary, with labels
  */
 GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryEntries ) {
 	var that = this;

@@ -44,7 +44,7 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
  * Promise that all of the sites have retrieved their watchlists
  *
  * @param {Object} config User configuration to use
- * @return {jQuery.Promise} Promise that all watchlists were retrieved
+ * @return {Promise} Promise that all watchlists were retrieved
  */
 GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config ) {
 	return Promise.all(
@@ -61,7 +61,7 @@ GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config )
  * Promise that all of the sites have called markAsSeen
  *
  * @param {boolean} needConfirmation Whether to ask the user to confirm their decision
- * @return {jQuery.Promise} Promise that all sites were marked as seen
+ * @return {Promise} Promise that all sites were marked as seen
  */
 GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function ( needConfirmation ) {
 	var that = this;

@@ -7,7 +7,7 @@
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
  * @param {GlobalWatchlistLinker} linker Linker instance to use
  * @param {Object} config User configuration
- * @param {Object} api Instance of mw.ForeignApi to use
+ * @param {mw.ForeignApi} api Instance of mw.ForeignApi for this site
  * @param {Object} watchlistUtils Reference to {@link watchlistUtils}
  * @param {string} urlFragment string for which site this represents
  */
@@ -89,7 +89,7 @@ GlobalWatchlistSiteBase.prototype.error = function ( msg, data ) {
  * @param {string} func Function name
  * @param {Object} content Content to send to the api
  * @param {string} name Name, for logging purposes
- * @return {jQuery.Promise} Result of the api call
+ * @return {Promise} Result of the api call
  */
 GlobalWatchlistSiteBase.prototype.api = function ( func, content, name ) {
 	var that = this;
@@ -136,7 +136,7 @@ GlobalWatchlistSiteBase.prototype.api = function ( func, content, name ) {
  *
  * @param {number} iteration iteration count
  * @param {string} continueFrom value of wlcontinue in the previous call
- * @return {jQuery.Promise} Promise of api result
+ * @return {Promise} Promise of api result
  */
 GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, continueFrom ) {
 	var that = this;
@@ -216,7 +216,7 @@ GlobalWatchlistSiteBase.prototype.changeWatched = function ( pageTitle, func ) {
  * Note: this should be a part of the core info api, see T257014
  *
  * @param {string} pageTitle Title of the page for which to retrieve the associated page
- * @return {jQuery.Promise} Promise of api result
+ * @return {Promise} Promise of api result
  */
 GlobalWatchlistSiteBase.prototype.getAssociatedPageTitle = function ( pageTitle ) {
 	var that = this;
@@ -240,7 +240,7 @@ GlobalWatchlistSiteBase.prototype.getAssociatedPageTitle = function ( pageTitle 
  *
  * Once this is called once, the tag info is stored in this.tags and future calls with return early
  *
- * @return {jQuery.Promise} a promise that the tags where retrieved, not the tags themselves
+ * @return {Promise} a promise that the tags where retrieved, not the tags themselves
  */
 GlobalWatchlistSiteBase.prototype.getTagList = function () {
 	var that = this;
@@ -273,7 +273,7 @@ GlobalWatchlistSiteBase.prototype.getTagList = function () {
  * Get the rendered changes for a user's watchlist
  *
  * @param {Object} latestConfig config, can change
- * @return {jQuery.Promise} Promise that the watchlist was retrieved
+ * @return {Promise} Promise that the watchlist was retrieved
  */
 GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 	this.config = latestConfig;
@@ -335,7 +335,7 @@ GlobalWatchlistSiteBase.prototype.renderWatchlist = function ( summary ) {
  * Fetch and process wikibase labels when the watchlist is for wikidata
  *
  * @param {Array} summary Original summary, with page titles (Q1, P2, L3, etc.)
- * @return {jQuery.Promise} Updated summary, with labels
+ * @return {Promise} Updated summary, with labels
  */
 GlobalWatchlistSiteBase.prototype.makeWikidataList = function ( summary ) {
 	var that = this;
@@ -353,7 +353,7 @@ GlobalWatchlistSiteBase.prototype.makeWikidataList = function ( summary ) {
 /**
  * Mark a site as seen
  *
- * @return {jQuery.Promise} that resolves after the api call is made and after `afterMarkAsSeen`
+ * @return {Promise} that resolves after the api call is made and after `afterMarkAsSeen`
  *   is called, not necessarily after the api call is finished.
  */
 GlobalWatchlistSiteBase.prototype.markAsSeen = function () {

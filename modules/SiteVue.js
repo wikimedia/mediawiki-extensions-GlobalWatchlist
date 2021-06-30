@@ -14,7 +14,7 @@ var GlobalWatchlistSiteBase = require( './SiteBase.js' );
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
  * @param {GlobalWatchlistLinker} linker Linker instance to use
  * @param {Object} config User configuration
- * @param {Object} api Instance of mw.ForeignApi to use
+ * @param {mw.ForeignApi} api Instance of mw.ForeignApi for this site
  * @param {Object} watchlistUtils Reference to {@link watchlistUtils}
  * @param {string} urlFragment string for which site this represents
  */
