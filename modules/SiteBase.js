@@ -345,6 +345,9 @@ GlobalWatchlistSiteBase.prototype.makeWikidataList = function ( summary ) {
 
 /**
  * Mark a site as seen
+ *
+ * @return {jQuery.Promise} that resolves after the api call is made and after `afterMarkAsSeen`
+ *   is called, not necessarily after the api call is finished.
  */
 GlobalWatchlistSiteBase.prototype.markAsSeen = function () {
 	this.debug( 'markSiteAsSeen - marking' );

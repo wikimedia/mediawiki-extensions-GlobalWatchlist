@@ -10,7 +10,23 @@
 	},
 	"rules": {
 		"no-implicit-globals": "off",
-		"valid-jsdoc": "off"
+		"valid-jsdoc": [
+			"error",
+			{
+				"requireParamDescription": false,
+				"requireReturn": false,
+				"requireReturnDescription": false
+			}
+		],
+		"jsdoc/no-undefined-types": [
+			"error",
+			{
+				"definedTypes": [
+					"GlobalWatchlistDebugger",
+					"GlobalWatchlistLinker"
+				]
+			}
+		]
 	},
 	"overrides": [
 		{
