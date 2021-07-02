@@ -319,7 +319,7 @@ watchlistUtils.addExpirationMessages = function ( entries ) {
  * display of each site's changes.
  *
  * @param {Array} entries Entries to convert
- * @param {string} site Which site this is foor
+ * @param {string} site Which site this is for
  * @param {boolean} groupPage Whether to group results by page
  * @param {GlobalWatchlistLinker} linker Linker for the relevant site, used for
  *    Links to user pages for registered users
