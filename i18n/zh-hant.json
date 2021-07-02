@@ -37,6 +37,7 @@
 	"globalwatchlist-gotoglobal": "全域監視清單",
 	"globalwatchlist-gotoglobal-tooltip": "檢視全域監視清單",
 	"globalwatchlist-grouped-timestamp": "顯示最新更改的時間戳記以區分更改",
+	"globalwatchlist-history": "歷史",
 	"globalwatchlist-javascript-required": "此特殊頁面需要 JavaScript 來運作",
 	"globalwatchlist-log-entry": "日誌項",
 	"globalwatchlist-log-page": "頁面日誌",
