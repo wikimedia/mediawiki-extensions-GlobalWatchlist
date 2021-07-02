@@ -11,7 +11,6 @@ module.exports = function ( grunt ) {
 			options: {
 				extensions: [ '.js', '.json', '.vue' ],
 				cache: true,
-				fix: true,
 				maxWarnings: 0
 			},
 			all: '.'

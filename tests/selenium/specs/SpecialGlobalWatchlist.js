@@ -1,6 +1,6 @@
 'use strict';
 
-var assert = require( 'assert' ),
+const assert = require( 'assert' ),
 	Api = require( 'wdio-mediawiki/Api' ),
 	LoginPage = require( 'wdio-mediawiki/LoginPage' ),
 	GlobalWatchlist = require( '../pageobjects/GlobalWatchlist.page' ),
