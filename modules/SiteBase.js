@@ -3,6 +3,7 @@
  * Represents a specific site
  *
  * @class GlobalWatchlistSiteBase
+ * @abstract
  *
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
  * @param {GlobalWatchlistLinker} linker Linker instance to use
