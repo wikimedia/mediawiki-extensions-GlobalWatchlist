@@ -5,4 +5,4 @@
 require( './Debug.tests.js' );
 require( './Linker.tests.js' );
 require( './getSettings.tests.js' );
-require( './watchlistUtils.tests.js' );
+require( './WatchlistUtils.tests.js' );

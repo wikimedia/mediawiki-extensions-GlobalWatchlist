@@ -23,7 +23,8 @@
 			{
 				"definedTypes": [
 					"GlobalWatchlistDebugger",
-					"GlobalWatchlistLinker"
+					"GlobalWatchlistLinker",
+					"GlobalWatchlistWatchlistUtils"
 				]
 			}
 		]

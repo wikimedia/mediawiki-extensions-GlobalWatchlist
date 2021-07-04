@@ -23,7 +23,7 @@ is the core of the backend for retrieving the changes to show.
 
 1. Retrieve the actual changes to a user's watchlist, as returned from the [watchlist API](https://www.mediawiki.org/wiki/API:Watchlist),
 using `actuallyGetWatchlist`, which repeatedly invokes the watchlist API until no more results are available.
-2. Convert the "raw" changes from the API into a clearer summary of the changes, using [watchlistUtils.js](./ext.globalwatchlist.watchlistUtils.js.html),
+2. Convert the "raw" changes from the API into a clearer summary of the changes, using a [WatchlistUtils](./ext.globalwatchlist.WatchlistUtils.js.html) instance,
 including grouping results by page (when the user chooses to do so), converting links in edit summaries from local links to external links, etc.
 3. Call `makeWikidataList` which will, if the site in question matches the one specified in `$wgGlobalWatchlistWikibaseSite`,
 update the display text for entities, properties, and lexemes to use the item's label instead of id (see [Wikibase.js](./ext.globalwatchlist.wikibase.js.html))
@@ -66,4 +66,4 @@ will eventually be replaced with uses of shared components (see [T249840](https:
     * [GlobalWatchlistSiteDisplay](GlobalWatchlistSiteDisplay.html)
     * [GlobalWatchlistSiteVue](GlobalWatchlistSiteVue.html)
 * [GlobalWatchlistWikibaseHandler](GlobalWatchlistWikibaseHandler.html)
-* [watchlistUtils](watchlistUtils.html)
+* [GlobalWatchlistWatchlistUtils](GlobalWatchlistWatchlistUtils.html)

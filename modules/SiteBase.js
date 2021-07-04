@@ -9,7 +9,7 @@
  * @param {GlobalWatchlistLinker} linker Linker instance to use
  * @param {Object} config User configuration
  * @param {mw.ForeignApi} api Instance of mw.ForeignApi for this site
- * @param {Object} watchlistUtils Reference to {@link watchlistUtils}
+ * @param {GlobalWatchlistWatchlistUtils} watchlistUtils WatchlistUtils instance for this site
  * @param {string} urlFragment string for which site this represents
  */
 function GlobalWatchlistSiteBase(
@@ -29,7 +29,7 @@ function GlobalWatchlistSiteBase(
 	// The api object to interact with
 	this.apiObject = api;
 
-	// Utility methods
+	// Utility methods (GlobalWatchlistWatchlistUtils)
 	this.watchlistUtils = watchlistUtils;
 
 	// Site identifier in url format
@@ -304,9 +304,7 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 
 			var prelimSummary = that.watchlistUtils.rawToSummary(
 				wlraw,
-				that.site,
-				that.config.groupPage,
-				that.linker
+				that.config.groupPage
 			);
 			that.debug( 'getWatchlist prelimSummary', prelimSummary );
 

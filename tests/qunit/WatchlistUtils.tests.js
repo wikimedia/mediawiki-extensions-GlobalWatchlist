@@ -1,7 +1,20 @@
 ( function () {
-	var watchlistUtils = require( '../../../modules/watchlistUtils.js' );
+	var GlobalWatchlistWatchlistUtils = require( '../../../modules/WatchlistUtils.js' );
+	var GlobalWatchlistLinker = require( '../../../modules/Linker.js' );
 
-	QUnit.module( 'ext.globalwatchlist.watchlistUtils', QUnit.newMwEnvironment() );
+	// Set config variables so that the linker can be created properly
+	QUnit.module( 'ext.globalwatchlist.WatchlistUtils', QUnit.newMwEnvironment( {
+		config: {
+			wgArticlePath: '/wiki/$1/FooBar',
+			wgScript: '/w/baz/index.php'
+		}
+	} ) );
+
+	// The linker isn't actually needed for anything that we are testing, but needs to be
+	// provided
+	var watchlistUtils = new GlobalWatchlistWatchlistUtils(
+		new GlobalWatchlistLinker( 'en.wikipedia.org' )
+	);
 
 	/* eslint-disable camelcase */
 	QUnit.test( 'watchlistUtils.mergePageEdits', function ( assert ) {

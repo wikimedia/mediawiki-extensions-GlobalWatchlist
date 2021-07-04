@@ -12,7 +12,7 @@
  */
 function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebug ) {
 	var GlobalWatchlistLinker = require( './Linker.js' );
-	var watchlistUtils = require( './watchlistUtils.js' );
+	var GlobalWatchlistWatchlistUtils = require( './WatchlistUtils.js' );
 
 	// Set the Access-Control-Max-Age header - T268267
 	// Set the Api-User-Agent header - T262177
@@ -25,16 +25,18 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 		}
 	};
 
+	var linker;
 	/**
 	 * @property {Array} siteList The individual sites
 	 */
 	this.siteList = config.siteList.map( function ( site ) {
+		linker = new GlobalWatchlistLinker( site );
 		return new SiteClass(
 			globalWatchlistDebug,
-			new GlobalWatchlistLinker( site ),
+			linker,
 			config,
 			new mw.ForeignApi( '//' + site + mw.util.wikiScript( 'api' ), apiConfig ),
-			watchlistUtils,
+			new GlobalWatchlistWatchlistUtils( linker ),
 			site
 		);
 	} );

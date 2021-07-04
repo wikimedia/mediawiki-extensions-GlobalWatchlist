@@ -1,8 +1,17 @@
 /**
- * @class watchlistUtils
- * @hideconstructor
+ * General helper for converting the api response data into the form we use to display
+ *
+ * @class GlobalWatchlistWatchlistUtils
+ * @constructor
+ *
+ * @param {GlobalWatchlistLinker} linker Linker for the relevant site, used for
+ *    Links to user pages for registered users
+ *    Links to contributions pages for anonymous users
+ *    Converting links in edit summaries to not be relative to the current site
  */
-var watchlistUtils = {};
+function GlobalWatchlistWatchlistUtils( linker ) {
+	this.linker = linker;
+}
 
 /**
  * Convert an array of two or more objects for specific edits to the same page to one object
@@ -11,7 +20,7 @@ var watchlistUtils = {};
  * @param {Array} edits Edits to merge
  * @return {Object} Merged information
  */
-watchlistUtils.mergePageEdits = function ( edits ) {
+GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
 	var mergedEditInfo = {};
 
 	mergedEditInfo.bot = edits
@@ -109,16 +118,17 @@ watchlistUtils.mergePageEdits = function ( edits ) {
  *      when grouping results by page. See EnhancedChangesList::recentChangesBlockGroup
  *
  * @param {Object} editsByUser Edit information
- * @param {GlobalWatchlistLinker} linker Linker to create the links
  * @return {string} the raw HTML to display
  */
-watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
+GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser ) {
 	var users = Object.keys( editsByUser );
 
 	var allLinks = [],
 		userLink = '',
 		userLinkBase = '',
 		userLinkURL = '';
+
+	var that = this;
 	users.forEach( function ( userMessage ) {
 		if ( userMessage === '##hidden##' ) {
 			// Edits by hidden user(s)
@@ -129,7 +139,7 @@ watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
 			userLinkBase = editsByUser[ userMessage ].anon ?
 				'Special:Contributions/' :
 				'User:';
-			userLinkURL = linker.linkPage( userLinkBase + userMessage );
+			userLinkURL = that.linker.linkPage( userLinkBase + userMessage );
 			userLink = '<a href="' + userLinkURL + '" target="_blank">' + userMessage + '</a>';
 		}
 		if ( editsByUser[ userMessage ].editCount > 1 ) {
@@ -148,10 +158,9 @@ watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
  *
  * @param {string} userMessage either name or ip address
  * @param {boolean} isAnon Whether the link is for an anonymous user
- * @param {GlobalWatchlistLinker} linker Linker to create the link
  * @return {string}
  */
-watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
+GlobalWatchlistWatchlistUtils.prototype.makeSingleUserLink = function ( userMessage, isAnon ) {
 	if ( userMessage === '' ) {
 		// Didn't fetch due to fast mode
 		return '';
@@ -163,7 +172,7 @@ watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
 		anon: isAnon
 	};
 
-	return watchlistUtils.makeUserLinks( editsByUser, linker );
+	return this.makeUserLinks( editsByUser );
 };
 
 /**
@@ -171,12 +180,10 @@ watchlistUtils.makeSingleUserLink = function ( userMessage, isAnon, linker ) {
  * grouping results by page when called for
  *
  * @param {Object} editInfo
- * @param {string} site Which site this is for
  * @param {boolean} groupPage Whether to group results by page
- * @param {GlobalWatchlistLinker} linker Linker to use
  * @return {Array} Converted edits
  */
-watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
+GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, groupPage ) {
 	var finalEdits = [];
 
 	var edits = [];
@@ -184,6 +191,7 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 		edits.push( editInfo[ key ] );
 	}
 
+	var that = this;
 	edits.forEach( function ( page ) {
 		var pagebase = {
 			entryType: 'edit',
@@ -203,15 +211,14 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 					tags: entry.tags,
 					timestamp: entry.timestamp,
 					toRev: entry.revid,
-					userDisplay: watchlistUtils.makeSingleUserLink(
+					userDisplay: that.makeSingleUserLink(
 						entry.user,
-						entry.anon,
-						linker
+						entry.anon
 					)
 				} ) );
 			} );
 		} else {
-			var mergedEditInfo = watchlistUtils.mergePageEdits( page.each );
+			var mergedEditInfo = that.mergePageEdits( page.each );
 
 			// Map of edit counts
 			// ⧼user name/ip address⧽
@@ -235,10 +242,7 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
 					editsByUser[ specificEdit.user ].editCount + 1;
 			} );
 
-			mergedEditInfo.userDisplay = watchlistUtils.makeUserLinks(
-				editsByUser,
-				linker
-			);
+			mergedEditInfo.userDisplay = that.makeUserLinks( editsByUser );
 
 			finalEdits.push( $.extend( {}, pagebase, mergedEditInfo ) );
 		}
@@ -251,7 +255,7 @@ watchlistUtils.convertEdits = function ( editInfo, site, groupPage, linker ) {
  * @param {Array} entries Entries in the format returned by the api
  * @return {Array} Entries in a "normalized" format
  */
-watchlistUtils.normalizeEntries = function ( entries ) {
+GlobalWatchlistWatchlistUtils.prototype.normalizeEntries = function ( entries ) {
 	entries.forEach( function ( entry ) {
 		if ( entry.userhidden ) {
 			// # is in wgLegalTitleChars so no conflict
@@ -299,7 +303,7 @@ watchlistUtils.normalizeEntries = function ( entries ) {
  * @param {Array} entries
  * @return {Array}
  */
-watchlistUtils.addExpirationMessages = function ( entries ) {
+GlobalWatchlistWatchlistUtils.prototype.addExpirationMessages = function ( entries ) {
 	var expirationDate, daysLeft;
 	entries.forEach( function ( entry ) {
 		if ( entry.expiry ) {
@@ -322,20 +326,16 @@ watchlistUtils.addExpirationMessages = function ( entries ) {
  * display of each site's changes.
  *
  * @param {Array} entries Entries to convert
- * @param {string} site Which site this is for
  * @param {boolean} groupPage Whether to group results by page
- * @param {GlobalWatchlistLinker} linker Linker for the relevant site, used for
- *    Links to user pages for registered users
- *    Links to contributions pages for anonymous users
- *    Converting links in edit summaries to not be relative to the current site
  * @return {Array} summary of changes
  */
-watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
+GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage ) {
 	var convertedEdits = [],
 		edits = {},
 		logEntries = [],
-		cleanedEntries = watchlistUtils.normalizeEntries( entries );
+		cleanedEntries = this.normalizeEntries( entries );
 
+	var that = this;
 	cleanedEntries.forEach( function ( entry ) {
 		if ( entry.type === 'edit' ) {
 			// Also includes new pages
@@ -361,16 +361,15 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 				logaction: entry.logaction,
 				logid: entry.logid,
 				logtype: entry.logtype,
-				userDisplay: watchlistUtils.makeSingleUserLink(
+				userDisplay: that.makeSingleUserLink(
 					entry.user,
-					entry.anon,
-					linker
+					entry.anon
 				)
 			} );
 		}
 	} );
 
-	convertedEdits = watchlistUtils.convertEdits( edits, site, groupPage, linker );
+	convertedEdits = this.convertEdits( edits, groupPage );
 
 	// Sorting: we want the newest edits and log entries at the top. But, the api
 	// only tells us what minute the edit/log entry was made. So, if the timestamps
@@ -404,9 +403,8 @@ watchlistUtils.rawToSummary = function ( entries, site, groupPage, linker ) {
 	);
 
 	var everything = convertedEdits.concat( logEntries );
-	everything = watchlistUtils.addExpirationMessages( everything );
+	everything = this.addExpirationMessages( everything );
 	return everything;
 };
 
-// Only rawToSummary is needed, but the rest are exported for testability
-module.exports = watchlistUtils;
+module.exports = GlobalWatchlistWatchlistUtils;

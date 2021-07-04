@@ -107,7 +107,7 @@
 				"MultiSiteWrapper.js",
 				"SiteBase.js",
 				"SiteDisplay.js",
-				"watchlistUtils.js",
+				"WatchlistUtils.js",
 				"WikibaseHandler.js"
 			],
 			"styles": [
@@ -176,7 +176,7 @@
 				"MultiSiteWrapper.js",
 				"SiteBase.js",
 				"SiteVue.js",
-				"watchlistUtils.js",
+				"WatchlistUtils.js",
 				"WikibaseHandler.js",
 				"vue/base/Toggle.vue",
 				"vue/base/CollapsibleWrapper.vue",
@@ -261,11 +261,11 @@
 			"tests/qunit/Debug.tests.js",
 			"tests/qunit/Linker.tests.js",
 			"tests/qunit/getSettings.tests.js",
-			"tests/qunit/watchlistUtils.tests.js",
+			"tests/qunit/WatchlistUtils.tests.js",
 			"modules/Debug.js",
 			"modules/Linker.js",
 			"modules/getSettings.js",
-			"modules/watchlistUtils.js"
+			"modules/WatchlistUtils.js"
 		]
 	},
 	"manifest_version": 2
