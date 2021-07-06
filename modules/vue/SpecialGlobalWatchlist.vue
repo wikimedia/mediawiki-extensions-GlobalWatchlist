@@ -213,7 +213,7 @@ module.exports = {
 			this.globalWatchlistDebug.info( 'Marking all sites as seen' );
 			var that = this;
 
-			watchedSites.markAllSitesSeen( this.config.confirmAllSites ).then(
+			watchedSites.markAllSitesSeen().then(
 				function () {
 					// Resolved, either confirmation wasn't needed or was given
 					that.refreshSites();

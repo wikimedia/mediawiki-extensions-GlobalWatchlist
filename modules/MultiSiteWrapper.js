@@ -38,12 +38,21 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 			site
 		);
 	} );
+
+	/**
+	 * @property {boolean} whether to ask the user to confirm their decision when
+	 * marking all sites as seen
+	 */
+	this.confirmMarkAllSitesSeen = config.confirmAllSites;
 }
 
 /**
  * Promise that all of the sites have retrieved their watchlists
  *
- * @param {Object} config User configuration to use
+ * @param {Object} config User configuration to use. Needs to be passed rather
+ *   than using the configuration we got in the constructor because some parts
+ *   of it can change (specifically whether to group results by page, and the
+ *   timestamp of the start of the call that is used when marking sites as seen).
  * @return {Promise} Promise that all watchlists were retrieved
  */
 GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config ) {
@@ -60,16 +69,15 @@ GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config )
 /**
  * Promise that all of the sites have called markAsSeen
  *
- * @param {boolean} needConfirmation Whether to ask the user to confirm their decision
  * @return {Promise} Promise that all sites were marked as seen
  */
-GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function ( needConfirmation ) {
+GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function () {
 	var that = this;
 
 	return new Promise( function ( resolve, reject ) {
 		var getConfirmation;
 
-		if ( needConfirmation ) {
+		if ( that.confirmMarkAllSitesSeen ) {
 			getConfirmation = OO.ui.confirm(
 				mw.msg( 'globalwatchlist-markseen-allconfirm' )
 			);

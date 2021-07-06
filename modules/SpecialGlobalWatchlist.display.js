@@ -54,7 +54,7 @@
 		id: 'ext-globalwatchlist-markseen-all',
 		label: mw.msg( 'globalwatchlist-markseen-all' )
 	} ).on( 'click', function () {
-		watchedSites.markAllSitesSeen( config.confirmAllSites );
+		watchedSites.markAllSitesSeen();
 	} );
 	viewElements.refresh = new OO.ui.ButtonInputWidget( {
 		flags: [ 'primary', 'progressive' ],
