@@ -173,7 +173,6 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 			.append( $tags );
 	}
 
-	this.debug( 'makePageLink for entry', [ entry, $row ] );
 	return $row;
 };
 /* end GlobalWatchlistSiteDisplay.prototype.makePageLink */
