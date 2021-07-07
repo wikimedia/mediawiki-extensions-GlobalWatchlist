@@ -15,7 +15,6 @@
 	var globalWatchlistDebug = new GlobalWatchlistDebugger();
 
 	config = getSettings( globalWatchlistDebug );
-	config.liveCounter = 0;
 	config.inLive = false;
 
 	var watchedSites = new MultiSiteWrapper(
@@ -198,8 +197,6 @@
 
 	viewManager.runLive = function () {
 		if ( config.inLive === true ) {
-			config.liveCounter++;
-			globalWatchlistDebug.info( 'watchlists.runLive - counter: ' + config.liveCounter );
 			setTimeout( viewManager.maybeLiveRefresh, 7500 );
 		}
 	};
