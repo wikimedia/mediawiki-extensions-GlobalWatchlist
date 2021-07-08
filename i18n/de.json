@@ -70,6 +70,7 @@
 	"globalwatchlist-show-logentries": "Logbuch-Einträge anzeigen",
 	"globalwatchlist-show-newpages": "Neue Seitenerstellungen anzeigen",
 	"globalwatchlist-sitelist": "Benutzerdefinierte Projektliste",
+	"globalwatchlist-tags": "{{PLURAL:$1|Tag|Tags}}: $2",
 	"globalwatchlist-tour-addsite": "Webseite ergänzen",
 	"globalwatchlist-tour-addsite-description": "Oben klicken, um eine weitere Zeile für eine Website hinzuzufügen.",
 	"globalwatchlist-tour-fastmode": "Schneller Modus",
