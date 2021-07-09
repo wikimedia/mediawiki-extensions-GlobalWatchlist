@@ -214,8 +214,6 @@ GlobalWatchlistSiteBase.prototype.changeWatched = function ( pageTitle, func ) {
  * Returns the talk/subject page associated with a given page, since entries for the associated page
  *   also need to have their text and strikethrough updated on unwatching/rewatching
  *
- * Note: this should be a part of the core info api, see T257014
- *
  * @param {string} pageTitle Title of the page for which to retrieve the associated page
  * @return {Promise} Promise of api result
  */
@@ -223,15 +221,14 @@ GlobalWatchlistSiteBase.prototype.getAssociatedPageTitle = function ( pageTitle 
 	var that = this;
 	return new Promise( function ( resolve ) {
 		var getter = {
-			action: 'parse',
-			contentmodel: 'wikitext',
-			formatversion: 2,
-			onlypst: true,
-			text: '{{subst:TALKPAGENAME:' + pageTitle + '}}\n{{subst:SUBJECTPAGENAME:' + pageTitle + '}}'
+			action: 'query',
+			prop: 'info',
+			titles: pageTitle,
+			inprop: 'associatedpage',
+			formatversion: 2
 		};
-		that.api( 'get', getter, 'parseOnlyPST' ).then( function ( response ) {
-			var titles = response.parse.text.split( '\n' );
-			resolve( titles[ 1 ] === pageTitle ? titles[ 0 ] : titles[ 1 ] );
+		that.api( 'get', getter, 'getAssociatedPageTitle' ).then( function ( response ) {
+			resolve( response.query.pages[ 0 ].associatedpage );
 		} );
 	} );
 };
