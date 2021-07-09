@@ -75,6 +75,7 @@
 	"globalwatchlist-show-logentries": "Afficher les entrées de journal",
 	"globalwatchlist-show-newpages": "Afficher les créations de nouvelles pages",
 	"globalwatchlist-sitelist": "Liste de sites définis par l’utilisateur",
+	"globalwatchlist-tags": "{{PLURAL:$1|Balise|Balises}} : $2",
 	"globalwatchlist-tour-addsite": "Ajouter un site",
 	"globalwatchlist-tour-addsite-description": "Cliquer ci-dessus pour ajouter une autre ligne pour un site.",
 	"globalwatchlist-tour-fastmode": "Mode rapide",

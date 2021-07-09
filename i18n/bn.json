@@ -70,6 +70,7 @@
 	"globalwatchlist-show-logentries": "লগ ভুক্তিগুলি দেখান",
 	"globalwatchlist-show-newpages": "নতুন পৃষ্ঠাগুলি দেখান",
 	"globalwatchlist-sitelist": "ব্যবহারকারীর সংজ্ঞায়িত সাইটের তালিকা",
+	"globalwatchlist-tags": "{{PLURAL:$1|ট্যাগ}}: $2",
 	"globalwatchlist-tour-addsite": "একটি সাইট যোগ করুন",
 	"globalwatchlist-tour-addsite-description": "একটি সাইটের জন্য আরেকটি সারি যুক্ত করতে উপরে ক্লিক করুন।",
 	"globalwatchlist-tour-fastmode": "দ্রুত মোড",

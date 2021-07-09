@@ -75,6 +75,7 @@
 	"globalwatchlist-show-logentries": "Показать записи в журнале",
 	"globalwatchlist-show-newpages": "Показывать создание новых страниц",
 	"globalwatchlist-sitelist": "Пользовательский список проектов",
+	"globalwatchlist-tags": "{{PLURAL:$1|тег|теги}}: $2",
 	"globalwatchlist-tour-addsite": "Добавить сайт",
 	"globalwatchlist-tour-addsite-description": "Кликните на кнопку сверху, чтобы добавить ещё одну строку для сайта.",
 	"globalwatchlist-tour-fastmode": "Быстрый режим",

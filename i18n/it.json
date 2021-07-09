@@ -50,6 +50,7 @@
 	"globalwatchlist-show-edits": "Mostra le modifiche alle pagine",
 	"globalwatchlist-show-logentries": "Mostra le voci di registro",
 	"globalwatchlist-show-newpages": "Mostra le creazioni di nuove pagine",
+	"globalwatchlist-tags": "{{PLURAL:$1|Etichetta|Etichette}}: $2",
 	"globalwatchlist-tour-addsite": "Aggiungi un sito",
 	"globalwatchlist-tour-fastmode": "Modalità veloce",
 	"globalwatchlist-tour-help": "Ulteriore documentazione",

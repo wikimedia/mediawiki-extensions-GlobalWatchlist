@@ -60,6 +60,7 @@
 	"globalwatchlist-show-logentries": "Забележене радње",
 	"globalwatchlist-show-newpages": "Нове странице",
 	"globalwatchlist-sitelist": "Списак пројеката",
+	"globalwatchlist-tags": "{{PLURAL:$1|Ознака|Ознаке}}: $2",
 	"globalwatchlist-unwatch": "прекини надгледање",
 	"prefs-globalwatchlist": "Глобални списак надгледања"
 }
