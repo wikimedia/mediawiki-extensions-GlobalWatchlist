@@ -225,7 +225,6 @@ module.exports = {
 			);
 		},
 		markSiteAsSeen: function ( site ) {
-			this.globalWatchlistDebug.info( 'Marking site as seen: ' + site );
 			var that = this;
 
 			watchedSitesBySite[ site ].markAsSeen().then( function () {
