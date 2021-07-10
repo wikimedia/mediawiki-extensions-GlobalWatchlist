@@ -109,9 +109,6 @@
 					haveChangesToShow = false;
 
 				watchedSites.siteList.forEach( function ( site ) {
-					globalWatchlistDebug.info(
-						'watchlists.refrsh site loop, handling site: ' + site.site
-					);
 					if ( site.isEmpty ) {
 						emptySites.push( site.site );
 					} else {
