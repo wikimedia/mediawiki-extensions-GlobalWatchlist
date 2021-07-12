@@ -122,7 +122,9 @@ watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
 	users.forEach( function ( userMessage ) {
 		if ( userMessage === '##hidden##' ) {
 			// Edits by hidden user(s)
-			userLink = '<span class="history-deleted">' + mw.msg( 'rev-deleted-user' ) + '</span>';
+			userLink = '<span class="history-deleted">' +
+				( new mw.Message( 'rev-deleted-user' ) ).escaped() +
+				'</span>';
 		} else {
 			userLinkBase = editsByUser[ userMessage ].anon ?
 				'Special:Contributions/' :
@@ -131,7 +133,8 @@ watchlistUtils.makeUserLinks = function ( editsByUser, linker ) {
 			userLink = '<a href="' + userLinkURL + '" target="_blank">' + userMessage + '</a>';
 		}
 		if ( editsByUser[ userMessage ].editCount > 1 ) {
-			userLink = userLink + ' ' + mw.msg( 'ntimes', editsByUser[ userMessage ].editCount );
+			userLink = userLink + ' ' +
+				( new mw.Message( 'ntimes', editsByUser[ userMessage ].editCount ) ).escaped();
 		}
 		allLinks.push( userLink );
 	} );
