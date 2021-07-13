@@ -17,6 +17,7 @@
 	"globalwatchlist-must-login": "GlobalWatchlist 특수 문서를 사용하려면 로그인해 주십시오",
 	"globalwatchlist-notify-settingssaved": "설정이 저장되었습니다. [[Special:GlobalWatchlist|통합 계정 주시문서 목록으로 돌아갑니다]].",
 	"globalwatchlist-settings-error-duplicate-site": "\"$1\" 사이트가 여러 번 포함되어 있습니다.",
+	"globalwatchlist-tags": "{{PLURAL:$1|태그}}: $2",
 	"globalwatchlist-tour-addsite": "사이트 추가",
 	"globalwatchlist-tour-filters": "필터 옵션",
 	"globalwatchlist-tour-help": "추가 설명문서",
