@@ -285,5 +285,51 @@
 		);
 	} );
 
+	QUnit.test( 'WatchlistUtils.addEntryFlags', function ( assert ) {
+		var allEntries = [];
+		var expectedEntries = [];
+		var withoutFlags;
+		var withFlags;
+		var newPageFlag = mw.msg( 'newpageletter' );
+		var minorFlag = mw.msg( 'minoreditletter' );
+		var botFlag = mw.msg( 'boteditletter' );
+
+		/* We use bitwise comparisons to simplify looping through all possible flag combinations */
+		/* eslint-disable no-bitwise */
+		for ( var iii = 0; iii <= 7; iii++ ) {
+			withoutFlags = {
+				newPage: ( ( iii & 1 ) === 1 ),
+				minor: ( ( iii & 2 ) === 2 ),
+				bot: ( ( iii & 4 ) === 4 )
+			};
+			allEntries.push( withoutFlags );
+
+			// Expected result, includes the original properties
+			withFlags = {
+				newPage: ( ( iii & 1 ) === 1 ),
+				minor: ( ( iii & 2 ) === 2 ),
+				bot: ( ( iii & 4 ) === 4 )
+			};
+			if ( iii === 0 ) {
+				// Would have no flags
+				withFlags.flags = false;
+			} else {
+				withFlags.flags = (
+					( ( ( iii & 1 ) === 1 ) ? newPageFlag : '' ) +
+					( ( ( iii & 2 ) === 2 ) ? minorFlag : '' ) +
+					( ( ( iii & 4 ) === 4 ) ? botFlag : '' )
+				);
+			}
+			expectedEntries.push( withFlags );
+		}
+		/* eslint-enable no-bitwise */
+
+		assert.deepEqual(
+			watchlistUtils.addEntryFlags( allEntries ),
+			expectedEntries,
+			'Flags are added to entries marked as new pages / minor edits / bot actions'
+		);
+	} );
+
 	/* eslint-enable camelcase */
 }() );

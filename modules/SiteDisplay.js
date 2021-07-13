@@ -80,18 +80,9 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		$row.append( clockIcon.$element )
 			.append( ' ' );
 	}
-	if ( entry.minor || entry.bot || entry.newPage === true ) {
-		var letters = '';
-		if ( entry.newPage === true ) {
-			letters += mw.msg( 'newpageletter' );
-		}
-		if ( entry.minor ) {
-			letters += mw.msg( 'minoreditletter' );
-		}
-		if ( entry.bot ) {
-			letters += mw.msg( 'boteditletter' );
-		}
-		$row.append( $( '<b>' ).text( letters ) )
+	if ( entry.flags ) {
+		// New page / minor edit / bot flag
+		$row.append( $( '<b>' ).text( entry.flags ) )
 			.append( ' ' );
 	}
 	if ( entry.entryType === 'log' ) {

@@ -20,7 +20,7 @@
 		</span>
 
 		<!-- Bot/minor/new page -->
-		<strong v-if="hasFlags">
+		<strong v-if="entryFlags">
 			{{ entryFlags }}
 		</strong>
 
@@ -174,20 +174,7 @@ module.exports = {
 			return this.entry.expiry;
 		},
 		entryFlags: function () {
-			var letters = '';
-			if ( this.entry.newPage === true ) {
-				letters += this.$i18n( 'newpageletter' ).text();
-			}
-			if ( this.entry.minor ) {
-				letters += this.$i18n( 'minoreditletter' ).text();
-			}
-			if ( this.entry.bot ) {
-				letters += this.$i18n( 'boteditletter' ).text();
-			}
-			return letters;
-		},
-		hasFlags: function () {
-			return this.entryFlags !== '';
+			return this.entry.flags;
 		},
 
 		isLogEntry: function () {

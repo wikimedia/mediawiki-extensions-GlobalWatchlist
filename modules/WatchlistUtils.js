@@ -320,6 +320,42 @@ GlobalWatchlistWatchlistUtils.prototype.addExpirationMessages = function ( entri
 };
 
 /**
+ * Add a "flags" property to each entry that will either be `false` or a string with the flags
+ * to show next to the entry (new page, minor edit, bot action).
+ *
+ * Must be done *after* the merging of grouped changes, so cannot be a part of normalizeEntries()
+ *
+ * @param {Array} entries Entries to update
+ * @return {Array} updated entries, now with a "flags" property
+ */
+GlobalWatchlistWatchlistUtils.prototype.addEntryFlags = function ( entries ) {
+	// Optimization: only fetch the messages a single time
+	// Order to match the display of core
+	var newPageFlag = mw.msg( 'newpageletter' );
+	var minorFlag = mw.msg( 'minoreditletter' );
+	var botFlag = mw.msg( 'boteditletter' );
+	var entryFlags;
+	entries.forEach( function ( entry ) {
+		entryFlags = '';
+		if ( entry.newPage === true ) {
+			entryFlags += newPageFlag;
+		}
+		if ( entry.minor ) {
+			entryFlags += minorFlag;
+		}
+		if ( entry.bot ) {
+			entryFlags += botFlag;
+		}
+		if ( entryFlags === '' ) {
+			entry.flags = false;
+		} else {
+			entry.flags = entryFlags;
+		}
+	} );
+	return entries;
+};
+
+/**
  * Convert result from the API to format used by this extension
  *
  * This is the entry point for the JavaScript controlling Special:GlobalWatchlist and the
@@ -404,6 +440,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 
 	var everything = convertedEdits.concat( logEntries );
 	everything = this.addExpirationMessages( everything );
+	everything = this.addEntryFlags( everything );
 	return everything;
 };
 
