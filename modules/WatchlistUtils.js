@@ -133,7 +133,7 @@ GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser )
 		if ( userMessage === '##hidden##' ) {
 			// Edits by hidden user(s)
 			userLink = '<span class="history-deleted">' +
-				( new mw.Message( 'rev-deleted-user' ) ).escaped() +
+				mw.message( 'rev-deleted-user' ).escaped() +
 				'</span>';
 		} else {
 			userLinkBase = editsByUser[ userMessage ].anon ?
@@ -144,7 +144,7 @@ GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser )
 		}
 		if ( editsByUser[ userMessage ].editCount > 1 ) {
 			userLink = userLink + ' ' +
-				( new mw.Message( 'ntimes', editsByUser[ userMessage ].editCount ) ).escaped();
+				mw.message( 'ntimes', editsByUser[ userMessage ].editCount ).escaped();
 		}
 		allLinks.push( userLink );
 	} );
