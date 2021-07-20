@@ -18,7 +18,7 @@ describe( 'Special:GlobalWatchlist', function () {
 		// viewing of Special:GlobalWatchlist, to avoid needing to create a new account.
 		// So, after the edit is made we need to reset the notification timestamp to
 		// beforehand, so that the edit is shown on Special:GlobalWatchlist, which
-		// only shows unseen changes (unlike the default for Special:GlobalWatchlist).
+		// only shows unseen changes (unlike the default for Special:Watchlist).
 		// We need to use browser.call with the async function instead of making this
 		// entire before handler async because that would break the LoginPage.loginAdmin()
 		// call due to Selenium's asyncronous execution model.
