@@ -143,7 +143,7 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 	var that = this;
 
 	return new Promise( function ( resolve ) {
-		var getter = {
+		var query = {
 			action: 'query',
 			formatversion: 2,
 			list: 'watchlist',
@@ -153,13 +153,13 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 			wltype: that.config.watchlistQueryTypes
 		};
 		if ( iteration > 1 ) {
-			getter.wlcontinue = continueFrom;
+			query.wlcontinue = continueFrom;
 		}
 		if ( !that.config.fastMode ) {
-			getter.wlallrev = true;
+			query.wlallrev = true;
 		}
 
-		that.api( 'get', getter, 'actuallyGetWatchlist #' + iteration ).then( function ( response ) {
+		that.api( 'get', query, 'actuallyGetWatchlist #' + iteration ).then( function ( response ) {
 			if ( response === 'ERROR' ) {
 				resolve( [] );
 				return;
@@ -220,14 +220,14 @@ GlobalWatchlistSiteBase.prototype.changeWatched = function ( pageTitle, func ) {
 GlobalWatchlistSiteBase.prototype.getAssociatedPageTitle = function ( pageTitle ) {
 	var that = this;
 	return new Promise( function ( resolve ) {
-		var getter = {
+		var query = {
 			action: 'query',
 			prop: 'info',
 			titles: pageTitle,
 			inprop: 'associatedpage',
 			formatversion: 2
 		};
-		that.api( 'get', getter, 'getAssociatedPageTitle' ).then( function ( response ) {
+		that.api( 'get', query, 'getAssociatedPageTitle' ).then( function ( response ) {
 			resolve( response.query.pages[ 0 ].associatedpage );
 		} );
 	} );
@@ -246,13 +246,13 @@ GlobalWatchlistSiteBase.prototype.getTagList = function () {
 		if ( that.config.fastMode || Object.keys( that.tags ).length > 0 ) {
 			resolve();
 		} else {
-			var getter = {
+			var query = {
 				action: 'query',
 				list: 'tags',
 				tglimit: 'max',
 				tgprop: 'displayname'
 			};
-			that.api( 'get', getter, 'getTags' ).then( function ( response ) {
+			that.api( 'get', query, 'getTags' ).then( function ( response ) {
 				var asObject = {};
 				response.query.tags.forEach( function ( tag ) {
 					asObject[ tag.name ] = ( tag.displayname || false ) ?

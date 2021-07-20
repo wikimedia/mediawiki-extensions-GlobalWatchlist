@@ -97,14 +97,14 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 	var that = this;
 
 	return new Promise( function ( resolve ) {
-		var getter = {
+		var query = {
 			action: 'wbgetentities',
 			formatversion: 2,
 			ids: entityIds.slice( 0, 50 ),
 			languages: that.userLang,
 			props: 'labels'
 		};
-		that.api.get( getter ).then( function ( response ) {
+		that.api.get( query ).then( function ( response ) {
 			that.debug( 'getRawLabels - api response', response );
 			var labels = response.entities;
 			if ( entityIds.length > 50 ) {
