@@ -274,14 +274,12 @@
 			timestamp: '2020-08-31 12:00',
 			type: 'edit',
 			newPage: true,
-			old_revid: 0,
-			revid: 0,
 			user: ''
 		};
 		assert.deepEqual(
 			watchlistUtils.normalizeEntries( [ newPage ] ),
 			[ normalizedNewPage ],
-			'New pages are normalized to entries with a flag'
+			'New pages are normalized to edits with a flag'
 		);
 	} );
 
@@ -328,6 +326,24 @@
 			watchlistUtils.addEntryFlags( allEntries ),
 			expectedEntries,
 			'Flags are added to entries marked as new pages / minor edits / bot actions'
+		);
+	} );
+
+	QUnit.test( 'WatchlistUtils.truncateTimestamps', function ( assert ) {
+		var originalEntries = [
+			{ timestamp: false },
+			{ timestamp: '2021-07-04T07:30:49Z' },
+			{ timestamp: '2020-01-01T12:01:00Z' }
+		];
+		var expectedUpdatedEntries = [
+			{ timestamp: false },
+			{ timestamp: '2021-07-04 07:30' },
+			{ timestamp: '2020-01-01 12:01' }
+		];
+		assert.deepEqual(
+			watchlistUtils.truncateTimestamps( originalEntries ),
+			expectedUpdatedEntries,
+			'Timestamps are truncated to display in the form YY-MM-DD HH:MM'
 		);
 	} );
 

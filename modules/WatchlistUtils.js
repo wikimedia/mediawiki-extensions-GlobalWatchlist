@@ -276,22 +276,13 @@ GlobalWatchlistWatchlistUtils.prototype.normalizeEntries = function ( entries ) 
 			// grouped together when needed
 			entry.type = 'edit';
 			entry.newPage = true;
-
-			// need to be set for the mapping in mergePageEdits, but won't be used
-			// eslint-disable-next-line camelcase
-			entry.old_revid = 0;
-			entry.revid = 0;
 		} else {
 			entry.newPage = false;
 		}
 
 		if ( typeof entry.timestamp === 'undefined' ) {
-			// Not fetched in fast
+			// Not fetched in fast mode
 			entry.timestamp = false;
-		} else {
-			// Per T262176, display as
-			// YYYY-MM-DD HH:MM
-			entry.timestamp = entry.timestamp.replace( /T(\d+:\d+):\d+Z/, ' $1' );
 		}
 	} );
 	return entries;
@@ -350,6 +341,27 @@ GlobalWatchlistWatchlistUtils.prototype.addEntryFlags = function ( entries ) {
 			entry.flags = false;
 		} else {
 			entry.flags = entryFlags;
+		}
+	} );
+	return entries;
+};
+
+/**
+ * Truncate the timestamp to only show details down to the minute, see T262176
+ *
+ * This needs to be done *after* the sorting of edits and log entries by timestamp,
+ * which should be done using the full untruncated version, see T286977
+ *
+ * @param {Array} entries Entries to update
+ * @return {Array} updated entries
+ */
+GlobalWatchlistWatchlistUtils.prototype.truncateTimestamps = function ( entries ) {
+	entries.forEach( function ( entry ) {
+		// We set the timestamp to false in normalizeEntries if its not available
+		if ( entry.timestamp !== false ) {
+			// Per T262176, display as
+			// YYYY-MM-DD HH:MM
+			entry.timestamp = entry.timestamp.replace( /T(\d+:\d+):\d+Z/, ' $1' );
 		}
 	} );
 	return entries;
@@ -441,6 +453,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 	var everything = convertedEdits.concat( logEntries );
 	everything = this.addExpirationMessages( everything );
 	everything = this.addEntryFlags( everything );
+	everything = this.truncateTimestamps( everything );
 	return everything;
 };
 
