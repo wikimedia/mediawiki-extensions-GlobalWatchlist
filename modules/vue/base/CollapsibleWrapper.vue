@@ -25,15 +25,10 @@
  */
 var WvuiButton = require( 'wvui' ).WvuiButton;
 
+// @vue/component
 module.exports = {
 	components: {
 		'wvui-button': WvuiButton
-	},
-
-	data: function () {
-		return {
-			isCollapsed: false // Always start expanded
-		};
 	},
 
 	props: {
@@ -41,6 +36,12 @@ module.exports = {
 			type: Boolean,
 			default: false
 		}
+	},
+
+	data: function () {
+		return {
+			isCollapsed: false // Always start expanded
+		};
 	},
 
 	computed: {

@@ -95,18 +95,12 @@ var WvuiIcon = require( 'wvui' ).WvuiIcon;
  *  - `click-refresh` when the refresh button is clicked
  *  - `mark-all-sites-seen` when the button to mark all sites as seen is clicked
  */
+// @vue/component
 module.exports = {
 	components: {
 		'global-watchlist-toggle': Toggle,
 		'wvui-button': WvuiButton,
 		'wvui-icon': WvuiIcon
-	},
-
-	data: function () {
-		// Need a local copy of liveUpdatesActive to control the displayed icon
-		return {
-			liveUpdatesActive: false
-		};
 	},
 
 	props: {
@@ -130,6 +124,13 @@ module.exports = {
 			type: Boolean,
 			default: false
 		}
+	},
+
+	data: function () {
+		// Need a local copy of liveUpdatesActive to control the displayed icon
+		return {
+			liveUpdatesActive: false
+		};
 	},
 
 	computed: {

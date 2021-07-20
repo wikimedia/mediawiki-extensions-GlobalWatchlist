@@ -71,18 +71,13 @@ var WvuiIcon = require( 'wvui' ).WvuiIcon;
  *  - `mark-site-seen` when marking a site as seen.
  *     Parameters: site (url)
  */
+// @vue/component
 module.exports = {
 	components: {
 		'global-watchlist-collapsible-wrapper': CollapsibleWrapper,
 		'global-watchlist-entry-row': EntryRow,
 		'wvui-button': WvuiButton,
 		'wvui-icon': WvuiIcon
-	},
-
-	data: function () {
-		return {
-			hasApiError: false
-		};
 	},
 
 	props: {
@@ -94,6 +89,12 @@ module.exports = {
 			type: String,
 			required: true
 		}
+	},
+
+	data: function () {
+		return {
+			hasApiError: false
+		};
 	},
 
 	computed: {

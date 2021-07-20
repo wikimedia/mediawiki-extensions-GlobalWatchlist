@@ -17,15 +17,10 @@
  */
 var WvuiButton = require( 'wvui' ).WvuiButton;
 
+// @vue/component
 module.exports = {
 	components: {
 		'wvui-button': WvuiButton
-	},
-
-	data: function () {
-		return {
-			isActive: false // Always start inactive
-		};
 	},
 
 	props: {
@@ -37,6 +32,12 @@ module.exports = {
 			type: Boolean,
 			default: false
 		}
+	},
+
+	data: function () {
+		return {
+			isActive: false // Always start inactive
+		};
 	},
 
 	computed: {

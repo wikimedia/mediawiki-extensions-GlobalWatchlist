@@ -28,6 +28,7 @@ var CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' );
  * Inputs:
  *  - emptysitelist, array of sites (url form) with no changes
  */
+// @vue/component
 module.exports = {
 	components: {
 		'global-watchlist-collapsible-wrapper': CollapsibleWrapper
@@ -36,7 +37,7 @@ module.exports = {
 	props: {
 		emptysitelist: {
 			type: Array,
-			default: [ 'missing.site.list' ]
+			required: true
 		}
 	},
 

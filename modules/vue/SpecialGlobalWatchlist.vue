@@ -78,6 +78,7 @@ watchedSites.siteList.forEach( function ( watchedSite ) {
 	watchedSitesBySite[ watchedSite.site ] = watchedSite;
 } );
 
+// @vue/component
 module.exports = {
 	components: {
 		'global-watchlist-toolbar': Toolbar,

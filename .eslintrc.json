@@ -58,6 +58,7 @@
 					"warn",
 					"longform"
 				],
+				"vue/no-boolean-default": "off",
 				"no-implicit-globals": "off",
 				"es/no-promise": "off"
 			}

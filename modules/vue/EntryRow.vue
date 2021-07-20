@@ -119,6 +119,7 @@ var WvuiIcon = require( 'wvui' ).WvuiIcon;
  *  - `unwatch-page` when unwatching
  *     Parameters: title
  */
+// @vue/component
 module.exports = {
 	components: {
 		'wvui-icon': WvuiIcon
