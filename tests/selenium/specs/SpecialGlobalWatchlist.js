@@ -36,6 +36,14 @@ describe( 'Special:GlobalWatchlist', function () {
 				token: bot.editToken
 			} );
 		} );
+
+		// This cookie allows us to use the `displayversion` parameter to test both the
+		// OOUI and the Vue versions of the display even when $wgGlobalWatchlistDevMode is
+		// false, so that we don't need to have it by true by default.
+		browser.setCookies( {
+			name: 'mw-globalwatchlist-selenium-test',
+			value: '1'
+		} );
 	} );
 
 	it( 'works with normal display', function () {

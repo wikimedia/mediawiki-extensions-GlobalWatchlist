@@ -81,8 +81,8 @@
 			"description": "Whether to use the Vue version of the code for Special:GlobalWatchlist"
 		},
 		"GlobalWatchlistDevMode": {
-			"value": true,
-			"description": "Whether to send debug entries to the console and enable using 'displayversion' to override whether or not the vue version of the display is shown. Default to true for selenium testing."
+			"value": false,
+			"description": "Whether to send debug entries to the console and enable using 'displayversion' to override whether or not the vue version of the display is shown."
 		},
 		"GlobalWatchlistEnableGuidedTour": {
 			"value": false,
