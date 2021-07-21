@@ -173,6 +173,7 @@
 		config.inLive = false;
 
 		viewElements.liveToggle.setDisabled( true );
+		viewElements.groupPage.setDisabled( true );
 		viewElements.progressBar.$element.show();
 		viewElements.$feedHeader.hide();
 		viewElements.$sharedFeed.hide();
