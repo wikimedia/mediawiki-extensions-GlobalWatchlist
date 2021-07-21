@@ -65,7 +65,7 @@ class GlobalWatchlistGuidedTourHooks implements
 	 * @param ResourceLoader $resourceLoader
 	 * @return void
 	 */
-	public function onResourceLoaderRegisterModules( ResourceLoader $resourceLoader ) : void {
+	public function onResourceLoaderRegisterModules( ResourceLoader $resourceLoader ): void {
 		$config = $resourceLoader->getConfig();
 		if ( !$config->get( 'GlobalWatchlistEnableGuidedTour' ) ) {
 			return;

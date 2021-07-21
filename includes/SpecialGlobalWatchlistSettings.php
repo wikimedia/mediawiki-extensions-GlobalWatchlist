@@ -198,7 +198,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * @codeCoverageIgnore
 	 * @return ?array either an array of the sites that are okay, or null for no validation
 	 */
-	private function maybeGetValidSites() : ?array {
+	private function maybeGetValidSites(): ?array {
 		if ( !$this->extensionRegistry->isLoaded( 'CentralAuth' ) ) {
 			$this->logger->debug( 'CentralAuth is not installed, no site validation' );
 			return null;
@@ -265,7 +265,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	private function getActualFormFields(
 		SettingsFormValidator $formValidator,
 		array $userOptions
-	) : array {
+	): array {
 		$fields = [];
 
 		// Due to the "implicit submission" feature of html forms, hitting enter

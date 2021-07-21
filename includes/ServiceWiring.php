@@ -12,7 +12,7 @@ use MediaWiki\MediaWikiServices;
 return [
 	'GlobalWatchlistSettingsManager' => static function (
 		MediaWikiServices $services
-	) : SettingsManager {
+	): SettingsManager {
 		return new SettingsManager(
 			LoggerFactory::getInstance( 'GlobalWatchlist' ),
 			$services->getUserOptionsManager(),

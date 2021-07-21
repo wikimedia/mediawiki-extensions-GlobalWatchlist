@@ -115,7 +115,7 @@ class GlobalWatchlistHooks implements
 	 * @param array &$sidebar Sidebar content. Modify $sidebar to add or modify sidebar portlets.
 	 * @return void This hook must not abort; it must not return value.
 	 */
-	public function onSidebarBeforeOutput( $skin, &$sidebar ) : void {
+	public function onSidebarBeforeOutput( $skin, &$sidebar ): void {
 		$title = $skin->getTitle();
 		$onWatchlist = $title->isSpecial( 'Watchlist' );
 		if ( !$onWatchlist ) {
