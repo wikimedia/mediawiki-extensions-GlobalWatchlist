@@ -248,6 +248,7 @@
 		// Based on viewManager.renderFeed but with timing
 		var loadStartTime = mw.now();
 		viewElements.liveToggle.setDisabled( true );
+		viewElements.groupPage.setDisabled( true );
 		viewElements.$sharedFeed.hide();
 		viewElements.$asOf[ 0 ].innerText = '';
 
