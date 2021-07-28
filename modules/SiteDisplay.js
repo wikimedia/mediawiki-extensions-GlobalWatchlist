@@ -156,9 +156,9 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 			.append( ')' );
 	}
 
-	if ( entry.tags.length > 0 ) {
+	if ( entry.tagsDisplay ) {
 		// Need to process links in the parsed description as raw HTML
-		var $tags = $( '<em>' ).html( this.getTagsDisplay( entry.tags ) );
+		var $tags = $( '<em>' ).html( entry.tagsDisplay );
 
 		$row.append( ' ' )
 			.append( $tags );

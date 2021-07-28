@@ -368,6 +368,50 @@ GlobalWatchlistWatchlistUtils.prototype.truncateTimestamps = function ( entries 
 };
 
 /**
+ * Create the HTML to show for the tags associated with an entry. For each tag, if there is
+ * a display configured onwiki, that is shown, otherwise its just the name. See
+ * {@link GlobalWatchlistSiteBase#getTagList SiteBase#getTagList} for where the info is
+ * retrieved.
+ *
+ * Must be done *after* the merging of grouped changes, so cannot be a part of normalizeEntries()
+ *
+ * @param {Array} entries Entries to update
+ * @param {Object} tagsInfo Keys are tag names, values are the html to display (either the
+ *    display text with local links updated, or just the name)
+ * @return {Array} updated entries
+ */
+GlobalWatchlistWatchlistUtils.prototype.addTagDisplays = function ( entries, tagsInfo ) {
+	// In fast mode no tag info was retrieved, and none of the entries should have tags
+	// that need displaying. We still need to set the `tagsDisplay` property for each
+	// entry though, the display code checks it.
+	if ( Object.keys( tagsInfo ).length === 0 ) {
+		entries.forEach( function ( entry ) {
+			entry.tagsDisplay = false;
+		} );
+		return entries;
+	}
+
+	// We have some possible tags
+	var tagDescriptions;
+	var withLabel;
+	entries.forEach( function ( entry ) {
+		if ( entry.tags.length === 0 ) {
+			entry.tagsDisplay = false;
+		} else {
+			// This is the actual building of the display
+			tagDescriptions = entry.tags.map(
+				function ( tagName ) {
+					return tagsInfo[ tagName ];
+				}
+			).join( ', ' );
+			withLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, tagDescriptions );
+			entry.tagsDisplay = mw.msg( 'parentheses', withLabel );
+		}
+	} );
+	return entries;
+};
+
+/**
  * Convert result from the API to format used by this extension
  *
  * This is the entry point for the JavaScript controlling Special:GlobalWatchlist and the
@@ -375,9 +419,11 @@ GlobalWatchlistWatchlistUtils.prototype.truncateTimestamps = function ( entries 
  *
  * @param {Array} entries Entries to convert
  * @param {boolean} groupPage Whether to group results by page
+ * @param {Object} tagsInfo See {@link GlobalWatchlistWatchlistUtils#addTagDisplays #addTagDisplays}
+ *    for details
  * @return {Array} summary of changes
  */
-GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage ) {
+GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage, tagsInfo ) {
 	var convertedEdits = [],
 		edits = {},
 		logEntries = [],
@@ -454,6 +500,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 	everything = this.addExpirationMessages( everything );
 	everything = this.addEntryFlags( everything );
 	everything = this.truncateTimestamps( everything );
+	everything = this.addTagDisplays( everything, tagsInfo );
 	return everything;
 };
 

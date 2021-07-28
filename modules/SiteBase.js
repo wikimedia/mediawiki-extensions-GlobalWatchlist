@@ -234,17 +234,22 @@ GlobalWatchlistSiteBase.prototype.getAssociatedPageTitle = function ( pageTitle 
 };
 
 /**
- * Ensure that the tags are loaded for a wiki
+ * Get the tags for a wiki, loading them if not already available (in fast mode we don't retrieve
+ * tags information for the watchlist, so this returns an empty object)
  *
  * Once this is called once, the tag info is stored in this.tags and future calls with return early
  *
- * @return {Promise} a promise that the tags where retrieved, not the tags themselves
+ * @return {Promise} Resolves with the tags that where retrieved, or an empty object if we are
+ *   in fast mode
  */
 GlobalWatchlistSiteBase.prototype.getTagList = function () {
 	var that = this;
 	return new Promise( function ( resolve ) {
 		if ( that.config.fastMode || Object.keys( that.tags ).length > 0 ) {
-			resolve();
+			// Either we are in fast mode, and we should return an empty object, which
+			// is the default value of that.tags, or we already fetched the tags info
+			// and its already available in that.tags
+			resolve( that.tags );
 		} else {
 			var query = {
 				action: 'query',
@@ -260,8 +265,9 @@ GlobalWatchlistSiteBase.prototype.getTagList = function () {
 						tag.name;
 				} );
 				that.debug( 'getTagList', asObject );
+				// Save for future calls (eg on refresh)
 				that.tags = asObject;
-				resolve();
+				resolve( asObject );
 			} );
 		}
 	} );
@@ -299,38 +305,22 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 
 			that.debug( 'getWatchlist wlraw', wlraw );
 
-			var prelimSummary = that.watchlistUtils.rawToSummary(
-				wlraw,
-				that.config.groupPage
-			);
-			that.debug( 'getWatchlist prelimSummary', prelimSummary );
+			that.getTagList().then( function ( tagsInfo ) {
+				var prelimSummary = that.watchlistUtils.rawToSummary(
+					wlraw,
+					that.config.groupPage,
+					tagsInfo
+				);
+				that.debug( 'getWatchlist prelimSummary', prelimSummary );
 
-			that.makeWikidataList( prelimSummary ).then( function ( summary ) {
-				that.debug( 'getWatchlist summary', summary );
-				that.getTagList().then( function () {
+				that.makeWikidataList( prelimSummary ).then( function ( summary ) {
+					that.debug( 'getWatchlist summary', summary );
 					that.renderWatchlist( summary );
 					resolve();
 				} );
 			} );
 		} );
 	} );
-};
-
-/**
- * Get the HTML string to use for the tags display
- *
- * @param {Array} tagNames
- * @return {string} the tag descriptions, joined together, as raw HTML
- */
-GlobalWatchlistSiteBase.prototype.getTagsDisplay = function ( tagNames ) {
-	var that = this;
-	var tagDescriptions = tagNames.map(
-		function ( tagName ) {
-			return that.tags[ tagName ];
-		}
-	).join( ', ' );
-	var withLabel = mw.msg( 'globalwatchlist-tags', tagNames.length, tagDescriptions );
-	return mw.msg( 'parentheses', withLabel );
 };
 
 /**

@@ -228,9 +228,8 @@ module.exports = {
 			return this.tagsDisplay !== false;
 		},
 		tagsDisplay: function () {
-			// processed in SiteVue.renderWatchlist, either the raw HTML to include
-			// or false for no tags. If its raw HTML, it is already properly safe
-			// to use.
+			// processed in WatchlistUtils, either the raw HTML to include or false
+			// for no tags. If its raw HTML, it is already properly safe to use.
 			return this.entry.tagsDisplay;
 		}
 	},
