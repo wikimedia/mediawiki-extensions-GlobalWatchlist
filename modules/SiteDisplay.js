@@ -195,8 +195,13 @@ GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $conte
 	var isRTL = this.siteID.match(
 		/^(ar|azb|ckb|dv|fa|glk|he|ks|lrc|mzn|nqo|pnb|ps|sd|ug|ur|yi)_/
 	);
+	// mw-content-ltr and -rtl classes are not enough to ensure that the text is formatted
+	// in the correct direction, so add a manual direction attribute. See T287649
+	// We still add those classes because they are also used by jQuery.makeCollapsible
+	// to know if the collapse button should be on the right or left.
 	this.$feedDiv = $( '<div>' )
 		.attr( 'id', 'ext-globalwatchlist-feed-site-' + this.siteID )
+		.attr( 'dir', isRTL ? 'rtl' : 'ltr' )
 		.addClass( 'ext-globalwatchlist-feed-site' )
 		.addClass( isRTL ? 'mw-content-rtl' : 'mw-content-ltr' )
 		.append(
