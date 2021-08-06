@@ -10,18 +10,18 @@
 		</span>
 
 		<!-- Watchlist expiration clock -->
-		<span v-if="hasExpiration">
+		<span v-if="entry.expiry">
 			<wvui-icon
 				v-bind:icon="clockIcon"
-				v-bind:title="expirationTooltip"
+				v-bind:title="entry.expiry"
 				class="ext-globalwatchlist-expiry-icon"
 			>
 			</wvui-icon>
 		</span>
 
 		<!-- Bot/minor/new page -->
-		<strong v-if="entryFlags">
-			{{ entryFlags }}
+		<strong v-if="entry.flags">
+			{{ entry.flags }}
 		</strong>
 
 		<em v-if="isLogEntry">
@@ -88,12 +88,16 @@
 				Avoid a space in the middle
 			--><span v-html="entry.userDisplay"></span><!--
 				Avoid a space in the middle
-			--><span v-if="hasComment" v-html="entryComment"></span><!--
+			--><span v-if="entryComment" v-html="entryComment"></span><!--
 				Avoid a space in the middle
 			-->)
 		</span>
 
-		<em v-if="hasTags" v-html="tagsDisplay"></em>
+		<!--
+			entry.tagsDisplay is processed in WatchlistUtils, either the raw HTML to include
+			or false for no tags. If its raw HTML, it is already properly safe to use.
+		-->
+		<em v-if="entry.tagsDisplay" v-html="entry.tagsDisplay"></em>
 		<!-- eslint-enable vue/no-v-html -->
 	</li>
 </template>
@@ -151,17 +155,8 @@ module.exports = {
 			return '';
 		},
 
-		hasExpiration: function () {
-			return this.entry.expiry !== false;
-		},
 		clockIcon: function () {
 			return require( './icons.json' ).clock;
-		},
-		expirationTooltip: function () {
-			return this.entry.expiry;
-		},
-		entryFlags: function () {
-			return this.entry.flags;
 		},
 
 		isLogEntry: function () {
@@ -202,21 +197,9 @@ module.exports = {
 			}
 			return false;
 		},
-		hasComment: function () {
-			return this.entryComment !== false;
-		},
 		hasUserDisplay: function () {
 			// Not available in fast mode
 			return this.entry.userDisplay && this.entry.userDisplay !== '';
-		},
-
-		hasTags: function () {
-			return this.tagsDisplay !== false;
-		},
-		tagsDisplay: function () {
-			// processed in WatchlistUtils, either the raw HTML to include or false
-			// for no tags. If its raw HTML, it is already properly safe to use.
-			return this.entry.tagsDisplay;
 		}
 	},
 
