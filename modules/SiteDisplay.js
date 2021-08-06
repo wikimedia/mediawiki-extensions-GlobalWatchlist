@@ -63,11 +63,10 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	$row.attr( 'data-title', encodeURIComponent( entry.title ) );
 
 	if ( entry.timestamp ) {
+		// entry.timestampTitle is either a string explaining grouped changes, or null to ignore
 		var $timestamp = $( '<span>' )
-			.text( entry.timestamp );
-		if ( entry.editCount && entry.editCount !== 1 ) {
-			$timestamp.attr( 'title', mw.msg( 'globalwatchlist-grouped-timestamp' ) );
-		}
+			.text( entry.timestamp )
+			.attr( 'title', entry.timestampTitle );
 		$row.append( $timestamp )
 			.append( ' ' );
 	}

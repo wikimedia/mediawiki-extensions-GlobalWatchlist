@@ -78,6 +78,13 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
 			return ( ( new Date( time1 ) ) > ( new Date( time2 ) ) ? time1 : time2 );
 		} );
 
+	// When there are multiple edits grouped, the timestamp has a tooltip (title attribute)
+	// explaining that its the timestamp of the latest change. If its not set here, its null,
+	// and both the jQuery and Vue displays ignore null attribute values. See T286268 and
+	// * https://v3.vuejs.org/guide/migration/attribute-coercion.html#overview
+	// * https://api.jquery.com/attr/#attr-attributeName-value
+	mergedEditInfo.timestampTitle = mw.msg( 'globalwatchlist-grouped-timestamp' );
+
 	mergedEditInfo.toRev = edits
 		.map( function ( edit ) {
 			return edit.revid;
@@ -210,6 +217,7 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
 					newPage: entry.newPage,
 					tags: entry.tags,
 					timestamp: entry.timestamp,
+					timestampTitle: null,
 					toRev: entry.revid,
 					userDisplay: that.makeSingleUserLink(
 						entry.user,
@@ -451,6 +459,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 				ns: entry.ns,
 				tags: entry.tags,
 				timestamp: entry.timestamp,
+				timestampTitle: null,
 				title: entry.title,
 				logaction: entry.logaction,
 				logid: entry.logid,

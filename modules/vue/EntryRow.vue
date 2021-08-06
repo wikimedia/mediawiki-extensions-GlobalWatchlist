@@ -3,10 +3,10 @@
 		v-bind:class="rowClasses"
 	>
 		<span
-			v-if="hasTimestamp"
-			v-bind:title="timestampTitle"
+			v-if="entry.timestamp"
+			v-bind:title="entry.timestampTitle"
 		>
-			{{ entryTimestamp }}
+			{{ entry.timestamp }}
 		</span>
 
 		<!-- Watchlist expiration clock -->
@@ -147,20 +147,6 @@ module.exports = {
 		rowClasses: function () {
 			if ( !this.pagewatched ) {
 				return 'ext-globalwatchlist-strike';
-			}
-			return '';
-		},
-
-		entryTimestamp: function () {
-			return this.entry.timestamp;
-		},
-		hasTimestamp: function () {
-			return this.entryTimestamp !== false;
-		},
-		timestampTitle: function () {
-			// For grouping results, the timestamp is the latest one
-			if ( this.entry.editCount && this.entry.editCount !== 1 ) {
-				return this.$i18n( 'globalwatchlist-grouped-timestamp' ).text();
 			}
 			return '';
 		},

@@ -18,6 +18,7 @@
 
 	/* eslint-disable camelcase */
 	QUnit.test( 'watchlistUtils.mergePageEdits', function ( assert ) {
+		var expectTimestampTitle = mw.msg( 'globalwatchlist-grouped-timestamp' );
 		// Not testing timestamps as part of this, all edits set to the same timestamp
 		// of 2020-08-31 12:00.
 		var edit1 = {
@@ -91,6 +92,7 @@
 			newPage: false,
 			tags: [],
 			timestamp: '2020-08-31 12:00',
+			timestampTitle: expectTimestampTitle,
 			toRev: 3
 		};
 		var mergedEdits_b = {
@@ -103,6 +105,7 @@
 			newPage: false,
 			tags: [],
 			timestamp: '2020-08-31 12:00',
+			timestampTitle: expectTimestampTitle,
 			toRev: 3
 		};
 		var mergedEdits_c = {
@@ -115,6 +118,7 @@
 			newPage: false,
 			tags: [],
 			timestamp: '2020-08-31 12:00',
+			timestampTitle: expectTimestampTitle,
 			toRev: 3
 		};
 		var mergedEdits_d = {
@@ -127,6 +131,7 @@
 			newPage: false,
 			tags: [],
 			timestamp: '2020-08-31 12:00',
+			timestampTitle: expectTimestampTitle,
 			toRev: 3
 		};
 		var mergedEdits_e = {
@@ -139,6 +144,7 @@
 			newPage: true,
 			tags: [],
 			timestamp: '2020-08-31 12:00',
+			timestampTitle: expectTimestampTitle,
 			toRev: 2
 		};
 
