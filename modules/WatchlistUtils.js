@@ -23,6 +23,9 @@ function GlobalWatchlistWatchlistUtils( linker ) {
 GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
 	var mergedEditInfo = {};
 
+	// No comments are shown for the grouped changes
+	mergedEditInfo.comment = false;
+
 	mergedEditInfo.bot = edits
 		.map( function ( edit ) {
 			return edit.bot;
@@ -420,6 +423,30 @@ GlobalWatchlistWatchlistUtils.prototype.addTagDisplays = function ( entries, tag
 };
 
 /**
+ * Set the comment display to include the updated links in edit summaries/log entries.
+ * In fast mode, or for grouped changes, there is no comment display.
+ *
+ * Must be done *after* the merging of grouped changes, so cannot be a part of normalizeEntries()
+ *
+ * The commentDisplay set here is treated as raw html by both the jQuery and Vue displays. We
+ * use the `parsedcomment` result from the api, and MediaWiki core takes care of escaping.
+ *
+ * @param {Array} entries Entries to update
+ * @return {Array} updated entries
+ */
+GlobalWatchlistWatchlistUtils.prototype.addCommentDisplays = function ( entries ) {
+	var that = this;
+	entries.forEach( function ( entry ) {
+		if ( entry.comment && entry.comment !== '' ) {
+			entry.commentDisplay = ': ' + that.linker.fixLocalLinks( entry.comment );
+		} else {
+			entry.commentDisplay = false;
+		}
+	} );
+	return entries;
+};
+
+/**
  * Convert result from the API to format used by this extension
  *
  * This is the entry point for the JavaScript controlling Special:GlobalWatchlist and the
@@ -510,6 +537,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 	everything = this.addEntryFlags( everything );
 	everything = this.truncateTimestamps( everything );
 	everything = this.addTagDisplays( everything, tagsInfo );
+	everything = this.addCommentDisplays( everything );
 	return everything;
 };
 

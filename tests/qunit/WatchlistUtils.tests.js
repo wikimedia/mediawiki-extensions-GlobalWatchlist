@@ -10,8 +10,7 @@
 		}
 	} ) );
 
-	// The linker isn't actually needed for anything that we are testing, but needs to be
-	// provided
+	// The linker is currently only needed for the addCommentDisplays() test
 	var watchlistUtils = new GlobalWatchlistWatchlistUtils(
 		new GlobalWatchlistLinker( 'en.wikipedia.org' )
 	);
@@ -85,6 +84,7 @@
 		var mergedEdits_a = {
 			// Both bot edits, both minor edits, neither new page
 			bot: true,
+			comment: false,
 			editCount: 2,
 			expiry: false,
 			fromRev: 1,
@@ -98,6 +98,7 @@
 		var mergedEdits_b = {
 			// Both bot edits, only one minor edit, neither new page
 			bot: true,
+			comment: false,
 			editCount: 2,
 			expiry: false,
 			fromRev: 1,
@@ -111,6 +112,7 @@
 		var mergedEdits_c = {
 			// Only one bot edit, both minor edits, neither new page
 			bot: false,
+			comment: false,
 			editCount: 2,
 			expiry: false,
 			fromRev: 1,
@@ -124,6 +126,7 @@
 		var mergedEdits_d = {
 			// Only one bot edit, only one minor edit, neither new page
 			bot: false,
+			comment: false,
 			editCount: 2,
 			expiry: false,
 			fromRev: 1,
@@ -137,6 +140,7 @@
 		var mergedEdits_e = {
 			// Only one bot edit, only one minor edit, one new page
 			bot: false,
+			comment: false,
 			editCount: 2,
 			expiry: false,
 			fromRev: 0,
@@ -350,6 +354,32 @@
 			watchlistUtils.truncateTimestamps( originalEntries ),
 			expectedUpdatedEntries,
 			'Timestamps are truncated to display in the form YY-MM-DD HH:MM'
+		);
+	} );
+
+	QUnit.test( 'WatchlistUtils.addCommentDisplays', function ( assert ) {
+		// First two are missing a comment, third doesn't have a link, third has
+		// a link to [[PageName]]. This is for en.wikipedia.org, per configuration
+		// of the linker above
+		var originalEntries = [
+			{ comment: false },
+			{ comment: '' },
+			{ comment: 'foo' },
+			{ comment: '<a href="/wiki/PageName" title="PageName">PageName</a>' }
+		];
+		var expectedUpdatedEntries = [
+			{ comment: false, commentDisplay: false },
+			{ comment: '', commentDisplay: false },
+			{ comment: 'foo', commentDisplay: ': foo' },
+			{
+				comment: '<a href="/wiki/PageName" title="PageName">PageName</a>',
+				commentDisplay: ': <a href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>'
+			}
+		];
+		assert.deepEqual(
+			watchlistUtils.addCommentDisplays( originalEntries ),
+			expectedUpdatedEntries,
+			'leading ": " are added to comments, and links are updated, when there is a comment'
 		);
 	} );
 

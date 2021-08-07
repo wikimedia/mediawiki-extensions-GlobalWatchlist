@@ -88,7 +88,7 @@
 				Avoid a space in the middle
 			--><span v-html="entry.userDisplay"></span><!--
 				Avoid a space in the middle
-			--><span v-if="entryComment" v-html="entryComment"></span><!--
+			--><span v-if="entry.commentDisplay" v-html="entry.commentDisplay"></span><!--
 				Avoid a space in the middle
 			-->)
 		</span>
@@ -191,12 +191,6 @@ module.exports = {
 			return this.linker.linkQuery( 'title=Special:Log&logid=' + this.entry.logid );
 		},
 
-		entryComment: function () {
-			if ( this.entry.comment && this.entry.comment !== '' ) {
-				return ': ' + this.linker.fixLocalLinks( this.entry.comment );
-			}
-			return false;
-		},
 		hasUserDisplay: function () {
 			// Not available in fast mode
 			return this.entry.userDisplay && this.entry.userDisplay !== '';

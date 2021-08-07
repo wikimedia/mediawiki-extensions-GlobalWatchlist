@@ -141,12 +141,9 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 
 	var $user = ( this.config.fastMode ? '' : entry.userDisplay );
 	var $comment = '';
-	if ( entry.comment && entry.comment !== '' ) {
+	if ( entry.commentDisplay ) {
 		// Need to process links in the parsed comments as raw HTML
-		$comment = $( '<span>' ).html(
-			': ' +
-			this.linker.fixLocalLinks( entry.comment )
-		);
+		$comment = $( '<span>' ).html( entry.commentDisplay );
 	}
 	if ( $user !== '' || $comment !== '' ) {
 		$row.append( ' (' )
