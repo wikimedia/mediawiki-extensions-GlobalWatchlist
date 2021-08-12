@@ -1,4 +1,29 @@
 ( function () {
+
+	/**
+	 * To simplify testing WatchlistUtils.getFinalEntries(), allow checking
+	 * part of the cleanup at a time by only checking some of the properties on
+	 * the updated entries
+	 *
+	 * @param {Array} fullEntries the result of getFinalEntries()
+	 * @param {Array} keysToInclude the keys of each entry that should be included
+	 * @return {Array} Objects corresponding to fullEntries but with only the keys
+	 *   that are included in keysToInclude
+	 */
+	function getFilteredEntries( fullEntries, keysToInclude ) {
+		var filteredEntry;
+		return fullEntries.map(
+			function ( fullEntry ) {
+				filteredEntry = {};
+				keysToInclude.forEach(
+					function ( keyToInclude ) {
+						filteredEntry[ keyToInclude ] = fullEntry[ keyToInclude ];
+					}
+				);
+				return filteredEntry;
+			}
+		);
+	}
 	var GlobalWatchlistWatchlistUtils = require( '../../../modules/WatchlistUtils.js' );
 	var GlobalWatchlistLinker = require( '../../../modules/Linker.js' );
 
@@ -293,7 +318,7 @@
 		);
 	} );
 
-	QUnit.test( 'WatchlistUtils.addEntryFlags', function ( assert ) {
+	QUnit.test( 'WatchlistUtils.getFinalEntries (entry flags)', function ( assert ) {
 		var allEntries = [];
 		var expectedEntries = [];
 		var withoutFlags;
@@ -332,14 +357,19 @@
 		}
 		/* eslint-enable no-bitwise */
 
+		// Reduce the fully updated entries to just the parts we are checking
+		var result = getFilteredEntries(
+			watchlistUtils.getFinalEntries( allEntries, {} ),
+			[ 'newPage', 'minor', 'bot', 'flags' ]
+		);
 		assert.deepEqual(
-			watchlistUtils.addEntryFlags( allEntries ),
+			result,
 			expectedEntries,
 			'Flags are added to entries marked as new pages / minor edits / bot actions'
 		);
 	} );
 
-	QUnit.test( 'WatchlistUtils.truncateTimestamps', function ( assert ) {
+	QUnit.test( 'WatchlistUtils.getFinalEntries (truncate timestamps)', function ( assert ) {
 		var originalEntries = [
 			{ timestamp: false },
 			{ timestamp: '2021-07-04T07:30:49Z' },
@@ -350,14 +380,20 @@
 			{ timestamp: '2021-07-04 07:30' },
 			{ timestamp: '2020-01-01 12:01' }
 		];
+
+		// Reduce the fully updated entries to just the parts we are checking
+		var result = getFilteredEntries(
+			watchlistUtils.getFinalEntries( originalEntries, {} ),
+			[ 'timestamp' ]
+		);
 		assert.deepEqual(
-			watchlistUtils.truncateTimestamps( originalEntries ),
+			result,
 			expectedUpdatedEntries,
 			'Timestamps are truncated to display in the form YY-MM-DD HH:MM'
 		);
 	} );
 
-	QUnit.test( 'WatchlistUtils.addCommentDisplays', function ( assert ) {
+	QUnit.test( 'WatchlistUtils.getFinalEntries (comment displays)', function ( assert ) {
 		// First two are missing a comment, third doesn't have a link, third has
 		// a link to [[PageName]]. This is for en.wikipedia.org, per configuration
 		// of the linker above
@@ -376,8 +412,14 @@
 				commentDisplay: ': <a href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>'
 			}
 		];
+
+		// Reduce the fully updated entries to just the parts we are checking
+		var result = getFilteredEntries(
+			watchlistUtils.getFinalEntries( originalEntries, {} ),
+			[ 'comment', 'commentDisplay' ]
+		);
 		assert.deepEqual(
-			watchlistUtils.addCommentDisplays( originalEntries ),
+			result,
 			expectedUpdatedEntries,
 			'leading ": " are added to comments, and links are updated, when there is a comment'
 		);

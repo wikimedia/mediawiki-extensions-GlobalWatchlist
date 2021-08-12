@@ -300,14 +300,51 @@ GlobalWatchlistWatchlistUtils.prototype.normalizeEntries = function ( entries ) 
 };
 
 /**
- * Convert raw expiration strings into the tooltip to be shown
+ * Do various cleanup of entries that goes after merging grouped edits and splitting
+ * edits and log entries. This is where we will convert the plain objects to the new
+ * classes in T288385.
  *
- * @param {Array} entries
- * @return {Array}
+ * - Convert raw expiration strings into the tooltip to be shown.
+ * - Add a "flags" property to each entry that will either be `false` or a string with the flags
+ *     to show next to the entry (new page, minor edit, bot action).
+ * - Truncate the timestamp to only show details down to the minute, see T262176. This needs to
+ *     be done *after* the sorting of edits and log entries by timestamp, which should be done
+ *     using the full untruncated version, see T286977.
+ * - Create the HTML to show for the tags associated with an entry. For each tag, if there is
+ *     a display configured onwiki, that is shown, otherwise its just the name. See
+ *     {@link GlobalWatchlistSiteBase#getTagList SiteBase#getTagList} for where the info is
+ *     retrieved.
+ * - Set the comment display to include the updated links in edit summaries/log entries.
+ *     In fast mode, or for grouped changes, there is no comment display. The commentDisplay
+ *     set here is treated as raw html by both the jQuery and Vue displays. We use the
+ *     `parsedcomment` result from the api, and MediaWiki core takes care of escaping.
+ *
+ * @param {Array} entries Entries to update
+ * @param {Object} tagsInfo Keys are tag names, values are the html to display (either the
+ *    display text with local links updated, or just the name)
+ * @return {Array} updated entries
  */
-GlobalWatchlistWatchlistUtils.prototype.addExpirationMessages = function ( entries ) {
+GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function ( entries, tagsInfo ) {
+	// Watchlist expiry
 	var expirationDate, daysLeft;
-	entries.forEach( function ( entry ) {
+
+	// New page / minor / bot flags
+	// Optimization: only fetch the messages a single time
+	// Order to match the display of core
+	var newPageFlag = mw.msg( 'newpageletter' );
+	var minorFlag = mw.msg( 'minoreditletter' );
+	var botFlag = mw.msg( 'boteditletter' );
+	var entryFlags;
+
+	// Tags display
+	var noTagsDisplay = Object.keys( tagsInfo ).length === 0;
+	var tagDescriptions, tagsWithLabel;
+
+	// Comment display
+	var that = this;
+
+	return entries.map( function ( entry ) {
+		// Watchlist expiry
 		if ( entry.expiry ) {
 			expirationDate = new Date( entry.expiry );
 			daysLeft = Math.ceil( ( expirationDate - Date.now() ) / 1000 / 86400 ) + 0;
@@ -317,27 +354,8 @@ GlobalWatchlistWatchlistUtils.prototype.addExpirationMessages = function ( entri
 				entry.expiry = mw.msg( 'watchlist-expiring-days-full-text', daysLeft );
 			}
 		}
-	} );
-	return entries;
-};
 
-/**
- * Add a "flags" property to each entry that will either be `false` or a string with the flags
- * to show next to the entry (new page, minor edit, bot action).
- *
- * Must be done *after* the merging of grouped changes, so cannot be a part of normalizeEntries()
- *
- * @param {Array} entries Entries to update
- * @return {Array} updated entries, now with a "flags" property
- */
-GlobalWatchlistWatchlistUtils.prototype.addEntryFlags = function ( entries ) {
-	// Optimization: only fetch the messages a single time
-	// Order to match the display of core
-	var newPageFlag = mw.msg( 'newpageletter' );
-	var minorFlag = mw.msg( 'minoreditletter' );
-	var botFlag = mw.msg( 'boteditletter' );
-	var entryFlags;
-	entries.forEach( function ( entry ) {
+		// New page / minor / bot flags
 		entryFlags = '';
 		if ( entry.newPage === true ) {
 			entryFlags += newPageFlag;
@@ -353,60 +371,20 @@ GlobalWatchlistWatchlistUtils.prototype.addEntryFlags = function ( entries ) {
 		} else {
 			entry.flags = entryFlags;
 		}
-	} );
-	return entries;
-};
 
-/**
- * Truncate the timestamp to only show details down to the minute, see T262176
- *
- * This needs to be done *after* the sorting of edits and log entries by timestamp,
- * which should be done using the full untruncated version, see T286977
- *
- * @param {Array} entries Entries to update
- * @return {Array} updated entries
- */
-GlobalWatchlistWatchlistUtils.prototype.truncateTimestamps = function ( entries ) {
-	entries.forEach( function ( entry ) {
+		// Timestamp normalization
 		// We set the timestamp to false in normalizeEntries if its not available
-		if ( entry.timestamp !== false ) {
+		if ( entry.timestamp ) {
 			// Per T262176, display as
 			// YYYY-MM-DD HH:MM
 			entry.timestamp = entry.timestamp.replace( /T(\d+:\d+):\d+Z/, ' $1' );
 		}
-	} );
-	return entries;
-};
 
-/**
- * Create the HTML to show for the tags associated with an entry. For each tag, if there is
- * a display configured onwiki, that is shown, otherwise its just the name. See
- * {@link GlobalWatchlistSiteBase#getTagList SiteBase#getTagList} for where the info is
- * retrieved.
- *
- * Must be done *after* the merging of grouped changes, so cannot be a part of normalizeEntries()
- *
- * @param {Array} entries Entries to update
- * @param {Object} tagsInfo Keys are tag names, values are the html to display (either the
- *    display text with local links updated, or just the name)
- * @return {Array} updated entries
- */
-GlobalWatchlistWatchlistUtils.prototype.addTagDisplays = function ( entries, tagsInfo ) {
-	// In fast mode no tag info was retrieved, and none of the entries should have tags
-	// that need displaying. We still need to set the `tagsDisplay` property for each
-	// entry though, the display code checks it.
-	if ( Object.keys( tagsInfo ).length === 0 ) {
-		entries.forEach( function ( entry ) {
-			entry.tagsDisplay = false;
-		} );
-		return entries;
-	}
-
-	// We have some possible tags
-	var tagDescriptions;
-	var withLabel;
-	entries.forEach( function ( entry ) {
-		if ( entry.tags.length === 0 ) {
+		// Tags display
+		// In fast mode no tag info was retrieved, so tagsInfo should be an empty object
+		// and none of the entries should have tags that need displaying. We still need to
+		// set the `tagsDisplay` property for each entry though, the display code checks it.
+		if ( noTagsDisplay || entry.tags.length === 0 ) {
 			entry.tagsDisplay = false;
 		} else {
 			// This is the actual building of the display
@@ -415,35 +393,21 @@ GlobalWatchlistWatchlistUtils.prototype.addTagDisplays = function ( entries, tag
 					return tagsInfo[ tagName ];
 				}
 			).join( ', ' );
-			withLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, tagDescriptions );
-			entry.tagsDisplay = mw.msg( 'parentheses', withLabel );
+			tagsWithLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, tagDescriptions );
+			entry.tagsDisplay = mw.msg( 'parentheses', tagsWithLabel );
 		}
-	} );
-	return entries;
-};
 
-/**
- * Set the comment display to include the updated links in edit summaries/log entries.
- * In fast mode, or for grouped changes, there is no comment display.
- *
- * Must be done *after* the merging of grouped changes, so cannot be a part of normalizeEntries()
- *
- * The commentDisplay set here is treated as raw html by both the jQuery and Vue displays. We
- * use the `parsedcomment` result from the api, and MediaWiki core takes care of escaping.
- *
- * @param {Array} entries Entries to update
- * @return {Array} updated entries
- */
-GlobalWatchlistWatchlistUtils.prototype.addCommentDisplays = function ( entries ) {
-	var that = this;
-	entries.forEach( function ( entry ) {
+		// Comment display
 		if ( entry.comment && entry.comment !== '' ) {
 			entry.commentDisplay = ': ' + that.linker.fixLocalLinks( entry.comment );
 		} else {
 			entry.commentDisplay = false;
 		}
+
+		// This is where we will create a new object from entry and add that to a return
+		// array instead, T288385
+		return entry;
 	} );
-	return entries;
 };
 
 /**
@@ -454,8 +418,8 @@ GlobalWatchlistWatchlistUtils.prototype.addCommentDisplays = function ( entries 
  *
  * @param {Array} entries Entries to convert
  * @param {boolean} groupPage Whether to group results by page
- * @param {Object} tagsInfo See {@link GlobalWatchlistWatchlistUtils#addTagDisplays #addTagDisplays}
- *    for details
+ * @param {Object} tagsInfo See details at
+ *    {@link GlobalWatchlistWatchlistUtils#getFinalEntries #getFinalEntries}
  * @return {Array} summary of changes
  */
 GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage, tagsInfo ) {
@@ -532,13 +496,9 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 		}
 	);
 
-	var everything = convertedEdits.concat( logEntries );
-	everything = this.addExpirationMessages( everything );
-	everything = this.addEntryFlags( everything );
-	everything = this.truncateTimestamps( everything );
-	everything = this.addTagDisplays( everything, tagsInfo );
-	everything = this.addCommentDisplays( everything );
-	return everything;
+	convertedEdits = this.getFinalEntries( convertedEdits, tagsInfo );
+	logEntries = this.getFinalEntries( logEntries, tagsInfo );
+	return convertedEdits.concat( logEntries );
 };
 
 module.exports = GlobalWatchlistWatchlistUtils;
