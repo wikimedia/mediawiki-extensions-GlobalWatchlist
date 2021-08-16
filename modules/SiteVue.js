@@ -45,7 +45,7 @@ OO.inheritClass( GlobalWatchlistSiteVue, GlobalWatchlistSiteBase );
 /**
  * Update this.entries for the latest entries to show
  *
- * @param {Array} summary What should be rendered
+ * @param {GlobalWatchlistEntryBase[]} summary What should be rendered
  */
 GlobalWatchlistSiteVue.prototype.renderWatchlist = function ( summary ) {
 	this.entries = summary;

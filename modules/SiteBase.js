@@ -328,7 +328,7 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
  *
  * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}
  *
- * @param {Array} summary What should be rendered
+ * @param {GlobalWatchlistEntryBase[]} summary What should be rendered
  */
 GlobalWatchlistSiteBase.prototype.renderWatchlist = function ( summary ) {
 	// STUB
@@ -337,7 +337,7 @@ GlobalWatchlistSiteBase.prototype.renderWatchlist = function ( summary ) {
 /**
  * Fetch and process wikibase labels when the watchlist is for wikidata
  *
- * @param {Array} summary Original summary, with page titles (Q1, P2, L3, etc.)
+ * @param {GlobalWatchlistEntryBase[]} summary Original summary, with page titles (Q1, P2, L3, etc.)
  * @return {Promise} Updated summary, with labels
  */
 GlobalWatchlistSiteBase.prototype.makeWikidataList = function ( summary ) {

@@ -177,7 +177,7 @@ GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels
  * Set entities' titleMsg (title without the `Property:` or `Lexeme:` prefix) and
  * get a list of the ids to fetch in the form of Q1/P2/L3
  *
- * @param {Array} entries Original summary entries
+ * @param {GlobalWatchlistEntryBase[]} entries Original summary entries
  * @return {Object} updated entries and ids
  */
 GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
@@ -211,7 +211,8 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
  *
  * Promise resolves to the summary entries with updated info
  *
- * @param {Array} summaryEntries Original summary, with page titles (Q1, P2, L3, etc.)
+ * @param {GlobalWatchlistEntryBase[]} summaryEntries Original summary, entries have titleMsg as
+ *   just the plain title (Q1, P2, L3, etc.)
  * @return {Promise} Promise of updated summary, with labels
  */
 GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryEntries ) {

@@ -322,9 +322,16 @@ GlobalWatchlistWatchlistUtils.prototype.normalizeEntries = function ( entries ) 
  * @param {Array} entries Entries to update
  * @param {Object} tagsInfo Keys are tag names, values are the html to display (either the
  *    display text with local links updated, or just the name)
- * @return {Array} updated entries
+ * @param {Function} EntryClass either {@link GlobalWatchlistEntryEdits} or
+ *    {@link GlobalWatchlistEntryLog} to convert entries to
+ * @return {GlobalWatchlistEntryBase[]} updated entries, each entry converted to either
+ *    {@link GlobalWatchlistEntryEdits} or {@link GlobalWatchlistEntryLog}
  */
-GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function ( entries, tagsInfo ) {
+GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
+	entries,
+	tagsInfo,
+	EntryClass
+) {
 	// Watchlist expiry
 	var expirationDate, daysLeft;
 
@@ -404,9 +411,8 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function ( entries, ta
 			entry.commentDisplay = false;
 		}
 
-		// This is where we will create a new object from entry and add that to a return
-		// array instead, T288385
-		return entry;
+		// Convert to relevant entry class, T288385
+		return new EntryClass( entry );
 	} );
 };
 
@@ -420,7 +426,8 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function ( entries, ta
  * @param {boolean} groupPage Whether to group results by page
  * @param {Object} tagsInfo See details at
  *    {@link GlobalWatchlistWatchlistUtils#getFinalEntries #getFinalEntries}
- * @return {Array} summary of changes
+ * @return {GlobalWatchlistEntryBase[]} summary of changes, each change converted to either
+ *    {@link GlobalWatchlistEntryEdits} or {@link GlobalWatchlistEntryLog}
  */
 GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage, tagsInfo ) {
 	var convertedEdits = [],
@@ -496,8 +503,12 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 		}
 	);
 
-	convertedEdits = this.getFinalEntries( convertedEdits, tagsInfo );
-	logEntries = this.getFinalEntries( logEntries, tagsInfo );
+	var GlobalWatchlistEntryEdits = require( './EntryEdits.js' );
+	convertedEdits = this.getFinalEntries( convertedEdits, tagsInfo, GlobalWatchlistEntryEdits );
+
+	var GlobalWatchlistEntryLog = require( './EntryLog.js' );
+	logEntries = this.getFinalEntries( logEntries, tagsInfo, GlobalWatchlistEntryLog );
+
 	return convertedEdits.concat( logEntries );
 };
 

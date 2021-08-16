@@ -5,7 +5,7 @@
 	 * part of the cleanup at a time by only checking some of the properties on
 	 * the updated entries
 	 *
-	 * @param {Array} fullEntries the result of getFinalEntries()
+	 * @param {GlobalWatchlistEntryBase[]} fullEntries the result of getFinalEntries()
 	 * @param {Array} keysToInclude the keys of each entry that should be included
 	 * @return {Array} Objects corresponding to fullEntries but with only the keys
 	 *   that are included in keysToInclude
@@ -26,6 +26,11 @@
 	}
 	var GlobalWatchlistWatchlistUtils = require( '../../../modules/WatchlistUtils.js' );
 	var GlobalWatchlistLinker = require( '../../../modules/Linker.js' );
+
+	// For the getFinalEntries tests, all of the properties we care about are being set on
+	// the base GlobalWatchlistEntryBase class, so even though that is meant to be abstract,
+	// since that isn't enforced in JavaScript lets use that
+	var GlobalWatchlistEntryBase = require( '../../../modules/EntryBase.js' );
 
 	// Set config variables so that the linker can be created properly
 	QUnit.module( 'ext.globalwatchlist.WatchlistUtils', QUnit.newMwEnvironment( {
@@ -337,12 +342,10 @@
 			};
 			allEntries.push( withoutFlags );
 
-			// Expected result, includes the original properties
-			withFlags = {
-				newPage: ( ( iii & 1 ) === 1 ),
-				minor: ( ( iii & 2 ) === 2 ),
-				bot: ( ( iii & 4 ) === 4 )
-			};
+			// Expected result, only the `flags` is saved (GlobalWatchlistEntryEdits also
+			// saves the `newPage` prop, but since it isn't changed we can just focus on
+			// testing that the `flags` was computed properly;includes the original properties
+			withFlags = {};
 			if ( iii === 0 ) {
 				// Would have no flags
 				withFlags.flags = false;
@@ -359,8 +362,8 @@
 
 		// Reduce the fully updated entries to just the parts we are checking
 		var result = getFilteredEntries(
-			watchlistUtils.getFinalEntries( allEntries, {} ),
-			[ 'newPage', 'minor', 'bot', 'flags' ]
+			watchlistUtils.getFinalEntries( allEntries, {}, GlobalWatchlistEntryBase ),
+			[ 'flags' ]
 		);
 		assert.deepEqual(
 			result,
@@ -383,7 +386,7 @@
 
 		// Reduce the fully updated entries to just the parts we are checking
 		var result = getFilteredEntries(
-			watchlistUtils.getFinalEntries( originalEntries, {} ),
+			watchlistUtils.getFinalEntries( originalEntries, {}, GlobalWatchlistEntryBase ),
 			[ 'timestamp' ]
 		);
 		assert.deepEqual(
@@ -403,20 +406,18 @@
 			{ comment: 'foo' },
 			{ comment: '<a href="/wiki/PageName" title="PageName">PageName</a>' }
 		];
+		// Expected result, only the `commentDisplay` is saved
 		var expectedUpdatedEntries = [
-			{ comment: false, commentDisplay: false },
-			{ comment: '', commentDisplay: false },
-			{ comment: 'foo', commentDisplay: ': foo' },
-			{
-				comment: '<a href="/wiki/PageName" title="PageName">PageName</a>',
-				commentDisplay: ': <a href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>'
-			}
+			{ commentDisplay: false },
+			{ commentDisplay: false },
+			{ commentDisplay: ': foo' },
+			{ commentDisplay: ': <a href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>' }
 		];
 
 		// Reduce the fully updated entries to just the parts we are checking
 		var result = getFilteredEntries(
-			watchlistUtils.getFinalEntries( originalEntries, {} ),
-			[ 'comment', 'commentDisplay' ]
+			watchlistUtils.getFinalEntries( originalEntries, {}, GlobalWatchlistEntryBase ),
+			[ 'commentDisplay' ]
 		);
 		assert.deepEqual(
 			result,

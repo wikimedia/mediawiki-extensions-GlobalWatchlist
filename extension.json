@@ -107,6 +107,9 @@
 				"MultiSiteWrapper.js",
 				"SiteBase.js",
 				"SiteDisplay.js",
+				"EntryBase.js",
+				"EntryEdits.js",
+				"EntryLog.js",
 				"WatchlistUtils.js",
 				"WikibaseHandler.js"
 			],
@@ -176,6 +179,9 @@
 				"MultiSiteWrapper.js",
 				"SiteBase.js",
 				"SiteVue.js",
+				"EntryBase.js",
+				"EntryEdits.js",
+				"EntryLog.js",
 				"WatchlistUtils.js",
 				"WikibaseHandler.js",
 				"vue/base/Toggle.vue",
@@ -263,6 +269,7 @@
 			"tests/qunit/getSettings.tests.js",
 			"tests/qunit/WatchlistUtils.tests.js",
 			"modules/Debug.js",
+			"modules/EntryBase.js",
 			"modules/Linker.js",
 			"modules/getSettings.js",
 			"modules/WatchlistUtils.js"

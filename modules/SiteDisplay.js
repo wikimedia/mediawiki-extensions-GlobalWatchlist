@@ -45,7 +45,7 @@ OO.inheritClass( GlobalWatchlistSiteDisplay, GlobalWatchlistSiteBase );
 /**
  * Make the links for a row in the watchlist
  *
- * @param {Object} entry Details of the list entry to create
+ * @param {GlobalWatchlistEntryBase} entry Details of the list entry to create
  * @return {jQuery} list item
  */
 GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
@@ -220,7 +220,7 @@ GlobalWatchlistSiteDisplay.prototype.renderApiFailure = function () {
 /**
  * Display the watchlist
  *
- * @param {Array} summary What should be rendered
+ * @param {GlobalWatchlistEntryBase[]} summary What should be rendered
  */
 GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary ) {
 	var $ul = $( '<ul>' ),
