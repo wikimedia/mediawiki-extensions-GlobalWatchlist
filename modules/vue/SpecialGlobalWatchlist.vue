@@ -312,4 +312,24 @@ module.exports = {
 .ext-globalwatchlist-button-icon path {
 	fill: currentColor;
 }
+
+/*
+ * Copy some core styles from mediawiki.interface.helpers.styles.less to match the normal watchlist:
+ *
+ * - auto-generated edit summaries
+ * - formatting of message when a username is hidden from an edit
+ *
+ * See T288733
+ */
+.autocomment,
+.autocomment a,
+.autocomment a:visited {
+	color: #72777d;
+}
+
+span.history-deleted {
+	text-decoration: line-through;
+	color: #72777d;
+	font-style: italic;
+}
 </style>
