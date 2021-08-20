@@ -207,13 +207,31 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$attachedWikis = CentralAuthUser::getInstance( $this->getUser() )->listAttached();
 
 		// Named $urlForms because the display name of a wiki is like the url that
-		// the user provides - in the form en.wikipedia.org
+		// the user provides - in the form en.wikipedia.org or dev.wiki.local.wmftest.net:8080
 		// the array should not include any empty strings, since WikiMap::getWiki should
 		// always return a WikiReference for sites where the user has an attached account
 		$urlForms = array_map(
 			static function ( $dbName ) {
 				$wiki = WikiMap::getWiki( $dbName );
-				return $wiki ? $wiki->getDisplayName() : '';
+				if ( !$wiki ) {
+					// This should never happen, but just in case
+					return '';
+				}
+				// WikiReference::getDisplayName() only returns the 'host' for
+				// the server url, but we need to also handle sites that include
+				// a port at the end, eg Vagrant wikis. See T289384
+				$bits = wfParseUrl( $wiki->getCanonicalServer() );
+				if ( !$bits ) {
+					// Match behavior of WikiReference::getDisplayName()
+					// Invalid server spec.
+					// There's no sane thing to do here, so just return the canonical server name in full.
+					return $wiki->getCanonicalServer();
+				}
+				$url = $bits['host'];
+				if ( isset( $bits['port'] ) ) {
+					$url .= ':' . $bits['port'];
+				}
+				return $url;
 			},
 			$attachedWikis
 		);
