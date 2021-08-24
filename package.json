@@ -15,9 +15,13 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.11.6",
+		"@storybook/addon-a11y": "6.2.9",
 		"@storybook/addon-actions": "6.2.9",
+		"@storybook/addon-backgrounds": "6.2.9",
 		"@storybook/addon-controls": "6.2.9",
 		"@storybook/addon-docs": "6.2.9",
+		"@storybook/addon-storysource": "6.2.9",
+		"@storybook/addon-viewport": "6.2.9",
 		"@storybook/vue": "6.2.9",
 		"@wdio/cli": "7.4.6",
 		"@wdio/dot-reporter": "7.4.2",

@@ -4,9 +4,13 @@ module.exports = {
 	stories: [ './stories/*.stories.js' ],
 
 	addons: [
-		'@storybook/addon-docs',
-		'@storybook/addon-controls',
+		'@storybook/addon-a11y',
 		'@storybook/addon-actions',
+		'@storybook/addon-backgrounds',
+		'@storybook/addon-controls',
+		'@storybook/addon-docs',
+		'@storybook/addon-storysource',
+		'@storybook/addon-viewport',
 	],
 
 	webpackFinal: ( config ) => {
