@@ -19,7 +19,7 @@ function GlobalWatchlistEntryLog( info ) {
 	/**
 	 * @property {number} logId The log id for this entry
 	 */
-	this.logId = info.logId;
+	this.logid = info.logid;
 
 	/**
 	 * @property {string} logaction The "action" for this log entry, used together with
