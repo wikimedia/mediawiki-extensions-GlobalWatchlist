@@ -18,7 +18,7 @@ function GlobalWatchlistEntryLog( info ) {
 	GlobalWatchlistEntryLog.super.call( this, info );
 
 	/**
-	 * @property {number} logId The log id for this entry
+	 * @property {number} logid The log id for this entry
 	 */
 	this.logid = info.logid;
 
