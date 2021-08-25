@@ -4,6 +4,7 @@
  * @class GlobalWatchlistEntryBase
  * @abstract
  *
+ * @constructor
  * @param {Object} info Should have all of the properties that are documented below
  */
 function GlobalWatchlistEntryBase( info ) {

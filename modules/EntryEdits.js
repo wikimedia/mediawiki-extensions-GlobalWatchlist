@@ -1,4 +1,4 @@
-/**
+/*
  * Extended version of GlobalWatchlistEntryBase for edits
  */
 
@@ -10,6 +10,7 @@ var GlobalWatchlistEntryBase = require( './EntryBase.js' );
  * @class GlobalWatchlistEntryEdits
  * @extends GlobalWatchlistEntryBase
  *
+ * @constructor
  * @param {Object} info Should have all of the properties that are documented below, plus
  *   all those needed by {@link GlobalWatchlistEntryBase}
  */
