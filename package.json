@@ -29,7 +29,7 @@
 		"@wdio/local-runner": "7.4.6",
 		"@wdio/mocha-framework": "7.4.6",
 		"@wdio/sync": "7.4.6",
-		"@wikimedia/wvui": "0.2.0",
+		"@wikimedia/wvui": "0.3.0",
 		"eslint": "7.23.0",
 		"eslint-config-wikimedia": "0.20.0",
 		"grunt-banana-checker": "0.9.0",

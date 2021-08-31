@@ -1,11 +1,12 @@
 <template>
 	<div id="ext-globalwatchlist-vue-specialpage">
 		<global-watchlist-toolbar
+			v-bind:live-updates-active="liveUpdatesActive"
+			v-bind:group-page-active="resultsGrouped"
 			v-bind:liveupdatesdisabled="disableLiveUpdates"
 			v-bind:grouppagedisabled="disableGroupPage"
 			v-bind:refreshdisabled="disableRefresh"
 			v-bind:markalldisabled="disableMarkAll"
-			v-bind:startresultsgrouped="startWithResultsGrouped"
 			v-on:toggle-live-updates="toggleLiveUpdates"
 			v-on:toggle-group-page="toggleGroupPage"
 			v-on:click-refresh="refreshSites"
@@ -18,7 +19,7 @@
 			v-if="inLoading"
 			class="ext-globalwatchlist-vue-loading"
 		>
-			<global-watchlist-loading-bar></global-watchlist-loading-bar>
+			<wvui-progress-bar></wvui-progress-bar>
 		</div>
 
 		<div
@@ -54,7 +55,7 @@
 
 <script>
 var Toolbar = require( './Toolbar.vue' ),
-	LoadingBar = require( './base/LoadingBar.vue' ),
+	WvuiProgressBar = require( 'wvui' ).WvuiProgressBar,
 	SitesWithoutChanges = require( './SitesWithoutChanges.vue' ),
 	Site = require( './Site.vue' );
 
@@ -81,8 +82,8 @@ watchedSites.siteList.forEach( function ( watchedSite ) {
 // @vue/component
 module.exports = {
 	components: {
+		'wvui-progress-bar': WvuiProgressBar,
 		'global-watchlist-toolbar': Toolbar,
-		'global-watchlist-loading-bar': LoadingBar,
 		'global-watchlist-sites-with-changes': Site,
 		'global-watchlist-sites-without-changes': SitesWithoutChanges
 	},
@@ -113,9 +114,7 @@ module.exports = {
 				this.config.time.toUTCString()
 			).text();
 		},
-		startWithResultsGrouped: function () {
-			// It doesn't matter that the config changes, since this is only used
-			// when the toggle for grouping results by page is initially created
+		resultsGrouped: function () {
 			return this.config.groupPage;
 		},
 		disableLiveUpdates: function () {
@@ -309,8 +308,13 @@ module.exports = {
 }
 
 /* Make sure the icon color is the same as the text */
-.ext-globalwatchlist-button-icon path {
-	fill: currentColor;
+.ext-globalwatchlist-button-icon {
+	color: currentColor;
+}
+
+.ext-globalwatchlist-vue-loading .wvui-progress-bar {
+	margin: auto;
+	margin-top: 5px;
 }
 
 /*

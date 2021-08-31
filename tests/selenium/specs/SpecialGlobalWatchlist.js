@@ -82,7 +82,7 @@ describe( 'Special:GlobalWatchlist', function () {
 		assert(
 			content.$( '#ext-globalwatchlist-vue-toolbar button' )
 				.getAttribute( 'class' )
-				.includes( 'wvui-button' )
+				.includes( 'wvui-toggle-button' )
 		);
 
 		// Watchlist should be shown, and include the relevant pageTitle (might not

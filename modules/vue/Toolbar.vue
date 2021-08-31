@@ -2,9 +2,10 @@
 	<div
 		id="ext-globalwatchlist-vue-toolbar"
 	>
-		<global-watchlist-toggle
+		<wvui-toggle-button
+			v-bind:is-active="liveUpdatesActive"
 			v-bind:disabled="disableLiveUpdates"
-			v-on:toggle="toggleLiveUpdates"
+			v-on:change="toggleLiveUpdates"
 		>
 			<wvui-icon
 				class="ext-globalwatchlist-button-icon"
@@ -12,15 +13,15 @@
 			>
 			</wvui-icon>
 			{{ $i18n( 'globalwatchlist-option-live' ).text() }}
-		</global-watchlist-toggle>
+		</wvui-toggle-button>
 
-		<global-watchlist-toggle
-			v-bind:startactive="groupPageStartActive"
+		<wvui-toggle-button
+			v-bind:is-active="groupPageActive"
 			v-bind:disabled="disableGroupPage"
-			v-on:toggle="toggleGroupPage"
+			v-on:change="toggleGroupPage"
 		>
 			{{ $i18n( 'globalwatchlist-option-grouppage' ).text() }}
-		</global-watchlist-toggle>
+		</wvui-toggle-button>
 
 		<wvui-button
 			action="progressive"
@@ -72,17 +73,18 @@
 </template>
 
 <script>
-var Toggle = require( './base/Toggle.vue' );
 
 var WvuiButton = require( 'wvui' ).WvuiButton;
 var WvuiIcon = require( 'wvui' ).WvuiIcon;
+var WvuiToggleButton = require( 'wvui' ).WvuiToggleButton;
 
 /**
  * Toolbar at the top of the page
  *
  * Inputs:
- *  - startresultsgrouped, boolean for whether to starting with results grouped by page
+ *  - liveUpdatesActive, boolean for whether currently in live updates
  *  - liveupdatesdisabled, boolean for whether to disable the live updates toggle
+ *  - groupPageActive, boolean for whether to grouping results by page
  *  - grouppagedisabled, boolean for whether to disable the group results by page toggle
  *  - refreshdisabled, boolean for whether to disable the refresh button
  *  - markalldisabled, boolean for whether to disable the button to mark all sites as seen
@@ -98,17 +100,21 @@ var WvuiIcon = require( 'wvui' ).WvuiIcon;
 // @vue/component
 module.exports = {
 	components: {
-		'global-watchlist-toggle': Toggle,
+		'wvui-toggle-button': WvuiToggleButton,
 		'wvui-button': WvuiButton,
 		'wvui-icon': WvuiIcon
 	},
 
 	props: {
-		startresultsgrouped: {
+		liveUpdatesActive: {
 			type: Boolean,
 			default: false
 		},
 		liveupdatesdisabled: {
+			type: Boolean,
+			default: false
+		},
+		groupPageActive: {
 			type: Boolean,
 			default: false
 		},
@@ -126,19 +132,9 @@ module.exports = {
 		}
 	},
 
-	data: function () {
-		// Need a local copy of liveUpdatesActive to control the displayed icon
-		return {
-			liveUpdatesActive: false
-		};
-	},
-
 	computed: {
 		settingsUrl: function () {
 			return mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:GlobalWatchlistSettings' );
-		},
-		groupPageStartActive: function () {
-			return this.startresultsgrouped;
 		},
 		disableLiveUpdates: function () {
 			return this.liveupdatesdisabled;
@@ -170,7 +166,6 @@ module.exports = {
 			this.$emit( 'toggle-group-page', isActive );
 		},
 		toggleLiveUpdates: function ( isActive ) {
-			this.liveUpdatesActive = isActive;
 			this.$emit( 'toggle-live-updates', isActive );
 		},
 		triggerRefresh: function () {
