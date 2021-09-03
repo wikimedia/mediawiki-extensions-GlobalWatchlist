@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"Fúlvio"
 		]
 	},
 	"globalwatchlist": "Lista de páginas vigiadas globais",
@@ -70,6 +71,7 @@
 	"globalwatchlist-show-logentries": "Mostrar entradas de registro",
 	"globalwatchlist-show-newpages": "Mostrar criações de novas páginas",
 	"globalwatchlist-sitelist": "Lista de sites definidos pelo usuário",
+	"globalwatchlist-tags": "{{PLURAL:$1|Etiqueta|Etiquetas}}: $2",
 	"globalwatchlist-tour-addsite": "Adicionar um site",
 	"globalwatchlist-tour-addsite-description": "Clique acima para adicionar outra linha para um site.",
 	"globalwatchlist-tour-fastmode": "Modo rápido",
