@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"Romaine"
 		]
 	},
 	"globalwatchlist": "Globale volglijst",
@@ -60,6 +61,7 @@
 	"globalwatchlist-sitelist": "Gebruikergedefinieerde lijst met sites",
 	"globalwatchlist-tour-addsite": "Een site toevoegen",
 	"globalwatchlist-tour-fastmode": "Snelle modus",
+	"globalwatchlist-tour-filters": "Filteropties",
 	"globalwatchlist-tour-help": "Meer documentatie",
 	"globalwatchlist-tour-help-description": "Meer documenatie is beschikbaar op mediawiki.org",
 	"globalwatchlist-tour-types": "Type wijzigen",
