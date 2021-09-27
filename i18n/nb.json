@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abuluntu",
 			"Jon Harald Søby"
 		]
 	},
@@ -10,6 +11,7 @@
 	"globalwatchlistsettings": "Innstillinger for global overvåkningsliste",
 	"globalwatchlistsettings-summary": "Spesialside for å behandle en global overvåkningsliste",
 	"globalwatchlist-add": "Legg til",
+	"globalwatchlist-api-error": "Det oppstod en API-feil i kommunikasjonen med \"$1\":",
 	"globalwatchlist-asof": "Per $1",
 	"globalwatchlist-changesfeed": "Nettsteder med endringer",
 	"globalwatchlist-changetypes": "Type endring",
@@ -34,7 +36,10 @@
 	"globalwatchlist-gotoglobal": "Global overvåkningsliste",
 	"globalwatchlist-gotoglobal-tooltip": "Vis global overvåkningsliste",
 	"globalwatchlist-grouped-timestamp": "Tidsstepmelet for den siste endringen vises for grupperte endringer",
+	"globalwatchlist-history": "historikk",
 	"globalwatchlist-javascript-required": "Denne spesialsiden krever JavaScript for å virke",
+	"globalwatchlist-log-entry": "loggoppføring",
+	"globalwatchlist-log-page": "sidelogger",
 	"globalwatchlist-markseen": "Merk alle som sett",
 	"globalwatchlist-markseen-all": "Merk alle nettsteder som sett",
 	"globalwatchlist-markseen-allconfirm": "Er du sikker på at du vil merke alle nettsteder som sett?",
@@ -56,12 +61,16 @@
 	"globalwatchlist-settings-error-anon-bot": "Anonyme brukere kan ikke gjøre botredigeringer",
 	"globalwatchlist-settings-error-anon-minor": "Anonyme brukere kan ikke gjøre mindre redigeringer",
 	"globalwatchlist-settings-error-bad-sites": "Ugyldig(e) nettsted(er): $1",
+	"globalwatchlist-settings-error-duplicate-site": "Siden \"$1\" inkluderes gjentatte ganger.",
+	"globalwatchlist-settings-error-invalid-site": "Det ser ikke ut til at \"$1\" er en wiki hvor du har en CentralAuth-konto.",
 	"globalwatchlist-settings-error-no-sites": "Ingen nettsteder valgt",
 	"globalwatchlist-settings-error-no-types": "Ingen endringstyper valgt",
+	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1 side ble|$1 sider ble}} valgt, mens $2 er maksimalt antall tillatte sider.",
 	"globalwatchlist-show-edits": "Vis sideredigeringer",
 	"globalwatchlist-show-logentries": "Vis loggoppføringer",
 	"globalwatchlist-show-newpages": "Vis sideopprettelser",
 	"globalwatchlist-sitelist": "Brukerdefinert nettstedliste",
+	"globalwatchlist-tags": "{{PLURAL:$1|Tagg|Tagger}}: $2",
 	"globalwatchlist-tour-addsite": "Legg til et nettsted",
 	"globalwatchlist-tour-addsite-description": "Klikk ovenfor for å legge til en ny rad for et nettsted.",
 	"globalwatchlist-tour-fastmode": "Rask modus",
