@@ -5,6 +5,7 @@
 			"Fitoschido",
 			"Hasley",
 			"MarcoAurelio",
+			"McDutchie",
 			"Rodney Araujo",
 			"Suecarmol"
 		]
@@ -76,7 +77,7 @@
 	"globalwatchlist-tour-help-description": "Hay más documentación disponible en mediawiki.org",
 	"globalwatchlist-tour-intro": "Configuración de la lista de seguimiento global",
 	"globalwatchlist-tour-sitelist": "Lista de sitios",
-	"globalwatchlist-tour-types": "Cambiar tipos",
+	"globalwatchlist-tour-types": "Tipos de cambio",
 	"globalwatchlist-unwatch": "dejar de vigilar",
 	"prefs-globalwatchlist": "Lista de seguimiento global"
 }

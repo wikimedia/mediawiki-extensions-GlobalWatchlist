@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
+			"McDutchie",
 			"Romaine"
 		]
 	},
@@ -9,7 +10,7 @@
 	"globalwatchlist-desc": "Voegt een globale volglijst toe",
 	"globalwatchlist-summary": "Speciale pagina om een globale volglijst mee te bekijken",
 	"globalwatchlist-add": "Toevoegen",
-	"globalwatchlist-asof": "Vanaf $1",
+	"globalwatchlist-asof": "Bijgewerkt: $1",
 	"globalwatchlist-changesfeed": "Sites met wijzigingen",
 	"globalwatchlist-changetypes": "Soort wijziging",
 	"globalwatchlist-editwatchlist": "Volglijst bewerken",

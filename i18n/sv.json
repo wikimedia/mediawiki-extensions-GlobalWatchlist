@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"McDutchie",
 			"Pyscowicz",
 			"Sabelöga",
 			"WikiPhoenix"
@@ -84,7 +85,7 @@
 	"globalwatchlist-tour-intro-description": "Tillägget GlobalWatchlist lägger till en specialsida, [[Special:GlobalWatchlist]], för att visa flera bevakningslistor samtidigt. Denna sida används för att ändra inställningarna för den globala bevakningslistan.",
 	"globalwatchlist-tour-sitelist": "Lista över webbplatser",
 	"globalwatchlist-tour-sitelist-description": "Det här är en lista över webbplatser som kommer inkluderas i den globala bevakningslistan. Använd webbplatsens bas-URL, t.ex. <code>sv.wikipedia.org</code>.",
-	"globalwatchlist-tour-types": "Ändra sorter",
+	"globalwatchlist-tour-types": "Ändringstyper",
 	"globalwatchlist-tour-types-description": "Användare kan kontrollera vilka sorters ändringar som kommer visas.",
 	"globalwatchlist-unwatch": "sluta bevaka",
 	"prefs-globalwatchlist": "Global bevakningslista"
