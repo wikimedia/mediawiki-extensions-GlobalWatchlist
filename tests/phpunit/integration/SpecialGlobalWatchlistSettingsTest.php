@@ -410,10 +410,10 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$testContext->setUser( $user );
 		$specialPage->setContext( $testContext );
 
-		$this->assertSame( $specialPage->getDisplayFormat(), 'ooui' );
-		$this->assertSame( $specialPage->getMessagePrefix(), 'globalwatchlist' );
+		$this->assertSame( 'ooui', $specialPage->getDisplayFormat() );
+		$this->assertSame( 'globalwatchlist', $specialPage->getMessagePrefix() );
 		$this->assertTrue( $specialPage->doesWrites() );
-		$this->assertSame( $specialPage->getGroupName(), 'changes' );
+		$this->assertSame( 'changes', $specialPage->getGroupName() );
 		$this->assertTrue( $specialPage->isListed() );
 	}
 
