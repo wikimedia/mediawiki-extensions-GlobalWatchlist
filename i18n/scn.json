@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajeje Brazorf"
+		]
+	},
+	"globalwatchlist": "Lista taliata glubbali",
+	"globalwatchlist-desc": "Agghiunci â lista taliata glubbali",
+	"globalwatchlist-summary": "Pàggina spiciali pi taliari la lista taliata glubbali",
+	"globalwatchlistsettings": "Mpustazziuni dâ lista taliata glubbali",
+	"globalwatchlist-add": "Agghiunci",
+	"globalwatchlist-editwatchlist": "Cancia la lista taliata",
+	"globalwatchlist-emptyfeed": "Siti senza canciamenti",
+	"globalwatchlist-filter-anon": "Canciamenti anònimi",
+	"globalwatchlist-filter-bot": "Canciamenti dî bot",
+	"globalwatchlist-filter-minor": "Canciamenti nichi",
+	"globalwatchlist-filter-not-minor": "Sulu canciamenti nun nichi",
+	"globalwatchlist-filter-only-bot": "Sulu li canciamenti dî bot",
+	"globalwatchlist-filter-only-minor": "Sulu li canciamenti nichi",
+	"globalwatchlist-globalwatchlistlink": "Lista taliata glubbali",
+	"globalwatchlist-globalwatchlistsettingslink": "Mpustazzioni",
+	"globalwatchlist-gotoglobal": "Lista taliata glubbali",
+	"globalwatchlist-gotoglobal-tooltip": "Talìa la lista taliata glubbali",
+	"globalwatchlist-history": "crunuluggìa",
+	"globalwatchlist-log-entry": "vuci dû riggistru",
+	"globalwatchlist-log-page": "riggistri dâ pàggina",
+	"globalwatchlist-markseen": "signa comu già talìatu",
+	"globalwatchlist-notify-heading": "Lista taliata glubbali",
+	"globalwatchlist-otheroptions": "Àutri mpustazzioni",
+	"globalwatchlist-save": "Sarva li mpustazzioni",
+	"globalwatchlist-settings-error-bad-sites": "Situ/i nun vàliddu/i: $1",
+	"globalwatchlist-show-edits": "Ammustra li canciamenti ê pàggini",
+	"globalwatchlist-show-logentries": "Ammustra li vuci di riggistru",
+	"globalwatchlist-show-newpages": "Ammustra li criazzioni di pàggini novi",
+	"globalwatchlist-tags": "{{PLURAL:$1|Etichetta|Etichetti}}: $2",
+	"globalwatchlist-tour-addsite": "Agghiunci nu situ",
+	"globalwatchlist-tour-help": "Cchiù ducumintazzioni",
+	"globalwatchlist-tour-intro": "Mpustazziuni dâ lista taliata glubbali",
+	"globalwatchlist-tour-sitelist": "Elencu di siti",
+	"globalwatchlist-tour-types": "Tipi di canciamenti",
+	"globalwatchlist-unwatch": "nun taliari cchiù",
+	"prefs-globalwatchlist": "Lista taliata glubbali"
+}
