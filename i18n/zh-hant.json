@@ -71,6 +71,7 @@
 	"globalwatchlist-show-logentries": "顯示日誌項目",
 	"globalwatchlist-show-newpages": "顯示新建立頁面",
 	"globalwatchlist-sitelist": "使用者定義網站清單",
+	"globalwatchlist-tags": "{{PLURAL:$1|標籤}}：$2",
 	"globalwatchlist-tour-addsite": "新增站台",
 	"globalwatchlist-tour-addsite-description": "在上方點擊來為站台新增一行。",
 	"globalwatchlist-tour-fastmode": "快速模式",

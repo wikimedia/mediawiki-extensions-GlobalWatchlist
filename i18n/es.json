@@ -6,7 +6,9 @@
 			"Hasley",
 			"MarcoAurelio",
 			"Rodney Araujo",
-			"Suecarmol"
+			"Suecarmol",
+			"Jakeukalane",
+			"McDutchie"
 		]
 	},
 	"globalwatchlist": "Lista de seguimiento global",
@@ -63,7 +65,7 @@
 	"globalwatchlist-settings-error-anon-minor": "Los usuarios anónimos no pueden realizar ediciones menores.",
 	"globalwatchlist-settings-error-bad-sites": "Sitio inválido(s): $1",
 	"globalwatchlist-settings-error-duplicate-site": "El sitio \"$1\" está incluído varias veces.",
-	"globalwatchlist-settings-error-invalid-site": "El sitio «$1» no corresponde a un wiki en el que se tenga una cuenta adjunta a la autenticación central.",
+	"globalwatchlist-settings-error-invalid-site": "El sitio «$1» no corresponde a una wiki en la que se tenga una cuenta adjunta a la autenticación central.",
 	"globalwatchlist-settings-error-no-sites": "No se ha seleccionado ningún sitio",
 	"globalwatchlist-settings-error-no-types": "Ningún tipo de cambio seleccionado",
 	"globalwatchlist-show-edits": "Mostrar ediciones de páginas",
@@ -76,7 +78,7 @@
 	"globalwatchlist-tour-help-description": "Hay más documentación disponible en mediawiki.org",
 	"globalwatchlist-tour-intro": "Configuración de la lista de seguimiento global",
 	"globalwatchlist-tour-sitelist": "Lista de sitios",
-	"globalwatchlist-tour-types": "Cambiar tipos",
+	"globalwatchlist-tour-types": "Tipos de cambio",
 	"globalwatchlist-unwatch": "dejar de vigilar",
 	"prefs-globalwatchlist": "Lista de seguimiento global"
 }
