@@ -1,17 +1,44 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Kwj2772"
 		]
 	},
+	"globalwatchlist-add": "추가",
+	"globalwatchlist-asof": "$1 기준",
+	"globalwatchlist-editwatchlist": "주시문서 목록 편집",
+	"globalwatchlist-filters": "필터",
+	"globalwatchlist-filter-anon": "익명 편집",
+	"globalwatchlist-filter-bot": "봇 편집",
+	"globalwatchlist-filter-minor": "사소한 편집",
+	"globalwatchlist-filter-not-anon": "로그인한 사용자의 편집만",
+	"globalwatchlist-filter-not-bot": "봇이 아닌 편집만",
+	"globalwatchlist-filter-not-minor": "사소한 편집이 아닌 편집만",
+	"globalwatchlist-filter-only-anon": "익명 사용자의 편집만",
+	"globalwatchlist-filter-only-bot": "봇 편집만",
+	"globalwatchlist-filter-only-minor": "사소한 편집만",
+	"globalwatchlist-globalwatchlistsettingslink": "설정",
 	"globalwatchlist-javascript-required": "GlobalWatchlist 특수 문서는 자바스크립트가 있어야 동작합니다",
 	"globalwatchlist-log-page": "문서 기록",
+	"globalwatchlist-markseen": "본 것으로 표시",
+	"globalwatchlist-markseen-all": "모든 사이트를 본 것으로 표시",
 	"globalwatchlist-markseen-allconfirm": "모든 사이트를 본 것으로 표시하시겠습니까?",
 	"globalwatchlist-must-login": "GlobalWatchlist 특수 문서를 사용하려면 로그인해 주십시오",
 	"globalwatchlist-notify-settingssaved": "설정이 저장되었습니다. [[Special:GlobalWatchlist|통합 계정 주시문서 목록으로 돌아갑니다]].",
+	"globalwatchlist-option-live": "실시간 업데이트",
+	"globalwatchlist-otheroptions": "기타 설정",
+	"globalwatchlist-refresh": "새로 고침",
+	"globalwatchlist-remove": "제거",
+	"globalwatchlist-save": "설정 저장",
+	"globalwatchlist-settings-error-anon-bot": "익명 사용자는 봇 편집을 할 수 없습니다",
+	"globalwatchlist-settings-error-anon-minor": "익명 사용자는 사소한 편집을 할 수 없습니다",
+	"globalwatchlist-settings-error-bad-sites": "유효하지 않은 사이트: $1",
 	"globalwatchlist-settings-error-duplicate-site": "\"$1\" 사이트가 여러 번 포함되어 있습니다.",
 	"globalwatchlist-tour-addsite": "사이트 추가",
+	"globalwatchlist-tour-fastmode": "고속 모드",
 	"globalwatchlist-tour-filters": "필터 옵션",
 	"globalwatchlist-tour-help": "추가 설명문서",
-	"globalwatchlist-tour-sitelist": "사이트 목록"
+	"globalwatchlist-tour-sitelist": "사이트 목록",
+	"globalwatchlist-unwatch": "주시 해제"
 }

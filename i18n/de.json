@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hasley",
-			"Umherirrender"
+			"Umherirrender",
+			"AKlapper"
 		]
 	},
 	"globalwatchlist": "Globale Beobachtungsliste",
@@ -36,7 +37,7 @@
 	"globalwatchlist-gotoglobal": "Globale Beobachtungsliste",
 	"globalwatchlist-gotoglobal-tooltip": "Beobachtungsliste ansehen",
 	"globalwatchlist-grouped-timestamp": "Bei gruppierten Änderungen wird der Zeitstempel der letzten Änderung angezeigt",
-	"globalwatchlist-javascript-required": "Diese Spezielseite erfordert JavaScript, um zu funktionieren",
+	"globalwatchlist-javascript-required": "Diese Spezialseite erfordert JavaScript, um zu funktionieren",
 	"globalwatchlist-log-entry": "Logbucheintrag",
 	"globalwatchlist-log-page": "Seitenlogbücher",
 	"globalwatchlist-markseen": "Als gesehen markieren",

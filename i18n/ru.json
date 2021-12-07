@@ -6,7 +6,9 @@
 			"Megakott",
 			"Rubin16",
 			"Teretalexev",
-			"Wileyfoxyx"
+			"Wileyfoxyx",
+			"Kareyac",
+			"Okras"
 		]
 	},
 	"globalwatchlist": "Глобальный список наблюдения",
@@ -41,6 +43,8 @@
 	"globalwatchlist-gotoglobal-tooltip": "Просмотр глобального списка наблюдения",
 	"globalwatchlist-grouped-timestamp": "Временна́я метка показывается для сгруппированных изменений",
 	"globalwatchlist-javascript-required": "Для работы этой служебной страницы требуется JavaScript",
+	"globalwatchlist-log-entry": "запись журнала",
+	"globalwatchlist-log-page": "журналы страницы",
 	"globalwatchlist-markseen": "Отметить как просмотренный",
 	"globalwatchlist-markseen-all": "Отметить все проекты как просмотренные",
 	"globalwatchlist-markseen-allconfirm": "Вы уверены, что хотите отметить все проекты как просмотренные?",

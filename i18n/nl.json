@@ -1,14 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"McDutchie",
+			"Romaine"
 		]
 	},
 	"globalwatchlist": "Globale volglijst",
 	"globalwatchlist-desc": "Voegt een globale volglijst toe",
 	"globalwatchlist-summary": "Speciale pagina om een globale volglijst mee te bekijken",
 	"globalwatchlist-add": "Toevoegen",
-	"globalwatchlist-asof": "Vanaf $1",
+	"globalwatchlist-asof": "Bijgewerkt: $1",
 	"globalwatchlist-changesfeed": "Sites met wijzigingen",
 	"globalwatchlist-changetypes": "Soort wijziging",
 	"globalwatchlist-editwatchlist": "Volglijst bewerken",
@@ -59,6 +61,7 @@
 	"globalwatchlist-sitelist": "Gebruikergedefinieerde lijst met sites",
 	"globalwatchlist-tour-addsite": "Een site toevoegen",
 	"globalwatchlist-tour-fastmode": "Snelle modus",
+	"globalwatchlist-tour-filters": "Filteropties",
 	"globalwatchlist-tour-help": "Meer documentatie",
 	"globalwatchlist-tour-help-description": "Meer documenatie is beschikbaar op mediawiki.org",
 	"globalwatchlist-tour-types": "Type wijzigen",

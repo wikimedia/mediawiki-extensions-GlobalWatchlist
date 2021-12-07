@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dr Lotus Black"
+		]
+	},
+	"globalwatchlist": "ကမ္ဘာလုံးဆိုင်ရာ စောင့်ကြည့်စာရင်း",
+	"globalwatchlist-add": "ပေါင်းထည့်ရန်",
+	"globalwatchlist-asof": "$1 အရ",
+	"globalwatchlist-changetypes": "ပြောင်းလဲမှု အမျိုးအစား",
+	"globalwatchlist-editwatchlist": "စောင့်ကြည့်စာရင်းကို တည်းဖြတ်ရန်",
+	"globalwatchlist-filters": "စိစစ်မှုများ",
+	"globalwatchlist-filter-anon": "အမည်မသိ တည်းဖြတ်မှုများ",
+	"globalwatchlist-filter-bot": "ဘော့ တည်းဖြတ်မှုများ",
+	"globalwatchlist-filter-minor": "အရေးမကြီးသည့် တည်းဖြတ်မှုများ",
+	"globalwatchlist-filter-not-anon": "လော့ဂ်အင်ဝင်ထားသူများ၏ တည်းဖြတ်မှုများသာ",
+	"globalwatchlist-filter-not-bot": "ဘော့မဟုတ်သူ၏ တည်းဖြတ်မှုများသာ",
+	"globalwatchlist-globalwatchlistlink": "ကမ္ဘာလုံးဆိုင်ရာ စောင့်ကြည့်စာရင်း",
+	"globalwatchlist-globalwatchlistsettingslink": "အပြင်အဆင်များ",
+	"globalwatchlist-gotoglobal": "ကမ္ဘာလုံးဆိုင်ရာ စောင့်ကြည့်စာရင်း",
+	"globalwatchlist-notify-heading": "ကမ္ဘာလုံးဆိုင်ရာ စောင့်ကြည့်စာရင်း",
+	"globalwatchlist-notify-savingfailed": "အပြင်အဆင်များကို သိမ်းဆည်းရန် မအောင်မြင်ပါ။ ကျေးဇူးပြု၍ ထပ်မံကြိုးစားပါ။",
+	"globalwatchlist-otheroptions": "အခြားအပြင်အဆင်များ",
+	"globalwatchlist-refresh": "ပြန်လည်ဆန်းသစ်ရန်",
+	"globalwatchlist-remove": "ဖယ်ရှားရန်",
+	"globalwatchlist-save": "အပြင်အဆင်များ သိမ်းရန်",
+	"globalwatchlist-show-edits": "စာမျက်နှာတည်းဖြတ်မှုများကို ပြသရန်",
+	"globalwatchlist-tour-help": "ပိုမိုသော စာရွက်စာတမ်း",
+	"prefs-globalwatchlist": "ကမ္ဘာလုံးဆိုင်ရာ စောင့်ကြည့်စာရင်း"
+}
