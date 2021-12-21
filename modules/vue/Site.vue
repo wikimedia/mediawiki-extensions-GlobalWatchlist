@@ -33,7 +33,7 @@
 			</wvui-button>
 			<ul>
 				<global-watchlist-entry-row
-					v-for="(rowInfo, index) in entries"
+					v-for="( rowInfo, index ) in entries"
 					v-bind:key="index"
 					v-bind:entry="rowInfo"
 					v-bind:pagewatched="rowInfo.pageWatched"

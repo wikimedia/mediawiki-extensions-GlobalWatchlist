@@ -34,9 +34,9 @@
 				</label>
 				<global-watchlist-sites-with-changes
 					v-for="withChanges in sitesWithChangesList"
-					v-bind:key="withChanges['site']"
-					v-bind:site="withChanges['site']"
-					v-bind:entries="withChanges['entries']"
+					v-bind:key="withChanges.site"
+					v-bind:site="withChanges.site"
+					v-bind:entries="withChanges.entries"
 					v-on:unwatch-site-page="onUnwatchSitePage"
 					v-on:rewatch-site-page="onRewatchSitePage"
 					v-on:mark-site-seen="markSiteAsSeen"
