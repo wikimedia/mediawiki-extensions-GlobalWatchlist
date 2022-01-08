@@ -24,11 +24,11 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
-use CentralAuthUser;
 use ExtensionRegistry;
 use FormatJson;
 use FormSpecialPage;
 use HTMLForm;
+use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsLookup;

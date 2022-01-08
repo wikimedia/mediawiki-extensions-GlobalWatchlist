@@ -1,5 +1,9 @@
 <?php
 
+namespace MediaWiki\Extension\CentralAuth\User;
+
+use User;
+
 /**
  * Stub of CentralAuth extension's CentralAuthUser class
  */
