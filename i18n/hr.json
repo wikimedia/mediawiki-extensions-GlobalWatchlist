@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bugoslav"
+			"Bugoslav",
+			"Ponor"
 		]
 	},
 	"globalwatchlist": "Globalne praćene stranice",
@@ -26,7 +27,7 @@
 	"globalwatchlist-filter-only-anon": "Samo uređivanja koja su načinjena anonimno",
 	"globalwatchlist-filter-only-bot": "Samo uređivanja botova",
 	"globalwatchlist-filter-only-minor": "Samo uređivanja koja su označena manjima",
-	"globalwatchlist-getoptions-error": "Detektirana je pogrješka tijekom dohvaćanja pohranjenih suradničkih postavki. Predodređene će biti upotrijebljene umjesto toga.",
+	"globalwatchlist-getoptions-error": "Detektirana je pogreška tijekom dohvaćanja pohranjenih suradničkih postavki. Umjesto njih, bit će upotrijebljene predodređene postavke.",
 	"globalwatchlist-globalwatchlistbacklink": "Natrag na globalne praćene stranice",
 	"globalwatchlist-globalwatchlistlink": "Globalne praćene stranice",
 	"globalwatchlist-globalwatchlistsettingslink": "Postavke",
