@@ -6,6 +6,7 @@
 	},
 	"globalwatchlist": "ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߟߊߞߊ߬ߝߏ߬ߣߍ߲",
 	"globalwatchlist-add": "ߟߊ߬ߘߏ߲߬ߠߌ߲",
+	"globalwatchlist-asof": "$1 ߟߊ߫",
 	"globalwatchlist-changesfeed": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߦߋ߫ ߞߍߦߙߐ ߡߍ߲ ߠߎ߬ ߟߊ߫",
 	"globalwatchlist-changetypes": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߛߎ߯ߦߊ",
 	"globalwatchlist-editwatchlist": "ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߡߊߦߟߍ߬ߡߊ߲߫",
@@ -57,5 +58,7 @@
 	"globalwatchlist-tour-filters": "ߛߍ߲ߛߍ߲ߟߊ߲ ߢߣߊߕߊߟߌ",
 	"globalwatchlist-tour-help": "ߘߐ߬ߛߙߋ߬ߦߊ߬ߟߌ߫ ߜߘߍ ߟߎ߬",
 	"globalwatchlist-tour-sitelist": "ߞߍߦߙߐ ߟߎ߬ ߛߙߍߘߍ",
-	"globalwatchlist-tour-types": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߛߎ߯ߦߊ ߟߎ߫"
+	"globalwatchlist-tour-types": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߛߎ߯ߦߊ ߟߎ߫",
+	"globalwatchlist-unwatch": "ߘߐߜߍߓߊߟߌ",
+	"prefs-globalwatchlist": "ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߟߊߞߊ߬ߝߏ߬ߣߍ߲"
 }
