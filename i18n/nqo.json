@@ -6,6 +6,7 @@
 	},
 	"globalwatchlist": "ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߟߊߞߊ߬ߝߏ߬ߣߍ߲",
 	"globalwatchlist-add": "ߟߊ߬ߘߏ߲߬ߠߌ߲",
+	"globalwatchlist-asof": "$1 ߟߊ߫",
 	"globalwatchlist-changesfeed": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߦߋ߫ ߞߍߦߙߐ ߡߍ߲ ߠߎ߬ ߟߊ߫",
 	"globalwatchlist-changetypes": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߛߎ߯ߦߊ",
 	"globalwatchlist-editwatchlist": "ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߡߊߦߟߍ߬ߡߊ߲߫",
@@ -29,6 +30,8 @@
 	"globalwatchlist-gotoglobal-tooltip": "ߜߋ߬ߟߎ߬ߠߌ߲߬ ߛߙߍߘߍ ߟߊߞߊ߬ߝߏ߬ߣߍ߲ ߦߋ߫",
 	"globalwatchlist-history": "ߘߐ߬ߝߐ",
 	"globalwatchlist-javascript-required": "ߞߐߜߍ߫߫ ߞߙߍߞߙߍߣߍ߲ ߣߌ߲߬ ߡߊ߬ߞߏ ߦߋ߫ ߖߝ߭ߊߛߑߞߙߌߔߕ ߟߊߓߊ߯ߙߊ ߟߊ߫",
+	"globalwatchlist-log-entry": "ߕߋ߬ߟߋ߲ ߘߏ߲߬ߠߌ߲",
+	"globalwatchlist-log-page": "ߞߐߜߍ ߕߋ߬ߟߋ߲",
 	"globalwatchlist-markseen": "ߊ߬ ߣߐ߬ߣߐ߬ ߦߋߣߍ߲ ߘߌ߫",
 	"globalwatchlist-markseen-all": "ߞߍߦߙߐ ߟߎ߬ ߓߍ߯ ߣߐ߬ߣߐ߬ ߦߋߣߍ߲ ߘߌ߫",
 	"globalwatchlist-markseen-allconfirm": "ߊ߬ ߝߐ߫ ߌ ߟߊߣߍ߲߫ ߊ߬ ߟߊ߫ ߞߴߌ ߦߴߊ߬ ߝߍ߬ ߞߊ߬ ߞߍߦߙߐ ߟߎ߬ ߓߍ߯ ߣߐ߬ߣߐ߬ ߦߋߣߍ߲ ߘߌ߫؟",
@@ -37,6 +40,8 @@
 	"globalwatchlist-notify-savingfailed": "ߟߊ߬ߓߍ߲߬ߢߐ߲߰ߡߦߊ߬ߘߊ ߟߎ߬ ߟߊߞߎ߲߬ߘߎ ߓߘߊ߫ ߗߌߙߏ߲߫. ߊ߬ ߡߊߝߍߣߍ߲߫ ߌߞߐ߫ ߖߊ߰ߣߌ߲߫",
 	"globalwatchlist-notify-settingssaved": "ߌ ߟߊ߫ ߟߊ߬ߓߍ߲߬ߢߐ߲߰ߡߦߊ߬ߘߊ ߟߎ߬ ߓߘߊ߫ ߟߊߞߎ߲߬ߘߎ߫. \n[[Special:GlobalWatchlist|ߌ ߞߐߛߊ߬ߦߌ߬ ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߟߊߞߊ߬ߝߏ߬ߣߍ߲ ߡߊ߬]].",
 	"globalwatchlist-option-confirmallsites": "ߟߊ߬ߛߙߋ߬ߦߊ߬ߟߌ ߡߊߢߌ߬ߣߌ߲߬ߞߊ߬ߣߍ߲߫ ߦߋ߫ ߦߊ߬ߣߴߌ ߞߍߕߐ߫ ߞߍߦߙߐ ߟߎ߬ ߓߍ߯ ߣߐ߬ߣߐ߬ ߟߊ߫ ߦߋߣߍ߲ ߘߌ߫",
+	"globalwatchlist-option-fastmode": "ߞߵߊ߬ ߟߊߢߎ߲߫ ߞߊߟߌߦߊ߫ ߘߐ߫ ߞߊ߬ ߝߊߙߊ߲ߝߊ߯ߛߌ߫ ߡߊߓߍ߲߬",
+	"globalwatchlist-option-grouppage": "ߞߙߎ ߞߐߝߟߌ ߞߐߜߍ ߡߊ߬",
 	"globalwatchlist-option-live": "ߟߏ߲ߘߐߦߊߟߌ ߝߊ߲ߞߊߢߊ߯",
 	"globalwatchlist-otheroptions": "ߟߊ߬ߓߍ߲߬ߢߐ߲߰ߡߦߊ߬ߘߊ߫ ߜߘߍ ߟߎ߬",
 	"globalwatchlist-remove": "ߊ߬ ߛߋ߲߬ߓߐ߫",
@@ -57,5 +62,7 @@
 	"globalwatchlist-tour-filters": "ߛߍ߲ߛߍ߲ߟߊ߲ ߢߣߊߕߊߟߌ",
 	"globalwatchlist-tour-help": "ߘߐ߬ߛߙߋ߬ߦߊ߬ߟߌ߫ ߜߘߍ ߟߎ߬",
 	"globalwatchlist-tour-sitelist": "ߞߍߦߙߐ ߟߎ߬ ߛߙߍߘߍ",
-	"globalwatchlist-tour-types": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߛߎ߯ߦߊ ߟߎ߫"
+	"globalwatchlist-tour-types": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߛߎ߯ߦߊ ߟߎ߫",
+	"globalwatchlist-unwatch": "ߘߐߜߍߓߊߟߌ",
+	"prefs-globalwatchlist": "ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߟߊߞߊ߬ߝߏ߬ߣߍ߲"
 }
