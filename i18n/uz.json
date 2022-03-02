@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jamshiduralovofficial"
+			"Jamshiduralovofficial",
+			"Malikxan"
 		]
 	},
+	"globalwatchlist-option-grouppage": "Natijalarni sahifaga koʻra guruhlash",
 	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL: $1 | $1 sayt tanlandi | $1 sayt tanlandi}}, bu ruxsat berilgan saytlarning maksimal miqdoridan $2 dan oshdi."
 }
