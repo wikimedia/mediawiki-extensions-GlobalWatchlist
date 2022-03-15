@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rail"
+			"Rail",
+			"MarMi wiki"
 		]
 	},
 	"globalwatchlist": "Globalna lista obserwowanych",
@@ -10,11 +11,13 @@
 	"globalwatchlistsettings": "Ustawienia globalnej listy obserwowanych",
 	"globalwatchlistsettings-summary": "Strona specjalna pozwalająca na zarządzanie globalną listą obserwowanych",
 	"globalwatchlist-add": "Dodaj",
+	"globalwatchlist-api-error": "Wystąpił błąd API podczas interakcji z \"$1\":",
 	"globalwatchlist-asof": "Na dzień $1",
 	"globalwatchlist-changesfeed": "Strony ze zmianami",
 	"globalwatchlist-changetypes": "Rodzaj zmiany",
 	"globalwatchlist-editwatchlist": "Edytuj listę obserwowanych",
 	"globalwatchlist-emptyfeed": "Strony bez zmian",
+	"globalwatchlist-fetch-site-failure": "Nie udało się pobrać zmian",
 	"globalwatchlist-filters": "Filtry",
 	"globalwatchlist-filter-anon": "Edycje anonimowe",
 	"globalwatchlist-filter-bot": "Edycje botów",
@@ -26,13 +29,17 @@
 	"globalwatchlist-filter-only-anon": "Tylko anonimowe edycje",
 	"globalwatchlist-filter-only-bot": "Tylko edycje botów",
 	"globalwatchlist-filter-only-minor": "Tylko drobne edycje",
+	"globalwatchlist-getoptions-error": "Wykryto błąd podczas pobierania zapisanych ustawień użytkownika. Zostaną użyte wartości domyślne.",
 	"globalwatchlist-globalwatchlistbacklink": "Wróć do globalnej listy obserwowanych",
 	"globalwatchlist-globalwatchlistlink": "Globalna lista obserwowanych",
 	"globalwatchlist-globalwatchlistsettingslink": "Ustawienia",
 	"globalwatchlist-gotoglobal": "Globalna lista obserwowanych",
 	"globalwatchlist-gotoglobal-tooltip": "Zobacz globalną listę obserwowanych",
+	"globalwatchlist-grouped-timestamp": "Znacznik czasowy ostatniej zmiany w zgrupowanych zmianach",
 	"globalwatchlist-javascript-required": "Ta strona specjalna wymaga do działania włączonego JavaScriptu",
-	"globalwatchlist-markseen": "Oznacz jako odwoedzoną",
+	"globalwatchlist-log-entry": "wpis dziennika",
+	"globalwatchlist-log-page": "dzienniki strony",
+	"globalwatchlist-markseen": "Oznacz jako odwiedzoną",
 	"globalwatchlist-markseen-all": "Oznacz wszystkie strony jako odwiedzone",
 	"globalwatchlist-markseen-allconfirm": "Czy na pewno chcesz oznaczyć wszystkie strony jako odwiedzone?",
 	"globalwatchlist-notify-heading": "Globalna lista obserwowanych",
