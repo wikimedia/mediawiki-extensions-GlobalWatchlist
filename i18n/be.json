@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chadyka"
+		]
+	},
+	"globalwatchlist": "Глабальны спіс назірання",
+	"globalwatchlist-desc": "Дадае глабальны спіс назірання",
+	"globalwatchlist-summary": "Адмысловая старонка для прагляду глабальнага спісу назірання",
+	"globalwatchlistsettings": "Налады глабальнага спісу назірання",
+	"globalwatchlistsettings-summary": "Адмысловая старонка для кіравання глабальным спісам назірання",
+	"globalwatchlist-api-error": "Адбылася памылка API пры ўзаемадзеянні з адрасам «$1»:",
+	"globalwatchlist-asof": "Па стану на $1",
+	"globalwatchlist-changesfeed": "Вікі са зменамі",
+	"globalwatchlist-changetypes": "Тып змены",
+	"globalwatchlist-editwatchlist": "Правіць спіс назірання",
+	"globalwatchlist-emptyfeed": "Вікі без зменаў",
+	"globalwatchlist-fetch-site-failure": "Не ўдалося атрымаць змены",
+	"globalwatchlist-filters": "Фільтры",
+	"globalwatchlist-filter-anon": "Ананімныя праўкі",
+	"globalwatchlist-filter-bot": "Праўкі бота",
+	"globalwatchlist-filter-either": "Ці",
+	"globalwatchlist-filter-minor": "Дробныя праўкі"
+}
