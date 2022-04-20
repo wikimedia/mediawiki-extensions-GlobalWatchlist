@@ -8,7 +8,8 @@
 			"Rodney Araujo",
 			"Suecarmol",
 			"Jakeukalane",
-			"McDutchie"
+			"McDutchie",
+			"DiegoAmbrocio"
 		]
 	},
 	"globalwatchlist": "Lista de seguimiento global",
@@ -74,11 +75,13 @@
 	"globalwatchlist-sitelist": "Sitios definidos por el usuario",
 	"globalwatchlist-tour-addsite": "Añadir un sitio",
 	"globalwatchlist-tour-fastmode": "Modo rápido",
+	"globalwatchlist-tour-filters": "Opciones de filtrado",
 	"globalwatchlist-tour-help": "Más documentación",
 	"globalwatchlist-tour-help-description": "Hay más documentación disponible en mediawiki.org",
 	"globalwatchlist-tour-intro": "Configuración de la lista de seguimiento global",
 	"globalwatchlist-tour-sitelist": "Lista de sitios",
 	"globalwatchlist-tour-types": "Tipos de cambio",
+	"globalwatchlist-tour-types-description": "Los usuarios pueden controlar qué tipos de cambios deben mostrarse.",
 	"globalwatchlist-unwatch": "dejar de vigilar",
 	"prefs-globalwatchlist": "Lista de seguimiento global"
 }
