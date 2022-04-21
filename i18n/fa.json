@@ -15,6 +15,7 @@
 	"globalwatchlist-asof": "تا $1",
 	"globalwatchlist-changetypes": "نوع تغییر",
 	"globalwatchlist-editwatchlist": "ویرایش فهرست پیگیری‌",
+	"globalwatchlist-fetch-site-failure": "واکشی تغییرات شکست خورد",
 	"globalwatchlist-filters": "پالایه‌ها",
 	"globalwatchlist-filter-anon": "ویرایش‌های ناشناس",
 	"globalwatchlist-filter-bot": "ویرایش ربات‌ها",
