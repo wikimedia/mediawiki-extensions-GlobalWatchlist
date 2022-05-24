@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chadyka"
+			"Chadyka",
+			"No Sleep till Krupki"
 		]
 	},
 	"globalwatchlist": "Глабальны спіс назірання",
@@ -63,7 +64,7 @@
 	"globalwatchlist-settings-error-invalid-site": "«$1» не супадае з вікі, дзе у вас ёсць далучаны рахунак CentralAuth.",
 	"globalwatchlist-settings-error-no-sites": "Вікі не выбрана",
 	"globalwatchlist-settings-error-no-types": "Тыпы змяненняў не выбраны",
-	"globalwatchlist-settings-error-too-many-sites": "Вы выбралі $1 вікі, і гэта перавышае $2, максімальную колькасць дазволеных вікі.",
+	"globalwatchlist-settings-error-too-many-sites": "Вы выбралі {{PLURAL:$1|$1 вікі}}, і гэта перавышае $2, максімальную колькасць дазволеных вікі.",
 	"globalwatchlist-show-edits": "Паказваць праўкі на старонках",
 	"globalwatchlist-show-logentries": "Паказваць запісы журналаў",
 	"globalwatchlist-show-newpages": "Паказваць стварэнне новых старонак",
