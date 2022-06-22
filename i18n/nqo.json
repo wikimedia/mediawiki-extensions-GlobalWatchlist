@@ -5,7 +5,12 @@
 		]
 	},
 	"globalwatchlist": "ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߟߊߞߊ߬ߝߏ߬ߣߍ߲",
+	"globalwatchlist-desc": "ߖߊ߯ߓߊ ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߝߊ߬ߙߊ߫",
+	"globalwatchlist-summary": "ߞߐߜߍ߫ ߞߙߍߞߙߍߣߍ߲ ߛߊ߫ ߞߊ߬ ߖߊ߯ߓߊ ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߦߋ߫",
+	"globalwatchlistsettings": "ߖߊ߯ߓߊ ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߟߊ߬ߓߍ߲߬ߢߐ߲߰ߡߦߊ߬ߘߊ ߟߎ߫",
+	"globalwatchlistsettings-summary": "ߞߐߜߍ߫ ߞߙߍߞߙߍߣߍ߲߫ ߛߊ߫ ߞߊ߬ ߖߊ߯ߓߊ ߜߋ߬ߟߎ߲߬ߠߌ߲߬ ߛߙߍߘߍ ߘߐߛߌ߰",
 	"globalwatchlist-add": "ߟߊ߬ߘߏ߲߬ߠߌ߲",
+	"globalwatchlist-api-error": "API ߝߎ߬ߕߎ߲߬ߕߌ ߘߏ߫ ߓߘߊ߫ ߓߌ߬ߟߴߊ߬ ߘߐ߫ ߞߍߢߐ߲߯ߠߊ ߕߎ߬ߡߊ ߟߊ߫ \"$1\" ߘߌ߫:",
 	"globalwatchlist-asof": "$1 ߟߊ߫",
 	"globalwatchlist-changesfeed": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߦߋ߫ ߞߍߦߙߐ ߡߍ߲ ߠߎ߬ ߟߊ߫",
 	"globalwatchlist-changetypes": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߛߎ߯ߦߊ",
