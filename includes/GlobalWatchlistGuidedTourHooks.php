@@ -26,7 +26,7 @@ namespace MediaWiki\Extension\GlobalWatchlist;
 
 use ExtensionRegistry;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
-use ResourceLoader;
+use MediaWiki\ResourceLoader\ResourceLoader;
 
 /**
  * @author DannyS712
