@@ -4,11 +4,19 @@
 			"Yupik"
 		]
 	},
+	"globalwatchlist": "Riâžldõkveiddsõs valvvâmlistt",
+	"globalwatchlistsettings": "Riâžldõkveiddsõs valvvâmliist asetõõzz",
 	"globalwatchlist-add": "Lââʹzzet",
 	"globalwatchlist-editwatchlist": "Muuʹtt valvvâmliist",
 	"globalwatchlist-filter-minor": "Muttsa",
+	"globalwatchlist-globalwatchlistlink": "Riâžldõkveiddsõs valvvâmlistt",
 	"globalwatchlist-globalwatchlistsettingslink": "Asetõõzz",
+	"globalwatchlist-gotoglobal": "Riâžldõkveiddsõs valvvâmlistt",
+	"globalwatchlist-gotoglobal-tooltip": "Čuäʹjet riâžldõkveiddsõs valvvâmliist",
+	"globalwatchlist-history": "historia",
+	"globalwatchlist-notify-heading": "Riâžldõkveiddsõs valvvâmlistt",
 	"globalwatchlist-otheroptions": "Jeeʹres asetõõzz",
 	"globalwatchlist-save": "Ruõkk asetõõzzid",
-	"globalwatchlist-show-newpages": "Čuäʹjet ođđ seeidaid"
+	"globalwatchlist-show-newpages": "Čuäʹjet ođđ seeidaid",
+	"prefs-globalwatchlist": "Riâžldõkveiddsõs valvvâmlistt"
 }
