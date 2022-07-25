@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
-			"Kizule"
+			"Kizule",
+			"Vlad5250"
 		]
 	},
 	"globalwatchlist": "Глобални списак надгледања",
@@ -32,7 +33,9 @@
 	"globalwatchlist-globalwatchlistsettingslink": "Подешавања",
 	"globalwatchlist-gotoglobal": "Глобални списак",
 	"globalwatchlist-gotoglobal-tooltip": "Погледајте глобални списак надгледања",
+	"globalwatchlist-history": "историја",
 	"globalwatchlist-javascript-required": "Потребан је JavaScript",
+	"globalwatchlist-log-page": "дневници странице",
 	"globalwatchlist-markseen": "Означи као погледано",
 	"globalwatchlist-markseen-all": "Означи све пројекте као погледане",
 	"globalwatchlist-markseen-allconfirm": "Желите ли заиста да означите све пројекте као погледане?",
@@ -61,6 +64,9 @@
 	"globalwatchlist-show-newpages": "Нове странице",
 	"globalwatchlist-sitelist": "Списак пројеката",
 	"globalwatchlist-tags": "{{PLURAL:$1|Ознака|Ознаке}}: $2",
+	"globalwatchlist-tour-addsite": "Додај сајт",
+	"globalwatchlist-tour-intro": "Подешавања глобалног списка надгледања",
+	"globalwatchlist-tour-sitelist": "Списак сајтова",
 	"globalwatchlist-unwatch": "прекини надгледање",
 	"prefs-globalwatchlist": "Глобални списак надгледања"
 }
