@@ -21,5 +21,7 @@
 	"globalwatchlist-refresh": "Peiʹvved",
 	"globalwatchlist-save": "Ruõkk asetõõzzid",
 	"globalwatchlist-show-newpages": "Čuäʹjet ođđ seeidaid",
+	"globalwatchlist-tags": "{{PLURAL:$1|ǩeâlǥal|ǩeâlggal|ǩeâlggled}}: $2",
+	"globalwatchlist-tour-addsite": "Lââʹzzet seiddõõžž",
 	"prefs-globalwatchlist": "Riâžldõkveiddsõs valvvâmlistt"
 }
