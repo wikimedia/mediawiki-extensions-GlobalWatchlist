@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Atmark-chan",
-			"Omotecho"
+			"Omotecho",
+			"春春眠眠"
 		]
 	},
 	"globalwatchlist": "グローバルウォッチリスト",
@@ -36,6 +37,7 @@
 	"globalwatchlist-gotoglobal": "グローバルウォッチリスト",
 	"globalwatchlist-gotoglobal-tooltip": "グローバルウォッチリストを閲覧",
 	"globalwatchlist-grouped-timestamp": "グループ化された変更については、最新の変更のタイムスタンプが表示されます",
+	"globalwatchlist-history": "履歴",
 	"globalwatchlist-javascript-required": "この特別ページの動作にはJavaScriptが必要です",
 	"globalwatchlist-log-entry": "ログの記録",
 	"globalwatchlist-log-page": "ページの記録",
@@ -69,6 +71,7 @@
 	"globalwatchlist-show-logentries": "ログ記録を表示",
 	"globalwatchlist-show-newpages": "新規作成されたページを表示",
 	"globalwatchlist-sitelist": "利用者が定義したサイト一覧",
+	"globalwatchlist-tags": "{{PLURAL:$1|タグ}}: $2",
 	"globalwatchlist-tour-addsite": "サイトを追加",
 	"globalwatchlist-tour-addsite-description": "新しい行にサイトを追加するには、上をクリックします。",
 	"globalwatchlist-tour-fastmode": "高速モード",
