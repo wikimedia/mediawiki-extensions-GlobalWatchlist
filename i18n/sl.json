@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"globalwatchlist": "Globalni spisek nadzorov",
+	"globalwatchlistsettings": "Nastavitve globalnega spiska nadzorov",
+	"globalwatchlist-add": "Dodaj",
+	"globalwatchlist-prefs-settings": "Za urejanje nastavitev globalnega spiska nadzorov obiščite stran [[Special:GlobalWatchlistSettings]].",
+	"globalwatchlist-remove": "Odstrani",
+	"globalwatchlist-sitelist": "Uporabniško določeni seznam mest"
+}
