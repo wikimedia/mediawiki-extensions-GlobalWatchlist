@@ -226,6 +226,7 @@
 				"watchlist-expiring-days-full-text",
 				"watchlist-expiring-hours-full-text"
 			],
+			"es6": true,
 			"dependencies": [
 				"es6-polyfills",
 				"vue",
