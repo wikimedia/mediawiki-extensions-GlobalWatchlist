@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"globalwatchlist": "Globalne praćene stranice",
+	"globalwatchlist-desc": "Dodaje spisak globalnih praćenih stranica",
+	"globalwatchlist-summary": "Posebna stranica za pregled spiska globalnih praćenih stranica",
+	"globalwatchlistsettings": "Postavke globalnih praćenih stranica",
+	"globalwatchlistsettings-summary": "Posebna stranica za upravljanje spiskom globalnih praćenih stranica",
+	"globalwatchlist-add": "Dodaj",
+	"globalwatchlist-api-error": "Došlo je do pogreške priložnika tijekom interakcije s \"$1\":",
+	"globalwatchlist-asof": "Ažurirano: $1",
+	"globalwatchlist-changesfeed": "Mrežna mjesta s promjenama",
+	"globalwatchlist-changetypes": "Vrsta promjene",
+	"globalwatchlist-editwatchlist": "Uredi spisak praćenja",
+	"globalwatchlist-emptyfeed": "Mrežna mjesta bez promjena"
+}
