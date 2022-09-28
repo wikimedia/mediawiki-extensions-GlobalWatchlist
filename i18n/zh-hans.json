@@ -56,7 +56,7 @@
 	"globalwatchlist-notify-settingssaved": "您的设置已保存。[[Special:GlobalWatchlist|返回全域监视列表]]。",
 	"globalwatchlist-option-confirmallsites": "在将所有站点标记为可见之前需要确认",
 	"globalwatchlist-option-fastmode": "加载速度更快，但细节较少",
-	"globalwatchlist-option-grouppage": "按页面分组结果",
+	"globalwatchlist-option-grouppage": "依据页面对结果进行分组",
 	"globalwatchlist-option-live": "动态更新",
 	"globalwatchlist-otheroptions": "其他设置",
 	"globalwatchlist-prefs-settings": "要设置全域监视列表的首选项，请访问[[Special:GlobalWatchlistSettings]]。",
