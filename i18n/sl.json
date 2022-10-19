@@ -10,7 +10,7 @@
 	"globalwatchlistsettings": "Nastavitve globalnega spiska nadzorov",
 	"globalwatchlistsettings-summary": "Posebna stran za urejanje globalnega spiska nadzorov",
 	"globalwatchlist-add": "Dodaj",
-	"globalwatchlist-api-error": "Pri interakciji z »$1« se je pojavila API-napaka:",
+	"globalwatchlist-api-error": "Pri interakciji z »$1« je prišlo do napake API-ja:",
 	"globalwatchlist-asof": "Čas: $1",
 	"globalwatchlist-changesfeed": "Mesta s spremembami",
 	"globalwatchlist-changetypes": "Vrsta spremembe",
