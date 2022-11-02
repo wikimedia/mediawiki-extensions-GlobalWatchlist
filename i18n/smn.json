@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Seipinne"
+			"Seipinne",
+			"Yupik"
 		]
 	},
 	"globalwatchlist-add": "Lasseet",
@@ -9,5 +10,7 @@
 	"globalwatchlist-filter-minor": "Smavvâ nubástusah",
 	"globalwatchlist-globalwatchlistsettingslink": "Asâttâsah",
 	"globalwatchlist-history": "historjá",
+	"globalwatchlist-remove": "Siho",
+	"globalwatchlist-save": "Vuorkkii asâttâsâid",
 	"globalwatchlist-unwatch": "jooskâ tarkkuustâllâm"
 }
