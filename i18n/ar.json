@@ -3,7 +3,8 @@
 		"authors": [
 			"Dr. Mohammed",
 			"Tala Ali",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Meno25"
 		]
 	},
 	"globalwatchlist": "قائمة المراقبة العالمية",
@@ -22,7 +23,7 @@
 	"globalwatchlist-gotoglobal": "قائمة المراقبة العالمية",
 	"globalwatchlist-must-login": "الرجاء تسجيل الدخول لاستخدام الصفحات الخاصة بقائمة المراقبة العالمية",
 	"globalwatchlist-notify-heading": "قائمة المراقبة العالمية",
-	"globalwatchlist-notify-settingssaved": "حُفظت إعداداتك",
+	"globalwatchlist-notify-settingssaved": "حُفظت إعداداتك. [[Special:GlobalWatchlist|Return to global watchlist]].",
 	"globalwatchlist-option-live": "التحديثات الحالية",
 	"globalwatchlist-otheroptions": "إعدادات أخرى",
 	"globalwatchlist-remove": "أزل",
