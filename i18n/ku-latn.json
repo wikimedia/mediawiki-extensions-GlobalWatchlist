@@ -3,7 +3,8 @@
 		"authors": [
 			"Balyozxane",
 			"Bikarhêner",
-			"Guherto"
+			"Guherto",
+			"Ghybu"
 		]
 	},
 	"globalwatchlist": "Lîsteya şopandinê ya global",
@@ -26,7 +27,7 @@
 	"globalwatchlist-option-grouppage": "Encamên komî li gor rûpelê",
 	"globalwatchlist-option-live": "Nûkirinên zindî",
 	"globalwatchlist-otheroptions": "Eyarên din",
-	"globalwatchlist-refresh": "Nû bike",
+	"globalwatchlist-refresh": "Rojane bike",
 	"globalwatchlist-remove": "Jê bibe",
 	"globalwatchlist-save": "Eyaran qeyd bike",
 	"globalwatchlist-settings-error-bad-sites": "Malpera/ên nederbasdar: $1",
