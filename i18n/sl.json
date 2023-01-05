@@ -84,5 +84,6 @@
 	"globalwatchlist-tour-sitelist-description": "To je seznam mest, ki bodo vključena v globalni spisek nadzorov. Uporabite osnovni URL mesta, npr. <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Vrste sprememb",
 	"globalwatchlist-tour-types-description": "Uporabniki lahko določajo, katere vrste sprememb naj se prikažejo.",
-	"globalwatchlist-unwatch": "odopazuj"
+	"globalwatchlist-unwatch": "odopazuj",
+	"prefs-globalwatchlist": "Globalni spisek nadzorov"
 }
