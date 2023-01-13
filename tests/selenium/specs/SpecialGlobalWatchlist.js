@@ -9,8 +9,8 @@ const assert = require( 'assert' ),
 describe( 'Special:GlobalWatchlist', function () {
 	let pageTitle;
 
-	before( () => {
-		LoginPage.loginAdmin();
+	before( async () => {
+		await LoginPage.loginAdmin();
 
 		pageTitle = Util.getTestString( 'GlobalWatchlist-page-' );
 
@@ -19,81 +19,70 @@ describe( 'Special:GlobalWatchlist', function () {
 		// So, after the edit is made we need to reset the notification timestamp to
 		// beforehand, so that the edit is shown on Special:GlobalWatchlist, which
 		// only shows unseen changes (unlike the default for Special:Watchlist).
-		// We need to use browser.call with the async function instead of making this
-		// entire before handler async because that would break the LoginPage.loginAdmin()
-		// call due to Selenium's asyncronous execution model.
-		browser.call( async () => {
-			const bot = await Api.bot();
-			await bot.edit(
-				pageTitle,
-				'summary',
-				{ watchlist: 'watch' }
-			);
-			await bot.request( {
-				action: 'setnotificationtimestamp',
-				timestamp: '2021-01-01T00:00:00.000Z',
-				titles: pageTitle,
-				token: bot.editToken
-			} );
+		const bot = await Api.bot();
+		await bot.edit(
+			pageTitle,
+			'summary',
+			{ watchlist: 'watch' }
+		);
+		await bot.request( {
+			action: 'setnotificationtimestamp',
+			timestamp: '2021-01-01T00:00:00.000Z',
+			titles: pageTitle,
+			token: bot.editToken
 		} );
 
 		// This cookie allows us to use the `displayversion` parameter to test both the
 		// OOUI and the Vue versions of the display even when $wgGlobalWatchlistDevMode is
 		// false, so that we don't need to have it by true by default.
-		browser.setCookies( {
+		await browser.setCookies( {
 			name: 'mw-globalwatchlist-selenium-test',
 			value: '1'
 		} );
 	} );
 
-	it( 'works with normal display', function () {
-		GlobalWatchlist.openDisplay( 'normal' );
+	it( 'works with normal display', async function () {
+		await GlobalWatchlist.openDisplay( 'normal' );
 
-		const content = GlobalWatchlist.content;
+		const content = await GlobalWatchlist.content;
 
 		// OOUI button should be loaded
-		assert(
-			content.$( '#ext-globalwatchlist-refresh' )
-				.getAttribute( 'class' )
-				.includes( 'oo-ui-widget' )
-		);
+		const element = await content.$( '#ext-globalwatchlist-refresh' );
+		await expect( element ).toHaveElementClassContaining( 'oo-ui-widget' );
 
 		// Watchlist should be shown, and include the relevant pageTitle (might not
 		// happen immediately, needs to load)
 		assert(
-			content.$( '.ext-globalwatchlist-site' ).waitForExist(),
+			await content.$( '.ext-globalwatchlist-site' ).waitForExist(),
 			'Watchlist entries load'
 		);
 		// In the first site, in the first entry, the first link is to the page
 		assert.strictEqual(
-			content.$( '.ext-globalwatchlist-site li a' ).getText(),
+			await content.$( '.ext-globalwatchlist-site li a' ).getText(),
 			pageTitle,
 			'Edited title should be shown'
 		);
 
 	} );
 
-	it( 'works with vue display', function () {
+	it( 'works with vue display', async function () {
 		GlobalWatchlist.openDisplay( 'vue' );
 
-		const content = GlobalWatchlist.content;
+		const content = await GlobalWatchlist.content;
 
 		// WVUI button should be loaded
-		assert(
-			content.$( '#ext-globalwatchlist-vue-toolbar button' )
-				.getAttribute( 'class' )
-				.includes( 'wvui-toggle-button' )
-		);
+		const element = await content.$( '#ext-globalwatchlist-vue-toolbar button' );
+		await expect( element ).toHaveElementClassContaining( 'wvui-toggle-button' );
 
 		// Watchlist should be shown, and include the relevant pageTitle (might not
 		// happen immediately, needs to load)
 		assert(
-			content.$( '.ext-globalwatchlist-vue-site' ).waitForExist(),
+			await content.$( '.ext-globalwatchlist-vue-site' ).waitForExist(),
 			'Watchlist entries load'
 		);
 		// In the first site, in the first entry, the first link is to the page
 		assert.strictEqual(
-			content.$( '.ext-globalwatchlist-vue-site li a' ).getText(),
+			await content.$( '.ext-globalwatchlist-vue-site li a' ).getText(),
 			pageTitle,
 			'Edited title should be shown'
 		);
