@@ -3,7 +3,8 @@
 		"authors": [
 			"AKlapper",
 			"Hasley",
-			"Umherirrender"
+			"Umherirrender",
+			"Brettchenweber"
 		]
 	},
 	"globalwatchlist": "Globale Beobachtungsliste",
@@ -25,10 +26,10 @@
 	"globalwatchlist-filter-either": "Beides",
 	"globalwatchlist-filter-minor": "Kleine Änderungen",
 	"globalwatchlist-filter-not-anon": "Nur Änderungen, die von angemeldeten Benutzern vorgenommen wurden",
-	"globalwatchlist-filter-not-bot": "Nur nicht-Bot Änderungen",
+	"globalwatchlist-filter-not-bot": "Nur Nicht-Bot-Änderungen",
 	"globalwatchlist-filter-not-minor": "Nur nicht-kleine Änderungen",
 	"globalwatchlist-filter-only-anon": "Nur anonym vorgenommene Änderungen",
-	"globalwatchlist-filter-only-bot": "Nur Bot Änderungen",
+	"globalwatchlist-filter-only-bot": "Nur Bot-Änderungen",
 	"globalwatchlist-filter-only-minor": "Nur kleine Änderungen",
 	"globalwatchlist-getoptions-error": "Beim Abrufen gespeicherter Benutzeroptionen wurde ein Fehler entdeckt. Stattdessen werden die Standardeinstellungen verwendet.",
 	"globalwatchlist-globalwatchlistbacklink": "Zurück zur globalen Beobachtungsliste",
@@ -60,7 +61,7 @@
 	"globalwatchlist-rewatch": "erneut beobachten",
 	"globalwatchlist-save": "Einstellungen speichern",
 	"globalwatchlist-settings-error-anon-bot": "Anonyme Benutzer können keine Bot-Bearbeitungen vornehmen",
-	"globalwatchlist-settings-error-anon-minor": "Anonyme Benutzer können keine kleine Bearbeitungen vornehmen",
+	"globalwatchlist-settings-error-anon-minor": "Anonyme Benutzer können keine kleinen Bearbeitungen vornehmen",
 	"globalwatchlist-settings-error-bad-sites": "Ungültige/s Projekt(e): $1",
 	"globalwatchlist-settings-error-duplicate-site": "Das Projekt „$1“ ist mehrfach enthalten.",
 	"globalwatchlist-settings-error-invalid-site": "Die Seite „$1“ stimmt mit keinem Wiki überein, an das dein CentralAuth-Konto angeschlossen ist.",
@@ -83,7 +84,7 @@
 	"globalwatchlist-tour-intro": "Einstellungen globale Beobachungsliste",
 	"globalwatchlist-tour-intro-description": "Die GlobalWatchlist-Erweiterung fügt eine spezielle Seite, [[Special:GlobalWatchlist]], zur gleichzeitigen Anzeige mehrerer Beobachtungslisten hinzu. Diese Seite wird verwendet, um Benutzereinstellungen für die globale Beobachtungsliste festzulegen.",
 	"globalwatchlist-tour-sitelist": "Liste der Webseiten",
-	"globalwatchlist-tour-sitelist-description": "Dies ist die Liste der Webseiten, die in die globale Beobachtungsliste aufgenommen werden. Verwende die Basis-URL für die Website, z.B. <code>de.wikipedia.org</code>.",
+	"globalwatchlist-tour-sitelist-description": "Dies ist die Liste der Webseiten, die in die globale Beobachtungsliste aufgenommen werden. Verwende die Basis-URL für die Website, z. B. <code>de.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Änderungsarten",
 	"globalwatchlist-tour-types-description": "Benutzer können steuern, welche Arten von Änderungen angezeigt werden sollen.",
 	"globalwatchlist-unwatch": "nicht mehr beobachten",

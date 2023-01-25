@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Afalau"
+		]
+	},
+	"globalwatchlist": "Rhestr wylio gydwici",
+	"globalwatchlist-desc": "Yn ychwanegu rhestr wylio gydwici",
+	"globalwatchlist-summary": "Tudalen arbennig i weld rhestr wylio gydwici",
+	"globalwatchlistsettings": "Gosodiadau rhestr wylio gydwici",
+	"globalwatchlist-add": "Ychwanegu",
+	"globalwatchlist-asof": "Yn ôl $1",
+	"globalwatchlist-filter-bot": "Golygiadau gan fot",
+	"globalwatchlist-filter-minor": "Golygiadau bach",
+	"globalwatchlist-globalwatchlistsettingslink": "Gosodiadau",
+	"globalwatchlist-gotoglobal": "Rhestr wylio gydwici",
+	"globalwatchlist-gotoglobal-tooltip": "Gweld rhestr wylio gydwici",
+	"globalwatchlist-history": "hanes",
+	"globalwatchlist-log-entry": "cofnod log",
+	"globalwatchlist-refresh": "Adnewyddu",
+	"globalwatchlist-remove": "Dileu"
+}
