@@ -141,12 +141,10 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		// the tour is enabled
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )
-			->will( $this->returnCallback(
-				// Only GuidedTour
-				static function ( $extensionName ) {
-					return $extensionName === 'GuidedTour';
-				}
-			) );
+			// Only GuidedTour
+			->willReturnCallback( static function ( $extensionName ) {
+				return $extensionName === 'GuidedTour';
+			} );
 
 		$specialPageFactory = $this->getSpecialPageFactory( true );
 		$userOptionsLookup = $this->getOptionsLookup( $user, false );
