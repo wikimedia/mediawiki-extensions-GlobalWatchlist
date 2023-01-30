@@ -164,11 +164,14 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		// ext.guidedTour.globalWatchlistSettings) so instead test at the end that they were added.
 		// Call ::setOutput to ensure that the reference we have remains the correct one
 		$output = $testContext->getOutput();
+		// Ensure output page has title set, T327342
+		$title = SpecialPage::getTitleFor( 'GlobalWatchlistSettings' );
+		$output->setTitle( $title );
 		$testContext->setOutput( $output );
 
 		// Without a title set, causes:
 		// Error: Call to a member function getPrefixedText() on null
-		$testContext->setTitle( SpecialPage::getTitleFor( 'GlobalWatchlistSettings' ) );
+		$testContext->setTitle( $title );
 
 		$specialPage->setContext( $testContext );
 

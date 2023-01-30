@@ -128,7 +128,7 @@ class SettingsFormValidator {
 	public function validateSitesChosen( $value, $allData ) {
 		$sitesChosen = [];
 		foreach ( $value as $row ) {
-			$site = trim( $row['site'] );
+			$site = trim( $row['site'] ?? '' );
 			// Since there isn't an easy way to reorder sites other than just deleting
 			// the rows and adding them to the bottom manually, sometimes a field might
 			// be blank - thats okay, skip it
