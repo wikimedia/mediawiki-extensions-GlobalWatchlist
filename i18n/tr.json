@@ -4,7 +4,8 @@
 			"BaRaN6161 TURK",
 			"Joseph",
 			"MuratTheTurkish",
-			"SaldırganSincap"
+			"SaldırganSincap",
+			"Rapsar"
 		]
 	},
 	"globalwatchlist": "Küresel izleme listesi",
@@ -17,7 +18,7 @@
 	"globalwatchlist-asof": "$1 itibariyle",
 	"globalwatchlist-changesfeed": "Değişiklik içeren siteler",
 	"globalwatchlist-changetypes": "Değişiklik türü",
-	"globalwatchlist-editwatchlist": "İzleme listesini düzenle",
+	"globalwatchlist-editwatchlist": "İzleme listesini değiştir",
 	"globalwatchlist-emptyfeed": "Değişiklik yapmayan siteler",
 	"globalwatchlist-fetch-site-failure": "Değişiklikler alınamadı",
 	"globalwatchlist-filters": "Filtreler",
