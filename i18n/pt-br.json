@@ -21,6 +21,7 @@
 	"globalwatchlist-fetch-site-failure": "Falha ao buscar alterações",
 	"globalwatchlist-filters": "Filtros",
 	"globalwatchlist-filter-anon": "Edições anônimas",
+	"globalwatchlist-filter-bot": "Edições de robô",
 	"globalwatchlist-filter-either": "Ou",
 	"globalwatchlist-filter-minor": "Edições menores",
 	"globalwatchlist-filter-not-anon": "Apenas edições feitas por usuários entrados",
