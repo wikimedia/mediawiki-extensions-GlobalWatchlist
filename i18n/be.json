@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Chadyka",
-			"No Sleep till Krupki"
+			"No Sleep till Krupki",
+			"Plaga med"
 		]
 	},
 	"globalwatchlist": "Глабальны спіс назірання",
@@ -62,7 +63,7 @@
 	"globalwatchlist-settings-error-anon-minor": "Ананімныя ўдзельнікі не могуць рабіць дробныя праўкі",
 	"globalwatchlist-settings-error-bad-sites": "Няслушныя вікі: $1",
 	"globalwatchlist-settings-error-duplicate-site": "Сайт «$1» згадваецца некалькі разоў.",
-	"globalwatchlist-settings-error-invalid-site": "«$1» не супадае з вікі, дзе у вас ёсць далучаны рахунак CentralAuth.",
+	"globalwatchlist-settings-error-invalid-site": "«$1» не супадае з вікі, дзе ў вас ёсць далучаны ўліковы запіс CentralAuth.",
 	"globalwatchlist-settings-error-no-sites": "Вікі не выбрана",
 	"globalwatchlist-settings-error-no-types": "Тыпы змяненняў не выбраны",
 	"globalwatchlist-settings-error-too-many-sites": "Вы выбралі {{PLURAL:$1|$1 вікі}}, і гэта перавышае $2, максімальную колькасць дазволеных вікі.",
