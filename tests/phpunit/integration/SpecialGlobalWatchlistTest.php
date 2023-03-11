@@ -125,8 +125,8 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $specialPage->isListed() );
 
 		$this->assertSame(
-			TestingAccessWrapper::newFromObject( $specialPage )->getGroupName(),
-			'changes'
+			'changes',
+			TestingAccessWrapper::newFromObject( $specialPage )->getGroupName()
 		);
 	}
 }
