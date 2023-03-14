@@ -8,7 +8,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.38.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"SpecialPages": {
 		"GlobalWatchlist": {
@@ -168,7 +168,10 @@
 				"oojs-ui.styles.icons-movement",
 				"user.options"
 			],
-			"targets": [ "desktop", "mobile" ]
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlist.vue": {
 			"packageFiles": [
@@ -237,13 +240,19 @@
 				"oojs-ui-windows",
 				"user.options"
 			],
-			"targets": [ "desktop", "mobile" ]
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
 			"styles": [
 				"SpecialGlobalWatchlistSettings.less"
 			],
-			"targets": [ "desktop", "mobile" ]
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		},
 		"ext.globalwatchlist.getsettingserror": {
 			"packageFiles": [
@@ -255,7 +264,10 @@
 			"dependencies": [
 				"oojs-ui-windows"
 			],
-			"targets": [ "desktop", "mobile" ]
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		}
 	},
 	"QUnitTestModule": {
