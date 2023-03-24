@@ -30,7 +30,7 @@
 		"@wdio/mocha-framework": "7.26.0",
 		"@wdio/spec-reporter": "7.29.1",
 		"@wikimedia/wvui": "0.3.0",
-		"eslint-config-wikimedia": "0.22.1",
+		"eslint-config-wikimedia": "0.24.0",
 		"grunt-banana-checker": "0.10.0",
 		"jsdoc": "3.6.10",
 		"jsdoc-wmf-theme": "0.0.3",

@@ -28,7 +28,10 @@
 					"GlobalWatchlistWatchlistUtils"
 				]
 			}
-		]
+		],
+		"es-x/no-promise": "warn",
+		"es-x/no-regexp-prototype-flags": "warn",
+		"es-x/no-array-prototype-entries": "warn"
 	},
 	"overrides": [
 		{
@@ -62,7 +65,8 @@
 				"vue/no-boolean-default": "off",
 				"vue/multi-word-component-names": "off",
 				"no-implicit-globals": "off",
-				"es/no-promise": "off"
+				"es-x/no-promise": "off",
+				"es-x/no-array-prototype-entries": "warn"
 			}
 		}
 	],
