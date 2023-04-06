@@ -88,5 +88,6 @@
 	"globalwatchlist-tour-types": "Title for GuidedTour step describing change types to show",
 	"globalwatchlist-tour-types-description": "Description text for GuidedTour step describing change types to show",
 	"globalwatchlist-unwatch": "Label for button to unwatch a page",
+	"globalwatchlist-markpageseen": "Label for button to mark a page as read",
 	"prefs-globalwatchlist": "Section heading text under watchlist tab in [[Special:Preferences]] for global watchlist settings"
 }

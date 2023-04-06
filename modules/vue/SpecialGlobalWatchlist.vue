@@ -227,7 +227,7 @@ module.exports = {
 		markSiteAsSeen: function ( site ) {
 			var that = this;
 
-			watchedSitesBySite[ site ].markAsSeen().then( function () {
+			watchedSitesBySite[ site ].markAllAsSeen().then( function () {
 				// Re sync sitesWithChangesList, only the site that was marked as seen should change
 				// we don't separately index sitesWithChangesList by site
 				that.sitesWithChangesList.forEach( function ( siteWithChanges ) {

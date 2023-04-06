@@ -85,5 +85,6 @@
 	"globalwatchlist-tour-types": "Change types",
 	"globalwatchlist-tour-types-description": "Users can control what types of changes should be shown.",
 	"globalwatchlist-unwatch": "unwatch",
+	"globalwatchlist-markpageseen": "mark page as read",
 	"prefs-globalwatchlist": "Global watchlist"
 }

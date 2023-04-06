@@ -137,7 +137,17 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 			that.changeWatched( entry.title, 'unwatch' );
 		} );
 	$row.append( $unwatchLink )
-		.append( ')' );
+		.append( ', ' );
+
+	var $markAsReadLink = $( '<a>' )
+		.addClass( 'ext-globalwatchlist-markpageseen' )
+		.text( mw.msg( 'globalwatchlist-markpageseen' ) )
+		.on( 'click', function () {
+			that.markPageAsSeen( entry.title );
+		} );
+	$row.append( $markAsReadLink );
+
+	$row.append( ')' );
 
 	var $user = ( this.config.fastMode ? '' : entry.userDisplay );
 	var $comment = '';
@@ -235,7 +245,7 @@ GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary ) {
 		icon: 'check',
 		label: mw.msg( 'globalwatchlist-markseen' )
 	} ).on( 'click', function () {
-		that.markAsSeen();
+		that.markAllAsSeen();
 	} );
 
 	var $outputContent = $( '<div>' )
@@ -252,7 +262,7 @@ GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary ) {
 /**
  * Update display after marking a site as seen
  */
-GlobalWatchlistSiteDisplay.prototype.afterMarkAsSeen = function () {
+GlobalWatchlistSiteDisplay.prototype.afterMarkAllAsSeen = function () {
 	this.debug( 'markSiteAsSeen - hiding site' );
 	if ( this.$feedDiv ) {
 		// Don't call .children() on the default empty string, T275078
@@ -262,7 +272,15 @@ GlobalWatchlistSiteDisplay.prototype.afterMarkAsSeen = function () {
 	// FIXME
 	// GlobalWatchlist.watchlists.checkChangesShown( true );
 };
-/* end GlobalWatchlistSiteDisplay.prototype.afterMarkAsSeen */
+/* end GlobalWatchlistSiteDisplay.prototype.afterMarkAllAsSeen */
+
+GlobalWatchlistSiteBase.prototype.afterMarkPageAsSeen = function ( pageTitle ) {
+	this.debug( 'markPageAsSeen - hiding page' );
+	if ( this.$feedDiv ) {
+		var dataTitle = encodeURIComponent( pageTitle );
+		$( this.$feedDiv.find( '[data-title="' + dataTitle + '"]' ) ).hide();
+	}
+};
 
 /**
  * Update entry click handlers, text, and strikethrough for a specific title

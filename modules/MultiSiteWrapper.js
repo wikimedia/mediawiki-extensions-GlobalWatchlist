@@ -69,7 +69,7 @@ GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config )
 };
 
 /**
- * Promise that all of the sites have called markAsSeen
+ * Promise that all of the sites have called markAllAsSeen
  *
  * @return {Promise} Promise that all sites were marked as seen
  */
@@ -101,7 +101,7 @@ GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function () {
 				if ( confirmed ) {
 					Promise.all(
 						that.siteList.map( function ( site ) {
-							return site.markAsSeen();
+							return site.markAllAsSeen();
 						} )
 					).then( function () {
 						resolve();

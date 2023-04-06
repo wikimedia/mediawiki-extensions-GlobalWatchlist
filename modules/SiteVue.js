@@ -57,8 +57,8 @@ GlobalWatchlistSiteVue.prototype.renderWatchlist = function ( summary ) {
 /**
  * Update display after marking a site as seen
  */
-GlobalWatchlistSiteVue.prototype.afterMarkAsSeen = function () {
-	this.debug( 'afterMarkAsSeen - Finished for: ' + this.site );
+GlobalWatchlistSiteVue.prototype.afterMarkAllAsSeen = function () {
+	this.debug( 'afterMarkAllAsSeen - Finished for: ' + this.site );
 	this.entries = [];
 };
 

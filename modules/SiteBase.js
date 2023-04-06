@@ -211,6 +211,45 @@ GlobalWatchlistSiteBase.prototype.changeWatched = function ( pageTitle, func ) {
 };
 
 /**
+ * Mark page as read
+ *
+ * Calls the API to reset notification timestamp for a page
+ *
+ * @param {string} pageTitle Title of the page to mark as read
+ * @return {Promise} that resolves after the api call is made and after `afterMarkPageAsSeen`
+ * is called, not necessarily after the api call is finished.
+ */
+GlobalWatchlistSiteBase.prototype.markPageAsSeen = function ( pageTitle ) {
+	var that = this;
+
+	return new Promise( function ( resolve ) {
+		var setter = {
+			action: 'setnotificationtimestamp',
+			titles: pageTitle,
+			timestamp: that.config.time.toISOString()
+		};
+		that.api( 'postWithEditToken', setter );
+
+		that.afterMarkPageAsSeen( pageTitle );
+
+		// Done within a promise so that Vue can ensure re-rendering occurs after
+		// entries are updated
+		resolve();
+	} );
+};
+
+/**
+ * Update display after marking a page as read
+ *
+ * Overriden in {@link GlobalWatchlistSiteDisplay}
+ *
+ * @param {string} pageTitle Page that was marked as read
+ */
+GlobalWatchlistSiteBase.prototype.afterMarkPageAsSeen = function ( pageTitle ) {
+	// STUB
+};
+
+/**
  * Returns the talk/subject page associated with a given page, since entries for the associated page
  *   also need to have their text and strikethrough updated on unwatching/rewatching
  *
@@ -356,10 +395,10 @@ GlobalWatchlistSiteBase.prototype.makeWikidataList = function ( summary ) {
 /**
  * Mark a site as seen
  *
- * @return {Promise} that resolves after the api call is made and after `afterMarkAsSeen`
+ * @return {Promise} that resolves after the api call is made and after `afterMarkAllAsSeen`
  *   is called, not necessarily after the api call is finished.
  */
-GlobalWatchlistSiteBase.prototype.markAsSeen = function () {
+GlobalWatchlistSiteBase.prototype.markAllAsSeen = function () {
 	this.debug( 'markSiteAsSeen - marking' );
 	var that = this;
 
@@ -371,7 +410,7 @@ GlobalWatchlistSiteBase.prototype.markAsSeen = function () {
 		};
 		that.api( 'postWithEditToken', setter, 'actuallyMarkSiteAsSeen' );
 
-		that.afterMarkAsSeen();
+		that.afterMarkAllAsSeen();
 
 		// Done within a promise so that Vue can ensure re-rendering occurs after
 		// entries are updated
@@ -384,7 +423,7 @@ GlobalWatchlistSiteBase.prototype.markAsSeen = function () {
  *
  * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}
  */
-GlobalWatchlistSiteBase.prototype.afterMarkAsSeen = function () {
+GlobalWatchlistSiteBase.prototype.afterMarkAllAsSeen = function () {
 	// STUB
 };
 
