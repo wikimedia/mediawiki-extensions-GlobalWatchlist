@@ -91,5 +91,6 @@
 	"globalwatchlist-tour-types": "Types de modification",
 	"globalwatchlist-tour-types-description": "Les utilisateurs peuvent contrôler quels types de modifications doivent être affichés.",
 	"globalwatchlist-unwatch": "ne plus suivre",
+	"globalwatchlist-markpageseen": "marquer la page comme lue",
 	"prefs-globalwatchlist": "Liste de suivi globale"
 }

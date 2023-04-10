@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"globalwatchlist": "Global Iwwerwaachungslëscht",
@@ -23,5 +24,6 @@
 	"globalwatchlist-save": "Astellunge späicheren",
 	"globalwatchlist-tour-filters": "Filteroptiounen",
 	"globalwatchlist-tour-intro": "Astellunge vun der globaler Iwwerwaachungslëscht",
+	"globalwatchlist-markpageseen": "D'Säit als gelies markéieren",
 	"prefs-globalwatchlist": "Global Iwwerwaachungslëscht"
 }

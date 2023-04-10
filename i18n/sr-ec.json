@@ -3,6 +3,7 @@
 		"authors": [
 			"BadDog",
 			"Kizule",
+			"Milicevic01",
 			"Vlad5250"
 		]
 	},
@@ -68,5 +69,6 @@
 	"globalwatchlist-tour-intro": "Подешавања глобалног списка надгледања",
 	"globalwatchlist-tour-sitelist": "Списак сајтова",
 	"globalwatchlist-unwatch": "прекини надгледање",
+	"globalwatchlist-markpageseen": "означи страницу прочитаном",
 	"prefs-globalwatchlist": "Глобални списак надгледања"
 }

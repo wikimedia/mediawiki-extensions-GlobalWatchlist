@@ -8,6 +8,7 @@
 			"Okras",
 			"Pacha Tchernof",
 			"Rubin16",
+			"Stjn",
 			"Teretalexev",
 			"Wileyfoxyx"
 		]
@@ -93,5 +94,6 @@
 	"globalwatchlist-tour-types": "Типы изменений",
 	"globalwatchlist-tour-types-description": "Пользователи могут контролировать отображение разных типов изменений.",
 	"globalwatchlist-unwatch": "не наблюдать",
+	"globalwatchlist-markpageseen": "отметить как прочитанную",
 	"prefs-globalwatchlist": "Глобальный список наблюдения"
 }

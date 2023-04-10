@@ -3,6 +3,7 @@
 		"authors": [
 			"Atmark-chan",
 			"Kokage si",
+			"MathXplore",
 			"Omotecho",
 			"春春眠眠"
 		]
@@ -88,5 +89,6 @@
 	"globalwatchlist-tour-types": "変更の種類",
 	"globalwatchlist-tour-types-description": "利用者は表示する変更の種別を設定できます。",
 	"globalwatchlist-unwatch": "ウォッチを解除する",
+	"globalwatchlist-markpageseen": "ページを既読にする",
 	"prefs-globalwatchlist": "グローバルウォッチリスト"
 }
