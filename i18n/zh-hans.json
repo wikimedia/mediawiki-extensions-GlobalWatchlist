@@ -3,6 +3,7 @@
 		"authors": [
 			"Colathewikian",
 			"GuoPC",
+			"Hehua",
 			"Lakejason0",
 			"Nadine Siak",
 			"Shizhao",
@@ -92,5 +93,6 @@
 	"globalwatchlist-tour-types": "改变类型",
 	"globalwatchlist-tour-types-description": "用户可以控制应显示哪些类型的更改。",
 	"globalwatchlist-unwatch": "取消监视",
+	"globalwatchlist-markpageseen": "将页面标记为已读",
 	"prefs-globalwatchlist": "全域监视列表"
 }
