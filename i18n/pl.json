@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"MarMi wiki",
-			"Rail"
+			"Rail",
+			"Msz2001"
 		]
 	},
 	"globalwatchlist": "Globalna lista obserwowanych",
@@ -40,7 +41,7 @@
 	"globalwatchlist-javascript-required": "Ta strona specjalna wymaga do działania włączonego JavaScriptu",
 	"globalwatchlist-log-entry": "wpis dziennika",
 	"globalwatchlist-log-page": "dzienniki strony",
-	"globalwatchlist-markseen": "Oznacz jako odwiedzoną",
+	"globalwatchlist-markseen": "Oznacz jako odwiedzone",
 	"globalwatchlist-markseen-all": "Oznacz wszystkie strony jako odwiedzone",
 	"globalwatchlist-markseen-allconfirm": "Czy na pewno chcesz oznaczyć wszystkie strony jako odwiedzone?",
 	"globalwatchlist-notify-heading": "Global Watchlist",
