@@ -6,6 +6,9 @@
 	},
 	"globalwatchlist-editwatchlist": "نظر۾فھرست سنواريو",
 	"globalwatchlist-filters": "ڇاڻيون",
+	"globalwatchlist-filter-anon": "گمنام سنوارون",
+	"globalwatchlist-filter-bot": "بوٽ سنوارون",
+	"globalwatchlist-filter-minor": "معمولي سنوارون",
 	"globalwatchlist-filter-not-anon": "رڳو داخل ٿيل واپرائيندڙن پاران ڪيل سنوارون",
 	"globalwatchlist-filter-only-anon": "رڳو گمنام طور ڪيل سنوارون",
 	"globalwatchlist-refresh": "تازو ڪريو"
