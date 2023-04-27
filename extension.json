@@ -76,13 +76,9 @@
 			"value": false,
 			"description": "Site for which labels should be fetched for items on the watchlist, or false for none"
 		},
-		"GlobalWatchlistUseVue": {
-			"value": false,
-			"description": "Whether to use the Vue version of the code for Special:GlobalWatchlist"
-		},
 		"GlobalWatchlistDevMode": {
 			"value": false,
-			"description": "Whether to send debug entries to the console and enable using 'displayversion' to override whether or not the vue version of the display is shown."
+			"description": "Whether to send debug entries to the console"
 		},
 		"GlobalWatchlistEnableGuidedTour": {
 			"value": false,
@@ -167,78 +163,6 @@
 				"oojs-ui.styles.icons-media",
 				"oojs-ui.styles.icons-moderation",
 				"oojs-ui.styles.icons-movement",
-				"user.options"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.globalwatchlist.specialglobalwatchlist.vue": {
-			"packageFiles": [
-				"SpecialGlobalWatchlist.vue.js",
-				"getSettings.js",
-				"Debug.js",
-				"Linker.js",
-				"MultiSiteWrapper.js",
-				"SiteBase.js",
-				"SiteVue.js",
-				"EntryBase.js",
-				"EntryEdits.js",
-				"EntryLog.js",
-				"WatchlistUtils.js",
-				"WikibaseHandler.js",
-				"vue/base/CollapsibleWrapper.vue",
-				"vue/EntryRow.vue",
-				"vue/Site.vue",
-				"vue/SitesWithoutChanges.vue",
-				"vue/SpecialGlobalWatchlist.vue",
-				"vue/Toolbar.vue",
-				"vue/icons.json"
-			],
-			"messages": [
-				"globalwatchlist-api-error",
-				"globalwatchlist-asof",
-				"globalwatchlist-changesfeed",
-				"globalwatchlist-editwatchlist",
-				"globalwatchlist-emptyfeed",
-				"globalwatchlist-fetch-site-failure",
-				"globalwatchlist-globalwatchlistsettingslink",
-				"globalwatchlist-grouped-timestamp",
-				"globalwatchlist-history",
-				"globalwatchlist-log-entry",
-				"globalwatchlist-log-page",
-				"globalwatchlist-markseen",
-				"globalwatchlist-markseen-all",
-				"globalwatchlist-markseen-allconfirm",
-				"globalwatchlist-option-grouppage",
-				"globalwatchlist-option-live",
-				"globalwatchlist-refresh",
-				"globalwatchlist-rewatch",
-				"globalwatchlist-tags",
-				"globalwatchlist-unwatch",
-				"boteditletter",
-				"collapsible-collapse",
-				"collapsible-expand",
-				"diff",
-				"minoreditletter",
-				"nchanges",
-				"ntimes",
-				"newpageletter",
-				"parentheses",
-				"rev-deleted-user",
-				"watchlist-expiring-days-full-text",
-				"watchlist-expiring-hours-full-text"
-			],
-			"es6": true,
-			"dependencies": [
-				"es6-polyfills",
-				"vue",
-				"wvui",
-				"mediawiki.ForeignApi",
-				"oojs",
-				"oojs-ui-core",
-				"oojs-ui-windows",
 				"user.options"
 			],
 			"targets": [

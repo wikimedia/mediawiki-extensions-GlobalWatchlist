@@ -1,12 +1,11 @@
 /**
- * Shared helper to reduce code duplication between Vue and non-Vue versions
- * of Special:GlobalWatchlist
+ * Shared helper for Special:GlobalWatchlist
  *
  * @class GlobalWatchlistMultiSiteWrapper
  * @constructor
  *
- * @param {Function} SiteClass either {@link GlobalWatchlistSiteDisplay} or
- *    {@link GlobalWatchlistSiteVue}, used to create the individual site objects
+ * @param {Function} SiteClass {@link GlobalWatchlistSiteDisplay}, used to create
+ *    the individual site objects
  * @param {Object} config User configuration to use
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Shared debugger instance
  */

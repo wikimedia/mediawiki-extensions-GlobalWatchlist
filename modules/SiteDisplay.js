@@ -5,7 +5,7 @@
 var GlobalWatchlistSiteBase = require( './SiteBase.js' );
 
 /**
- * Represents a specific site, including the display (used in jQuery / non-Vue display)
+ * Represents a specific site, including the display (used in jQuery display)
  *
  * @class GlobalWatchlistSiteDisplay
  * @extends GlobalWatchlistSiteBase

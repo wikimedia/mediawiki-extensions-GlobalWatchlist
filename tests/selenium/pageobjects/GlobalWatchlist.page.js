@@ -6,11 +6,8 @@ class GlobalWatchlist extends Page {
 	// The content that is shown, for either version of the display
 	get content() { return $( '.ext-globalwatchlist-content' ); }
 
-	openDisplay( displayVersion ) {
-		// When the `mw-globalwatchlist-selenium-test` cookie is set, the `displayversion`
-		// parameter can override $wgGlobalWatchlistUseVue, allowing us to test both versions
-		// of the display.
-		super.openTitle( 'Special:GlobalWatchlist', { displayversion: displayVersion } );
+	openDisplay() {
+		super.openTitle( 'Special:GlobalWatchlist' );
 	}
 }
 

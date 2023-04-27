@@ -1,15 +1,12 @@
 # JavaScript for Special:GlobalWatchlist
 
 ## Backend
-The Vue and non-Vue display versions share the code for retrieving and organizing the watchlist content.
-
 [SiteBase.js](./SiteBase.js.html) is responsible for retrieving and displaying the content for a specific site.
-It is extended by both [SiteDisplay.js](./SiteDisplay.js.html) (for the non-Vue) version, and [SiteVue.js](./SiteVue.js.html)
-(for the Vue version).
+It is extended by [SiteDisplay.js](./SiteDisplay.js.html).
 
 [MultiSiteWrappper](./MultiSiteWrapper.js.html) is used to manage multiple sites at once. Whichever frontend
 module is being used creates a MultiSiteWrapper, specifying the class for the sites to be represented with
-(either SiteDisplay or SiteVue) and the user's settings, including which sites should be included.
+(SiteDisplay) and the user's settings, including which sites should be included.
 
 The MultiSiteWrapper then creates an instance of the specified site class for each of the sites the user
 includes in their watchlists. The frontend then calls the `getAllWatchlists` method.
@@ -28,7 +25,7 @@ including grouping results by page (when the user chooses to do so), converting 
 3. Call `makeWikidataList` which will, if the site in question matches the one specified in `$wgGlobalWatchlistWikibaseSite`,
 update the display text for entities, properties, and lexemes to use the item's label instead of id (see [Wikibase.js](./ext.globalwatchlist.wikibase.js.html))
 4. Call `getTagList` to ensure that the information for any tags associated with edits is loaded
-5. Call `renderWatchlist`, which is implemented in SiteDisplay.js and SiteVue.js, to actually create
+5. Call `renderWatchlist`, which is implemented in SiteDisplay.js, to actually create
 the display.
 
 **NOTE**: The Promise returned by `getWatchlist` is a promise that the watchlist was retrieved,
@@ -48,14 +45,10 @@ that control the overall functionality
  - A toggle to collapse/expand the site output
 - When there are sites that have no changes to display, they are noted at the bottom
 
-### Non-Vue version
-The non-Vue version of the frontend uses OOUI and jQuery to create the elements for displaying the overall
+### Technology
+The frontend uses OOUI and jQuery to create the elements for displaying the overall
 global watchlist and each site's output. Additionally, HTML templating (using Mustache) is used
 for a few elements.
-
-### Vue version
-The Vue version of the frontend uses custom components, and a few "base" components. The "base" components
-will eventually be replaced with uses of shared components (see [T249840](https://phabricator.wikimedia.org/T249840)).
 
 ## JavaScript classes
 
@@ -64,6 +57,5 @@ will eventually be replaced with uses of shared components (see [T249840](https:
 * [GlobalWatchlistMultiSiteWrapper](GlobalWatchlistMultiSiteWrapper.html)
 * [GlobalWatchlistSiteBase](GlobalWatchlistSiteBase.html)
     * [GlobalWatchlistSiteDisplay](GlobalWatchlistSiteDisplay.html)
-    * [GlobalWatchlistSiteVue](GlobalWatchlistSiteVue.html)
 * [GlobalWatchlistWikibaseHandler](GlobalWatchlistWikibaseHandler.html)
 * [GlobalWatchlistWatchlistUtils](GlobalWatchlistWatchlistUtils.html)

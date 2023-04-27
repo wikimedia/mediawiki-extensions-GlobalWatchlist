@@ -60,34 +60,8 @@ class SpecialGlobalWatchlist extends SpecialPage {
 
 		$config = $this->getConfig();
 
-		// Allow users to override the $wgGlobalWatchlistUseVue setting on a per-view
-		// basis by setting the `displayversion` parameter. This will make testing and QA easier.
-		// The parameter is considered internal and should not be relied upon by end users.
-		// It is only allowed when $wgGlobalWatchlistDevMode is enabled, or when the
-		// `mw-globalwatchlist-selenium-test` cookie is set (so that we don't have to
-		// default $wgGlobalWatchlistDevMode to true to allow testing both versions of the
-		// display in the selenium tests, see T284521). This cookie is also internal and
-		// should not be relied upon by end users.
-		$loadVueDisplay = $config->get( 'GlobalWatchlistUseVue' );
-		if ( $config->get( 'GlobalWatchlistDevMode' ) ||
-			$this->getRequest()->getCookie( '-globalwatchlist-selenium-test', 'mw' )
-		) {
-			$displayVersion = $this->getRequest()->getVal( 'displayversion' );
-			if ( $displayVersion === 'vue' ) {
-				$loadVueDisplay = true;
-			} elseif ( $displayVersion === 'normal' ) {
-				$loadVueDisplay = false;
-			} else {
-				// no change, use whatever $wgGlobalWatchlistUseVue says
-			}
-		}
-
 		$out = $this->getOutput();
-		$out->addModules(
-			$loadVueDisplay ?
-				'ext.globalwatchlist.specialglobalwatchlist.vue' :
-				'ext.globalwatchlist.specialglobalwatchlist'
-		);
+		$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist' );
 
 		$out->addJsConfigVars( [
 			'wgGlobalWatchlistWikibaseSite' => $config->get( 'GlobalWatchlistWikibaseSite' ),

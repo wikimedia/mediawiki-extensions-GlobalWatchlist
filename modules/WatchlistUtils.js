@@ -82,9 +82,8 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
 		} );
 
 	// When there are multiple edits grouped, the timestamp has a tooltip (title attribute)
-	// explaining that its the timestamp of the latest change. If its not set here, its null,
-	// and both the jQuery and Vue displays ignore null attribute values. See T286268 and
-	// * https://v3.vuejs.org/guide/migration/attribute-coercion.html#overview
+	// explaining that its the timestamp of the latest change. If it's not set here, it's
+	// null, and the display ignores null attribute values. See T286268 and
 	// * https://api.jquery.com/attr/#attr-attributeName-value
 	mergedEditInfo.timestampTitle = mw.msg( 'globalwatchlist-grouped-timestamp' );
 
@@ -316,8 +315,8 @@ GlobalWatchlistWatchlistUtils.prototype.normalizeEntries = function ( entries ) 
  *     retrieved.
  * - Set the comment display to include the updated links in edit summaries/log entries.
  *     In fast mode, or for grouped changes, there is no comment display. The commentDisplay
- *     set here is treated as raw html by both the jQuery and Vue displays. We use the
- *     `parsedcomment` result from the api, and MediaWiki core takes care of escaping.
+ *     set here is treated as raw html by the display. We use the `parsedcomment` result from
+ *     the api, and MediaWiki core takes care of escaping.
  *
  * @param {Array} entries Entries to update
  * @param {Object} tagsInfo Keys are tag names, values are the html to display (either the

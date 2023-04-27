@@ -5,7 +5,6 @@ SpecialGlobalWatchlist.php is limited to:
 
 - Registering the special page
 - Setting the relevant JavaScript configuration variables based on site configuration
-- Loading the correct JavaScript module for the display, either `ext.globalwatchlist.specialglobalwatchlist`
-or `ext.globalwatchlist.specialglobalwatchlist.vue`, depending on the site's configuration
+- Loading the correct JavaScript module for the display `ext.globalwatchlist.specialglobalwatchlist`
 
 To view the JavaScript documentation, please see https://doc.wikimedia.org/GlobalWatchlist/master/js/.

@@ -29,8 +29,5 @@ for the watchlist to be first loaded is tracked using `mw.track`. There are four
 
 * `timing.MediaWiki.GlobalWatchlist.firstload.display.normal`
 * `timing.MediaWiki.GlobalWatchlist.firstload.display.fastmode`
-* `timing.MediaWiki.GlobalWatchlist.firstload.vue.normal`
-* `timing.MediaWiki.GlobalWatchlist.firstload.vue.fastmode`
 
-The `display` or `vue` corresponds to which version of the front end JavaScript is used, and the use
-of `normal` or `fastmode` corresponds to whether the user chose to use the fast mode or not.
+The use of `normal` or `fastmode` corresponds to whether the user chose to use the fast mode or not.

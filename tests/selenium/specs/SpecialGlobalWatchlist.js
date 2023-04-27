@@ -31,14 +31,6 @@ describe( 'Special:GlobalWatchlist', function () {
 			titles: pageTitle,
 			token: bot.editToken
 		} );
-
-		// This cookie allows us to use the `displayversion` parameter to test both the
-		// OOUI and the Vue versions of the display even when $wgGlobalWatchlistDevMode is
-		// false, so that we don't need to have it by true by default.
-		await browser.setCookies( {
-			name: 'mw-globalwatchlist-selenium-test',
-			value: '1'
-		} );
 	} );
 
 	it( 'works with normal display', async function () {
@@ -59,30 +51,6 @@ describe( 'Special:GlobalWatchlist', function () {
 		// In the first site, in the first entry, the first link is to the page
 		assert.strictEqual(
 			await content.$( '.ext-globalwatchlist-site li a' ).getText(),
-			pageTitle,
-			'Edited title should be shown'
-		);
-
-	} );
-
-	it( 'works with vue display', async function () {
-		GlobalWatchlist.openDisplay( 'vue' );
-
-		const content = await GlobalWatchlist.content;
-
-		// WVUI button should be loaded
-		const element = await content.$( '#ext-globalwatchlist-vue-toolbar button' );
-		await expect( element ).toHaveElementClassContaining( 'wvui-toggle-button' );
-
-		// Watchlist should be shown, and include the relevant pageTitle (might not
-		// happen immediately, needs to load)
-		assert(
-			await content.$( '.ext-globalwatchlist-vue-site' ).waitForExist(),
-			'Watchlist entries load'
-		);
-		// In the first site, in the first entry, the first link is to the page
-		assert.strictEqual(
-			await content.$( '.ext-globalwatchlist-vue-site li a' ).getText(),
 			pageTitle,
 			'Edited title should be shown'
 		);

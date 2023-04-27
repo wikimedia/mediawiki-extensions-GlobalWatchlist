@@ -23,12 +23,6 @@ Set this to the base URL of the site for which Wikibase labels should be fetched
 
 By default, the value is `false`.
 
-* `wgGlobalWatchlistUseVue`
-
-Set this to true to enable the Vue version of the JavaScript for Special:GlobalWatchlist.
-
-By default, the value is `false`.
-
 * `wgGlobalWatchlistEnableGuidedTour`
 
 Set this to true to enable a GuidedTour to be loaded on Special:GlobalWatchlistSettings if the user has

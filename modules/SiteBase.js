@@ -232,7 +232,7 @@ GlobalWatchlistSiteBase.prototype.markPageAsSeen = function ( pageTitle ) {
 
 		that.afterMarkPageAsSeen( pageTitle );
 
-		// Done within a promise so that Vue can ensure re-rendering occurs after
+		// Done within a promise so that display can ensure re-rendering occurs after
 		// entries are updated
 		resolve();
 	} );
@@ -365,7 +365,7 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 /**
  * Display the watchlist
  *
- * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}
+ * Overriden in {@link GlobalWatchlistSiteDisplay}
  *
  * @param {GlobalWatchlistEntryBase[]} summary What should be rendered
  */
@@ -412,7 +412,7 @@ GlobalWatchlistSiteBase.prototype.markAllAsSeen = function () {
 
 		that.afterMarkAllAsSeen();
 
-		// Done within a promise so that Vue can ensure re-rendering occurs after
+		// Done within a promise so that display can ensure re-rendering occurs after
 		// entries are updated
 		resolve();
 	} );
@@ -421,7 +421,7 @@ GlobalWatchlistSiteBase.prototype.markAllAsSeen = function () {
 /**
  * Update display after making a site as seen
  *
- * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}
+ * Overriden in {@link GlobalWatchlistSiteDisplay}
  */
 GlobalWatchlistSiteBase.prototype.afterMarkAllAsSeen = function () {
 	// STUB
@@ -430,7 +430,7 @@ GlobalWatchlistSiteBase.prototype.afterMarkAllAsSeen = function () {
 /**
  * Update entry click handlers, text, and strikethrough for a specific title
  *
- * Overriden in {@link GlobalWatchlistSiteDisplay} and {@link GlobalWatchlistSiteVue}
+ * Overriden in {@link GlobalWatchlistSiteDisplay}
  *
  * @param {string} pageTitle Title of the page that was unwatched/rewatched.
  * @param {boolean} unwatched Whether the page was unwatched
