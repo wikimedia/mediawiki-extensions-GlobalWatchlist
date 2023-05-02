@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kasey"
+			"Kasey",
+			"StanProg"
 		]
 	},
-	"globalwatchlist-markpageseen": "маркиране страницата като прочетена"
+	"globalwatchlist-markpageseen": "отбелязване на страницата като прочетена"
 }
