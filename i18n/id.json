@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Daud I.F. Argana"
+			"Daud I.F. Argana",
+			"Veracious"
 		]
 	},
 	"globalwatchlist": "Daftar pantauan global",
@@ -85,5 +86,6 @@
 	"globalwatchlist-tour-types": "Jenis perubahan",
 	"globalwatchlist-tour-types-description": "Pengguna bisa mengatur jenis perubahan apa saja yang akan ditampilkan.",
 	"globalwatchlist-unwatch": "batal pantau",
+	"globalwatchlist-markpageseen": "Tandai halaman sudah dibaca",
 	"prefs-globalwatchlist": "Daftar pantauan global"
 }
