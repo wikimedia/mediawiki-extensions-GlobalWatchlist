@@ -3,7 +3,8 @@
 		"authors": [
 			"MarMi wiki",
 			"Msz2001",
-			"Rail"
+			"Rail",
+			"Woytecr"
 		]
 	},
 	"globalwatchlist": "Globalna lista obserwowanych",
@@ -44,6 +45,7 @@
 	"globalwatchlist-markseen": "Oznacz jako odwiedzone",
 	"globalwatchlist-markseen-all": "Oznacz wszystkie strony jako odwiedzone",
 	"globalwatchlist-markseen-allconfirm": "Czy na pewno chcesz oznaczyć wszystkie strony jako odwiedzone?",
+	"globalwatchlist-must-login": "Zaloguj się, aby korzystać ze specjalnych stron globalnej listy obserwowanych",
 	"globalwatchlist-notify-heading": "Global Watchlist",
 	"globalwatchlist-notify-savingfailed": "Nie udało się zapisać ustawień. Proszę spróbować ponownie.",
 	"globalwatchlist-notify-settingssaved": "Twoje ustawienia zostały zapisane. [[Special:GlobalWatchlist|Powrót do globalnej listy]]",
@@ -61,12 +63,22 @@
 	"globalwatchlist-settings-error-anon-bot": "Anonimowi użytkownicy nie mogą wykonywać edycji jako boty",
 	"globalwatchlist-settings-error-anon-minor": "Anonimowi użytkownicy nie mogą wykonywać drobnych edycji",
 	"globalwatchlist-settings-error-bad-sites": "Nieprawidłowe strony: $1",
+	"globalwatchlist-settings-error-duplicate-site": "Witryna \"$1\" jest dodana kilka razy.",
+	"globalwatchlist-settings-error-invalid-site": "Witryna \"$1\" nie jest wiki, na której masz powiązanie z Kontem Uniwersalnym.",
 	"globalwatchlist-settings-error-no-sites": "Nie wybrano stron",
 	"globalwatchlist-settings-error-no-types": "Nie wybrano typów zmian",
+	"globalwatchlist-settings-error-too-many-sites": "Wybrano {{PLURAL:$1|$1 witrynę|$1 witryn|$1 witryny}}, co przekracza maksymalną liczbę witryn, jaką można wybrać, wynoszącą $2.",
 	"globalwatchlist-show-edits": "Pokaż edycje stron",
 	"globalwatchlist-show-logentries": "Pokaż wpisy w rejestrze",
 	"globalwatchlist-show-newpages": "Pokaż edycje tworzące nowe strony",
 	"globalwatchlist-sitelist": "Lista stron podana przez użytkownika",
+	"globalwatchlist-tags": "{{PLURAL:$1|Znacznik|Znaczniki}}: $2",
+	"globalwatchlist-tour-addsite": "Dodaj witrynę",
+	"globalwatchlist-tour-addsite-description": "Kliknij powyżej, aby dodać kolejny wiersz dla witryny.",
+	"globalwatchlist-tour-fastmode": "Tryb szybki",
+	"globalwatchlist-tour-fastmode-description": "Tryb szybki sprawia, że renderowanie jest szybsze, ale kosztem mniejszej szczegółowości. Etykiety Wikibase nie są pobierane i wyświetlana jest prosta lista stron ze zmianami, bez szczegółów na temat dokonujących edycji lub samych zmian",
+	"globalwatchlist-tour-filters": "Opcje filtrowania",
+	"globalwatchlist-tour-filters-description": "Globalna lista obserwowanych nie zawiera wszystkich opcji filtrów dostępnych dla normalnej listy obserwowanych. Dostępne filtry służą do wyświetlania edycji anonimowych i zalogowanych użytkowników, a także oznaczonych jako drobne lub wykonane przez bota.",
 	"globalwatchlist-unwatch": "Nie obserwuj",
 	"globalwatchlist-markpageseen": "oznacz jako przeczytane",
 	"prefs-globalwatchlist": "Globalna lista obserwowanych"
