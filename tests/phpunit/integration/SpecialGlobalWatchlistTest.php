@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
 use DerivativeContext;
-use FauxRequest;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlist;
+use MediaWiki\Request\FauxRequest;
 use MediaWikiIntegrationTestCase;
 use OutputPage;
 use User;
