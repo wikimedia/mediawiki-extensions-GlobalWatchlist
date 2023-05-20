@@ -55,7 +55,7 @@ class GlobalWatchlistGuidedTourHooksTest extends MediaWikiUnitTestCase {
 		$hookHandler->onResourceLoaderRegisterModules( $resourceLoader );
 	}
 
-	public function provideTestModuleRegistration() {
+	public static function provideTestModuleRegistration() {
 		return [
 			'Disabled, no extension' => [ false, false, false ],
 			'Disabled, yes extension' => [ false, true, false ],

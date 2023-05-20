@@ -461,7 +461,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$specialPage->maybeLoadTour();
 	}
 
-	public function provideTestMaybeLoadTour() {
+	public static function provideTestMaybeLoadTour() {
 		return [
 			'Disabled, no extension' => [ false, false, false ],
 			'Disabled, yes extension' => [ false, true, false ],

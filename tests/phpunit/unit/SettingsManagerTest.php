@@ -128,7 +128,7 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$manager->logSettingsChange( $user );
 	}
 
-	public function provideTestLogSettingsChange() {
+	public static function provideTestLogSettingsChange() {
 		return [
 			'no existing settings' => [ false ],
 			'with existing settings' => [ true ]
