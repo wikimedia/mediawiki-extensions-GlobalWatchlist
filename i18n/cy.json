@@ -10,6 +10,8 @@
 	"globalwatchlistsettings": "Gosodiadau rhestr wylio gydwici",
 	"globalwatchlist-add": "Ychwanegu",
 	"globalwatchlist-asof": "Yn ôl $1",
+	"globalwatchlist-filters": "Hidlyddion",
+	"globalwatchlist-filter-anon": "Golygiadau dienw",
 	"globalwatchlist-filter-bot": "Golygiadau gan fot",
 	"globalwatchlist-filter-minor": "Golygiadau bach",
 	"globalwatchlist-globalwatchlistsettingslink": "Gosodiadau",
