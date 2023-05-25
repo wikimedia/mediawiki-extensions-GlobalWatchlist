@@ -9,7 +9,8 @@
 			"MarcoAurelio",
 			"McDutchie",
 			"Rodney Araujo",
-			"Suecarmol"
+			"Suecarmol",
+			"No se"
 		]
 	},
 	"globalwatchlist": "Lista de seguimiento global",
@@ -77,6 +78,7 @@
 	"globalwatchlist-tour-addsite": "Añadir un sitio",
 	"globalwatchlist-tour-fastmode": "Modo rápido",
 	"globalwatchlist-tour-filters": "Opciones de filtrado",
+	"globalwatchlist-tour-filters-description": "La lista de observación global no tiene todas las opciones de filtro disponibles para la lista de observación normal. Los filtros disponibles son para ediciones anónimas frente a ediciones de usuarios registrados, así como filtros para ediciones marcadas como ediciones menores o ediciones de bot.",
 	"globalwatchlist-tour-help": "Más documentación",
 	"globalwatchlist-tour-help-description": "Hay más documentación disponible en mediawiki.org",
 	"globalwatchlist-tour-intro": "Configuración de la lista de seguimiento global",
