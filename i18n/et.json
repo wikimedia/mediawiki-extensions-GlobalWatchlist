@@ -6,7 +6,9 @@
 	},
 	"globalwatchlist": "Globaalne jälgimisloend",
 	"globalwatchlist-desc": "Lisab globaalse jälgimisloendi.",
+	"globalwatchlist-summary": "Erilehekülg globaalse jälgimisloendi vaatamiseks.",
 	"globalwatchlistsettings": "Globaalse jälgimisloendi eelistused",
+	"globalwatchlistsettings-summary": "Erilehekülg globaalse jälgimisloendi haldamiseks.",
 	"globalwatchlist-add": "Lisa",
 	"globalwatchlist-asof": "Seisuga $1",
 	"globalwatchlist-changesfeed": "Muudatustega saidid",
@@ -26,6 +28,7 @@
 	"globalwatchlist-filter-only-minor": "Ainult pisimuudatused",
 	"globalwatchlist-globalwatchlistsettingslink": "Eelistused",
 	"globalwatchlist-grouped-timestamp": "Rühmitatud muudatuste korral näidatakse viimase muudatuse ajatemplit",
+	"globalwatchlist-history": "ajalugu",
 	"globalwatchlist-javascript-required": "See erilehekülg töötab ainult JavaScriptiga.",
 	"globalwatchlist-log-entry": "logisissekanne",
 	"globalwatchlist-log-page": "lehekülg logides",
@@ -57,5 +60,6 @@
 	"globalwatchlist-show-newpages": "Näita lehekülgede alustamist",
 	"globalwatchlist-sitelist": "Kasutaja määratud saitide loetelu",
 	"globalwatchlist-unwatch": "lõpeta jälgimine",
+	"globalwatchlist-markpageseen": "märgi lehekülg loetuks",
 	"prefs-globalwatchlist": "Globaalne jälgimisloend"
 }
