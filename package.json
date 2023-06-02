@@ -19,10 +19,10 @@
 		"@wdio/mocha-framework": "7.26.0",
 		"@wdio/spec-reporter": "7.29.1",
 		"eslint-config-wikimedia": "0.25.0",
-		"grunt-banana-checker": "0.10.0",
+		"grunt-banana-checker": "0.11.0",
 		"jsdoc": "3.6.10",
 		"jsdoc-wmf-theme": "0.0.3",
-		"stylelint-config-wikimedia": "0.14.0",
+		"stylelint-config-wikimedia": "0.15.0",
 		"wdio-mediawiki": "2.1.0"
 	},
 	"eslintIgnore": [
