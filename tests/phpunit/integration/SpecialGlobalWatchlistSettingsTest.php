@@ -406,7 +406,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$testContext = new DerivativeContext( $specialPage->getContext() );
 
 		$user = $this->createMock( User::class );
-		$user->method( 'isRegistered' )->willReturn( true );
+		$user->method( 'isNamed' )->willReturn( true );
 
 		$testContext->setUser( $user );
 		$specialPage->setContext( $testContext );

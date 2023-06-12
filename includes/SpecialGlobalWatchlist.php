@@ -56,7 +56,7 @@ class SpecialGlobalWatchlist extends SpecialPage {
 
 		$this->addHelpLink( 'Extension:GlobalWatchlist' );
 
-		$this->requireLogin( 'globalwatchlist-must-login' );
+		$this->requireNamedUser( 'globalwatchlist-must-login' );
 
 		$config = $this->getConfig();
 
@@ -94,7 +94,7 @@ class SpecialGlobalWatchlist extends SpecialPage {
 	 * @return bool
 	 */
 	public function isListed() {
-		return $this->getUser()->isRegistered();
+		return $this->getUser()->isNamed();
 	}
 
 }

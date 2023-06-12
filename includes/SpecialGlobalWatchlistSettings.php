@@ -109,7 +109,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	public function execute( $par ) {
 		$this->addHelpLink( 'Extension:GlobalWatchlist' );
 
-		$this->requireLogin( 'globalwatchlist-must-login' );
+		$this->requireNamedUser( 'globalwatchlist-must-login' );
 
 		$this->getOutput()->addModules( 'mediawiki.htmlform.ooui' );
 		$this->getOutput()->addModuleStyles(
@@ -477,7 +477,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * @return bool
 	 */
 	public function isListed() {
-		return $this->getUser()->isRegistered();
+		return $this->getUser()->isNamed();
 	}
 
 }
