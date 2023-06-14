@@ -30,7 +30,7 @@
 	"globalwatchlist-filter-only-anon": "Толькі праўкі, паробленыя ананімна",
 	"globalwatchlist-filter-only-bot": "Толькі праўкі, паробленыя ботамі",
 	"globalwatchlist-filter-only-minor": "Толькі дробныя праўкі",
-	"globalwatchlist-getoptions-error": "Выяўлена памылка падчас атрымання захаваных параметраў удзельніка. Замест гэтага будуць выкарыстоўвацца значэнні па змаўчанні.",
+	"globalwatchlist-getoptions-error": "Выяўлена памылка падчас атрымання захаваных параметраў удзельніка. Замест гэтага будуць выкарыстоўвацца прадвызначаныя значэнні.",
 	"globalwatchlist-globalwatchlistbacklink": "Назад да глабальнага спісу назірання",
 	"globalwatchlist-globalwatchlistlink": "Глабальны спіс назірання",
 	"globalwatchlist-globalwatchlistsettingslink": "Налады",
