@@ -6,8 +6,10 @@
 	},
 	"globalwatchlist": "عالمی پارھاتندیر",
 	"globalwatchlist-add": "شامل کرو",
+	"globalwatchlist-changesfeed": "تبدیلیاں نال سائٹاں",
 	"globalwatchlist-changetypes": "تبدیلی دی قسم",
 	"globalwatchlist-editwatchlist": "پارھا تندیر وچ تبدیلی کرو",
+	"globalwatchlist-emptyfeed": "تبدیلیاں بغیر سائٹاں",
 	"globalwatchlist-filters": "چھاݨے",
 	"globalwatchlist-filter-bot": "بوٹ تبدیلیاں",
 	"globalwatchlist-filter-either": "یا",
@@ -31,7 +33,9 @@
 	"globalwatchlist-rewatch": "ولدا ݙیکھو",
 	"globalwatchlist-save": "ترتیباں محفوظ کرو",
 	"globalwatchlist-settings-error-bad-sites": "غلط سائٹ(اں): $1",
+	"globalwatchlist-show-edits": "ورقہ تبدیلیاں ݙکھاؤ",
 	"globalwatchlist-tour-addsite": "سائٹ شامل کرو",
 	"globalwatchlist-tour-sitelist": "سائٹاں دی تندیر",
+	"globalwatchlist-tour-types": "تبدیلی قسماں",
 	"globalwatchlist-markpageseen": "نشان لاؤ جو ورقہ پڑھ گھدے"
 }
