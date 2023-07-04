@@ -4,9 +4,12 @@
 			"Saraiki"
 		]
 	},
+	"globalwatchlist": "عالمی پارھاتندیر",
 	"globalwatchlist-add": "شامل کرو",
+	"globalwatchlist-changesfeed": "تبدیلیاں نال سائٹاں",
 	"globalwatchlist-changetypes": "تبدیلی دی قسم",
 	"globalwatchlist-editwatchlist": "پارھا تندیر وچ تبدیلی کرو",
+	"globalwatchlist-emptyfeed": "تبدیلیاں بغیر سائٹاں",
 	"globalwatchlist-filters": "چھاݨے",
 	"globalwatchlist-filter-bot": "بوٹ تبدیلیاں",
 	"globalwatchlist-filter-either": "یا",
@@ -23,11 +26,15 @@
 	"globalwatchlist-markseen": "نشان لاؤ جو پڑھ گھدے",
 	"globalwatchlist-markseen-all": "ساریاں سائٹاں تے ݙیکھ گھدا دا نشان لاؤ",
 	"globalwatchlist-notify-heading": "عالمی پارھاتندیر",
+	"globalwatchlist-option-live": "لائیو اپ ڈیٹاں",
 	"globalwatchlist-otheroptions": "ٻیاں ترتیباں",
 	"globalwatchlist-refresh": "تازہ کرو",
 	"globalwatchlist-remove": "ہٹاؤ",
 	"globalwatchlist-rewatch": "ولدا ݙیکھو",
 	"globalwatchlist-save": "ترتیباں محفوظ کرو",
+	"globalwatchlist-settings-error-bad-sites": "غلط سائٹ(اں): $1",
+	"globalwatchlist-show-edits": "ورقہ تبدیلیاں ݙکھاؤ",
 	"globalwatchlist-tour-addsite": "سائٹ شامل کرو",
-	"globalwatchlist-tour-sitelist": "سائٹاں دی تندیر"
+	"globalwatchlist-tour-sitelist": "سائٹاں دی تندیر",
+	"globalwatchlist-tour-types": "تبدیلی قسماں"
 }
