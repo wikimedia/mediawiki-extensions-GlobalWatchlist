@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"globalwatchlist": "Globalne praćene stranice",
+	"globalwatchlist-desc": "Dodaje spisak globalnih praćenih stranica",
+	"globalwatchlist-summary": "Posebna stranica za pregled spiska globalnih praćenih stranica",
+	"globalwatchlistsettings": "Postavke globalnih praćenih stranica",
+	"globalwatchlistsettings-summary": "Posebna stranica za upravljanje spiskom globalnih praćenih stranica",
+	"globalwatchlist-add": "Dodaj",
+	"globalwatchlist-api-error": "Došlo je do pogreške priložnika tijekom interakcije s \"$1\":",
+	"globalwatchlist-asof": "Ažurirano: $1",
+	"globalwatchlist-changesfeed": "Mrežna mjesta s promjenama",
+	"globalwatchlist-changetypes": "Vrsta promjene",
+	"globalwatchlist-editwatchlist": "Uredi spisak praćenja",
+	"globalwatchlist-emptyfeed": "Mrežna mjesta bez promjena",
+	"globalwatchlist-filters": "Filtri",
+	"globalwatchlist-filter-anon": "Anonimne izmjene",
+	"globalwatchlist-filter-bot": "Botovske izmjene",
+	"globalwatchlist-filter-either": "Svejedno",
+	"globalwatchlist-filter-minor": "Manje izmjene",
+	"globalwatchlist-filter-not-anon": "Samo izmjene prijavljenih korisnika",
+	"globalwatchlist-filter-not-bot": "Samo izmjene koje nisu načinjene botovima",
+	"globalwatchlist-filter-not-minor": "Samo izmjene koje nisu manje",
+	"globalwatchlist-filter-only-anon": "Samo izmjene koje su načinjene anonimno",
+	"globalwatchlist-filter-only-bot": "Samo izmjene botova",
+	"globalwatchlist-filter-only-minor": "Samo manje izmjene"
+}
