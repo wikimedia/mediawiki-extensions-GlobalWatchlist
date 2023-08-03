@@ -9,7 +9,9 @@
 			"Shuiwater",
 			"SomeyaMako",
 			"列维劳德",
-			"沈澄心"
+			"沈澄心",
+			"Diskdance",
+			"Hehua"
 		]
 	},
 	"globalwatchlist": "全域监视列表",
@@ -69,7 +71,7 @@
 	"globalwatchlist-settings-error-anon-minor": "匿名用户不能进行小编辑",
 	"globalwatchlist-settings-error-bad-sites": "无效网站：$1",
 	"globalwatchlist-settings-error-duplicate-site": "网站“$1”被多次收录。",
-	"globalwatchlist-settings-error-invalid-site": "站点“$1”与您具有附加中央认证帐户的wiki不匹配。",
+	"globalwatchlist-settings-error-invalid-site": "站点“$1”与您具有附加中央认证账号的wiki不匹配。",
 	"globalwatchlist-settings-error-no-sites": "没有选定站点",
 	"globalwatchlist-settings-error-no-types": "未选择更改类型",
 	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1个站点}}已选择，超过$2个允许的最大站点数。",
