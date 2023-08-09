@@ -25,6 +25,9 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @covers \MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlistSettings
  * @author DannyS712
+ * @group Database
+ * @todo Use Authority instead of User and remove this test from the Database group once core's SpecialPage and
+ * FormSpecialPage move away from User.
  */
 class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
