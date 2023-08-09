@@ -67,6 +67,7 @@
 	"globalwatchlist-sitelist": "Списак пројеката",
 	"globalwatchlist-tags": "{{PLURAL:$1|Ознака|Ознаке}}: $2",
 	"globalwatchlist-tour-addsite": "Додај сајт",
+	"globalwatchlist-tour-help": "Више документације",
 	"globalwatchlist-tour-intro": "Подешавања глобалног списка надгледања",
 	"globalwatchlist-tour-sitelist": "Списак сајтова",
 	"globalwatchlist-unwatch": "прекини надгледање",
