@@ -8,11 +8,11 @@ use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\Title;
 use MediaWikiUnitTestCase;
 use Message;
 use Skin;
 use SpecialPage;
-use Title;
 use User;
 
 /**
