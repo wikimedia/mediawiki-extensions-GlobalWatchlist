@@ -4,5 +4,8 @@
 			"Kimberli Mäkäräinen (WMNO)"
 		]
 	},
+	"globalwatchlist-filter-minor": "Unna rievdadusažat",
+	"globalwatchlist-filter-not-minor": "Dušše eará rievdadusat go unna rievdadusažat",
+	"globalwatchlist-filter-only-minor": "Dušše eará rievdadusat go unna rievdadusažat",
 	"globalwatchlist-remove": "Sihko"
 }
