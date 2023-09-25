@@ -84,9 +84,12 @@
 	"globalwatchlist-tour-help": "Más documentación",
 	"globalwatchlist-tour-help-description": "Hay más documentación disponible en mediawiki.org",
 	"globalwatchlist-tour-intro": "Configuración de la lista de seguimiento global",
+	"globalwatchlist-tour-intro-description": "La extensión GlobalWatchlist agrega una página especial, [[Special:GlobalWatchlist]], para ver varias listas de seguimiento a la vez. Esta página se utiliza para establecer las preferencias para dicha lista de seguimiento global.",
 	"globalwatchlist-tour-sitelist": "Lista de sitios",
+	"globalwatchlist-tour-sitelist-description": "Esta es la lista de sitios que se incluirán en la lista de seguimiento global. Utiliza la URL del dominio del proyecto, por ejemplo: <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Tipos de cambio",
 	"globalwatchlist-tour-types-description": "Los usuarios pueden controlar qué tipos de cambios deben mostrarse.",
 	"globalwatchlist-unwatch": "dejar de vigilar",
+	"globalwatchlist-markpageseen": "marcar página como leída",
 	"prefs-globalwatchlist": "Lista de seguimiento global"
 }
