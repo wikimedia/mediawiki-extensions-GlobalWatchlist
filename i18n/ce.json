@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"globalwatchlist-add": "ТӀетоха",
+	"globalwatchlist-editwatchlist": "Тергаме могӀам нисбар",
+	"globalwatchlist-filters": "Литтарш",
+	"globalwatchlist-filter-bot": "Ботийн/декъашхойн нисдарш",
+	"globalwatchlist-filter-either": "Нисдарийн шеа тайпа",
+	"globalwatchlist-filter-only-bot": "Боташа дина нисдарш бен",
+	"globalwatchlist-filter-only-minor": "Жима нисдарш бен",
+	"globalwatchlist-globalwatchlistlink": "Глобалан тергаме могӀам",
+	"globalwatchlist-globalwatchlistsettingslink": "Нисдаран гӀирс",
+	"globalwatchlist-gotoglobal": "Глобалан тергаме могӀам",
+	"globalwatchlist-gotoglobal-tooltip": "Глобалан тергаме могӀам хьажа",
+	"globalwatchlist-history": "истори",
+	"globalwatchlist-log-entry": "тептаран дӀайаздар",
+	"globalwatchlist-log-page": "агӀонан тептар",
+	"globalwatchlist-markseen": "Хьаьжина сана билгалйе",
+	"globalwatchlist-markseen-all": "Йерриге сайташ хьаьжина санна билгалде",
+	"globalwatchlist-markseen-allconfirm": "Бакъалла лаьий хьуна, йерриге сайташ хьаьжина санна билгалйан?",
+	"globalwatchlist-notify-heading": "Глобалан тергаме могӀам",
+	"globalwatchlist-otheroptions": "Кхий болу нисдаран гӀирс",
+	"globalwatchlist-refresh": "Карлайаккха",
+	"globalwatchlist-remove": "ДӀайаккха",
+	"globalwatchlist-save": "Ӏалашбе нисдаран гӀирс",
+	"globalwatchlist-settings-error-no-sites": "Сайташ хаьржина йац",
+	"globalwatchlist-settings-error-no-types": "Хийцамийн тайпанаш хаьржина дац",
+	"globalwatchlist-show-edits": "Гайта агӀонашкахь нисдарш",
+	"globalwatchlist-show-logentries": "Тептарийн дӀайаздарш гайта",
+	"globalwatchlist-show-newpages": "Гайта керла агӀонаш кхоллар",
+	"globalwatchlist-sitelist": "Сайтийн хьан могӀам",
+	"globalwatchlist-tags": "{{PLURAL:$1|Билгало}}: $2",
+	"globalwatchlist-tour-addsite": "ТӀетоха сайт",
+	"globalwatchlist-tour-fastmode": "Чехка раж",
+	"globalwatchlist-tour-filters": "Литтаран нисдаран гӀирс",
+	"globalwatchlist-tour-help": "Дуьззина документаци",
+	"globalwatchlist-tour-sitelist": "Сайтийн могӀам",
+	"globalwatchlist-tour-types": "Хийцамийн тайпанаш"
+}
