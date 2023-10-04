@@ -4,11 +4,16 @@
 			"Умар"
 		]
 	},
+	"globalwatchlist": "Глобалан тергаме могӀам",
+	"globalwatchlist-desc": "Глобалан тергаме могӀаман тӀетуху",
 	"globalwatchlist-add": "ТӀетоха",
 	"globalwatchlist-editwatchlist": "Тергаме могӀам нисбар",
 	"globalwatchlist-filters": "Литтарш",
+	"globalwatchlist-filter-anon": "Анонимийн/дӀабазбеллачу декъашхойн нисдарш",
 	"globalwatchlist-filter-bot": "Ботийн/декъашхойн нисдарш",
 	"globalwatchlist-filter-either": "Нисдарийн шеа тайпа",
+	"globalwatchlist-filter-not-anon": "ДӀабазбелачу декъашхойн нисдарш бен",
+	"globalwatchlist-filter-not-bot": "Боташа дина нисдарш бен",
 	"globalwatchlist-filter-only-bot": "Боташа дина нисдарш бен",
 	"globalwatchlist-filter-only-minor": "Жима нисдарш бен",
 	"globalwatchlist-globalwatchlistlink": "Глобалан тергаме могӀам",
