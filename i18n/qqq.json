@@ -3,6 +3,7 @@
 		"authors": [
 			"Amire80",
 			"DannyS712",
+			"McDutchie",
 			"Raymond",
 			"Robby"
 		]
@@ -84,7 +85,7 @@
 	"globalwatchlist-tour-intro": "Introduction title for GuidedTour",
 	"globalwatchlist-tour-intro-description": "Introduction text for GuidedTour",
 	"globalwatchlist-tour-sitelist": "Title for GuidedTour step describing the list of sites",
-	"globalwatchlist-tour-sitelist-description": "Description text for GuidedTour step describing the list of sites",
+	"globalwatchlist-tour-sitelist-description": "Description text for GuidedTour step describing the list of sites.\n\nFeel free to change the language code <code>en</code> to the code for the language you're translating into.",
 	"globalwatchlist-tour-types": "Title for GuidedTour step describing change types to show",
 	"globalwatchlist-tour-types-description": "Description text for GuidedTour step describing change types to show",
 	"globalwatchlist-unwatch": "Label for button to unwatch a page",
