@@ -6,8 +6,16 @@
 	},
 	"globalwatchlist": "Глобалан тергаме могӀам",
 	"globalwatchlist-desc": "Глобалан тергаме могӀаман тӀетуху",
+	"globalwatchlist-summary": "Глобалан тергаме могӀаме хьожу белхан агӀо",
+	"globalwatchlistsettings": "Глобалан тергаме могӀаман нисдаран гӀирс",
+	"globalwatchlistsettings-summary": "Глобалан тергаме могӀаман урхалла дан белхан агӀо",
 	"globalwatchlist-add": "ТӀетоха",
+	"globalwatchlist-asof": "$1 хьолаца",
+	"globalwatchlist-changesfeed": "Сайташ хийцамашца",
+	"globalwatchlist-changetypes": "Хийцамийн тайпа",
 	"globalwatchlist-editwatchlist": "Тергаме могӀам нисбар",
+	"globalwatchlist-emptyfeed": "Сайташ хийцамаш боцуш",
+	"globalwatchlist-fetch-site-failure": "Хийцамаш чубаха цабели",
 	"globalwatchlist-filters": "Литтарш",
 	"globalwatchlist-filter-anon": "Анонимийн/дӀабазбеллачу декъашхойн нисдарш",
 	"globalwatchlist-filter-bot": "Ботийн/декъашхойн нисдарш",
@@ -43,5 +51,6 @@
 	"globalwatchlist-tour-filters": "Литтаран нисдаран гӀирс",
 	"globalwatchlist-tour-help": "Дуьззина документаци",
 	"globalwatchlist-tour-sitelist": "Сайтийн могӀам",
-	"globalwatchlist-tour-types": "Хийцамийн тайпанаш"
+	"globalwatchlist-tour-types": "Хийцамийн тайпанаш",
+	"prefs-globalwatchlist": "Глобалан тергаме могӀам"
 }
