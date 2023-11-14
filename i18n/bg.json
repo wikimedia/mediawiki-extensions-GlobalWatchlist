@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kasey",
+			"StanProg"
+		]
+	},
+	"globalwatchlist": "Глобален списък за наблюдение",
+	"globalwatchlistsettings": "Настройки на глобалния списък за наблюдение",
+	"globalwatchlist-globalwatchlistlink": "Глобален списък за наблюдение",
+	"globalwatchlist-gotoglobal": "Глобален списък за наблюдение",
+	"globalwatchlist-notify-heading": "Глобален списък за наблюдение",
+	"prefs-globalwatchlist": "Глобален списък за наблюдение"
+}
