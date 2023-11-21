@@ -121,16 +121,10 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 			->willReturn( $title );
 		$skin->expects( $this->exactly( 2 ) )
 			->method( 'msg' )
-			->withConsecutive(
-				[ $this->equalTo( 'globalwatchlist-gotoglobal' ) ],
-				[ $this->equalTo( 'globalwatchlist-gotoglobal-tooltip' ) ]
-			)
-			->will(
-				$this->onConsecutiveCalls(
-					$textMessage,
-					$titleMessage
-				)
-			);
+			->willReturnMap( [
+				[ 'globalwatchlist-gotoglobal', $textMessage ],
+				[ 'globalwatchlist-gotoglobal-tooltip', $titleMessage ]
+			] );
 
 		$sidebar = [];
 		$sidebar['navigation'] = [];
