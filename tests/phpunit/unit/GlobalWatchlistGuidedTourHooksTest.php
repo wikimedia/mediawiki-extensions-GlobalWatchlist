@@ -15,15 +15,6 @@ use ResourceLoader;
  * @covers \MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistGuidedTourHooks
  */
 class GlobalWatchlistGuidedTourHooksTest extends MediaWikiUnitTestCase {
-
-	public function testNewFromGlobalState() {
-		$hookHandler = GlobalWatchlistGuidedTourHooks::newFromGlobalState();
-		$this->assertInstanceOf(
-			GlobalWatchlistGuidedTourHooks::class,
-			$hookHandler
-		);
-	}
-
 	/**
 	 * @dataProvider provideTestModuleRegistration
 	 * @param bool $configEnabled
