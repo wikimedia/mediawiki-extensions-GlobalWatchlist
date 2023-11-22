@@ -7,5 +7,6 @@
 	"globalwatchlist-filter-minor": "Unna rievdadusažat",
 	"globalwatchlist-filter-not-minor": "Dušše eará rievdadusat go unna rievdadusažat",
 	"globalwatchlist-filter-only-minor": "Dušše eará rievdadusat go unna rievdadusažat",
-	"globalwatchlist-remove": "Sihko"
+	"globalwatchlist-remove": "Sihko",
+	"globalwatchlist-settings-error-anon-bot": "Anonyma geavaheaddjit eai sáhte rievdadit robohtaiguin"
 }
