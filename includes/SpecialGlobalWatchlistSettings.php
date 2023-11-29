@@ -31,7 +31,7 @@ use HTMLForm;
 use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
 use Status;

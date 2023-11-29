@@ -12,7 +12,7 @@ use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlistSettings;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
-use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWikiIntegrationTestCase;
 use OutputPage;
 use Psr\Log\LogLevel;
