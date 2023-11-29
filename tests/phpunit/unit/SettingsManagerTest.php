@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 use FormatJson;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
-use MediaWiki\User\UserOptionsManager;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWikiUnitTestCase;
 use Psr\Log\LogLevel;
 use TestLogger;

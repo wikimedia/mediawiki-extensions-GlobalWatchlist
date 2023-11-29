@@ -25,8 +25,8 @@ namespace MediaWiki\Extension\GlobalWatchlist;
 
 use FormatJson;
 use IBufferingStatsdDataFactory;
+use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsManager;
 use Psr\Log\LoggerInterface;
 
 /**
