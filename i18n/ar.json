@@ -3,6 +3,7 @@
 		"authors": [
 			"Alshamiri1",
 			"Dr. Mohammed",
+			"Hubaishan",
 			"Meno25",
 			"Tala Ali",
 			"محمد أحمد عبد الفتاح"
@@ -24,6 +25,7 @@
 	"globalwatchlist-filters": "المرشحات",
 	"globalwatchlist-filter-anon": "تعديلات المجهولين",
 	"globalwatchlist-filter-bot": "تعديلات البوت",
+	"globalwatchlist-filter-either": "الجميع",
 	"globalwatchlist-filter-minor": "تعديلات طفيفة",
 	"globalwatchlist-filter-not-anon": "التعديلات التي تم إجراؤها فقط بواسطة المستخدمين المسجلين",
 	"globalwatchlist-filter-not-bot": "فقط عمليات التحرير غير البوت",
