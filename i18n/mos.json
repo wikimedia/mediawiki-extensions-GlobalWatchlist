@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Raizkgh",
 			"Soumaya"
 		]
 	},
@@ -78,7 +79,7 @@
 	"globalwatchlist-tour-help": "Koɛɛga gɩlsgo",
 	"globalwatchlist-tour-help-description": "Sõsg wʋsg n be mediawiki.org",
 	"globalwatchlist-tour-intro": "GlobalWatchlist siglsã",
-	"globalwatchlist-tour-intro-description": "Bãngr-gomdã pʋgẽ, b paasda seb-neng sẽn yaa \"GlobalWatchlist\" sẽn na yɩl n yã b sõssã b sẽn maand to-to. Seb-kãngã yaa seb-kãngã sẽn na yɩl n yãk sõsdbã sẽn dat n ges dũniyã gill zug bũmb ninsã.",
+	"globalwatchlist-tour-intro-description": "Bãngr-gomdã pʋgẽ, b paasda seb-neng sẽn yaa \"[[Special:GlobalWatchlist]], \" sẽn na yɩl n yã b sõssã b sẽn maand to-to. Seb-kãngã yaa seb-kãngã sẽn na yɩl n yãk sõsdbã sẽn dat n ges dũniyã gill zug bũmb ninsã.",
 	"globalwatchlist-tour-sitelist": "Tẽns nins sẽn be tẽn-kãnga",
 	"globalwatchlist-tour-sitelist-description": "Yaa zĩ-kãens nins sẽn na n zĩnd dũniyã gill zug n getẽ wã sõore. Sebr-y site wã URL wã, wala <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Yɛlg-y-yã",
