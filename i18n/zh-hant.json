@@ -3,7 +3,8 @@
 		"authors": [
 			"Arthur2e5",
 			"Hasley",
-			"Kly"
+			"Kly",
+			"SunAfterRain"
 		]
 	},
 	"globalwatchlist": "全域監視清單",
@@ -87,5 +88,6 @@
 	"globalwatchlist-tour-types": "更改類型",
 	"globalwatchlist-tour-types-description": "使用者能控制應顯示出哪些更改類型。",
 	"globalwatchlist-unwatch": "取消監視",
+	"globalwatchlist-markpageseen": "將頁面標記為已讀",
 	"prefs-globalwatchlist": "全域監視清單"
 }
