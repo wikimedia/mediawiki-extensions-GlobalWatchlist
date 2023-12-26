@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"globalwatchlist": "Global Iwwerwaachungslëscht",
@@ -18,6 +19,7 @@
 	"globalwatchlist-gotoglobal-tooltip": "Global Iwwerwaachungslëscht weisen",
 	"globalwatchlist-notify-heading": "Global Iwwerwaachungslëscht",
 	"globalwatchlist-notify-settingssaved": "Är Astellunge goufe gespäichert. [[Special:GlobalWatchlist|Zréck op déi global Iwwerwaachungslëscht]].",
+	"globalwatchlist-otheroptions": "Aner Astellungen",
 	"globalwatchlist-prefs-settings": "Fir d'Astellunge fir déi global Iwwerwaachungslëscht fest ze leeën, gitt wgl. op  [[Special:GlobalWatchlistSettings]].",
 	"globalwatchlist-remove": "Ewechhuelen",
 	"globalwatchlist-save": "Astellunge späicheren",
