@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"ElangoRamanujam"
+			"ElangoRamanujam",
+			"Fahimrazick"
 		]
 	},
 	"globalwatchlist-add": "சேர்க்கவும்",
-	"globalwatchlist-remove": "நீக்குக"
+	"globalwatchlist-remove": "அகற்று"
 }
