@@ -21,7 +21,7 @@
 	height: 13px;
 	position: relative;
 	top: -1px;
-	opacity: 0.51; /* To match @opacity-base--disabled */
+	opacity: 0.51; /* To match @opacity-icon-base--disabled */
 }
 
 .oo-ui-labelWidget {
