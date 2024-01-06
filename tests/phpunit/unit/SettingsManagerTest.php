@@ -6,10 +6,10 @@ use FormatJson;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\User\Options\UserOptionsManager;
+use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use Psr\Log\LogLevel;
 use TestLogger;
-use User;
 use Wikimedia\TestingAccessWrapper;
 
 /**

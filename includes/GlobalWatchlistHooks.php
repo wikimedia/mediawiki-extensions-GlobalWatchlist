@@ -32,8 +32,8 @@ use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\User\User;
 use Skin;
-use User;
 
 /**
  * @author DannyS712

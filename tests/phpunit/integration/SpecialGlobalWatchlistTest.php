@@ -5,10 +5,10 @@ namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 use DerivativeContext;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlist;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
-use OutputPage;
-use User;
 use UserNotLoggedIn;
 use Wikimedia\TestingAccessWrapper;
 

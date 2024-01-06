@@ -26,9 +26,9 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
-use Html;
 use IBufferingStatsdDataFactory;
-use SpecialPage;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\SpecialPage;
 
 /**
  * @ingroup SpecialPage

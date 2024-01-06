@@ -3,10 +3,10 @@
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
 use ExtensionRegistry;
-use HashConfig;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistGuidedTourHooks;
+use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWikiUnitTestCase;
-use ResourceLoader;
 
 /**
  * Tests for the hook handler

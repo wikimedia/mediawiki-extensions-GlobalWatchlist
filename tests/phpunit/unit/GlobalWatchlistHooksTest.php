@@ -7,13 +7,13 @@ use HTMLInfoField;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use Message;
 use Skin;
-use SpecialPage;
-use User;
 
 /**
  * Tests for the hook handler

@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\CentralAuth\User;
 
-use User;
+use MediaWiki\User\User;
 
 /**
  * Stub of CentralAuth extension's CentralAuthUser class
