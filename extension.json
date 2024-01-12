@@ -164,19 +164,11 @@
 				"oojs-ui.styles.icons-moderation",
 				"oojs-ui.styles.icons-movement",
 				"user.options"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
 			"styles": [
 				"SpecialGlobalWatchlistSettings.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		},
 		"ext.globalwatchlist.getsettingserror": {
@@ -188,10 +180,6 @@
 			],
 			"dependencies": [
 				"oojs-ui-windows"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
 			]
 		}
 	},
