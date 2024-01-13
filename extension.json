@@ -151,7 +151,6 @@
 				"watchlist-expiring-hours-full-text"
 			],
 			"dependencies": [
-				"es6-polyfills",
 				"jquery.makeCollapsible",
 				"mediawiki.ForeignApi",
 				"oojs",
