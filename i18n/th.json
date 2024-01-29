@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Patsagorn Y."
+			"Patsagorn Y.",
+			"RidJasper"
 		]
 	},
 	"globalwatchlist": "รายการเฝ้าดูข้ามโครงการ",
@@ -35,6 +36,7 @@
 	"globalwatchlist-gotoglobal": "รายการเฝ้าดูข้ามโครงการ",
 	"globalwatchlist-gotoglobal-tooltip": "ดูรายการเฝ้าดูข้ามโครงการ",
 	"globalwatchlist-grouped-timestamp": "ตราเวลาของรุ่นล่าสุดจะแสดงในกรณีการดูเปลี่ยนแปลงแบบรวมเป็นกลุ่ม",
+	"globalwatchlist-history": "ประวัติ",
 	"globalwatchlist-javascript-required": "หน้าพิเศษนี้จำเป็นต้องใช้จาวาสคริปต์เพื่อทำงาน",
 	"globalwatchlist-markseen": "ทำเครื่องหมายว่าเห็นแล้ว",
 	"globalwatchlist-markseen-all": "ทำเครื่องหมายไซต์ทั้งหมดว่าเห็นแล้ว",
@@ -42,7 +44,7 @@
 	"globalwatchlist-must-login": "กรุณาเข้าสู่ระบบเพื่อใช้รายการเฝ้าดูข้ามโครงการ",
 	"globalwatchlist-notify-heading": "รายการเฝ้าดูข้ามโครงการ",
 	"globalwatchlist-notify-savingfailed": "เกิดข้อผิดพลาดขณะบันทึกการตั้งค่า กรุณาลองใหม่อีกครั้ง",
-	"globalwatchlist-notify-settingssaved": "การตั้งค่าของคุณถูกบันทึกแล้ว",
+	"globalwatchlist-notify-settingssaved": "การตั้งค่าของคุณถูกบันทึกแล้ว [[Special:GlobalWatchlist|กลับไปที่รายการเฝ้าดูข้ามโครงการ]]",
 	"globalwatchlist-option-confirmallsites": "ต้องมีการยืนยันก่อนที่จะทำเครื่องหมายไซต์ทั้งหมดว่าเห็นแล้ว",
 	"globalwatchlist-option-fastmode": "โหลดเร็วขึ้น แต่มีรายละเอียดลดลง",
 	"globalwatchlist-option-grouppage": "จัดกลุ่มผลลัพธ์ตามหน้า",
@@ -65,6 +67,7 @@
 	"globalwatchlist-show-logentries": "แสดงการเปลี่ยนแปลงที่ถูกบันทึกเป็นปูม",
 	"globalwatchlist-show-newpages": "แสดงการสร้างหน้าใหม่",
 	"globalwatchlist-sitelist": "รายการกำหนดไซต์ของผู้ใช้",
+	"globalwatchlist-tags": "{{PLURAL:$1|ป้ายระบุ}}: $2",
 	"globalwatchlist-tour-addsite": "เพิ่มไซต์",
 	"globalwatchlist-tour-addsite-description": "กดที่ด้านบนเพื่อเพิ่มเว็บไซต์อื่นมายังรายการเฝ้าดู",
 	"globalwatchlist-tour-fastmode": "โหมดรวดเร็ว",
