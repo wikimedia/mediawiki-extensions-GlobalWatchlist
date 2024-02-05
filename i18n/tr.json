@@ -5,7 +5,8 @@
 			"Joseph",
 			"MuratTheTurkish",
 			"SaldırganSincap",
-			"Rapsar"
+			"Rapsar",
+			"Reedy"
 		]
 	},
 	"globalwatchlist": "Küresel izleme listesi",
@@ -81,7 +82,7 @@
 	"globalwatchlist-tour-filters": "Filtre seçenekleri",
 	"globalwatchlist-tour-filters-description": "Küresel izleme listesi, normal izleme listesi için kullanılabilen tüm filtre seçeneklerine sahip değildir. Kullanılabilir filtreler, anonim düzenlemeler ve oturum açmış kullanıcıların düzenlemelerinin yanı sıra küçük düzenlemeler veya bot düzenlemeleri olarak işaretlenen düzenlemeler için filtreler içindir.",
 	"globalwatchlist-tour-help": "Daha fazla belgeler",
-	"globalwatchlist-tour-help-description": "Mediawiki.org'da daha fazla belge mevcuttur",
+	"globalwatchlist-tour-help-description": "MediaWiki.org'da daha fazla belge mevcuttur",
 	"globalwatchlist-tour-intro": "GlobalWatchlist ayarları",
 	"globalwatchlist-tour-intro-description": "GlobalWatchlist uzantısı, birden fazla izleme listesini aynı anda görüntülemek için özel bir sayfa [[Special:GlobalWatchlist]] ekler. Bu sayfa, küresel izleme listesi için kullanıcı tercihlerini ayarlamak için kullanılır.",
 	"globalwatchlist-tour-sitelist": "Site listesi",
