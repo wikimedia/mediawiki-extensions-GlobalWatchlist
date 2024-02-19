@@ -61,7 +61,7 @@
 	"globalwatchlist-settings-error-anon-minor": "Pemaké sondernama kaga' bisa ngeja permakan kecit",
 	"globalwatchlist-settings-error-bad-sites": "Pelampang kaga' aci: $1",
 	"globalwatchlist-settings-error-duplicate-site": "Pelampang \"$1\" diserèntain bekali-kali.",
-	"globalwatchlist-settings-error-invalid-site": "Pelampang \"$1\" kaga' cocok ama wiki di mana lu gableg rèkening CentralAuth keènclèk.",
+	"globalwatchlist-settings-error-invalid-site": "Pelampang \"$1\" kaga' cocok ama wiki di mana lu gableg rèkening CentralAuth kekantèl.",
 	"globalwatchlist-settings-error-no-sites": "Kaga' ada pelampang nyang dipilih",
 	"globalwatchlist-settings-error-no-types": "Kaga' ada jenis perobahan nyang dipilih",
 	"globalwatchlist-show-edits": "Kasi unjuk permakan halaman",
