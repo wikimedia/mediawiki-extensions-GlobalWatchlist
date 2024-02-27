@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Patsagorn Y.",
-			"RidJasper"
+			"RidJasper",
+			"Ekminarin"
 		]
 	},
 	"globalwatchlist": "รายการเฝ้าดูข้ามโครงการ",
@@ -20,7 +21,7 @@
 	"globalwatchlist-fetch-site-failure": "เกิดข้อผิดพลาดขณะโหลดการเปลี่ยนแปลง",
 	"globalwatchlist-filters": "ตัวกรอง",
 	"globalwatchlist-filter-anon": "การแก้ไขโดยผู้ใช้นิรนาม",
-	"globalwatchlist-filter-bot": "การแก้ไขโดยบอท",
+	"globalwatchlist-filter-bot": "การแก้ไขโดยบอต",
 	"globalwatchlist-filter-either": "ไม่ใช่ทั้งหมด",
 	"globalwatchlist-filter-minor": "การแก้ไขเล็กน้อย",
 	"globalwatchlist-filter-not-anon": "เฉพาะการแก้ไขโดยผู้ใช้เข้าสู่ระบบ",
@@ -38,6 +39,7 @@
 	"globalwatchlist-grouped-timestamp": "ตราเวลาของรุ่นล่าสุดจะแสดงในกรณีการดูเปลี่ยนแปลงแบบรวมเป็นกลุ่ม",
 	"globalwatchlist-history": "ประวัติ",
 	"globalwatchlist-javascript-required": "หน้าพิเศษนี้จำเป็นต้องใช้จาวาสคริปต์เพื่อทำงาน",
+	"globalwatchlist-log-page": "ปูมหน้า",
 	"globalwatchlist-markseen": "ทำเครื่องหมายว่าเห็นแล้ว",
 	"globalwatchlist-markseen-all": "ทำเครื่องหมายไซต์ทั้งหมดว่าเห็นแล้ว",
 	"globalwatchlist-markseen-allconfirm": "คุณแน่ใจหรือไม่ที่จะทำเครื่องหมายเว็บไซต์ทั้งหมดว่าเห็นแล้ว?",
