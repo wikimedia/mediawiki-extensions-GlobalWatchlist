@@ -61,23 +61,21 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$userOptionsManager->expects( $this->once() )
 			->method( 'getOption' )
 			->with(
-				$this->equalTo( $user ),
-				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
-				$this->equalTo( false )
+				$user,
+				SettingsManager::PREFERENCE_NAME,
+				false
 			)
 			->willReturn( false );
 		$userOptionsManager->expects( $this->once() )
 			->method( 'setOption' )
 			->with(
-				$this->equalTo( $user ),
-				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
-				$this->equalTo( $strSettings )
+				$user,
+				SettingsManager::PREFERENCE_NAME,
+				$strSettings
 			);
 		$userOptionsManager->expects( $this->once() )
 			->method( 'saveOptions' )
-			->with(
-				$this->equalTo( $user )
-			);
+			->with( $user );
 
 		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
 		$statsdDataFactory->expects( $this->once() )
@@ -108,9 +106,9 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$userOptionsManager->expects( $this->once() )
 			->method( 'getOption' )
 			->with(
-				$this->equalTo( $user ),
-				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
-				$this->equalTo( false )
+				$user,
+				SettingsManager::PREFERENCE_NAME,
+				false
 			)
 			->willReturn( $hasExistingSettings );
 
@@ -145,15 +143,13 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		$userOptionsManager->expects( $this->once() )
 			->method( 'setOption' )
 			->with(
-				$this->equalTo( $user ),
-				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
-				$this->equalTo( $newOptions )
+				$user,
+				SettingsManager::PREFERENCE_NAME,
+				$newOptions
 			);
 		$userOptionsManager->expects( $this->once() )
 			->method( 'saveOptions' )
-			->with(
-				$this->equalTo( $user )
-			);
+			->with( $user );
 
 		$manager = $this->getManager(
 			$logger,

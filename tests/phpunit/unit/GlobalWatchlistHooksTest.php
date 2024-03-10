@@ -40,7 +40,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 		$statsdDataFactory->expects( $this->once() )
 			->method( 'increment' )
 			->with(
-				$this->equalTo( 'globalwatchlist.settings.manualchange' )
+				'globalwatchlist.settings.manualchange'
 			);
 		$hookHandler = $this->getHookHandler( [
 			'statsdDataFactory' => $statsdDataFactory
@@ -62,7 +62,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 		$title = $this->createMock( Title::class );
 		$title->expects( $this->once() )
 			->method( 'isSpecial' )
-			->with( $this->equalTo( 'Watchlist' ) )
+			->with( 'Watchlist' )
 			->willReturn( false );
 
 		$skin = $this->createMock( Skin::class );
@@ -93,7 +93,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 		$specialPageFactory = $this->createMock( SpecialPageFactory::class );
 		$specialPageFactory->expects( $this->once() )
 			->method( 'getPage' )
-			->with( $this->equalTo( 'GlobalWatchlist' ) )
+			->with( 'GlobalWatchlist' )
 			->willReturn( $specialGlobalWatchlist );
 
 		$hookHandler = $this->getHookHandler( [
@@ -103,7 +103,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 		$title = $this->createMock( Title::class );
 		$title->expects( $this->once() )
 			->method( 'isSpecial' )
-			->with( $this->equalTo( 'Watchlist' ) )
+			->with( 'Watchlist' )
 			->willReturn( true );
 
 		$textMessage = $this->createMock( Message::class );

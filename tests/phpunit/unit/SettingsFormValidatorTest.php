@@ -30,7 +30,7 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 		$messageLocalizer = $this->createMock( MessageLocalizer::class );
 		$messageLocalizer->expects( $this->once() )
 			->method( 'msg' )
-			->with( $this->equalTo( $key ) )
+			->with( $key )
 			->willReturn( $message );
 
 		return $messageLocalizer;
@@ -86,11 +86,8 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 		$message = $this->createMock( Message::class );
 		$message->expects( $this->once() )
 			->method( 'numParams' )
-			->with(
-				$this->equalTo( 2 ),
-				$this->equalTo( 1 )
-			)
-			->will( $this->returnSelf() );
+			->with( 2, 1 )
+			->willReturnSelf();
 		$messageLocalizer = $this->getMessageLocalizer(
 			'globalwatchlist-settings-error-too-many-sites',
 			$message
@@ -120,8 +117,8 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 		$message = $this->createMock( Message::class );
 		$message->expects( $this->once() )
 			->method( 'params' )
-			->with( $this->equalTo( 'baz.net' ) )
-			->will( $this->returnSelf() );
+			->with( 'baz.net' )
+			->willReturnSelf();
 		$messageLocalizer = $this->getMessageLocalizer(
 			'globalwatchlist-settings-error-duplicate-site',
 			$message
@@ -150,8 +147,8 @@ class SettingsFormValidatorTest extends MediaWikiUnitTestCase {
 		$message = $this->createMock( Message::class );
 		$message->expects( $this->once() )
 			->method( 'params' )
-			->with( $this->equalTo( 'bar.org' ) )
-			->will( $this->returnSelf() );
+			->with( 'bar.org' )
+			->willReturnSelf();
 		$messageLocalizer = $this->getMessageLocalizer(
 			'globalwatchlist-settings-error-invalid-site',
 			$message

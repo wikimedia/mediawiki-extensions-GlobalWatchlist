@@ -45,9 +45,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
 		$statsdDataFactory->expects( $this->once() )
 			->method( 'increment' )
-			->with(
-				$this->equalTo( 'globalwatchlist.load_special_page' )
-			);
+			->with( 'globalwatchlist.load_special_page' );
 
 		$specialPage = new SpecialGlobalWatchlist( $statsdDataFactory );
 
@@ -61,9 +59,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 		$output = $this->createMock( OutputPage::class );
 		$output->expects( $this->atLeastOnce() )
 			->method( 'addModules' )
-			->with(
-				$this->equalTo( $module )
-			);
+			->with( $module );
 		$output->expects( $this->atLeastOnce() )
 			->method( 'addJsConfigVars' )
 			->with(

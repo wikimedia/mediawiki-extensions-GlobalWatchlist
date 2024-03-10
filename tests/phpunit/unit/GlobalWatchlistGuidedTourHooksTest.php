@@ -24,9 +24,7 @@ class GlobalWatchlistGuidedTourHooksTest extends MediaWikiUnitTestCase {
 	public function testModuleRegistration( $configEnabled, $extensionEnabled, $expectRegister ) {
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )
-			->with(
-				$this->equalTo( 'GuidedTour' )
-			)
+			->with( 'GuidedTour' )
 			->willReturn( $extensionEnabled );
 
 		$hookHandler = new GlobalWatchlistGuidedTourHooks( $extensionRegistry );

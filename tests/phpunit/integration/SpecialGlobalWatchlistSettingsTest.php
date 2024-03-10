@@ -59,9 +59,9 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$userOptionsLookup->expects( $this->once() )
 			->method( 'getOption' )
 			->with(
-				$this->equalTo( $user ),
-				$this->equalTo( SettingsManager::PREFERENCE_NAME ),
-				$this->equalTo( false )
+				$user,
+				SettingsManager::PREFERENCE_NAME,
+				false
 			)
 			->willReturn( $result );
 		return $userOptionsLookup;
@@ -82,7 +82,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			->willReturn( $mockTitle );
 		$mockFactory->expects( $this->once() )
 			->method( 'getPage' )
-			->with( $this->equalTo( 'GlobalWatchlist' ) )
+			->with( 'GlobalWatchlist' )
 			->willReturn( $mockSpecial );
 		return $mockFactory;
 	}
@@ -271,9 +271,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$output = $this->createMock( OutputPage::class );
 		$output->expects( $this->atLeastOnce() )
 			->method( 'addModules' )
-			->with(
-				$this->equalTo( 'ext.globalwatchlist.getsettingserror' )
-			);
+			->with( 'ext.globalwatchlist.getsettingserror' );
 		$testContext->setOutput( $output );
 
 		$specialPage->setContext( $testContext );
@@ -359,10 +357,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 		$settingsManager->expects( $this->once() )
 			->method( 'saveUserOptions' )
-			->with(
-				$this->equalTo( $user ),
-				$this->equalTo( $expectedOptions )
-			);
+			->with( $user, $expectedOptions );
 
 		$logger = new TestLogger( true );
 
@@ -393,9 +388,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$output = $this->createMock( OutputPage::class );
 		$output->expects( $this->once() )
 			->method( 'addWikiMsg' )
-			->with(
-				$this->equalTo( 'globalwatchlist-notify-settingssaved' )
-			);
+			->with( 'globalwatchlist-notify-settingssaved' );
 		$testContext->setOutput( $output );
 
 		$specialPage->setContext( $testContext );
@@ -430,9 +423,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 	public function testMaybeLoadTour( $configEnabled, $extensionEnabled, $expectLoad ) {
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )
-			->with(
-				$this->equalTo( 'GuidedTour' )
-			)
+			->with( 'GuidedTour' )
 			->willReturn( $extensionEnabled );
 
 		$specialPage = $this->getSpecialPage( [
@@ -454,9 +445,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$outputExpectation = $expectLoad ? $this->once() : $this->never();
 		$output->expects( $outputExpectation )
 			->method( 'addModules' )
-			->with(
-				$this->equalTo( 'ext.guidedTour.globalWatchlistSettings' )
-			);
+			->with( 'ext.guidedTour.globalWatchlistSettings' );
 		$testContext->setOutput( $output );
 
 		$specialPage->setContext( $testContext );
