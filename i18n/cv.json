@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Astahar"
+		]
+	},
+	"globalwatchlist-add": "Хуш",
+	"globalwatchlist-api-error": "«$1»-пе ӗҫленӗ май API йӑнӑшӗ сиксе тухрӗ:",
+	"globalwatchlist-asof": "$1 ҫинчи тӑрӑмӗ:",
+	"globalwatchlist-changesfeed": "Улшӑннӑ сайтсем",
+	"globalwatchlist-changetypes": "Улӑштарнин тӗсӗ",
+	"globalwatchlist-editwatchlist": "Сӑнав списокне тӳрлет",
+	"globalwatchlist-emptyfeed": "Улшӑнман сайтсем",
+	"globalwatchlist-filters": "Фильтрсем"
+}
