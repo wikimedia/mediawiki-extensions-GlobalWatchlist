@@ -4,7 +4,8 @@
 			"Beginneruser",
 			"Jeeputer",
 			"Mohammad ebz",
-			"Reza koulivand"
+			"Reza koulivand",
+			"Ebraminio"
 		]
 	},
 	"globalwatchlist": "فهرست پیگیری سراسری",
@@ -37,7 +38,7 @@
 	"globalwatchlist-gotoglobal-tooltip": "مشاهدهٔ فهرست پیگیری سراسری",
 	"globalwatchlist-history": "تاریخچه",
 	"globalwatchlist-log-entry": "مدخل سیاهه",
-	"globalwatchlist-log-page": "گزارش های صفحه",
+	"globalwatchlist-log-page": "گزارش‌های صفحه",
 	"globalwatchlist-markseen": "علامت‌گذاری به‌عنوان خوانده‌شده",
 	"globalwatchlist-markseen-all": "علامت‌گذاری تمام وبگاه‌ها به‌عنوان خوانده‌شده",
 	"globalwatchlist-markseen-allconfirm": "مطمئنید که می‌خواهید تمام وبگاه‌ها را به‌عنوان خوانده‌شده علامت‌گذاری کنید؟",
@@ -56,9 +57,9 @@
 	"globalwatchlist-settings-error-anon-bot": "کاربران ناشناس قادر به انجام ویرایش‌های رباتیک نیستند",
 	"globalwatchlist-settings-error-anon-minor": "کاربران ناشناس قادر به انجام ویرایش‌های جزئی نیستند",
 	"globalwatchlist-settings-error-bad-sites": "وبگاه(های) نامعبتر: $1",
-	"globalwatchlist-settings-error-duplicate-site": "وبگاه «$1» چندین بار گنجانده شده‌است.",
-	"globalwatchlist-settings-error-no-sites": "هیچ وبگاهی انتخاب نشده‌است",
-	"globalwatchlist-settings-error-no-types": "هیچ نوع تغییری انتخاب نشده‌است",
+	"globalwatchlist-settings-error-duplicate-site": "وبگاه «$1» چندین بار گنجانده شده است.",
+	"globalwatchlist-settings-error-no-sites": "هیچ وبگاهی انتخاب نشده است",
+	"globalwatchlist-settings-error-no-types": "هیچ نوع تغییری انتخاب نشده است",
 	"globalwatchlist-show-edits": "نمایش ویرایش‌های صفحه",
 	"globalwatchlist-show-logentries": "نمایش مدخل‌های سیاهه",
 	"globalwatchlist-show-newpages": "نمایش صفحه‌های تازه",
