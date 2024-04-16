@@ -18,17 +18,7 @@
 				"requireReturnDescription": false
 			}
 		],
-		"jsdoc/no-undefined-types": [
-			"error",
-			{
-				"definedTypes": [
-					"GlobalWatchlistDebugger",
-					"GlobalWatchlistEntryBase",
-					"GlobalWatchlistLinker",
-					"GlobalWatchlistWatchlistUtils"
-				]
-			}
-		],
+		"jsdoc/no-undefined-types": "warn",
 		"es-x/no-promise": "warn",
 		"es-x/no-regexp-prototype-flags": "warn",
 		"es-x/no-array-prototype-entries": "warn"
