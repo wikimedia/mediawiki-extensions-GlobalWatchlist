@@ -79,5 +79,7 @@
 	"globalwatchlist-tour-sitelist": "Сайтсен списокӗ",
 	"globalwatchlist-tour-types": "Улшӑнусен тӗсӗсем",
 	"globalwatchlist-tour-types-description": "Хутшӑнакансем тӗрлӗ улшӑну тӗсӗсен кӑтартнине ӗнерлеме пултараҫҫӗ.",
-	"globalwatchlist-unwatch": "сӑнама пӑрах"
+	"globalwatchlist-unwatch": "сӑнама пӑрах",
+	"globalwatchlist-markpageseen": "паллашнӑ пек палӑрт",
+	"prefs-globalwatchlist": "Глобаллӑ сӑнав списокӗ"
 }
