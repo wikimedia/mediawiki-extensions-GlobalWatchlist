@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"ऐक्टिवेटेड्"
+		]
+	},
+	"globalwatchlist": "बैश्विक ध्यानसूची",
+	"globalwatchlist-add": "जोड़ी",
+	"globalwatchlist-changetypes": "परिवर्तनके प्रकार",
+	"globalwatchlist-editwatchlist": "ध्यानसूची सम्पादित करी",
+	"globalwatchlist-emptyfeed": "बिन परिवर्तनके जालस्थल",
+	"globalwatchlist-fetch-site-failure": "परिवर्तन लावेमे बिफल",
+	"globalwatchlist-filters": "फिल्टर्",
+	"globalwatchlist-filter-anon": "अज्ञात सम्पादन",
+	"globalwatchlist-filter-bot": "स्वचालक सम्पादन",
+	"globalwatchlist-filter-either": "कौनो",
+	"globalwatchlist-globalwatchlistsettingslink": "सेटिङ्ग्स्",
+	"globalwatchlist-gotoglobal": "बैश्विक ध्यानसूची",
+	"globalwatchlist-gotoglobal-tooltip": "बैश्विक ध्यानसूची देखी",
+	"globalwatchlist-history": "इतिहास",
+	"globalwatchlist-notify-heading": "बैश्विक ध्यानसूची",
+	"globalwatchlist-option-live": "जीवन्त अद्यतन",
+	"globalwatchlist-otheroptions": "अन्य सेटिङ्ग्स्",
+	"globalwatchlist-refresh": "नवीकरण",
+	"globalwatchlist-remove": "हटावी",
+	"globalwatchlist-save": "सेटिङ्ग्स् सहेजी",
+	"globalwatchlist-tour-sitelist": "जालस्थलके सूची",
+	"globalwatchlist-tour-types": "परिवर्तन प्रकार",
+	"prefs-globalwatchlist": "बैश्विक ध्यानसूची"
+}
