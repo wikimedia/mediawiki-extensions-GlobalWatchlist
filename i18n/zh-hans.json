@@ -11,7 +11,8 @@
 			"Shuiwater",
 			"SomeyaMako",
 			"列维劳德",
-			"沈澄心"
+			"沈澄心",
+			"LittlePaw365"
 		]
 	},
 	"globalwatchlist": "全域监视列表",
@@ -27,7 +28,7 @@
 	"globalwatchlist-editwatchlist": "编辑监视列表",
 	"globalwatchlist-emptyfeed": "无变化站点",
 	"globalwatchlist-fetch-site-failure": "无法获取更改",
-	"globalwatchlist-filters": "过滤器",
+	"globalwatchlist-filters": "筛选",
 	"globalwatchlist-filter-anon": "匿名编辑",
 	"globalwatchlist-filter-bot": "机器人编辑",
 	"globalwatchlist-filter-either": "任意",
@@ -84,8 +85,8 @@
 	"globalwatchlist-tour-addsite-description": "点击上方可为站点添加另一行。",
 	"globalwatchlist-tour-fastmode": "快速模式",
 	"globalwatchlist-tour-fastmode-description": "快速模式可实现更快的渲染，但以牺牲较少的细节为代价。 会获取Wikibase标签，并且会显示一个简单的更改页面列表，没有关于编辑者或编辑本身的详细信息",
-	"globalwatchlist-tour-filters": "过滤器选项",
-	"globalwatchlist-tour-filters-description": "全域监视列表没有可用于普通监视列表的所有过滤器选项。可用的过滤器用于匿名编辑与登录用户的编辑，以及用于标记为小编辑或机器人编辑的过滤器。",
+	"globalwatchlist-tour-filters": "筛选选项",
+	"globalwatchlist-tour-filters-description": "全域监视列表并不拥有所有普通监视列表可用的筛选选项。可用的筛选包括匿名编辑或登录用户编辑，以及标记为小编辑或机器人编辑的编辑。",
 	"globalwatchlist-tour-help": "更多文档",
 	"globalwatchlist-tour-help-description": "mediawiki.org上提供了更多文档",
 	"globalwatchlist-tour-intro": "全域监视列表设置",
