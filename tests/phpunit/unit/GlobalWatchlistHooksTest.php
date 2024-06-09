@@ -3,16 +3,16 @@
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
 use ApiOptions;
-use HTMLInfoField;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
+use MediaWiki\HTMLForm\Field\HTMLInfoField;
+use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
-use Message;
 use Skin;
 
 /**

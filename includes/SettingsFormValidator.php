@@ -23,7 +23,7 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
-use Message;
+use MediaWiki\Message\Message;
 use MessageLocalizer;
 
 /**

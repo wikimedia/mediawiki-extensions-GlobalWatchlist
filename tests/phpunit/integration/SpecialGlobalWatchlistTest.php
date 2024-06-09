@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
-use DerivativeContext;
 use IBufferingStatsdDataFactory;
+use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlist;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\FauxRequest;

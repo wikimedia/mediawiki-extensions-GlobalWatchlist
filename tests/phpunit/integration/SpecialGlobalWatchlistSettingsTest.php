@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
-use DerivativeContext;
 use ExtensionRegistry;
-use HTMLForm;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Extension\GlobalWatchlist\SettingsFormValidator;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlistSettings;
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\SpecialPage\SpecialPage;

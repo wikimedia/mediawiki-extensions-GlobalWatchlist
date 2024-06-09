@@ -25,11 +25,11 @@
 namespace MediaWiki\Extension\GlobalWatchlist;
 
 use ApiOptions;
-use HTMLInfoField;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Api\Hook\ApiOptionsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
+use MediaWiki\HTMLForm\Field\HTMLInfoField;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\User;

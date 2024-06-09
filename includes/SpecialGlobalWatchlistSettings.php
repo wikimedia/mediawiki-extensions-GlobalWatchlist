@@ -26,8 +26,8 @@ namespace MediaWiki\Extension\GlobalWatchlist;
 
 use ExtensionRegistry;
 use FormatJson;
-use HTMLForm;
 use MediaWiki\Extension\CentralAuth\User\CentralAuthUser;
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;

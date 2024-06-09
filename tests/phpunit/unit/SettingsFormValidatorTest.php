@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
 use MediaWiki\Extension\GlobalWatchlist\SettingsFormValidator;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
+use MediaWiki\Message\Message;
 use MediaWikiUnitTestCase;
-use Message;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
 
