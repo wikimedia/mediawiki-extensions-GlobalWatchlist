@@ -110,7 +110,7 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 			if ( entityIds.length > 50 ) {
 				// Recursive processing
 				that.getRawLabels( entityIds.slice( 50 ) ).then( function ( extraLabels ) {
-					var bothLabels = $.extend( {}, labels, extraLabels );
+					var bothLabels = Object.assign( {}, labels, extraLabels );
 					that.debug( 'getRawLabels - bothLabels', bothLabels );
 					resolve( bothLabels );
 				} );

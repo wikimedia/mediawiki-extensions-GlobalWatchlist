@@ -209,7 +209,7 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
 		};
 		if ( !groupPage || page.each.length === 1 ) {
 			page.each.forEach( function ( entry ) {
-				finalEdits.push( $.extend( {}, pagebase, {
+				finalEdits.push( Object.assign( {}, pagebase, {
 					bot: entry.bot,
 					comment: entry.parsedcomment,
 					editCount: 1,
@@ -254,7 +254,7 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
 
 			mergedEditInfo.userDisplay = that.makeUserLinks( editsByUser );
 
-			finalEdits.push( $.extend( {}, pagebase, mergedEditInfo ) );
+			finalEdits.push( Object.assign( {}, pagebase, mergedEditInfo ) );
 		}
 	} );
 

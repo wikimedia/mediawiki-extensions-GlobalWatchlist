@@ -22,7 +22,8 @@
 		"es-x/no-promise": "warn",
 		"es-x/no-regexp-prototype-flags": "warn",
 		"es-x/no-array-prototype-entries": "warn",
-		"no-jquery/no-extend": "warn"
+		"no-jquery/no-extend": "warn",
+		"es-x/no-object-assign": "warn"
 	},
 	"overrides": [
 		{
