@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"IJzeren Jan"
+		]
+	},
+	"globalwatchlist": "Globalny spisok slědovanyh stranic",
+	"globalwatchlist-desc": "Dodavaje globalny spisok slědovanyh stranic",
+	"globalwatchlist-summary": "Specialna stranica za prěgledanje globalnogo spiska slědovanyh stranic",
+	"globalwatchlistsettings": "Nastavjenja globalnogo spiska slědovanyh stranic",
+	"globalwatchlistsettings-summary": "Specialna stranica za upravjenje globalnym spiskom slědovanyh stranic",
+	"globalwatchlist-add": "Dodati",
+	"globalwatchlist-api-error": "Pri vzajemodějanju s «$1» došlo do pogrěšky API:",
+	"globalwatchlist-asof": "Po stanju na $1",
+	"globalwatchlist-changesfeed": "Projekty s izměnami",
+	"globalwatchlist-changetypes": "Tip izměny",
+	"globalwatchlist-editwatchlist": "Pravjenje spiska slědovanyh stranic",
+	"globalwatchlist-emptyfeed": "Projekty bez izměn",
+	"globalwatchlist-fetch-site-failure": "Dobytje izměn ne udalo se",
+	"globalwatchlist-filters": "Filtry",
+	"globalwatchlist-filter-anon": "Anonimne pravky",
+	"globalwatchlist-filter-bot": "Botove pravky",
+	"globalwatchlist-filter-either": "Bez filtra",
+	"globalwatchlist-filter-minor": "Male pravky",
+	"globalwatchlist-filter-not-anon": "Samo pravky prijavjenyh koristnikov",
+	"globalwatchlist-filter-not-bot": "Samo pravky ne sdělane botami",
+	"globalwatchlist-filter-not-minor": "Samo ne-male pravky",
+	"globalwatchlist-filter-only-anon": "Samo pravky sdělane anonimno",
+	"globalwatchlist-filter-only-bot": "Samo pravky botov",
+	"globalwatchlist-filter-only-minor": "Samo male pravky"
+}
