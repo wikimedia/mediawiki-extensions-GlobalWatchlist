@@ -37,9 +37,9 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 
 	public function testExecute() {
 		// $wgGlobalWatchlistDevMode is true so we can test handling of displayversion
-		$this->setMwGlobals( [
-			'wgGlobalWatchlistWikibaseSite' => 'GlobalWatchlistWikibaseSiteGoesHere',
-			'wgGlobalWatchlistDevMode' => true,
+		$this->overrideConfigValues( [
+			'GlobalWatchlistWikibaseSite' => 'GlobalWatchlistWikibaseSiteGoesHere',
+			'GlobalWatchlistDevMode' => true,
 		] );
 
 		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );

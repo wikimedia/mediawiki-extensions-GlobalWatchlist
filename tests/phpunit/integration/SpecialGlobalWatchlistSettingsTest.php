@@ -10,6 +10,7 @@ use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlistSettings;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
@@ -131,9 +132,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testExecute() {
-		$this->setMwGlobals( [
-			'wgGlobalWatchlistEnableGuidedTour' => true,
-		] );
+		$this->overrideConfigValue( 'GlobalWatchlistEnableGuidedTour', true );
 
 		// Execute validates user settings, manually mocking the User is complicated
 		$user = $this->getTestUser()->getUser();
@@ -198,9 +197,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetFormFields_defaults() {
 		// Defaults are used if user has no settings set
-		$this->setMwGlobals( [
-			'wgServer' => '//example.com'
-		] );
+		$this->overrideConfigValue( MainConfigNames::Server, '//example.com' );
 
 		$user = $this->createMock( User::class );
 
@@ -223,9 +220,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetFormFields_settings() {
 		// User settings are used
-		$this->setMwGlobals( [
-			'wgServer' => '//example.com'
-		] );
+		$this->overrideConfigValue( MainConfigNames::Server, '//example.com' );
 
 		$user = $this->createMock( User::class );
 
@@ -251,9 +246,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetFormFields_invalid() {
 		// Defaults are used if user has invalid settings set
-		$this->setMwGlobals( [
-			'wgServer' => '//example.com'
-		] );
+		$this->overrideConfigValue( MainConfigNames::Server, '//example.com' );
 
 		$user = $this->createMock( User::class );
 
