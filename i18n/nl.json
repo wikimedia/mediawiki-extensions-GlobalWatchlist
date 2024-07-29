@@ -3,7 +3,8 @@
 		"authors": [
 			"Mainframe98",
 			"McDutchie",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
 	"globalwatchlist": "Globale volglijst",
@@ -69,7 +70,7 @@
 	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1 site is|$1 sites zijn}} gekozen. Dit is meer dan $2, het maximum aantal toegestane sites.",
 	"globalwatchlist-show-edits": "Toon paginabewerkingen",
 	"globalwatchlist-show-logentries": "Logboekregels bekijken",
-	"globalwatchlist-show-newpages": "Aanmaak nieuw pagina’s tonen",
+	"globalwatchlist-show-newpages": "Aanmaak nieuw pagina’s weergeven",
 	"globalwatchlist-sitelist": "Gebruikergedefinieerde lijst met sites",
 	"globalwatchlist-tags": "Label{{PLURAL:$1||s}}: $2",
 	"globalwatchlist-tour-addsite": "Een site toevoegen",
