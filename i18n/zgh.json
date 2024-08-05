@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hakim1bal"
+			"Hakim1bal",
+			"Lhoussine AIT TAYFST"
 		]
 	},
 	"globalwatchlist-add": "ⵔⵏⵓ",
+	"globalwatchlist-filter-bot": "ⵉⵙⵏⴼⴰⵍ ⵏ ⵓⴱⵓⵜ",
+	"globalwatchlist-filter-not-bot": "ⵉⵙⵏⴼⴰⵍ ⵓⵔ ⵉⴳⵉⵏ ⵡⵉⵏ ⵓⴱⵓⵜ",
+	"globalwatchlist-filter-only-bot": "ⵖⴰⵙ ⵉⵙⵏⴼⴰⵍ ⵏ ⵓⴱⵓⵜ",
 	"globalwatchlist-globalwatchlistsettingslink": "ⵜⵉⵙⵖⴰⵍ"
 }
