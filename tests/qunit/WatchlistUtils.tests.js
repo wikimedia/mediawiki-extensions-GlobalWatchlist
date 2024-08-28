@@ -24,13 +24,13 @@
 			}
 		);
 	}
-	var GlobalWatchlistWatchlistUtils = require( '../../../modules/WatchlistUtils.js' );
-	var GlobalWatchlistLinker = require( '../../../modules/Linker.js' );
+	var GlobalWatchlistWatchlistUtils = require( '../../modules/WatchlistUtils.js' );
+	var GlobalWatchlistLinker = require( '../../modules/Linker.js' );
 
 	// For the getFinalEntries tests, all of the properties we care about are being set on
 	// the base GlobalWatchlistEntryBase class, so even though that is meant to be abstract,
 	// since that isn't enforced in JavaScript lets use that
-	var GlobalWatchlistEntryBase = require( '../../../modules/EntryBase.js' );
+	var GlobalWatchlistEntryBase = require( '../../modules/EntryBase.js' );
 
 	// Set config variables so that the linker can be created properly
 	QUnit.module( 'ext.globalwatchlist.WatchlistUtils', QUnit.newMwEnvironment( {

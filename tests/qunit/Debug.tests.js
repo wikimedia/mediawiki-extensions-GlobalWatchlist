@@ -1,5 +1,5 @@
 ( function () {
-	var GlobalWatchlistDebugger = require( '../../../modules/Debug.js' );
+	var GlobalWatchlistDebugger = require( '../../modules/Debug.js' );
 
 	QUnit.module( 'ext.globalwatchlist.debug', QUnit.newMwEnvironment( {
 		config: {

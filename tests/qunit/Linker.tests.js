@@ -1,5 +1,5 @@
 ( function () {
-	var GlobalWatchlistLinker = require( '../../../modules/Linker.js' );
+	var GlobalWatchlistLinker = require( '../../modules/Linker.js' );
 
 	QUnit.module( 'ext.globalwatchlist.linker', QUnit.newMwEnvironment( {
 		config: {
