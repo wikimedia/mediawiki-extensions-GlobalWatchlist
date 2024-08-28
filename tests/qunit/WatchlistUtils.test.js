@@ -24,16 +24,16 @@
 			}
 		);
 	}
-	var GlobalWatchlistWatchlistUtils = require( '../../modules/WatchlistUtils.js' );
-	var GlobalWatchlistLinker = require( '../../modules/Linker.js' );
+	var WatchlistUtils = require( 'ext.globalwatchlist.specialglobalwatchlist/WatchlistUtils.js' );
+	var Linker = require( 'ext.globalwatchlist.specialglobalwatchlist/Linker.js' );
 
 	// For the getFinalEntries tests, all of the properties we care about are being set on
 	// the base GlobalWatchlistEntryBase class, so even though that is meant to be abstract,
 	// since that isn't enforced in JavaScript lets use that
-	var GlobalWatchlistEntryBase = require( '../../modules/EntryBase.js' );
+	var GlobalWatchlistEntryBase = require( 'ext.globalwatchlist.specialglobalwatchlist/EntryBase.js' );
 
 	// Set config variables so that the linker can be created properly
-	QUnit.module( 'ext.globalwatchlist.WatchlistUtils', QUnit.newMwEnvironment( {
+	QUnit.module( 'ext.globalwatchlist.specialglobalwatchlist/WatchlistUtils', QUnit.newMwEnvironment( {
 		config: {
 			wgArticlePath: '/wiki/$1/FooBar',
 			wgScript: '/w/baz/index.php'
@@ -41,8 +41,8 @@
 	} ) );
 
 	// The linker is currently only needed for the addCommentDisplays() test
-	var watchlistUtils = new GlobalWatchlistWatchlistUtils(
-		new GlobalWatchlistLinker( 'en.wikipedia.org' )
+	var watchlistUtils = new WatchlistUtils(
+		new Linker( 'en.wikipedia.org' )
 	);
 
 	/* eslint-disable camelcase */

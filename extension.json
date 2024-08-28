@@ -89,12 +89,10 @@
 			"description": "The maximum number of sites that a user can save to their watchlist. Set to 0 to disable the limit"
 		}
 	},
-	"ResourceFileModulePaths": {
-		"localBasePath": "modules",
-		"remoteExtPath": "GlobalWatchlist/modules"
-	},
 	"ResourceModules": {
 		"ext.globalwatchlist.specialglobalwatchlist": {
+			"localBasePath": "modules/specialglobalwatchlist/",
+			"remoteExtPath": "GlobalWatchlist/modules/specialglobalwatchlist/",
 			"packageFiles": [
 				"SpecialGlobalWatchlist.display.js",
 				"getSettings.js",
@@ -166,11 +164,15 @@
 			]
 		},
 		"ext.globalwatchlist.specialglobalwatchlistsettings": {
+			"localBasePath": "modules/specialglobalwatchlistsettings",
+			"remoteExtPath": "GlobalWatchlist/modules/specialglobalwatchlistsettings",
 			"styles": [
 				"SpecialGlobalWatchlistSettings.less"
 			]
 		},
 		"ext.globalwatchlist.getsettingserror": {
+			"localBasePath": "modules/getsettingserror/",
+			"remoteExtPath": "GlobalWatchlist/modules/getsettingserror/",
 			"packageFiles": [
 				"getSettings.error.js"
 			],
@@ -183,19 +185,16 @@
 		}
 	},
 	"QUnitTestModule": {
-		"localBasePath": "",
-		"remoteExtPath": "GlobalWatchlist",
-		"packageFiles": [
-			"tests/qunit/tests.js",
-			"tests/qunit/Debug.tests.js",
-			"tests/qunit/Linker.tests.js",
-			"tests/qunit/getSettings.tests.js",
-			"tests/qunit/WatchlistUtils.tests.js",
-			"modules/Debug.js",
-			"modules/EntryBase.js",
-			"modules/Linker.js",
-			"modules/getSettings.js",
-			"modules/WatchlistUtils.js"
+		"localBasePath": "tests/qunit/",
+		"remoteExtPath": "GlobalWatchlist/tests/qunit/",
+		"scripts": [
+			"Debug.test.js",
+			"getSettings.test.js",
+			"Linker.test.js",
+			"WatchlistUtils.test.js"
+		],
+		"dependencies": [
+			"ext.globalwatchlist.specialglobalwatchlist"
 		]
 	},
 	"manifest_version": 2

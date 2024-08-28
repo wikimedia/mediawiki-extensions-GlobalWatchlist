@@ -5,6 +5,10 @@
 ( function () {
 	'use strict';
 
+	if ( mw.config.get( 'wgCanonicalSpecialPageName' ) !== 'GlobalWatchlist' ) {
+		return;
+	}
+
 	var GlobalWatchlistDebugger = require( './Debug.js' ),
 		getSettings = require( './getSettings.js' ),
 		config = {},

@@ -1,7 +1,7 @@
 ( function () {
-	var GlobalWatchlistLinker = require( '../../modules/Linker.js' );
+	var GlobalWatchlistLinker = require( 'ext.globalwatchlist.specialglobalwatchlist/Linker.js' );
 
-	QUnit.module( 'ext.globalwatchlist.linker', QUnit.newMwEnvironment( {
+	QUnit.module( 'ext.globalwatchlist.specialglobalwatchlist/Linker', QUnit.newMwEnvironment( {
 		config: {
 			wgArticlePath: '/wiki/$1/FooBar',
 			wgScript: '/w/baz/index.php'

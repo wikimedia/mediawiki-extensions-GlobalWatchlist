@@ -1,5 +1,5 @@
 ( function () {
-	var getSettings = require( '../../modules/getSettings.js' );
+	var getSettings = require( 'ext.globalwatchlist.specialglobalwatchlist/getSettings.js' );
 
 	function FakeDebugger() {
 		this.infoCalled = false;
@@ -30,7 +30,7 @@
 		wikibaseSite: 'www.wikidata.org'
 	};
 
-	QUnit.module( 'ext.globalwatchlist.getSettings', QUnit.newMwEnvironment( {
+	QUnit.module( 'ext.globalwatchlist.specialglobalwatchlist/getSettings', QUnit.newMwEnvironment( {
 		config: {
 			wgGlobalWatchlistWikibaseSite: 'www.wikidata.org',
 			wgServer: '//en.wikipedia.org',
