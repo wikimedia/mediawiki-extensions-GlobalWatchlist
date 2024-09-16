@@ -18,6 +18,7 @@
 	"globalwatchlist-changetypes": "Muutoksen tyyppi",
 	"globalwatchlist-editwatchlist": "Muokkaa tarkkailulistaa",
 	"globalwatchlist-emptyfeed": "Sivustot, joissa ei ole muutoksia",
+	"globalwatchlist-fetch-site-failure": "Muutosten nouto epäonnistui",
 	"globalwatchlist-filters": "Suodattimet",
 	"globalwatchlist-filter-anon": "Anonyymit muokkaukset",
 	"globalwatchlist-filter-bot": "Bottimuokkaukset",
