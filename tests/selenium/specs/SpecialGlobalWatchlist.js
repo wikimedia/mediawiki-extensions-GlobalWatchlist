@@ -1,7 +1,6 @@
 'use strict';
 
-const assert = require( 'assert' ),
-	Api = require( 'wdio-mediawiki/Api' ),
+const Api = require( 'wdio-mediawiki/Api' ),
 	LoginPage = require( 'wdio-mediawiki/LoginPage' ),
 	GlobalWatchlist = require( '../pageobjects/GlobalWatchlist.page' ),
 	Util = require( 'wdio-mediawiki/Util' );
@@ -44,17 +43,15 @@ describe( 'Special:GlobalWatchlist', () => {
 
 		// Watchlist should be shown, and include the relevant pageTitle (might not
 		// happen immediately, needs to load)
-		assert(
-			await content.$( '.ext-globalwatchlist-site' ).waitForExist(),
-			'Watchlist entries load'
+		await content.$( '.ext-globalwatchlist-site' ).waitForExist();
+		await expect( await content.$( '.ext-globalwatchlist-site' ) ).toExist(
+			{ message: 'Watchlist entries load' }
 		);
 		// In the first site, in the first entry, the first link is to the page
-		assert.strictEqual(
-			await content.$( '.ext-globalwatchlist-site li a' ).getText(),
+		await expect( await content.$( '.ext-globalwatchlist-site li a' ) ).toHaveText(
 			pageTitle,
-			'Edited title should be shown'
+			{ message: 'Edited title should be shown' }
 		);
-
 	} );
 
 } );
