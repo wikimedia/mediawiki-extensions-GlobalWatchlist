@@ -155,7 +155,7 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 		$hookHandler->onLoginFormValidErrorMessages( $messages );
 
 		$this->assertArrayEquals(
-			[ 'foo', 'bar', 'globalwatchlist-must-login' ],
+			[ 'foo', 'bar', 'globalwatchlist-must-login', 'globalwatchlist-must-login-for-temp-user' ],
 			$messages
 		);
 	}

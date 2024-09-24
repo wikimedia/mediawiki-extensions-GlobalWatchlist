@@ -100,6 +100,7 @@ class GlobalWatchlistHooks implements
 	 */
 	public function onLoginFormValidErrorMessages( array &$messages ) {
 		$messages[] = 'globalwatchlist-must-login';
+		$messages[] = 'globalwatchlist-must-login-for-temp-user';
 	}
 
 	/**

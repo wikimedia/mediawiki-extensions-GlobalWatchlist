@@ -47,6 +47,7 @@
 	"globalwatchlist-markseen-all": "Button to mark all sites as seen",
 	"globalwatchlist-markseen-allconfirm": "Confirmation message for marking all sites as seen",
 	"globalwatchlist-must-login": "Text shown to anonymous users trying to use [[Special:GlobalWatchlist]] and [[Special:GlobalWatchlistSettings]]",
+	"globalwatchlist-must-login-for-temp-user": "Text shown to temporary users trying to use [[Special:GlobalWatchlist]] and [[Special:GlobalWatchlistSettings]]",
 	"globalwatchlist-notify-heading": "Heading for notification popups",
 	"globalwatchlist-notify-savingfailed": "Notification that settings were not saved",
 	"globalwatchlist-notify-settingssaved": "Notification that settings were saved",

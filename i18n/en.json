@@ -43,6 +43,7 @@
 	"globalwatchlist-markseen-all": "Mark all sites as seen",
 	"globalwatchlist-markseen-allconfirm": "Are you sure you want to mark all sites as seen?",
 	"globalwatchlist-must-login": "Please log in to use the GlobalWatchlist special pages",
+	"globalwatchlist-must-login-for-temp-user": "Please create an account to use the GlobalWatchlist special pages",
 	"globalwatchlist-notify-heading": "Global Watchlist",
 	"globalwatchlist-notify-savingfailed": "Failed to save settings. Please try again",
 	"globalwatchlist-notify-settingssaved": "Your settings have been saved. [[Special:GlobalWatchlist|Return to global watchlist]].",
