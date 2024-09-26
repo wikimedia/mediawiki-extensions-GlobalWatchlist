@@ -46,6 +46,7 @@
 	"globalwatchlist-markseen-all": "Alle Projekte als gesehen markieren",
 	"globalwatchlist-markseen-allconfirm": "Bist du sicher, dass du alle Projekte als gesehen markieren willst?",
 	"globalwatchlist-must-login": "Bitte logge dich ein, um die Spezialseite der globalen Beobachungsliste zu nutzen",
+	"globalwatchlist-must-login-for-temp-user": "Bitte erstelle ein Konto, um die globalen Beobachtungs-Spezialseiten zu nutzen",
 	"globalwatchlist-notify-heading": "Globale Beobachtungsliste",
 	"globalwatchlist-notify-savingfailed": "Einstellungen konnte nicht gespeichert werden. Bitte erneut versuchen.",
 	"globalwatchlist-notify-settingssaved": "Deine Änderungen wurden gespeichert. [[Special:GlobalWatchlist|Zurück zur globalen Beobachtungsliste]].",

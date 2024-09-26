@@ -44,6 +44,7 @@
 	"globalwatchlist-markseen-all": "Bütün saytları görülmüş olaraq işarələ",
 	"globalwatchlist-markseen-allconfirm": "Bütün saytları görülmüş olaraq işarələmək istədiyinizə əminsiniz?",
 	"globalwatchlist-must-login": "Xahiş edirik GlobalWatchlist'e məxsus səhifələrindən istifadə etmək üçün daxil olun",
+	"globalwatchlist-must-login-for-temp-user": "GlobalWatchlist xüsusi səhifələrindən istifadə etmək üçün hesab yaradın",
 	"globalwatchlist-notify-heading": "Qlobal izləmə siyahısı",
 	"globalwatchlist-notify-savingfailed": "Parametrləri saxlamaq alınmadı. Yenidən cəhd edin",
 	"globalwatchlist-notify-settingssaved": "Parametrləriniz yadda saxlanıldı. [[Special:GlobalWatchlist|Qlobal izləmə siyahısına qayıdın]].",

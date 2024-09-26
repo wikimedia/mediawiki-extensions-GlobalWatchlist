@@ -48,6 +48,7 @@
 	"globalwatchlist-markseen-all": "Tüm siteleri görüldü olarak işaretle",
 	"globalwatchlist-markseen-allconfirm": "Tüm siteleri görüldüğü gibi işaretlemek istediğinizden emin misiniz?",
 	"globalwatchlist-must-login": "GlobalWatchlist özel sayfalarını kullanmak için lütfen oturum açın",
+	"globalwatchlist-must-login-for-temp-user": "Küreselİzlemelistesi özel sayfalarını kullanmak için lütfen bir hesap oluşturun",
 	"globalwatchlist-notify-heading": "Küresel İzleme Listesi",
 	"globalwatchlist-notify-savingfailed": "Ayarlar kaydedilemedi. Lütfen tekrar deneyin",
 	"globalwatchlist-notify-settingssaved": "Ayarlarınız kaydedildi. [[Special:GlobalWatchlist|Küresel izleme listesine geri dön]].",
