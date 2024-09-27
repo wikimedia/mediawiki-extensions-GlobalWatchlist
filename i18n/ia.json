@@ -43,6 +43,7 @@
 	"globalwatchlist-markseen-all": "Marcar tote le sitos como vidite",
 	"globalwatchlist-markseen-allconfirm": "Es tu secur de voler marcar tote le sitos como vidite?",
 	"globalwatchlist-must-login": "Per favor aperi session pro usar le paginas special del observatorio global",
+	"globalwatchlist-must-login-for-temp-user": "Per favor crea un conto pro usar le paginas special del observatorio global",
 	"globalwatchlist-notify-heading": "Observatorio global",
 	"globalwatchlist-notify-savingfailed": "Non poteva salveguardar le configuration. Per favor reproba.",
 	"globalwatchlist-notify-settingssaved": "Tu configuration ha essite salveguardate. [[Special:GlobalWatchlist|Retornar al observatorio global]].",

@@ -46,6 +46,7 @@
 	"globalwatchlist-markseen-all": "標記所有網站為已看過",
 	"globalwatchlist-markseen-allconfirm": "您確定您要標記所有網站為已讀嗎？",
 	"globalwatchlist-must-login": "登入後才可使用GlobalWatchlist特殊頁面",
+	"globalwatchlist-must-login-for-temp-user": "請建立一個帳號來使用 GlobalWatchlist 特殊頁面",
 	"globalwatchlist-notify-heading": "全域監視清單",
 	"globalwatchlist-notify-savingfailed": "儲存設定失敗，請再試一次。",
 	"globalwatchlist-notify-settingssaved": "已儲存您的設定。[[Special:GlobalWatchlist|返回到全域監視清單]]。",
