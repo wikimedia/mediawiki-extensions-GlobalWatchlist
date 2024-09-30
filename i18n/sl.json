@@ -43,6 +43,7 @@
 	"globalwatchlist-markseen-all": "Označi vse strani kot videne",
 	"globalwatchlist-markseen-allconfirm": "Ali res želite označiti vse strani kot videne?",
 	"globalwatchlist-must-login": "Za uporabo posebnih strani GlobalWatchlist se prijavite",
+	"globalwatchlist-must-login-for-temp-user": "Za uporabo posebnih strani GlobalWatchlist se prijavite.",
 	"globalwatchlist-notify-heading": "Globalni spisek nadzorov",
 	"globalwatchlist-notify-savingfailed": "Shranjevanje nastavitev ni uspelo. Prosimo, poskusite znova.",
 	"globalwatchlist-notify-settingssaved": "Vaše nastavitve so shranjene. [[Special:GlobalWatchlist|Vrnite se na globalni spisek nadzorov]].",
