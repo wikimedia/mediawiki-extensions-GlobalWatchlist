@@ -43,6 +43,7 @@
 	"globalwatchlist-markseen-all": "Marcar todos os sitios como vistos",
 	"globalwatchlist-markseen-allconfirm": "Queres marcar todos os sitios como vistos?",
 	"globalwatchlist-must-login": "Inicia sesión para usar as páxinas especiais da lista de vixilancia global",
+	"globalwatchlist-must-login-for-temp-user": "Crea unha conta para usar as páxinas especiais da lista de vixilancia global",
 	"globalwatchlist-notify-heading": "Lista de vixilancia global",
 	"globalwatchlist-notify-savingfailed": "Erro ao gardar a configuración. Inténtao de novo.",
 	"globalwatchlist-notify-settingssaved": "Gardouse a túa configuración. [[Special:GlobalWatchlist|Volver á lista de vixilancia global]].",
