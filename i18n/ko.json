@@ -43,6 +43,7 @@
 	"globalwatchlist-markseen-all": "모든 사이트를 본 것으로 표시",
 	"globalwatchlist-markseen-allconfirm": "모든 사이트를 본 것으로 표시하시겠습니까?",
 	"globalwatchlist-must-login": "GlobalWatchlist 특수 문서를 사용하려면 로그인해 주십시오",
+	"globalwatchlist-must-login-for-temp-user": "GlobalWatchlist 특수 문서를 사용하려면 계정을 생성해 주십시오",
 	"globalwatchlist-notify-heading": "전역 주시문서 목록",
 	"globalwatchlist-notify-savingfailed": "설정을 저장하지 못했습니다. 다시 시도해 주세요",
 	"globalwatchlist-notify-settingssaved": "설정이 저장되었습니다. [[Special:GlobalWatchlist|통합 계정 주시문서 목록으로 돌아갑니다]].",
