@@ -44,6 +44,7 @@
 	"globalwatchlist-markseen-all": "Merk alle nettsteder som sett",
 	"globalwatchlist-markseen-allconfirm": "Er du sikker på at du vil merke alle nettsteder som sett?",
 	"globalwatchlist-must-login": "Logg inn for å bruke spesialsidene for global overvåkningsliste",
+	"globalwatchlist-must-login-for-temp-user": "Opprett en konto for å bruke spesialsidene for den globale overvåkningslisten",
 	"globalwatchlist-notify-heading": "Global overvåkningsliste",
 	"globalwatchlist-notify-savingfailed": "Kunne ikke lagre innstillinger. Prøv igjen",
 	"globalwatchlist-notify-settingssaved": "Innstillingene dine har blitt lagret. [[Special:GlobalWatchlist|Tilbake til den globale overvåkningslisten]].",
