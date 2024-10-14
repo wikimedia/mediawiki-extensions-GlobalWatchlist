@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"San1joy23",
 			"Sibabrata Banerjee",
 			"YahyA",
 			"Yahya",
@@ -44,6 +45,7 @@
 	"globalwatchlist-markseen-all": "দেখা হিসাবে সব সাইট চিহ্নিত করুন",
 	"globalwatchlist-markseen-allconfirm": "আপনি কি নিশ্চিত যে আপনি সব সাইটগুলিকে দেখা হয়েছে হিসেবে চিহ্নিত করতে চান?",
 	"globalwatchlist-must-login": "বৈশ্বিক নজর তালিকার বিশেষ পাতা ব্যবহার করতে দয়া করে প্রবেশ করুন",
+	"globalwatchlist-must-login-for-temp-user": "GlobalWatchlist বিশেষ পৃষ্ঠাগুলি ব্যবহার করার জন্য অনুগ্রহ করে একটি অ্যাকাউন্ট তৈরি করুন৷",
 	"globalwatchlist-notify-heading": "বৈশ্বিক নজরতালিকা",
 	"globalwatchlist-notify-savingfailed": "সেটিংগুলি সংরক্ষণ করতে ব্যর্থ। আবার চেষ্টা করুন",
 	"globalwatchlist-notify-settingssaved": "আপনার সেটিংগুলি সংরক্ষিত হয়েছে। [[Special:GlobalWatchlist|বৈশ্বিক নজরতালিকায় ফেরত যান]]।",
