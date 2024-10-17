@@ -46,6 +46,7 @@
 	"globalwatchlist-markseen-all": "Alle sites als gezien markeren",
 	"globalwatchlist-markseen-allconfirm": "Weet u zeker dat u alle sites als gezien wilt markeren?",
 	"globalwatchlist-must-login": "Meld u aan om de speciale pagina’s van GlobalWatchlist te gebruiken.",
+	"globalwatchlist-must-login-for-temp-user": "Maak een account aan om de speciale pagina’s van GlobalWatchlist te gebruiken",
 	"globalwatchlist-notify-heading": "Globale Volglijst",
 	"globalwatchlist-notify-savingfailed": "Kon instellingen niet opslaan. Probeer het opnieuw",
 	"globalwatchlist-notify-settingssaved": "Uw instellingen zijn opgeslagen. [[Special:GlobalWatchlist|Terug naar de globale volglijst]].",
