@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
-use ExtensionRegistry;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistGuidedTourHooks;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\ResourceLoader\ResourceLoader;
 use MediaWikiUnitTestCase;
 

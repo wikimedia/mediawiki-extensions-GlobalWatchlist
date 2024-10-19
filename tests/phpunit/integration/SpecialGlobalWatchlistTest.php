@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
-use IBufferingStatsdDataFactory;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlist;
 use MediaWiki\Output\OutputPage;
@@ -10,6 +9,7 @@ use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use UserNotLoggedIn;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**

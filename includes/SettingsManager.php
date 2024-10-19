@@ -23,11 +23,11 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
-use FormatJson;
-use IBufferingStatsdDataFactory;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * @author DannyS712

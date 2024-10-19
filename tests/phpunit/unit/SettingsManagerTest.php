@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
-use FormatJson;
-use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use Psr\Log\LogLevel;
 use TestLogger;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**

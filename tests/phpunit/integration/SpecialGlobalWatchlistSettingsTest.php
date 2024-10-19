@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
-use ExtensionRegistry;
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\DerivativeContext;
 use MediaWiki\Extension\GlobalWatchlist\SettingsFormValidator;
@@ -12,6 +11,7 @@ use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;

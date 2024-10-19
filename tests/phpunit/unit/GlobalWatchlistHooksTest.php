@@ -2,8 +2,7 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
-use ApiOptions;
-use IBufferingStatsdDataFactory;
+use MediaWiki\Api\ApiOptions;
 use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\HTMLForm\Field\HTMLInfoField;
@@ -14,6 +13,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use Skin;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * Tests for the hook handler

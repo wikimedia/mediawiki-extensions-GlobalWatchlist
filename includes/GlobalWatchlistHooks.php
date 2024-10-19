@@ -24,8 +24,7 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
-use ApiOptions;
-use IBufferingStatsdDataFactory;
+use MediaWiki\Api\ApiOptions;
 use MediaWiki\Api\Hook\ApiOptionsHook;
 use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
@@ -34,6 +33,7 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\User;
 use Skin;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * @author DannyS712
