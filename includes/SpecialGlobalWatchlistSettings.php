@@ -405,7 +405,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * @param HTMLForm|null $form
 	 * @return bool|string|array|Status
 	 */
-	public function onSubmit( array $data, HTMLForm $form = null ) {
+	public function onSubmit( array $data, ?HTMLForm $form = null ) {
 		$this->logger->info(
 			"Settings form submitted with {options}",
 			[
