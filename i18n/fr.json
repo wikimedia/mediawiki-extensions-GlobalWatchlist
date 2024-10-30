@@ -3,6 +3,7 @@
 		"authors": [
 			"Florian COLLIN",
 			"Gomoko",
+			"Mahabarata",
 			"Pamputt",
 			"Pols12",
 			"Thibaut120094",
@@ -49,6 +50,7 @@
 	"globalwatchlist-markseen-all": "Marquer tous les sites comme vus",
 	"globalwatchlist-markseen-allconfirm": "Êtes-vous sûr{{GENDER:||e|(e)}} de vouloir marquer tous les sites comme vus ?",
 	"globalwatchlist-must-login": "Veuillez vous connecter pour utiliser les pages spéciales de GlobalWatchlist",
+	"globalwatchlist-must-login-for-temp-user": "Veuillez créer un compte pour utiliser les pages spéciales de liste de suivi globale",
 	"globalwatchlist-notify-heading": "Liste de suivi globale",
 	"globalwatchlist-notify-savingfailed": "Échec d’enregistrement des paramètres. Veuillez essayer à nouveau.",
 	"globalwatchlist-notify-settingssaved": "Vos paramètres ont été enregistrés. [[Special:GlobalWatchlist|Retour à la liste de suivi globale]].",
