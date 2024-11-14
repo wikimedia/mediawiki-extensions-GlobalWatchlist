@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"Gmelfi"
 		]
 	},
 	"globalwatchlist": "Lista taliata glubbali",
@@ -26,6 +27,7 @@
 	"globalwatchlist-log-page": "riggistri dâ pàggina",
 	"globalwatchlist-markseen": "signa comu già talìatu",
 	"globalwatchlist-notify-heading": "Lista taliata glubbali",
+	"globalwatchlist-option-live": "Ùrtimi canci n tempu riali",
 	"globalwatchlist-otheroptions": "Àutri mpustazzioni",
 	"globalwatchlist-save": "Sarva li mpustazzioni",
 	"globalwatchlist-settings-error-bad-sites": "Situ/i nun vàliddu/i: $1",
