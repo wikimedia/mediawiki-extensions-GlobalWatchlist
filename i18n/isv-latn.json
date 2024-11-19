@@ -43,6 +43,7 @@
 	"globalwatchlist-markseen-all": "Označiti vse sajty kako uviděne",
 	"globalwatchlist-markseen-allconfirm": "Jeste li uvěrjeni, že hočete označiti vse stranice kako uviděne?",
 	"globalwatchlist-must-login": "Prosimo, prijavite se za upotrěbu specialnyh stranic GlobalWatchlist",
+	"globalwatchlist-must-login-for-temp-user": "Prosimo, stvorite konto za upotrěbu specialnyh stranic GlobalWatchlist",
 	"globalwatchlist-notify-heading": "Globalny spisok slědovanyh stranic",
 	"globalwatchlist-notify-savingfailed": "Zapisanje nastavjenij ne udalo se. Prosimo, poprobujte ješče raz.",
 	"globalwatchlist-notify-settingssaved": "Vaše nastavjenja sut zapisane. [[Special:GlobalWatchlist|Nazad k globalnomu spisku slědovanyh stranic]].",
