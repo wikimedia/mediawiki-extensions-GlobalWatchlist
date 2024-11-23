@@ -108,7 +108,7 @@
 				"WikibaseHandler.js"
 			],
 			"styles": [
-				"SpecialGlobalWatchlist.display.css"
+				"SpecialGlobalWatchlist.display.less"
 			],
 			"templates": [
 				"templates/allEmptySites.mustache",
