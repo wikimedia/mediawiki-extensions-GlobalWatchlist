@@ -20,7 +20,7 @@
 		"@wdio/spec-reporter": "7.29.1",
 		"eslint-config-wikimedia": "0.28.2",
 		"grunt-banana-checker": "0.13.0",
-		"jsdoc": "4.0.2",
+		"jsdoc": "4.0.4",
 		"jsdoc-wmf-theme": "1.0.1",
 		"stylelint-config-wikimedia": "0.17.2",
 		"wdio-mediawiki": "2.5.0"
