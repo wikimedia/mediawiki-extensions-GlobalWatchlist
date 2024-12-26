@@ -4,5 +4,7 @@
 			"Cabal"
 		]
 	},
-	"globalwatchlist-editwatchlist": "ਨਿਗਰਾਨ-ਸੂਚੀ ਸੋਧੋ"
+	"globalwatchlist-editwatchlist": "ਨਿਗਰਾਨ-ਸੂਚੀ ਸੋਧੋ",
+	"globalwatchlist-filter-minor": "ਛੋਟੀਆਂ ਸੋਧਾਂ",
+	"globalwatchlist-filter-only-minor": "ਸਿਰਫ਼ ਛੋਟੀਆਂ ਸੋਧਾਂ"
 }
