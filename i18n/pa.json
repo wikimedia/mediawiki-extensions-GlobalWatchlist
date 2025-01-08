@@ -4,7 +4,21 @@
 			"Cabal"
 		]
 	},
+	"globalwatchlist-add": "ਜੋੜੋ",
+	"globalwatchlist-asof": "$1 ਦੇ ਮੁਤਾਬਕ",
+	"globalwatchlist-changetypes": "ਤਬਦੀਲੀ ਦੀ ਕਿਸਮ",
 	"globalwatchlist-editwatchlist": "ਨਿਗਰਾਨ-ਸੂਚੀ ਸੋਧੋ",
+	"globalwatchlist-filters": "ਛਾਨਣੀਆਂ",
+	"globalwatchlist-filter-bot": "ਬੋਟ ਸੋਧਾਂ",
 	"globalwatchlist-filter-minor": "ਛੋਟੀਆਂ ਸੋਧਾਂ",
-	"globalwatchlist-filter-only-minor": "ਸਿਰਫ਼ ਛੋਟੀਆਂ ਸੋਧਾਂ"
+	"globalwatchlist-filter-only-minor": "ਸਿਰਫ਼ ਛੋਟੀਆਂ ਸੋਧਾਂ",
+	"globalwatchlist-globalwatchlistsettingslink": "ਤਰਜੀਹਾਂ",
+	"globalwatchlist-history": "ਇਤਿਹਾਸ",
+	"globalwatchlist-markseen": "ਵੇਖਿਆ ਗਿਆ ਵਜੋਂ ਨਿਸ਼ਾਨ ਲਾਓ",
+	"globalwatchlist-markseen-all": "ਸਾਰੀਆਂ ਸਾਈਟਾਂ ਨੂੰ ਵੇਖੀਆਂ ਗਇਆਂ ਵੱਲੋਂ ਨਿਸ਼ਾਨ ਲਾਓ",
+	"globalwatchlist-otheroptions": "ਹੋਰ ਤਰਜੀਹਾਂ",
+	"globalwatchlist-refresh": "ਤਾਜ਼ਾ ਕਰੋ",
+	"globalwatchlist-remove": "ਹਟਾਓ",
+	"globalwatchlist-save": "ਤਰਜੀਹਾਂ ਸੰਭਾਲੋ",
+	"globalwatchlist-tour-addsite": "ਇੱਕ ਸਾਈਟ ਜੋੜੋ"
 }
