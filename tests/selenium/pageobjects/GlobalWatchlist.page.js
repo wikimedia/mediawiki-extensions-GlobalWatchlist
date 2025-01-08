@@ -8,8 +8,8 @@ class GlobalWatchlist extends Page {
 		return $( '.ext-globalwatchlist-content' );
 	}
 
-	openDisplay() {
-		super.openTitle( 'Special:GlobalWatchlist' );
+	async openDisplay() {
+		return super.openTitle( 'Special:GlobalWatchlist' );
 	}
 }
 
