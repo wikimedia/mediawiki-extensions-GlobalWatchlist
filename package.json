@@ -22,7 +22,7 @@
 		"grunt-banana-checker": "0.13.0",
 		"jsdoc": "4.0.4",
 		"jsdoc-wmf-theme": "1.0.1",
-		"stylelint-config-wikimedia": "0.17.2",
+		"stylelint-config-wikimedia": "0.18.0",
 		"wdio-mediawiki": "2.5.0"
 	},
 	"eslintIgnore": [
