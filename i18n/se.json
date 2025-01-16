@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kimberli Mäkäräinen (WMNO)"
+			"Kimberli Mäkäräinen (WMNO)",
+			"Yupik"
 		]
 	},
 	"globalwatchlist-filter-minor": "Unna rievdadusažat",
 	"globalwatchlist-filter-not-minor": "Dušše eará rievdadusat go unna rievdadusažat",
 	"globalwatchlist-filter-only-minor": "Dušše eará rievdadusat go unna rievdadusažat",
+	"globalwatchlist-notify-savingfailed": "Ásahusaid vurken ii lihkostuvvan. Geahččal fas.",
 	"globalwatchlist-remove": "Sihko",
+	"globalwatchlist-save": "Vurke ásahusaid",
 	"globalwatchlist-settings-error-anon-bot": "Anonyma geavaheaddjit eai sáhte rievdadit robohtaiguin"
 }
