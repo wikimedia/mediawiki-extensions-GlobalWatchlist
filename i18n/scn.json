@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ajeje Brazorf",
+			"GianAntonucci",
 			"Gmelfi"
 		]
 	},
@@ -38,7 +39,7 @@
 	"globalwatchlist-tour-addsite": "Agghiunci nu situ",
 	"globalwatchlist-tour-help": "Cchiù ducumintazzioni",
 	"globalwatchlist-tour-intro": "Mpustazziuni dâ lista taliata glubbali",
-	"globalwatchlist-tour-sitelist": "Elencu di siti",
+	"globalwatchlist-tour-sitelist": "Lista dî siti",
 	"globalwatchlist-tour-types": "Tipi di canciamenti",
 	"globalwatchlist-unwatch": "nun taliari cchiù",
 	"prefs-globalwatchlist": "Lista taliata glubbali"
