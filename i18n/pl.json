@@ -46,6 +46,7 @@
 	"globalwatchlist-markseen-all": "Oznacz wszystkie strony jako odwiedzone",
 	"globalwatchlist-markseen-allconfirm": "Czy na pewno chcesz oznaczyć wszystkie strony jako odwiedzone?",
 	"globalwatchlist-must-login": "Zaloguj się, aby korzystać ze specjalnych stron globalnej listy obserwowanych",
+	"globalwatchlist-must-login-for-temp-user": "Aby korzystać ze stron wwiązanych z globalną listą obserwowanych, utwórz konto.",
 	"globalwatchlist-notify-heading": "Global Watchlist",
 	"globalwatchlist-notify-savingfailed": "Nie udało się zapisać ustawień. Proszę spróbować ponownie.",
 	"globalwatchlist-notify-settingssaved": "Twoje ustawienia zostały zapisane. [[Special:GlobalWatchlist|Powrót do globalnej listy]]",
