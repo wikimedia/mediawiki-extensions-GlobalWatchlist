@@ -25,43 +25,6 @@
 		"no-jquery/no-extend": "warn",
 		"es-x/no-object-assign": "warn"
 	},
-	"overrides": [
-		{
-			"files": [
-				"**/*.vue"
-			],
-			"extends": "wikimedia/vue-es5",
-			"rules": {
-				"vue/html-self-closing": [
-					"error",
-					{
-						"html": {
-							"void": "never",
-							"normal": "never",
-							"component": "never"
-						}
-					}
-				],
-				"vue/v-bind-style": [
-					"warn",
-					"longform"
-				],
-				"vue/v-on-style": [
-					"warn",
-					"longform"
-				],
-				"vue/v-slot-style": [
-					"warn",
-					"longform"
-				],
-				"vue/no-boolean-default": "off",
-				"vue/multi-word-component-names": "off",
-				"no-implicit-globals": "off",
-				"es-x/no-promise": "off",
-				"es-x/no-array-prototype-entries": "warn"
-			}
-		}
-	],
 	"settings": {
 		"polyfills": [
 			"Promise"
