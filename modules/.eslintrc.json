@@ -17,7 +17,6 @@
 				"requireReturnDescription": false
 			}
 		],
-		"jsdoc/no-undefined-types": "warn",
-		"prefer-const": "warn"
+		"jsdoc/no-undefined-types": "warn"
 	}
 }

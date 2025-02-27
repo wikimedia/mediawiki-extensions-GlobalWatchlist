@@ -9,16 +9,15 @@
 		return;
 	}
 
-	let GlobalWatchlistDebugger = require( './Debug.js' ),
+	const GlobalWatchlistDebugger = require( './Debug.js' ),
 		getSettings = require( './getSettings.js' ),
-		config = {},
 		MultiSiteWrapper = require( './MultiSiteWrapper.js' ),
 		WatchedSite = require( './SiteDisplay.js' ),
 		viewElements = {},
 		viewManager = {};
 	const globalWatchlistDebug = new GlobalWatchlistDebugger();
 
-	config = getSettings( globalWatchlistDebug );
+	const config = getSettings( globalWatchlistDebug );
 	config.inLive = false;
 
 	const watchedSites = new MultiSiteWrapper(
@@ -108,9 +107,9 @@
 		config.time = new Date();
 		return new Promise( ( resolve ) => {
 			watchedSites.getAllWatchlists( config ).then( () => {
-				let $div = $( '<div>' ).attr( 'id', 'ext-globalwatchlist-feedcollector' ),
-					emptySites = [],
-					haveChangesToShow = false;
+				const $div = $( '<div>' ).attr( 'id', 'ext-globalwatchlist-feedcollector' ),
+					emptySites = [];
+				let haveChangesToShow = false;
 
 				watchedSites.siteList.forEach( ( site ) => {
 					if ( site.isEmpty ) {

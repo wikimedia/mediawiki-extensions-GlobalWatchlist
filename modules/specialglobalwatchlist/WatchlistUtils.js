@@ -118,8 +118,8 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
 GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser ) {
 	const users = Object.keys( editsByUser );
 
-	let allLinks = [],
-		userLink = '',
+	const allLinks = [];
+	let userLink = '',
 		userLinkBase = '',
 		userLinkURL = '';
 
@@ -413,9 +413,8 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
  *    {@link GlobalWatchlistEntryEdits} or {@link GlobalWatchlistEntryLog}
  */
 GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage, tagsInfo ) {
-	let convertedEdits = [],
-		edits = {},
-		logEntries = [],
+	let logEntries = [];
+	const edits = {},
 		cleanedEntries = this.normalizeEntries( entries );
 
 	const that = this;
@@ -453,7 +452,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 		}
 	} );
 
-	convertedEdits = this.convertEdits( edits, groupPage );
+	let convertedEdits = this.convertEdits( edits, groupPage );
 
 	// Sorting: we want the newest edits and log entries at the top. But, the api
 	// only tells us what minute the edit/log entry was made. So, if the timestamps

@@ -26,9 +26,7 @@ function getQueryFlag( setting, flag ) {
  */
 function globalWatchlistGetSettings( globalWatchlistDebug ) {
 	// Note: this must be the same key as SettingsManager::PREFERENCE_NAME
-	let userOptions = mw.user.options.get( 'global-watchlist-options' ),
-		userSettings = {},
-		config = {},
+	const userOptions = mw.user.options.get( 'global-watchlist-options' ),
 		defaultConfig = {
 			siteList: [
 				mw.config.get( 'wgServer' ).replace( /.*?\/\//, '' )
@@ -44,11 +42,12 @@ function globalWatchlistGetSettings( globalWatchlistDebug ) {
 			showNewPages: true
 		};
 
+	let config;
 	if ( userOptions === null ) {
 		config = defaultConfig;
 	} else {
 		try {
-			userSettings = JSON.parse( userOptions );
+			const userSettings = JSON.parse( userOptions );
 			config = {
 				siteList: userSettings.sites,
 				anon: userSettings.anonfilter,
