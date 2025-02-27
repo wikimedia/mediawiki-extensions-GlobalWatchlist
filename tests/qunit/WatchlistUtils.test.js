@@ -11,12 +11,12 @@
 	 *   that are included in keysToInclude
 	 */
 	function getFilteredEntries( fullEntries, keysToInclude ) {
-		var filteredEntry;
+		let filteredEntry;
 		return fullEntries.map(
-			function ( fullEntry ) {
+			( fullEntry ) => {
 				filteredEntry = {};
 				keysToInclude.forEach(
-					function ( keyToInclude ) {
+					( keyToInclude ) => {
 						filteredEntry[ keyToInclude ] = fullEntry[ keyToInclude ];
 					}
 				);
@@ -24,13 +24,13 @@
 			}
 		);
 	}
-	var WatchlistUtils = require( 'ext.globalwatchlist.specialglobalwatchlist/WatchlistUtils.js' );
-	var Linker = require( 'ext.globalwatchlist.specialglobalwatchlist/Linker.js' );
+	const WatchlistUtils = require( 'ext.globalwatchlist.specialglobalwatchlist/WatchlistUtils.js' );
+	const Linker = require( 'ext.globalwatchlist.specialglobalwatchlist/Linker.js' );
 
 	// For the getFinalEntries tests, all of the properties we care about are being set on
 	// the base GlobalWatchlistEntryBase class, so even though that is meant to be abstract,
 	// since that isn't enforced in JavaScript lets use that
-	var GlobalWatchlistEntryBase = require( 'ext.globalwatchlist.specialglobalwatchlist/EntryBase.js' );
+	const GlobalWatchlistEntryBase = require( 'ext.globalwatchlist.specialglobalwatchlist/EntryBase.js' );
 
 	// Set config variables so that the linker can be created properly
 	QUnit.module( 'ext.globalwatchlist.specialglobalwatchlist/WatchlistUtils', QUnit.newMwEnvironment( {
@@ -41,16 +41,16 @@
 	} ) );
 
 	// The linker is currently only needed for the addCommentDisplays() test
-	var watchlistUtils = new WatchlistUtils(
+	const watchlistUtils = new WatchlistUtils(
 		new Linker( 'en.wikipedia.org' )
 	);
 
 	/* eslint-disable camelcase */
-	QUnit.test( 'watchlistUtils.mergePageEdits', function ( assert ) {
-		var expectTimestampTitle = mw.msg( 'globalwatchlist-grouped-timestamp' );
+	QUnit.test( 'watchlistUtils.mergePageEdits', ( assert ) => {
+		const expectTimestampTitle = mw.msg( 'globalwatchlist-grouped-timestamp' );
 		// Not testing timestamps as part of this, all edits set to the same timestamp
 		// of 2020-08-31 12:00.
-		var edit1 = {
+		const edit1 = {
 			// Bot edit, minor edit, not a new page
 			bot: true,
 			expiry: false,
@@ -60,7 +60,7 @@
 			timestamp: '2020-08-31 12:00',
 			revid: 2
 		};
-		var edit2_a = {
+		const edit2_a = {
 			// Bot edit, minor edit, not a new page
 			bot: true,
 			expiry: false,
@@ -70,7 +70,7 @@
 			timestamp: '2020-08-31 12:00',
 			revid: 3
 		};
-		var edit2_b = {
+		const edit2_b = {
 			// Bot edit, not a minor edit, not a new page
 			bot: true,
 			expiry: false,
@@ -80,7 +80,7 @@
 			timestamp: '2020-08-31 12:00',
 			revid: 3
 		};
-		var edit2_c = {
+		const edit2_c = {
 			// Not a bot edit, minor edit, not a new page
 			bot: false,
 			expiry: false,
@@ -90,7 +90,7 @@
 			timestamp: '2020-08-31 12:00',
 			revid: 3
 		};
-		var edit2_d = {
+		const edit2_d = {
 			// Not a bot edit, not a minor edit, not a new page
 			bot: false,
 			expiry: false,
@@ -100,7 +100,7 @@
 			timestamp: '2020-08-31 12:00',
 			revid: 3
 		};
-		var edit2_e = {
+		const edit2_e = {
 			// Not a bot edit, not a minor edit, new page
 			bot: false,
 			expiry: false,
@@ -111,7 +111,7 @@
 			revid: 0
 		};
 
-		var mergedEdits_a = {
+		const mergedEdits_a = {
 			// Both bot edits, both minor edits, neither new page
 			bot: true,
 			comment: false,
@@ -125,7 +125,7 @@
 			timestampTitle: expectTimestampTitle,
 			toRev: 3
 		};
-		var mergedEdits_b = {
+		const mergedEdits_b = {
 			// Both bot edits, only one minor edit, neither new page
 			bot: true,
 			comment: false,
@@ -139,7 +139,7 @@
 			timestampTitle: expectTimestampTitle,
 			toRev: 3
 		};
-		var mergedEdits_c = {
+		const mergedEdits_c = {
 			// Only one bot edit, both minor edits, neither new page
 			bot: false,
 			comment: false,
@@ -153,7 +153,7 @@
 			timestampTitle: expectTimestampTitle,
 			toRev: 3
 		};
-		var mergedEdits_d = {
+		const mergedEdits_d = {
 			// Only one bot edit, only one minor edit, neither new page
 			bot: false,
 			comment: false,
@@ -167,7 +167,7 @@
 			timestampTitle: expectTimestampTitle,
 			toRev: 3
 		};
-		var mergedEdits_e = {
+		const mergedEdits_e = {
 			// Only one bot edit, only one minor edit, one new page
 			bot: false,
 			comment: false,
@@ -209,9 +209,9 @@
 		);
 	} );
 
-	QUnit.test( 'watchlistUtils.normalizeEntries', function ( assert ) {
+	QUnit.test( 'watchlistUtils.normalizeEntries', ( assert ) => {
 		// Only fill in the parts that would otherwise be normalized
-		var edit = {
+		const edit = {
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
@@ -219,7 +219,7 @@
 			type: 'edit',
 			user: ''
 		};
-		var normalizedEdit = {
+		const normalizedEdit = {
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
@@ -234,7 +234,7 @@
 			'Edits are flagged as not new pages'
 		);
 
-		var hiddenEditor = {
+		const hiddenEditor = {
 			anon: false,
 			userhidden: true,
 			parsedcomment: 'comment',
@@ -242,7 +242,7 @@
 			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
-		var normalizedHiddenEditor = {
+		const normalizedHiddenEditor = {
 			anon: false,
 			userhidden: true,
 			user: '##hidden##',
@@ -258,13 +258,13 @@
 			'Edits by hidden users are flagged as user=##hidden##'
 		);
 
-		var editWithNoSummary = {
+		const editWithNoSummary = {
 			anon: false,
 			tags: [],
 			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
-		var normalizedEditWithNoSummary = {
+		const normalizedEditWithNoSummary = {
 			anon: false,
 			parsedcomment: '',
 			tags: [],
@@ -279,13 +279,13 @@
 			'Edits without comments are normalized to parsedcomment=\'\''
 		);
 
-		var editWithNoTags = {
+		const editWithNoTags = {
 			anon: false,
 			parsedcomment: '',
 			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
-		var normalizedEditWithNoTags = {
+		const normalizedEditWithNoTags = {
 			anon: false,
 			parsedcomment: '',
 			tags: [],
@@ -300,14 +300,14 @@
 			'Edits without tags are normalized to tags=[]'
 		);
 
-		var newPage = {
+		const newPage = {
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
 			timestamp: '2020-08-31 12:00',
 			type: 'new'
 		};
-		var normalizedNewPage = {
+		const normalizedNewPage = {
 			anon: true,
 			parsedcomment: 'comment',
 			tags: [],
@@ -323,18 +323,18 @@
 		);
 	} );
 
-	QUnit.test( 'WatchlistUtils.getFinalEntries (entry flags)', function ( assert ) {
-		var allEntries = [];
-		var expectedEntries = [];
-		var withoutFlags;
-		var withFlags;
-		var newPageFlag = mw.msg( 'newpageletter' );
-		var minorFlag = mw.msg( 'minoreditletter' );
-		var botFlag = mw.msg( 'boteditletter' );
+	QUnit.test( 'WatchlistUtils.getFinalEntries (entry flags)', ( assert ) => {
+		const allEntries = [];
+		const expectedEntries = [];
+		let withoutFlags;
+		let withFlags;
+		const newPageFlag = mw.msg( 'newpageletter' );
+		const minorFlag = mw.msg( 'minoreditletter' );
+		const botFlag = mw.msg( 'boteditletter' );
 
 		/* We use bitwise comparisons to simplify looping through all possible flag combinations */
 		/* eslint-disable no-bitwise */
-		for ( var iii = 0; iii <= 7; iii++ ) {
+		for ( let iii = 0; iii <= 7; iii++ ) {
 			withoutFlags = {
 				newPage: ( ( iii & 1 ) === 1 ),
 				minor: ( ( iii & 2 ) === 2 ),
@@ -361,7 +361,7 @@
 		/* eslint-enable no-bitwise */
 
 		// Reduce the fully updated entries to just the parts we are checking
-		var result = getFilteredEntries(
+		const result = getFilteredEntries(
 			watchlistUtils.getFinalEntries( allEntries, {}, GlobalWatchlistEntryBase ),
 			[ 'flags' ]
 		);
@@ -372,20 +372,20 @@
 		);
 	} );
 
-	QUnit.test( 'WatchlistUtils.getFinalEntries (truncate timestamps)', function ( assert ) {
-		var originalEntries = [
+	QUnit.test( 'WatchlistUtils.getFinalEntries (truncate timestamps)', ( assert ) => {
+		const originalEntries = [
 			{ timestamp: false },
 			{ timestamp: '2021-07-04T07:30:49Z' },
 			{ timestamp: '2020-01-01T12:01:00Z' }
 		];
-		var expectedUpdatedEntries = [
+		const expectedUpdatedEntries = [
 			{ timestamp: false },
 			{ timestamp: '2021-07-04 07:30' },
 			{ timestamp: '2020-01-01 12:01' }
 		];
 
 		// Reduce the fully updated entries to just the parts we are checking
-		var result = getFilteredEntries(
+		const result = getFilteredEntries(
 			watchlistUtils.getFinalEntries( originalEntries, {}, GlobalWatchlistEntryBase ),
 			[ 'timestamp' ]
 		);
@@ -396,18 +396,18 @@
 		);
 	} );
 
-	QUnit.test( 'WatchlistUtils.getFinalEntries (comment displays)', function ( assert ) {
+	QUnit.test( 'WatchlistUtils.getFinalEntries (comment displays)', ( assert ) => {
 		// First two are missing a comment, third doesn't have a link, third has
 		// a link to [[PageName]]. This is for en.wikipedia.org, per configuration
 		// of the linker above
-		var originalEntries = [
+		const originalEntries = [
 			{ comment: false },
 			{ comment: '' },
 			{ comment: 'foo' },
 			{ comment: '<a href="/wiki/PageName" title="PageName">PageName</a>' }
 		];
 		// Expected result, only the `commentDisplay` is saved
-		var expectedUpdatedEntries = [
+		const expectedUpdatedEntries = [
 			{ commentDisplay: false },
 			{ commentDisplay: false },
 			{ commentDisplay: ': foo' },
@@ -415,7 +415,7 @@
 		];
 
 		// Reduce the fully updated entries to just the parts we are checking
-		var result = getFilteredEntries(
+		const result = getFilteredEntries(
 			watchlistUtils.getFinalEntries( originalEntries, {}, GlobalWatchlistEntryBase ),
 			[ 'commentDisplay' ]
 		);

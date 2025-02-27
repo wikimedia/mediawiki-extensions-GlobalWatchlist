@@ -21,19 +21,17 @@ function GlobalWatchlistWatchlistUtils( linker ) {
  * @return {Object} Merged information
  */
 GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
-	var mergedEditInfo = {};
+	const mergedEditInfo = {};
 
 	// No comments are shown for the grouped changes
 	mergedEditInfo.comment = false;
 
 	mergedEditInfo.bot = edits
-		.map( function ( edit ) {
-			return edit.bot;
-		} )
-		.reduce( function ( bot1, bot2 ) {
+		.map( ( edit ) => edit.bot )
+		.reduce(
 			// The combined edits are only tagged as bot if all of the edits where bot edits
-			return bot1 && bot2;
-		} );
+			( bot1, bot2 ) => bot1 && bot2
+		);
 
 	mergedEditInfo.editCount = edits.length;
 
@@ -41,45 +39,35 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
 	mergedEditInfo.expiry = edits[ 0 ].expiry;
 
 	mergedEditInfo.fromRev = edits
-		.map( function ( edit ) {
-			return edit.old_revid;
-		} )
-		.reduce( function ( edit1, edit2 ) {
+		.map( ( edit ) => edit.old_revid )
+		.reduce(
 			// Get the lower rev id, corresponding to the older revision
-			return ( edit1 > edit2 ? edit2 : edit1 );
-		} );
+			( edit1, edit2 ) => ( edit1 > edit2 ? edit2 : edit1 )
+		);
 
 	mergedEditInfo.minor = edits
-		.map( function ( edit ) {
-			return edit.minor;
-		} )
-		.reduce( function ( minor1, minor2 ) {
+		.map( ( edit ) => edit.minor )
+		.reduce(
 			// The combined edits are only tagged as minor if all of the edits where minor
-			return minor1 && minor2;
-		} );
+			( minor1, minor2 ) => minor1 && minor2
+		);
 
 	mergedEditInfo.newPage = edits
-		.map( function ( edit ) {
-			return edit.newPage;
-		} )
-		.reduce( function ( newPage1, newPage2 ) {
+		.map( ( edit ) => edit.newPage )
+		.reduce(
 			// Page creation is stored as a flag on edit entries, instead of as
 			// its own type of entry. If any of the entries are creations, the
 			// overall group was a page creation
-			return newPage1 || newPage2;
-		} );
+			( newPage1, newPage2 ) => newPage1 || newPage2
+		);
 
 	// No tags
 	mergedEditInfo.tags = [];
 
 	// Per T262176, and like the core watchlist, use the latest timestamp
 	mergedEditInfo.timestamp = edits
-		.map( function ( edit ) {
-			return edit.timestamp;
-		} )
-		.reduce( function ( time1, time2 ) {
-			return ( ( new Date( time1 ) ) > ( new Date( time2 ) ) ? time1 : time2 );
-		} );
+		.map( ( edit ) => edit.timestamp )
+		.reduce( ( time1, time2 ) => ( ( new Date( time1 ) ) > ( new Date( time2 ) ) ? time1 : time2 ) );
 
 	// When there are multiple edits grouped, the timestamp has a tooltip (title attribute)
 	// explaining that its the timestamp of the latest change. If it's not set here, it's
@@ -88,13 +76,11 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
 	mergedEditInfo.timestampTitle = mw.msg( 'globalwatchlist-grouped-timestamp' );
 
 	mergedEditInfo.toRev = edits
-		.map( function ( edit ) {
-			return edit.revid;
-		} )
-		.reduce( function ( edit1, edit2 ) {
+		.map( ( edit ) => edit.revid )
+		.reduce(
 			// Get the higher rev id, corresponding to the newer revision
-			return ( edit1 > edit2 ? edit1 : edit2 );
-		} );
+			( edit1, edit2 ) => ( edit1 > edit2 ? edit1 : edit2 )
+		);
 
 	return mergedEditInfo;
 };
@@ -130,15 +116,15 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
  * @return {string} the raw HTML to display
  */
 GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser ) {
-	var users = Object.keys( editsByUser );
+	const users = Object.keys( editsByUser );
 
-	var allLinks = [],
+	let allLinks = [],
 		userLink = '',
 		userLinkBase = '',
 		userLinkURL = '';
 
-	var that = this;
-	users.forEach( function ( userMessage ) {
+	const that = this;
+	users.forEach( ( userMessage ) => {
 		if ( userMessage === '##hidden##' ) {
 			// Edits by hidden user(s)
 			userLink = '<span class="history-deleted">' +
@@ -175,7 +161,7 @@ GlobalWatchlistWatchlistUtils.prototype.makeSingleUserLink = function ( userMess
 		return '';
 	}
 
-	var editsByUser = {};
+	const editsByUser = {};
 	editsByUser[ userMessage ] = {
 		editCount: 1,
 		anon: isAnon
@@ -193,22 +179,22 @@ GlobalWatchlistWatchlistUtils.prototype.makeSingleUserLink = function ( userMess
  * @return {Array} Converted edits
  */
 GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, groupPage ) {
-	var finalEdits = [];
+	const finalEdits = [];
 
-	var edits = [];
-	for ( var key in editInfo ) {
+	const edits = [];
+	for ( const key in editInfo ) {
 		edits.push( editInfo[ key ] );
 	}
 
-	var that = this;
-	edits.forEach( function ( page ) {
-		var pagebase = {
+	const that = this;
+	edits.forEach( ( page ) => {
+		const pagebase = {
 			entryType: 'edit',
 			ns: page.ns,
 			title: page.title
 		};
 		if ( !groupPage || page.each.length === 1 ) {
-			page.each.forEach( function ( entry ) {
+			page.each.forEach( ( entry ) => {
 				finalEdits.push( Object.assign( {}, pagebase, {
 					bot: entry.bot,
 					comment: entry.parsedcomment,
@@ -228,7 +214,7 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
 				} ) );
 			} );
 		} else {
-			var mergedEditInfo = that.mergePageEdits( page.each );
+			const mergedEditInfo = that.mergePageEdits( page.each );
 
 			// Map of edit counts
 			// ⧼user name/ip address⧽
@@ -239,9 +225,9 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
 			// }
 			//
 			// For edits where the user was hidden, the key is: ##hidden##
-			var editsByUser = {};
+			const editsByUser = {};
 
-			page.each.forEach( function ( specificEdit ) {
+			page.each.forEach( ( specificEdit ) => {
 				if ( !( specificEdit.user in editsByUser ) ) {
 					editsByUser[ specificEdit.user ] = {
 						editCount: 0,
@@ -266,7 +252,7 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
  * @return {Array} Entries in a "normalized" format
  */
 GlobalWatchlistWatchlistUtils.prototype.normalizeEntries = function ( entries ) {
-	entries.forEach( function ( entry ) {
+	entries.forEach( ( entry ) => {
 		if ( entry.userhidden ) {
 			// # is in wgLegalTitleChars so no conflict
 			entry.user = '##hidden##';
@@ -332,24 +318,24 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 	EntryClass
 ) {
 	// Watchlist expiry
-	var expirationDate, daysLeft;
+	let expirationDate, daysLeft;
 
 	// New page / minor / bot flags
 	// Optimization: only fetch the messages a single time
 	// Order to match the display of core
-	var newPageFlag = mw.msg( 'newpageletter' );
-	var minorFlag = mw.msg( 'minoreditletter' );
-	var botFlag = mw.msg( 'boteditletter' );
-	var entryFlags;
+	const newPageFlag = mw.msg( 'newpageletter' );
+	const minorFlag = mw.msg( 'minoreditletter' );
+	const botFlag = mw.msg( 'boteditletter' );
+	let entryFlags;
 
 	// Tags display
-	var noTagsDisplay = Object.keys( tagsInfo ).length === 0;
-	var tagDescriptions, tagsWithLabel;
+	const noTagsDisplay = Object.keys( tagsInfo ).length === 0;
+	let tagDescriptions, tagsWithLabel;
 
 	// Comment display
-	var that = this;
+	const that = this;
 
-	return entries.map( function ( entry ) {
+	return entries.map( ( entry ) => {
 		// Watchlist expiry
 		if ( entry.expiry ) {
 			expirationDate = new Date( entry.expiry );
@@ -395,9 +381,7 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 		} else {
 			// This is the actual building of the display
 			tagDescriptions = entry.tags.map(
-				function ( tagName ) {
-					return tagsInfo[ tagName ];
-				}
+				( tagName ) => tagsInfo[ tagName ]
 			).join( ', ' );
 			tagsWithLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, tagDescriptions );
 			entry.tagsDisplay = mw.msg( 'parentheses', tagsWithLabel );
@@ -429,13 +413,13 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
  *    {@link GlobalWatchlistEntryEdits} or {@link GlobalWatchlistEntryLog}
  */
 GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage, tagsInfo ) {
-	var convertedEdits = [],
+	let convertedEdits = [],
 		edits = {},
 		logEntries = [],
 		cleanedEntries = this.normalizeEntries( entries );
 
-	var that = this;
-	cleanedEntries.forEach( function ( entry ) {
+	const that = this;
+	cleanedEntries.forEach( ( entry ) => {
 		if ( entry.type === 'edit' ) {
 			// Also includes new pages
 			if ( typeof edits[ entry.pageid ] === 'undefined' ) {
@@ -478,7 +462,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 	// return negative if the order should not change, and positive if they should.
 	// See T275303
 	convertedEdits.sort(
-		function ( editA, editB ) {
+		( editA, editB ) => {
 			if ( editA.timestamp !== editB.timestamp ) {
 				return ( ( new Date( editA.timestamp ) ) > ( new Date( editB.timestamp ) ) ?
 					-1 :
@@ -490,7 +474,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 		}
 	);
 	logEntries.sort(
-		function ( logA, logB ) {
+		( logA, logB ) => {
 			if ( logA.timestamp !== logB.timestamp ) {
 				return ( ( new Date( logA.timestamp ) ) > ( new Date( logB.timestamp ) ) ?
 					-1 :
@@ -502,10 +486,10 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 		}
 	);
 
-	var GlobalWatchlistEntryEdits = require( './EntryEdits.js' );
+	const GlobalWatchlistEntryEdits = require( './EntryEdits.js' );
 	convertedEdits = this.getFinalEntries( convertedEdits, tagsInfo, GlobalWatchlistEntryEdits );
 
-	var GlobalWatchlistEntryLog = require( './EntryLog.js' );
+	const GlobalWatchlistEntryLog = require( './EntryLog.js' );
 	logEntries = this.getFinalEntries( logEntries, tagsInfo, GlobalWatchlistEntryLog );
 
 	return convertedEdits.concat( logEntries );

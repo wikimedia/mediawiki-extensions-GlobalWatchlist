@@ -10,12 +10,12 @@
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Shared debugger instance
  */
 function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebug ) {
-	var GlobalWatchlistLinker = require( './Linker.js' );
-	var GlobalWatchlistWatchlistUtils = require( './WatchlistUtils.js' );
+	const GlobalWatchlistLinker = require( './Linker.js' );
+	const GlobalWatchlistWatchlistUtils = require( './WatchlistUtils.js' );
 
 	// Set the Access-Control-Max-Age header - T268267
 	// Set the Api-User-Agent header - T262177
-	var apiConfig = {
+	const apiConfig = {
 		ajax: {
 			headers: {
 				'Access-Control-Max-Age': 300,
@@ -24,11 +24,11 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
 		}
 	};
 
-	var linker;
+	let linker;
 	/**
 	 * @property {Array} siteList The individual sites
 	 */
-	this.siteList = config.siteList.map( function ( site ) {
+	this.siteList = config.siteList.map( ( site ) => {
 		linker = new GlobalWatchlistLinker( site );
 		return new SiteClass(
 			globalWatchlistDebug,
@@ -58,7 +58,7 @@ function GlobalWatchlistMultiSiteWrapper( SiteClass, config, globalWatchlistDebu
  */
 GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config ) {
 	return Promise.all(
-		this.siteList.map( function ( site ) {
+		this.siteList.map( ( site ) => {
 			// Reset in case it failed earlier
 			site.apiError = false;
 
@@ -73,10 +73,10 @@ GlobalWatchlistMultiSiteWrapper.prototype.getAllWatchlists = function ( config )
  * @return {Promise} Promise that all sites were marked as seen
  */
 GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function () {
-	var that = this;
+	const that = this;
 
-	return new Promise( function ( resolve, reject ) {
-		var getConfirmation;
+	return new Promise( ( resolve, reject ) => {
+		let getConfirmation;
 
 		if ( that.confirmMarkAllSitesSeen ) {
 			getConfirmation = OO.ui.confirm(
@@ -96,13 +96,11 @@ GlobalWatchlistMultiSiteWrapper.prototype.markAllSitesSeen = function () {
 		 * getConfirmation is a Promise that just always resolves to true.
 		 */
 		getConfirmation.then(
-			function ( confirmed ) {
+			( confirmed ) => {
 				if ( confirmed ) {
 					Promise.all(
-						that.siteList.map( function ( site ) {
-							return site.markAllAsSeen();
-						} )
-					).then( function () {
+						that.siteList.map( ( site ) => site.markAllAsSeen() )
+					).then( () => {
 						resolve();
 					} );
 				} else {

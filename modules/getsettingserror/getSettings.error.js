@@ -11,7 +11,7 @@
 	'use strict';
 
 	// On ready initialization
-	$( function () {
+	$( () => {
 		OO.ui.alert(
 			mw.msg( 'globalwatchlist-getoptions-error' )
 		);

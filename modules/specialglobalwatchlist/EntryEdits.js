@@ -2,7 +2,7 @@
  * Extended version of GlobalWatchlistEntryBase for edits
  */
 
-var GlobalWatchlistEntryBase = require( './EntryBase.js' );
+const GlobalWatchlistEntryBase = require( './EntryBase.js' );
 
 /**
  * Represents one or more edits being shown together

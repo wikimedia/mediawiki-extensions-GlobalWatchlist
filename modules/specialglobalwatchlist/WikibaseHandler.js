@@ -94,23 +94,23 @@ GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
  * @return {Promise} Promise of api result
  */
 GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
-	var that = this;
+	const that = this;
 
-	return new Promise( function ( resolve ) {
-		var query = {
+	return new Promise( ( resolve ) => {
+		const query = {
 			action: 'wbgetentities',
 			formatversion: 2,
 			ids: entityIds.slice( 0, 50 ),
 			languages: that.userLang,
 			props: 'labels'
 		};
-		that.api.get( query ).then( function ( response ) {
+		that.api.get( query ).then( ( response ) => {
 			that.debug( 'getRawLabels - api response', response );
-			var labels = response.entities;
+			const labels = response.entities;
 			if ( entityIds.length > 50 ) {
 				// Recursive processing
-				that.getRawLabels( entityIds.slice( 50 ) ).then( function ( extraLabels ) {
-					var bothLabels = Object.assign( {}, labels, extraLabels );
+				that.getRawLabels( entityIds.slice( 50 ) ).then( ( extraLabels ) => {
+					const bothLabels = Object.assign( {}, labels, extraLabels );
 					that.debug( 'getRawLabels - bothLabels', bothLabels );
 					resolve( bothLabels );
 				} );
@@ -144,13 +144,13 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels ) {
 	this.debug( 'cleanupRawLabels - starting (raw)', rawLabels );
 
-	var cleanedLabels = {};
-	var entityIds = Object.keys( rawLabels );
-	var that = this;
-	var entityInfo,
+	const cleanedLabels = {};
+	const entityIds = Object.keys( rawLabels );
+	const that = this;
+	let entityInfo,
 		labelKey;
 
-	entityIds.forEach( function ( entityId ) {
+	entityIds.forEach( ( entityId ) => {
 		// Object.keys -> known to be a valid key
 		entityInfo = rawLabels[ entityId ];
 
@@ -181,9 +181,9 @@ GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels
  * @return {Object} updated entries and ids
  */
 GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
-	var ids = [];
+	const ids = [];
 
-	entries.forEach( function ( entry ) {
+	entries.forEach( ( entry ) => {
 		entry.titleMsg = entry.title.replace(
 			/^(?:Property|Lexeme):/,
 			''
@@ -216,14 +216,14 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
  * @return {Promise} Promise of updated summary, with labels
  */
 GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryEntries ) {
-	var that = this;
+	const that = this;
 
-	return new Promise( function ( resolve ) {
-		var extractedInfo = that.getEntityIds( summaryEntries );
+	return new Promise( ( resolve ) => {
+		const extractedInfo = that.getEntityIds( summaryEntries );
 		that.debug( 'addLabels - extractedInfo', extractedInfo );
 
-		var updatedEntries = extractedInfo.entries;
-		var entityIds = extractedInfo.ids;
+		const updatedEntries = extractedInfo.entries;
+		const entityIds = extractedInfo.ids;
 
 		if ( entityIds.length === 0 ) {
 			// Nothing to fetch
@@ -231,10 +231,10 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 			return;
 		}
 
-		that.getRawLabels( entityIds ).then( function ( rawLabels ) {
-			var cleanedLabels = that.cleanupRawLabels( rawLabels );
+		that.getRawLabels( entityIds ).then( ( rawLabels ) => {
+			const cleanedLabels = that.cleanupRawLabels( rawLabels );
 
-			updatedEntries.forEach( function ( entry ) {
+			updatedEntries.forEach( ( entry ) => {
 				if ( cleanedLabels[ entry.titleMsg ] ) {
 					entry.titleMsg += ' ' + mw.msg( 'parentheses', cleanedLabels[ entry.titleMsg ] );
 				}

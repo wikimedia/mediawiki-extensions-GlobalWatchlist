@@ -1,5 +1,5 @@
 ( function () {
-	var GlobalWatchlistDebugger = require( 'ext.globalwatchlist.specialglobalwatchlist/Debug.js' );
+	const GlobalWatchlistDebugger = require( 'ext.globalwatchlist.specialglobalwatchlist/Debug.js' );
 
 	QUnit.module( 'ext.globalwatchlist.specialglobalwatchlist/Debug', QUnit.newMwEnvironment( {
 		config: {
@@ -7,8 +7,8 @@
 		}
 	} ) );
 
-	QUnit.test( 'debug.console', function ( assert ) {
-		var globalWatchlistDebug = new GlobalWatchlistDebugger();
+	QUnit.test( 'debug.console', ( assert ) => {
+		const globalWatchlistDebug = new GlobalWatchlistDebugger();
 
 		assert.strictEqual(
 			globalWatchlistDebug.sendToConsole,
@@ -18,11 +18,11 @@
 
 	} );
 
-	QUnit.test( 'debug.info', function ( assert ) {
-		var globalWatchlistDebug = new GlobalWatchlistDebugger();
+	QUnit.test( 'debug.info', ( assert ) => {
+		const globalWatchlistDebug = new GlobalWatchlistDebugger();
 
 		globalWatchlistDebug.info( 'messageGoesHere', 'extraInfoGoesHere' );
-		var expectedMessage = '0: messageGoesHere\t"extraInfoGoesHere"';
+		const expectedMessage = '0: messageGoesHere\t"extraInfoGoesHere"';
 
 		assert.deepEqual(
 			globalWatchlistDebug.debugLog,
@@ -32,10 +32,10 @@
 	} );
 
 	QUnit.test( 'debug.error', function ( assert ) {
-		var globalWatchlistDebug = new GlobalWatchlistDebugger();
-		var originalError = new Error( 'ErrorStuffGoesHere' );
+		const globalWatchlistDebug = new GlobalWatchlistDebugger();
+		const originalError = new Error( 'ErrorStuffGoesHere' );
 
-		var consoleError = this.sandbox.stub( console, 'error' );
+		const consoleError = this.sandbox.stub( console, 'error' );
 
 		globalWatchlistDebug.error( 'errorInfoGoesHere', originalError );
 		globalWatchlistDebug.error( 'errorInfoGoesHere', 'theThingThatWentWrong' );

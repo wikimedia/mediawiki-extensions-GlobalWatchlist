@@ -26,7 +26,7 @@ function getQueryFlag( setting, flag ) {
  */
 function globalWatchlistGetSettings( globalWatchlistDebug ) {
 	// Note: this must be the same key as SettingsManager::PREFERENCE_NAME
-	var userOptions = mw.user.options.get( 'global-watchlist-options' ),
+	let userOptions = mw.user.options.get( 'global-watchlist-options' ),
 		userSettings = {},
 		config = {},
 		defaultConfig = {
