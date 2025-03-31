@@ -194,7 +194,7 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
 			// * main namespace, title doesn't have a prefix to remove
 			// * property/lexeme, prefix removed
 			// Add the Q/P/L id, without duplication
-			if ( ids.indexOf( entry.titleMsg ) === -1 ) {
+			if ( !ids.includes( entry.titleMsg ) ) {
 				ids.push( entry.titleMsg );
 			}
 		}

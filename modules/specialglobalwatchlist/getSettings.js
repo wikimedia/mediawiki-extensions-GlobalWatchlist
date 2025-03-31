@@ -56,9 +56,9 @@ function globalWatchlistGetSettings( globalWatchlistDebug ) {
 				confirmAllSites: userSettings.confirmallsites,
 				fastMode: userSettings.fastmode,
 				groupPage: userSettings.grouppage,
-				showEdits: userSettings.showtypes.indexOf( 'edit' ) > -1,
-				showLogEntries: userSettings.showtypes.indexOf( 'log' ) > -1,
-				showNewPages: userSettings.showtypes.indexOf( 'new' ) > -1
+				showEdits: userSettings.showtypes.includes( 'edit' ),
+				showLogEntries: userSettings.showtypes.includes( 'log' ),
+				showNewPages: userSettings.showtypes.includes( 'new' )
 			};
 		} catch ( e ) {
 			// Not using .error since it can be recovered from, and the user notice
