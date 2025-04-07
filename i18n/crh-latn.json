@@ -6,5 +6,7 @@
 			"Zolgoyo"
 		]
 	},
-	"globalwatchlist-markpageseen": "saifeni oqulğan olaraq belgile"
+	"globalwatchlist-prefs-settings": "Global közetüv cedveli parametrlerini tayin etmek içün [[Special:GlobalWatchlistSettings]] saifesine keçiñiz.",
+	"globalwatchlist-markpageseen": "saifeni oqulğan olaraq belgile",
+	"prefs-globalwatchlist": "Global közetüv cedveli"
 }
