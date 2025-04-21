@@ -7,12 +7,12 @@ use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\HTMLForm\Field\HTMLInfoField;
 use MediaWiki\Message\Message;
+use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
-use Skin;
 use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**

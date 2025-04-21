@@ -30,9 +30,9 @@ use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\HTMLForm\Field\HTMLInfoField;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\User;
-use Skin;
 use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Context\DerivativeContext;
+use MediaWiki\Exception\UserNotLoggedIn;
 use MediaWiki\Extension\GlobalWatchlist\SettingsFormValidator;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\Extension\GlobalWatchlist\SpecialGlobalWatchlistSettings;
@@ -20,7 +21,6 @@ use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 use Psr\Log\LogLevel;
 use TestLogger;
-use UserNotLoggedIn;
 use Wikimedia\TestingAccessWrapper;
 
 /**
