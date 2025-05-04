@@ -2,7 +2,7 @@
  * Extended version of SiteBase.js for use in Vue version of Special:GlobalWatchlist
  */
 
-var GlobalWatchlistSiteBase = require( './SiteBase.js' );
+const GlobalWatchlistSiteBase = require( './SiteBase.js' );
 
 /**
  * Represents a specific site, excluding the display (used in Vue display)
@@ -49,7 +49,7 @@ OO.inheritClass( GlobalWatchlistSiteVue, GlobalWatchlistSiteBase );
  */
 GlobalWatchlistSiteVue.prototype.renderWatchlist = function ( summary ) {
 	this.entries = summary;
-	this.entries.forEach( function ( entry ) {
+	this.entries.forEach( ( entry ) => {
 		entry.pageWatched = true;
 	} );
 };
@@ -73,9 +73,9 @@ GlobalWatchlistSiteVue.prototype.processUpdateWatched = function ( pageTitle, un
 		'Processing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
 	);
 
-	var pageWatched = !unwatched;
+	const pageWatched = !unwatched;
 
-	this.entries.forEach( function ( entry ) {
+	this.entries.forEach( ( entry ) => {
 		if ( entry.title === pageTitle ) {
 			entry.pageWatched = pageWatched;
 		}

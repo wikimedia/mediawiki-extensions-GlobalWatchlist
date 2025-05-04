@@ -26,23 +26,25 @@ function getQueryFlag( setting, flag ) {
  */
 function globalWatchlistGetSettings( globalWatchlistDebug ) {
 	// Note: this must be the same key as SettingsManager::PREFERENCE_NAME
-	var userOptions = mw.user.options.get( 'global-watchlist-options' ),
-		userSettings = {},
-		config = {},
-		defaultConfig = {
-			siteList: [
-				mw.config.get( 'wgServer' ).replace( /.*?\/\//, '' )
-			],
-			anon: 0,
-			bot: 0,
-			minor: 0,
-			confirmAllSites: true,
-			fastMode: false,
-			groupPage: true,
-			showEdits: true,
-			showLogEntries: true,
-			showNewPages: true
-		};
+	const userOptions = mw.user.options.get( 'global-watchlist-options' );
+
+	let userSettings = {},
+		config = {};
+
+	const defaultConfig = {
+		siteList: [
+			mw.config.get( 'wgServer' ).replace( /.*?\/\//, '' )
+		],
+		anon: 0,
+		bot: 0,
+		minor: 0,
+		confirmAllSites: true,
+		fastMode: false,
+		groupPage: true,
+		showEdits: true,
+		showLogEntries: true,
+		showNewPages: true
+	};
 
 	if ( userOptions === null ) {
 		config = defaultConfig;
@@ -57,9 +59,9 @@ function globalWatchlistGetSettings( globalWatchlistDebug ) {
 				confirmAllSites: userSettings.confirmallsites,
 				fastMode: userSettings.fastmode,
 				groupPage: userSettings.grouppage,
-				showEdits: userSettings.showtypes.indexOf( 'edit' ) > -1,
-				showLogEntries: userSettings.showtypes.indexOf( 'log' ) > -1,
-				showNewPages: userSettings.showtypes.indexOf( 'new' ) > -1
+				showEdits: userSettings.showtypes.includes( 'edit' ),
+				showLogEntries: userSettings.showtypes.includes( 'log' ),
+				showNewPages: userSettings.showtypes.includes( 'new' )
 			};
 		} catch ( e ) {
 			// Not using .error since it can be recovered from, and the user notice

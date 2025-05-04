@@ -2,7 +2,7 @@
  * Extended version of GlobalWatchlistEntryBase for log entries
  */
 
-var GlobalWatchlistEntryBase = require( './EntryBase.js' );
+const GlobalWatchlistEntryBase = require( './EntryBase.js' );
 
 /**
  * Represents a single log entry

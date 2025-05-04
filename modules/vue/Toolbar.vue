@@ -3,37 +3,37 @@
 		id="ext-globalwatchlist-vue-toolbar"
 	>
 		<wvui-toggle-button
-			v-bind:is-active="liveUpdatesActive"
-			v-bind:disabled="disableLiveUpdates"
-			v-on:change="toggleLiveUpdates"
+			:is-active="liveUpdatesActive"
+			:disabled="disableLiveUpdates"
+			@change="toggleLiveUpdates"
 		>
 			<wvui-icon
 				class="ext-globalwatchlist-button-icon"
-				v-bind:icon="iconLiveUpdates"
+				:icon="iconLiveUpdates"
 			>
 			</wvui-icon>
 			{{ $i18n( 'globalwatchlist-option-live' ).text() }}
 		</wvui-toggle-button>
 
 		<wvui-toggle-button
-			v-bind:is-active="groupPageActive"
-			v-bind:disabled="disableGroupPage"
-			v-on:change="toggleGroupPage"
+			:is-active="groupPageActive"
+			:disabled="disableGroupPage"
+			@change="toggleGroupPage"
 		>
 			{{ $i18n( 'globalwatchlist-option-grouppage' ).text() }}
 		</wvui-toggle-button>
 
 		<wvui-button
 			action="progressive"
-			v-bind:disabled="disableRefresh"
-			v-on:click="triggerRefresh"
+			:disabled="disableRefresh"
+			@click="triggerRefresh"
 		>
 			<span>
 				<!-- TODO once T273493 is resolved, use `startIcon` instead of
 					needing to specify one manually, here and below -->
 				<wvui-icon
 					class="ext-globalwatchlist-button-icon"
-					v-bind:icon="icons.reload"
+					:icon="icons.reload"
 				>
 				</wvui-icon>
 				{{ $i18n( 'globalwatchlist-refresh' ).text() }}
@@ -42,13 +42,13 @@
 
 		<wvui-button>
 			<a
-				v-bind:href="settingsUrl"
+				:href="settingsUrl"
 				target="_blank"
 			>
 				<!-- Icon is part of the link -->
 				<wvui-icon
 					class="ext-globalwatchlist-button-icon"
-					v-bind:icon="icons.settings"
+					:icon="icons.settings"
 				>
 				</wvui-icon>
 				{{ $i18n( 'globalwatchlist-globalwatchlistsettingslink' ).text() }}
@@ -57,13 +57,13 @@
 
 		<wvui-button
 			action="destructive"
-			v-bind:disabled="disableMarkAll"
-			v-on:click="triggerMarkAll"
+			:disabled="disableMarkAll"
+			@click="triggerMarkAll"
 		>
 			<span>
 				<wvui-icon
 					class="ext-globalwatchlist-button-icon"
-					v-bind:icon="icons.checkAll"
+					:icon="icons.checkAll"
 				>
 				</wvui-icon>
 				{{ $i18n( 'globalwatchlist-markseen-all' ).text() }}
@@ -74,9 +74,9 @@
 
 <script>
 
-var WvuiButton = require( 'wvui' ).WvuiButton;
-var WvuiIcon = require( 'wvui' ).WvuiIcon;
-var WvuiToggleButton = require( 'wvui' ).WvuiToggleButton;
+const WvuiButton = require( 'wvui' ).WvuiButton;
+const WvuiIcon = require( 'wvui' ).WvuiIcon;
+const WvuiToggleButton = require( 'wvui' ).WvuiToggleButton;
 
 /**
  * Toolbar at the top of the page

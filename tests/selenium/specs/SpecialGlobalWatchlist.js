@@ -6,7 +6,7 @@ const assert = require( 'assert' ),
 	GlobalWatchlist = require( '../pageobjects/GlobalWatchlist.page' ),
 	Util = require( 'wdio-mediawiki/Util' );
 
-describe( 'Special:GlobalWatchlist', function () {
+describe( 'Special:GlobalWatchlist', () => {
 	let pageTitle;
 
 	before( async () => {
@@ -41,7 +41,7 @@ describe( 'Special:GlobalWatchlist', function () {
 		} );
 	} );
 
-	it( 'works with normal display', async function () {
+	it( 'works with normal display', async () => {
 		await GlobalWatchlist.openDisplay( 'normal' );
 
 		const content = await GlobalWatchlist.content;
@@ -65,7 +65,7 @@ describe( 'Special:GlobalWatchlist', function () {
 
 	} );
 
-	it( 'works with vue display', async function () {
+	it( 'works with vue display', async () => {
 		GlobalWatchlist.openDisplay( 'vue' );
 
 		const content = await GlobalWatchlist.content;

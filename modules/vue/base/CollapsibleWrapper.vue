@@ -5,7 +5,7 @@
 		<!-- No support for an `align` parameter yet -->
 		<wvui-button
 			class="ext-globalwatchlist-float-right"
-			v-on:click="toggleCollapsible"
+			@click="toggleCollapsible"
 		>
 			{{ buttonText }}
 		</wvui-button>
@@ -23,7 +23,7 @@
  * This component should eventually be replaced by a standard version shared across
  * multiple mediawiki repositories. See T249840 for more.
  */
-var WvuiButton = require( 'wvui' ).WvuiButton;
+const WvuiButton = require( 'wvui' ).WvuiButton;
 
 // @vue/component
 module.exports = {

@@ -1,5 +1,5 @@
 ( function () {
-	var GlobalWatchlistLinker = require( '../../../modules/Linker.js' );
+	const GlobalWatchlistLinker = require( '../../../modules/Linker.js' );
 
 	QUnit.module( 'ext.globalwatchlist.linker', QUnit.newMwEnvironment( {
 		config: {
@@ -8,12 +8,12 @@
 		}
 	} ) );
 
-	QUnit.test( 'linker.fixLocalLinks', function ( assert ) {
-		var linker = new GlobalWatchlistLinker( 'en.wikipedia.org' );
+	QUnit.test( 'linker.fixLocalLinks', ( assert ) => {
+		const linker = new GlobalWatchlistLinker( 'en.wikipedia.org' );
 
 		// [[PageName]]
-		var localLink = '<a href="/wiki/PageName" title="PageName">PageName</a>';
-		var foreignLink = '<a href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>';
+		const localLink = '<a href="/wiki/PageName" title="PageName">PageName</a>';
+		const foreignLink = '<a href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>';
 
 		assert.strictEqual(
 			linker.fixLocalLinks( localLink ),
@@ -22,8 +22,8 @@
 		);
 	} );
 
-	QUnit.test( 'linker.linkPage', function ( assert ) {
-		var linker = new GlobalWatchlistLinker( 'en.wikipedia.org' );
+	QUnit.test( 'linker.linkPage', ( assert ) => {
+		const linker = new GlobalWatchlistLinker( 'en.wikipedia.org' );
 
 		assert.strictEqual(
 			linker.linkPage( 'PageTitle' ),
@@ -32,8 +32,8 @@
 		);
 	} );
 
-	QUnit.test( 'linker.linkQuery', function ( assert ) {
-		var linker = new GlobalWatchlistLinker( 'en.wikipedia.org' );
+	QUnit.test( 'linker.linkQuery', ( assert ) => {
+		const linker = new GlobalWatchlistLinker( 'en.wikipedia.org' );
 
 		assert.strictEqual(
 			linker.linkQuery( 'title=pagetitle&action=someaction' ),

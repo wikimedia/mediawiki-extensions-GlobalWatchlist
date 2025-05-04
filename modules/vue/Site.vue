@@ -2,13 +2,13 @@
 	<div class="ext-globalwatchlist-vue-site">
 		<h3>
 			<a
-				v-bind:href="specialWatchlistUrl"
+				:href="specialWatchlistUrl"
 				target="_blank"
 			>{{ site }}</a>
 			(<!--
 				Avoid a space
 			--><a
-				v-bind:href="specialEditWatchlistUrl"
+				:href="specialEditWatchlistUrl"
 				target="_blank"
 			>{{ $i18n( 'globalwatchlist-editwatchlist' ).text() }}</a><!--
 				Avoid a space
@@ -20,12 +20,12 @@
 		<global-watchlist-collapsible-wrapper v-else>
 			<wvui-button
 				action="destructive"
-				v-on:click="markChangesSeen"
+				@click="markChangesSeen"
 			>
 				<span>
 					<wvui-icon
 						class="ext-globalwatchlist-button-icon"
-						v-bind:icon="checkIcon"
+						:icon="checkIcon"
 					>
 					</wvui-icon>
 					{{ $i18n( 'globalwatchlist-markseen' ).text() }}
@@ -34,12 +34,12 @@
 			<ul>
 				<global-watchlist-entry-row
 					v-for="( rowInfo, index ) in entries"
-					v-bind:key="index"
-					v-bind:entry="rowInfo"
-					v-bind:pagewatched="rowInfo.pageWatched"
-					v-bind:site="site"
-					v-on:unwatch-page="onUnwatchPage"
-					v-on:rewatch-page="onRewatchPage"
+					:key="index"
+					:entry="rowInfo"
+					:pagewatched="rowInfo.pageWatched"
+					:site="site"
+					@unwatch-page="onUnwatchPage"
+					@rewatch-page="onRewatchPage"
 				>
 				</global-watchlist-entry-row>
 			</ul>
@@ -48,13 +48,13 @@
 </template>
 
 <script>
-var GlobalWatchlistLinker = require( './../Linker.js' );
+const GlobalWatchlistLinker = require( './../Linker.js' );
 
-var CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' ),
+const CollapsibleWrapper = require( './base/CollapsibleWrapper.vue' ),
 	EntryRow = require( './EntryRow.vue' );
 
-var WvuiButton = require( 'wvui' ).WvuiButton;
-var WvuiIcon = require( 'wvui' ).WvuiIcon;
+const WvuiButton = require( 'wvui' ).WvuiButton;
+const WvuiIcon = require( 'wvui' ).WvuiIcon;
 
 /**
  * Output for a specific site
@@ -115,7 +115,7 @@ module.exports = {
 	methods: {
 		onUnwatchPage: function ( eventTitle ) {
 			this.$emit( 'unwatch-site-page', this.site, eventTitle );
-			this.entries.forEach( function ( entryInfo ) {
+			this.entries.forEach( ( entryInfo ) => {
 				if ( entryInfo.title === eventTitle ) {
 					entryInfo.pageWatched = false;
 					// To remove the clock
@@ -126,7 +126,7 @@ module.exports = {
 		},
 		onRewatchPage: function ( eventTitle ) {
 			this.$emit( 'rewatch-site-page', this.site, eventTitle );
-			this.entries.forEach( function ( entryInfo ) {
+			this.entries.forEach( ( entryInfo ) => {
 				if ( entryInfo.title === eventTitle ) {
 					entryInfo.pageWatched = true;
 				}

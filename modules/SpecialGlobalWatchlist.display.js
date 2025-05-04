@@ -5,19 +5,20 @@
 ( function () {
 	'use strict';
 
-	var GlobalWatchlistDebugger = require( './Debug.js' ),
-		getSettings = require( './getSettings.js' ),
-		config = {},
-		MultiSiteWrapper = require( './MultiSiteWrapper.js' ),
-		WatchedSite = require( './SiteDisplay.js' ),
-		viewElements = {},
-		viewManager = {};
-	var globalWatchlistDebug = new GlobalWatchlistDebugger();
+	const GlobalWatchlistDebugger = require( './Debug.js' );
+	const getSettings = require( './getSettings.js' );
+	const MultiSiteWrapper = require( './MultiSiteWrapper.js' );
+	const WatchedSite = require( './SiteDisplay.js' );
+	const viewElements = {};
+	const viewManager = {};
+	const globalWatchlistDebug = new GlobalWatchlistDebugger();
+
+	let config = {};
 
 	config = getSettings( globalWatchlistDebug );
 	config.inLive = false;
 
-	var watchedSites = new MultiSiteWrapper(
+	const watchedSites = new MultiSiteWrapper(
 		WatchedSite,
 		config,
 		globalWatchlistDebug
@@ -27,7 +28,7 @@
 		disabled: config.fastMode,
 		label: mw.msg( 'globalwatchlist-option-grouppage' ),
 		value: config.groupPage && !config.fastMode
-	} ).on( 'click', function () {
+	} ).on( 'click', () => {
 		config.groupPage = viewElements.groupPage.value;
 		viewManager.renderFeed();
 	} );
@@ -35,7 +36,7 @@
 		disabled: config.fastMode,
 		label: mw.msg( 'globalwatchlist-option-live' ),
 		value: false
-	} ).on( 'click', function () {
+	} ).on( 'click', () => {
 		if ( viewElements.liveToggle.value ) {
 			viewManager.startLiveUpdates();
 		} else {
@@ -53,7 +54,7 @@
 		icon: 'checkAll',
 		id: 'ext-globalwatchlist-markseen-all',
 		label: mw.msg( 'globalwatchlist-markseen-all' )
-	} ).on( 'click', function () {
+	} ).on( 'click', () => {
 		watchedSites.markAllSitesSeen();
 	} );
 	viewElements.refresh = new OO.ui.ButtonInputWidget( {
@@ -61,7 +62,7 @@
 		icon: 'reload',
 		id: 'ext-globalwatchlist-refresh',
 		label: mw.msg( 'globalwatchlist-refresh' )
-	} ).on( 'click', function () {
+	} ).on( 'click', () => {
 		viewManager.renderFeed();
 	} );
 	viewElements.progressBar = new OO.ui.ProgressBarWidget( {
@@ -87,11 +88,11 @@
 	viewElements.$feedHeader.hide();
 
 	viewManager.newEmptySiteRow = function ( site ) {
-		var template = mw.template.get(
+		const template = mw.template.get(
 			'ext.globalwatchlist.specialglobalwatchlist',
 			'templates/newEmptySiteRow.mustache'
 		);
-		var params = {
+		const params = {
 			'special-watchlist-url': '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:Watchlist' ),
 			'site-name': site,
 			'special-edit-watchlist-url': '//' + site + mw.config.get( 'wgArticlePath' ).replace( '$1', 'Special:EditWatchlist' ),
@@ -102,13 +103,13 @@
 	viewManager.refresh = function () {
 		globalWatchlistDebug.info( 'watchlists.refresh - starting' );
 		config.time = new Date();
-		return new Promise( function ( resolve ) {
-			watchedSites.getAllWatchlists( config ).then( function () {
-				var $div = $( '<div>' ).attr( 'id', 'ext-globalwatchlist-feedcollector' ),
-					emptySites = [],
-					haveChangesToShow = false;
+		return new Promise( ( resolve ) => {
+			watchedSites.getAllWatchlists( config ).then( () => {
+				const $div = $( '<div>' ).attr( 'id', 'ext-globalwatchlist-feedcollector' );
+				const emptySites = [];
+				let haveChangesToShow = false;
 
-				watchedSites.siteList.forEach( function ( site ) {
+				watchedSites.siteList.forEach( ( site ) => {
 					if ( site.isEmpty ) {
 						emptySites.push( site.site );
 					} else {
@@ -128,13 +129,13 @@
 				}
 
 				if ( emptySites[ 0 ] ) {
-					var $ul = $( '<ul>' );
-					emptySites.forEach( function ( site ) {
+					const $ul = $( '<ul>' );
+					emptySites.forEach( ( site ) => {
 						$ul.append(
 							viewManager.newEmptySiteRow( site )
 						);
 					} );
-					var $emptySitesDiv = mw.template.get(
+					const $emptySitesDiv = mw.template.get(
 						'ext.globalwatchlist.specialglobalwatchlist',
 						'templates/allEmptySites.mustache'
 					).render( {
@@ -156,7 +157,7 @@
 					config.time.toUTCString()
 				);
 				resolve();
-			} ).catch( function ( error ) {
+			} ).catch( ( error ) => {
 				/* eslint-disable-next-line no-console */
 				console.log( error );
 				globalWatchlistDebug.info( 'watchlists.refresh ERROR', error );
@@ -179,7 +180,7 @@
 		viewElements.$sharedFeed.hide();
 		viewElements.$asOf[ 0 ].innerText = '';
 
-		viewManager.refresh().then( function () {
+		viewManager.refresh().then( () => {
 			viewManager.showFeed();
 		} );
 	};
@@ -232,7 +233,7 @@
 	};
 
 	// On ready initialization
-	$( function () {
+	$( () => {
 		globalWatchlistDebug.info( 'GlobalWatchlist - javascript loaded!' );
 
 		$( '.ext-globalwatchlist-content' )
@@ -246,7 +247,7 @@
 			);
 
 		// Based on viewManager.renderFeed but with timing
-		var loadStartTime = mw.now();
+		const loadStartTime = mw.now();
 		viewElements.liveToggle.setDisabled( true );
 		viewElements.groupPage.setDisabled( true );
 		viewElements.$sharedFeed.hide();
@@ -255,21 +256,21 @@
 		// Wait a bit before showing the progress bar, hopefully if the user's
 		// internet is fast enough clearTimeout will be called before the loading bar
 		// is ever shown. See T268268
-		var timer = setTimeout( function () {
+		const timer = setTimeout( () => {
 			viewElements.progressBar.$element.show();
 		}, 1500 );
 
-		viewManager.refresh().then( function () {
+		viewManager.refresh().then( () => {
 			// If the progress bar wasn't shown, prevent timer from finishing
 			clearTimeout( timer );
 
 			viewManager.showFeed();
 
-			var metricName = config.fastMode ?
+			const metricName = config.fastMode ?
 				'timing.MediaWiki.GlobalWatchlist.firstload.display.fastmode' :
 				'timing.MediaWiki.GlobalWatchlist.firstload.display.normal';
-			var loadEndTime = mw.now();
-			var loadElapsedTime = loadEndTime - loadStartTime;
+			const loadEndTime = mw.now();
+			const loadElapsedTime = loadEndTime - loadStartTime;
 			mw.track( metricName, loadElapsedTime );
 		} );
 
@@ -277,7 +278,7 @@
 		// Note: the page visibility api isn't available for some of the
 		// older versions of mobile browsers that MediaWiki still provides
 		// Grade A support for, but its better than nothing. See T268266
-		document.addEventListener( 'visibilitychange', function () {
+		document.addEventListener( 'visibilitychange', () => {
 			if ( document.visibilityState === 'hidden' ) {
 				// Pause live updates
 				if ( config.inLive === true ) {

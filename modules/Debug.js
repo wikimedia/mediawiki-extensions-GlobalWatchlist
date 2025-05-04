@@ -30,7 +30,7 @@ GlobalWatchlistDebugger.prototype.info = function ( msg, extraInfo ) {
 		}
 	}
 
-	var entry = this.debugLog.length + ': ' + msg;
+	let entry = this.debugLog.length + ': ' + msg;
 
 	if ( extraInfo ) {
 		entry += '\t' + JSON.stringify( extraInfo );
@@ -45,7 +45,7 @@ GlobalWatchlistDebugger.prototype.info = function ( msg, extraInfo ) {
  *                 otherwise a new Error object will be constructed here
  */
 GlobalWatchlistDebugger.prototype.error = function ( info, error ) {
-	var errorMessage,
+	let errorMessage,
 		errorToThrow;
 
 	if ( error instanceof Error ) {

@@ -6,7 +6,7 @@
 	'use strict';
 
 	// On ready initialization
-	$( function () {
+	$( () => {
 		$( '.ext-globalwatchlist-content' )
 			.empty()
 			.append(
@@ -14,7 +14,7 @@
 					.attr( 'id', 'ext-globalwatchlist-vue' )
 			);
 
-		var Vue = require( 'vue' ),
+		const Vue = require( 'vue' ),
 			vuePage = require( './vue/SpecialGlobalWatchlist.vue' );
 
 		mw.globalwatchlist = {};

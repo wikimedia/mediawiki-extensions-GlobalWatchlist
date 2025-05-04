@@ -1,12 +1,18 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es5",
+		"wikimedia/client",
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
 	"globals": {
-		"Promise": false
+		"Promise": false,
+		"GlobalWatchlistWikibaseHandler": false,
+		"GlobalWatchlistEntryEdits": false,
+		"GlobalWatchlistEntryLog": false,
+		"GlobalWatchlistSiteBase": false,
+		"GlobalWatchlistSiteDisplay": false,
+		"GlobalWatchlistSiteVue": false
 	},
 	"rules": {
 		"no-implicit-globals": "off",
@@ -28,44 +34,11 @@
 					"GlobalWatchlistWatchlistUtils"
 				]
 			}
-		]
+		],
+		"vue/multi-word-component-names": "off",
+		"vue/no-boolean-default": "off",
+		"vue/require-explicit-emits": "off"
 	},
-	"overrides": [
-		{
-			"files": [
-				"**/*.vue"
-			],
-			"extends": "wikimedia/vue-es5",
-			"rules": {
-				"vue/html-self-closing": [
-					"error",
-					{
-						"html": {
-							"void": "never",
-							"normal": "never",
-							"component": "never"
-						}
-					}
-				],
-				"vue/v-bind-style": [
-					"warn",
-					"longform"
-				],
-				"vue/v-on-style": [
-					"warn",
-					"longform"
-				],
-				"vue/v-slot-style": [
-					"warn",
-					"longform"
-				],
-				"vue/no-boolean-default": "off",
-				"vue/multi-word-component-names": "off",
-				"no-implicit-globals": "off",
-				"es/no-promise": "off"
-			}
-		}
-	],
 	"settings": {
 		"polyfills": [
 			"Promise"

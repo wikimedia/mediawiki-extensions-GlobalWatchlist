@@ -2,7 +2,7 @@
  * Extended version of SiteBase.js for use in jQuery version of Special:GlobalWatchlist
  */
 
-var GlobalWatchlistSiteBase = require( './SiteBase.js' );
+const GlobalWatchlistSiteBase = require( './SiteBase.js' );
 
 /**
  * Represents a specific site, including the display (used in jQuery / non-Vue display)
@@ -49,29 +49,29 @@ OO.inheritClass( GlobalWatchlistSiteDisplay, GlobalWatchlistSiteBase );
  * @return {jQuery} list item
  */
 GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
-	var pageTitle = encodeURIComponent( entry.title ).replace( /'/g, '%27' );
-	var $pageLink = $( '<a>' )
+	const pageTitle = encodeURIComponent( entry.title ).replace( /'/g, '%27' );
+	const $pageLink = $( '<a>' )
 		.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&redirect=no' ) )
 		.attr( 'target', '_blank' )
 		.text( entry.titleMsg || entry.title );
-	var that = this;
+	const that = this;
 
 	// Actually set up the $row to be returned
-	var $row = $( '<li>' );
+	const $row = $( '<li>' );
 
 	$row.attr( 'data-site', encodeURIComponent( this.siteID ) );
 	$row.attr( 'data-title', encodeURIComponent( entry.title ) );
 
 	if ( entry.timestamp ) {
 		// entry.timestampTitle is either a string explaining grouped changes, or null to ignore
-		var $timestamp = $( '<span>' )
+		const $timestamp = $( '<span>' )
 			.text( entry.timestamp )
 			.attr( 'title', entry.timestampTitle );
 		$row.append( $timestamp )
 			.append( ' ' );
 	}
 	if ( entry.expiry ) {
-		var clockIcon = new OO.ui.IconWidget( {
+		const clockIcon = new OO.ui.IconWidget( {
 			classes: [ 'ext-globalwatchlist-expiry-icon' ],
 			icon: 'clock',
 			title: entry.expiry
@@ -85,7 +85,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 			.append( ' ' );
 	}
 	if ( entry.entryType === 'log' ) {
-		var logText = 'Log: ' + entry.logtype + '/' + entry.logaction + ': ';
+		const logText = 'Log: ' + entry.logtype + '/' + entry.logaction + ': ';
 		$row.append( $( '<em>' ).text( logText ) )
 			.append( ' ' );
 	}
@@ -95,7 +95,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 
 	if ( entry.entryType !== 'log' ) {
 		// No history link for log entries, T273691
-		var $historyLink = $( '<a>' )
+		const $historyLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&action=history' ) )
 			.attr( 'target', '_blank' )
 			.text( mw.msg( 'globalwatchlist-history' ) );
@@ -105,7 +105,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 
 	// No diff links in fast mode, see T269728
 	if ( entry.entryType === 'edit' && entry.newPage === false && this.config.fastMode === false ) {
-		var $diffLink = $( '<a>' )
+		const $diffLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'diff=' + entry.toRev + '&oldid=' + entry.fromRev ) )
 			.attr( 'target', '_blank' )
 			.addClass( 'ext-globalwatchlist-diff' )
@@ -115,14 +115,14 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		$row.append( $diffLink )
 			.append( ', ' );
 	} else if ( entry.entryType === 'log' ) {
-		var $logPageLink = $( '<a>' )
+		const $logPageLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&page=' + pageTitle ) )
 			.attr( 'target', '_blank' )
 			.text( mw.msg( 'globalwatchlist-log-page' ) );
 		$row.append( $logPageLink )
 			.append( ', ' );
 
-		var $logEntryLink = $( '<a>' )
+		const $logEntryLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&logid=' + entry.logid ) )
 			.attr( 'target', '_blank' )
 			.text( mw.msg( 'globalwatchlist-log-entry' ) );
@@ -130,17 +130,17 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 			.append( ', ' );
 	}
 
-	var $unwatchLink = $( '<a>' )
+	const $unwatchLink = $( '<a>' )
 		.addClass( 'ext-globalwatchlist-watchunwatch' )
 		.text( mw.msg( 'globalwatchlist-unwatch' ) )
-		.on( 'click', function () {
+		.on( 'click', () => {
 			that.changeWatched( entry.title, 'unwatch' );
 		} );
 	$row.append( $unwatchLink )
 		.append( ')' );
 
-	var $user = ( this.config.fastMode ? '' : entry.userDisplay );
-	var $comment = '';
+	const $user = ( this.config.fastMode ? '' : entry.userDisplay );
+	let $comment = '';
 	if ( entry.commentDisplay ) {
 		// Need to process links in the parsed comments as raw HTML
 		$comment = $( '<span>' ).html( entry.commentDisplay );
@@ -154,7 +154,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 
 	if ( entry.tagsDisplay ) {
 		// Need to process links in the parsed description as raw HTML
-		var $tags = $( '<em>' ).html( entry.tagsDisplay );
+		const $tags = $( '<em>' ).html( entry.tagsDisplay );
 
 		$row.append( ' ' )
 			.append( $tags );
@@ -171,11 +171,11 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
  * @param {jQuery} $content Content to show
  */
 GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $content ) {
-	var headerTemplate = mw.template.get(
+	const headerTemplate = mw.template.get(
 		'ext.globalwatchlist.specialglobalwatchlist',
 		'templates/siteRowHeader.mustache'
 	);
-	var headerParams = {
+	const headerParams = {
 		'special-watchlist-url': this.linker.linkPage( 'Special:Watchlist' ),
 		'site-name': this.site,
 		'special-edit-watchlist-url': this.linker.linkPage( 'Special:EditWatchlist' ),
@@ -188,7 +188,7 @@ GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $conte
 	// this.siteID is based on the URL form of the wiki, and we assume that wikis that are
 	// meant to be RTL are in the form `⧼rtl language code⧽.*`, and any URL that does not
 	// match this is for an LTR wiki. See T274602 and T274313
-	var isRTL = this.siteID.match(
+	const isRTL = this.siteID.match(
 		/^(ar|azb|ckb|dv|fa|glk|he|ks|lrc|mzn|nqo|pnb|ps|sd|ug|ur|yi)_/
 	);
 	// mw-content-ltr and -rtl classes are not enough to ensure that the text is formatted
@@ -210,7 +210,7 @@ GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $conte
  * Alert on API failures
  */
 GlobalWatchlistSiteDisplay.prototype.renderApiFailure = function () {
-	var $siteContent = $( '<p>' ).text(
+	const $siteContent = $( '<p>' ).text(
 		mw.msg( 'globalwatchlist-fetch-site-failure' )
 	);
 
@@ -223,22 +223,22 @@ GlobalWatchlistSiteDisplay.prototype.renderApiFailure = function () {
  * @param {GlobalWatchlistEntryBase[]} summary What should be rendered
  */
 GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary ) {
-	var $ul = $( '<ul>' ),
+	const $ul = $( '<ul>' ),
 		that = this;
-	summary.forEach( function ( element ) {
+	summary.forEach( ( element ) => {
 		$ul.append( that.makePageLink( element ) );
 	} );
 
-	var markSeenButton = new OO.ui.ButtonInputWidget( {
+	const markSeenButton = new OO.ui.ButtonInputWidget( {
 		classes: [ 'ext-globalwatchlist-feed-markseen' ],
 		flags: [ 'destructive' ],
 		icon: 'check',
 		label: mw.msg( 'globalwatchlist-markseen' )
-	} ).on( 'click', function () {
+	} ).on( 'click', () => {
 		that.markAsSeen();
 	} );
 
-	var $outputContent = $( '<div>' )
+	const $outputContent = $( '<div>' )
 		.addClass( 'ext-globalwatchlist-site' )
 		.append(
 			markSeenButton.$element,
@@ -275,20 +275,20 @@ GlobalWatchlistSiteDisplay.prototype.processUpdateWatched = function ( pageTitle
 		'Processing after ' + ( unwatched ? 'unwatching' : 'rewatching' ) + ': ' + pageTitle
 	);
 
-	var encodedSite = encodeURIComponent( this.siteID );
-	var encodedTitle = encodeURIComponent( pageTitle );
-	var $entries = $( 'li[data-site="' + encodedSite + '"][data-title="' + encodedTitle + '"]' );
+	const encodedSite = encodeURIComponent( this.siteID );
+	const encodedTitle = encodeURIComponent( pageTitle );
+	const $entries = $( 'li[data-site="' + encodedSite + '"][data-title="' + encodedTitle + '"]' );
 	$entries[ unwatched ? 'addClass' : 'removeClass' ]( 'ext-globalwatchlist-strike' );
 
 	$entries.children( '.ext-globalwatchlist-expiry-icon' ).remove();
 
-	var $links = $entries.children( 'a.ext-globalwatchlist-watchunwatch' );
-	var newText = mw.msg( unwatched ? 'globalwatchlist-rewatch' : 'globalwatchlist-unwatch' );
-	var that = this;
+	const $links = $entries.children( 'a.ext-globalwatchlist-watchunwatch' );
+	const newText = mw.msg( unwatched ? 'globalwatchlist-rewatch' : 'globalwatchlist-unwatch' );
+	const that = this;
 
 	$links.each( function () {
 		$( this ).off( 'click' );
-		$( this ).on( 'click', function () {
+		$( this ).on( 'click', () => {
 			that.changeWatched( pageTitle, unwatched ? 'watch' : 'unwatch' );
 		} );
 		$( this ).text( newText );

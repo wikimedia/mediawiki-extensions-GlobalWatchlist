@@ -1,16 +1,16 @@
 <template>
 	<div id="ext-globalwatchlist-vue-specialpage">
 		<global-watchlist-toolbar
-			v-bind:live-updates-active="liveUpdatesActive"
-			v-bind:group-page-active="resultsGrouped"
-			v-bind:liveupdatesdisabled="disableLiveUpdates"
-			v-bind:grouppagedisabled="disableGroupPage"
-			v-bind:refreshdisabled="disableRefresh"
-			v-bind:markalldisabled="disableMarkAll"
-			v-on:toggle-live-updates="toggleLiveUpdates"
-			v-on:toggle-group-page="toggleGroupPage"
-			v-on:click-refresh="refreshSites"
-			v-on:mark-all-sites-seen="markAllSitesSeen"
+			:live-updates-active="liveUpdatesActive"
+			:group-page-active="resultsGrouped"
+			:liveupdatesdisabled="disableLiveUpdates"
+			:grouppagedisabled="disableGroupPage"
+			:refreshdisabled="disableRefresh"
+			:markalldisabled="disableMarkAll"
+			@toggle-live-updates="toggleLiveUpdates"
+			@toggle-group-page="toggleGroupPage"
+			@click-refresh="refreshSites"
+			@mark-all-sites-seen="markAllSitesSeen"
 		>
 		</global-watchlist-toolbar>
 		<hr>
@@ -34,18 +34,18 @@
 				</label>
 				<global-watchlist-sites-with-changes
 					v-for="withChanges in sitesWithChangesList"
-					v-bind:key="withChanges.site"
-					v-bind:site="withChanges.site"
-					v-bind:entries="withChanges.entries"
-					v-on:unwatch-site-page="onUnwatchSitePage"
-					v-on:rewatch-site-page="onRewatchSitePage"
-					v-on:mark-site-seen="markSiteAsSeen"
+					:key="withChanges.site"
+					:site="withChanges.site"
+					:entries="withChanges.entries"
+					@unwatch-site-page="onUnwatchSitePage"
+					@rewatch-site-page="onRewatchSitePage"
+					@mark-site-seen="markSiteAsSeen"
 				>
 				</global-watchlist-sites-with-changes>
 			</div>
 			<div v-if="haveEmptySites">
 				<global-watchlist-sites-without-changes
-					v-bind:emptysitelist="sitesWithoutChangesList"
+					:emptysitelist="sitesWithoutChangesList"
 				>
 				</global-watchlist-sites-without-changes>
 			</div>
@@ -54,28 +54,28 @@
 </template>
 
 <script>
-var Toolbar = require( './Toolbar.vue' ),
+const Toolbar = require( './Toolbar.vue' ),
 	WvuiProgressBar = require( 'wvui' ).WvuiProgressBar,
 	SitesWithoutChanges = require( './SitesWithoutChanges.vue' ),
 	Site = require( './Site.vue' );
 
-var GlobalWatchlistDebugger = require( './../Debug.js' ),
+const GlobalWatchlistDebugger = require( './../Debug.js' ),
 	getSettings = require( './../getSettings.js' ),
 	WatchedSite = require( './../SiteVue.js' ),
 	MultiSiteWrapper = require( './../MultiSiteWrapper.js' );
 
-var globalWatchlistDebug = new GlobalWatchlistDebugger();
-var config = getSettings( globalWatchlistDebug );
+const globalWatchlistDebug = new GlobalWatchlistDebugger();
+const config = getSettings( globalWatchlistDebug );
 config.time = new Date();
 
-var watchedSites = new MultiSiteWrapper(
+const watchedSites = new MultiSiteWrapper(
 	WatchedSite,
 	config,
 	globalWatchlistDebug
 );
 
-var watchedSitesBySite = {};
-watchedSites.siteList.forEach( function ( watchedSite ) {
+const watchedSitesBySite = {};
+watchedSites.siteList.forEach( ( watchedSite ) => {
 	watchedSitesBySite[ watchedSite.site ] = watchedSite;
 } );
 
@@ -147,8 +147,8 @@ module.exports = {
 		},
 		updateLive: function () {
 			if ( this.liveUpdatesActive === true ) {
-				var that = this;
-				this.backgroundRefresh().then( function ( results ) {
+				const that = this;
+				this.backgroundRefresh().then( ( results ) => {
 					if ( that.liveUpdatesActive === true ) {
 						// Might have been turned off while the update
 						// was being prepared
@@ -167,24 +167,24 @@ module.exports = {
 			this.sitesWithChangesList = [];
 			this.sitesWithoutChangesList = [];
 
-			var that = this;
-			this.backgroundRefresh().then( function ( results ) {
+			const that = this;
+			this.backgroundRefresh().then( ( results ) => {
 				that.sitesWithChangesList = results.withChanges;
 				that.sitesWithoutChangesList = results.withoutChanges;
-			} ).then( function () {
+			} ).then( () => {
 				that.inLoading = false;
 			} );
 		},
 		backgroundRefresh: function () {
-			var that = this;
+			const that = this;
 			this.config.time = new Date();
 
-			return new Promise( function ( resolve ) {
-				watchedSites.getAllWatchlists( that.config ).then( function () {
-					var newSitesWithChanges = [];
-					var newSitesWithoutChanges = [];
+			return new Promise( ( resolve ) => {
+				watchedSites.getAllWatchlists( that.config ).then( () => {
+					const newSitesWithChanges = [];
+					const newSitesWithoutChanges = [];
 
-					watchedSites.siteList.forEach( function ( site ) {
+					watchedSites.siteList.forEach( ( site ) => {
 						if ( site.isEmpty ) {
 							newSitesWithoutChanges.push( site.site );
 						} else {
@@ -194,7 +194,7 @@ module.exports = {
 							} );
 						}
 					} );
-					var results = {
+					const results = {
 						withChanges: newSitesWithChanges,
 						withoutChanges: newSitesWithoutChanges
 					};
@@ -211,26 +211,26 @@ module.exports = {
 		},
 		markAllSitesSeen: function () {
 			this.globalWatchlistDebug.info( 'Marking all sites as seen' );
-			var that = this;
+			const that = this;
 
 			watchedSites.markAllSitesSeen().then(
-				function () {
+				() => {
 					// Resolved, either confirmation wasn't needed or was given
 					that.refreshSites();
 				},
-				function () {
+				() => {
 					// Confirmation wasn't given
 					that.globalWatchlistDebug.info( 'Not confirmed' );
 				}
 			);
 		},
 		markSiteAsSeen: function ( site ) {
-			var that = this;
+			const that = this;
 
-			watchedSitesBySite[ site ].markAsSeen().then( function () {
+			watchedSitesBySite[ site ].markAsSeen().then( () => {
 				// Re sync sitesWithChangesList, only the site that was marked as seen should change
 				// we don't separately index sitesWithChangesList by site
-				that.sitesWithChangesList.forEach( function ( siteWithChanges ) {
+				that.sitesWithChangesList.forEach( ( siteWithChanges ) => {
 					siteWithChanges.entries = watchedSitesBySite[ siteWithChanges.site ].entries;
 				} );
 			} );
@@ -241,23 +241,23 @@ module.exports = {
 		// Trigger initial refresh once mounted
 		// Based on this.refreshSites() but with timing
 
-		var loadStartTime = mw.now();
+		const loadStartTime = mw.now();
 		this.inLoading = true;
 		this.sitesWithChangesList = [];
 		this.sitesWithoutChangesList = [];
 
-		var that = this;
-		this.backgroundRefresh().then( function ( results ) {
+		const that = this;
+		this.backgroundRefresh().then( ( results ) => {
 			that.sitesWithChangesList = results.withChanges;
 			that.sitesWithoutChangesList = results.withoutChanges;
-		} ).then( function () {
+		} ).then( () => {
 			that.inLoading = false;
 
-			var metricName = that.config.fastMode ?
+			const metricName = that.config.fastMode ?
 				'timing.MediaWiki.GlobalWatchlist.firstload.vue.fastmode' :
 				'timing.MediaWiki.GlobalWatchlist.firstload.vue.normal';
-			var loadEndTime = mw.now();
-			var loadElapsedTime = loadEndTime - loadStartTime;
+			const loadEndTime = mw.now();
+			const loadElapsedTime = loadEndTime - loadStartTime;
 			mw.track( metricName, loadElapsedTime );
 		} );
 
@@ -265,7 +265,7 @@ module.exports = {
 		// Note: the page visibility api isn't available for some of the
 		// older versions of mobile browsers that MediaWiki still provides
 		// Grade A support for, but its better than nothing. See T268266
-		document.addEventListener( 'visibilitychange', function () {
+		document.addEventListener( 'visibilitychange', () => {
 			if ( document.visibilityState === 'hidden' ) {
 				// Pause live updates
 				if ( that.liveUpdatesActive === true ) {

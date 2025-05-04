@@ -1,10 +1,10 @@
 <template>
 	<li
-		v-bind:class="rowClasses"
+		:class="rowClasses"
 	>
 		<span
 			v-if="entry.timestamp"
-			v-bind:title="entry.timestampTitle"
+			:title="entry.timestampTitle"
 		>
 			{{ entry.timestamp }}
 		</span>
@@ -12,8 +12,8 @@
 		<!-- Watchlist expiration clock -->
 		<span v-if="entry.expiry">
 			<wvui-icon
-				v-bind:icon="clockIcon"
-				v-bind:title="entry.expiry"
+				:icon="clockIcon"
+				:title="entry.expiry"
 				class="ext-globalwatchlist-expiry-icon"
 			>
 			</wvui-icon>
@@ -29,7 +29,7 @@
 		</em>
 
 		<a
-			v-bind:href="pageLink"
+			:href="pageLink"
 			target="_blank"
 		>{{ entry.titleMsg || entry.title }}</a>
 		(<!--
@@ -37,13 +37,13 @@
 		--><span v-if="isLogEntry">
 			<!--Wrap in a span to ensure commas are only rendered when needed-->
 			<a
-				v-bind:href="logPageLink"
+				:href="logPageLink"
 				target="_blank"
 			>
 				{{ $i18n( 'globalwatchlist-log-page' ).text() }}
 			</a>,
 			<a
-				v-bind:href="logEntryLink"
+				:href="logEntryLink"
 				target="_blank"
 			>
 				{{ $i18n( 'globalwatchlist-log-entry' ).text() }}
@@ -54,7 +54,7 @@
 			<!--Wrap in a span to ensure comma is only rendered when needed-->
 			<!--Span is v-else so there is no history link for log entries, see T273691-->
 			<a
-				v-bind:href="historyLink"
+				:href="historyLink"
 				target="_blank"
 			>
 				{{ $i18n( "globalwatchlist-history" ).text() }}
@@ -66,17 +66,17 @@
 			<!--Wrap in a span to ensure comma is only rendered when needed-->
 			<a
 				v-if="hasDiffLink"
-				v-bind:href="diffLink"
+				:href="diffLink"
 				target="_blank"
 			>
 				{{ diffMessage }}
 			</a>,
 		</span>
 
-		<a v-if="pagewatched" v-on:click="unwatchPage">
+		<a v-if="pagewatched" @click="unwatchPage">
 			{{ $i18n( 'globalwatchlist-unwatch' ).text() }}
 		</a>
-		<a v-else v-on:click="rewatchPage">
+		<a v-else @click="rewatchPage">
 			{{ $i18n( 'globalwatchlist-rewatch' ).text() }}
 		</a><!--
 			Avoid a space in the middle
@@ -103,9 +103,9 @@
 </template>
 
 <script>
-var GlobalWatchlistLinker = require( './../Linker.js' );
+const GlobalWatchlistLinker = require( './../Linker.js' );
 
-var WvuiIcon = require( 'wvui' ).WvuiIcon;
+const WvuiIcon = require( 'wvui' ).WvuiIcon;
 
 /**
  * Replacement for makePageLink
