@@ -5,7 +5,7 @@
 		"test": "npm run lint",
 		"lint": "npm run lint:eslint && npm run lint:styles && npm run lint:i18n",
 		"lint:eslint": "eslint --cache .",
-		"lint:styles": "stylelint \"**/*.{css,less}\"",
+		"lint:styles": "stylelint --cache \"**/*.{css,less}\"",
 		"lint:i18n": "banana-checker --requireLowerCase=0 i18n/",
 		"selenium-daily": "npm run selenium-test",
 		"selenium-test": "wdio tests/selenium/wdio.conf.js",
