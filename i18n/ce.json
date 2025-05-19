@@ -43,6 +43,7 @@
 	"globalwatchlist-markseen-all": "Йерриге сайташ хьаьжина санна билгалде",
 	"globalwatchlist-markseen-allconfirm": "Бакъалла лаьий хьуна, йерриге сайташ хьаьжина санна билгалйан?",
 	"globalwatchlist-must-login": "Дехар до, системин чугӀо, Глобалан тергаме могӀаман белхан агӀонаш хьажа",
+	"globalwatchlist-must-login-for-temp-user": "Дехар до, GlobalWatchlist леррина агӀонаш лелайан аккаунт кхолла.",
 	"globalwatchlist-notify-heading": "Глобалан тергаме могӀам",
 	"globalwatchlist-notify-savingfailed": "Нисдаран гӀирс Ӏалашбан аьтто ца баьлла. Дехар до, йуха а хьажахьара хьо.",
 	"globalwatchlist-notify-settingssaved": "Хьан нисдаран гӀирс Ӏалашбина. [[Special:GlobalWatchlist|Глобалан тергаме могӀаме йуха гӀо]].",
