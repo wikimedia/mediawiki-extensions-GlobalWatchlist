@@ -18,6 +18,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
+use MediaWiki\Utils\UrlUtils;
 use MediaWikiIntegrationTestCase;
 use Psr\Log\LogLevel;
 use TestLogger;
@@ -41,6 +42,8 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( SettingsManager::class );
 		$specialPageFactory = $options['specialPageFactory'] ??
 			$this->getSpecialPageFactory( false );
+		$urlUtils = $options['urlUtils'] ??
+			$this->createMock( UrlUtils::class );
 		$userOptionsLookup = $options['userOptionsLookup'] ??
 			$this->createMock( UserOptionsLookup::class );
 
@@ -49,6 +52,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 			$extensionRegistry,
 			$settingsManager,
 			$specialPageFactory,
+			$urlUtils,
 			$userOptionsLookup
 		);
 
@@ -107,6 +111,7 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 		$specialPage = SpecialGlobalWatchlistSettings::newFromGlobalState(
 			$this->createMock( SettingsManager::class ),
 			$this->createMock( SpecialPageFactory::class ),
+			$this->createMock( UrlUtils::class ),
 			$this->createMock( UserOptionsLookup::class )
 		);
 

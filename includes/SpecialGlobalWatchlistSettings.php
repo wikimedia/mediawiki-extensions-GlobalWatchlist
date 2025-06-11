@@ -33,6 +33,7 @@ use MediaWiki\SpecialPage\FormSpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Status\Status;
 use MediaWiki\User\Options\UserOptionsLookup;
+use MediaWiki\Utils\UrlUtils;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
 
@@ -54,6 +55,9 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	/** @var SpecialPageFactory */
 	private $specialPageFactory;
 
+	/** @var UrlUtils */
+	private $urlUtils;
+
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
@@ -62,6 +66,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 * @param ExtensionRegistry $extensionRegistry
 	 * @param SettingsManager $settingsManager
 	 * @param SpecialPageFactory $specialPageFactory
+	 * @param UrlUtils $urlUtils
 	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
@@ -69,6 +74,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		ExtensionRegistry $extensionRegistry,
 		SettingsManager $settingsManager,
 		SpecialPageFactory $specialPageFactory,
+		UrlUtils $urlUtils,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( 'GlobalWatchlistSettings', 'editmyoptions' );
@@ -77,6 +83,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$this->extensionRegistry = $extensionRegistry;
 		$this->settingsManager = $settingsManager;
 		$this->specialPageFactory = $specialPageFactory;
+		$this->urlUtils = $urlUtils;
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
@@ -86,12 +93,14 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 *
 	 * @param SettingsManager $settingsManager
 	 * @param SpecialPageFactory $specialPageFactory
+	 * @param UrlUtils $urlUtils
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @return SpecialGlobalWatchlistSettings
 	 */
 	public static function newFromGlobalState(
 		SettingsManager $settingsManager,
 		SpecialPageFactory $specialPageFactory,
+		UrlUtils $urlUtils,
 		UserOptionsLookup $userOptionsLookup
 	) {
 		return new SpecialGlobalWatchlistSettings(
@@ -99,6 +108,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 			ExtensionRegistry::getInstance(),
 			$settingsManager,
 			$specialPageFactory,
+			$urlUtils,
 			$userOptionsLookup
 		);
 	}
@@ -205,7 +215,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		$attachedWikis = CentralAuthUser::getInstance( $this->getUser() )->listAttached();
 
 		return array_map(
-			static function ( $dbName ) {
+			function ( $dbName ) {
 				$wiki = WikiMap::getWiki( $dbName );
 				if ( !$wiki ) {
 					// This should never happen, but just in case
@@ -214,7 +224,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 				// WikiReference::getDisplayName() only returns the 'host' for
 				// the server url, but we need to also handle sites that include
 				// a port at the end, eg Vagrant wikis. See T289384
-				$bits = wfParseUrl( $wiki->getCanonicalServer() );
+				$bits = $this->urlUtils->parse( $wiki->getCanonicalServer() );
 				if ( !$bits ) {
 					// Match behavior of WikiReference::getDisplayName()
 					// Invalid server spec.

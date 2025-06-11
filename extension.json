@@ -23,6 +23,7 @@
 			"services": [
 				"GlobalWatchlistSettingsManager",
 				"SpecialPageFactory",
+				"UrlUtils",
 				"UserOptionsLookup"
 			]
 		}
