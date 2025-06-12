@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Integration;
 
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
-use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -15,7 +14,7 @@ use MediaWikiIntegrationTestCase;
 class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 
 	public function testServices() {
-		$settingsManager = MediaWikiServices::getInstance()
+		$settingsManager = $this->getServiceContainer()
 			->getService( 'GlobalWatchlistSettingsManager' );
 
 		$this->assertInstanceOf( SettingsManager::class, $settingsManager );
