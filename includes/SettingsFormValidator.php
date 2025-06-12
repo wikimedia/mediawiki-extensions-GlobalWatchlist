@@ -34,17 +34,13 @@ class SettingsFormValidator {
 
 	/**
 	 * For formatting the relevant errors
-	 *
-	 * @var MessageLocalizer
 	 */
-	private $messageLocalizer;
+	private MessageLocalizer $messageLocalizer;
 
 	/**
 	 * Reference to $wgGlobalWatchlistSiteLimit, limiting the number of sites a user can include
-	 *
-	 * @var int
 	 */
-	private $maxSites;
+	private int $maxSites;
 
 	/**
 	 * Array of url forms of sites the user has attached accounts on (from CentralAuth),
@@ -52,7 +48,7 @@ class SettingsFormValidator {
 	 *
 	 * @var string[]|null
 	 */
-	private $validSites;
+	private ?array $validSites;
 
 	/**
 	 * @param MessageLocalizer $messageLocalizer
@@ -81,7 +77,7 @@ class SettingsFormValidator {
 	 * @return bool|string|Message True on success, or string/Message error to display, or
 	 *   false to fail validation without displaying an error.
 	 */
-	public function validateAnonBot( $value, $allData ) {
+	public function validateAnonBot( $value, array $allData ) {
 		if ( (int)$value === SettingsManager::FILTER_REQUIRE &&
 			(int)$allData['anon'] === SettingsManager::FILTER_REQUIRE
 		) {

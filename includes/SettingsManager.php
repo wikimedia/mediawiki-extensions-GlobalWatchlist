@@ -58,20 +58,10 @@ class SettingsManager {
 	/** Exclude edits that match the condition */
 	public const FILTER_EXCLUDE = 2;
 
-	/** @var LoggerInterface */
-	private $logger;
+	private LoggerInterface $logger;
+	private UserOptionsManager $userOptionsManager;
+	private IBufferingStatsdDataFactory $statsdDataFactory;
 
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
-
-	/**
-	 * @param LoggerInterface $logger
-	 * @param UserOptionsManager $userOptionsManager
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 */
 	public function __construct(
 		LoggerInterface $logger,
 		UserOptionsManager $userOptionsManager,
@@ -84,11 +74,8 @@ class SettingsManager {
 
 	/**
 	 * Save user settings
-	 *
-	 * @param UserIdentity $userIdentity
-	 * @param array $options
 	 */
-	public function saveUserOptions( UserIdentity $userIdentity, array $options ) {
+	public function saveUserOptions( UserIdentity $userIdentity, array $options ): void {
 		$this->logSettingsChange( $userIdentity );
 
 		// When saving the options, make sure that `version` is at the start of the
@@ -107,10 +94,8 @@ class SettingsManager {
 	 *
 	 * Differentiate between users changing existing settings and users saving settings
 	 * for the first time
-	 *
-	 * @param UserIdentity $userIdentity
 	 */
-	private function logSettingsChange( UserIdentity $userIdentity ) {
+	private function logSettingsChange( UserIdentity $userIdentity ): void {
 		$currentOptions = $this->userOptionsManager->getOption(
 			$userIdentity,
 			self::PREFERENCE_NAME,
@@ -128,11 +113,8 @@ class SettingsManager {
 
 	/**
 	 * Actually save user options in the database
-	 *
-	 * @param UserIdentity $userIdentity
-	 * @param string $options
 	 */
-	private function saveOptionsInternal( UserIdentity $userIdentity, string $options ) {
+	private function saveOptionsInternal( UserIdentity $userIdentity, string $options ): void {
 		$this->logger->info(
 			"Saving options for {username}: {userOptions}",
 			[

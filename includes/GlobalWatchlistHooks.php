@@ -45,16 +45,9 @@ class GlobalWatchlistHooks implements
 	SidebarBeforeOutputHook
 {
 
-	/** @var SpecialPageFactory */
-	private $specialPageFactory;
+	private SpecialPageFactory $specialPageFactory;
+	private IBufferingStatsdDataFactory $statsdDataFactory;
 
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
-
-	/**
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 */
 	public function __construct(
 		SpecialPageFactory $specialPageFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory
@@ -79,7 +72,7 @@ class GlobalWatchlistHooks implements
 	 * @param User $user
 	 * @param array &$preferences
 	 */
-	public function onGetPreferences( $user, &$preferences ) {
+	public function onGetPreferences( $user, &$preferences ): void {
 		$preferences[ SettingsManager::PREFERENCE_NAME ] = [
 			'type' => 'api'
 		];

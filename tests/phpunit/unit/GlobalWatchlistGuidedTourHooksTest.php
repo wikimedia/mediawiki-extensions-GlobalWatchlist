@@ -17,11 +17,12 @@ use MediaWikiUnitTestCase;
 class GlobalWatchlistGuidedTourHooksTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideTestModuleRegistration
-	 * @param bool $configEnabled
-	 * @param bool $extensionEnabled
-	 * @param bool $expectRegister
 	 */
-	public function testModuleRegistration( $configEnabled, $extensionEnabled, $expectRegister ) {
+	public function testModuleRegistration(
+		bool $configEnabled,
+		bool $extensionEnabled,
+		bool $expectRegister
+	) {
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )
 			->with( 'GuidedTour' )

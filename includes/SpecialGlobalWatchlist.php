@@ -36,12 +36,8 @@ use Wikimedia\Stats\IBufferingStatsdDataFactory;
  */
 class SpecialGlobalWatchlist extends SpecialPage {
 
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
+	private IBufferingStatsdDataFactory $statsdDataFactory;
 
-	/**
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 */
 	public function __construct( IBufferingStatsdDataFactory $statsdDataFactory ) {
 		parent::__construct( 'GlobalWatchlist', 'viewmywatchlist' );
 
@@ -51,7 +47,7 @@ class SpecialGlobalWatchlist extends SpecialPage {
 	/**
 	 * @param string|null $par
 	 */
-	public function execute( $par ) {
+	public function execute( $par ): void {
 		$this->setHeaders();
 
 		$this->addHelpLink( 'Extension:GlobalWatchlist' );
@@ -81,19 +77,14 @@ class SpecialGlobalWatchlist extends SpecialPage {
 		$this->statsdDataFactory->increment( 'globalwatchlist.load_special_page' );
 	}
 
-	/**
-	 * @return string
-	 */
-	protected function getGroupName() {
+	protected function getGroupName(): string {
 		return 'changes';
 	}
 
 	/**
 	 * Only shown for logged in users
-	 *
-	 * @return bool
 	 */
-	public function isListed() {
+	public function isListed(): bool {
 		return $this->getUser()->isNamed();
 	}
 

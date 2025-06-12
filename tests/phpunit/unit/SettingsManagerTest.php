@@ -95,7 +95,6 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideTestLogSettingsChange
-	 * @param bool $hasExistingSettings
 	 */
 	public function testLogSettingsChange( bool $hasExistingSettings ) {
 		$logger = new TestLogger();

@@ -43,32 +43,13 @@ use Psr\Log\LoggerInterface;
  */
 class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
-	/** @var LoggerInterface */
-	private $logger;
+	private LoggerInterface $logger;
+	private ExtensionRegistry $extensionRegistry;
+	private SettingsManager $settingsManager;
+	private SpecialPageFactory $specialPageFactory;
+	private UrlUtils $urlUtils;
+	private UserOptionsLookup $userOptionsLookup;
 
-	/** @var ExtensionRegistry */
-	private $extensionRegistry;
-
-	/** @var SettingsManager */
-	private $settingsManager;
-
-	/** @var SpecialPageFactory */
-	private $specialPageFactory;
-
-	/** @var UrlUtils */
-	private $urlUtils;
-
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
-	/**
-	 * @param LoggerInterface $logger
-	 * @param ExtensionRegistry $extensionRegistry
-	 * @param SettingsManager $settingsManager
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param UrlUtils $urlUtils
-	 * @param UserOptionsLookup $userOptionsLookup
-	 */
 	public function __construct(
 		LoggerInterface $logger,
 		ExtensionRegistry $extensionRegistry,
@@ -90,19 +71,13 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	/**
 	 * Need a factory method to inject LoggerInstance and ExtensionRegistry,
 	 * which are not available from the service container
-	 *
-	 * @param SettingsManager $settingsManager
-	 * @param SpecialPageFactory $specialPageFactory
-	 * @param UrlUtils $urlUtils
-	 * @param UserOptionsLookup $userOptionsLookup
-	 * @return SpecialGlobalWatchlistSettings
 	 */
 	public static function newFromGlobalState(
 		SettingsManager $settingsManager,
 		SpecialPageFactory $specialPageFactory,
 		UrlUtils $urlUtils,
 		UserOptionsLookup $userOptionsLookup
-	) {
+	): self {
 		return new SpecialGlobalWatchlistSettings(
 			LoggerFactory::getInstance( 'GlobalWatchlist' ),
 			ExtensionRegistry::getInstance(),
@@ -116,7 +91,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	/**
 	 * @param string|null $par
 	 */
-	public function execute( $par ) {
+	public function execute( $par ): void {
 		$this->addHelpLink( 'Extension:GlobalWatchlist' );
 
 		$this->requireNamedUser( 'globalwatchlist-must-login' );
@@ -131,9 +106,8 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 	/**
 	 * Get an HTMLForm descriptor array
-	 * @return array
 	 */
-	protected function getFormFields() {
+	protected function getFormFields(): array {
 		$currentOptions = $this->userOptionsLookup->getOption(
 			$this->getUser(),
 			SettingsManager::PREFERENCE_NAME,
@@ -188,7 +162,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 *
 	 * Only called if the user does not currently have any settings saved (i.e. is a new user)
 	 */
-	private function maybeLoadTour() {
+	private function maybeLoadTour(): void {
 		if (
 			$this->getConfig()->get( 'GlobalWatchlistEnableGuidedTour' ) &&
 			$this->extensionRegistry->isLoaded( 'GuidedTour' )
@@ -243,28 +217,22 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 	/**
 	 * Display form as OOUI
-	 *
-	 * @return string
 	 */
-	protected function getDisplayFormat() {
+	protected function getDisplayFormat(): string {
 		return 'ooui';
 	}
 
 	/**
 	 * Get message prefix for HTMLForm
-	 *
-	 * @return string
 	 */
-	protected function getMessagePrefix() {
+	protected function getMessagePrefix(): string {
 		return 'globalwatchlist';
 	}
 
 	/**
 	 * Set correct label for submit button
-	 *
-	 * @param HTMLForm $form
 	 */
-	protected function alterForm( HTMLForm $form ) {
+	protected function alterForm( HTMLForm $form ): void {
 		$form->setSubmitText(
 			$this->msg( 'globalwatchlist-save' )->escaped()
 		);
@@ -278,10 +246,6 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 	/**
 	 * Get form fields with defaults filled in based on $userOptions
-	 *
-	 * @param SettingsFormValidator $formValidator
-	 * @param array $userOptions
-	 * @return array
 	 */
 	private function getActualFormFields(
 		SettingsFormValidator $formValidator,
@@ -463,30 +427,22 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	/**
 	 * Settings were saved successfully
 	 */
-	public function onSuccess() {
+	public function onSuccess(): void {
 		$this->getOutput()->addWikiMsg( 'globalwatchlist-notify-settingssaved' );
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function doesWrites() {
+	public function doesWrites(): bool {
 		return true;
 	}
 
-	/**
-	 * @return string
-	 */
-	protected function getGroupName() {
+	protected function getGroupName(): string {
 		return 'changes';
 	}
 
 	/**
 	 * Only shown for logged in users
-	 *
-	 * @return bool
 	 */
-	public function isListed() {
+	public function isListed(): bool {
 		return $this->getUser()->isNamed();
 	}
 

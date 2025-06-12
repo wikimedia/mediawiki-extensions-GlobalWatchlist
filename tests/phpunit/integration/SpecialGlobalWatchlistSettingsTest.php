@@ -414,11 +414,12 @@ class SpecialGlobalWatchlistSettingsTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideTestMaybeLoadTour
-	 * @param bool $configEnabled
-	 * @param bool $extensionEnabled
-	 * @param bool $expectLoad
 	 */
-	public function testMaybeLoadTour( $configEnabled, $extensionEnabled, $expectLoad ) {
+	public function testMaybeLoadTour(
+		bool $configEnabled,
+		bool $extensionEnabled,
+		bool $expectLoad
+	) {
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )
 			->with( 'GuidedTour' )
