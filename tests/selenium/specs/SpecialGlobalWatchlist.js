@@ -39,7 +39,7 @@ describe( 'Special:GlobalWatchlist', () => {
 
 		// OOUI button should be loaded
 		const element = await content.$( '#ext-globalwatchlist-refresh' );
-		await expect( element ).toHaveElementClassContaining( 'oo-ui-widget' );
+		await expect( element ).toHaveAttribute( 'class', expect.stringContaining( 'oo-ui-widget' ) );
 
 		// Watchlist should be shown, and include the relevant pageTitle (might not
 		// happen immediately, needs to load)
