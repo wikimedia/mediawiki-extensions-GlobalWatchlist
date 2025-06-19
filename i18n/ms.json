@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tofeiku"
+			"Tofeiku",
+			"Hakimi97"
 		]
 	},
 	"globalwatchlist-desc": "Menambah senarai pantau sejagat",
@@ -11,7 +12,7 @@
 	"globalwatchlist-asof": "Setakat $1",
 	"globalwatchlist-changesfeed": "Tapak dengan perubahan",
 	"globalwatchlist-changetypes": "Jenis perubahan",
-	"globalwatchlist-editwatchlist": "Sunting senarai pantau",
+	"globalwatchlist-editwatchlist": "Sunting pantauan",
 	"globalwatchlist-emptyfeed": "Tapak dengan tiada perubahan",
 	"globalwatchlist-filters": "Penapis",
 	"globalwatchlist-filter-anon": "Suntingan awanama",
