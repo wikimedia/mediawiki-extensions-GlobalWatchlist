@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Mansil alfalb"
 		]
 	},
 	"globalwatchlist": "Lista global de páginas vigiadas",
@@ -56,7 +57,7 @@
 	"globalwatchlist-remove": "Remover",
 	"globalwatchlist-resetchanges": "Anular as mudanças realizadas",
 	"globalwatchlist-rewatch": "voltar a vigiar",
-	"globalwatchlist-save": "Gravar definições",
+	"globalwatchlist-save": "Guardar definições",
 	"globalwatchlist-settings-error-anon-bot": "Os utilizadores anónimos não podem realizar edições de robô",
 	"globalwatchlist-settings-error-anon-minor": "Os utilizadores anónimos não podem realizar edições menores",
 	"globalwatchlist-settings-error-bad-sites": "''Sites'' inválidos: $1",
