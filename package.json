@@ -13,7 +13,7 @@
 		"doc:jsdoc": "jsdoc -c jsdoc.json"
 	},
 	"devDependencies": {
-		"@wdio/cli": "9.15.0",
+		"@wdio/cli": "9.18.4",
 		"@wdio/junit-reporter": "9.15.0",
 		"@wdio/local-runner": "9.15.0",
 		"@wdio/mocha-framework": "9.15.0",
