@@ -58,18 +58,11 @@ class SettingsManager {
 	/** Exclude edits that match the condition */
 	public const FILTER_EXCLUDE = 2;
 
-	private LoggerInterface $logger;
-	private UserOptionsManager $userOptionsManager;
-	private IBufferingStatsdDataFactory $statsdDataFactory;
-
 	public function __construct(
-		LoggerInterface $logger,
-		UserOptionsManager $userOptionsManager,
-		IBufferingStatsdDataFactory $statsdDataFactory
+		private readonly LoggerInterface $logger,
+		private readonly UserOptionsManager $userOptionsManager,
+		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
 	) {
-		$this->logger = $logger;
-		$this->userOptionsManager = $userOptionsManager;
-		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**

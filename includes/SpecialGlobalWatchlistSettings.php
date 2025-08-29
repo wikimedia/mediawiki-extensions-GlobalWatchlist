@@ -43,29 +43,15 @@ use Psr\Log\LoggerInterface;
  */
 class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
-	private LoggerInterface $logger;
-	private ExtensionRegistry $extensionRegistry;
-	private SettingsManager $settingsManager;
-	private SpecialPageFactory $specialPageFactory;
-	private UrlUtils $urlUtils;
-	private UserOptionsLookup $userOptionsLookup;
-
 	public function __construct(
-		LoggerInterface $logger,
-		ExtensionRegistry $extensionRegistry,
-		SettingsManager $settingsManager,
-		SpecialPageFactory $specialPageFactory,
-		UrlUtils $urlUtils,
-		UserOptionsLookup $userOptionsLookup
+		private readonly LoggerInterface $logger,
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly SettingsManager $settingsManager,
+		private readonly SpecialPageFactory $specialPageFactory,
+		private readonly UrlUtils $urlUtils,
+		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 		parent::__construct( 'GlobalWatchlistSettings', 'editmyoptions' );
-
-		$this->logger = $logger;
-		$this->extensionRegistry = $extensionRegistry;
-		$this->settingsManager = $settingsManager;
-		$this->specialPageFactory = $specialPageFactory;
-		$this->urlUtils = $urlUtils;
-		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**

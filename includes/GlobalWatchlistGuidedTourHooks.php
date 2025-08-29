@@ -35,12 +35,9 @@ class GlobalWatchlistGuidedTourHooks implements
 	ResourceLoaderRegisterModulesHook
 {
 
-	private ExtensionRegistry $extensionRegistry;
-
 	public function __construct(
-		ExtensionRegistry $extensionRegistry
+		private readonly ExtensionRegistry $extensionRegistry,
 	) {
-		$this->extensionRegistry = $extensionRegistry;
 	}
 
 	/**

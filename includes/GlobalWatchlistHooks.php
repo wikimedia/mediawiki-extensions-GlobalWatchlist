@@ -45,15 +45,10 @@ class GlobalWatchlistHooks implements
 	SidebarBeforeOutputHook
 {
 
-	private SpecialPageFactory $specialPageFactory;
-	private IBufferingStatsdDataFactory $statsdDataFactory;
-
 	public function __construct(
-		SpecialPageFactory $specialPageFactory,
-		IBufferingStatsdDataFactory $statsdDataFactory
+		private readonly SpecialPageFactory $specialPageFactory,
+		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
 	) {
-		$this->specialPageFactory = $specialPageFactory;
-		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**

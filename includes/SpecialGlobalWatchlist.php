@@ -36,12 +36,10 @@ use Wikimedia\Stats\IBufferingStatsdDataFactory;
  */
 class SpecialGlobalWatchlist extends SpecialPage {
 
-	private IBufferingStatsdDataFactory $statsdDataFactory;
-
-	public function __construct( IBufferingStatsdDataFactory $statsdDataFactory ) {
+	public function __construct(
+		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
+	) {
 		parent::__construct( 'GlobalWatchlist', 'viewmywatchlist' );
-
-		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**
