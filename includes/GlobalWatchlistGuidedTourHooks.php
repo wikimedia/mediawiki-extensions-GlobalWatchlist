@@ -41,16 +41,6 @@ class GlobalWatchlistGuidedTourHooks implements
 	}
 
 	/**
-	 * Need a factory method to inject ExtensionRegistry, which is not available from
-	 * the service container
-	 */
-	public static function newFromGlobalState(): self {
-		return new GlobalWatchlistGuidedTourHooks(
-			ExtensionRegistry::getInstance()
-		);
-	}
-
-	/**
 	 * Register ResourceLoader modules with dynamic dependencies.
 	 */
 	public function onResourceLoaderRegisterModules( ResourceLoader $resourceLoader ): void {

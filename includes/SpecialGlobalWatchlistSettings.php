@@ -30,7 +30,6 @@ use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\FormSpecialPage;
-use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Status\Status;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\Utils\UrlUtils;
@@ -42,36 +41,16 @@ use Psr\Log\LoggerInterface;
  * @author DannyS712
  */
 class SpecialGlobalWatchlistSettings extends FormSpecialPage {
+	private readonly LoggerInterface $logger;
 
 	public function __construct(
-		private readonly LoggerInterface $logger,
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly SettingsManager $settingsManager,
-		private readonly SpecialPageFactory $specialPageFactory,
 		private readonly UrlUtils $urlUtils,
 		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
 		parent::__construct( 'GlobalWatchlistSettings', 'editmyoptions' );
-	}
-
-	/**
-	 * Need a factory method to inject LoggerInstance and ExtensionRegistry,
-	 * which are not available from the service container
-	 */
-	public static function newFromGlobalState(
-		SettingsManager $settingsManager,
-		SpecialPageFactory $specialPageFactory,
-		UrlUtils $urlUtils,
-		UserOptionsLookup $userOptionsLookup
-	): self {
-		return new SpecialGlobalWatchlistSettings(
-			LoggerFactory::getInstance( 'GlobalWatchlist' ),
-			ExtensionRegistry::getInstance(),
-			$settingsManager,
-			$specialPageFactory,
-			$urlUtils,
-			$userOptionsLookup
-		);
+		$this->logger = LoggerFactory::getInstance( 'GlobalWatchlist' );
 	}
 
 	/**
@@ -225,7 +204,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 
 		// Enable cancel button, target is Special:GlobalWatchlist
 		// See T268259
-		$globalWatchlistSpecial = $this->specialPageFactory->getPage( 'GlobalWatchlist' );
+		$globalWatchlistSpecial = $this->getSpecialPageFactory()->getPage( 'GlobalWatchlist' );
 		$form->showCancel();
 		$form->setCancelTarget( $globalWatchlistSpecial->getPageTitle() );
 	}

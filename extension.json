@@ -19,10 +19,9 @@
 		},
 		"GlobalWatchlistSettings": {
 			"class": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings",
-			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings::newFromGlobalState",
 			"services": [
+				"ExtensionRegistry",
 				"GlobalWatchlistSettingsManager",
-				"SpecialPageFactory",
 				"UrlUtils",
 				"UserOptionsLookup"
 			]
@@ -38,7 +37,9 @@
 		},
 		"GlobalWatchlistGuidedTourHooks": {
 			"class": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistGuidedTourHooks",
-			"factory": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistGuidedTourHooks::newFromGlobalState"
+			"services": [
+				"ExtensionRegistry"
+			]
 		}
 	},
 	"Hooks": {
