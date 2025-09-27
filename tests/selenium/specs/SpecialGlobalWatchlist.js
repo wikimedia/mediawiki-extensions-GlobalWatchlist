@@ -1,9 +1,7 @@
-'use strict';
-
-const Api = require( 'wdio-mediawiki/Api' ),
-	LoginPage = require( 'wdio-mediawiki/LoginPage' ),
-	GlobalWatchlist = require( '../pageobjects/GlobalWatchlist.page' ),
-	Util = require( 'wdio-mediawiki/Util' );
+import * as Api from 'wdio-mediawiki/Api.js';
+import LoginPage from 'wdio-mediawiki/LoginPage';
+import GlobalWatchlist from '../pageobjects/GlobalWatchlist.page.js';
+import * as Util from 'wdio-mediawiki/Util';
 
 describe( 'Special:GlobalWatchlist', () => {
 	let pageTitle;
@@ -18,7 +16,7 @@ describe( 'Special:GlobalWatchlist', () => {
 		// So, after the edit is made we need to reset the notification timestamp to
 		// beforehand, so that the edit is shown on Special:GlobalWatchlist, which
 		// only shows unseen changes (unlike the default for Special:Watchlist).
-		const bot = await Api.bot();
+		const bot = await Api.mwbot();
 		await bot.edit(
 			pageTitle,
 			'summary',
