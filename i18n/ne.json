@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"पर्वत सुबेदी"
+			"पर्वत सुबेदी",
+			"बडा काजी"
 		]
 	},
 	"globalwatchlist-filter-anon": "अज्ञात सम्पादनहरू",
 	"globalwatchlist-filter-bot": "यन्त्रका सम्पादनहरू",
-	"globalwatchlist-filter-minor": "सामान्य सम्पादनहरू"
+	"globalwatchlist-filter-minor": "सामान्य सम्पादनहरू",
+	"globalwatchlist-unwatch": "अवलोकन सूचीबाट हटाउनुहोस्"
 }
