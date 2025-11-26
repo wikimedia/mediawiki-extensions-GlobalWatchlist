@@ -6,7 +6,7 @@
  *
  * @param {GlobalWatchlistLinker} linker Linker for the relevant site, used for
  *    Links to user pages for registered users
- *    Links to contributions pages for anonymous users
+ *    Links to contributions pages for anonymous users and temporary accounts
  *    Converting links in edit summaries to not be relative to the current site
  */
 function GlobalWatchlistWatchlistUtils( linker ) {
@@ -94,6 +94,7 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
  *       ->
  *   {
  *       editCount: ⧼count⧽
+ *       temp: ⧼true/false⧽
  *       anon: ⧼true/false⧽
  *   }
  *
@@ -106,8 +107,9 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
  *  - if the user was hidden, the output is hard-coded as the core message `rev-deleted-user`
  *      wrapped in a span for styling
  *  - if the user wasn't hidden, a link is shown. The text for the link is the username, and
- *      the target is the user page (for users) or the contributions page (for anonymous editors),
- *      just like at Special:Watchlist. See RCCacheEntryFactory::getUserLink and Linker::userLink.
+ *      the target is the user page (for users) or the contributions page (for anonymous editors
+ *      and temporary accounts), just like at Special:Watchlist. See RCCacheEntryFactory::getUserLink
+ *      and Linker::userLink.
  *  - if the user made multiple edits, or multiple edits were made by hidden users, the number of
  *      edits is appended after the link, using the `ntimes` core message. This is only the case
  *      when grouping results by page. See EnhancedChangesList::recentChangesBlockGroup
@@ -131,11 +133,14 @@ GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser )
 				mw.message( 'rev-deleted-user' ).escaped() +
 				'</span>';
 		} else {
-			userLinkBase = editsByUser[ userMessage ].anon ?
+			userLinkBase = editsByUser[ userMessage ].anon || editsByUser[ userMessage ].temp ?
 				'Special:Contributions/' :
 				'User:';
 			userLinkURL = that.linker.linkPage( userLinkBase + userMessage );
-			userLink = '<a href="' + userLinkURL + '" target="_blank">' + userMessage + '</a>';
+			userLink = '<a href="' + userLinkURL + '" target="_blank" class="mw-userlink' +
+				// styling anonymous users and temporary accounts names
+				( editsByUser[ userMessage ].temp ? ' mw-tempuserlink' : '' ) +
+				'"><bdi>' + userMessage + '</bdi></a>';
 		}
 		if ( editsByUser[ userMessage ].editCount > 1 ) {
 			userLink = userLink + ' ' +
@@ -153,9 +158,10 @@ GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser )
  *
  * @param {string} userMessage either name or ip address
  * @param {boolean} isAnon Whether the link is for an anonymous user
+ * @param {boolean} isTemp Whether the link is for a temporary account
  * @return {string}
  */
-GlobalWatchlistWatchlistUtils.prototype.makeSingleUserLink = function ( userMessage, isAnon ) {
+GlobalWatchlistWatchlistUtils.prototype.makeSingleUserLink = function ( userMessage, isAnon, isTemp ) {
 	if ( userMessage === '' ) {
 		// Didn't fetch due to fast mode
 		return '';
@@ -164,6 +170,7 @@ GlobalWatchlistWatchlistUtils.prototype.makeSingleUserLink = function ( userMess
 	const editsByUser = {};
 	editsByUser[ userMessage ] = {
 		editCount: 1,
+		temp: isTemp,
 		anon: isAnon
 	};
 
@@ -171,8 +178,8 @@ GlobalWatchlistWatchlistUtils.prototype.makeSingleUserLink = function ( userMess
 };
 
 /**
- * Convert edit info, including adding links to user pages / anonymous users' contributions and
- * grouping results by page when called for
+ * Convert edit info, including adding links to user pages / temporary accounts' / anonymous users'
+ * contributions and grouping results by page when called for
  *
  * @param {Object} editInfo
  * @param {boolean} groupPage Whether to group results by page
@@ -209,7 +216,8 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
 					toRev: entry.revid,
 					userDisplay: that.makeSingleUserLink(
 						entry.user,
-						entry.anon
+						entry.anon,
+						entry.temp
 					)
 				} ) );
 			} );
@@ -221,6 +229,7 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
 			//     ->
 			// {
 			//     editCount: ⧼count⧽
+			//     temp: ⧼true/false⧽
 			//     anon: ⧼true/false⧽
 			// }
 			//
@@ -231,6 +240,7 @@ GlobalWatchlistWatchlistUtils.prototype.convertEdits = function ( editInfo, grou
 				if ( !( specificEdit.user in editsByUser ) ) {
 					editsByUser[ specificEdit.user ] = {
 						editCount: 0,
+						temp: specificEdit.temp,
 						anon: specificEdit.anon
 					};
 				}
@@ -446,7 +456,8 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 				logtype: entry.logtype,
 				userDisplay: that.makeSingleUserLink(
 					entry.user,
-					entry.anon
+					entry.anon,
+					entry.temp
 				)
 			} );
 		}

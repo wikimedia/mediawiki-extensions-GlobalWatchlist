@@ -213,6 +213,7 @@
 		// Only fill in the parts that would otherwise be normalized
 		const edit = {
 			anon: true,
+			temp: false,
 			parsedcomment: 'comment',
 			tags: [],
 			timestamp: '2020-08-31 12:00',
@@ -221,6 +222,7 @@
 		};
 		const normalizedEdit = {
 			anon: true,
+			temp: false,
 			parsedcomment: 'comment',
 			tags: [],
 			timestamp: '2020-08-31 12:00',
@@ -236,6 +238,7 @@
 
 		const hiddenEditor = {
 			anon: false,
+			temp: false,
 			userhidden: true,
 			parsedcomment: 'comment',
 			tags: [],
@@ -244,6 +247,7 @@
 		};
 		const normalizedHiddenEditor = {
 			anon: false,
+			temp: false,
 			userhidden: true,
 			user: '##hidden##',
 			parsedcomment: 'comment',
@@ -260,12 +264,14 @@
 
 		const editWithNoSummary = {
 			anon: false,
+			temp: true,
 			tags: [],
 			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
 		const normalizedEditWithNoSummary = {
 			anon: false,
+			temp: true,
 			parsedcomment: '',
 			tags: [],
 			timestamp: '2020-08-31 12:00',
@@ -281,12 +287,14 @@
 
 		const editWithNoTags = {
 			anon: false,
+			temp: false,
 			parsedcomment: '',
 			timestamp: '2020-08-31 12:00',
 			type: 'edit'
 		};
 		const normalizedEditWithNoTags = {
 			anon: false,
+			temp: false,
 			parsedcomment: '',
 			tags: [],
 			timestamp: '2020-08-31 12:00',
@@ -302,6 +310,7 @@
 
 		const newPage = {
 			anon: true,
+			temp: true,
 			parsedcomment: 'comment',
 			tags: [],
 			timestamp: '2020-08-31 12:00',
@@ -309,6 +318,7 @@
 		};
 		const normalizedNewPage = {
 			anon: true,
+			temp: true,
 			parsedcomment: 'comment',
 			tags: [],
 			timestamp: '2020-08-31 12:00',

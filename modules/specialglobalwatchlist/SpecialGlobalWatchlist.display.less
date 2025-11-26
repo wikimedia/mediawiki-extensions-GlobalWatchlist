@@ -73,17 +73,30 @@ li b {
  *
  * - auto-generated edit summaries
  * - formatting of message when a username is hidden from an edit
+ * - styling of user name link
+ * - styling of temporal account name link
  *
  * See T288733
  */
 .autocomment,
 .autocomment a,
 .autocomment a:visited {
-	color: #72777d;
+	color: @color-subtle;
 }
 
 span.history-deleted {
 	text-decoration: line-through;
-	color: #72777d;
+	color: @color-subtle;
 	font-style: italic;
+}
+
+.mw-userlink {
+	unicode-bidi: embed;
+}
+
+.mw-tempuserlink {
+	background-color: @background-color-interactive;
+	outline: @background-color-interactive;
+	border-radius: @border-radius-base;
+	white-space: nowrap;
 }
