@@ -44,6 +44,7 @@
 	"globalwatchlist-markseen-all": "Merkitse kaikki sivustot nähdyiksi",
 	"globalwatchlist-markseen-allconfirm": "Oletko varma, että haluat merkitä kaikki sivustot nähdyiksi?",
 	"globalwatchlist-must-login": "Kirjaudu sisään käyttääksesi Järjestelmänlaajuinen tarkkailulista -toimintosivuja",
+	"globalwatchlist-must-login-for-temp-user": "Luo käyttäjätunnus käyttääksesi Järjestelmänlaajuinen tarkkailulista -toimintosivuja",
 	"globalwatchlist-notify-heading": "Järjestelmänlaajuinen tarkkailulista",
 	"globalwatchlist-notify-savingfailed": "Asetusten tallentaminen epäonnistui. Yritä uudelleen.",
 	"globalwatchlist-notify-settingssaved": "Asetuksesi on tallennettu. [[Special:GlobalWatchlist|Palaa järjestelmänlaajuiseen tarkkailulistaan]].",
