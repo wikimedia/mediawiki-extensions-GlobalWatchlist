@@ -5,8 +5,22 @@
 			"बडा काजी"
 		]
 	},
+	"globalwatchlist": "विश्वव्यापी अवलोकनसूची",
+	"globalwatchlist-desc": "विश्वव्यापी अवलोकनसूची थप्छ",
+	"globalwatchlist-summary": "विश्वव्यापी अवलोकनसूची हेर्नको लागि विशेष पृष्ठ",
+	"globalwatchlistsettings": "विश्वव्यापी अवलोकनसूची अभिरुचिहरू",
+	"globalwatchlist-add": "थप्नुहोस्",
 	"globalwatchlist-filter-anon": "अज्ञात सम्पादनहरू",
 	"globalwatchlist-filter-bot": "यन्त्रका सम्पादनहरू",
 	"globalwatchlist-filter-minor": "सामान्य सम्पादनहरू",
-	"globalwatchlist-unwatch": "अवलोकन सूचीबाट हटाउनुहोस्"
+	"globalwatchlist-globalwatchlistsettingslink": "अभिरुचिहरू",
+	"globalwatchlist-history": "इतिहास",
+	"globalwatchlist-refresh": "ताजा गर्नुहोस्",
+	"globalwatchlist-remove": "हटाउनुहोस्",
+	"globalwatchlist-rewatch": "पुनः हेर्नुहोस्",
+	"globalwatchlist-tour-fastmode": "द्रुत मोड",
+	"globalwatchlist-tour-sitelist": "साइटहरूको सूची",
+	"globalwatchlist-tour-types": "प्रकारहरू परिवर्तन गर्नुहोस्",
+	"globalwatchlist-unwatch": "अवलोकन सूचीबाट हटाउनुहोस्",
+	"prefs-globalwatchlist": "विश्वव्यापी अवलोकनसूची"
 }
