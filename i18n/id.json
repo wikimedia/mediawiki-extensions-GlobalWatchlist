@@ -77,7 +77,7 @@
 	"globalwatchlist-tour-fastmode": "Mode cepat",
 	"globalwatchlist-tour-fastmode-description": "Mode cepat lebih cepat ditampilkan, tetapi detail informasinya dikurangi. Label Wikibase tidak diambil, dan daftar sederhana halaman yang mengalami perubahan ditampilkan tanpa detail tentang penyunting atau suntingannya",
 	"globalwatchlist-tour-filters": "Opsi penyaringan",
-	"globalwatchlist-tour-filters-description": "Daftar pantauan global tidak mempunyai semua pilihan penyaring yang ada di daftar pantauan setempat. Penyaring yang tersedia adalah untuk suntingan anonim vs. suntingan pengguna masuk log, serta penyaring untuk suntingan kecil atau bot.",
+	"globalwatchlist-tour-filters-description": "Daftar pantauan global tidak mempunyai semua pilihan penyaring yang ada di daftar pantauan lokal. Penyaring yang tersedia adalah untuk suntingan anonim vs. suntingan pengguna masuk log, serta penyaring untuk suntingan kecil atau bot.",
 	"globalwatchlist-tour-help": "Dokumentasi lebih lanjut",
 	"globalwatchlist-tour-help-description": "Dokumentasi lebih lanjut bisa dibaca di mediawiki.org",
 	"globalwatchlist-tour-intro": "Pengaturan Daftar pantauan global",
