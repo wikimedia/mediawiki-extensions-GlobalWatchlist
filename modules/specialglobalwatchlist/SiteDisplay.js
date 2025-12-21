@@ -53,6 +53,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	const $pageLink = $( '<a>' )
 		.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&redirect=no' ) )
 		.attr( 'target', '_blank' )
+		.addClass( 'mw-title' )
 		.text( entry.titleMsg || entry.title );
 	const that = this;
 
