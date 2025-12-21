@@ -394,12 +394,12 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 				( tagName ) => tagsInfo[ tagName ]
 			).join( ', ' );
 			tagsWithLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, tagDescriptions );
-			entry.tagsDisplay = mw.msg( 'parentheses', tagsWithLabel );
+			entry.tagsDisplay = mw.msg( 'parentheses', that.linker.newTabLinks( tagsWithLabel ) );
 		}
 
 		// Comment display
 		if ( entry.comment && entry.comment !== '' ) {
-			entry.commentDisplay = ': ' + that.linker.fixLocalLinks( entry.comment );
+			entry.commentDisplay = ': ' + that.linker.newTabLinks( that.linker.fixLocalLinks( entry.comment ) );
 		} else {
 			entry.commentDisplay = false;
 		}

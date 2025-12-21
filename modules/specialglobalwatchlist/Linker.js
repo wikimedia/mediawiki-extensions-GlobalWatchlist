@@ -31,6 +31,21 @@ GlobalWatchlistLinker.prototype.fixLocalLinks = function ( comment ) {
 };
 
 /**
+ * Parsed comments or tags, but the links open in the same tab there.
+ * Ensure that they will open in a new tab instead.
+ *
+ * @param {string} commentTag The original comment or tag with local links
+ * @return {string} Updated comment or tag
+ */
+GlobalWatchlistLinker.prototype.newTabLinks = function ( commentTag ) {
+	// Add target="_blank" to <a> tags that do not already have a target attribute
+	return commentTag.replace(
+		/<a(?![^>]*\btarget=)([^>]*?)>/g,
+		'<a target="_blank"$1>'
+	);
+};
+
+/**
  * Construct a link to a page with no extra query parameters (eg /wiki/$1)
  *
  * @param {string} page The title of the page to link to

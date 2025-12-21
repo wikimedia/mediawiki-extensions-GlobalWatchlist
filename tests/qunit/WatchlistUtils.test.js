@@ -421,7 +421,7 @@
 			{ commentDisplay: false },
 			{ commentDisplay: false },
 			{ commentDisplay: ': foo' },
-			{ commentDisplay: ': <a href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>' }
+			{ commentDisplay: ': <a target="_blank" href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>' }
 		];
 
 		// Reduce the fully updated entries to just the parts we are checking
