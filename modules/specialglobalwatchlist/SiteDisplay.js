@@ -192,8 +192,11 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
  * failure (via renderApiFailure)
  *
  * @param {jQuery} $content Content to show
+ * @param {Object} siteinfo Extra site information read live from the wiki
+ * @param {boolean|undefined} siteinfo.rtl Whether the site is right-to-left;
+ *  `undefined` if unknown
  */
-GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $content ) {
+GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $content, siteinfo ) {
 	const headerTemplate = mw.template.get(
 		'ext.globalwatchlist.specialglobalwatchlist',
 		'templates/siteRowHeader.mustache'
@@ -205,28 +208,22 @@ GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $conte
 		'edit-watchlist-msg': mw.msg( 'globalwatchlist-editwatchlist' )
 	};
 
-	// Get RTL/LTR direction for the site. We can't use String.prototype.startsWith, since
-	// that is unavailable in IE11, and doesn't take multiple values anyway. Use
-	// String.prototype.match with a list of the language codes that should be RTL
-	// this.siteID is based on the URL form of the wiki, and we assume that wikis that are
-	// meant to be RTL are in the form `⧼rtl language code⧽.*`, and any URL that does not
-	// match this is for an LTR wiki. See T274602 and T274313
-	const isRTL = this.siteID.match(
-		/^(ar|azb|ckb|dv|fa|glk|he|ks|lrc|mzn|nqo|pnb|ps|sd|ug|ur|yi)_/
-	);
-	// mw-content-ltr and -rtl classes are not enough to ensure that the text is formatted
-	// in the correct direction, so add a manual direction attribute. See T287649
-	// We still add those classes because they are also used by jQuery.makeCollapsible
-	// to know if the collapse button should be on the right or left.
 	this.$feedDiv = $( '<div>' )
 		.attr( 'id', 'ext-globalwatchlist-feed-site-' + this.siteID )
-		.attr( 'dir', isRTL ? 'rtl' : 'ltr' )
 		.addClass( 'ext-globalwatchlist-feed-site' )
-		.addClass( isRTL ? 'mw-content-rtl' : 'mw-content-ltr' )
 		.append(
 			headerTemplate.render( headerParams ),
 			$content
 		);
+
+	if ( siteinfo.rtl !== undefined ) {
+		// mw-content-ltr and -rtl classes are not enough to ensure that the text is formatted
+		// in the correct direction, so add a manual direction attribute. See T287649
+		// We still add those classes because they are also used by jQuery.makeCollapsible
+		// to know if the collapse button should be on the right or left.
+		this.$feedDiv.attr( 'dir', siteinfo.rtl ? 'rtl' : 'ltr' );
+		this.$feedDiv.addClass( siteinfo.rtl ? 'mw-content-rtl' : 'mw-content-ltr' );
+	}
 };
 
 /**
@@ -237,15 +234,18 @@ GlobalWatchlistSiteDisplay.prototype.renderApiFailure = function () {
 		mw.msg( 'globalwatchlist-fetch-site-failure' )
 	);
 
-	this.actuallyRenderWatchlist( $siteContent );
+	this.actuallyRenderWatchlist( $siteContent, { rtl: undefined } );
 };
 
 /**
  * Display the watchlist
  *
  * @param {GlobalWatchlistEntryBase[]} summary What should be rendered
+ * @param {Object} siteinfo Extra site information read live from the wiki
+ * @param {boolean|undefined} siteinfo.rtl Whether the site is right-to-left;
+ *  `undefined` if unknown
  */
-GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary ) {
+GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary, siteinfo ) {
 	const $ul = $( '<ul>' ),
 		that = this;
 	summary.forEach( ( element ) => {
@@ -268,7 +268,7 @@ GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary ) {
 			$ul
 		)
 		.makeCollapsible();
-	this.actuallyRenderWatchlist( $outputContent );
+	this.actuallyRenderWatchlist( $outputContent, siteinfo );
 };
 /* end GlobalWatchlistSiteDisplay.prototype.renderWatchlist */
 

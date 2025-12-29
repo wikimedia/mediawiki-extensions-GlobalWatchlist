@@ -154,6 +154,9 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 		};
 		if ( iteration > 1 ) {
 			query.wlcontinue = continueFrom;
+		} else {
+			query.meta = 'siteinfo';
+			query.siprop = 'general';
 		}
 		if ( !that.config.fastMode ) {
 			query.wlallrev = true;
@@ -161,22 +164,31 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 
 		that.api( 'get', query, 'actuallyGetWatchlist #' + iteration ).then( ( response ) => {
 			if ( response === 'ERROR' ) {
-				resolve( [] );
+				resolve( {
+					wlraw: [],
+					rtl: undefined
+				} );
 				return;
 			}
 			const wlraw = response.query.watchlist;
+			const rtl = response.query.general && response.query.general.rtl;
 			if ( response.continue && response.continue.wlcontinue ) {
 				that.actuallyGetWatchlist(
 					iteration + 1,
 					response.continue.wlcontinue
 				).then( ( innerResponse ) => {
-					// If there was an error in the recursive call, this just
-					// adds an empty array. getWatchlist checks this.apiError
-					// before assuming that an empty response means nothing to show
-					resolve( wlraw.concat( innerResponse ) );
+					resolve( {
+						// If there was an error in the recursive call, this just
+						// adds an empty array. getWatchlist checks this.apiError
+						// before assuming that an empty response means nothing to show
+						wlraw: wlraw.concat( innerResponse.wlraw ),
+						// `rtl` is present only in the outermost call, `innerResponse.rtl`
+						// will always be `undefined`
+						rtl: rtl
+					} );
 				} );
 			} else {
-				resolve( wlraw );
+				resolve( { wlraw, rtl } );
 			}
 		} );
 	} );
@@ -322,7 +334,7 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 	this.config = latestConfig;
 	const that = this;
 	return new Promise( ( resolve ) => {
-		that.actuallyGetWatchlist( 1, 0 ).then( ( wlraw ) => {
+		that.actuallyGetWatchlist( 1, 0 ).then( ( { wlraw, rtl } ) => {
 			if ( !( wlraw && wlraw[ 0 ] ) ) {
 				if ( that.apiError ) {
 					that.debug( 'getWatchlist - error' );
@@ -354,7 +366,7 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 
 				that.makeWikidataList( prelimSummary ).then( ( summary ) => {
 					that.debug( 'getWatchlist summary', summary );
-					that.renderWatchlist( summary );
+					that.renderWatchlist( summary, { rtl } );
 					resolve();
 				} );
 			} );
@@ -368,8 +380,11 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
  * Overriden in {@link GlobalWatchlistSiteDisplay}
  *
  * @param {GlobalWatchlistEntryBase[]} summary What should be rendered
+ * @param {Object} siteinfo Extra site information read live from the wiki
+ * @param {boolean|undefined} siteinfo.rtl Whether the site is right-to-left;
+ *  `undefined` if unknown
  */
-GlobalWatchlistSiteBase.prototype.renderWatchlist = function ( summary ) {
+GlobalWatchlistSiteBase.prototype.renderWatchlist = function ( summary, siteinfo ) {
 	// STUB
 };
 
