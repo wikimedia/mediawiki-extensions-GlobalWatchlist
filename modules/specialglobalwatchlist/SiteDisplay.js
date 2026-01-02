@@ -86,11 +86,23 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 			.append( ' ' );
 	}
 	if ( entry.entryType === 'log' ) {
-		const logText = 'Log: ' + entry.logtype + '/' + entry.logaction + ': ';
-		$row.append( $( '<em>' ).text( logText ) )
+		// log action description outside fast mode
+		let logText = 'Log: ' + entry.logtype + '/' + entry.logaction;
+		if ( entry.logdisplay && entry.logdisplay !== '' && this.config.fastMode === false ) {
+			// remove HTML links, which can have wrong local URLs, preserving the plain text with bdi tags only
+			const wrapper = document.createElement( 'div' );
+			wrapper.innerHTML = entry.logdisplay;
+			[ ...wrapper.querySelectorAll( '*' ) ].forEach( ( el ) => {
+				if ( el.tagName.toLowerCase() !== 'bdi' ) {
+					el.replaceWith( ...el.childNodes );
+				}
+			} );
+			logText += ' (' + wrapper.innerHTML.trim() + ')';
+		}
+		logText += ': ';
+		$row.append( $( '<em>' ).html( logText ) )
 			.append( ' ' );
 	}
-
 	$row.append( $pageLink )
 		.append( ' (' );
 

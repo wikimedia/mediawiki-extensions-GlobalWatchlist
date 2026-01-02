@@ -454,6 +454,7 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 				logaction: entry.logaction,
 				logid: entry.logid,
 				logtype: entry.logtype,
+				logdisplay: entry.logdisplay,
 				userDisplay: that.makeSingleUserLink(
 					entry.user,
 					entry.anon,

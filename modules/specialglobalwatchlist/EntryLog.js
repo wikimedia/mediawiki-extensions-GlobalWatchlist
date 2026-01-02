@@ -33,6 +33,12 @@ function GlobalWatchlistEntryLog( info ) {
 	 *   logaction above
 	 */
 	this.logtype = info.logtype;
+
+	/**
+	 * @property {string} logdisplay The "action text" for this log entry, used for
+	 *   plain text description
+	 */
+	this.logdisplay = info.logdisplay;
 }
 
 OO.inheritClass( GlobalWatchlistEntryLog, GlobalWatchlistEntryBase );
