@@ -71,7 +71,7 @@
 	"globalwatchlist-show-logentries": "Tampilkan entri log",
 	"globalwatchlist-show-newpages": "Tampilkan pembuatan halaman baru",
 	"globalwatchlist-sitelist": "Daftar situs yang ditetapkan pengguna",
-	"globalwatchlist-tags": "{{PLURAL:$1|''Tag''}}: $2",
+	"globalwatchlist-tags": "{{PLURAL:$1|Tanda}}: $2",
 	"globalwatchlist-tour-addsite": "Tambahkan situs",
 	"globalwatchlist-tour-addsite-description": "Tekan di atas untuk menambahkan baris lain untuk suatu situs.",
 	"globalwatchlist-tour-fastmode": "Mode cepat",
