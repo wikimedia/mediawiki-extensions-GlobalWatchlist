@@ -420,8 +420,8 @@
 		const expectedUpdatedEntries = [
 			{ commentDisplay: false },
 			{ commentDisplay: false },
-			{ commentDisplay: ': foo' },
-			{ commentDisplay: ': <a target="_blank" href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>' }
+			{ commentDisplay: 'foo' },
+			{ commentDisplay: '<a target="_blank" href="//en.wikipedia.org/wiki/PageName" title="PageName">PageName</a>' }
 		];
 
 		// Reduce the fully updated entries to just the parts we are checking
@@ -432,7 +432,7 @@
 		assert.deepEqual(
 			result,
 			expectedUpdatedEntries,
-			'leading ": " are added to comments, and links are updated, when there is a comment'
+			'links are updated, when there is a comment'
 		);
 	} );
 

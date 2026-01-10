@@ -53,7 +53,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	const $pageLink = $( '<a>' )
 		.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&redirect=no' ) )
 		.attr( 'target', '_blank' )
-		.addClass( 'mw-title' )
+		.addClass( 'mw-title ext-globalwatchlist-pagetitle' )
 		.text( entry.titleMsg || entry.title );
 	const that = this;
 
@@ -67,6 +67,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		// entry.timestampTitle is either a string explaining grouped changes, or null to ignore
 		const $timestamp = $( '<span>' )
 			.text( entry.timestamp )
+			.addClass( 'ext-globalwatchlist-timestamp' )
 			.attr( 'title', entry.timestampTitle );
 		$row.append( $timestamp )
 			.append( ' ' );
@@ -82,26 +83,32 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	}
 	if ( entry.flags ) {
 		// New page / minor edit / bot flag
-		$row.append( $( '<b>' ).text( entry.flags ) )
+		$row.append( $( '<b>' )
+			.addClass( 'ext-globalwatchlist-flags' )
+			.text( entry.flags ) )
 			.append( ' ' );
 	}
 	if ( entry.entryType === 'log' ) {
 		// log action description outside fast mode
-		let logText = 'Log: ' + entry.logtype + '/' + entry.logaction;
+		const $logEntry = $( '<em>' );
+		const $logAction = $( '<span>' )
+			.addClass( 'ext-globalwatchlist-logtype' )
+			.text( 'Log: ' + entry.logtype + '/' + entry.logaction );
+		$logEntry.append( $logAction );
 		if ( entry.logdisplay && entry.logdisplay !== '' && this.config.fastMode === false ) {
 			// remove HTML links, which can have wrong local URLs, preserving the plain text with bdi tags only
-			const wrapper = document.createElement( 'div' );
+			const wrapper = document.createElement( 'span' );
+			wrapper.className = 'ext-globalwatchlist-logdisplay';
 			wrapper.innerHTML = entry.logdisplay;
 			[ ...wrapper.querySelectorAll( '*' ) ].forEach( ( el ) => {
 				if ( el.tagName.toLowerCase() !== 'bdi' ) {
 					el.replaceWith( ...el.childNodes );
 				}
 			} );
-			logText += ' (' + wrapper.innerHTML.trim() + ')';
+			$logEntry.append( ' (' ).append( wrapper ).append( ')' );
 		}
-		logText += ': ';
-		$row.append( $( '<em>' ).html( logText ) )
-			.append( ' ' );
+		$logEntry.append( ': ' );
+		$row.append( $logEntry ).append( ' ' );
 	}
 	$row.append( $pageLink )
 		.append( ' (' );
@@ -111,6 +118,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		const $historyLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&action=history' ) )
 			.attr( 'target', '_blank' )
+			.addClass( 'ext-globalwatchlist-history' )
 			.text( mw.msg( 'globalwatchlist-history' ) );
 		$row.append( $historyLink )
 			.append( ', ' );
@@ -155,6 +163,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		const $logPageLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&page=' + pageTitle ) )
 			.attr( 'target', '_blank' )
+			.addClass( 'ext-globalwatchlist-logpage' )
 			.text( mw.msg( 'globalwatchlist-log-page' ) );
 		$row.append( $logPageLink )
 			.append( ', ' );
@@ -162,6 +171,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		const $logEntryLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&logid=' + entry.logid ) )
 			.attr( 'target', '_blank' )
+			.addClass( 'ext-globalwatchlist-logentry' )
 			.text( mw.msg( 'globalwatchlist-log-entry' ) );
 		$row.append( $logEntryLink )
 			.append( ', ' );
@@ -186,23 +196,30 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 
 	$row.append( ')' );
 
-	const $user = ( this.config.fastMode ? '' : entry.userDisplay );
-	let $comment = '';
-	if ( entry.commentDisplay ) {
+	const $user = this.config.fastMode ?
+		$() :
+		$( $.parseHTML( entry.userDisplay ) )
+			.addClass( 'ext-globalwatchlist-user' );
+	const $comment = entry.commentDisplay ?
 		// Need to process links in the parsed comments as raw HTML
-		$comment = $( '<span>' ).html( entry.commentDisplay );
-	}
-	if ( $user !== '' || $comment !== '' ) {
+		$( '<span>' )
+			.addClass( 'ext-globalwatchlist-comment' )
+			.html( entry.commentDisplay ) :
+		$();
+	if ( $user.length || $comment.length ) {
 		$row.append( ' (' )
-			.append( $user )
-			.append( $comment )
-			.append( ')' );
+			.append( $user );
+		if ( $comment.length ) {
+			$row.append( ': ' ).append( $comment );
+		}
+		$row.append( ')' );
 	}
 
 	if ( entry.tagsDisplay ) {
 		// Need to process links in the parsed description as raw HTML
-		const $tags = $( '<em>' ).html( entry.tagsDisplay );
-
+		const $tags = $( '<em>' )
+			.addClass( 'ext-globalwatchlist-tags' )
+			.html( entry.tagsDisplay );
 		$row.append( ' ' )
 			.append( $tags );
 	}

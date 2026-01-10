@@ -401,7 +401,7 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 
 		// Comment display
 		if ( entry.comment && entry.comment !== '' ) {
-			entry.commentDisplay = ': ' + that.linker.newTabLinks( that.linker.fixLocalLinks( entry.comment ) );
+			entry.commentDisplay = that.linker.newTabLinks( that.linker.fixLocalLinks( entry.comment ) );
 		} else {
 			entry.commentDisplay = false;
 		}
