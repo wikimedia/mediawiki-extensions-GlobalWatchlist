@@ -4,6 +4,7 @@
 			"McDutchie",
 			"Pyscowicz",
 			"Sabelöga",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -46,6 +47,7 @@
 	"globalwatchlist-markseen-all": "Märk alla webbplatser som sedda",
 	"globalwatchlist-markseen-allconfirm": "Är du säker du vill markera alla webbplatser som sedda?",
 	"globalwatchlist-must-login": "Logga in för att använda specialsidan GlobalWatchlist",
+	"globalwatchlist-must-login-for-temp-user": "Skapa ett konto för att använda GlobalWatchlists specialsidor",
 	"globalwatchlist-notify-heading": "Global bevakningslista",
 	"globalwatchlist-notify-savingfailed": "Kunde inte spara inställningar. Försök igen",
 	"globalwatchlist-notify-settingssaved": "Dina inställningar sparades. [[Special:GlobalWatchlist|Återvänd till den globala bevakningslistan]].",
