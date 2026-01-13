@@ -39,6 +39,8 @@ GlobalWatchlistWatchlistUtils.prototype.mergePageEdits = function ( edits ) {
 	mergedEditInfo.expiry = edits[ 0 ].expiry;
 
 	mergedEditInfo.fromRev = edits
+		// filter out creation version
+		.filter( ( edit ) => edit.old_revid !== 0 )
 		.map( ( edit ) => edit.old_revid )
 		.reduce(
 			// Get the lower rev id, corresponding to the older revision

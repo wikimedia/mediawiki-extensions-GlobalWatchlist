@@ -56,6 +56,7 @@
 	"globalwatchlist-option-grouppage": "Label for toggle option to group results by page",
 	"globalwatchlist-option-live": "Label for toggle option for live updates",
 	"globalwatchlist-otheroptions": "Label for other script configuration options",
+	"globalwatchlist-permalink": "Text for page creation permanent link",
 	"globalwatchlist-prefs-settings": "Text shown to users in [[Special:Preferences]] indicating where to change global watchlist settings.\n\nThe localized names for this page are being added in the file [https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/extensions/GlobalWatchlist/+/refs/heads/master/GlobalWatchlist.alias.php GlobalWatchlist.alias.php]. If your language is not yet there, submit a patch.",
 	"globalwatchlist-refresh": "Label for the refresh button",
 	"globalwatchlist-remove": "Label for the button to remove a site row",

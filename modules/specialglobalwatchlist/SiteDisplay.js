@@ -116,18 +116,42 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 			.append( ', ' );
 	}
 
+	// flag for the permalink creation
+	let newEdit = false;
+	if ( entry.entryType === 'edit' && entry.newPage === true && this.config.fastMode === false ) {
+		const $diffLink = $( '<a>' )
+			.attr( 'href', this.linker.linkQuery( 'oldid=' + entry.toRev ) )
+			.attr( 'target', '_blank' )
+			.addClass( 'ext-globalwatchlist-permalink' )
+			.text( mw.msg( 'globalwatchlist-permalink' ) );
+		$row.append( $diffLink );
+		newEdit = true;
+	}
 	// No diff links in fast mode, see T269728
-	if ( entry.entryType === 'edit' && entry.newPage === false && this.config.fastMode === false ) {
+	if ( entry.entryType === 'edit' && ( entry.newPage === false || entry.editCount > 1 ) && this.config.fastMode === false ) {
 		const $diffLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'diff=' + entry.toRev + '&oldid=' + entry.fromRev ) )
 			.attr( 'target', '_blank' )
-			.addClass( 'ext-globalwatchlist-diff' )
-			.text(
+			.addClass( 'ext-globalwatchlist-diff' );
+		// case when there is more than just the creation
+		if ( newEdit ) {
+			$row.append( '+' );
+			$diffLink.text(
+				entry.editCount === 2 ? mw.msg( 'diff' ) : mw.msg( 'nchanges', entry.editCount - 1 )
+			);
+		// case when there is no creation
+		} else {
+			$diffLink.text(
 				entry.editCount === 1 ? mw.msg( 'diff' ) : mw.msg( 'nchanges', entry.editCount )
 			);
+		}
 		$row.append( $diffLink )
 			.append( ', ' );
-	} else if ( entry.entryType === 'log' ) {
+	// case when there is just the creation
+	} else if ( newEdit ) {
+		$row.append( ', ' );
+	}
+	if ( entry.entryType === 'log' ) {
 		const $logPageLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'title=Special:Log&page=' + pageTitle ) )
 			.attr( 'target', '_blank' )

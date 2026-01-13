@@ -173,7 +173,7 @@
 			comment: false,
 			editCount: 2,
 			expiry: false,
-			fromRev: 0,
+			fromRev: 1,
 			minor: false,
 			newPage: true,
 			tags: [],
