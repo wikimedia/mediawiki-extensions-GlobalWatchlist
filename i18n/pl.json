@@ -88,7 +88,7 @@
 	"globalwatchlist-tour-sitelist-description": "To jest lista witryn, które zostaną uwzględnione na globalnej liście obserwowanych. Użyj podstawowego adresu URL witryny, np. <code>en.wikipedia.org</code>.",
 	"globalwatchlist-tour-types": "Zmień typy",
 	"globalwatchlist-tour-types-description": "Użytkownicy mogą kontrolować, jakie typy zmian mają być wyświetlane.",
-	"globalwatchlist-unwatch": "Nie obserwuj",
+	"globalwatchlist-unwatch": "nie obserwuj",
 	"globalwatchlist-markpageseen": "oznacz jako przeczytane",
 	"prefs-globalwatchlist": "Globalna lista obserwowanych"
 }
