@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Strainu"
+		]
+	},
+	"globalwatchlist": "Lista de urmărire globală",
+	"globalwatchlist-desc": "Adaugă o listă de urmărire globală",
+	"globalwatchlist-summary": "Pagină specială pentru vizualizarea unei liste de urmărire globale",
+	"globalwatchlistsettings": "Setări globale ale listei de urmărire",
+	"globalwatchlistsettings-summary": "Pagină specială pentru administrarea unei liste de urmărire globale",
+	"globalwatchlist-add": "Adaugă",
+	"globalwatchlist-api-error": "A apărut o eroare API în timpul interacțiunii cu „$1”:",
+	"globalwatchlist-asof": "La $1",
+	"globalwatchlist-changetypes": "Tip de modificare",
+	"globalwatchlist-editwatchlist": "Modificare listă pagini urmărite",
+	"globalwatchlist-emptyfeed": "Site-uri fără modificări",
+	"globalwatchlist-fetch-site-failure": "Nu s-au putut prelua modificările",
+	"globalwatchlist-filters": "Filtre",
+	"globalwatchlist-filter-anon": "Modificări anonime",
+	"globalwatchlist-filter-bot": "Modificări ale roboților",
+	"globalwatchlist-filter-either": "Oricare",
+	"globalwatchlist-filter-minor": "Modificări minore",
+	"globalwatchlist-filter-not-anon": "Numai modificările făcute de utilizatorii autentificați",
+	"globalwatchlist-filter-not-bot": "Doar modificări non-bot",
+	"globalwatchlist-filter-not-minor": "Doar modificări care nu sunt minore",
+	"globalwatchlist-filter-only-anon": "Doar modificări făcute anonim",
+	"globalwatchlist-filter-only-bot": "Doar modificări de către boți",
+	"globalwatchlist-filter-only-minor": "Doar modificări minore",
+	"globalwatchlist-globalwatchlistsettingslink": "Setări",
+	"globalwatchlist-gotoglobal": "Lista de urmărire globală",
+	"globalwatchlist-gotoglobal-tooltip": "Vezi lista globală de pagini urmărite",
+	"globalwatchlist-history": "istoric",
+	"globalwatchlist-javascript-required": "Această pagină specială necesită JavaScript pentru a funcționa",
+	"globalwatchlist-log-entry": "intrare în jurnal",
+	"globalwatchlist-unwatch": "nu mai urmări",
+	"prefs-globalwatchlist": "Lista de urmărire globală"
+}
