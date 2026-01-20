@@ -127,8 +127,9 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	// flag for the permalink creation
 	let newEdit = false;
 	if ( entry.entryType === 'edit' && entry.newPage === true && this.config.fastMode === false ) {
+		const permrev = entry.editCount === 1 ? entry.toRev : entry.fromRev;
 		const $diffLink = $( '<a>' )
-			.attr( 'href', this.linker.linkQuery( 'oldid=' + entry.toRev ) )
+			.attr( 'href', this.linker.linkQuery( 'oldid=' + permrev ) )
 			.attr( 'target', '_blank' )
 			.addClass( 'ext-globalwatchlist-permalink' )
 			.text( mw.msg( 'globalwatchlist-permalink' ) );
