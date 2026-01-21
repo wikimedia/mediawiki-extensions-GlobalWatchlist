@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amedeo463",
 			"Beta16",
 			"Superpes15"
 		]
@@ -46,7 +47,7 @@
 	"globalwatchlist-option-grouppage": "Raggruppa risultati per pagina",
 	"globalwatchlist-option-live": "Aggiornamenti in tempo reale",
 	"globalwatchlist-otheroptions": "Altre impostazioni",
-	"globalwatchlist-permalink": "collegamento permanente",
+	"globalwatchlist-permalink": "link permanente",
 	"globalwatchlist-prefs-settings": "Per impostare le preferenze degli osservati speciali globali, visita [[Special:GlobalWatchlistSettings]].",
 	"globalwatchlist-refresh": "Aggiorna",
 	"globalwatchlist-remove": "Rimuovi",
