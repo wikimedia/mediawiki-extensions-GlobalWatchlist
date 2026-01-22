@@ -110,7 +110,8 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 			formatversion: 2,
 			ids: entityIds.slice( 0, 50 ),
 			languages: that.userLang,
-			props: 'labels'
+			props: 'labels',
+			languagefallback: 1
 		};
 		that.api.get( query ).then( ( response ) => {
 			that.debug( 'getRawLabels - api response', response );
@@ -182,7 +183,7 @@ GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels
 };
 
 /**
- * Set entities' titleMsg (title without the `Property:` or `Lexeme:` prefix) and
+ * Set entities' $titleMsg (title without the `Property:` or `Lexeme:` prefix) and
  * get a list of the ids to fetch in the form of Q1/P2/L3
  *
  * @param {GlobalWatchlistEntryBase[]} entries Original summary entries
@@ -194,12 +195,11 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
 	entries.forEach( ( entry ) => {
 		if ( this.namespaces.includes( entry.ns ) ) {
 			const prefix = this.nsNames.find( ( name ) => entry.title.startsWith( name + ':' ) );
-			entry.titleMsg = prefix ? entry.title.slice( prefix.length + 1 ) : entry.title;
-			if ( !ids.includes( entry.titleMsg ) ) {
-				ids.push( entry.titleMsg );
+			const titleMsgRaw = prefix ? entry.title.slice( prefix.length + 1 ) : entry.title;
+			entry.$titleMsg = $( document.createTextNode( titleMsgRaw ) );
+			if ( !ids.includes( titleMsgRaw ) ) {
+				ids.push( titleMsgRaw );
 			}
-		} else {
-			entry.titleMsg = entry.title;
 		}
 	} );
 
@@ -210,11 +210,11 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
 };
 
 /**
- * Entry point - alter the entities given to have titleMsg that reflects the labels
+ * Entry point - alter the entities given to have $titleMsg that reflects the labels
  *
  * Promise resolves to the summary entries with updated info
  *
- * @param {GlobalWatchlistEntryBase[]} summaryEntries Original summary, entries have titleMsg as
+ * @param {GlobalWatchlistEntryBase[]} summaryEntries Original summary, entries have $titleMsg as
  *   just the plain title (Q1, P2, L3, etc.)
  * @return {Promise} Promise of updated summary, with labels
  */
@@ -238,9 +238,11 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 			const cleanedLabels = that.cleanupRawLabels( rawLabels );
 
 			updatedEntries.forEach( ( entry ) => {
-				if ( cleanedLabels[ entry.titleMsg ] ) {
-					entry.titleMsg += ' ' + mw.msg( 'parentheses', cleanedLabels[ entry.titleMsg ] );
-				}
+				const titleMsgRaw = entry.$titleMsg.text();
+				entry.$titleMsg = $( '<span>' ).append(
+					entry.$titleMsg,
+					cleanedLabels[ titleMsgRaw ] ?
+						[ ' (', $( '<bdi>' ).text( cleanedLabels[ titleMsgRaw ] ), ')' ] : [] );
 			} );
 
 			resolve( updatedEntries );

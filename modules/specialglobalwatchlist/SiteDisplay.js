@@ -54,7 +54,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&redirect=no' ) )
 		.attr( 'target', '_blank' )
 		.addClass( 'mw-title ext-globalwatchlist-pagetitle' )
-		.text( entry.titleMsg || entry.title );
+		.html( entry.$titleMsg.html() || mw.html.escape( entry.title ) );
 	const that = this;
 
 	// Actually set up the $row to be returned

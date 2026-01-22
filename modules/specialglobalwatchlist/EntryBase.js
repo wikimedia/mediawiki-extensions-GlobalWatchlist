@@ -46,10 +46,10 @@ function GlobalWatchlistEntryBase( info ) {
 	this.title = info.title;
 
 	/**
-	 * @property {string} titleMsg Display text for the title of this entry, might be
+	 * @property {jQuery} $titleMsg Display text for the title of this entry, might be
 	 *   changed by {@link GlobalWatchlistWikibaseHandler}
 	 */
-	this.titleMsg = info.title;
+	this.$titleMsg = $( document.createTextNode( info.title ) );
 
 	/**
 	 * @property {number} ns Namespace for this entry, can be used by
