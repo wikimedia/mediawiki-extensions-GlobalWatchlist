@@ -51,17 +51,6 @@ function GlobalWatchlistSiteBase(
 	// API failures still resolve the Promise rather than rejecting it. If Promise.allSettled
 	// becomes available for use, this should no longer be needed
 	this.apiError = false;
-
-	// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
-	// Don't create it if it will never be needed
-	if ( this.site === config.wikibaseSite ) {
-		const GlobalWatchlistWikibaseHandler = require( './WikibaseHandler.js' );
-		this.wikibaseHandler = new GlobalWatchlistWikibaseHandler(
-			globalWatchlistDebug,
-			api,
-			config.lang
-		);
-	}
 }
 
 /**
@@ -156,7 +145,7 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 			query.wlcontinue = continueFrom;
 		} else {
 			query.meta = 'siteinfo';
-			query.siprop = 'general';
+			query.siprop = that.config.wikibaseSite ? 'general' : 'general|extensions';
 		}
 		if ( !that.config.fastMode ) {
 			query.wlallrev = true;
@@ -172,6 +161,24 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 			}
 			const wlraw = response.query.watchlist;
 			const rtl = response.query.general && response.query.general.rtl;
+
+			if ( response.query.extensions &&
+				response.query.extensions.some( ( ext ) => ext.name === 'WikibaseRepository' ) ) {
+				that.config.wikibaseSite = that.site;
+				that.debug( 'Wikibase found', that.site );
+			}
+			// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
+			// Don't create it if it will never be needed
+			if ( !that.wikibaseHandler && that.site === that.config.wikibaseSite ) {
+				const GlobalWatchlistWikibaseHandler = require( './WikibaseHandler.js' );
+				that.wikibaseHandler = new GlobalWatchlistWikibaseHandler(
+					that.debugLogger,
+					that.apiObject,
+					that.config.lang
+				);
+				that.debug( 'WikibaseHandler created', that.wikibaseHandler );
+			}
+
 			if ( response.continue && response.continue.wlcontinue ) {
 				that.actuallyGetWatchlist(
 					iteration + 1,
