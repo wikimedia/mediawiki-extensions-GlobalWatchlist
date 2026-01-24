@@ -9,8 +9,8 @@
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
  * @param {mw.ForeignApi} api Instance of mw.ForeignApi to use
  * @param {string} userLang Language to fetch labels in
- * @param {number[]} namespaces All the namespaces with wikibase default content model
- * @param {string[]} nsNames All the names of namespaces with wikibase default content model
+ * @param {Array<Array<number>>} namespaces All the namespaces with wikibase default content model
+ * @param {Array<Array<string>>} nsNames All the names of namespaces with wikibase default content model
  */
 function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang, namespaces, nsNames ) {
 	// Logger to send debug info to
@@ -23,10 +23,20 @@ function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang, na
 	this.userLang = userLang;
 
 	// Wikibase namespaces
-	this.namespaces = namespaces;
+	this.namespaces = namespaces.wikibase;
 
 	// Wikibase namespaces names
-	this.nsNames = nsNames;
+	this.nsNames = nsNames.wikibase;
+
+	// Entity Schema namespaces
+	this.esNamespaces = namespaces.entity;
+
+	// EntitySchema namespaces names
+	this.esNsNames = nsNames.entity;
+
+	// EntitySchema caches
+	this.esCache = {};
+	this.esPromiseCache = {};
 }
 
 /**
@@ -193,13 +203,17 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
 	const ids = [];
 
 	entries.forEach( ( entry ) => {
-		if ( this.namespaces.includes( entry.ns ) ) {
-			const prefix = this.nsNames.find( ( name ) => entry.title.startsWith( name + ':' ) );
-			const titleMsgRaw = prefix ? entry.title.slice( prefix.length + 1 ) : entry.title;
+		if ( this.namespaces.includes( entry.ns ) || this.esNamespaces.includes( entry.ns ) ) {
+			const prefixw = this.nsNames.find( ( name ) => entry.title.startsWith( name + ':' ) );
+			const prefixe = prefixw ? null : this.esNsNames.find( ( name ) => entry.title.startsWith( name + ':' ) );
+			const titleMsgRaw = prefixw ? entry.title.slice( prefixw.length + 1 ) :
+				( prefixe ? entry.title.slice( prefixe.length + 1 ) : entry.title );
 			entry.$titleMsg = $( document.createTextNode( titleMsgRaw ) );
 			if ( !ids.includes( titleMsgRaw ) ) {
 				ids.push( titleMsgRaw );
 			}
+		} else {
+			entry.$titleMsg = $( document.createTextNode( entry.title ) );
 		}
 	} );
 
@@ -226,7 +240,7 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 		that.debug( 'addLabels - extractedInfo', extractedInfo );
 
 		const updatedEntries = extractedInfo.entries;
-		const entityIds = extractedInfo.ids;
+		const entityIds = extractedInfo.ids.filter( ( id ) => !id.startsWith( 'E' ) );
 
 		if ( entityIds.length === 0 ) {
 			// Nothing to fetch
@@ -238,16 +252,68 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 			const cleanedLabels = that.cleanupRawLabels( rawLabels );
 
 			updatedEntries.forEach( ( entry ) => {
-				const titleMsgRaw = entry.$titleMsg.text();
-				entry.$titleMsg = $( '<span>' ).append(
-					entry.$titleMsg,
-					cleanedLabels[ titleMsgRaw ] ?
-						[ ' (', $( '<bdi>' ).text( cleanedLabels[ titleMsgRaw ] ), ')' ] : [] );
+				const cleanedLabelsData = cleanedLabels[ mw.html.escape( entry.$titleMsg.text() ) ];
+				if ( cleanedLabelsData ) {
+					entry.$titleMsg = $( '<span>' ).append(
+						entry.$titleMsg,
+						[ ' (', $( '<bdi>' ).text( cleanedLabelsData ), ')' ] );
+				} else {
+					const titleEs = entry.$titleMsg.text();
+					const $esElem = $( '<span>' );
+					if ( that.esCache[ titleEs ] ) {
+						$esElem.text( ' ' + mw.message( 'parentheses', that.esCache[ titleEs ] ) );
+					} else {
+						$esElem.attr( 'data-id', titleEs );
+						let promise = that.esPromiseCache[ titleEs ];
+						if ( !promise ) {
+							promise = that.calculateRealTextAsync( titleEs )
+								.then( ( realText ) => {
+									delete that.esPromiseCache[ titleEs ];
+									if ( realText && realText !== '' ) {
+										that.esCache[ titleEs ] = realText;
+										that.debug( 'new cache', that.esCache );
+										return realText;
+									}
+								} )
+								.catch( () => {
+									delete that.esPromiseCache[ titleEs ];
+								} );
+							that.esPromiseCache[ titleEs ] = promise;
+						}
+						promise.then( ( realText ) => {
+							that.debug( 'saving realText to', $esElem );
+							if ( realText && realText !== '' ) {
+								$( '[data-id="' + $.escapeSelector( titleEs ) + '"]' )
+									.text( ' ' + mw.message( 'parentheses', realText ).text() );
+							}
+						} );
+					}
+					entry.$titleMsg = $( '<span>' ).append( entry.$titleMsg, $esElem );
+				}
 			} );
 
 			resolve( updatedEntries );
 		} );
 	} );
+};
+
+GlobalWatchlistWikibaseHandler.prototype.calculateRealTextAsync = function ( id ) {
+	this.debug( 'Calculating', id );
+
+	return this.api.get( {
+		action: 'wbsearchentities',
+		search: id,
+		language: this.userLang,
+		uselang: this.userLang,
+		type: 'entity-schema',
+		formatversion: 2
+	} ).then( ( data ) => {
+		const match = data.search.find( ( result ) => this.esNsNames
+			.some( ( ns ) => result.title === `${ ns }:${ id }` )
+		);
+
+		return match ? match.label : false;
+	} ).catch( () => false );
 };
 
 module.exports = GlobalWatchlistWikibaseHandler;

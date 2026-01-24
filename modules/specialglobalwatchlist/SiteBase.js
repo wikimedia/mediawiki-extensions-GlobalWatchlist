@@ -177,21 +177,22 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 				}
 			}
 			if ( response.query.namespaces ) {
-				const wbdefaultmodels = [ 'wikibase-item', 'wikibase-property', 'wikibase-lexeme' ];
-				const wbns = [];
-				const wbnsNames = [];
+				const wbdefaultmodels = [ 'wikibase-item', 'wikibase-property', 'wikibase-lexeme', 'EntitySchema' ];
+				const wbns = { wikibase: [], entity: [] };
+				const wbnsNames = { wikibase: [], entity: [] };
 				Object.values( response.query.namespaces ).forEach( ( ns ) => {
+					const index = ns.defaultcontentmodel === 'EntitySchema' ? 'entity' : 'wikibase';
 					if ( wbdefaultmodels.includes( ns.defaultcontentmodel ) ) {
-						wbns.push( ns.id );
+						wbns[ index ].push( ns.id );
 						if ( ns.name ) {
-							wbnsNames.push( ns.name );
+							wbnsNames[ index ].push( ns.name );
 						}
 						if ( ns.canonical && ns.canonical !== ns.name ) {
-							wbnsNames.push( ns.canonical );
+							wbnsNames[ index ].push( ns.canonical );
 						}
 					}
 				} );
-				that.isWikibase = wbns.length > 0;
+				that.isWikibase = wbns.wikibase.length + wbns.entity.length > 0;
 				if ( that.isWikibase && response.uselang ) {
 					that.direction = that.config.languageData[ response.uselang ].dir;
 					that.debug( 'changing direction', that.direction );
