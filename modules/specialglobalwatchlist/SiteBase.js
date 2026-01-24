@@ -145,7 +145,10 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 			query.wlcontinue = continueFrom;
 		} else {
 			query.meta = 'siteinfo';
-			query.siprop = that.config.wikibaseSite ? 'general' : 'general|extensions';
+			query.siprop = that.isWikibase === undefined ?
+				// the check for Wikibase Handler is needed only once for the site
+				'general|namespaces' :
+				'general';
 		}
 		if ( !that.config.fastMode ) {
 			query.wlallrev = true;
@@ -162,21 +165,36 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 			const wlraw = response.query.watchlist;
 			const rtl = response.query.general && response.query.general.rtl;
 
-			if ( response.query.extensions &&
-				response.query.extensions.some( ( ext ) => ext.name === 'WikibaseRepository' ) ) {
-				that.config.wikibaseSite = that.site;
-				that.debug( 'Wikibase found', that.site );
-			}
-			// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
-			// Don't create it if it will never be needed
-			if ( !that.wikibaseHandler && that.site === that.config.wikibaseSite ) {
-				const GlobalWatchlistWikibaseHandler = require( './WikibaseHandler.js' );
-				that.wikibaseHandler = new GlobalWatchlistWikibaseHandler(
-					that.debugLogger,
-					that.apiObject,
-					that.config.lang
-				);
-				that.debug( 'WikibaseHandler created', that.wikibaseHandler );
+			if ( response.query.namespaces ) {
+				const wbdefaultmodels = [ 'wikibase-item', 'wikibase-property', 'wikibase-lexeme' ];
+				const wbns = [];
+				const wbnsNames = [];
+				Object.values( response.query.namespaces ).forEach( ( ns ) => {
+					if ( wbdefaultmodels.includes( ns.defaultcontentmodel ) ) {
+						wbns.push( ns.id );
+						if ( ns.name ) {
+							wbnsNames.push( ns.name );
+						}
+						if ( ns.canonical && ns.canonical !== ns.name ) {
+							wbnsNames.push( ns.canonical );
+						}
+					}
+				} );
+				that.isWikibase = wbns.length > 0;
+
+				if ( that.isWikibase && !that.wikibaseHandler ) {
+					// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
+					// Don't create it if it will never be needed
+					const GlobalWatchlistWikibaseHandler = require( './WikibaseHandler.js' );
+					that.wikibaseHandler = new GlobalWatchlistWikibaseHandler(
+						that.debugLogger,
+						that.apiObject,
+						that.config.lang,
+						wbns,
+						wbnsNames
+					);
+					that.debug( 'Wikibase handler created', that.site );
+				}
 			}
 
 			if ( response.continue && response.continue.wlcontinue ) {
@@ -404,7 +422,7 @@ GlobalWatchlistSiteBase.prototype.renderWatchlist = function ( summary, siteinfo
 GlobalWatchlistSiteBase.prototype.makeWikidataList = function ( summary ) {
 	const that = this;
 	return new Promise( ( resolve ) => {
-		if ( that.site !== that.config.wikibaseSite || that.config.fastMode ) {
+		if ( !that.isWikibase || that.config.fastMode ) {
 			resolve( summary );
 		} else {
 			that.wikibaseHandler.addWikibaseLabels( summary ).then( ( updatedSummary ) => {

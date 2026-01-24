@@ -8,9 +8,11 @@
  *
  * @param {GlobalWatchlistDebugger} globalWatchlistDebug Debugger instance to log to
  * @param {mw.ForeignApi} api Instance of mw.ForeignApi to use
- * @param {string} userLang language to fetch labels in
+ * @param {string} userLang Language to fetch labels in
+ * @param {number[]} namespaces All the namespaces with wikibase default content model
+ * @param {string[]} nsNames All the names of namespaces with wikibase default content model
  */
-function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang ) {
+function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang, namespaces, nsNames ) {
 	// Logger to send debug info to
 	this.debugLogger = globalWatchlistDebug;
 
@@ -19,6 +21,12 @@ function GlobalWatchlistWikibaseHandler( globalWatchlistDebug, api, userLang ) {
 
 	// Language to fetch the labels in
 	this.userLang = userLang;
+
+	// Wikibase namespaces
+	this.namespaces = namespaces;
+
+	// Wikibase namespaces names
+	this.nsNames = nsNames;
 }
 
 /**
@@ -184,19 +192,14 @@ GlobalWatchlistWikibaseHandler.prototype.getEntityIds = function ( entries ) {
 	const ids = [];
 
 	entries.forEach( ( entry ) => {
-		entry.titleMsg = entry.title.replace(
-			/^(?:Property|Lexeme):/,
-			''
-		);
-
-		if ( entry.ns === 0 || entry.title !== entry.titleMsg ) {
-			// Either:
-			// * main namespace, title doesn't have a prefix to remove
-			// * property/lexeme, prefix removed
-			// Add the Q/P/L id, without duplication
+		if ( this.namespaces.includes( entry.ns ) ) {
+			const prefix = this.nsNames.find( ( name ) => entry.title.startsWith( name + ':' ) );
+			entry.titleMsg = prefix ? entry.title.slice( prefix.length + 1 ) : entry.title;
 			if ( !ids.includes( entry.titleMsg ) ) {
 				ids.push( entry.titleMsg );
 			}
+		} else {
+			entry.titleMsg = entry.title;
 		}
 	} );
 

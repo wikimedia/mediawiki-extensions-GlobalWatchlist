@@ -93,8 +93,6 @@ function globalWatchlistGetSettings( globalWatchlistDebug ) {
 		getQueryFlag( config.minor, 'minor' )
 	].join( '' ).replace( /^\|+/, '' );
 
-	config.wikibaseSite = mw.config.get( 'wgGlobalWatchlistWikibaseSite' );
-
 	return config;
 }
 
