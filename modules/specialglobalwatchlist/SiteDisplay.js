@@ -105,7 +105,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 					el.replaceWith( ...el.childNodes );
 				}
 			} );
-			$logEntry.append( ' (' ).append( wrapper ).append( ')' );
+			$logEntry.append( ' (' ).append( $( '<bdi>' ).append( wrapper ) ).append( ')' );
 		}
 		$logEntry.append( ': ' );
 		$row.append( $logEntry ).append( ' ' );
@@ -205,7 +205,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		// Need to process links in the parsed comments as raw HTML
 		$( '<span>' )
 			.addClass( 'ext-globalwatchlist-comment' )
-			.html( entry.commentDisplay ) :
+			.append( $( '<bdi>' ).html( entry.commentDisplay ) ) :
 		$();
 	if ( $user.length || $comment.length ) {
 		$row.append( ' (' )

@@ -139,7 +139,8 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 			wllimit: 'max',
 			wlprop: that.config.watchlistQueryProps,
 			wlshow: that.config.watchlistQueryShow,
-			wltype: that.config.watchlistQueryTypes
+			wltype: that.config.watchlistQueryTypes,
+			responselanginfo: 1
 		};
 		if ( iteration > 1 ) {
 			query.wlcontinue = continueFrom;
@@ -149,6 +150,10 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 				// the check for Wikibase Handler is needed only once for the site
 				'general|namespaces' :
 				'general';
+			if ( !that.config.languageData ) {
+				query.meta = 'siteinfo|languageinfo';
+				query.liprop = 'dir';
+			}
 		}
 		if ( !that.config.fastMode ) {
 			query.wlallrev = true;
@@ -163,8 +168,11 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 				return;
 			}
 			const wlraw = response.query.watchlist;
-			const rtl = response.query.general && response.query.general.rtl;
-
+			const linfo = response.query.languageinfo;
+			if ( linfo ) {
+				that.config.languageData = linfo;
+				that.debug( 'language data', linfo );
+			}
 			if ( response.query.namespaces ) {
 				const wbdefaultmodels = [ 'wikibase-item', 'wikibase-property', 'wikibase-lexeme' ];
 				const wbns = [];
@@ -181,6 +189,10 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 					}
 				} );
 				that.isWikibase = wbns.length > 0;
+				if ( that.isWikibase && response.uselang ) {
+					that.direction = that.config.languageData[ response.uselang ].dir;
+					that.debug( 'changing direction', that.direction );
+				}
 
 				if ( that.isWikibase && !that.wikibaseHandler ) {
 					// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
@@ -196,6 +208,8 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 					that.debug( 'Wikibase handler created', that.site );
 				}
 			}
+
+			const rtl = that.direction === 'rtl' || response.query.general && response.query.general.rtl;
 
 			if ( response.continue && response.continue.wlcontinue ) {
 				that.actuallyGetWatchlist(

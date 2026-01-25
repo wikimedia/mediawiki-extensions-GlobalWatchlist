@@ -342,7 +342,7 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 
 	// Tags display
 	const noTagsDisplay = Object.keys( tagsInfo ).length === 0;
-	let tagDescriptions, tagsWithLabel;
+	let $tagDescriptions, $tagsWithLabel;
 
 	// Comment display
 	const that = this;
@@ -392,11 +392,14 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 			entry.tagsDisplay = false;
 		} else {
 			// This is the actual building of the display
-			tagDescriptions = entry.tags.map(
-				( tagName ) => tagsInfo[ tagName ]
-			).join( ', ' );
-			tagsWithLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, tagDescriptions );
-			entry.tagsDisplay = mw.msg( 'parentheses', that.linker.newTabLinks( tagsWithLabel ) );
+			$tagDescriptions = entry.tags.reduce( ( $acc, tagName, index ) => {
+				if ( index > 0 ) {
+					$acc.append( ', ' );
+				}
+				return $acc.append( $( '<bdi>' ).html( that.linker.newTabLinks( tagsInfo[ tagName ] ) ) );
+			}, $( '<span>' ) );
+			$tagsWithLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, $tagDescriptions.html() );
+			entry.tagsDisplay = mw.msg( 'parentheses', $tagsWithLabel );
 		}
 
 		// Comment display
