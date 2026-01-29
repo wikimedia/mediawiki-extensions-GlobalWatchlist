@@ -10,7 +10,8 @@
 			"Rubin16",
 			"Stjn",
 			"Teretalexev",
-			"Wileyfoxyx"
+			"Wileyfoxyx",
+			"IKhitron"
 		]
 	},
 	"globalwatchlist": "Глобальный список наблюдения",
@@ -52,6 +53,7 @@
 	"globalwatchlist-markseen-all": "Отметить все сайты как просмотренные",
 	"globalwatchlist-markseen-allconfirm": "Вы уверены, что хотите отметить все сайты как просмотренные?",
 	"globalwatchlist-must-login": "Пожалуйста, войдите в систему для просмотра служебных страниц Глобального списка наблюдения",
+	"globalwatchlist-must-login-for-temp-user": "Пожалуйста, создайте учётную запись для использования служебных страниц Глобального списка наблюдения",
 	"globalwatchlist-notify-heading": "Глобальный список наблюдения",
 	"globalwatchlist-notify-savingfailed": "Не удалось сохранить настройки. Пожалуйста, попробуйте ещё раз.",
 	"globalwatchlist-notify-settingssaved": "Ваши настройки были сохранены. [[Special:GlobalWatchlist|Вернуться к глобальному списку наблюдения]].",
