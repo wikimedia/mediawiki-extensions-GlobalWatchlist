@@ -58,7 +58,6 @@ class SpecialGlobalWatchlist extends SpecialPage {
 		$out->addModules( 'ext.globalwatchlist.specialglobalwatchlist' );
 
 		$out->addJsConfigVars( [
-			'wgGlobalWatchlistWikibaseSite' => $config->get( 'GlobalWatchlistWikibaseSite' ),
 			'wgGlobalWatchlistDevMode' => $config->get( 'GlobalWatchlistDevMode' )
 		] );
 

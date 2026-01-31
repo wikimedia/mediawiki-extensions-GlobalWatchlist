@@ -17,12 +17,6 @@ wfLoadExtension( 'GlobalWatchlist' );
 
 The extension currently defines the following configuration values:
 
-* `wgGlobalWatchlistWikibaseSite`
-
-Set this to the base URL of the site for which Wikibase labels should be fetched, or false for not trying to fetch Wikibase labels from any site.
-
-By default, the value is `false`.
-
 * `wgGlobalWatchlistEnableGuidedTour`
 
 Set this to true to enable a GuidedTour to be loaded on Special:GlobalWatchlistSettings if the user has

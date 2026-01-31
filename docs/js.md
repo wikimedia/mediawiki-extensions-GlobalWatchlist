@@ -22,8 +22,9 @@ is the core of the backend for retrieving the changes to show.
 using `actuallyGetWatchlist`, which repeatedly invokes the watchlist API until no more results are available.
 2. Convert the "raw" changes from the API into a clearer summary of the changes, using a [WatchlistUtils](./ext.globalwatchlist.WatchlistUtils.js.html) instance,
 including grouping results by page (when the user chooses to do so), converting links in edit summaries from local links to external links, etc.
-3. Call `makeWikidataList` which will, if the site in question matches the one specified in `$wgGlobalWatchlistWikibaseSite`,
-update the display text for entities, properties, and lexemes to use the item's label instead of id (see [Wikibase.js](./ext.globalwatchlist.wikibase.js.html))
+3. Call `makeWikidataList` which will, if the site in question has namespaces with Wikibase or EntitySchema default models,
+update the display text for entities, properties, lexemes, and entity schemas to use the item's label instead of id
+(see [Wikibase.js](./ext.globalwatchlist.wikibase.js.html))
 4. Call `getTagList` to ensure that the information for any tags associated with edits is loaded
 5. Call `renderWatchlist`, which is implemented in SiteDisplay.js, to actually create
 the display.

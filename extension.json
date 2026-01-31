@@ -74,10 +74,6 @@
 		"includes/ServiceWiring.php"
 	],
 	"config": {
-		"GlobalWatchlistWikibaseSite": {
-			"value": false,
-			"description": "Site for which labels should be fetched for items on the watchlist, or false for none"
-		},
 		"GlobalWatchlistDevMode": {
 			"value": false,
 			"description": "Whether to send debug entries to the console"
