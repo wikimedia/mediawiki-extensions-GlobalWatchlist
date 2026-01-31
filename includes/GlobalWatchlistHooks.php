@@ -26,12 +26,12 @@ namespace MediaWiki\Extension\GlobalWatchlist;
 
 use MediaWiki\Api\ApiOptions;
 use MediaWiki\Api\Hook\ApiOptionsHook;
-use MediaWiki\Hook\LoginFormValidErrorMessagesHook;
-use MediaWiki\Hook\SidebarBeforeOutputHook;
 use MediaWiki\HTMLForm\Field\HTMLInfoField;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\Skin\Hook\SidebarBeforeOutputHook;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Specials\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\User\User;
 use Wikimedia\Stats\IBufferingStatsdDataFactory;
 

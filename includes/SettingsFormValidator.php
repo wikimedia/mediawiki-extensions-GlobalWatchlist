@@ -23,8 +23,8 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
-use MessageLocalizer;
 
 /**
  * @author DannyS712

@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
 use MediaWiki\Extension\GlobalWatchlist\SettingsFormValidator;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
 use MediaWikiUnitTestCase;
-use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
