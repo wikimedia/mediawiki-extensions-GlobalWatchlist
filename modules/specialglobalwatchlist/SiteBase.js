@@ -172,6 +172,9 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 			if ( linfo ) {
 				that.config.languageData = linfo;
 				that.debug( 'language data', linfo );
+				if ( that.config.lang && !linfo[ that.config.lang ] ) {
+					that.config.lang = null;
+				}
 			}
 			if ( response.query.namespaces ) {
 				const wbdefaultmodels = [ 'wikibase-item', 'wikibase-property', 'wikibase-lexeme' ];
@@ -198,10 +201,15 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 					// Instance of GlobalWatchlistWikibaseHandler, only used for wikibase
 					// Don't create it if it will never be needed
 					const GlobalWatchlistWikibaseHandler = require( './WikibaseHandler.js' );
+					const wikibaseLang = that.config.lang || response.uselang || mw.config.get( 'wgUserLanguage' );
+					that.debug( 'config lang', that.config.lang );
+					that.debug( 'response uselang', response.uselang );
+					that.debug( 'wgUserLanguage', mw.config.get( 'wgUserLanguage' ) );
+					that.debug( 'wikibaseLang', wikibaseLang );
 					that.wikibaseHandler = new GlobalWatchlistWikibaseHandler(
 						that.debugLogger,
 						that.apiObject,
-						that.config.lang,
+						wikibaseLang,
 						wbns,
 						wbnsNames
 					);

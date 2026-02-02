@@ -150,6 +150,7 @@
 			"dependencies": [
 				"jquery.makeCollapsible",
 				"mediawiki.ForeignApi",
+				"mediawiki.util",
 				"oojs",
 				"oojs-ui-core",
 				"oojs-ui-widgets",

@@ -72,10 +72,12 @@ function globalWatchlistGetSettings( globalWatchlistDebug ) {
 		}
 	}
 
+	// Get the uselang URL parameter if provided, leave null otherwise
+	// The language code is checked for existing later after the languageinfo API call
+	config.lang = mw.util.getParamValue( 'uselang' );
+
 	// The following settings are extracted from the user's set configuration or the defaults
 	// or are not set in the options
-	config.lang = mw.config.get( 'wgUserLanguage' );
-
 	config.watchlistQueryProps = config.fastMode ?
 		'ids|title|flags|loginfo' :
 		'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags|expiry';

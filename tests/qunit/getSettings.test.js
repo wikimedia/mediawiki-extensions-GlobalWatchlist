@@ -22,8 +22,8 @@
 		showLogEntries: true,
 		showNewPages: true,
 
+		lang: null,
 		// Based on the others or the config
-		lang: 'en',
 		watchlistQueryProps: 'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags|expiry',
 		watchlistQueryTypes: 'edit|new|log',
 		watchlistQueryShow: 'unread'
@@ -75,8 +75,8 @@
 			showLogEntries: true,
 			showNewPages: false,
 
+			lang: null,
 			// Based on the others or the config
-			lang: 'en',
 			watchlistQueryProps: 'ids|title|flags|loginfo',
 			watchlistQueryTypes: 'edit|log',
 			watchlistQueryShow: 'unread|!anon|!bot|!minor'
