@@ -69,7 +69,7 @@
 	"globalwatchlist-show-logentries": "Журналти йӗркесене кӑтартмалла",
 	"globalwatchlist-show-newpages": "Ҫӗнӗ страница хатӗрленисене кӑтартмалла",
 	"globalwatchlist-sitelist": "Сирӗн сайтсен списокӗ",
-	"globalwatchlist-tags": "{{PLURAL:$1|Паллӑ|Паллӑсем}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Паллӑ|Паллӑсем}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Сайт хуш",
 	"globalwatchlist-tour-addsite-description": "Сайт валли хушма йӗрке кӗртме ҫӳлерехри кнопка ҫине пусӑр.",
 	"globalwatchlist-tour-fastmode": "Хӑвӑрт меслет",

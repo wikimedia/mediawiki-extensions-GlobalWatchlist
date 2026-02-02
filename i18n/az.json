@@ -72,7 +72,7 @@
 	"globalwatchlist-show-logentries": "Jurnal qeydlərini göstər",
 	"globalwatchlist-show-newpages": "Yeni səhifələri göstər",
 	"globalwatchlist-sitelist": "İstifadəçi tərəfindən müəyyən edilmiş sayt siyahısı",
-	"globalwatchlist-tags": "{{PLURAL:$1|Teq|Teqlər}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Teq|Teqlər}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Sayt əlavə et",
 	"globalwatchlist-tour-addsite-description": "Sayt üçün başqa bir sıra əlavə etmək üçün yuxarıya kliklə.",
 	"globalwatchlist-tour-fastmode": "Sürətli rejim",

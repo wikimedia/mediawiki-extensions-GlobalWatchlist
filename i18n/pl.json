@@ -74,7 +74,7 @@
 	"globalwatchlist-show-logentries": "Pokaż wpisy w rejestrze",
 	"globalwatchlist-show-newpages": "Pokaż edycje tworzące nowe strony",
 	"globalwatchlist-sitelist": "Lista stron podana przez użytkownika",
-	"globalwatchlist-tags": "{{PLURAL:$1|Znacznik|Znaczniki}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Znacznik|Znaczniki}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Dodaj witrynę",
 	"globalwatchlist-tour-addsite-description": "Kliknij powyżej, aby dodać kolejny wiersz dla witryny.",
 	"globalwatchlist-tour-fastmode": "Tryb szybki",

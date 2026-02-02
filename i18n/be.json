@@ -71,7 +71,7 @@
 	"globalwatchlist-show-logentries": "Паказваць запісы журналаў",
 	"globalwatchlist-show-newpages": "Паказваць стварэнне новых старонак",
 	"globalwatchlist-sitelist": "Спіс вікі, вызначаны ўдзельнікам",
-	"globalwatchlist-tags": "{{PLURAL:$1|Бірка|Біркі}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Бірка|Біркі}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Дадаць вікі",
 	"globalwatchlist-tour-addsite-description": "Націсніце вышэй, каб дадаць яшчэ адзін радок для вікі.",
 	"globalwatchlist-tour-fastmode": "Хуткі рэжым",

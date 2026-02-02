@@ -69,7 +69,7 @@
 	"globalwatchlist-show-logentries": "Fa vedè i vos de register",
 	"globalwatchlist-show-newpages": "Fà vedè i creazzion de pagine noeuve",
 	"globalwatchlist-sitelist": "Lista de sit definida de l'utent",
-	"globalwatchlist-tags": "{{PLURAL:$1|Eticheta|Etichete}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Eticheta|Etichete}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Taca un sit",
 	"globalwatchlist-tour-addsite-description": "Clica chì de sora per sgiontà un'altra riga per un sit.",
 	"globalwatchlist-tour-fastmode": "Manera svelta",

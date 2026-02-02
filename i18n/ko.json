@@ -63,7 +63,7 @@
 	"globalwatchlist-show-logentries": "기록된 행위 보이기",
 	"globalwatchlist-show-newpages": "새 문서 생성 보이기",
 	"globalwatchlist-sitelist": "사용자가 정의한 사이트 목록",
-	"globalwatchlist-tags": "{{PLURAL:$1|태그}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|태그}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "사이트 추가",
 	"globalwatchlist-tour-fastmode": "고속 모드",
 	"globalwatchlist-tour-filters": "필터 옵션",

@@ -71,7 +71,7 @@
 	"globalwatchlist-show-logentries": "Pokazati zapisy v dnevnikah",
 	"globalwatchlist-show-newpages": "Pokazati nove stranice",
 	"globalwatchlist-sitelist": "Oprěděljeny koristnikom spisok sajtov",
-	"globalwatchlist-tags": "{{PLURAL:$1|Značka|Značky}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Značka|Značky}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Dodati sajt",
 	"globalwatchlist-tour-addsite-description": "Nakliknite povyšu knopku, da byste dodali novy redok za sajt.",
 	"globalwatchlist-tour-fastmode": "Brzy režim",

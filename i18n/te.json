@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chaduvari",
 			"Veeven"
 		]
 	},
@@ -8,5 +9,6 @@
 	"globalwatchlist-globalwatchlistsettingslink": "అమరికలు",
 	"globalwatchlist-history": "చరిత్ర",
 	"globalwatchlist-otheroptions": "ఇతర అమరికలు",
-	"globalwatchlist-remove": "తీసివేయి"
+	"globalwatchlist-remove": "తీసివేయి",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|ట్యాగు|ట్యాగులు}}</bdi>: $2"
 }

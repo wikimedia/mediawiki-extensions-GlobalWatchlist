@@ -73,7 +73,7 @@
 	"globalwatchlist-show-logentries": "הצגת רשומות יומן",
 	"globalwatchlist-show-newpages": "הצגת יצירת דפים חדשים",
 	"globalwatchlist-sitelist": "רשימת האתרים שהגדרתם",
-	"globalwatchlist-tags": "{{PLURAL:$1|תג|תגים}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|תג|תגים}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "הוספת אתר",
 	"globalwatchlist-tour-addsite-description": "נא ללחוץ למעלה כדי להוסיף עוד שורה עבור אתר.",
 	"globalwatchlist-tour-fastmode": "מצב מהיר",

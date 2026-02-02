@@ -74,7 +74,7 @@
 	"globalwatchlist-show-logentries": "Visa loggposter",
 	"globalwatchlist-show-newpages": "Visa nya sidor",
 	"globalwatchlist-sitelist": "Användardefinierad webbplatslista",
-	"globalwatchlist-tags": "{{PLURAL:$1|Tagg|Taggar}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Tagg|Taggar}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Lägg till en webbplats",
 	"globalwatchlist-tour-addsite-description": "Klicka ovan för att lägga till en till rad för en webbplats.",
 	"globalwatchlist-tour-fastmode": "Snabbläge",

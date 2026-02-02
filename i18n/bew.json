@@ -68,7 +68,7 @@
 	"globalwatchlist-show-logentries": "Kasi unjuk pepasupan rekeman",
 	"globalwatchlist-show-newpages": "Kasi unjuk pengejaan halaman baru",
 	"globalwatchlist-sitelist": "Daptar pelampang tentuan pemaké",
-	"globalwatchlist-tags": "{{PLURAL:$1|Tenger}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Tenger}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Tambahin pelampang",
 	"globalwatchlist-tour-addsite-description": "Klik di atas bakal nambahin atu baris laèn bakal pelampang.",
 	"globalwatchlist-tour-fastmode": "Mode lekas",

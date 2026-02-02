@@ -72,7 +72,7 @@
 	"globalwatchlist-show-logentries": "Vis loggoppføringer",
 	"globalwatchlist-show-newpages": "Vis sideopprettelser",
 	"globalwatchlist-sitelist": "Brukerdefinert nettstedliste",
-	"globalwatchlist-tags": "{{PLURAL:$1|Tagg|Tagger}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Tagg|Tagger}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Legg til et nettsted",
 	"globalwatchlist-tour-addsite-description": "Klikk ovenfor for å legge til en ny rad for et nettsted.",
 	"globalwatchlist-tour-fastmode": "Rask modus",

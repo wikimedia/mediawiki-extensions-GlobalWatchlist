@@ -66,7 +66,7 @@
 	"globalwatchlist-show-logentries": "Забележене радње",
 	"globalwatchlist-show-newpages": "Нове странице",
 	"globalwatchlist-sitelist": "Списак пројеката",
-	"globalwatchlist-tags": "{{PLURAL:$1|Ознака|Ознаке}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Ознака|Ознаке}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Додај сајт",
 	"globalwatchlist-tour-fastmode": "Брзи режим",
 	"globalwatchlist-tour-filters": "Филтер",

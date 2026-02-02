@@ -77,7 +77,7 @@
 	"globalwatchlist-show-logentries": "Mostrar entradas del registro",
 	"globalwatchlist-show-newpages": "Mostrar creaciones de páginas",
 	"globalwatchlist-sitelist": "Sitios definidos por el usuario",
-	"globalwatchlist-tags": "{{PLURAL:$1|Etiqueta|Etiquetas}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Etiqueta|Etiquetas}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Añadir un sitio",
 	"globalwatchlist-tour-fastmode": "Modo rápido",
 	"globalwatchlist-tour-filters": "Opciones de filtrado",

@@ -69,7 +69,7 @@
 	"globalwatchlist-show-logentries": "Näytä lokimerkinnät",
 	"globalwatchlist-show-newpages": "Näytä uusien sivujen luonnit",
 	"globalwatchlist-sitelist": "Käyttäjän määrittelemä sivustolista",
-	"globalwatchlist-tags": "{{PLURAL:$1|Merkintä|Merkinnät}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Merkintä|Merkinnät}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Lisää sivusto",
 	"globalwatchlist-tour-fastmode": "Nopea tila",
 	"globalwatchlist-tour-fastmode-description": "Nopea tila johtaa nopeampaan renderöintiin, mutta vähemmillä yksityiskohdilla. Wikibase-nimiä ei noudeta, ja näytetään yksinkertainen luettelo sivuista, joissa on muutoksia, ilman tietoja muokkaajista tai muokkauksista itsestään",

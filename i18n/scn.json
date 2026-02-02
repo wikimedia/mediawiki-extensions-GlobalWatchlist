@@ -35,7 +35,7 @@
 	"globalwatchlist-show-edits": "Ammustra li canciamenti ê pàggini",
 	"globalwatchlist-show-logentries": "Ammustra li vuci di riggistru",
 	"globalwatchlist-show-newpages": "Ammustra li criazzioni di pàggini novi",
-	"globalwatchlist-tags": "{{PLURAL:$1|Etichetta|Etichetti}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Etichetta|Etichetti}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Agghiunci nu situ",
 	"globalwatchlist-tour-help": "Cchiù ducumintazzioni",
 	"globalwatchlist-tour-intro": "Mpustazziuni dâ lista taliata glubbali",

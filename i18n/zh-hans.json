@@ -84,7 +84,7 @@
 	"globalwatchlist-show-logentries": "显示日志记录",
 	"globalwatchlist-show-newpages": "显示新页面创建",
 	"globalwatchlist-sitelist": "用户定义的站点列表",
-	"globalwatchlist-tags": "{{PLURAL:$1|标签}}：$2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|标签}}</bdi>：$2",
 	"globalwatchlist-tour-addsite": "添加网站",
 	"globalwatchlist-tour-addsite-description": "点击上方可为站点添加另一行。",
 	"globalwatchlist-tour-fastmode": "快速模式",

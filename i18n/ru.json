@@ -81,7 +81,7 @@
 	"globalwatchlist-show-logentries": "Показывать записи журналов",
 	"globalwatchlist-show-newpages": "Показывать создание новых страниц",
 	"globalwatchlist-sitelist": "Ваш список сайтов",
-	"globalwatchlist-tags": "{{PLURAL:$1|Метка|Метки}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Метка|Метки}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Добавить сайт",
 	"globalwatchlist-tour-addsite-description": "Нажмите на кнопку выше, чтобы добавить дополнительную строку для сайта.",
 	"globalwatchlist-tour-fastmode": "Быстрый режим",

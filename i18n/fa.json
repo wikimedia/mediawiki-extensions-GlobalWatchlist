@@ -66,7 +66,7 @@
 	"globalwatchlist-show-logentries": "نمایش مدخل‌های سیاهه",
 	"globalwatchlist-show-newpages": "نمایش صفحه‌های تازه",
 	"globalwatchlist-sitelist": "فهرست وبگاه‌های مشخص‌شده توسط کاربر",
-	"globalwatchlist-tags": "{{PLURAL:$1|برچسب|برچسب‌ها}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|برچسب|برچسب‌ها}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "افزودن یک وبگاه",
 	"globalwatchlist-tour-addsite-description": "برای افزودن یک ردیف دیگر برای یک وبگاه در بالا کلیک کنید.",
 	"globalwatchlist-tour-fastmode": "حالت سریع",

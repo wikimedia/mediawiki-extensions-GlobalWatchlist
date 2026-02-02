@@ -71,7 +71,7 @@
 	"globalwatchlist-show-logentries": "Logbuch-Anträg weisen",
 	"globalwatchlist-show-newpages": "Uleeë vun neie Säite weisen",
 	"globalwatchlist-sitelist": "Benotzerdefinéiert Sittelëscht",
-	"globalwatchlist-tags": "{{PLURAL:$1|Markéierung|Markéierungen}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Markéierung|Markéierungen}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "E Site derbäisetzen",
 	"globalwatchlist-tour-addsite-description": "Uewe klicke fir nach eng Zeil fir e Site derbäizesetzen.",
 	"globalwatchlist-tour-fastmode": "Séiere Modus",

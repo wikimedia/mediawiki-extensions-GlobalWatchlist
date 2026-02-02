@@ -68,7 +68,7 @@
 	"globalwatchlist-show-logentries": "Rodyti žurnalo įrašus",
 	"globalwatchlist-show-newpages": "Rodyti naujus puslapio kūrinius",
 	"globalwatchlist-sitelist": "Naudotojo apibrėžtas svetainių sąrašas",
-	"globalwatchlist-tags": "{{PLURAL:$1|Žyma|Žymos}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Žyma|Žymos}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Pridėti svetainę",
 	"globalwatchlist-tour-addsite-description": "Spustelėkite aukščiau, kad pridėtumėte kitą svetainės eilutę.",
 	"globalwatchlist-tour-fastmode": "Greitas režimas",

@@ -74,7 +74,7 @@
 	"globalwatchlist-show-logentries": "Показувати записи журналів",
 	"globalwatchlist-show-newpages": "Показувати створення сторінок",
 	"globalwatchlist-sitelist": "Користувацький список сайтів",
-	"globalwatchlist-tags": "{{PLURAL:$1|Тег|Теги}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Тег|Теги}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Додати сайт",
 	"globalwatchlist-tour-addsite-description": "Натисніть вище, щоб додати ще один рядок для сайту.",
 	"globalwatchlist-tour-fastmode": "Швидкий режим",

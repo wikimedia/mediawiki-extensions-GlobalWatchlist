@@ -76,7 +76,7 @@
 	"globalwatchlist-show-logentries": "Hiện nhật trình",
 	"globalwatchlist-show-newpages": "Hiện trang mới",
 	"globalwatchlist-sitelist": "Danh sách trang do người dùng lựa chọn",
-	"globalwatchlist-tags": "{{PLURAL:$1|Thẻ}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Thẻ}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Thêm một wiki",
 	"globalwatchlist-tour-addsite-description": "Nhấp vào bên trên để thêm một hàng khác cho một wiki.",
 	"globalwatchlist-tour-fastmode": "Chế độ nhanh",

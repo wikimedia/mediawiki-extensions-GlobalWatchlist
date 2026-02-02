@@ -76,7 +76,7 @@
 	"globalwatchlist-show-logentries": "أظهر مدخلات السجل",
 	"globalwatchlist-show-newpages": "أظهر إنشاءات الصفحات الجديدة",
 	"globalwatchlist-sitelist": "قائمة المواقع المعرفة من قبل المستخدم",
-	"globalwatchlist-tags": "{{PLURAL:$1| علامة | العلامات}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|وسم|وسوم}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "أضف موقعًا",
 	"globalwatchlist-tour-addsite-description": "انقر أعلاه لإضافة صف آخر للموقع.",
 	"globalwatchlist-tour-fastmode": "وضع سريع",

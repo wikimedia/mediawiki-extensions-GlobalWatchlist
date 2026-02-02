@@ -72,7 +72,7 @@
 	"globalwatchlist-show-logentries": "Прик. дневнички ставки",
 	"globalwatchlist-show-newpages": "Прик. новосоздадени страници",
 	"globalwatchlist-sitelist": "Кориснички укажан список на проекти",
-	"globalwatchlist-tags": "{{PLURAL:$1|Ознака|Ознаки}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Ознака|Ознаки}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Додај мреж. место",
 	"globalwatchlist-tour-addsite-description": "Стиснете погоре за да додадете друг ред за мреж. место.",
 	"globalwatchlist-tour-fastmode": "Брз режим",

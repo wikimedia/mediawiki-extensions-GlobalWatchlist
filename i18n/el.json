@@ -70,7 +70,7 @@
 	"globalwatchlist-show-logentries": "Εμφάνιση εγγραφών",
 	"globalwatchlist-show-newpages": "Εμφάνιση νέων δημιουργιών σελίδων",
 	"globalwatchlist-sitelist": "Λίστα ιστοτόπων που ορίζεται από το χρήστη",
-	"globalwatchlist-tags": "{{PLURAL:$1|Ετικέτα|Ετικέτες}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Ετικέτα|Ετικέτες}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Προσθήκη ιστότοπου",
 	"globalwatchlist-tour-addsite-description": "Κάντε κλικ παραπάνω για να προσθέσετε άλλη μια σειρά για έναν ιστότοπο.",
 	"globalwatchlist-tour-fastmode": "Γρήγορη λειτουργία",

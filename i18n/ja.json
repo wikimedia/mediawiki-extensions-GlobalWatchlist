@@ -73,7 +73,7 @@
 	"globalwatchlist-show-logentries": "ログ記録を表示",
 	"globalwatchlist-show-newpages": "新規作成されたページを表示",
 	"globalwatchlist-sitelist": "利用者が定義したサイト一覧",
-	"globalwatchlist-tags": "{{PLURAL:$1|タグ}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|タグ}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "サイトを追加",
 	"globalwatchlist-tour-addsite-description": "新しい行にサイトを追加するには、上をクリックします。",
 	"globalwatchlist-tour-fastmode": "高速モード",

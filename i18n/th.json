@@ -69,7 +69,7 @@
 	"globalwatchlist-show-logentries": "แสดงการเปลี่ยนแปลงที่ถูกบันทึกเป็นปูม",
 	"globalwatchlist-show-newpages": "แสดงการสร้างหน้าใหม่",
 	"globalwatchlist-sitelist": "รายการกำหนดไซต์ของผู้ใช้",
-	"globalwatchlist-tags": "{{PLURAL:$1|ป้ายระบุ}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|ป้ายระบุ}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "เพิ่มไซต์",
 	"globalwatchlist-tour-addsite-description": "กดที่ด้านบนเพื่อเพิ่มเว็บไซต์อื่นมายังรายการเฝ้าดู",
 	"globalwatchlist-tour-fastmode": "โหมดรวดเร็ว",

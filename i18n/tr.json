@@ -76,7 +76,7 @@
 	"globalwatchlist-show-logentries": "Günlük girişlerini göster",
 	"globalwatchlist-show-newpages": "Yeni sayfa oluşturmalarını göster",
 	"globalwatchlist-sitelist": "Kullanıcı tanımlı site listesi",
-	"globalwatchlist-tags": "{{PLURAL:$1|Etiket|Etiketler}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Etiket|Etiketler}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Bir site ekle",
 	"globalwatchlist-tour-addsite-description": "Bir siteye başka bir satır eklemek için yukarıya tıklayın.",
 	"globalwatchlist-tour-fastmode": "Hızlı mod",

@@ -71,7 +71,7 @@
 	"globalwatchlist-show-logentries": "Tunjukkan entri log",
 	"globalwatchlist-show-newpages": "Tunjukkan ciptaan laman baharu",
 	"globalwatchlist-sitelist": "Senarai tapak yang ditentukan pengguna",
-	"globalwatchlist-tags": "{{PLURAL:$1|Teg}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Teg}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Tambah tapak",
 	"globalwatchlist-tour-addsite-description": "Klik di atas untuk menambah baris lain untuk tapak.",
 	"globalwatchlist-tour-fastmode": "Mod pantas",

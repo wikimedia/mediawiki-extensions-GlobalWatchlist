@@ -4,5 +4,5 @@
 			"Merrahtar"
 		]
 	},
-	"globalwatchlist-tags": "{{PLURAL:$1|Тӣһт|Tӣт}}: $2"
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Тӣһт|Tӣт}}</bdi>: $2"
 }

@@ -71,7 +71,7 @@
 	"globalwatchlist-show-logentries": "Monstrar entratas de registro",
 	"globalwatchlist-show-newpages": "Monstrar creationes de nove paginas",
 	"globalwatchlist-sitelist": "Lista de sitos definite per le usator",
-	"globalwatchlist-tags": "Etiquetta{{PLURAL:$1||s}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Etiquetta|Etiquettas}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Adder un sito",
 	"globalwatchlist-tour-addsite-description": "Clicca supra pro adder un altere linea pro un sito.",
 	"globalwatchlist-tour-fastmode": "Modo rapide",

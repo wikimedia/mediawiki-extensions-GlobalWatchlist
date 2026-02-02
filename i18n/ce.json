@@ -70,7 +70,7 @@
 	"globalwatchlist-show-logentries": "Журналийн дӀайаздарш гайта",
 	"globalwatchlist-show-newpages": "Гайта керла агӀонаш кхоллар",
 	"globalwatchlist-sitelist": "Сайтийн хьан могӀам",
-	"globalwatchlist-tags": "{{PLURAL:$1|Билгало}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Билгало}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "ТӀетоха сайт",
 	"globalwatchlist-tour-addsite-description": "Лакхахь йолчу нуьйда тӀетаӀайе, сайтана кхин а могӀа тӀетохархьама.",
 	"globalwatchlist-tour-fastmode": "Чехка раж",

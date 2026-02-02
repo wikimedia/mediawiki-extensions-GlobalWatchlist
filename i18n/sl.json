@@ -70,7 +70,7 @@
 	"globalwatchlist-show-logentries": "Prikaži dnevniške vnose",
 	"globalwatchlist-show-newpages": "Prikaži ustvaritve novih strani",
 	"globalwatchlist-sitelist": "Uporabniško določeni seznam mest",
-	"globalwatchlist-tags": "{{PLURAL:$1|Oznaka|Oznaki|Oznake}}: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Oznaka|Oznaki|Oznake}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Dodaj mesto",
 	"globalwatchlist-tour-addsite-description": "Kliknite zgoraj, da dodate še eno vrstico za mesto.",
 	"globalwatchlist-tour-fastmode": "Hitri način",
