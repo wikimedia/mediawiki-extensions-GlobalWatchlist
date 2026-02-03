@@ -74,7 +74,7 @@
 	"globalwatchlist-show-logentries": "Logboekregels bekijken",
 	"globalwatchlist-show-newpages": "Aanmaak nieuw pagina’s weergeven",
 	"globalwatchlist-sitelist": "Gebruikergedefinieerde lijst met sites",
-	"globalwatchlist-tags": "<bdi>Label{{PLURAL:$1||s}}</bdi>: $2",
+	"globalwatchlist-tags": "<bdi>{{PLURAL:$1|Label|Labels}}</bdi>: $2",
 	"globalwatchlist-tour-addsite": "Een site toevoegen",
 	"globalwatchlist-tour-addsite-description": "Klik hierboven om nog een rij voor een site toe te voegen.",
 	"globalwatchlist-tour-fastmode": "Snelle modus",
