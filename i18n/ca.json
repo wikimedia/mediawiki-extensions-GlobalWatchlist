@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vfc"
+			"Vfc",
+			"Amire80"
 		]
 	},
 	"globalwatchlist-tags": "{{PLURAL:$1| Etiqueta | Etiquetes}}: $2"
