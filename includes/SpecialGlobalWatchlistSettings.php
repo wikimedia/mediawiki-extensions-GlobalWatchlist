@@ -199,7 +199,7 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 	 */
 	protected function alterForm( HTMLForm $form ): void {
 		$form->setSubmitText(
-			$this->msg( 'globalwatchlist-save' )->escaped()
+			$this->msg( 'globalwatchlist-save' )->text()
 		);
 
 		// Enable cancel button, target is Special:GlobalWatchlist
