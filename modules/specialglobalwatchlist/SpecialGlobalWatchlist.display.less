@@ -1,11 +1,10 @@
 @import 'mediawiki.skin.variables.less';
+@import 'mediawiki.mixins.less';
 
 /* stylelint-disable selector-max-id */
 
 .ext-globalwatchlist-col {
-	-moz-column-width: 45em;
-	-webkit-column-width: 45em;
-	column-width: 45em;
+	.column-width( 45em );
 }
 
 .ext-globalwatchlist-emptywatchlist {
