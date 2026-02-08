@@ -35,7 +35,7 @@ and does not resolve to the watchlist content itself.
 ## Frontend
 
 ### Components
-Though implemented differently, both frontends include the following components:
+The frontend includes the following components:
 - A toolbar, which holds to the buttons at the top of the page
 that control the overall functionality
 - A loading bar that is conditionally shown when the display is being refreshed
@@ -45,6 +45,10 @@ that control the overall functionality
  - A button to mark all changes on that site as seen
  - A toggle to collapse/expand the site output
 - When there are sites that have no changes to display, they are noted at the bottom
+
+A hook `ext.globalwatchlist.rebuild` is fired after each page rebuild. It gets a parameter object
+with fields `root`, for root DOM element, boolean `inLive` and `fastMode`, for live updates and
+fast mode accordingly, and `timestamp` for the time of the last rebuild data fetch.
 
 ### Technology
 The frontend uses OOUI and jQuery to create the elements for displaying the overall

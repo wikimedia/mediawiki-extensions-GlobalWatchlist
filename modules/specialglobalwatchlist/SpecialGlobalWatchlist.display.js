@@ -158,6 +158,17 @@
 					'globalwatchlist-asof',
 					config.time.toUTCString()
 				);
+				requestAnimationFrame( () => {
+					requestAnimationFrame( () => {
+						mw.hook( 'ext.globalwatchlist.rebuild' ).fire( {
+							root: viewElements.$sharedFeed[ 0 ],
+							inLive: config.inLive,
+							fastMode: config.fastMode,
+							timestamp: config.time
+						} );
+					} );
+				} );
+
 				resolve();
 			} ).catch( ( error ) => {
 				/* eslint-disable-next-line no-console */
