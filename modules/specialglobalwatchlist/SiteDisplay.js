@@ -37,7 +37,7 @@ function GlobalWatchlistSiteDisplay(
 	);
 
 	// Actual output for this site
-	this.$feedDiv = '';
+	this.$feedDiv = [];
 }
 
 OO.inheritClass( GlobalWatchlistSiteDisplay, GlobalWatchlistSiteBase );
@@ -243,8 +243,9 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
  * @param {Object} siteinfo Extra site information read live from the wiki
  * @param {boolean|undefined} siteinfo.rtl Whether the site is right-to-left;
  *  `undefined` if unknown
+ * @param {string} labelname The name of the Watchlist label
  */
-GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $content, siteinfo ) {
+GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $content, siteinfo, labelname ) {
 	const headerTemplate = mw.template.get(
 		'ext.globalwatchlist.specialglobalwatchlist',
 		'templates/siteRowHeader.mustache'
@@ -253,11 +254,14 @@ GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $conte
 		'special-watchlist-url': this.linker.linkPage( 'Special:Watchlist' ),
 		'site-name': this.site,
 		'special-edit-watchlist-url': this.linker.linkPage( 'Special:EditWatchlist' ),
-		'edit-watchlist-msg': mw.msg( 'globalwatchlist-editwatchlist' )
+		'edit-watchlist-msg': mw.msg( 'globalwatchlist-editwatchlist' ),
+		'site-label': labelname ? mw.msg( 'quotation-marks', labelname ) : ''
 	};
 
-	this.$feedDiv = $( '<div>' )
-		.attr( 'id', 'ext-globalwatchlist-feed-site-' + this.siteID )
+	const $currentFeedDiv = $( '<div>' )
+		.attr( 'id', 'ext-globalwatchlist-feed-site-' + this.siteID +
+			( labelname ? '-label-' + labelname : '' ) )
+		.addClass( 'ext-globalwatchlist-feed-site-' + this.siteID )
 		.addClass( 'ext-globalwatchlist-feed-site' )
 		.append(
 			headerTemplate.render( headerParams ),
@@ -269,9 +273,10 @@ GlobalWatchlistSiteDisplay.prototype.actuallyRenderWatchlist = function ( $conte
 		// in the correct direction, so add a manual direction attribute. See T287649
 		// We still add those classes because they are also used by jQuery.makeCollapsible
 		// to know if the collapse button should be on the right or left.
-		this.$feedDiv.attr( 'dir', siteinfo.rtl ? 'rtl' : 'ltr' );
-		this.$feedDiv.addClass( siteinfo.rtl ? 'mw-content-rtl' : 'mw-content-ltr' );
+		$currentFeedDiv.attr( 'dir', siteinfo.rtl ? 'rtl' : 'ltr' );
+		$currentFeedDiv.addClass( siteinfo.rtl ? 'mw-content-rtl' : 'mw-content-ltr' );
 	}
+	this.$feedDiv.push( $currentFeedDiv );
 };
 
 /**
@@ -282,41 +287,72 @@ GlobalWatchlistSiteDisplay.prototype.renderApiFailure = function () {
 		mw.msg( 'globalwatchlist-fetch-site-failure' )
 	);
 
-	this.actuallyRenderWatchlist( $siteContent, { rtl: undefined } );
+	this.actuallyRenderWatchlist( $siteContent, { rtl: undefined }, '' );
 };
 
 /**
  * Display the watchlist
  *
- * @param {GlobalWatchlistEntryBase[]} summary What should be rendered
+ * @param {Array<Array<GlobalWatchlistEntryBase>>} summaryArray What should be rendered
  * @param {Object} siteinfo Extra site information read live from the wiki
  * @param {boolean|undefined} siteinfo.rtl Whether the site is right-to-left;
  *  `undefined` if unknown
  */
-GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary, siteinfo ) {
-	const $ul = $( '<ul>' ),
-		that = this;
-	summary.forEach( ( element ) => {
-		$ul.append( that.makePageLink( element ) );
-	} );
+GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summaryArray, siteinfo ) {
+	const that = this;
+	summaryArray.forEach( ( summary, key ) => {
+		if ( !summary ) {
+			return;
+		}
+		const $ul = $( '<ul>' );
+		summary.forEach( ( element ) => {
+			$ul.append( that.makePageLink( element ) );
+		} );
 
-	const markSeenButton = new OO.ui.ButtonInputWidget( {
-		classes: [ 'ext-globalwatchlist-feed-markseen' ],
-		flags: [ 'destructive' ],
-		icon: 'check',
-		label: mw.msg( 'globalwatchlist-markseen' )
-	} ).on( 'click', () => {
-		that.markAllAsSeen();
-	} );
+		const markSeenButton = new OO.ui.ButtonInputWidget( {
+			classes: [ 'ext-globalwatchlist-feed-markseen' ],
+			flags: [ 'destructive' ],
+			icon: 'check',
+			label: mw.msg( 'globalwatchlist-markseen' )
+		} );
 
-	const $outputContent = $( '<div>' )
-		.addClass( 'ext-globalwatchlist-site' )
-		.append(
-			markSeenButton.$element,
-			$ul
-		)
-		.makeCollapsible();
-	this.actuallyRenderWatchlist( $outputContent, siteinfo );
+		markSeenButton.on( 'click', () => {
+			const hasLabels =
+				Array.isArray( that.labelsData ) &&
+				that.labelsData.length > 0;
+
+			if ( !hasLabels ) {
+				that.debug( 'Mark all' );
+				that.markAllAsSeen();
+				return;
+			}
+
+			// Find the closest collapsible container
+			const $container = markSeenButton.$element.closest( '.mw-collapsible' );
+			// Collect all data-title attributes inside the container
+			const titles = [];
+			$container.find( '[data-title]' ).each( function () {
+				const title = $( this ).attr( 'data-title' );
+				if ( title ) {
+					titles.push( decodeURIComponent( title ) );
+				}
+			} );
+
+			that.debug( 'Mark section', titles );
+			that.markSectionAsSeen( Array.from( new Set( titles ) ) ).then( () => $( markSeenButton
+				.$element.closest( '.ext-globalwatchlist-feed-site' ).children()[ 1 ] ).hide() );
+		} );
+
+		const $outputContent = $( '<div>' )
+			.addClass( 'ext-globalwatchlist-site' )
+			.append(
+				markSeenButton.$element,
+				$ul
+			)
+			.makeCollapsible();
+		const labelname = that.labelsData && that.labelsData[ key ];
+		this.actuallyRenderWatchlist( $outputContent, siteinfo, labelname );
+	} );
 };
 /* end GlobalWatchlistSiteDisplay.prototype.renderWatchlist */
 
@@ -325,9 +361,9 @@ GlobalWatchlistSiteDisplay.prototype.renderWatchlist = function ( summary, sitei
  */
 GlobalWatchlistSiteDisplay.prototype.afterMarkAllAsSeen = function () {
 	this.debug( 'markSiteAsSeen - hiding site' );
-	if ( this.$feedDiv ) {
+	if ( this.$feedDiv && this.$feedDiv[ 0 ] ) {
 		// Don't call .children() on the default empty string, T275078
-		$( this.$feedDiv.children()[ 1 ] ).hide();
+		$( this.$feedDiv[ 0 ].children()[ 1 ] ).hide();
 	}
 
 	// FIXME
@@ -335,13 +371,20 @@ GlobalWatchlistSiteDisplay.prototype.afterMarkAllAsSeen = function () {
 };
 /* end GlobalWatchlistSiteDisplay.prototype.afterMarkAllAsSeen */
 
+/**
+ * Update display after marking a page as seen
+ * @param {string} pageTitle the marked page
+ */
 GlobalWatchlistSiteBase.prototype.afterMarkPageAsSeen = function ( pageTitle ) {
 	this.debug( 'markPageAsSeen - hiding page' );
+	const dataTitle = encodeURIComponent( pageTitle );
 	if ( this.$feedDiv ) {
-		const dataTitle = encodeURIComponent( pageTitle );
-		$( this.$feedDiv.find( '[data-title="' + dataTitle + '"]' ) ).hide();
+		this.$feedDiv.forEach( ( item ) => {
+			$( item ).find( '[data-title="' + dataTitle + '"]' ).hide();
+		} );
 	}
 };
+/* end GlobalWatchlistSiteDisplay.prototype.afterMarkPageAsSeen */
 
 /**
  * Update entry click handlers, text, and strikethrough for a specific title

@@ -151,8 +151,12 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 				'general|namespaces' :
 				'general';
 			if ( !that.config.languageData ) {
-				query.meta = 'siteinfo|languageinfo';
+				query.meta += '|languageinfo';
 				query.liprop = 'dir';
+			}
+			if ( !that.labelsData ) {
+				query.meta += '|userinfo';
+				query.uiprop = 'watchlistlabels';
 			}
 		}
 		if ( !that.config.fastMode ) {
@@ -168,12 +172,22 @@ GlobalWatchlistSiteBase.prototype.actuallyGetWatchlist = function ( iteration, c
 				return;
 			}
 			const wlraw = response.query.watchlist;
-			const linfo = response.query.languageinfo;
-			if ( linfo ) {
-				that.config.languageData = linfo;
-				that.debug( 'language data', linfo );
-				if ( that.config.lang && !linfo[ that.config.lang ] ) {
+			const langinfo = response.query.languageinfo;
+			if ( langinfo ) {
+				that.config.languageData = langinfo;
+				that.debug( 'language data', langinfo );
+				if ( that.config.lang && !langinfo[ that.config.lang ] ) {
 					that.config.lang = null;
+				}
+			}
+			if ( response.query.userinfo ) {
+				const labelinfo = response.query.userinfo.watchlistlabels;
+				if ( labelinfo ) {
+					that.labelsData = [];
+					labelinfo.forEach( ( item ) => {
+						this.labelsData[ item.id ] = item.name;
+					} );
+					that.debug( 'user labels', labelinfo );
 				}
 			}
 			if ( response.query.namespaces ) {
@@ -408,7 +422,8 @@ GlobalWatchlistSiteBase.prototype.getWatchlist = function ( latestConfig ) {
 				const prelimSummary = that.watchlistUtils.rawToSummary(
 					wlraw,
 					that.config.groupPage,
-					tagsInfo
+					tagsInfo,
+					that.labelsData || []
 				);
 				that.debug( 'getWatchlist prelimSummary', prelimSummary );
 
@@ -440,19 +455,23 @@ GlobalWatchlistSiteBase.prototype.renderWatchlist = function ( summary, siteinfo
  * Fetch and process wikibase labels when the watchlist is for wikidata
  *
  * @param {GlobalWatchlistEntryBase[]} summary Original summary, with page titles (Q1, P2, L3, etc.)
- * @return {Promise} Updated summary, with labels
+ * @return {Promise<Array>} Updated summary array, with labels
  */
 GlobalWatchlistSiteBase.prototype.makeWikidataList = function ( summary ) {
 	const that = this;
-	return new Promise( ( resolve ) => {
-		if ( !that.isWikibase || that.config.fastMode ) {
-			resolve( summary );
-		} else {
-			that.wikibaseHandler.addWikibaseLabels( summary ).then( ( updatedSummary ) => {
-				resolve( updatedSummary );
-			} );
-		}
-	} );
+
+	if ( !summary || summary.length === 0 ) {
+		return Promise.resolve( [] );
+	}
+
+	if ( !that.isWikibase || that.config.fastMode ) {
+		return Promise.resolve( summary );
+	}
+
+	// Not efficient for now
+	return Promise.all(
+		summary.map( ( item ) => that.wikibaseHandler.addWikibaseLabels( item ) )
+	);
 };
 
 /**
@@ -488,6 +507,48 @@ GlobalWatchlistSiteBase.prototype.markAllAsSeen = function () {
  */
 GlobalWatchlistSiteBase.prototype.afterMarkAllAsSeen = function () {
 	// STUB
+};
+
+/**
+ * Mark a set of pages as seen.
+ * This function is not efficient for now, and it will be very improved after T417357 will be resolved.
+ *
+ * @param {string[]} pageTitles - Array of page titles to mark as seen
+ * @return {Promise} resolves when all pages are marked
+ */
+GlobalWatchlistSiteBase.prototype.markSectionAsSeen = function ( pageTitles ) {
+	this.debug( 'markSectionAsSeen - marking', pageTitles );
+	const that = this;
+
+	if ( !pageTitles || pageTitles.length === 0 ) {
+		return Promise.resolve();
+	}
+
+	// Take first 50 titles (or all if <=50)
+	const batch = pageTitles.slice( 0, 50 );
+	const remaining = pageTitles.slice( 50 );
+
+	return new Promise( ( resolve, reject ) => {
+		const setter = {
+			action: 'setnotificationtimestamp',
+			titles: batch,
+			timestamp: that.config.time.toISOString()
+		};
+
+		that.api( 'postWithEditToken', setter, 'actuallyMarkSectionAsSeen' )
+			.then( () => {
+				// Update the display immediately for this batch
+				batch.forEach( ( title ) => that.afterMarkPageAsSeen( title ) );
+
+				if ( remaining.length > 0 ) {
+					// Recursively process the next batch
+					that.markSectionAsSeen( remaining ).then( resolve ).catch( reject );
+				} else {
+					resolve();
+				}
+			} )
+			.catch( reject );
+	} );
 };
 
 /**

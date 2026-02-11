@@ -425,29 +425,43 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
  * @param {boolean} groupPage Whether to group results by page
  * @param {Object} tagsInfo See details at
  *    {@link GlobalWatchlistWatchlistUtils#getFinalEntries #getFinalEntries}
- * @return {GlobalWatchlistEntryBase[]} summary of changes, each change converted to either
- *    {@link GlobalWatchlistEntryEdits} or {@link GlobalWatchlistEntryLog}
+ * @param {Object} labelsInfo list of user's Watchlist labels
+ * @return {Array<Array<GlobalWatchlistEntryBase>>} list of summaries of changes, each change converted
+ *    to either {@link GlobalWatchlistEntryEdits} or {@link GlobalWatchlistEntryLog}
  */
-GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage, tagsInfo ) {
-	let logEntries = [];
-	const edits = {},
-		cleanedEntries = this.normalizeEntries( entries );
+GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, groupPage, tagsInfo, labelsInfo ) {
+	const buckets = [];
+	let maxLabelId = -1;
+	Object.keys( labelsInfo ).forEach( ( key ) => {
+		const index = Number( key );
+		buckets[ index ] = {
+			edits: {},
+			logEntries: [],
+			id: index
+		};
+		if ( index > maxLabelId ) {
+			maxLabelId = index;
+		}
+	} );
+	// extra bucket for every page that does not labels that were existed at the browser load of the page
+	buckets[ maxLabelId + 1 ] = {
+		edits: {},
+		logEntries: [],
+		id: maxLabelId + 1
+	};
 
+	const cleanedEntries = this.normalizeEntries( entries );
 	const that = this;
 	cleanedEntries.forEach( ( entry ) => {
-		if ( entry.type === 'edit' ) {
-			// Also includes new pages
-			if ( typeof edits[ entry.pageid ] === 'undefined' ) {
-				edits[ entry.pageid ] = {
-					each: [ entry ],
-					ns: entry.ns,
-					title: entry.title
-				};
-			} else {
-				edits[ entry.pageid ].each.push( entry );
-			}
-		} else if ( entry.type === 'log' ) {
-			logEntries.push( {
+		let targetBuckets = ( entry.labels || [] )
+			.map( ( label ) => buckets[ label.id ] ).filter( Boolean );
+		if ( targetBuckets.length === 0 ) {
+			targetBuckets = [ buckets[ maxLabelId + 1 ] ];
+		}
+
+		let entryObject;
+		if ( entry.type === 'log' ) {
+			entryObject = {
 				bot: entry.bot,
 				comment: entry.parsedcomment,
 				entryType: entry.type,
@@ -466,50 +480,79 @@ GlobalWatchlistWatchlistUtils.prototype.rawToSummary = function ( entries, group
 					entry.anon,
 					entry.temp
 				)
-			} );
+			};
+		}
+
+		targetBuckets.forEach( ( bucket ) => {
+			if ( entry.type === 'edit' ) {
+				// Also includes new pages
+				if ( !bucket.edits[ entry.pageid ] ) {
+					bucket.edits[ entry.pageid ] = {
+						each: [ entry ],
+						ns: entry.ns,
+						title: entry.title
+					};
+				} else {
+					bucket.edits[ entry.pageid ].each.push( entry );
+				}
+			} else if ( entry.type === 'log' ) {
+				bucket.logEntries.push( entryObject );
+			}
+		} );
+	} );
+
+	const GlobalWatchlistEntryEdits = require( './EntryEdits.js' );
+	const GlobalWatchlistEntryLog = require( './EntryLog.js' );
+	const summaryArray = [];
+
+	buckets.forEach( ( bucket ) => {
+		if ( !bucket ) {
+			return;
+		}
+
+		bucket.edits = this.convertEdits( bucket.edits, groupPage );
+
+		// Sorting: we want the newest edits and log entries at the top. But, the api
+		// only tells us what minute the edit/log entry was made. So, if the timestamps
+		// are the same, go by the revid and logid - we assume that newer edits have higher
+		// revision ids, and newer log entries have higher log ids. Sort functions should
+		// return negative if the order should not change, and positive if they should.
+		// See T275303
+		bucket.edits.sort(
+			( editA, editB ) => {
+				if ( editA.timestamp !== editB.timestamp ) {
+					return ( ( new Date( editA.timestamp ) ) > ( new Date( editB.timestamp ) ) ?
+						-1 :
+						1
+					);
+				}
+				// fallback to revision ids
+				return ( ( editA.toRev > editB.toRev ) ? -1 : 1 );
+			}
+		);
+
+		bucket.logEntries.sort(
+			( logA, logB ) => {
+				if ( logA.timestamp !== logB.timestamp ) {
+					return ( ( new Date( logA.timestamp ) ) > ( new Date( logB.timestamp ) ) ?
+						-1 :
+						1
+					);
+				}
+				// fallback to log ids
+				return ( ( logA.logid > logB.logid ) ? -1 : 1 );
+			}
+		);
+
+		bucket.edits = this.getFinalEntries( bucket.edits, tagsInfo, GlobalWatchlistEntryEdits );
+		bucket.logEntries = this.getFinalEntries( bucket.logEntries, tagsInfo, GlobalWatchlistEntryLog );
+		summaryArray[ bucket.id ] = bucket.edits.concat( bucket.logEntries );
+		if ( summaryArray[ bucket.id ].length === 0 ) {
+			summaryArray[ bucket.id ] = null;
 		}
 	} );
 
-	let convertedEdits = this.convertEdits( edits, groupPage );
-
-	// Sorting: we want the newest edits and log entries at the top. But, the api
-	// only tells us what minute the edit/log entry was made. So, if the timestamps
-	// are the same, go by the revid and logid - we assume that newer edits have higher
-	// revision ids, and newer log entries have higher log ids. Sort functions should
-	// return negative if the order should not change, and positive if they should.
-	// See T275303
-	convertedEdits.sort(
-		( editA, editB ) => {
-			if ( editA.timestamp !== editB.timestamp ) {
-				return ( ( new Date( editA.timestamp ) ) > ( new Date( editB.timestamp ) ) ?
-					-1 :
-					1
-				);
-			}
-			// fallback to revision ids
-			return ( ( editA.toRev > editB.toRev ) ? -1 : 1 );
-		}
-	);
-	logEntries.sort(
-		( logA, logB ) => {
-			if ( logA.timestamp !== logB.timestamp ) {
-				return ( ( new Date( logA.timestamp ) ) > ( new Date( logB.timestamp ) ) ?
-					-1 :
-					1
-				);
-			}
-			// fallback to log ids
-			return ( ( logA.logid > logB.logid ) ? -1 : 1 );
-		}
-	);
-
-	const GlobalWatchlistEntryEdits = require( './EntryEdits.js' );
-	convertedEdits = this.getFinalEntries( convertedEdits, tagsInfo, GlobalWatchlistEntryEdits );
-
-	const GlobalWatchlistEntryLog = require( './EntryLog.js' );
-	logEntries = this.getFinalEntries( logEntries, tagsInfo, GlobalWatchlistEntryLog );
-
-	return convertedEdits.concat( logEntries );
+	return summaryArray;
 };
 
 module.exports = GlobalWatchlistWatchlistUtils;

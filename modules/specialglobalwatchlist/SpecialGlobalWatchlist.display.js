@@ -105,6 +105,9 @@
 	viewManager.refresh = function () {
 		globalWatchlistDebug.info( 'watchlists.refresh - starting' );
 		config.time = new Date();
+		watchedSites.siteList.forEach( ( site ) => {
+			site.$feedDiv = [];
+		} );
 		return new Promise( ( resolve ) => {
 			watchedSites.getAllWatchlists( config ).then( () => {
 				const $div = $( '<div>' ).attr( 'id', 'ext-globalwatchlist-feedcollector' ),

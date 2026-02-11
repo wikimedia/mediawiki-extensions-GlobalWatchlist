@@ -24,7 +24,7 @@
 
 		lang: null,
 		// Based on the others or the config
-		watchlistQueryProps: 'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags|expiry',
+		watchlistQueryProps: 'ids|title|flags|loginfo|parsedcomment|timestamp|user|tags|expiry|labels',
 		watchlistQueryTypes: 'edit|new|log',
 		watchlistQueryShow: 'unread'
 	};
