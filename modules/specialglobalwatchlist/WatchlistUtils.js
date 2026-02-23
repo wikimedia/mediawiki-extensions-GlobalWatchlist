@@ -149,7 +149,10 @@ GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser )
 				'Special:Contributions/' :
 				'User:';
 			userLinkURL = that.linker.linkPage( userLinkBase + userMessage );
-			userLink = '<a href="' + userLinkURL + '" target="_blank">' + userMessage + '</a>';
+			userLink = mw.html.element( 'a', {
+				href: userLinkURL,
+				target: '_blank'
+			}, userMessage );
 		}
 		if ( editsByUser[ userMessage ].editCount > 1 ) {
 			userLink = userLink + ' ' +
@@ -344,7 +347,7 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 
 	// Tags display
 	var noTagsDisplay = Object.keys( tagsInfo ).length === 0;
-	var tagDescriptions, tagsWithLabel;
+	var tagDescriptions;
 
 	// Comment display
 	var that = this;
@@ -399,8 +402,12 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 					return tagsInfo[ tagName ];
 				}
 			).join( ', ' );
-			tagsWithLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, tagDescriptions );
-			entry.tagsDisplay = mw.msg( 'parentheses', tagsWithLabel );
+			var $tagsWithLabel = mw.message(
+				'globalwatchlist-tags',
+				entry.tags.length,
+				$.parseHTML( tagDescriptions )
+			).parseDom();
+			entry.tagsDisplay = mw.message( 'parentheses', $tagsWithLabel ).parseDom();
 		}
 
 		// Comment display

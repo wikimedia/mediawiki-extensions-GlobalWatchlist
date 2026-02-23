@@ -109,7 +109,7 @@ GlobalWatchlistSiteBase.prototype.api = function ( func, content, name ) {
 
 			var $userNotification = $( '<div>' )
 				.append(
-					mw.msg( 'globalwatchlist-api-error', that.site ),
+					mw.message( 'globalwatchlist-api-error', that.site ).escaped(),
 					that.apiObject.getErrorMessage( data )
 				);
 

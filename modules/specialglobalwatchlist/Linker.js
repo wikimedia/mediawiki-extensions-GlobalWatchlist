@@ -24,9 +24,12 @@ function GlobalWatchlistLinker( site ) {
 GlobalWatchlistLinker.prototype.fixLocalLinks = function ( comment ) {
 	// Only recognizes links in the edit summary if that wiki's settings are set to
 	// use /wiki/$1 and /w/index.php?
+	var site = this.site;
 	return comment.replace(
 		/<a href="(\/wiki\/|\/w\/index\.php\?)/g,
-		'<a href="//' + this.site + '$1'
+		function ( _, p1 ) {
+			return '<a href="//' + mw.html.escape( site ) + p1;
+		}
 	);
 };
 
