@@ -141,6 +141,7 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 		const $diffLink = $( '<a>' )
 			.attr( 'href', this.linker.linkQuery( 'diff=' + entry.toRev + '&oldid=' + entry.fromRev ) )
 			.attr( 'target', '_blank' )
+			.attr( 'dir', 'auto' )
 			.addClass( 'ext-globalwatchlist-diff' );
 		// case when there is more than just the creation
 		if ( newEdit ) {
