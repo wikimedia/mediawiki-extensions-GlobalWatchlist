@@ -64,7 +64,7 @@ function GlobalWatchlistEntryBase( info ) {
 	this.commentDisplay = info.commentDisplay;
 
 	/**
-	 * @property {string|boolean} tagsDisplay Either `false` or a raw HTML string for the
+	 * @property {jQuery|boolean} tagsDisplay Either `false` or a jQuery object for the
 	 *   parsed tags information that should be shown
 	 */
 	this.tagsDisplay = info.tagsDisplay;

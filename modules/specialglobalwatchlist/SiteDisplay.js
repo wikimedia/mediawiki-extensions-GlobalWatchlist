@@ -217,10 +217,9 @@ GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	}
 
 	if ( entry.tagsDisplay ) {
-		// Need to process links in the parsed description as raw HTML
 		const $tags = $( '<em>' )
 			.addClass( 'ext-globalwatchlist-tags' )
-			.html( entry.tagsDisplay );
+			.append( entry.tagsDisplay );
 		$row.append( ' ' )
 			.append( $tags );
 	}

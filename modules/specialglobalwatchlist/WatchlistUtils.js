@@ -139,10 +139,11 @@ GlobalWatchlistWatchlistUtils.prototype.makeUserLinks = function ( editsByUser )
 				'Special:Contributions/' :
 				'User:';
 			userLinkURL = that.linker.linkPage( userLinkBase + userMessage );
-			userLink = '<a href="' + userLinkURL + '" target="_blank" class="mw-userlink' +
-				// styling anonymous users and temporary accounts names
-				( editsByUser[ userMessage ].temp ? ' mw-tempuserlink' : '' ) +
-				'"><bdi>' + userMessage + '</bdi></a>';
+			userLink = mw.html.element( 'a', {
+				href: userLinkURL,
+				target: '_blank',
+				class: 'mw-userlink' + ( editsByUser[ userMessage ].temp ? ' mw-tempuserlink' : '' )
+			}, new mw.html.Raw( mw.html.element( 'bdi', {}, userMessage ) ) );
 		}
 		if ( editsByUser[ userMessage ].editCount > 1 ) {
 			userLink = userLink + ' ' +
@@ -398,8 +399,8 @@ GlobalWatchlistWatchlistUtils.prototype.getFinalEntries = function (
 				}
 				return $acc.append( $( '<bdi>' ).html( that.linker.newTabLinks( tagsInfo[ tagName ] ) ) );
 			}, $( '<span>' ) );
-			$tagsWithLabel = mw.msg( 'globalwatchlist-tags', entry.tags.length, $tagDescriptions.html() );
-			entry.tagsDisplay = mw.msg( 'parentheses', $tagsWithLabel );
+			$tagsWithLabel = mw.message( 'globalwatchlist-tags', entry.tags.length, $tagDescriptions ).parseDom();
+			entry.tagsDisplay = mw.message( 'parentheses', $tagsWithLabel ).parseDom();
 		}
 
 		// Comment display
