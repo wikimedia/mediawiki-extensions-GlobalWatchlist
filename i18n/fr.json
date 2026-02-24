@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Escargot bleu",
 			"Florian COLLIN",
 			"Gomoko",
 			"Mahabarata",
@@ -59,6 +60,7 @@
 	"globalwatchlist-option-grouppage": "Grouper les résultats par page",
 	"globalwatchlist-option-live": "Mises à jour en direct",
 	"globalwatchlist-otheroptions": "Autres paramètres",
+	"globalwatchlist-permalink": "lien permanent",
 	"globalwatchlist-prefs-settings": "Pour définir les préférences pour la liste de suivi globale, veuillez vous rendre sur [[Special:GlobalWatchlistSettings]].",
 	"globalwatchlist-refresh": "Actualiser",
 	"globalwatchlist-remove": "Retirer",
