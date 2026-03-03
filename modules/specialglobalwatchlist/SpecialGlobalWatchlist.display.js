@@ -212,7 +212,7 @@
 
 	viewManager.runLive = function () {
 		if ( config.inLive === true ) {
-			setTimeout( viewManager.maybeLiveRefresh, 7500 );
+			setTimeout( viewManager.maybeLiveRefresh, 60000 );
 		}
 	};
 
