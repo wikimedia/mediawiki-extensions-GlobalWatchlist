@@ -67,7 +67,7 @@ class SpecialGlobalWatchlist extends SpecialPage {
 		$message = Html::rawElement(
 			'div',
 			[ 'class' => 'ext-globalwatchlist-content' ],
-			$this->msg( 'globalwatchlist-javascript-required' )
+			$this->msg( 'globalwatchlist-javascript-required' )->parse()
 		);
 		$out->addHTML( $message );
 
