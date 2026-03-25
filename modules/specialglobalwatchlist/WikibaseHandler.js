@@ -114,6 +114,10 @@ GlobalWatchlistWikibaseHandler.prototype.debug = function ( msg, extraInfo ) {
 GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
 	const that = this;
 
+	if ( !entityIds || entityIds.length === 0 ) {
+		return Promise.resolve( {} );
+	}
+
 	return new Promise( ( resolve ) => {
 		const query = {
 			action: 'wbgetentities',
@@ -162,6 +166,10 @@ GlobalWatchlistWikibaseHandler.prototype.getRawLabels = function ( entityIds ) {
  */
 GlobalWatchlistWikibaseHandler.prototype.cleanupRawLabels = function ( rawLabels ) {
 	this.debug( 'cleanupRawLabels - starting (raw)', rawLabels );
+
+	if ( !rawLabels || Object.keys( rawLabels ).length === 0 ) {
+		return {};
+	}
 
 	const cleanedLabels = {};
 	const entityIds = Object.keys( rawLabels );
@@ -242,12 +250,6 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 		const updatedEntries = extractedInfo.entries;
 		const entityIds = extractedInfo.ids.filter( ( id ) => !id.startsWith( 'E' ) );
 
-		if ( entityIds.length === 0 ) {
-			// Nothing to fetch
-			resolve( updatedEntries );
-			return;
-		}
-
 		that.getRawLabels( entityIds ).then( ( rawLabels ) => {
 			const cleanedLabels = that.cleanupRawLabels( rawLabels );
 
@@ -259,12 +261,14 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 						[ ' (', $( '<bdi>' ).text( cleanedLabelsData ), ')' ] );
 				} else {
 					const titleEs = entry.$titleMsg.text();
-					const $esElem = $( '<span>' );
+					const $esElem = $( '<bdi>' );
 					if ( that.esCache[ titleEs ] ) {
-						$esElem.text( ' ' + mw.message( 'parentheses', that.esCache[ titleEs ] ) );
+						$esElem.text( that.esCache[ titleEs ] );
+						entry.$titleMsg = $( '<span>' ).append( entry.$titleMsg, ' (', $esElem, ')' );
 					} else {
 						$esElem.attr( 'data-id', titleEs );
 						let promise = that.esPromiseCache[ titleEs ];
+						entry.$titleMsg = $( '<span>' ).append( entry.$titleMsg, $esElem );
 						if ( !promise ) {
 							promise = that.calculateRealTextAsync( titleEs )
 								.then( ( realText ) => {
@@ -283,12 +287,15 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 						promise.then( ( realText ) => {
 							that.debug( 'saving realText to', $esElem );
 							if ( realText && realText !== '' ) {
-								$( '[data-id="' + $.escapeSelector( titleEs ) + '"]' )
-									.text( ' ' + mw.message( 'parentheses', realText ).text() );
+								const $bdi = $( '[data-id="' +
+									$.escapeSelector( titleEs ) + '"]' );
+								if ( $bdi.text() === '' ) {
+									$bdi.replaceWith( ' (',
+										$( '<bdi>' ).text( realText )[ 0 ], ')' );
+								}
 							}
 						} );
 					}
-					entry.$titleMsg = $( '<span>' ).append( entry.$titleMsg, $esElem );
 				}
 			} );
 
