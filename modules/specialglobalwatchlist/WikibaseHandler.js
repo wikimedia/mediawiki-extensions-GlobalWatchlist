@@ -266,7 +266,6 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 						$esElem.text( that.esCache[ titleEs ] );
 						entry.$titleMsg = $( '<span>' ).append( entry.$titleMsg, ' (', $esElem, ')' );
 					} else {
-						$esElem.attr( 'data-id', titleEs );
 						let promise = that.esPromiseCache[ titleEs ];
 						entry.$titleMsg = $( '<span>' ).append( entry.$titleMsg, $esElem );
 						if ( !promise ) {
@@ -287,12 +286,8 @@ GlobalWatchlistWikibaseHandler.prototype.addWikibaseLabels = function ( summaryE
 						promise.then( ( realText ) => {
 							that.debug( 'saving realText to', $esElem );
 							if ( realText && realText !== '' ) {
-								const $bdi = $( '[data-id="' +
-									$.escapeSelector( titleEs ) + '"]' );
-								if ( $bdi.text() === '' ) {
-									$bdi.replaceWith( ' (',
-										$( '<bdi>' ).text( realText )[ 0 ], ')' );
-								}
+								$esElem.text( that.esCache[ titleEs ] );
+								entry.$titleMsg.append( ' (', $esElem, ')' );
 							}
 						} );
 					}

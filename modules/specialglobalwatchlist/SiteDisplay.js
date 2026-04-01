@@ -50,11 +50,17 @@ OO.inheritClass( GlobalWatchlistSiteDisplay, GlobalWatchlistSiteBase );
  */
 GlobalWatchlistSiteDisplay.prototype.makePageLink = function ( entry ) {
 	const pageTitle = encodeURIComponent( entry.title ).replace( /'/g, '%27' );
+	let $titleMsg = entry.$titleMsg;
+	if ( !$titleMsg || !$titleMsg.length ) {
+		$titleMsg = $( '<bdi>' ).text( entry.title );
+	} else if ( !$titleMsg.html() ) {
+		$titleMsg.text( mw.html.escape( entry.title ) );
+	}
 	const $pageLink = $( '<a>' )
 		.attr( 'href', this.linker.linkQuery( 'title=' + pageTitle + '&redirect=no' ) )
 		.attr( 'target', '_blank' )
 		.addClass( 'mw-title ext-globalwatchlist-pagetitle' )
-		.html( entry.$titleMsg.html() || mw.html.escape( entry.title ) );
+		.append( $titleMsg );
 	const that = this;
 
 	// Actually set up the $row to be returned
