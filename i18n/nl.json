@@ -70,7 +70,7 @@
 	"globalwatchlist-settings-error-no-sites": "Geen sites geselecteerd",
 	"globalwatchlist-settings-error-no-types": "Geen wijzigingstype ingesteld",
 	"globalwatchlist-settings-error-too-many-sites": "{{PLURAL:$1|$1 site is|$1 sites zijn}} gekozen. Dit is meer dan $2, het maximum aantal toegestane sites.",
-	"globalwatchlist-show-edits": "Toon paginabewerkingen",
+	"globalwatchlist-show-edits": "Paginabewerkingen weergeven",
 	"globalwatchlist-show-logentries": "Logboekregels bekijken",
 	"globalwatchlist-show-newpages": "Aanmaak nieuw pagina’s weergeven",
 	"globalwatchlist-sitelist": "Gebruikergedefinieerde lijst met sites",
