@@ -39,7 +39,12 @@ class SpecialGlobalWatchlist extends SpecialPage {
 	public function __construct(
 		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
 	) {
-		parent::__construct( 'GlobalWatchlist', 'viewmywatchlist' );
+		parent::__construct( 'GlobalWatchlist' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'viewmywatchlist';
 	}
 
 	/**

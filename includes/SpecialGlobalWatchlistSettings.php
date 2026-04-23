@@ -49,8 +49,13 @@ class SpecialGlobalWatchlistSettings extends FormSpecialPage {
 		private readonly UrlUtils $urlUtils,
 		private readonly UserOptionsLookup $userOptionsLookup,
 	) {
-		parent::__construct( 'GlobalWatchlistSettings', 'editmyoptions' );
+		parent::__construct( 'GlobalWatchlistSettings' );
 		$this->logger = LoggerFactory::getInstance( 'GlobalWatchlist' );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'editmyoptions';
 	}
 
 	/**
