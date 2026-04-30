@@ -6,7 +6,8 @@
 			"Hubaishan",
 			"Meno25",
 			"Tala Ali",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Mohammed Qays"
 		]
 	},
 	"globalwatchlist": "قائمة المراقبة العالمية",
@@ -59,7 +60,7 @@
 	"globalwatchlist-otheroptions": "إعدادات أخرى",
 	"globalwatchlist-prefs-settings": "لتعيين تفضيلات قائمة المراقبة العالمية ، يرجى زيارة [[Special:GlobalWatchlistSettings]].",
 	"globalwatchlist-refresh": "ينعش",
-	"globalwatchlist-remove": "أزل",
+	"globalwatchlist-remove": "إزالة",
 	"globalwatchlist-resetchanges": "تم إجراء إعادة تعيين التغييرات",
 	"globalwatchlist-rewatch": "إعادة المشاهدة",
 	"globalwatchlist-save": "احفظ الاعدادات",
