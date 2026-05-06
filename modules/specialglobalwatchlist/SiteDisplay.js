@@ -373,6 +373,7 @@ GlobalWatchlistSiteDisplay.prototype.afterMarkAllAsSeen = function () {
 
 /**
  * Update display after marking a page as seen
+ *
  * @param {string} pageTitle the marked page
  */
 GlobalWatchlistSiteBase.prototype.afterMarkPageAsSeen = function ( pageTitle ) {
