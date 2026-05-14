@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Volvox"
+			"Volvox",
+			"Les Meloures"
 		]
 	},
 	"globalwatchlist": "Global Iwwerwaachungslëscht",
@@ -68,7 +69,7 @@
 	"globalwatchlist-settings-error-no-types": "Keng Ännerungstyppen erausgesicht",
 	"globalwatchlist-settings-error-too-many-sites": "Et {{PLURAL:$1|gouf $1 Site|goufe(n) $1 Sitten}} erausgesicht, wat méi wéi $2 ass, d'Maximalzuel vun erlaabte Sitten.",
 	"globalwatchlist-show-edits": "Säitenännerunge weisen",
-	"globalwatchlist-show-logentries": "Logbuch-Anträg weisen",
+	"globalwatchlist-show-logentries": "Logbuch-Ännerunge weisen",
 	"globalwatchlist-show-newpages": "Uleeë vun neie Säite weisen",
 	"globalwatchlist-sitelist": "Benotzerdefinéiert Sittelëscht",
 	"globalwatchlist-tags": "{{PLURAL:$1|Markéierung|Markéierungen}}: $2",
