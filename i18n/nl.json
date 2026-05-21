@@ -51,7 +51,7 @@
 	"globalwatchlist-notify-savingfailed": "Kon instellingen niet opslaan. Probeer het opnieuw",
 	"globalwatchlist-notify-settingssaved": "Uw instellingen zijn opgeslagen. [[Special:GlobalWatchlist|Terug naar de globale volglijst]].",
 	"globalwatchlist-option-confirmallsites": "Vraag om bevestiging voordat alle sites als gezien worden gemarkeerd",
-	"globalwatchlist-option-fastmode": "Laad sneller, maar toont minder details",
+	"globalwatchlist-option-fastmode": "Sneller laden, maar minder details weergeven",
 	"globalwatchlist-option-grouppage": "Resultaten per pagina groeperen",
 	"globalwatchlist-option-live": "Live-updates",
 	"globalwatchlist-otheroptions": "Andere instellingen",
