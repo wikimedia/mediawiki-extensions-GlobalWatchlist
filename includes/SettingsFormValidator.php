@@ -33,36 +33,17 @@ use MediaWiki\Message\Message;
 class SettingsFormValidator {
 
 	/**
-	 * For formatting the relevant errors
-	 */
-	private MessageLocalizer $messageLocalizer;
-
-	/**
-	 * Reference to $wgGlobalWatchlistSiteLimit, limiting the number of sites a user can include
-	 */
-	private int $maxSites;
-
-	/**
-	 * Array of url forms of sites the user has attached accounts on (from CentralAuth),
-	 * to check against, or null if CentralAuth is not available
-	 *
-	 * @var string[]|null
-	 */
-	private ?array $validSites;
-
-	/**
-	 * @param MessageLocalizer $messageLocalizer
-	 * @param int $maxSites
-	 * @param string[]|null $validSites
+	 * @param MessageLocalizer $messageLocalizer For formatting the relevant errors
+	 * @param int $maxSites Reference to $wgGlobalWatchlistSiteLimit, limiting the number of sites
+	 *  a user can include
+	 * @param string[]|null $validSites Array of url forms of sites the user has attached accounts
+	 *  on (from CentralAuth), to check against, or null if CentralAuth is not available
 	 */
 	public function __construct(
-		MessageLocalizer $messageLocalizer,
-		int $maxSites,
-		?array $validSites
+		private readonly MessageLocalizer $messageLocalizer,
+		private readonly int $maxSites,
+		private readonly ?array $validSites,
 	) {
-		$this->messageLocalizer = $messageLocalizer;
-		$this->maxSites = $maxSites;
-		$this->validSites = $validSites;
 	}
 
 	/**
