@@ -6,7 +6,7 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:GlobalWatchlist",
 	"descriptionmsg": "globalwatchlist-desc",
 	"license-name": "GPL-2.0-or-later",
-	"type": "other",
+	"type": "wikifamily",
 	"requires": {
 		"MediaWiki": ">= 1.47.0"
 	},
