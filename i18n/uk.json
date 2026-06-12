@@ -6,7 +6,8 @@
 			"Hasley",
 			"Ice bulldog",
 			"Renamerr",
-			"Ата"
+			"Ата",
+			"Movses"
 		]
 	},
 	"globalwatchlist": "Глобальний список спостереження",
@@ -48,6 +49,7 @@
 	"globalwatchlist-markseen-all": "Позначити всі сайти як бачені",
 	"globalwatchlist-markseen-allconfirm": "Ви впевнені, що хочете позначити усі сайти як бачені?",
 	"globalwatchlist-must-login": "Будь ласка, увійдіть в систему, щоб скористатися спеціальними сторінками глобального списку спостереження",
+	"globalwatchlist-must-login-for-temp-user": "Будь ласка, створіть обліковий запис, щоб користуватися спеціальними сторінками Глобального списку спостереження",
 	"globalwatchlist-notify-heading": "Глобальний список спостереження",
 	"globalwatchlist-notify-savingfailed": "Не вдалося зберегти налаштування. Спробуйте ще раз, будь ласка.",
 	"globalwatchlist-notify-settingssaved": "Ваші налаштування збережено. [[Special:GlobalWatchlist|Повернутися до глобального списку спостереження]].",
@@ -56,6 +58,7 @@
 	"globalwatchlist-option-grouppage": "Групувати результати за сторінкою",
 	"globalwatchlist-option-live": "Автоматичне оновлення",
 	"globalwatchlist-otheroptions": "Інші налаштування",
+	"globalwatchlist-permalink": "постійне посилання",
 	"globalwatchlist-prefs-settings": "Щоб встановити параметри для глобального списку спостереження, відвідайте [[Special:GlobalWatchlistSettings]].",
 	"globalwatchlist-refresh": "Оновити",
 	"globalwatchlist-remove": "Вилучити",
