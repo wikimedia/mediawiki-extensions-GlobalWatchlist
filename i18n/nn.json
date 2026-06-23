@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ranveig"
+		]
+	},
+	"globalwatchlist-history": "historikk",
+	"globalwatchlist-javascript-required": "Denne spesialsiden krev JavaScript for å verka",
+	"globalwatchlist-log-entry": "loggoppføring",
+	"globalwatchlist-log-page": "sideloggar",
+	"globalwatchlist-markseen": "Merk som lesen",
+	"globalwatchlist-markseen-all": "Merk alle nettstader som sett",
+	"globalwatchlist-markseen-allconfirm": "Er du sikker på at du vil merka alle nettstader som sett?"
+}
