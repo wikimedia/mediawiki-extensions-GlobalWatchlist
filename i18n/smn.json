@@ -5,7 +5,13 @@
 			"Yupik"
 		]
 	},
+	"globalwatchlist": "Systeemvijđosâš čuávvumlisto",
+	"globalwatchlist-desc": "Lasseet systeemvijđosâš čuávvumlisto",
+	"globalwatchlist-summary": "Toimâsijđo, mii čáittá systeemvijđosâš čuávvumlisto",
+	"globalwatchlistsettings": "Systeemvijđosâš čuávvumlisto asâttâsah",
 	"globalwatchlist-add": "Lasseet",
+	"globalwatchlist-changetypes": "Nubástus tijppâ",
+	"globalwatchlist-editwatchlist": "Hammii čuávvumlisto",
 	"globalwatchlist-filters": "Silleeh",
 	"globalwatchlist-filter-minor": "Smavvâ nubástusah",
 	"globalwatchlist-globalwatchlistsettingslink": "Asâttâsah",
@@ -13,5 +19,6 @@
 	"globalwatchlist-notify-savingfailed": "Asâttâsâi vuorkkim ij luhostum. Keččâl uđđâsist.",
 	"globalwatchlist-remove": "Siho",
 	"globalwatchlist-save": "Vuorkkii asâttâsâid",
+	"globalwatchlist-show-edits": "Čääiti siijđo hammiimijd",
 	"globalwatchlist-unwatch": "jooskâ čuávumist"
 }
