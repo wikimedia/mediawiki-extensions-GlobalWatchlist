@@ -47,6 +47,7 @@
 	"globalwatchlist-markseen-all": "すべての変更を確認済みにする",
 	"globalwatchlist-markseen-allconfirm": "すべてのサイトを確認済みにしてよいですか？",
 	"globalwatchlist-must-login": "GlobalWatchlist特別ページを使用するには、ログインしてください",
+	"globalwatchlist-must-login-for-temp-user": "グローバルウォッチリスト特別ページを利用するにはアカウントを作成してください",
 	"globalwatchlist-notify-heading": "グローバルウォッチリスト",
 	"globalwatchlist-notify-savingfailed": "変更の保存に失敗しました。もう一度お試しください",
 	"globalwatchlist-notify-settingssaved": "設定を保存しました。[[Special:GlobalWatchlist|グローバルウォッチリストに戻ります]]。",
