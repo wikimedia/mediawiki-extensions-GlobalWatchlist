@@ -1,4 +1,4 @@
-import Page from 'wdio-mediawiki/Page';
+import Page from 'wdio-mediawiki/Page.js';
 
 class GlobalWatchlist extends Page {
 	// The content that is shown, for either version of the display
