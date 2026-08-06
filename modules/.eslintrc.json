@@ -17,6 +17,7 @@
 				"requireReturnDescription": false
 			}
 		],
-		"jsdoc/no-undefined-types": "warn"
+		"jsdoc/no-undefined-types": "warn",
+		"no-jquery/no-internal-array-methods": "warn"
 	}
 }
