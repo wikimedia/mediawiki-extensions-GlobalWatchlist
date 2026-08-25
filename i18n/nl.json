@@ -80,7 +80,7 @@
 	"globalwatchlist-tour-fastmode": "Snelle modus",
 	"globalwatchlist-tour-fastmode-description": "De snelle modus geeft een snellere weergave, maar met minder details. Wikibase-labels worden niet opgehaald en er wordt een eenvoudige lijst met pagina’s met wijzigingen weergegeven, zonder details over de bewerkers of de bewerkingen zelf.",
 	"globalwatchlist-tour-filters": "Filteropties",
-	"globalwatchlist-tour-filters-description": "De globale volglijst beschikt niet over alle filteropties die beschikbaar zijn voor de normale volglijst. Beschikbaar zijn de filters voor anonieme bewerkingen versus bewerkingen van ingelogde gebruikers, alsmede de filters voor bewerkingen die zijn gemarkeerd als kleine bewerkingen of robotbewerkingen.",
+	"globalwatchlist-tour-filters-description": "De globale volglijst beschikt niet over alle filteropties die beschikbaar zijn voor de normale volglijst. Beschikbaar zijn de filters voor anonieme bewerkingen versus bewerkingen van aangemelde gebruikers, alsmede de filters voor bewerkingen die zijn gemarkeerd als kleine bewerkingen of robotbewerkingen.",
 	"globalwatchlist-tour-help": "Meer documentatie",
 	"globalwatchlist-tour-help-description": "Meer documenatie is beschikbaar op mediawiki.org",
 	"globalwatchlist-tour-intro": "Instellingen globale volglijst",
