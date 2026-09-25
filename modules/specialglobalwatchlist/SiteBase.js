@@ -363,26 +363,40 @@ GlobalWatchlistSiteBase.prototype.getTagList = function () {
 			// is the default value of that.tags, or we already fetched the tags info
 			// and its already available in that.tags
 			resolve( that.tags );
-		} else {
+			return;
+		}
+
+		function getTags( accumulate = [], continueToken = undefined ) {
 			const query = {
 				action: 'query',
 				list: 'tags',
 				tglimit: 'max',
 				tgprop: 'displayname'
 			};
-			that.api( 'get', query, 'getTags' ).then( ( response ) => {
-				const asObject = {};
-				response.query.tags.forEach( ( tag ) => {
-					asObject[ tag.name ] = ( tag.displayname || false ) ?
-						that.linker.fixLocalLinks( tag.displayname ) :
-						tag.name;
-				} );
-				that.debug( 'getTagList', asObject );
-				// Save for future calls (eg on refresh)
-				that.tags = asObject;
-				resolve( asObject );
+			if ( continueToken ) {
+				query.tgcontinue = continueToken;
+			}
+			return that.api( 'get', query, 'getTags' ).then( ( response ) => {
+				accumulate.push( ...response.query.tags );
+				if ( response.continue && response.continue.tgcontinue ) {
+					return getTags( accumulate, response.continue.tgcontinue );
+				}
+				return accumulate;
 			} );
 		}
+
+		getTags().then( ( allTags ) => {
+			const asObject = {};
+			allTags.forEach( ( tag ) => {
+				asObject[ tag.name ] = ( tag.displayname || false ) ?
+					that.linker.fixLocalLinks( tag.displayname ) :
+					tag.name;
+			} );
+			that.debug( 'getTagList', asObject );
+			// Save for future calls (eg on refresh)
+			that.tags = asObject;
+			resolve( asObject );
+		} );
 	} );
 };
 
