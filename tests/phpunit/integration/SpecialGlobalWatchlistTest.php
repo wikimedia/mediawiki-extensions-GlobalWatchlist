@@ -9,7 +9,6 @@ use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -19,9 +18,7 @@ use Wikimedia\TestingAccessWrapper;
 class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 
 	public function testUserNotLoggedIn() {
-		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
-
-		$specialPage = new SpecialGlobalWatchlist( $statsdDataFactory );
+		$specialPage = new SpecialGlobalWatchlist();
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
 
@@ -41,12 +38,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 			'GlobalWatchlistDevMode' => true,
 		] );
 
-		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
-		$statsdDataFactory->expects( $this->once() )
-			->method( 'increment' )
-			->with( 'globalwatchlist.load_special_page' );
-
-		$specialPage = new SpecialGlobalWatchlist( $statsdDataFactory );
+		$specialPage = new SpecialGlobalWatchlist();
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
 
@@ -79,9 +71,7 @@ class SpecialGlobalWatchlistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testInfo() {
-		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
-
-		$specialPage = new SpecialGlobalWatchlist( $statsdDataFactory );
+		$specialPage = new SpecialGlobalWatchlist();
 
 		$testContext = new DerivativeContext( $specialPage->getContext() );
 

@@ -12,10 +12,7 @@
 	},
 	"SpecialPages": {
 		"GlobalWatchlist": {
-			"class": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlist",
-			"services": [
-				"StatsdDataFactory"
-			]
+			"class": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlist"
 		},
 		"GlobalWatchlistSettings": {
 			"class": "MediaWiki\\Extension\\GlobalWatchlist\\SpecialGlobalWatchlistSettings",
@@ -31,8 +28,7 @@
 		"GlobalWatchlistHooks": {
 			"class": "MediaWiki\\Extension\\GlobalWatchlist\\GlobalWatchlistHooks",
 			"services": [
-				"SpecialPageFactory",
-				"StatsdDataFactory"
+				"SpecialPageFactory"
 			]
 		},
 		"GlobalWatchlistGuidedTourHooks": {
@@ -43,9 +39,6 @@
 		}
 	},
 	"Hooks": {
-		"ApiOptions": {
-			"handler": "GlobalWatchlistHooks"
-		},
 		"GetPreferences": {
 			"handler": "GlobalWatchlistHooks"
 		},

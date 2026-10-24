@@ -24,8 +24,6 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist;
 
-use MediaWiki\Api\ApiOptions;
-use MediaWiki\Api\Hook\ApiOptionsHook;
 use MediaWiki\HTMLForm\Field\HTMLInfoField;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\Skin\Hook\SidebarBeforeOutputHook;
@@ -33,13 +31,11 @@ use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Specials\Hook\LoginFormValidErrorMessagesHook;
 use MediaWiki\User\User;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * @author DannyS712
  */
 class GlobalWatchlistHooks implements
-	ApiOptionsHook,
 	GetPreferencesHook,
 	LoginFormValidErrorMessagesHook,
 	SidebarBeforeOutputHook
@@ -47,20 +43,7 @@ class GlobalWatchlistHooks implements
 
 	public function __construct(
 		private readonly SpecialPageFactory $specialPageFactory,
-		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
 	) {
-	}
-
-	/**
-	 * @param ApiOptions $apiModule
-	 * @param User $user
-	 * @param array $changes Associative array of preference name => value
-	 * @param string[] $resetKinds
-	 */
-	public function onApiOptions( $apiModule, $user, $changes, $resetKinds ) {
-		if ( array_key_exists( SettingsManager::PREFERENCE_NAME, $changes ) ) {
-			$this->statsdDataFactory->increment( 'globalwatchlist.settings.manualchange' );
-		}
 	}
 
 	/**

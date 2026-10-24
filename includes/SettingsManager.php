@@ -27,7 +27,6 @@ use MediaWiki\Json\FormatJson;
 use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * @author DannyS712
@@ -61,7 +60,6 @@ class SettingsManager {
 	public function __construct(
 		private readonly LoggerInterface $logger,
 		private readonly UserOptionsManager $userOptionsManager,
-		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
 	) {
 	}
 
@@ -69,8 +67,6 @@ class SettingsManager {
 	 * Save user settings
 	 */
 	public function saveUserOptions( UserIdentity $userIdentity, array $options ): void {
-		$this->logSettingsChange( $userIdentity );
-
 		// When saving the options, make sure that `version` is at the start of the
 		// serialized JSON. In case we ever need to make a breaking change to the
 		// preferences and use a maintenance script to migrate existing settings,
@@ -80,28 +76,6 @@ class SettingsManager {
 		$dbOptions = [ 'version' => self::PREFERENCE_VERSION ] + $options;
 
 		$this->saveOptionsInternal( $userIdentity, FormatJson::encode( $dbOptions ) );
-	}
-
-	/**
-	 * Log the user saving their settings
-	 *
-	 * Differentiate between users changing existing settings and users saving settings
-	 * for the first time
-	 */
-	private function logSettingsChange( UserIdentity $userIdentity ): void {
-		$currentOptions = $this->userOptionsManager->getOption(
-			$userIdentity,
-			self::PREFERENCE_NAME,
-			false
-		);
-
-		// $currentOptions is `false` if the user is saving their settings for the
-		// first time, or a string with the user's option otherwise
-		if ( $currentOptions === false ) {
-			$this->statsdDataFactory->increment( 'globalwatchlist.settings.new' );
-		} else {
-			$this->statsdDataFactory->increment( 'globalwatchlist.settings.change' );
-		}
 	}
 
 	/**

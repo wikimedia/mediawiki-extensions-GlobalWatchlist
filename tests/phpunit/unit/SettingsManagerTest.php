@@ -9,12 +9,9 @@ use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use Psr\Log\LogLevel;
 use TestLogger;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * Test internals of SettingsManager
- *
  * @author DannyS712
  * @covers \MediaWiki\Extension\GlobalWatchlist\SettingsManager
  */
@@ -22,19 +19,14 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 
 	private function getManager(
 		$logger,
-		$userOptionsManager = null,
-		$statsdDataFactory = null
+		$userOptionsManager = null
 	) {
 		if ( $userOptionsManager === null ) {
 			$userOptionsManager = $this->createMock( UserOptionsManager::class );
 		}
-		if ( $statsdDataFactory === null ) {
-			$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
-		}
 		$manager = new SettingsManager(
 			$logger,
-			$userOptionsManager,
-			$statsdDataFactory
+			$userOptionsManager
 		);
 
 		return TestingAccessWrapper::newFromObject( $manager );
@@ -59,14 +51,6 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 
 		$userOptionsManager = $this->createMock( UserOptionsManager::class );
 		$userOptionsManager->expects( $this->once() )
-			->method( 'getOption' )
-			->with(
-				$user,
-				SettingsManager::PREFERENCE_NAME,
-				false
-			)
-			->willReturn( false );
-		$userOptionsManager->expects( $this->once() )
 			->method( 'setOption' )
 			->with(
 				$user,
@@ -77,12 +61,7 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 			->method( 'saveOptions' )
 			->with( $user );
 
-		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
-		$statsdDataFactory->expects( $this->once() )
-			->method( 'increment' )
-			->with( 'globalwatchlist.settings.new' );
-
-		$manager = $this->getManager( $logger, $userOptionsManager, $statsdDataFactory );
+		$manager = $this->getManager( $logger, $userOptionsManager );
 
 		$manager->saveUserOptions( $user, $validSettings );
 
@@ -91,45 +70,6 @@ class SettingsManagerTest extends MediaWikiUnitTestCase {
 		];
 		$this->assertArrayEquals( $debugEntries, $logger->getBuffer() );
 		$logger->clearBuffer();
-	}
-
-	/**
-	 * @dataProvider provideTestLogSettingsChange
-	 */
-	public function testLogSettingsChange( bool $hasExistingSettings ) {
-		$logger = new TestLogger();
-
-		$user = $this->createMock( User::class );
-
-		$userOptionsManager = $this->createMock( UserOptionsManager::class );
-		$userOptionsManager->expects( $this->once() )
-			->method( 'getOption' )
-			->with(
-				$user,
-				SettingsManager::PREFERENCE_NAME,
-				false
-			)
-			->willReturn( $hasExistingSettings );
-
-		$metric = $hasExistingSettings ?
-			'globalwatchlist.settings.change' :
-			'globalwatchlist.settings.new';
-
-		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
-		$statsdDataFactory->expects( $this->once() )
-			->method( 'increment' )
-			->with( $metric );
-
-		$manager = $this->getManager( $logger, $userOptionsManager, $statsdDataFactory );
-
-		$manager->logSettingsChange( $user );
-	}
-
-	public static function provideTestLogSettingsChange() {
-		return [
-			'no existing settings' => [ false ],
-			'with existing settings' => [ true ]
-		];
 	}
 
 	public function testSaveOptionsInternal() {

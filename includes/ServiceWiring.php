@@ -15,8 +15,7 @@ return [
 	): SettingsManager {
 		return new SettingsManager(
 			LoggerFactory::getInstance( 'GlobalWatchlist' ),
-			$services->getUserOptionsManager(),
-			$services->getStatsdDataFactory()
+			$services->getUserOptionsManager()
 		);
 	},
 ];
