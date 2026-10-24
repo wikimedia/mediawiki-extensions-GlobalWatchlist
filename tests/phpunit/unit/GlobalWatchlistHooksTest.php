@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\GlobalWatchlist\Tests\Unit;
 
-use MediaWiki\Api\ApiOptions;
 use MediaWiki\Extension\GlobalWatchlist\GlobalWatchlistHooks;
 use MediaWiki\Extension\GlobalWatchlist\SettingsManager;
 use MediaWiki\HTMLForm\Field\HTMLInfoField;
@@ -13,7 +12,6 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * Tests for the hook handler
@@ -26,34 +24,10 @@ class GlobalWatchlistHooksTest extends MediaWikiUnitTestCase {
 	private function getHookHandler( $options = [] ) {
 		$specialPageFactory = $options['specialPageFactory'] ??
 			$this->createNoOpMock( SpecialPageFactory::class );
-		$statsdDataFactory = $options['statsdDataFactory'] ??
-			$this->createMock( IBufferingStatsdDataFactory::class );
 
 		return new GlobalWatchlistHooks(
-			$specialPageFactory,
-			$statsdDataFactory
+			$specialPageFactory
 		);
-	}
-
-	public function testApiOptions() {
-		$statsdDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
-		$statsdDataFactory->expects( $this->once() )
-			->method( 'increment' )
-			->with(
-				'globalwatchlist.settings.manualchange'
-			);
-		$hookHandler = $this->getHookHandler( [
-			'statsdDataFactory' => $statsdDataFactory
-		] );
-
-		$apiModule = $this->createMock( ApiOptions::class );
-		$user = $this->createMock( User::class );
-		$changes = [
-			SettingsManager::PREFERENCE_NAME => 'Value does not matter'
-		];
-		$resetKinds = [];
-
-		$hookHandler->onApiOptions( $apiModule, $user, $changes, $resetKinds );
 	}
 
 	public function testLinkNotAdded() {

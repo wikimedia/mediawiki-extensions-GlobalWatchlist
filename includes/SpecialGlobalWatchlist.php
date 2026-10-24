@@ -28,7 +28,6 @@ namespace MediaWiki\Extension\GlobalWatchlist;
 
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * @ingroup SpecialPage
@@ -36,9 +35,7 @@ use Wikimedia\Stats\IBufferingStatsdDataFactory;
  */
 class SpecialGlobalWatchlist extends SpecialPage {
 
-	public function __construct(
-		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
-	) {
+	public function __construct() {
 		parent::__construct( 'GlobalWatchlist' );
 	}
 
@@ -75,8 +72,6 @@ class SpecialGlobalWatchlist extends SpecialPage {
 			$this->msg( 'globalwatchlist-javascript-required' )->parse()
 		);
 		$out->addHTML( $message );
-
-		$this->statsdDataFactory->increment( 'globalwatchlist.load_special_page' );
 	}
 
 	protected function getGroupName(): string {
