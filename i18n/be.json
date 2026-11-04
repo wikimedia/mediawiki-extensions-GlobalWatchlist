@@ -3,7 +3,8 @@
 		"authors": [
 			"Chadyka",
 			"No Sleep till Krupki",
-			"Plaga med"
+			"Plaga med",
+			"Чаховіч Уладзіслаў"
 		]
 	},
 	"globalwatchlist": "Глабальны спіс назірання",
@@ -45,6 +46,7 @@
 	"globalwatchlist-markseen-all": "Пазначыць усе пляцоўкі як прагледжаныя",
 	"globalwatchlist-markseen-allconfirm": "Вы упэўнены, што хочаце адзначыць усе вікі як прагледжаныя?",
 	"globalwatchlist-must-login": "Калі ласка, увайдзіце ў сістэму, каб выкарыстоўваць спецыяльныя старонкі GlobalWatchlist",
+	"globalwatchlist-must-login-for-temp-user": "Калі ласка, стварыце ўліковы запіс, каб карыстацца адмысловымі старонкамі Глабальнага спіса назірання",
 	"globalwatchlist-notify-heading": "Глабальны спіс назірання",
 	"globalwatchlist-notify-savingfailed": "Не ўдалося захаваць налады. Калі ласка, паспрабуйце яшчэ раз",
 	"globalwatchlist-notify-settingssaved": "Вашы налады захаваныя. [[Special:GlobalWatchlist|Вярнуцца да глабальнага спісу назірання]].",
@@ -53,6 +55,7 @@
 	"globalwatchlist-option-grouppage": "Групіраваць вынікі паводле старонкі",
 	"globalwatchlist-option-live": "Абнаўляць аўтаматычна",
 	"globalwatchlist-otheroptions": "Іншыя налады",
+	"globalwatchlist-permalink": "пастаянная спасылка",
 	"globalwatchlist-prefs-settings": "Каб задаць налады глабальнага спісу назірання, наведайце старонку [[Special:GlobalWatchlistSettings]].",
 	"globalwatchlist-refresh": "Абнавіць",
 	"globalwatchlist-remove": "Выдаліць",
@@ -87,5 +90,6 @@
 	"globalwatchlist-tour-types": "Тыпы змяненняў",
 	"globalwatchlist-tour-types-description": "Удзельнікі могуць кантраляваць, якія тыпы змяненняў паказваць.",
 	"globalwatchlist-unwatch": "не назіраць",
+	"globalwatchlist-markpageseen": "пазначыць старонку як прачытаную",
 	"prefs-globalwatchlist": "Глабальны спіс назірання"
 }
