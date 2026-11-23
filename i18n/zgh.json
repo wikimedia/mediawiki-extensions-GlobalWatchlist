@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Daoudsfouli",
 			"Hakim1bal",
 			"Lhoussine AIT TAYFST"
 		]
@@ -9,5 +10,6 @@
 	"globalwatchlist-filter-bot": "ⵉⵙⵏⴼⴰⵍ ⵏ ⵓⴱⵓⵜ",
 	"globalwatchlist-filter-not-bot": "ⵉⵙⵏⴼⴰⵍ ⵓⵔ ⵉⴳⵉⵏ ⵡⵉⵏ ⵓⴱⵓⵜ",
 	"globalwatchlist-filter-only-bot": "ⵖⴰⵙ ⵉⵙⵏⴼⴰⵍ ⵏ ⵓⴱⵓⵜ",
-	"globalwatchlist-globalwatchlistsettingslink": "ⵜⵉⵙⵖⴰⵍ"
+	"globalwatchlist-globalwatchlistsettingslink": "ⵜⵉⵙⵖⴰⵍ",
+	"globalwatchlist-save": "ⵙⴽⵍⵙ ⵜⵉⵙⵖⴰⵍ"
 }
